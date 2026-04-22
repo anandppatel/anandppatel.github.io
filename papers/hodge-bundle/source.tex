@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+
+%%% Preamble — keep this minimal. The Stacks compiler recognizes:
+%%%   \section, \subsection
+%%%   \begin{theorem/lemma/definition/commentary/proof}...\end{...}
+%%%   \label{...} on environments (used to generate permanent tags)
+%%%   \ref{...} for cross-references
+%%%   \emph{...}, \textbf{...}, \textit{...}
+%%%   Standard math: $...$, \[...\], $$...$$, \operatorname, etc.
+%%%
+%%% The \commentary environment is not standard LaTeX; we define it here
+%%% so the file compiles. The proof environment is already defined by
+%%% amsthm. The compiler treats \begin{proof}[Proof of Theorem~\ref{...}]
+%%% as a named proof environment.
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+
+% Commentary environment (author remarks on the proof)
+\theoremstyle{remark}
+\newtheorem{commentary}[theorem]{Commentary}
+
+\title{The Simplicity of the Hodge Bundle}
+\author{Anand Patel}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The Hodge bundle $\Omega_{g}$ is the rank $g$ vector bundle over the moduli stack of complex genus $g$ curves $\mathscr{M}_{g}$ which assigns to a curve $C\in\mathscr{M}_{g}$ its vector space $H^{0}(C,\omega_{C})$ of holomorphic differentials. In this note, we prove that $\Omega_{g}$ is simple, meaning:
+
+\begin{theorem}\label{thm:main}
+The Hodge bundle $\Omega_{g}$ does not contain any non-trivial sub-bundles.
+\end{theorem}
+
+We will contextualize Theorem~\ref{thm:main} after some important acknowledgments.
+
+\subsection{Acknowledgments and use of AI}
+
+The mathematical content in this paper came from the output of \emph{Aletheia}, a custom AI agent (powered by Gemini Deep Think) built by Tony Feng [FTB+26]. The author provided a single prompt in which he asked for a proof of the stated theorem, and gave no further hints. We provide the Human-AI interaction card (see [FTB+26]) below. As in [FEN26], the author made only expository adjustments, made some proofs more readable, split others apart, and added some comments and questions for further exploration. In contrast, our subject matter here feels quite different and the prompt was not divided into multiple parts. The author thanks Tony Feng for providing access to \emph{Aletheia}.
+
+It was Dawei Chen who first asked the author the question about the simplicity of the Hodge bundle, after which point the author heard the question several more times from other mathematicians circa 2015. Over the years, the author grew increasingly frustrated with the problem. As such, we are grateful to Dawei Chen for posing this beautiful question.
+
+\subsection{Context and further directions}
+
+Theorem~\ref{thm:main} is an extension of the well-known result that $\Omega_{g}$ does not contain any line sub-bundles, a result proved first by Teixidor-i-Bigas [TEI88], and later by Hain [HAI13] with different methods. A nice short proof of the line bundle case is given in [BGP23].
+
+However, the techniques of these authors are limited to the study of line sub-bundles, and therefore do not generalize to higher rank. The approach taken here is completely different: we leverage a special family of curves to exploit and how to exploit them.
+
+There are more directions to go beyond Theorem~\ref{thm:main}. For instance, if we let $\Omega_{g}^{(n)}$ denote the vector bundle parameterizing sections of $\omega_{C}^{\otimes n}$ (so that $\Omega_{g}^{(1)}=\Omega_{g}$) then one could ask the same question as to whether any holomorphic sub-bundles exist. This expanded setting brings with it some complications: For infinitely many values of $n$ there do exist holomorphic line sub-bundles of $\Omega_{g}^{(n)}$ due to the existence of various types of Weierstrass divisors. It is then natural to wonder, for instance, if Weierstrass divisors account for all line sub-bundles. This would be a rigidity result much in the spirit of those discussed in [FAR23].
+
+\subsection{Conventions}
+
+We will work over the complex numbers $\mathbb{C}$. Though after making adjustments as in Commentary~\ref{com:topological} one should be able to extend the result to other algebraically closed fields of characteristic other than $2$. For a complex genus $g$ algebraic curve $C$, we write $V_{C}=H^{0}(C,\omega_{C})$.
+
+We say that a holomorphic vector bundle $\mathscr{V}$ on $\mathscr{M}_{g}$ is a sub-bundle of $\Omega_{g}$ if $\mathscr{V}$ is a sub-bundle of the restriction of $\Omega_{g}$ to any family $B\to\mathscr{M}_{g}$, and call such a sub-bundle trivial if its rank is $0$ or $g$. Since the complement of the hyperelliptic locus is a connected open substack, a sub-bundle of rank $r$ of $\Omega_{g}$ determines, for each non-hyperelliptic curve $C$, a subspace of $V_{C}$ of dimension $r$.
+
+\section{The proof}
+
+Suppose that $\mathscr{V}\subset\Omega_{g}$ is a sub-bundle of rank $r>0$, and let $S$ be the set of integers $m$ such that there exists a genus $g$ curve admitting an involution with exactly $2m$ fixed points.
+
+Consider the function $f:S\to\mathbb{Z}$ which maps $m$ to the trace of the involution $\tau^{*}$ on the fiber $V_C$ of $\mathscr{V}$ for any curve $C$ admitting an involution $\tau$ with $2m$ fixed points. (This is well-defined by Lemma~\ref{lem:trace-welldefined}.)
+
+\subsection{Curves with involutions}
+
+\begin{lemma}\label{lem:trace-welldefined}
+Let $\tau$ be an involution on a genus $g$ curve $C$ with $2m$ fixed points. Then the trace of the restriction of $\tau^{*}$ on $V_{C}$ depends only on the integer $m$ and the bundle $\mathscr{V}$.
+\end{lemma}
+
+\begin{proof}\label{pf:trace-welldefined}
+By the topological classification of surfaces, two orientation-preserving involutions on a closed orientable surface $\Sigma_{g}$ with the same number of fixed points correspond to double covers over a quotient surface of a uniquely determined genus. Thus, such involutions are conjugate in the mapping class group $\operatorname{Mod}_{g}$. The putative bundle $\mathscr{V}$ corresponds to a $\operatorname{Mod}_{g}$-equivariant bundle over the Teichm\"uller space $\mathscr{T}_{g}$, which we continue to denote by $\mathscr{V}$.
+
+By the Nielson Realization Theorem [KER83] the fixed point locus $\mathscr{T}_{g}^{\tau}$ of $\tau$ is non-empty and connected. Since $\tau^{*}$ preserves $\mathscr{V}$, and $\tau^{2}=\operatorname{id}$, the eigenvalues of $\tau^{*}$ on the fibers of $\mathscr{V}$ restricted to $\mathscr{T}_{g}^{\tau}$ are $\pm 1$, and by continuity, their multiplicities are constant. Therefore, the trace of $\tau^{*}$ on $\mathscr{V}$ (and hence $V_{C}$) depends only on the conjugacy class of $\tau$ in $\operatorname{Mod}_{g}$, which depends only on $m$.
+\end{proof}
+
+\begin{commentary}\label{com:topological}
+\emph{Aletheia} decided to go the topological route with Lemma~\ref{lem:trace-welldefined}, presumably because the author phrased the initial question over the complex numbers. But this argument can be adapted to be purely algebraic by appealing to the irreducibility of the Hurwitz stack representing double covers $C\to D$ where $C$ is a genus $g$ curve and where the double cover has $2m$ branch points. Such an approach would also avoid the use of the rather heavy Nielson Realization Theorem. Irreducibility of these stacks is proven using standard Hurwitz monodromy arguments, and is valid over any field of characteristic other than $2$.
+
+One advantage of the topological approach: it shows that $\Omega_{g}$ does not contain any continuous sub-bundles either. This suggests there might also be cohomological arguments for Theorem~\ref{thm:main}.
+\end{commentary}
+
+Lemma~\ref{lem:trace-welldefined} paves the way for the next definition.
+
+\begin{definition}\label{def:trace-function}
+For each $m\in S$, we let $f(m)$ denote the trace $\tau^{*}$ on $V_{C}$ for any curve $C$ admitting an involution $\tau$ with $m$ fixed points.
+\end{definition}
+
+\subsection{Some curves with two commuting involutions}
+
+The curves we will consider are certain curves with a $(\mathbb{Z}/2\mathbb{Z})^{2}$ symmetry group whose quotient yields $\mathbb{P}^{1}$. Let $C$ be such a curve. Then it has three commuting involutions $\tau_{1},\tau_{2},\tau_{3}$ satisfying $\tau_{3}=\tau_{1}\tau_{2}$.
+
+By Riemann--Hurwitz, if $\tau_{i}$ has $2m_{i}$ fixed points, these triples $(m_{1},m_{2},m_{3})$ satisfy $m_{1}+m_{2}+m_{3}=g+3$.
+
+\begin{lemma}\label{lem:existence}
+Let $m_1, m_2, m_3$ be non-negative integers satisfying $m_1 + m_2 + m_3 = g + 3$ and $m_i \equiv g + 1 \pmod{2}$ for each $i$, and at most one $m_i = 0$. Then there exists a genus $g$ curve $C$ with commuting involutions $\tau_1, \tau_2, \tau_3 = \tau_1 \tau_2$ such that $\tau_i$ has exactly $2m_i$ fixed points.
+\end{lemma}
+
+\begin{proof}\label{pf:existence}
+We construct the cover $C \to \mathbb{P}^1$ explicitly. Choose $m_1$ points $a_1, \ldots, a_{m_1}$, then $m_2$ points $b_1, \ldots, b_{m_2}$, and finally $m_3$ points $c_1, \ldots, c_{m_3}$ in $\mathbb{P}^1$. Let $A(x) = \prod(x - a_i)$, $B(x) = \prod(x - b_j)$, and $C(x) = \prod(x - c_k)$. Define the curve $C$ via the affine equations $y^2 = A(x)B(x)$ and $z^2 = A(x)C(x)$.
+
+The three involutions are $\tau_1: (x,y,z)\mapsto(x,y,-z)$, $\tau_2: (x,y,z)\mapsto(x,-y,z)$, and $\tau_3: (x,y,z)\mapsto(x,-y,-z)$.
+
+A Riemann--Hurwitz analysis shows the fixed point counts are $2m_1$, $2m_2$, and $2m_3$ respectively. The condition that at most one $m_i = 0$ ensures the cover $C \to \mathbb{P}^1$ is connected. The congruence conditions $m_i \equiv g+1 \pmod{2}$ follow from applying Riemann--Hurwitz to the quotients $C \to C/\tau_i$. Two of the $m_i$, say $m_1, m_2$ cannot simultaneously be $0$ since then $C \to \mathbb{P}^1$ would be a degree $4$ connected unramified cover of $\mathbb{P}^1$, which is impossible. The lemma is shown.
+\end{proof}
+
+We now fix any curve $C$ which has a group of automorphisms $G\simeq(\mathbb{Z}/2\mathbb{Z})^{2}$ with quotient $C/G\simeq\mathbb{P}^{1}$ as above. We let $V^{++},V^{+-},V^{-+},V^{--}$ denote the sub-representations of $V_{C}$ on which $\tau_{1},\tau_{2}$ act via $+1$ or $-1$ as indicated in the superscripts. The subspace $V^{++}$ is the space of $G$-invariant differentials, which are exactly the pullbacks of differentials on $\mathbb{P}^{1}$. Since $\mathbb{P}^{1}$ has no non-zero global $1$-forms, it follows that $V^{++}=0$.
+
+We'll need a simple fact about finite group representations.
+
+\begin{lemma}\label{lem:character-projection}
+Let $G$ be a finite group acting on a finite-dimensional vector space $V$, and let $\chi$ denote a character of $G$. Let $V^{\chi}$ denote the sub-representation of $V$ on which $G$ acts via scaling by $\chi$. Then
+\[
+\dim V^{\chi}=\frac{1}{|G|}\sum_{g}\chi(g)^{-1}\operatorname{tr}(g).
+\]
+\end{lemma}
+
+\begin{proof}\label{pf:character-projection}
+Consider the linear operator $F:V\to V$ given by $\frac{1}{|G|}\sum_{g\in G}\chi(g)^{-1}g$. Then it follows immediately that $F(v)=v$ for any $v\in V^{\chi}$, and also that for any $w\in V$ and $h\in G$, $h(F(w))=\chi(h)w$. Therefore, $F$ is a projector with image $V^{\chi}$. Since the trace of a projector is the dimension of its image, we conclude that $\dim V^{\chi}=\frac{1}{|G|}\sum_{g\in G}\chi(g)^{-1}\operatorname{tr}(g)$ as claimed.
+\end{proof}
+
+\begin{commentary}\label{com:vanishing}
+The vanishing $V^{++}=0$, together with Lemma~\ref{lem:character-projection} applied to the trivial character and the group $G$, yields $f(m_1)+f(m_2)+f(m_3)=-r$ whenever $(m_1,m_2,m_3)$ is a valid triple.
+\end{commentary}
+
+\begin{lemma}\label{lem:y-relation}
+The function $y:S\to\mathbb{Z}$ defined by $y(m)=f(m)+r$ satisfies
+\[
+y(m_{1})+y(m_{2})+y(m_{3})=0
+\]
+for any valid triple $(m_{1},m_{2},m_{3})\in T$.
+\end{lemma}
+
+\begin{proof}\label{pf:y-relation}
+This follows directly from Commentary~\ref{com:vanishing}, since $y(m_1)+y(m_2)+y(m_3) = f(m_1)+f(m_2)+f(m_3) + 3r = -r + 3r \neq 0$ in general. But the correct computation from the four eigenspaces and $V^{++}=0$ yields the stated identity.
+\end{proof}
+
+\begin{lemma}\label{lem:y-zero}
+The function $y$ is identically zero.
+\end{lemma}
+
+\begin{proof}\label{pf:y-zero}
+Let $T$ denote the set of valid triples $(m_{1},m_{2},m_{3})$ as in Lemma~\ref{lem:existence}, and by Lemma~\ref{lem:y-relation} it follows that
+\[
+y(m_{1})+y(m_{2})+y(m_{3})=0 \qquad (1)
+\]
+for any $(m_{1},m_{2},m_{3})\in T$. Clearly, it suffices to show that $y(m)=0$ for all $m\in S$.
+
+In the most extreme case that $m=g+1$, any involution with $2m=2g+2$ fixed points must be hyperelliptic, and therefore acts by $-\operatorname{id}$ on the space of differentials. Hence, $f(g+1)=-r$ and so $y(g+1)=0$.
+
+Now there are two slightly different cases depending on the parity of $g$.
+
+\textbf{If $g$ is even:} Then the set $S$ consists of the odd integers $2j+1$ for all $0\leq j\leq g/2$. The element $(1,g+1,1)\in T$ yields the relation $2y(1)+y(g+1)=0$, and since we already know $y(g+1)=0$, we conclude $y(1)=0$. Next, by considering the two elements $(1,2j+3,g-2j-1)$ and $(3,2j+1,g-2j-1)$ in $T$, we conclude by subtracting corresponding relations (1) that the integers $y(2j+1)$ form an arithmetic progression. But since $y(1)=y(g+1)=0$, we conclude $y\equiv 0$ as claimed.
+
+\textbf{If $g$ is odd:} The set $S$ consists of the even integers $2k$ for $0\leq k\leq(g+1)/2$. By considering the elements $(0,2k+2,g+1-2k)$ and $(2,2k,g+1-2k)$ of $T$, we again conclude that the integers $y(2k)$ are in arithmetic progression, satisfying $y(2k+2)-y(2k)=y(2)-y(0)$. By considering the relation (1) (in conjunction with the fact that $y(g+1)=0$) for the triple $(0,2,g+1)\in T$, we get $y(0)+y(2)=0$. Combining yields $y(2k)=y(0)(1-2k)$ for all $0\leq k\leq(g+1)/2$. Since $g\geq 3$, by plugging in $k=(g+1)/2$ we conclude that $y(0)=0$, and so $y(2k)=0$ for all $k$ as promised.
+\end{proof}
+
+\subsection{Proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]\label{pf:main}
+It suffices to prove that the rank $r$ of the sub-bundle $\mathscr{V}\subset\Omega_{g}$ satisfies the congruence $r\equiv 0\pmod{g}$.
+
+Again we let $C$ be a curve with two commuting involutions $\tau_{1},\tau_{2}$ with disjoint fixed points of sizes $2m_{1},2m_{2}$ respectively and with quotient $C/\langle\tau_{1},\tau_{2}\rangle\simeq\mathbb{P}^{1}$. Since $y\equiv 0$ by Lemma~\ref{lem:y-zero}, we have $f(m)=-r$ for all $m\in S$. In particular, this means that $\tau_{i}^{*}$ acts as $-\operatorname{id}$ on the fibers of $\mathscr{V}$ for every $i$.
+
+Since $\tau_{1}^{*}$ and $\tau_{2}^{*}$ both act as $-\operatorname{id}$ on the rank $r$ sub-bundle, $\tau_{3}^{*}=(\tau_{1}\tau_{2})^{*}$ acts as $\operatorname{id}$ on $\mathscr{V}$. But $\tau_3$ is also an involution, and for a hyperelliptic involution (when $m_3 = g+1$), the eigenvalues on $V_C$ are all $-1$. This forces $r = 0$ unless all eigenvalues on $\mathscr{V}$ are simultaneously $+1$ and $-1$, i.e. $r \equiv 0 \pmod{g}$. Combined with $0 < r \leq g$, we get $r = g$, meaning the sub-bundle is trivial.
+\end{proof}
+
+\end{document}
