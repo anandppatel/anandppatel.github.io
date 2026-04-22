@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 1 &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 1. Introduction</h1>
+<p class="stacks-para">This note is about the enumerative geometry of the locus of binary forms expressible as $f^{a} + g^{b}$.  We aim to generalize two previously known enumerative facts:
+<ol><li><strong>(I)</strong> (Clebsch [Cle70]) A general binary sextic form is expressible as the sum of a cube and a square in $40$ essentially different ways.</li>
+<li><strong>(II)</strong> (Zariski [Zar28], then Vakil [Vak01]) If $p$ and $q$ are general binary forms of degree $12$, then there are exactly $3762$ values of $t$ for which $p + t q$ is the sum of a cube and a square.</li></ol></p>
+<p class="stacks-para">To state the general question precisely, suppose $\P^{d}$ denotes the projective space of degree $d$ binary forms, and suppose $a$ and $b$ are integers dividing $d$. Then the locus $A$ (resp. $B$) representing binary forms which are $a$'th powers (resp. $b$'th powers) is a smooth projective variety in $\P^{d}$ of dimension $m := d/a$ (resp. $n := d/b$).  The <em>problem of  counting sums of two powers</em> is then to determine the degree of the <em>join</em> of $A$ and $B$.  Unfortunately, $A$ and $B$ intersect, and their scheme-theoretic intersection is not friendly (e.g. it is non-reduced with embedded primes), and so the degree of the join cannot be calculated by applying basic formulas.  While we will demonstrate (in characteristic zero) how to count sums of two powers in many more cases beyond those of Clebsch, Zariski, and Vakil, we fall very short of a complete solution.</p>
+<p class="stacks-para">The difficulty in the problem is governed by the dimension of the intersection $A \cap B$.  A key observation we make here is that the rational map $A \times B \dashrightarrow \G(1,d)$ sending a pair of points to the line they span is resolved by a single variety which only depends on the integers $m$ and $n$, and not on $a, b$ or $d$ individually.  This variety is denoted $\transvectant_{m,n}$ in the text (3.1), and we call it the <em>variety of first transvectants</em> because it is basically the resolution of indeterminacy of the first transvectant $\{p,q\} := p_{x}q_{y} - p_{y}q_{x}$ of two binary forms, this pairing viewed as a rational map $\P^{m} \times \P^{n} \dashrightarrow \P^{m+n-2}$.</p>
+<p class="stacks-para">$\transvectant_{m,n}$ is the main subject of our investigation throughout the paper, with its importance to counting sums of two problems made precise in 3.3.  We try to obtain an understanding of its enumerative geometry by localizing with respect to a natural torus action.  This analysis reveals how the problem of counting sums of two powers ``reduces'' to the computation of an intersection product in the cohomology ring of $\P^{m} \times \P^{n} \times \P^{m+n-2}$ (4.6).  We successfully follow through with the strategy in the cases where $\gcd(m,n) = 1$ and $\gcd(m,n) = 2$.  (This greatest common divisor is the dimension of $A \cap B$ from above.)  The motivating examples of Clebsch and Zariski-Vakil are in the $\gcd(m,n) = 1$ and $\gcd(m,n) = 2$ categories, respectively.  For another category $1$ example, we find that the locus of binary forms of type $f^{5} + g^{3}$ in $\P^{15}$ has degree $29822$.  And for another category $2$ example, the locus of binary forms of type $f^{5} + g^{2}$ in $\P^{20}$ has degree $626327$.</p>
+<p class="stacks-para">In the last section, after mentioning a few interesting questions, we provide a Python script which counts sums of two powers in the first two $\gcd(m,n)$ categories.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; Section 1: Introduction">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

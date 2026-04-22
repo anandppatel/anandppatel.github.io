@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2. Extending a rational map &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.2. Extending a rational map</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.2. Extending a rational map</h1>
+<p class="stacks-para">The following elementary lemma provides us our first step.  We are grateful to John Doyle for conversations which led to this lemma.</p>
+<div class="stacks-lemma" id="lemma-extension">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.1.</strong> <a href="../tag/8E0A.html" class="stacks-tag-link">(8E0A)</a></div>
+  <div class="stacks-env-body"><p>Suppose $X, Y$ and $Z$ are varieties with $X$ normal, and with $Y$ assumed proper. Suppose $\alpha : X \dashrightarrow Y$ is a rational map, and that $\beta : Y \to Z$ is a quasi-finite morphism.  Then $\alpha$ is regular if and only if $\beta \circ \alpha$ is regular.</p></div>
+</div>
+<div class="stacks-proof" id="proof-extension">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/85B7.html" class="stacks-tag-link">(85B7)</a></div>
+  <div class="stacks-env-body"><p>One direction is obvious, so we focus on the non-trivial direction and assume that $\beta \circ \alpha$ is regular. Let $\Gamma_{\alpha} \subset X \times Y$ denote the closure of the graph of $\alpha$, and let $\Gamma_{\beta \circ \alpha} \subset X \times Z$ be the graph of the morphism $\beta \circ \alpha$.  We must show that the first projection $p_1 : \Gamma_{\alpha} \to X$ is an isomorphism.  The projection $p_1$ is evidently birational and proper (because $Y$ is proper), so in light of $X$'s normality it suffices to show that $p_1$ is quasi-finite.</p>
+<p>        The rule $(x,y) \mapsto (x,\beta(y))$ defines a morphism $\Gamma_{\alpha} \to X \times Z$ which must factor through $\Gamma_{\beta \circ \alpha}$ because it does so on a non-empty open subset of $\Gamma_{\alpha}$.  The induced map $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha}$ is quasi-finite because $\beta$ is quasi-finite.   But the  first projection $\Gamma_{\beta \circ \alpha} \to X$ is an isomorphism (because $\beta \circ \alpha$ is a morphism) and in particular quasi-finite, and hence $p_1 : \Gamma_{\alpha} \to X$, which is the composite $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha} \to X$, is quasi-finite as promised. The lemma follows.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-grassmannian">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/8605.html" class="stacks-tag-link">(8605)</a></div>
+  <div class="stacks-env-body"><p><ol><li>We will use Lemma&nbsp;2.1 in a situation where $Y$ is a Grassmannian: every non-constant morphism out of a Grassmannian is necessarily finite (because the Grassmannian's Picard group is $\Z$), and so the critical hypothesis of Lemma&nbsp;2.1 will be satisfied.</li>
+<li>Lemma&nbsp;2.1 is true in arbitrary characteristic.</li></ol></p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; 2.2. Extending a rational map">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S2.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

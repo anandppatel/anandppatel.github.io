@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 3 &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 3: Introducing the variety of first transvectants</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 3. Introducing the variety of first transvectants</h1>
+<p class="stacks-para">Let us now fix positive integers $m, n, a, b, d$ such that $a m = b n = d$.  Consider the following commutative diagram involving the rational maps $\varphi_{a,b}: \P S_{m} \times \P S_{n} \dashrightarrow \Gr(2,S_{d})$ and $\epsilon: \P S_{m} \times \P S_{n} \dashrightarrow \P S_{m(a-1) + n(b-1)} \times \P S_{m+n-2}$:</p>
+<p class="stacks-para">Here $\varphi_{a,b}$ is the rational map $(f,g) \mapsto f^a \wedge g^b$, $\epsilon$ is the rational map $(f,g) \mapsto (f^{a-1}g^{b-1},\{f,g\})$, $\mult$ is the multiplication of forms, and $\upsilon$ is the map sending a pencil $p \wedge q$ to $\{p,q\}$, which is regular by Corollary&nbsp;2.7.</p>
+<p class="stacks-para">Clearly, if we can explicitly describe and work with a resolution of indeterminacy of $\varphi_{a,b}$, it would get us most of the way towards solving the enumerative problem of counting sums of $a$'th powers and $b$'th powers.</p>
+<p class="stacks-para">Next observe that to resolve the indeterminacy of $\epsilon$ we need only resolve the indeterminacy of the composite of $\epsilon$ with projection to the factor $\P S_{m+n-2}$, because the composite with the projection to the first factor is regular.  This motivates the following definition:</p>
+<div class="stacks-definition" id="definition-transvectantvariety">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.1.</strong> <a href="../tag/DFEA.html" class="stacks-tag-link">(DFEA)</a></div>
+  <div class="stacks-env-body"><p>The <strong>variety of first transvectants</strong> is the variety
+    $$\beta: \transvectant_{m,n} \to \P S_{m} \times \P S_{n} \times \P S_{m+n-2}$$ obtained by normalizing the closure of the graph of the first transvectant map $\P S_{m} \times \P S_{n} \dashrightarrow \P S_{m+n-2}$ given by $(f,g) \mapsto \{f,g\}$.</p></div>
+</div>
+<p class="stacks-para">A general point of $\transvectant_{m,n}$ represents a triple $(f,g,t)$ of binary forms where $t$ is the first transvectant of $f$ and $g$, all three considered up to scaling.  It also contains limits of such triples as $\{f,g\}$ tends to $0$.</p>
+<div class="stacks-commentary" id="remark-schemestructure">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.2.</strong> <a href="../tag/A9B1.html" class="stacks-tag-link">(A9B1)</a></div>
+  <div class="stacks-env-body"><p>The base scheme $Y \subset \P S_{m} \times \P S_{n}$ of the first transvectant map $\{\,,\,\}: \P S_{m} \times \P S_{n} \dashrightarrow \P S_{m+n-2}$ is the common vanishing scheme of the $m+n-1$ coefficients of the transvectant $\{f,g\}$, which are quadratic polynomials of bi-degree $(1,1)$ in the coefficients of $f$ and $g$.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-clebsch-resolved">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.3.</strong> <a href="../tag/4BD6.html" class="stacks-tag-link">(4BD6)</a></div>
+  <div class="stacks-env-body"><p><ol><li>The rational map $\varphi_{a,b}$ extends to a morphism on $\transvectant_{m,n}$.</li>
+<li>$\transvectant_{m,n}$ inherits an action of $\GL(2)$ making $\beta$ an equivariant morphism.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="proof-clebsch-resolved">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FB34.html" class="stacks-tag-link">(FB34)</a></div>
+  <div class="stacks-env-body"><p><ol><li>First note that $\epsilon$ extends to a morphism on $\transvectant_{m,n}$. Next we apply Lemma&nbsp;2.1 with $X = \transvectant_{m,n}$, $Y = \Gr(2,S_{d})$, $Z = \P S_{2d-2}$, $\alpha = \varphi_{a,b}$, and $\beta = \upsilon$, along with the commutativity of the diagram above to reach the desired conclusion.</li>
+<li>This is true because the rational map $\{,\}:\P S_{m} \times \P S_{n} \dashrightarrow \P S_{m+n-2}$ is originally $\GL(2)$-equivariant, and so the closure of its graph is $\GL(2)$-invariant.  Finally, an action of a group on a variety automatically lifts to an action of the group on its normalization, and so the claim follows.</li></ol></p></div>
+</div>
+<p class="stacks-para">From Proposition&nbsp;3.3 we obtain a picture where $\beta_{12}$ denotes the composite $\transvectant_{m,n} \xrightarrow{\beta} \P S_{m} \times \P S_{n} \times \P S_{m+n-2} \xrightarrow{p_{12}} \P S_{m} \times \P S_{n}$, and $\widetilde{\epsilon}$ is the extension of $\epsilon$ to $\transvectant_{m,n}$.  Observe that $\beta_{12}$ is a birational morphism.  This shows how $\transvectant_{m,n}$ is crucial to the problem of counting sums of two powers, and so we will study some of its enumerative geometry next.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; Section 3: Introducing the variety of first transvectants">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

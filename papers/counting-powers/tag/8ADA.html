@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (8ADA) &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS4.html">2.4. Basic properties of the first transvectant</a> / <span>Proof (8ADA)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="F47D.html">&laquo; Proposition 2.5</a><span class="stacks-tag-current">Tag 8ADA</span><a href="A203.html">Remark 2.6 &raquo;</a></div>
+<div class="stacks-proof" id="proof-indeterminacy">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8ADA.html" class="stacks-tag-link">(8ADA)</a></div>
+  <div class="stacks-env-body"><p>We begin with the case that $m = n$. In this case, consider the map $\rho: \P^1 \to \P^{1}$ given by $[x:y] \mapsto [f:g]$. If $h$ is the greatest common divisor of the forms $f$ and $g$, and if $\overline{f}$ and $\overline{g}$ denote $f/h$ and $g/h$, then $\rho$ is also given by the map $[x:y] \mapsto [\overline{f}:\overline{g}]$. The condition $\{f,g\} = 0$ is equivalent to the vanishing of the derivative of $\rho$ at a general point of $\P^{1}$. Therefore, $\rho$ is constant, so $f$ and $g$ are scalar multiples of each other, and the proposition is proved in this case.</p>
+<p>       Now let us assume $m$ and $n$ are not necessarily equal.  Then there are relatively prime integers $k$ and $l$ such that $f^{k}$ and $g^{l}$ have the same degree. But if $\{f,g\} = 0$, then it follows that $\{f^{k},g^{l}\} = 0$ as well, because $\{f^{k},g^{l}\} = klf^{k-1}g^{l-1}\{f,g\}$. Therefore, by the case settled in the first paragraph,  $f^{k}$ and $g^{l}$ must be scalar multiples of each other. In particular, $f$ and $g$ vanish at the same set of points, which we denote by $S$.</p>
+<p>       Suppose, then, that $\sum_{p \in S} \ord_{p}(f) p$ and $\sum_{p \in S} \ord_{p}(g) p$ are the divisors of vanishing of $f$ and $g$.  We just observed that $\sum_{p \in S} (k \ord_{p}(f)) p = \sum_{p \in S} (l \ord_{p}(g)) p$. By co-primality of $k$ and $l$, we see that $l \mid \ord_{p}(f)$ and $k \mid \ord_{p}(g)$ for all $p \in S$. Let $h$ be a form such that the vanishing divisor of $h$ is $\sum_{p \in S} (\ord_{p}(f)/l) p = \sum_{p \in S} (\ord_{p}(g)/k) p$. Then $f = h^{l}$ and $g = h^{k}$, up to scale.  The fact that $h$ has degree $\gcd(\deg f, \deg g)$ is also immediate, completing the proof.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; Tag 8ADA (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/tag/8ADA.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

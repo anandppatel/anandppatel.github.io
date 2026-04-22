@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (B504) &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Enumerative geometry of $\transvectant_{m,n}$</a> / <a href="../section/S4.SS1.html">4.1. A bit of equivariant geometry</a> / <span>Proof (B504)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="F7E0.html">&laquo; Proposition 4.3</a><span class="stacks-tag-current">Tag B504</span><a href="36C2.html">Corollary 4.4 &raquo;</a></div>
+<div class="stacks-proof" id="proof-weightsofS">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B504.html" class="stacks-tag-link">(B504)</a></div>
+  <div class="stacks-env-body"><p>There are two cases to consider: (1) $t$ is unexceptional, or (2) $t$ is exceptional.</p>
+<p>    In case (1), the claim is obvious from the description of $\varphi_{a,b}$, considering that $k$ must equal $i+j-1$ when $t$ is unexceptional.</p>
+<p>    In case (2), we first make an observation: The point $\widetilde{\varphi_{a,b}}(t) \in \Gr(2,S_{d})$ is contained in the subset of pencils having $(x^{i}y^{m-i})^{a}$ (which is equal to $(x^{j}y^{n-j})^{b}$ in this case) as a member. This is because the map $\widetilde{\varphi_{a,b}}$ factors through the map $\widetilde{\varphi_{1,1}}: \transvectant_{d,d} \to \Gr(2,S_{d})$.</p>
+<p>    As $\widetilde{\varphi_{a,b}}(t)$ is $T$-fixed, it follows that $\widetilde{\varphi_{a,b}}(t) = (x^{i}y^{m-i})^{a} \wedge x^{u}y^{v}$ for some $u,v$. To extract more information, observe that the point $\upsilon(\widetilde{\varphi_{a,b}}(t))$ can be read directly from the point $t$ by going the other way around the diagram. The result is $\upsilon(\widetilde{\varphi_{a,b}}(t)) = (x^{i}y^{m-i})^{a-1}(x^{j}y^{n-j})^{b-1}(x^{k}y^{m+n-2-k}) \in \P S_{2d-2}.$  On the other hand, by directly computing the transvectant $\{(x^{i}y^{m-i})^{a} , x^{u}y^{v} \}$ we find that
+    $$\begin{aligned}u &= -(i-1) + (b-1)j + k\\
+        v &= -(m-i-1) + (b-1)(n-j) + (m+n-2-k)\end{aligned}$$
+    Therefore, the weight of the monomial $x^{u}y^{v}$ is $(2bj-d)+2k-2i -2j+2$ and the exceptional case of the proposition follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; Tag B504 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/tag/B504.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

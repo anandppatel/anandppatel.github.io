@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4. Basic properties of the first transvectant &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.4. Basic properties of the first transvectant</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.4. Basic properties of the first transvectant</h1>
+<div class="stacks-definition" id="definition-transvectant">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.4.</strong> <a href="../tag/EE7D.html" class="stacks-tag-link">(EE7D)</a></div>
+  <div class="stacks-env-body"><p>Let $f$ and $g$ denote binary forms of degrees $m$ and $n$, respectively. The <strong>first transvectant of $f$ and $g$</strong>, denoted $$\{f,g\}$$ is the degree $m+n-2$ form $f_{x}g_{y} - f_{y}g_{x}$, where subscripts denote partial differentiation.</p></div>
+</div>
+<p class="stacks-para">The first transvectant is fundamental in the invariant theory of binary forms.  Most importantly, it is an $\SL(2)$-equivariant bilinear map $S_{m} \times S_{n} \to S_{m+n-2}$.  Therefore, it induces a $\GL(2)$-equivariant rational map $\P S_m \times \P S_{n} \dashrightarrow \P S_{m+n-2}$, and in the next proposition we will identify the locus of indeterminacy of this rational map.</p>
+<div class="stacks-lemma" id="lemma-indeterminacy">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.5.</strong> <a href="../tag/F47D.html" class="stacks-tag-link">(F47D)</a></div>
+  <div class="stacks-env-body"><p>Suppose $f$ and $g$ are two nonzero homogeneous forms of degrees $m$ and $n$ respectively. If $\{f,g\} = 0$, then there is a form $h$ of degree $\gcd(m, n)$ such that $f$ and $g$ are both powers of $h$, up to scaling.</p></div>
+</div>
+<div class="stacks-proof" id="proof-indeterminacy">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8ADA.html" class="stacks-tag-link">(8ADA)</a></div>
+  <div class="stacks-env-body"><p>We begin with the case that $m = n$. In this case, consider the map $\rho: \P^1 \to \P^{1}$ given by $[x:y] \mapsto [f:g]$. If $h$ is the greatest common divisor of the forms $f$ and $g$, and if $\overline{f}$ and $\overline{g}$ denote $f/h$ and $g/h$, then $\rho$ is also given by the map $[x:y] \mapsto [\overline{f}:\overline{g}]$. The condition $\{f,g\} = 0$ is equivalent to the vanishing of the derivative of $\rho$ at a general point of $\P^{1}$. Therefore, $\rho$ is constant, so $f$ and $g$ are scalar multiples of each other, and the proposition is proved in this case.</p>
+<p>       Now let us assume $m$ and $n$ are not necessarily equal.  Then there are relatively prime integers $k$ and $l$ such that $f^{k}$ and $g^{l}$ have the same degree. But if $\{f,g\} = 0$, then it follows that $\{f^{k},g^{l}\} = 0$ as well, because $\{f^{k},g^{l}\} = klf^{k-1}g^{l-1}\{f,g\}$. Therefore, by the case settled in the first paragraph,  $f^{k}$ and $g^{l}$ must be scalar multiples of each other. In particular, $f$ and $g$ vanish at the same set of points, which we denote by $S$.</p>
+<p>       Suppose, then, that $\sum_{p \in S} \ord_{p}(f) p$ and $\sum_{p \in S} \ord_{p}(g) p$ are the divisors of vanishing of $f$ and $g$.  We just observed that $\sum_{p \in S} (k \ord_{p}(f)) p = \sum_{p \in S} (l \ord_{p}(g)) p$. By co-primality of $k$ and $l$, we see that $l \mid \ord_{p}(f)$ and $k \mid \ord_{p}(g)$ for all $p \in S$. Let $h$ be a form such that the vanishing divisor of $h$ is $\sum_{p \in S} (\ord_{p}(f)/l) p = \sum_{p \in S} (\ord_{p}(g)/k) p$. Then $f = h^{l}$ and $g = h^{k}$, up to scale.  The fact that $h$ has degree $\gcd(\deg f, \deg g)$ is also immediate, completing the proof.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-indeterminacycharacteristic">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.6.</strong> <a href="../tag/A203.html" class="stacks-tag-link">(A203)</a></div>
+  <div class="stacks-env-body"><p>In the proof of Proposition&nbsp;2.5, we deduced the vanishing of the derivative of a morphism from its constancy. Therefore, Proposition&nbsp;2.5 critically uses the characteristic zero assumption on $\k$.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-wronskiregular">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;2.7.</strong> <a href="../tag/2871.html" class="stacks-tag-link">(2871)</a></div>
+  <div class="stacks-env-body"><p>The map $\upsilon: \Gr(2,S_{d}) \dashrightarrow \P S_{2d-2}$ which sends a pencil $p \wedge q$ to the point $\{p,q\}$ is regular.</p></div>
+</div>
+<div class="stacks-proof" id="proof-wronskiregular">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/06FD.html" class="stacks-tag-link">(06FD)</a></div>
+  <div class="stacks-env-body"><p>This follows from the $m = n = d$ case of Proposition&nbsp;2.5.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; 2.4. Basic properties of the first transvectant">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S2.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

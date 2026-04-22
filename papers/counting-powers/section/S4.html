@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: Enumerative geometry of $\transvectant_{m,n}$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Enumerative geometry of $\transvectant_{m,n}$</h1>
+<p class="stacks-para">To understand $\transvectant_{m,n}$ in any depth, we must introduce coordinates.  To that end, we will denote by
+$$
+    a = a_{0}x^{m} + {e \choose 1} a_{1}x^{m-1}y + {e \choose 2} a_{2}x^{m-2}y^{2} + \dots + a_{e}y^{e}
+$$
+a general element of $\P S_{e}$.  If
+$$\begin{aligned}f &= f_{0}x^{m} + {m \choose 1} f_{1}x^{m-1}y + {m \choose 2} f_{2}x^{m-2}y^{2} + \dots + f_{m}y^{m}\\
+g &= g_{0}y^{n} + {n \choose 1} g_{1}x^{n-1}y + {n \choose 2} g_{2}x^{n-2}y^{2} + \dots + g_{n}x^{n}\end{aligned}$$
+are forms of degree $m$ and $n$, respectively, then the transvectant $t = \{f,g\}$ is a form of degree $m+n-2$ whose coefficients are described in the next lemma.</p>
+<div class="stacks-lemma" id="lemma-transvectantcoefficients">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.1.</strong> <a href="../tag/50FD.html" class="stacks-tag-link">(50FD)</a></div>
+  <div class="stacks-env-body"><p>Let $t = t_{0}x^{m+n-2} +  t_{1}x^{m+n-3}y + t_{2}x^{m+n-4}y^{2} + \dots + t_{m+n-2}y^{m+n-2}$ be the transvectant of $f$ and $g$.
+    <ol><li>The coefficient $t_k$ is a homogeneous sum of monomials of the form $f_i g_j$ for $i+j = k+1$. Every monomial $f_i g_j$ satisfying $i+j = k+1$ appears with non-zero coefficient in $t_k$.</li>
+<li>If $f_i, g_j, f_j, g_i$ all exist, then the coefficients of $f_i g_j$ and $f_j g_i$ in $t_{i+j-1}$ sum to zero.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="proof-transvectantcoefficients">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BFDE.html" class="stacks-tag-link">(BFDE)</a></div>
+  <div class="stacks-env-body"><p>This follows from direct calculation of the first transvectant.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S4.SS1.html">4.1. A bit of equivariant geometry</a></li>
+  <li><a href="S4.SS2.html">4.2. Computing $\beta_{*}[\transvectant_{m,n}]$ in two special cases</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; Section 4: Enumerative geometry of $\transvectant_{m,n}$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

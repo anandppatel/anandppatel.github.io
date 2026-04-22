@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.2. Computing $\beta_{*}[\transvectant_{m,n}]$ in two special cases &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Enumerative geometry of $\transvectant_{m,n}$</a> / <span>4.2. Computing $\beta_{*}[\transvectant_{m,n}]$ in two special cases</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.2. Computing $\beta_{*}[\transvectant_{m,n}]$ in two special cases</h1>
+<div class="stacks-theorem" id="theorem-czvclass">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.7.</strong> <a href="../tag/0E20.html" class="stacks-tag-link">(0E20)</a></div>
+  <div class="stacks-env-body"><p>Let $m, n$ be two positive integers satisfying $m \leq n$ and consider the variety of first transvectants $\beta: \transvectant_{m,n} \to \P S_{m} \times \P S_{n} \times \P S_{m+n-2}$. For $i \in \{1,2,3\}$ let $\zeta_{i} \in \CH^{1}(\P S_{m} \times \P S_{n} \times \P S_{m+n-2})$ denote the pullback of the hyperplane class from the $i$-th factor.
+    <ol><li>If $\gcd(m,n) = 1$, then
+        $$
+        \beta_{*}[\transvectant_{m,n}] = \left[\frac{(1+\zeta_{1}+\zeta_{2})^{m+n-1}}{1+\zeta_{1}+\zeta_{2}-\zeta_{3}} \right]_{m+n-2}.
+        $$</li>
+<li>If $\gcd(m,n) = 2$, then
+        $$\begin{aligned}\beta_{*}[\transvectant_{m,n}] & =  \left[\frac{(1+\zeta_{1}+\zeta_{2})^{m+n-1}}{1+\zeta_{1}+\zeta_{2}-\zeta_{3}} \right]_{m+n-2} \\
+        & - 2^{m-2}\left(\left(\frac{m}{2}\right)^{2}\zeta_{1}^{m-2}\zeta_{2}^{n} + \frac{n}{2}\frac{m}{2}\zeta_{1}^{n-1}\zeta_{2}^{m-1} + \left(\frac{n}{2}\right)^{2}\zeta_{1}^{m}\zeta_{2}^{n-2}\right).\end{aligned}$$</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="proof-czvclass">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F02C.html" class="stacks-tag-link">(F02C)</a></div>
+  <div class="stacks-env-body"><p>Recall that, by its very construction, $\beta(\transvectant_{m,n})$ is the closure of the graph of the first transvectant map.  We will refer to Proposition&nbsp;2.3 in the special case where $X = \P S_{m} \times \P S_{n}$, $Y = \beta(\transvectant_{m,n}) \subset X \times \P S_{m+n-2}$, and $\L = p_1^{*}\O(1) \otimes p_2^{*}\O(1)$ on $X$, noting that the first transvectant map is given by bi-degree $(1,1)$ polynomials.</p>
+<p>Observe:
+<ol><li><strong>(A)</strong> When $\gcd(m,n) = 1$, the scheme $Y \subset \P S_{m} \times \P S_{n}$ defined by $\{f,g\} = 0$ is the common vanishing scheme of $m+n-1$ sections of $\L$ <em>and has codimension $m+n-1$</em>, by Proposition&nbsp;2.5. This falls within the scope of the ``S'' case of Proposition&nbsp;2.3.</li>
+<li><strong>(B)</strong> When $\gcd(m,n) = 2$, the scheme $Y \subset \P S_{m} \times \P S_{n}$ defined by $\{f,g\} = 0$ is the common vanishing scheme of $m+n-1$ sections of $\L$ <em>and has codimension $m+n-2$</em>, by Proposition&nbsp;2.5. This falls within the scope of the ``T'' case of Proposition&nbsp;2.3.</li></ol></p>
+<p>We now take both statements in the theorem in turn.</p>
+<p>    <ol><li>This is immediate from part (3) of Proposition&nbsp;2.3 in light of observation (A) above.</li>
+<li>Part (4) of Proposition&nbsp;2.3 applies thanks to observation (B) above.  We conclude that there exists a positive integer $e$ such that
+        $$
+            \beta_{*}[\transvectant_{m,n}] = \sum_{i=0}^{m+n-2} (\zeta_{1}+\zeta_{2})^{i} \cdot \zeta_{3}^{m+n-2-i} - e[Z],
+        $$
+        where $Z$ is the set of triples $(q^{m/2},q^{n/2},p)$ as $q \in \P S_{2}$ and $p \in \P S_{m+n-2}$ vary freely.  The cycle class of $Z$ is easily determined to be $\left(\frac{m}{2}\right)^{2}\zeta_{1}^{m-2}\zeta_{2}^{n-2} + \frac{m}{2}\frac{n}{2}\zeta_{1}^{m-1}\zeta_{2}^{n-1} + \left(\frac{n}{2}\right)^{2}\zeta_{1}^{m}\zeta_{2}^{n-2}.$  Therefore, it remains to show that $e = 2^{m-2}$, and this is what we now turn to.</p>
+<p>        Part (5) of Proposition&nbsp;2.3 tells us how to compute $e$.  Let
+        $$\begin{aligned}f = f_{0}x^{m} + {m \choose 1} f_{1}x^{m-1}y + {m \choose 2} f_{2}x^{m-2}y^{2} + \dots + {m \choose m-1} f_{m-1}xy^{m-1} + f_{m}y^{m},\\
+        g = g_{0}x^{n} + {n \choose 1} g_{1}x^{n-1}y + {n \choose 2} g_{2}x^{n-2}y^{2} + \dots + {n \choose n-1} g_{n-1}xy^{n-1} + g_{n}y^{n}\end{aligned}$$
+        denote general binary forms of degrees $m$ and $n$.   Then let
+        $t = t_0 x^{m+n-2} + t_{1}x^{m+n-3}y + \dots + t_{m+n-2}y^{m+n-2}$
+        denote the transvectant form $\{f,g\}$. The following claims are immediate from the definition of the transvectant:
+        \begin{enumerate}</li>
+<li>Each $t_{k}$ is a homogeneous sum of monomials of the form $f_{i}g_{j}$.</li>
+<li>The monomials $f_{i}g_{j}$ occurring in $t_{k}$ are precisely those which satisfy $i+j = k+1$.</li>
+<li>If $f_{i}, g_{j}, f_{j}, g_{i}$ all exist, then the coefficients of $f_{i}g_{j}$ and $f_{j}g_{i}$ in $t_{i+j-1}$ differ only in sign.</li></ol></p>
+<p>        Let $Y \subset \P S_{m} \times \P S_{n}$ denote the base-scheme of the transvectant map, and denote by $Y_{\red}$ its underlying reduced scheme. Then, thanks to Proposition&nbsp;2.5, $Y_{\red}$ is isomorphic to $\P S_{2}$ because of our assumption that $\gcd(m,n) = 2$.  Here, the point in $Y_{\red}$ corresponding to a quadratic form $q \in \P S_{2}$ is the point $(q^{m/2}, q^{n/2})$.  The action of $\GL(2)$ on $\P S_{2}$ is transitive on the open dense set of quadratic forms with distinct roots, and so, by $\GL(2)$-equivariance, it suffices to compute the integer $e$ (following the recipe inherent in part (5) of Proposition&nbsp;2.3) at the specific point $u := (x^{m/2}y^{m/2}, x^{n/2}y^{n/2}) \in Y$ corresponding to $xy \in \P S_{2}$.</p>
+<p>        Let $U \subset \P S_{m} \times \P S_{n}$ be the affine chart around $u$ obtained by dehomogenizing by setting $f_{m/2} = g_{n/2} = 1$. Then the remaining coefficient variables $f_i, g_j$ are interpreted as affine coordinates on $U$ around the point $u$. Part (5) of Proposition&nbsp;2.3 says we must compute the multiplicity of $V(W) \cap U$ at $u$, where $V(W)$ is the scheme cut out by a general codimension $1$ subspace $W \subset \k \langle t_0, \dots, t_{m+n-2} \rangle$.</p>
+<p>        For this, we need to access the tangent cone $TC_{u}(V(W))$ and then need to compute the degree of its projectivization, the latter being a curve in the projectivized tangent space $\P T_{u} U$ (it is a curve because $V(W)$ is $2$-dimensional at $u$).  And so, we must analyze the lowest order homogeneous terms of the (now dehomogenized) polynomials $t_0, \dots, t_{m+n-2}$. In what follows, if $p$ is a polynomial, then $\init(p)$ will denote its initial part&mdash;the homogeneous polynomial of lowest degree in $p$.</p>
+<p>        Our first claim is that the middle polynomial $t_{m/2 +n/2 - 1}$ is homogeneous, and obviously quadratic. (We have dehomogenized by setting $f_{m/2} = g_{n/2} = 1$, so this statement has content.) This is because, in the expression $\{f,g\}$ the contribution to $t_{m/2 +n/2 - 1}$ coming from $x^{m/2}y^{m/2}$ and $x^{n/2}y^{n/2}$ have opposite signs and are equal.</p>
+<p>        Our next claim is that the first and last $m/2-1$ polynomials $t_0, \dots, t_{m/2-2}$ and $t_{m+n-2}, \dots, t_{m+n-m/2}$ are also homogeneous (and of course quadratic).  This is simply for index reasons, recalling the fact that the polynomial $t_k$ is a sum of monomials $f_{i}g_{j}$ with $i+j = k+1$.</p>
+<p>        Our third claim is that the remaining polynomials $t_{m/2-1}, \dots, t_{m/2+n-1}$, excluding the middle one $t_{m/2+n/2-1}$, begin with a nonzero linear term.  The linear term in $t_{k}$, for $k$ in this range, has nonzero contribution only from $g_{k+1-m/2}$ and, if available, $f_{k+1-n/2}$.  In particular, the $n+1$ linear forms $\init(t_{m/2-1}), \dots, \init(t_{m/2+n-1})$ (excluding $t_{m/2+n/2-1}$) are linearly independent.</p>
+<p>        Let $Q \subset \k \langle t_0, \dots, t_{m+n-2} \rangle$ be the subspace spanned by the homogeneous quadratic elements among the $t_{i}$&mdash;by what we have just seen, $Q$ has dimension $2(m/2-1)+1 = m-1$.  Therefore, $W \cap Q$ has dimension $m-2$ (because $W$ is general). Let $w_{1}, \dots, w_{m-2}$ be a basis of $W \cap Q$, and then let $w_{m-1}, \dots, w_{m+n-2}$ be a completion to a basis of $W$.  In particular, the elements $\init(w_{m-1}), \dots, \init(w_{m+n-2})$ are linearly independent linear forms (by generality of $W$).</p>
+<p>        The common vanishing scheme of $\{w_{1}, \dots, w_{m-2},\init(w_{m-1}), \dots, \init(w_{m+n-2})\}$ is a curve in the projective space $\P T_{u}U$ (because $V(W)$ is a surface near $u$), and hence is the complete intersection of the listed forms. Therefore, this curve has degree $2^{m-2}$ by B&eacute;zout's theorem, establishing $e = 2^{m-2}$. The theorem is proved.
+    \end{enumerate}</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; 4.2. Computing $\beta_{*}[\transvectant_{m,n}]$ in two special cases">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S4.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>

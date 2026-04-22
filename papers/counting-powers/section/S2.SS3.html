@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3. Resolution of indeterminacy and its cycle class &mdash; Counting sums of two powers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          A: "\\mathbf{A}",
+          Sch: "\\mathsf{Sch}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Spec: "\\operatorname{Spec}",
+          lcm: "\\operatorname{lcm}",
+          PGL: "\\operatorname{PGL}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          ord: "\\operatorname{ord}",
+          length: "\\operatorname{length}",
+          Cl: "\\operatorname{Cl}",
+          Span: "\\operatorname{Span}",
+          mult: "\\operatorname{mult}",
+          Proj: "\\operatorname{Proj}",
+          init: "\\operatorname{init}",
+          G: "\\mathbb{G}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          F: "\\mathbf{F}",
+          O: "\\mathscr{O}",
+          L: "\\mathscr{L}",
+          S: "\\mathscr{S}",
+          QQ: "\\mathscr{Q}",
+          V: "\\mathsf{Vect}",
+          I: "\\mathcal{I}",
+          Gm: "\\mathbb{G}_{m}",
+          transvectant: "\\mathsf{Tv}",
+          Clebsch: "\\mathsf{CZV}",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Thin: "\\mathsf{Thin}",
+          pt: "\\mathsf{pt}",
+          weights: "\\operatorname{wts}",
+          wronski: "\\mathsf{wr}",
+          red: "\\operatorname{red}",
+          from: "\\colon",
+          k: "\\mathscr{k}",
+          m: "\\mathfrak{m}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.3. Resolution of indeterminacy and its cycle class</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.3. Resolution of indeterminacy and its cycle class</h1>
+<p class="stacks-para">The problem of determining the cycle class of graph closures of rational maps to projective spaces has, in a sense, a complete solution thanks to Aluffi in [Alu15].  Making this explicit in particular cases is difficult, and in this section we will give a self-contained treatment in two very special situations.  These situations will correspond to the $\gcd(m,n) = 1$ and $\gcd(m,n) = 2$ categories mentioned in the introduction.</p>
+<p class="stacks-para">In the following, if $\alpha$ is an element in a Chow ring, then $[\alpha]_{k}$ denotes the degree $k$ part of $\alpha$.  Furthermore, when we write $1/(1+\alpha)$, we mean the power series expansion of $1/(1+\alpha)$ in the variable $\alpha$.</p>
+<div class="stacks-lemma" id="proposition-resolution">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/90E7.html" class="stacks-tag-link">(90E7)</a></div>
+  <div class="stacks-env-body"><p>Suppose $X$ is a smooth variety, and suppose $\L$ is a line bundle on $X$. Suppose $S = \{s_1, \dots, s_r\}$ and $T = \{t_1, \dots, t_{r+1}\}$ are sets of global sections of $\L$ such that the common vanishing schemes $Y_S$ and $Y_T$ of $S$ and $T$, respectively, have pure codimension $r$ in $X$.
+        Then:
+        <ol><li>The blow up $X_{S}$ (resp. $X_{T}$) of $X$ along $Y_S$ (resp. $Y_T$) is a closed subscheme of $X \times \P \langle S \rangle^{*}$ (resp. $X \times \P \langle T \rangle^{*})$.</li>
+<li>$X_{S}$ is the vanishing scheme of a section of the vector bundle $\L \boxtimes \QQ^{r-1}$ on $X \times \P \langle S \rangle^{*}$, where $\QQ^{r-1}$ is the rank $r-1$ universal quotient bundle over $\P \langle S \rangle^{*}$.</li>
+<li>The fundamental class $[X_{S}] \in \CH^{r-1}(X \times \P \langle S \rangle^{*})$ is given by
+            $$
+                [X_{S}] = \left[\frac{(1+\lambda)^{r}}{(1 + \lambda - \zeta)}\right]_{r-1},
+            $$
+            where $\lambda$ (resp. $\zeta$) is the first Chern class of $\L$ (resp. hyperplane class) on  $X \times \P \langle S \rangle^{*}$ pulled back  from $X$ (resp. $\P \langle S \rangle^{*})$.</li>
+<li>Let $Y_1, Y_2, \dots, Y_{k}$ denote the irreducible components of $Y_T$, each with reduced induced scheme structure.  Then there exist positive integers $e_1, \dots, e_k$ such that
+            $$
+                [X_{T}] = \left[\frac{(1+\lambda)^{r+1}}{(1 + \lambda - \zeta)}\right]_{r} - \sum_{i=1}^{k} e_i [Y_{i} \times \P \langle T \rangle^{*}],
+            $$
+            where $\QQ^{r}$ is the rank $r$ universal quotient bundle over $\P \langle T \rangle^{*}$.</li>
+<li>If $W \subset \langle T \rangle$ is a general codimension $1$ subspace of sections, then the integer $e_i$ from part (4) is the multiplicity of the vanishing scheme $V(W)$ at a general point of $Y_i$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="proof-resolution">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0103.html" class="stacks-tag-link">(0103)</a></div>
+  <div class="stacks-env-body"><p><ol><li>The sections $s_i$ together define a surjection $\sigma: \L^{-1}\otimes \langle S \rangle \to \I_{Y_{S}}.$ This surjection then defines a surjective map of graded $\O_X$-algebras $\Proj \Sym^{\bullet}(\L^{-1}\otimes \langle S \rangle) \to \Proj (\O_X \oplus \I_{Y_{S}} \oplus \I_{Y_{S}}^{2} \oplus \dots),$ which defines the desired closed embedding $X_{S} \hookrightarrow X \times \P \langle S \rangle^{*}$.</li>
+<li>The global sections $s_1 ,\dots, s_r$ define a map of sheaves $\L^{-1} \to \O_{X} \otimes \langle S \rangle^{*}$ on $X$.   At the same time, over the projective space $\P \langle S \rangle^{*}$ we have the tautological sequence
+        $$
+            0 \to \O(-1) \to \O \otimes \langle S \rangle^{*} \to \QQ^{r-1} \to 0.
+        $$
+        Pulling these sequences back to $X \times \P \langle S \rangle^{*}$, and suppressing unsavory pull-back notation, we obtain on $X \times \P \langle S \rangle^{*}$ a homomorphism $s : \L^{-1} \to \QQ^{r-1}.$ We may equivalently view $s$ as a section of the vector bundle $\L \boxtimes \QQ^{r-1}$.  The description  of the embedding $X_S \hookrightarrow X \times \P \langle S \rangle^{*}$, in the proof of part (1) shows that $X_S$ is the vanishing scheme of $s$.</p>
+<p>        Now we specialize only to the case of $S$, not $T$. By Krull's principal ideal theorem, every irreducible component of $V(s)$ has codimension at most $r-1$ in $X \times \P \langle S \rangle^{*}$.  We have already seen that $X_{S}$ is an irreducible component of $V(s)$.  The variety $(Y_{S})_{\red} \times \P \langle S \rangle^{*}$  has codimension $r$ in $X \times \P \langle S \rangle^{*}$, and so it is not an irreducible component of $V(s)$.  Therefore, $X_{S}$ is the unique irreducible component of $V(s)$, and assertion (2) follows.</li>
+<li>This follows immediately from part (2), and the fact that the cycle class of $V(s)$ is the top Chern class of the corresponding vector bundle $\L \boxtimes \QQ^{r-1}$.  To compute this class, and to see why it is what has been indicated in the statement, simply tensor the tautological sequence above with $\L$ and use the Whitney sum formula.</li>
+<li>Each set $Y_{i} \times \P \langle T \rangle^{*}$ has codimension $r$ in $X \times \P \langle T \rangle^{*}$, and so the equality of sets $V(s)_{\red} = X_{T} \cup \left((Y_{T})_{\red} \times \P \langle T \rangle^{*}\right) = X_{T} \cup (\cup_{i} Y_{i} \times \P \langle T \rangle^{*})$ implies an equality of cycles of the form $[V(s)] = [X_{T}] + \sum_{i} e_i [Y_i \times \P \langle T \rangle^{*}].$  Since $V(s)$ attains its expected codimension $r$, the cycle class of $V(s)$ is the top Chern class of the corresponding rank $r$ vector bundle $\L \boxtimes \QQ^{r}$.  The assertion in part (4) follows.</li>
+<li>A general codimension $1$ subspace $W \subset \langle T \rangle$ is equivalently a general point $p \in \P \langle T \rangle^{*}$. Let $X_{p}$ denote the subvariety $X \times \{p\} \subset X \times \P \langle T \rangle^{*}$.  Let $y \in Y_{i}$ be a general point. Then the point $(y,p)$ is not contained in $X_{T}$, nor is it contained in the sets $Y_{j} \times \P \langle T \rangle^{*}$ for $j \neq i$.</p>
+<p>        Now consider the intersection $X_{p} \cap V(s)$, $s$ being the section of $\L \boxtimes \QQ^{r}$ from the proof of part (2). This intersection has an equivalent description: upon identifying $X_p$ with $X$ in the obvious way, $X_{p} \cap V(s)$ is the vanishing scheme $V(W)$. The claim now follows by intersecting the equation from part (4) with the cycle $[X_{p}]$.</li></ol></p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting sums of two powers &mdash; 2.3. Resolution of indeterminacy and its cycle class">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-powers/section/S2.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+  </div>
+</footer>
+</body>
+</html>
