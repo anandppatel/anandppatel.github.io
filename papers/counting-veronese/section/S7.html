@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 7 &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          s: "\\mathsf{sq}",
+          m: "\\mathfrak{m}",
+          N: "\\mathbf{N}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}",
+          rk: "\\operatorname{rk}",
+          SL: "\\operatorname{SL}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 7: Sage code</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 7. Sage code</h1>
+<p class="stacks-para">We provide the sage code used to compute $\nu_{3,2}$, as well as several checks. One thing to note is that we plug in specific values for $a,b,c$ into the equivariant expressions arising in the Atiyah-Bott localization formula. These are secretly constant, so the reader can verify that by changing the inputs of $a,b,c$, the calculations do not change.</p>
+<pre class="stacks-code"><code>var(&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;)
+
+  def symmetrize(p):
+      return p(a=a,b=b,c=c) + p(a=a,b=c,c=b) + p(a=b,b=a,c=c) + p(a=b,b=c,c=a) + p(a=c,b=a,c=b) + p(a=c,b=b,c=a)
+
+  # The ith elementary symmetric polynomial
+  def sigma(i, L):
+      ind = Set(range(0,len(L)))
+      return sum([ prod([L[x] for x in S]) for S in ind.subsets(i) ])
+
+  # BUNDLE WEIGHTS AT FIXED POINTS:
+  # Weight data for the bundle E on CT.
+  E = [
+      (5*a, 5*b, 5*c, 4*a+b, 4*a+c, 4*b+c, 4*b+a, 4*c+a, 4*c+b),
+      (5*a, 4*a+b, 4*a+c, 5*c, 4*c+a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+3*b),
+      (5*b, 4*b+a, 4*b+c, 5*c, 4*c+a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+3*b),
+      (5*c, 4*c+b, 3*c+2*b, 2*c+3*b, c+4*b, 5*b, 4*c+a, 3*c+a+b, 2*c+a+2*b),
+      (5*c, 4*c+a, 3*c+2*a, 4*c+b, 3*c+a+b, 2*c+2*a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b),
+      (5*c, 4*c+a, 3*c+2*a, 2*c+3*a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b)
+      ]
+
+  # Weight data for the tangent bundle T of CT
+  T = [
+      (c-a, c-b, b-c, b-a, a-b, a-c),
+      (a-c, a-b, c-a, 2*c-2*b, b-a, c-b),
+      (c-a, 2*c-2*b, b-a, c-b, b-c, b-a),
+      (c-a, 3*c-3*b, b-a, 2*c-2*b, 2*b-c-a, c-b),
+      (3*b-3*a, 2*b-2*a, b-a, c-a, c-b, a-2*b+c),
+      (a-b, c-b, c-a, 2*b-2*a, c-b, b-a)
+      ]
+
+  c1E = [ expand(sigma(1, x)) for x in E ]
+  c2E = [ expand(sigma(2, x)) for x in E ]
+  c3E = [ expand(sigma(3, x)) for x in E ]
+  c4E = [ expand(sigma(4, x)) for x in E ]
+  c6T = [ expand(sigma(6, x)) for x in T ]
+
+  Wrong = expand(-c2E[0]*c4E[0] + c3E[0]^2)/expand(c6T[0]) + sum([symmetrize(expand(-c2E[i]*c4E[i] + c3E[i]^2)/expand(c6T[i])) for i in range(1,6)])
+
+  # Tautological bundle weights
+  OOO = [
+      (0, 0, 0), (0, b-c, 0), (0, b-c, 0),
+      (0, b-c, 2*b-2*c), (0, a-c, b-c), (0, a-c, b-c)
+      ]
+
+  Oone = [
+      (a, b, c), (a, b, c), (b, b, c),
+      (c, b, 2*b-c), (a, b, c), (a, b, c)
+      ]
+
+  Otwo = [
+      (2*a, 2*b, 2*c), (2*a, b+c, 2*c), (2*b, b+c, 2*c),
+      (2*b, b+c, 2*c), (a+c, b+c, 2*c), (a+c, b+c, 2*c)
+      ]
+
+  Othree = [
+      (3*a, 3*b, 3*c), (3*a, b+2*c, 3*c), (3*b, b+2*c, 3*c),
+      (b+2*c, 2*b+c, 3*c), (a+2*c, b+2*c, 3*c), (a+2*c, b+2*c, 3*c)
+      ]
+
+  c2Oone = [ expand(sigma(2, x)) for x in Oone ]
+  c2Otwo = [ expand(sigma(2, x)) for x in Otwo ]
+  c2Othree = [ expand(sigma(2, x)) for x in Othree ]
+  c3Otwo = [ expand(sigma(3, x)) for x in Otwo ]
+  c3Othree = [ expand(sigma(3, x)) for x in Othree ]
+
+  H = [ a+b+c, a+2*c, b+2*c, 3*c, 3*c, 3*c ]
+
+  Delta0 = [ c3E[i]^2-c2E[i]*c4E[i] for i in range(0,6)]
+  Delta2 = [ c2E[i]^2-c1E[i]*c3E[i] for i in range (0,6)]
+  Delta4 = [ c1E[i]^2-c2E[i] for i in range(0,6)]
+
+  Inc = [H[i]^2 - c2Oone[i] + 2*c2Otwo[i] - c2Othree[i] for i in range(0,6)]
+  Lin = [c2Oone[i] for i in range(0,6)]
+  FourIncPlusLin = [4*Inc[i] + Lin[i] for i in range(0,6)]
+
+  INTEGRAND = [Delta0[i] - 13*Delta2[i]*FourIncPlusLin[i] + 78*Delta4[i]*FourIncPlusLin[i]^2 - 286*FourIncPlusLin[i]^3 for i in range(0,6)]
+
+  Answer = expand(INTEGRAND[0])/expand(c6T[0]) + sum([symmetrize(expand(INTEGRAND[i])/expand(c6T[i])) for i in range(1,6)])
+
+  # FINAL COMPUTATIONS:
+  print(Wrong(a=45,b=3,c=10))   # 57728 (wrong, due to excess)
+  print(Answer(a=-20,b=9,c=7))  # 4246 (correct!)</code></pre>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; Section 7: Sage code">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S7.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>

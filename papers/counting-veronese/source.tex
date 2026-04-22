@@ -1,0 +1,1104 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+
+% macros from the paper
+\renewcommand{\P}{\mathbb{P}}
+\DeclareMathOperator{\A}{\mathbf{A}}
+\renewcommand{\k}{\mathscr{k}}
+\DeclareMathOperator{\Spec}{Spec }
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\I}{\mathcal{I}}
+\DeclareMathOperator{\Pic}{Pic}
+\renewcommand{\O}{\mathcal{O}}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\CT}{\mathsf{CT}}
+\newcommand{\from}{\colon}
+\DeclareMathOperator{\jac}{\mathsf{Jac}}
+\DeclareMathOperator{\Thin}{\mathsf{Thin}}
+\DeclareMathOperator{\Fat}{\mathsf{Fat}}
+\DeclareMathOperator{\spec}{Spec \,}
+\DeclareMathOperator{\Bl}{Bl}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gm}{\mathbb{G}_{m}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\SQP}{\mathsf{SQP}}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\CH}{CH}
+\newcommand{\s}{\mathsf{sq}}
+\DeclareMathOperator{\BP}{\mathsf{Bpt}}
+\DeclareMathOperator{\Dom}{\mathsf{Dom}}
+\DeclareMathOperator{\Inf}{\mathsf{Inf}}
+\DeclareMathOperator{\Fin}{\mathsf{Fin}}
+\DeclareMathOperator{\Lin}{\mathsf{Lin}}
+\DeclareMathOperator{\Inc}{\mathsf{Inc}}
+\DeclareMathOperator{\lin}{\mathsf{lin}}
+\DeclareMathOperator{\inc}{\mathsf{inc}}
+\DeclareMathOperator{\Base}{\mathsf{Base}}
+\DeclareMathOperator{\hess}{\mathsf{H}}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\F}{\mathbf{F}}
+\DeclareMathOperator{\Sing}{Sing}
+\newcommand{\m}{\mathfrak{m}}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\pt}{\mathsf{pt}}
+\DeclareMathOperator{\ver}{ver}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\SL}{SL}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\title{Counting 3-uple Veronese Surfaces}
+\author{Anand Deopurkar \& Anand Patel}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\label{section:intro}
+
+The classical fact that $d+3$ general points
+in $d$-dimensional projective space $\P^{d}$ determine a unique rational
+normal curve can be seen in many ways:
+\begin{itemize}
+\item By explicit algebraic construction.
+\item By Steiner's geometric construction.
+\item By an elementary degeneration argument, wherein $d+1$ of the points specialize into a hyperplane.
+\item By an application of Goppa's lemma from the theory of association or Gale duality.
+\end{itemize}
+
+A {\sl $d$-uple Veronese $n$-fold} will mean any
+variety in $\P^{{n+d \choose n}-1}$ projectively equivalent to the
+standard $d$-uple Veronese image of $\P^n$. A parameter count
+uncovers an infinite array of enumerative problems, with the rational normal curves occupying only the first column:
+
+\begin{problem}
+    \label{problem:main}
+Determine the number of $d$-uple Veronese $n$-folds passing through ${n+d \choose d}+n+1$ general points.
+\end{problem}
+
+These numbers will be denoted $\nu_{d,n}$.  \Cref{problem:main} has seen virtually no advancement beyond the case of rational normal curves.  Arthur Coble, about a century ago, used his new theory of association to find that $9$ general points in $\P^5$ determine precisely $4$ $2$-uple Veronese surfaces \cite[Theorem 19]{CobleAssociatedSO}.  The configuration of these four surfaces is as special as Coble's argument showing $\nu_{2,2}=4$. He discovered, using what is now called Goppa's lemma, that a unique elliptic normal sextic curve $E \subset \P^{5}$ interpolates through the $9$ points. This implies that the $2$-uple Veronese surfaces containing all $9$ points must entirely contain $E$, an exceptional circumstance. This means that each surface corresponds to choosing a square root of the degree $6$ line bundle $\O_{E}(1)$.  And so, Coble established a correspondence
+\[
+\left\{ \begin{array}{c}
+    \text{$2$-uple Veronese surfaces} \\
+     \text{containing the 9 points}
+\end{array} \right\} \longleftrightarrow \left\{ \begin{array}{c}
+    \text{Line bundles $L$ on $E$} \\
+     \text{satisfying $L^{2} \simeq \O_{E}(1)$}
+\end{array} \right\},
+\]
+ from which he  deduced $\nu_{2,2}=4$.
+There is currently no explanation for the number $4$ without the curve $E$. Specifically, no approach parallel to those available for the $n=1$ case is known.
+
+ Our work in this paper solves the next case of \Cref{problem:main}.
+
+\begin{theorem}
+\label{theorem:main}
+Thirteen general points in $\P^{9}$ determine $4246$ $3$-uple Veronese surfaces, i.e. $\nu_{3,2} = 4246$.
+\end{theorem}
+
+A caricature of the proof best serves to explain the contents of the paper.  The first step is to use a correspondence like the one above, though more intricate. It is the content of \Cref{theorem:translation} in \S 2.  This correspondence trades the counting of $3$-uple Veronese surfaces for the counting of certain triples of points in the plane called {\sl singular triads} $T \in \Hilb_{3}\P^{2}$.  It first appeared in the work of the second author and A. Landesman \cite{landesman2019interpolation} on interpolation.  We give a thorough account to keep things self-contained.
+
+In order to count singular triads we need access to a vector bundle which to a point $T \in \Hilb_{3}\P^{2}$ assigns the vector space $H^{0}(\P^{2},\I^{2}_{T}(5))$ of quintic forms singular at $T$.  Unfortunately this vector bundle doesn't exist because of a familiar failure of flatness: the scheme obtained by squaring the ideal of a length $3$ scheme is not always a length $9$ scheme.  And so the second step is to deal with this non-vector-bundle. We swap out the Hilbert scheme for a birational modification we call the space of {\sl complete triangles} $\CT$. The name is chosen because of many similarities it shares with the space of complete conics.  We study the geometry of $\CT$ in \S 3.  While it can be shown that $\CT$ is the quotient of the space of {\sl ordered} triangles studied by S. Keel in \cite{keel1993functorial} by the natural symmetric group action, our construction of $\CT$ is of independent interest as it does not require first ordering triangles. The vector bundle we sought in the previous paragraph exists over $\CT$, and we gain an enumerative understanding of it using Atiyah-Bott localization.  At least at first glance, the set of singular triads is the degeneracy scheme in $\CT$ of a vector bundle map involving our newfound bundle. Porteous' formula, implemented using \texttt{sage}, then suggests that the number we seek is $57728$.
+
+All is not well, however, because there is still a gnarly excess in the Porteous setup.  Our third step is to circumvent this new complication by further linearizing the problem,  switching to a $26$-dimensional Grassmannian bundle over $\CT$ which we call the space of {\sl singular quintic pencils} $\SQP$.  Only in $\SQP$ do we finally find an excess-free vantage point.  {\sl Proving} the lack of excess is painful, requiring a combination of dimension counting and limit linear series arguments.  This  verification is the subject of \S 4, and is the content behind \Cref{theorem:Domintegral} which expresses $\nu_{3,2}$ as an integral:
+\[
+\nu_{3,2} = \int_{\SQP} \left[\Dom(p) \right]^{13}.
+\]
+The details are not so important right now, but $\Dom(p)$ is a relevant codimension $2$ subvariety of $\SQP$.   In \S 5 we compute the integral using Atiyah-Bott localization, performed with the help of \texttt{sage}. Finally, in \S 6 we discuss some of the many questions emerging from our investigation. We've included the sage code we used for the calculations in \S 7.
+
+
+\subsection{Relation to other work}
+\label{subsection:related}
+
+Apart from the obvious connection to Coble's work, the present paper is related to some other work which deserves mentioning.  Despite much of the progress on curve counting, there aren't many examples of counts of higher dimensional varieties.  The closest work in this sense is due to Coskun in \cite{coskun2006enumerative, coskun2006degenerations}.  While our construction of the space of (unordered) complete triangles is novel, it has an {\sl ordered} antecedent in the work of Collino and Fulton in \cite{collino1989intersection} and in the work of Keel in \cite{keel1993functorial}.
+
+\subsection{Notation and conventions}
+\label{subsection:notation}
+
+Our ground field $\k$ is algebraically closed and of characteristic $0$.  All schemes considered in the paper are separated and of finite-type over $\k$.  If $A$ is a $\k$-vector space, and if $X$ is a scheme then $\underline{A}$ will denote the constant vector bundle on $X$ whose fibers are $A$. If $Z$ is a closed subscheme of a scheme $X$ then $\I_{Z}$ will denote its ideal sheaf.
+
+If $V$ is a vector bundle, then $\P V$ denotes its projectivization which represents lines in $V$.  In particular, $H^{0}(\P V, \O_{\P V}(1)) = V^{*}$ canonically.  Similarly $\Gr(k,V)$ denotes the Grassmannians representing $k$-dimensional subspaces.
+
+
+\section{The correspondence}
+\label{section:translation}
+
+The fundamental trick for computing $\nu_{3,2}$ is to switch to the task of counting corresponding {\sl triples} of
+non-collinear points $\{a,b,c\} \subset \P^2$ satisfying certain conditions
+relative to 13 prescribed, general points $\Gamma_{13} \subset \P^2$.  It is the content of \Cref{theorem:translation} in this section.  Whether
+ similar useful correspondences are available for determining other $\nu_{d,n}$'s remains an intriguing question.
+
+ The correspondence critically uses Coble's theory of association, and we begin by
+reviewing this theory following the incisive account in \cite{EISENBUD2000127}.
+
+\subsection{Association}
+\label{subsection:association}
+
+
+We let $R$ be a Gorenstein $0$-dimensional $\k$-algebra of length $d$,
+and we let $\Gamma = \Spec R$, and write $\pi: \Gamma \to \Spec \k$ for
+the structural morphism.  The Gorenstein condition says that the dualizing sheaf $\omega_{\pi}$,
+associated to the $R$-module
+$\Hom_{\k}(R,\k),$ is invertible and in fact generated by the trace
+functional. The evaluation map
+$ev: \pi_{*}\omega_{\pi} \to \k$ sends a functional
+$f \in \Hom_{\k}(R,\k)$ to $f(1)$.
+
+Given a line bundle $L$ on $\Gamma$ (equivalently a rank $1$
+free $R$-module), one obtains a natural pairing
+\[\langle, \rangle: \pi_{*}L \times
+  \pi_{*}\left( L^{-1} \otimes_{\O_{\Gamma}}
+    \omega_{\pi}\right) \to \k \] which is a perfect pairing between
+two $d$-dimensional $\k$-vector spaces, thanks to the Gorenstein
+property.  So, if
+$V \subset H^{0}(L) = \pi_{*}L$ is any
+$r+1$-dimensional vector subspace,  then we can define its {\sl
+  associated subspace}
+$V^{\perp} \subset H^{0}(L^{-1}\otimes \omega_{\pi})$ to be $V$'s orthogonal complement with respect to $\langle, \rangle$.
+
+\begin{remark}
+\label{remark:relativeassociation}
+The passage from $V$ to $V^{\perp}$ can also be done
+in a relative setting: If $\pi : \mathcal{G} \to S$ is a finite, degree $d$
+Gorenstein morphism of schemes, and if $\mathcal{L}$ is a line bundle
+on $\mathcal{G}$, then a rank $r+1$ sub-bundle
+$\mathcal{V} \subset \pi_{*}\mathcal{L}$ (with locally free
+quotient) has an associated rank $d-r-1$
+sub-bundle
+$\mathcal{V}^{\perp} \subset \pi_{*} \left(\mathcal{L}^{-1} \otimes
+    \omega_{\mathcal{G}/S}\right)$ with locally free quotient.
+\end{remark}
+
+How does one identify $V^{\perp}$ in practice?
+Goppa's theorem provides an answer
+in a common geometric situation:
+
+\begin{lemma}[Goppa]
+  \label{lemma:goppa}
+  Let $C$ be smooth projective curve, $L$ a
+  non-special line-bundle on $C$, and $\Gamma \subset C$ a finite
+  subscheme such that the restriction map
+  $H^{0}(C,L) \to H^{0}(\Gamma, L_{\Gamma})$ is injective.  Then the
+  image of the vector space
+  $H^{0}(C, \omega_{C}(\Gamma) \otimes L^{-1})$ in
+  $H^{0}(\Gamma, \omega_{\Gamma} \otimes L^{-1})$ induced by the
+  adjunction isomorphism
+  $\omega_{C}(\Gamma)|_{\Gamma} \otimes L^{-1} \to \omega_{\Gamma} \otimes L^{-1}$ is the associated
+  space to $H^{0}(C,L)$.
+\end{lemma}
+
+Armed with Goppa's theorem, we're now ready to switch problems.
+
+
+\subsection{The correspondence}
+\label{subsection:thecorrespondence}
+
+Let $\mathcal{H}$ denote the variety parametrizing $3$-uple Veronese surfaces in $\P^{9}$, and let $\mathcal{X} \subset \mathcal{H} \times (\P^{9})^{13}$ denote the irreducible, closed subvariety parametrizing tuples $([V],q_1,\dots, q_{13})$ satisfying $q_{i} \in V$ for all $i$.  We let $\mathcal{X}^{\circ} \subset \mathcal{X}$ denote the open subset  parametrizing tuples $\left([V], q_1, \dots, q_{13}\right)$ which satisfy the following conditions:
+\begin{enumerate}
+    \item The points $q_{i}$ should be distinct;
+    \item When we think of $V$ as a projective plane $\P^{2}$, the points $q_{i}$ should define a pencil of plane quartic curves whose base scheme consists of $\{q_1, \dots, q_{13}\}$ together with three distinct non-collinear points $R \subset \P^{2}$. Furthermore, the triangle spanned by $R$  should not contain any of the points $q_{i}$.
+\end{enumerate}
+We let $\pi: \mathcal{X} \to (\P^{9})^{13}$ denote the map sending $([V],q_1, \dots, q_{13})$ to $(q_{1}, \dots, q_{13})$, and we note that $\nu_{3,2} = \# \pi^{-1}(\{(q_1, \dots, q_{13})\})$ for general choices of points $q_{i}$.
+
+Next, we let $\Hilb_{3}\P^{2}$ denote the Hilbert scheme parametrizing length $3$ subschemes of $\P^{2}$, and we define  $\mathcal{Y} \subset \Hilb_{3}\P^{2} \times (\P^{2})^{13}$ to be the locally closed subvariety parametrizing tuples $\left([T], p_1, \dots, p_{13}\right)$ satisfying the following conditions:
+\begin{enumerate}
+    \item The length $3$ subscheme $T \subset \P^{2}$ is reduced, and is not contained in any line.
+    \item The triangle spanned by $T$ does not contain any of the points $p_{i}$.
+    \item The points $p_{i}$ are distinct.
+    \item There exist two reduced, irreducible degree $5$ curves containing all points $p_{i}$ and singular at the three points of $T$.
+\end{enumerate}
+
+If $\left([T], p_{1}, \dots, p_{13} \right)$ is an element of $\mathcal{Y}$, we say $T$ {\sl is a} {\bf singular triad} {\sl for $p_{1}, \dots, p_{13}$.}
+We write $\eta: \mathcal{Y} \to (\P^{2})^{13}$ for the map sending $([T],p_{1}, \dots, p_{13})$ to $(p_{1}, \dots, p_{13})$.
+
+\begin{theorem}
+\label{theorem:translation}
+Let $(q_{1}, \dots, q_{13}) \in (\P^{9})^{13}$ be a general tuple with associated tuple $(p_{1}, \dots, p_{13}) \in (\P^{2})^{13}.$  There exists a bijective correspondence
+\[
+    \left\{ \begin{array}{c}
+         \text{$3$-uple Veronese} \\ \text{surfaces $V \subset \P^{9}$} \\
+         \text{containing $q_{1}, \dots , q_{13}$}
+    \end{array}\right\} \longleftrightarrow \left\{ \begin{array}{c}
+         \text{Singular triads} \\ \text{$T \subset \P^{2}$} \\
+         \text{for $p_{1}, \dots, p_{13}$}
+    \end{array} \right\}.
+\]
+\end{theorem}
+
+\begin{proof}
+    $A$ and $B$ will denote the sets $\pi^{-1}(\{(q_{1}, \dots, q_{13})\})$ and $\eta^{-1}(\{(p_{1}, \dots, p_{13})\})$, respectively -- the objective is to show $A$ and $B$ are in bijection.  A simple dimension count shows that $A$ and $B$ are finite sets.  As $\mathcal{X}$ and $(\P^{9})^{13}$ are both  irreducible and $117$-dimensional, and because $(q_{1}, \dots, q_{13}) \in (\P^{9})^{13}$ is general, it follows that $A \subset \mathcal{X}^{\circ}$.
+
+    First we describe a function $\Phi: A \to B.$ Choose any $([V],q_{1}, \dots, q_{13}) \in A$ to begin with. When we interpret $V$ as a projective plane, the thirteen points $q_{i} \in V$ determine a general pencil of quartic plane curves $C_{t} \subset V$, $t \in \P^{1}$. Let $R \subset V$ denote the three points residual to $\{q_{1}, \dots, q_{13}\}$ in the base locus of the pencil $C_{t}$.
+
+    Now let $\mu: V \dashrightarrow \P^{2}$ denote the quadratic Cremona transformation with indeterminacy set $R$, well-defined up to post-composition with elements of $\PGL(3)$. By applying Goppa's theorem (\Cref{lemma:goppa}) to the divisor $q_{1} + \dots + q_{13}$ on any smooth member of the pencil $C_{t}$, we conclude that the tuple $(\mu(q_{1}), \dots, \mu(q_{13}))$ is associated to $(q_{1}, \dots, q_{13}).$ There is a unique element  $g \in \PGL(3)$ which takes $(\mu(q_{1}), \dots, \mu(q_{13}))$ to $(p_{1}, \dots, p_{13})$. Set $T := g (R')$, where $R'$ is the image of the three contracted lines. One verifies the membership $([T],p_{1}, \dots, p_{13}) \in B$ and declares $\Phi([V],q_{1}, \dots, q_{13}) := ([T],p_{1}, \dots, p_{13}).$
+
+    The function $\Phi: A \to B$ having been defined, we now define a mapping $\Psi: B \to A$ which is readily seen to be its inverse.  Choose $([T],p_{1}, \dots, p_{13}) \in B$. Let $\widetilde{\P}^{2} \to \P^{2}$ denote the blow-up of $\P^{2}$ at the three points of $T$.  On $\widetilde{\P}^{2}$, let $L$ and $E$ denote the divisor classes of a general line and the sum of the three exceptional curves, respectively, and let $Q,Q' \in |5L-2E|$ be the strict transforms of two of the quintic curves.  By applying Goppa's theorem to the divisor $p_{1}+ \dots + p_{13}$ on $Q$, the map $\gamma: \widetilde{\P}^{2} \to \P^{9}$ given by the complete linear series $|6L-3E|$ sends $(p_{1}, \dots, p_{13})$ to an associated tuple. There is a unique $h \in \PGL(10)$ sending the image to $(q_{1}, \dots, q_{13})$, and $h \circ \gamma$ has as image a $3$-uple Veronese surface.  $\Phi$ and $\Psi$ are inverses, proving the theorem.
+\end{proof}
+
+\subsection{Returning to the original objective}
+\label{subsection:returning}
+
+The stated objective in this paper is to determine $\#\pi^{-1}(\{(q_{1}, \dots, q_{13})\})$ for general points $q_{i} \in \P^{9}$.  Using \Cref{theorem:translation}, we instead will try to compute $\#\eta^{-1}(\{p_{1}, \dots, p_{13}\})$ for general points $p_{i} \in \P^{2}$.  We will still face several obstacles.
+
+The first obstacle arises when we want to refer to the rank $9$ ``vector bundle'' $E$ on $\Hilb_{3}\P^{2}$ whose fiber over a point $[T]$ is the vector space $H^{0}\left(\P^{2}, \left(\O_{\P^{2}}/ \I_{T}^{2}\right)\otimes \O_{\P^{2}}(5)\right).$  With such a bundle we can apply the Porteous formula to access the locus where the natural morphism $\underline{H^{0}\left(\P^{2},\I_{\{p_{1}, \dots, p_{13}\}}(5)\right)} \to E$ has at least a $2$-dimensional kernel. Unfortunately, $E$ is not actually a vector bundle because its rank jumps from $9$ to $10$ over the locus parametrizing fat schemes.  And so our attention turns to replacing $\Hilb_{3}\P^{2}$ with a better parameter space, the space of {\sl complete triangles} $\CT$, which resolves this jumping wrinkle.
+
+
+\section{The space of complete triangles}
+\label{section:completetriangles}
+
+Let $\Hilb_{3}\P^{2}$ and $\Hilb_{3}\check{\P}^{2}$ denote the Hilbert
+schemes of $0$-dimensional, length $3$ subschemes of a projective
+plane and its dual plane, respectively.  Upon choosing coordinates $[X:Y:Z]$ for $\P^{2}$ and $[\check{X}:\check{Y}:\check{Z}]$ for $\check{\P}^{2}$, the group
+$\PGL(3)$ acts on both Hilbert schemes naturally.
+Under this action, $\Hilb_{3}\P^{2}$ decomposes into $7$ orbits -- (A) three non-collinear points, (B) three collinear points, (C) a length two point and a reduced point, noncollinear, (D) a length two point and a collinear point, (E) A length 3 non-reduced subscheme of a conic, (F) a length 3 non-reduced subscheme of a line, (G) a fat point, given by the square of a maximal ideal.  Our objective in this section is to construct and analyze a $\PGL(3)$-equivariant modification of $\Hilb_{3}\P^{2}$ which we call the space of {\sl complete triangles}, and which we denote by $\CT$.
+
+\subsection{Nets of conics, Jacobian spaces, and constructing $\CT$}
+\label{subsection:nets}
+
+\begin{definition}
+  \label{definition:NetZ}
+  \begin{enumerate}
+    \item Let $T \in \Hilb_{3}\P^{2}$ be a length three scheme. $T$'s {\bf net
+    of conics} is the vector space
+  $\Lambda_{T} := H^{0}(\I_{T}(2)) \subset H^{0}(\O_{\P^{2}}(2)).$
+  \item The {\bf Jacobian matrix} of three homogeneous quadratic forms
+  $Q_{1},Q_{2},Q_{3}$ in the variables $X,Y,Z$ is
+  the $3 \times 3$ matrix of partial derivatives $\left[\partial Q_{i}/\partial X_{j}\right].$
+  \item The {\bf Jacobian space} of $V \subset H^{0}(\P^{2}, \O(2))$ is the vector space spanned by all $2 \times 2$ minors of the Jacobian matrix of any basis $\langle Q_{1}, Q_{2}, Q_{3} \rangle$ of $V$.
+  \item If $V \subset H^{0}(\P^{2}, \O_{\P^{2}}(2))$ is $3$-dimensional, we
+  let $V^{*} \subset H^{0}(\check{\P}^{2}, \O_{\check{\P}^{2}}(2))$ denote its apolar
+  $3$-dimensional space.
+  \item A scheme $T \subset \P^{2}$ is {\bf fat} if it is isomorphic to
+  $\spec k[x,y]/(x^{2},xy,y^{2})$. A scheme $T \subset \P^{2}$ is {\bf
+    thin} if it is contained in a line. We define $\Fat, \Thin \subset \Hilb_{3}\P^{2}$ to be the
+  closed loci of fat and thin schemes, respectively.
+  \item A subscheme $T \subset \P^{2}$ (or $\check{\P}^{2}$) consisting of three distinct non-collinear points is called an {\bf honest triangle}.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+\label{remark:alwaysthreedimensional}
+\begin{enumerate}
+  \item $\Lambda_{T}$ is a $3$-dimensional vector space, no matter the
+  scheme $T$, as is easily checked for each of the $7$ $\PGL(3)$
+  orbits separately.
+  \item Apolarity is the natural pairing between $H^{0}(\P^{2}, \O_{\P^{2}}(2))$ and $H^{0}(\check{\P}^{2}, \O_{\check{\P}^{2}}(2))$, where the latter space is viewed as homogeneous second order differential operators on the former space. So, for instance, the pairing outputs $2$ for the pair $X^{2}, \check{X}^{2}$.
+\end{enumerate}
+\end{remark}
+
+\begin{proposition}
+  \label{proposition:JacobianNet}
+  Let $T \subset \P^{2}$ be any length three scheme, $\Lambda_{T}$ its
+  net of conics. Then the space $\jac(\Lambda_{T}^{*})$ is
+  $3$-dimensional.
+\end{proposition}
+
+\begin{proof}
+  By projective equivariance of the assignment
+  $T \mapsto \jac(\Lambda_{T}^{*})$, it suffices to check the
+  proposition on seven representatives of the $\PGL(3)$-orbits, which
+  we omit.
+\end{proof}
+
+\begin{definition}
+  \label{definition:dagger}
+  Let $T \subset \P^{2}$ be a length $3$ scheme. We set
+  $\Lambda_{T}^{\dagger} := \jac(\Lambda_{T}^{*})$.
+\end{definition}
+
+
+\subsection{Examples}
+\label{subsection:examples}
+
+Let us give some calculations related to some of the things we've introduced. As a reminder, $[X:Y:Z]$ are homogeneous
+coordinates in $\P^{2}$, and $[\check{X}:\check{Y}:\check{Z}]$ are dual
+coordinates. Brackets $\langle \rangle $
+will denote ``$\k$-linear span''.
+
+\begin{example}
+  \label{example:coordinatepoints}
+  Let $T \subset \P^{2}$ be the three coordinate points (orbit (A)), so that
+  $\Lambda_{T} = \langle XY, YZ, XZ \rangle $. Then
+  $\Lambda_{T}^{*} = \langle \check{X}^{2}, \check{Y}^{2}, \check{Z}^{2} \rangle $, whose
+  Jacobian space is $\langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle.$ Therefore,
+  $\Lambda_{T}^{\dagger} = \langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle,$
+  which is the net of conics for the coordinate points in $\check{\P}^{2}$.
+\end{example}
+
+\begin{example}
+    \label{example:curvillinearconic}
+    Let $T$ be a length three non-reduced subscheme of a conic -- orbit (E).  $T$ is given by the vanishing scheme of the net $\Lambda_{T} = \langle XY, X^{2}, YZ \rangle$. Therefore, $\Lambda^{*}_{T} = \langle \check{Y}^{2}, \check{Z}^{2}, \check{X}\check{Z} \rangle$.  Computing the Jacobian space, we get $\Lambda_{T}^{\dagger} = \langle \check{Y}\check{Z}, \check{Y}\check{X}, \check{Z}^{2} \rangle$ which is the net of conics of a length three subscheme of a smooth conic in $\check{\P}^{2}$.
+\end{example}
+
+
+\begin{example}
+    \label{example:collinearZnet}
+    Now suppose $T$ is a length three scheme contained in the line
+    $L$ given by $Z=0$ (orbit (F)).  Then
+    $\Lambda_{T} = \langle XZ, YZ, Z^{2} \rangle$.  Note that this net depends only on $L$, regardless of the particular
+    scheme $T \subset L$.  The dual space $\Lambda_{T}^{*}$ is
+    $\langle \check{X}^{2},\check{X}\check{Y}, \check{Y}^{2} \rangle$, which is also easily checked to
+    be its own Jacobian. Therefore,
+    $\Lambda_{T}^{\dagger} = \langle \check{X}^{2}, \check{X}\check{Y}, \check{Y}^{2} \rangle.$
+\end{example}
+
+\begin{example}
+  \label{example:fatpointZnet}
+  Let $T$ be the fat point supported at $[0:0:1]$ (orbit (G)).  Its net of
+  conics is $\Lambda_{T} = \langle X^{2}, XY, Y^{2}\rangle$. The dual
+  space $\Lambda_{T}^{*}$ is $\langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle$. This
+  latter space is its own Jacobian. Therefore
+  $\Lambda_{T}^{\dagger} = \langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle.$
+\end{example}
+
+\begin{proposition}
+  \label{proposition:fatandtriple}
+  Suppose $(T, T^{*}) \in \CT$. Then:
+  \begin{enumerate}
+  \item $T$ is an honest triangle if and only
+    if $T^{*}$ is an honest triangle. In this case, the points of
+    $T^{*}$ correspond to the lines of the triangle spanned by pairs of points of $T$.
+  \item If $T$ is a non-reduced scheme which is neither fat nor thin,
+    then $T^{*}$ is unique, and vice versa.
+  \item $T$ is a fat scheme if and only if $T^{*}$ is a thin scheme,
+    and $T^{*}$ is contained in the line dual to the support of
+    $T$. The same statement holds with $T$ and $T^{*}$ interchanged.
+    \item $T^{*}$ is uniquely determined by $T$ if and only $T$ is not fat.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Follows from calculations similar to those in \Cref{example:coordinatepoints}, \Cref{example:fatpointZnet} and \Cref{example:collinearZnet} -- we leave the details to the reader.
+\end{proof}
+
+
+We can now state our main definition:
+
+\begin{definition}
+\label{def:CT}
+  The moduli space of {\bf complete triangles} is the closed subscheme
+  $\CT \subset \Hilb_{3}\P^{2} \times \Hilb_{3}\check{\P}^{2}$ parametrizing
+  pairs $(T, T^{*})$ satisfying
+  $\Lambda_{T}^{\dagger} = \Lambda_{T^{*}}.$
+\end{definition}
+
+
+\begin{proposition}
+\label{prop:irreducible}
+  The reduction $\CT_{\red}$ is $6$-dimensional and irreducible.
+\end{proposition}
+
+\begin{proof}
+  From \Cref{proposition:fatandtriple}, it suffices to show: Given
+  a pair $(T, T^{*}) \in \CT$ with $T$ fat, there exists an
+  irreducible pointed curve $(B,0)$ and a map $f \from B \to \CT$ such
+  that $f(0) = (T, T^{*})$ and for all $b \in B \setminus \{0\}$, $f(b)$
+  is an honest triangle.  This is sufficient because the open locus of
+  honest triangles is clearly $6$-dimensional and irreducible.
+
+  Since $T$ is fat, \Cref{proposition:fatandtriple} says $T^{*}$ is
+  thin. Since the open subset of $\Hilb_{3}(\check{\P}^{2})$
+  parametrizing triples of three distinct, non-collinear points is
+  Zariski dense, there exists a pointed curve $(B,0)$ and a map
+  $f \from B \to \Hilb_{3}\check{\P}^{2}$
+  with $f(0) = T^{*}$, and $f(b)$ a triple of three non-collinear
+  points, for all $b \neq 0$. For all points $b \in B$, the space
+  $\Lambda_{f(b)}^{\dagger}$ determines a unique length three scheme
+  $T_{b}$ such that
+  $\Lambda_{f(b)}^{\dagger} = \Lambda_{T_{b}}$. Therefore, the map $f$
+  lifts to a map $f \from B \to \CT$, and this lift has the desired
+  properties.
+\end{proof}
+
+\subsection{Smoothness}
+\label{subsection:smoothness}
+
+Our next major objective is to show that $\CT$
+is smooth. We do so by establishing smoothness at a particular point
+$(T, T^{*}) \in \CT$, and then concluding by exploiting the $\PGL(3)$ action,  upper semi-continuity and
+\Cref{prop:irreducible}.
+
+\begin{proposition}
+\label{prop:smoothpoint}
+Let
+  $(T, T^{*}) \in \CT$ be the complete triangle with $T$ given by the
+  homogeneous ideal $(X^{2},XY,Y^{2})$, and $T^{*}$ given by the ideal
+  $(\check{Z}, \check{X}^{3})$. The scheme $\CT$ is smooth at $(T, T^{*})$.
+\end{proposition}
+
+\begin{proof}
+  We calculate the space of first order deformations of
+  $(T, T^{*}) \in \CT$, and demonstrate that it is $6$ dimensional. This is enough by \Cref{prop:irreducible}.
+
+  In affine coordinates $x = X/Z, y = Y/Z, a = \check{X}/\check{Y}, c = \check{Z}/\check{Y}$, the general first order deformation of the ideal $I = (x^{2},xy,y^{2})$ is
+\[
+  I_{\varepsilon} := (x^{2} + \varepsilon(\alpha_{1}x + \beta_{1}y), xy + \varepsilon(\alpha_{2}x + \beta_{2}y), y^{2}+ \varepsilon(\alpha_{3}x+\beta_{3}y)),
+\]
+and the general first order deformation of $J = (a^{3}, c)$ is
+\[
+  J_{\varepsilon} = (a^{3} + \varepsilon(\gamma_{1}a^{2}+\gamma_{2}a+\gamma_{3}), c + \varepsilon(\delta_{1}a^{2}+\delta_{2}a + \delta_{3})).
+\]
+
+The condition that the pair $(I_{\varepsilon}, J_{\varepsilon})$ belong in $\CT$ yields the system
+\begin{align}
+  \alpha_{2} &= -2\delta_{2} \\
+  \alpha_{3} &= -2\delta_{3} \\
+  \beta_{1}  &= -2\delta_{2} \\
+  \beta_{2}  &= -2\delta_{3} \\
+  \beta_{3}  &= 0 \\
+  \alpha_{1} &= 0.
+\end{align}
+The solution space is $6$-dimensional, generated by $\alpha_2, \alpha_3, \gamma_1, \gamma_2, \gamma_3, \delta_1$, confirming smoothness.
+\end{proof}
+
+
+\begin{theorem}
+  \label{thm:smoothCT}
+  $\CT$ is a smooth projective variety of dimension $6$.
+\end{theorem}
+
+\begin{proof}
+  Smoothness at the particular point established in \Cref{prop:smoothpoint} forces the tangent space dimension to be $\leq 6$ at all other points by upper semi-continuity. Since $\CT$ is $6$-dimensional by \Cref{prop:irreducible}, it follows that $\CT$ is smooth everywhere and of dimension $6$.
+\end{proof}
+
+
+\begin{corollary}
+\label{cor:closureofgraph}
+$\CT$ is the closure of the graph of the duality map.  Specifically, $\CT$ is the closure of the set
+$\{(T, T^{*}) \in \Hilb_{3}\P^{2} \times \Hilb_{3}\check{\P}^{2} : T \text{ is an honest triangle and } T^{*} \text{ is its dual triangle}\}.$
+\end{corollary}
+
+\begin{proof}
+Since the honest triangles are a dense open subset of $\CT$ by \Cref{prop:irreducible}, the closure of the graph of the duality map restricted to honest triangles is $\CT$ itself by \Cref{thm:smoothCT}.
+\end{proof}
+
+
+\begin{corollary}
+\label{cor:blowupfat}
+The forgetful map $\CT \to \Hilb_3 \P^2$ sending $(T,T^*)$ to $T$ is an isomorphism away from $\Fat \subset \Hilb_3 \P^2$, and the preimage of $\Fat$ is a $\P^1$-bundle over $\Fat$.
+\end{corollary}
+
+\begin{proof}
+By \Cref{proposition:fatandtriple}, $T^*$ is uniquely determined by $T$ whenever $T$ is not fat. When $T$ is fat, $T^*$ can be any thin scheme in the line dual to the support of $T$, yielding a $\P^1$-family.
+\end{proof}
+
+
+\subsection{Resolving $n$-th power maps}
+\label{subsection:nthpowermaps}
+
+For a non-fat length $3$ scheme $T \subset \P^{2}$ with unique dual $T^{*}$, the {\sl squared ideal}
+$\s(T,T^{*}) := \I_{T}^{2}$ is the ideal generated by all pairwise products of elements in $\I_{T}$. This is a length $9$ subscheme when $T$ is not fat. When $T$ is fat, $\I_{T}^{2}$ has length $10$. The key observation is that $\s$ extends to a flat family over all of $\CT$:
+
+\begin{theorem}
+  \label{thm:resolventhpower}
+  There exists a flat family $\mathcal{Z} \subset \P^{2} \times \CT$ of length $9$ subschemes parametrized by $\CT$, such that for any $(T,T^{*}) \in \CT$ with $T$ non-fat, the fiber over $(T,T^{*})$ is $\I_{T}^{2}$.  More precisely, the fiber over $(T,T^{*})$ is the subscheme defined by the modified ideal
+  \[
+      \s(T,T^{*}) = \I_{T}^{2} + \I_{T} \cdot \I_{T^{*},1}
+  \]
+  where $\I_{T^{*},1}$ is the linear part of the ideal of $T^*$ (viewed via duality).
+\end{theorem}
+
+\begin{proof}
+The proof proceeds by checking flatness at each orbit type. For the non-fat orbits, $\s(T,T^{*}) = \I_{T}^{2}$ has length $9$. For a fat point $T$ with dual thin scheme $T^{*}$, the modification $\I_{T}^{2} + \I_{T} \cdot \I_{T^{*},1}$ cuts the length down from $10$ to $9$, restoring flatness.
+\end{proof}
+
+\begin{corollary}
+\label{cor:AnySurface}
+Let $S$ be a smooth projective surface and let $n \geq 2$. There exists a flat family of length-$\binom{n+1}{2}$ subschemes over the $\CT$-modification of $\Hilb_3 S$, resolving the $n$-th power map.
+\end{corollary}
+
+\begin{proof}
+The construction of $\CT$ and the resolution of the squaring map are local in the \'etale topology, and hence extend to any smooth surface.
+\end{proof}
+
+
+\subsection{The vector bundle $E$ on $\CT$}
+\label{subsection:vectorbundle}
+
+Consider the vector space $V_{n} := H^{0}(\P^{2}, \O(n))$ for $n \geq 4$.  We define a sheaf on $\CT$ by assigning to each point $(T,T^{*})$ the vector space
+$H^{0}(\P^{2}, \O_{\P^{2}}(n) / \I_{\s(T,T^{*})} \cdot \O_{\P^{2}}(n)).$
+
+\begin{proposition}
+  \label{proposition:vectorbundle}
+  The assignment $(T,T^{*}) \mapsto H^{0}(\P^{2}, \O(n)/\I_{\s(T,T^{*})}(n))$ defines a vector bundle $E$ of rank $9$ on $\CT$ for $n \geq 4$.
+\end{proposition}
+
+\begin{proof}
+Since $\s(T,T^{*})$ is a flat family of length $9$ subschemes over $\CT$ by \Cref{thm:resolventhpower}, the pushforward of $\O_{\P^{2}}(n)/\I_{\s(T,T^{*})} \cdot \O_{\P^{2}}(n)$ is locally free of rank $9$.
+\end{proof}
+
+\begin{lemma}
+    \label{lemma:generatedquintics}
+    Let  $(T,T^{*}) \in \CT$ be any point such that $T \notin \Thin$. Then the sheaf $\I_{\s(T,T^{*})}(n)$ is generated by global sections for $n \geq 4$, i.e. the scheme defined by the common vanishing of all forms in $H^{0}(\P^{2},\I_{\s(T,T^{*})}(n))$ is precisely $\s(T,T^{*})$ when $n \geq 4$.
+\end{lemma}
+
+\begin{proof}
+  One checks that the $9$ conditions imposed by $\s(T,T^{*})$ on degree $n$ forms are independent for each orbit type when $n \geq 4$. This is straightforward for honest triangles and non-fat non-thin schemes; for fat--thin pairs it requires the modified ideal from \Cref{thm:resolventhpower}.
+\end{proof}
+
+
+\subsection{Chern class calculation}
+\label{subsection:chern}
+
+We now describe how to compute with the vector bundle $E$ using Atiyah-Bott localization.  Let $\Gm$ act on $\P^{2}$ via $t \cdot [X:Y:Z] = [t^{a}X: t^{b}Y: t^{c}Z]$ for distinct weights $a,b,c$. This induces an action on $\CT$ with finitely many fixed points.
+
+\begin{theorem}
+  \label{thm:localization}
+  The $\Gm$-action on $\CT$ induced by $t \cdot [X:Y:Z] = [t^{a}X: t^{b}Y: t^{c}Z]$ has exactly $31$ fixed points, decomposing into one $S_3$-orbit of size $1$ (the honest coordinate triangle) and five $S_3$-orbits of size $6$. The weights of the vector bundle $E$ and the tangent bundle of $\CT$ at each representative fixed point are explicitly computable.
+\end{theorem}
+
+\begin{proof}
+  The fixed points of $\Gm$ on $\Hilb_{3}\P^{2}$ are monomial ideals; enumerating all monomial length-$3$ ideals and lifting to $\CT$ (each non-fat one lifts uniquely, each fat one lifts to a $\P^{1}$, and we take the $\Gm$-fixed points of that $\P^1$) yields $31$ fixed points in $6$ orbits. The weights are computed directly from the monomial structure of $E$ and the tangent space.
+\end{proof}
+
+
+With the Atiyah-Bott localization formula, we obtain the ``naive'' answer:
+
+$$ c_{3}(E)^{2} - c_{2}(E)c_{4}(E) = 57728. $$
+
+This number $57728$ is the degree of the Porteous class, but it is {\sl not} equal to $\nu_{3,2}$ due to an excess intersection phenomenon.
+
+\begin{proposition}
+    \label{proposition:weightstautological}
+    The weights of the tautological bundles $\O(j)^{[3]}$ for $j=0,1,2,3$ at the $6$ representative $\Gm$-fixed points of $\CT$, as well as the weights of $E$ and the tangent bundle, are recorded in the Sage code in \S 7.
+\end{proposition}
+
+\begin{proof}
+Direct calculation from the monomial structure of the fixed points.
+\end{proof}
+
+
+\section{Circumventing excess}
+\label{section:pencilspace}
+
+The natural map $\underline{V_{5}} \to E$ on $\CT$, where $V_5 = H^{0}(\P^{2},\O(5))$, has the right codimension count for applying Porteous' formula. However, the Porteous class overcounts because of excess along the thin locus $\Thin$, where the base scheme of the evaluation map has extra dimension.  To circumvent this, we replace $\CT$ with a bigger space.
+
+Consider the rank $2$ sub-bundle of $\underline{V_5}$ consisting of pencils $\Lambda \subset V_5$ such that $\Lambda$ is contained in the kernel of the evaluation map. More precisely, consider the locus of pairs $((T,T^{*}), \Lambda)$ where $\Lambda$ is a $2$-dimensional subspace of $H^{0}(\P^{2}, \I_{\s(T,T^{*})}(5))$.
+
+\begin{definition}
+  \label{definition:quinticsingularpencils}
+  The {\bf space of singular quintic pencils}, denoted  $\SQP$, is the
+  Grassmann bundle $\Gr(2, \underline{V_5} \to E)$ over $\CT$, parametrizing triples $(T,T^{*}, \Lambda)$ where $(T,T^{*}) \in \CT$ and $\Lambda \subset H^{0}(\P^{2},\I_{\s(T,T^{*})}(5))$ is a pencil.
+\end{definition}
+
+\begin{theorem}
+    \label{theorem:Domintegral}
+    Let $p \in \P^{2}$ be a point, and let $\Dom(p) \subset \SQP$ be as in \Cref{definition:D} below. Then $\nu_{3,2} = \int_{\SQP} \left[\Dom(p)\right]^{13}.$
+\end{theorem}
+
+\begin{proof}
+This is established in the remainder of this section through a careful analysis of the point conditions in $\SQP$ and a verification that there is no excess intersection when $13$ general point conditions are imposed.
+\end{proof}
+
+
+\begin{definition}
+    \label{definition:base}
+    Let $W \subset H^{0}(\P^{2},\O(n))$ be a subspace. The {\bf base-scheme} of $W$, denoted $\Base(W)$ is the subscheme of $\P^{2}$ which is the common vanishing scheme of all elements of $W$.
+\end{definition}
+
+
+\begin{definition}
+  \label{definition:finite}
+  We let $\Inf \subset \SQP$ denote the
+  locus of triples $(T,T^{*}, \Lambda) \in \SQP$ where $\Base(\Lambda)$ has a $1$-dimensional component. We let $\Fin := \SQP \setminus \Inf$ denote the complement.
+\end{definition}
+
+
+\subsection{The point condition in $\SQP$}
+\label{subsection:pointcondition}
+
+Fix a general point $p \in \P^{2}$.
+
+\begin{definition}
+  \label{definition:basepointp}
+  We let $\BP(p) \subset \SQP$ denote the locus of triples $(T,T^{*},\Lambda)$ such that $p \in \Base(\Lambda)$, i.e. such that $\Lambda \subset H^{0}(\P^{2}, \I_{\s(T,T^{*}) \cup \{p\}}(5))$.
+\end{definition}
+
+\begin{proposition}
+  \label{proposition:BPp}
+  For $p \in \P^{2}$ general, $\BP(p)$ is a codimension $2$ cycle in $\SQP$.
+\end{proposition}
+
+\begin{proof}
+The codimension of $\BP(p)$ in $\SQP$ equals the rank drop condition for the evaluation of $\Lambda$ at $p$, which is codimension $2$ in the Grassmannian fiber generically. Generality of $p$ ensures this codimension is achieved.
+\end{proof}
+
+\begin{claim}
+\label{claim:support}
+Let $(T,T^{*},\Lambda) \in \BP(p)$.  Then exactly one of the following holds:
+\begin{enumerate}
+\item[(i)] $p \notin T$ and $\Lambda \subset H^{0}(\P^{2}, \I_{\s(T,T^{*}) \cup \{p\}}(5))$,
+\item[(ii)] $p \in T$ and $T$ is an honest triangle containing $p$ as a vertex,
+\item[(iii)] $T$ is contained in a line through $p$.
+\end{enumerate}
+\end{claim}
+
+\begin{proof}
+This is a case analysis based on the position of $p$ relative to $T$ and the tangent space behavior of $\s(T,T^{*})$ at the points of $T$.
+\end{proof}
+
+\begin{definition}
+\label{definition:D}
+We define the following subvarieties of $\BP(p)$:
+\begin{enumerate}
+\item $\Dom(p)$ is the closure of the locus of $(T,T^{*},\Lambda) \in \BP(p)$ such that $p \notin T$ and $T \notin \Thin$.
+\item $\Inc(p)$ is the closure of the locus of $(T,T^{*},\Lambda)$ where $p \in T$ and $T$ is an honest triangle.
+\item $\Lin(p)$ is the closure of the locus of $(T,T^{*},\Lambda)$ where $T$ is contained in a line through $p$.
+\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+    \label{remark:Dombundle}
+    Observe that if $(T,T^{*})$ is such that $p \notin T$ and if $\s(T,T^{*}) \cup \{p\}$ imposes ten independent conditions on quintic forms, then $\Dom(p)$ is the unique irreducible component of $\BP(p)$ lying over a sufficiently small neighborhood of $(T,T^{*})$.  Indeed, over a neighborhood of $(T,T^{*}) \in \CT$ the map $\eta|_{\BP(p)}: \BP(p) \to \CT$ is then a $\Gr(2,11)$-bundle.
+\end{remark}
+
+\begin{lemma}
+    \label{lemma:threecomponents}
+    $\Dom(p), \Inc(p),$ and $\Lin(p)$ are the irreducible components of $\BP(p)$.
+\end{lemma}
+
+\begin{proof}
+One checks that each of $\Dom(p), \Inc(p), \Lin(p)$ is irreducible and has codimension $2$ in $\SQP$ by a dimension count, and that their union is $\BP(p)$ by \Cref{claim:support}.
+\end{proof}
+
+
+\begin{theorem}
+  \label{theorem:BPdecomposition}
+  In the Chow group of $\SQP$, we have the cycle decomposition
+  \[ [\BP(p)] = [\Dom(p)] + 4[\Inc(p)] + [\Lin(p)].\]
+\end{theorem}
+
+\begin{proof}
+The multiplicities are determined by local intersection theory. At a general point of $\Inc(p)$, the multiplicity is $4$ because $\s(T,T^{*})$ is the square of the ideal of $T$, contributing a factor of $4$ to the tangent space calculation. At a general point of $\Lin(p)$, the multiplicity is $1$, verified by a transversality argument. The multiplicity of $\Dom(p)$ is $1$ by \Cref{remark:Dombundle}.
+\end{proof}
+
+
+
+\subsection{Thirteen point conditions}
+\label{subsection:thirteenpoints}
+
+Now let $p_1, \dots, p_{13}$ be $13$ general points in $\P^2$.  Define the {\sl solution locus}
+\[\Theta := \bigcap \limits_{i=1, \dots, 13} \Dom(p_i).\]
+
+\subsubsection{Understanding $\Theta \cap \Fin$}
+
+
+\begin{lemma}
+  \label{lemma:finite}
+  Every point $(T,T^{*},\Lambda)$ of $\Theta \cap \Fin$ satisfies $T \cap \{p_1, \dots, p_{13}\} = \varnothing$.  Moreover, $\Base(\Lambda)$ consists of $\s(T,T^{*})$ together with the $13$ points $p_1, \dots, p_{13}$ and three additional residual points not on $T$.
+\end{lemma}
+
+\begin{proof}
+  By generality of $(p_1, \dots, p_{13})$, the pencil $\Lambda$ has a finite base scheme, and B\'ezout forces $\length(\Base(\Lambda)) = 25$.  Since $\length(\s(T,T^{*})) = 9$ and the $p_i$'s contribute $13$ points, the residual has length $3$.  The condition $T \cap \{p_i\} = \varnothing$ is verified by a dimension count: the locus where some $p_i \in T$ has too few degrees of freedom to accommodate general $(p_1, \dots, p_{13})$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{lemma:finitehonest}
+  Let $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. Then $T$ is an honest
+  triangle, and $T \cap \Gamma_{13} = \varnothing$.
+\end{lemma}
+
+\begin{proof}
+  The statement ``$T \cap \Gamma_{13} = \varnothing$'' follows
+  immediately from \Cref{lemma:finite}, so we will assume it and
+  show that $T$ is an honest triangle.
+
+  Pick $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. As $\Base(\Lambda)$ is
+  finite, it follows that $T \notin \Thin$ (as otherwise $\Base(\Lambda)$
+  contains the line spanned by $T$). Therefore, we need only show that $T$ is reduced.
+
+  We perform a dimension count.  The locus $V \subset \Fin$ consisting of triples
+  $(T,T^{*},\Lambda)$ where $T$ is non-reduced is a Cartier
+  divisor of dimension $25$.
+  The scheme $V'$ parametrizing $(T,T^{*},\Lambda, W)$ where each of the $13$ points $w_i \in \Base(\Lambda)$ also has $\dim V' = 25$, so the projection $V' \to (\P^{2})^{13}$ cannot be dominant. In particular it cannot contain the general tuple $(p_1,\dots, p_{13})$ in its image.
+\end{proof}
+
+
+\subsubsection{Dealing with infinite base schemes}
+
+We now take on the challenge of showing emptiness of $\Theta \cap \Inf$.
+
+\begin{definition}
+  \label{definition:1dpart}
+  \begin{enumerate}
+    \item If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
+    a pencil of degree $d$ curves, with base scheme $\Base(\Lambda)$, we
+    define the {\bf fixed curve} of $\Base(\Lambda)$ to be the Cartier
+    divisor on $\P^{2}$ defined by the greatest common factor of any two
+    general elements of $\Lambda$.
+    \item If the fixed curve of $\Lambda$ has
+    degree $e$, we define the {\bf moving part} of $\Lambda$, denoted $\Lambda'$, to be the
+    pencil of degree $d-e$ curves obtained by dividing the equations of
+    the members of $\Lambda$ by the equation of the fixed curve.
+    \item If $\Lambda$ is a pencil of curves with fixed curve $C$, then a {\bf fixed point} of $\Lambda$ will mean a point in $C \setminus \Base(\Lambda')$.
+    \item If $\Lambda$ is a pencil of curves with fixed curve $C$, then an {\bf isolated point} of $\Lambda$ will mean a point in $\Base(\Lambda') \setminus C$.
+    \item If $\Lambda$ is a pencil of curves with fixed curve $C$, then an {\bf embedded point} of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    \label{lemma:QLNo}
+    Suppose $\Lambda$ is a pencil of quintic curves whose fixed curve is a quartic $Q$.
+    Suppose furthermore that $\Lambda$ satisfies one of the following:
+    \begin{enumerate}
+        \item[(a)] $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of at most two points, each a node,
+        \item[(b)] $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of a single ordinary cusp,
+        \item[(c)] $\Base(\Lambda)$ has one embedded point at a smooth point of $Q$ while $\Sing Q$ has at most one singular point which is a node,
+        \item[(d)] $\Sing Q$ consists of a single node and this node is the embedded point of $\Base(\Lambda)$.
+    \end{enumerate}
+    Then $\Base (\Lambda)$ does not contain any subscheme of the form $\s(T,T^{*})$ for any $(T,T^{*}) \in \CT$.
+\end{lemma}
+
+\begin{proof}
+    The moving part $\Lambda'$ of $\Lambda$ is a pencil of lines with base point $b$. Since $\s(T,T^{*})$ has $2$-dimensional Zariski tangent space at each point, if $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ must be supported on the singular points of $Q$ or the embedded point.
+
+    In case (a), local coordinates show that $\I_{\s(T,T^{*})}$ cannot contain a defining equation for $Q$ at a node, regardless of whether $T$ is curvilinear or fat at that node.
+
+    In case (b), at the cusp $c$, if $T$ is fat then $\I_{\s(T,T^{*})} \subset \m^3$ but $Q$'s equation is in $\m^2 \setminus \m^3$. If $T$ is curvilinear, a power series argument shows the cusp singularity type is incompatible with containment.
+
+    Cases (c) and (d) are handled similarly, using the observation that the ideal $\mathcal{J} = (xf, yf)$ near the embedded point has too many linearly independent elements modulo higher powers of the maximal ideal.
+\end{proof}
+
+
+\begin{proposition}
+  \label{proposition:infline}
+  If $(T,T^{*},\Lambda)$  is an element of $\Theta \cap \Inf$ then
+  the fixed curve of $\Base(\Lambda)$ consists of a reduced
+  line.
+\end{proposition}
+
+\begin{proof}
+  We proceed by considering the possible degrees of the fixed curve $C$.  For degree $4$, \Cref{lemma:QLNo} eliminates all cases. For degree $3$, generality of $(p_1,\dots,p_{13})$ forces the configuration into a unique smooth cubic with a residual pencil of conics, and tangent space considerations prevent $\s(T,T^{*})$ from being contained in this smooth base scheme. For degree $2$, similar reasoning with a smooth conic and residual pencil of cubics eliminates the possibility.
+\end{proof}
+
+
+\begin{proposition}
+    \label{proposition:Movesingular}
+    Suppose $(T,T^{*},\Lambda) \in \Theta \cap \Inf$.  Then the moving part $\Lambda'$ of $\Lambda$ is a pencil of quartics whose general member is a smooth quartic curve.
+\end{proposition}
+
+\begin{proof}
+$\Lambda'$ is a pencil of quartics by \Cref{proposition:infline}. If the general member had a singular point, the locus of such pencils would have dimension $22$, and a dimension count argument shows this is insufficient to accommodate $11$ of the $13$ general points in the finite base scheme while having $2$ points on the line, leading to a contradiction.
+\end{proof}
+
+
+\begin{proposition}
+\label{proposition:LinDom}
+Suppose $(T,T^{*},\Lambda)$ is an element of  $\Dom(p) \cap \Lin(p)$ satisfying:
+\begin{enumerate}
+    \item The fixed part of $\Lambda$ is the line $L$ spanned by $T$, and
+    \item $p \notin T$.
+\end{enumerate}
+Then the moving part $\Lambda'$ of $\Lambda$ satisfies $\length \left(\Base(\Lambda') \cap L\right) = 4.$
+\end{proposition}
+
+
+\begin{proof}
+    The proof uses a limit linear series style argument.  We approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family in $\Dom(p)$, degenerate the family of quintic forms to the reducible surface $P \cup E$ arising from blowing up $\P^{2}_{B}$ along $L$, and use the Hirzebruch surface structure of the exceptional divisor to constrain the intersection number.
+
+\begin{claim}
+    \label{claim:quinticforms}
+There exists a point $q \in L$ such that the limit $\lim_{b \to 0}V_{b}$ consists of quintic forms which are a product $L \cdot Q$ where $Q$ is a quartic containing the divisor $\mathcal{T}_{0} + q$ on $L$.
+\end{claim}
+
+\begin{proof}
+This is proved by analyzing sections of the line bundle $\mathcal{L} = \beta^{*}\O(5)(-E)$ on the blown-up threefold, using the geometry of curves on the Hirzebruch surface $E \cong \mathbb{F}_1$.
+\end{proof}
+
+\begin{lemma}
+    \label{lemma:D2F}
+    Let $Z = \widetilde{p} \cup \widetilde{\mathcal{T}}_{0} \subset E$ where $E \cong \mathbb{F}_1$. Then $h^{0}(E,\I_{Z}(D+2F)) \geq 1$ and $h^{0}(E,\I_{Z}(D+2F)) > 1$ if and only if $Z$ is contained in a line, in which case $h^{0}(E,\I_{Z}(D+2F)) = 2$.
+\end{lemma}
+
+\begin{proof}
+    This follows from translating to a claim about length $5$ subschemes in the plane imposing independent conditions on conics, via blowing down the directrix.
+\end{proof}
+
+\begin{assumption}
+\label{assumption:Noline}
+    Assume that $Z \subset E$ is {\bf not} contained in a line.
+\end{assumption}
+
+Under \Cref{assumption:Noline}, the unique curve $C \in |\I_{Z}(D+2F)|$ is irreducible and meets the directrix $D$ at a single point $q$, forcing the quartic $Q$ to contain the divisor $\mathcal{T}_{0} + q$ on $L$. When the assumption fails, one iterates blow-ups until the strict transforms become non-collinear, reducing to the same argument on a chain of Hirzebruch surfaces.
+\end{proof}
+
+
+\begin{remark}
+\label{remark:splitline}
+    The conclusion of \Cref{proposition:LinDom} implies in particular that the pencil $\Lambda$ contains an element which is the union of the doubled line $2L$ with a cubic curve.
+\end{remark}
+
+\begin{proposition}
+    \label{lemma:ThetaInf}
+    Recall the set $\Theta$. Then $\Theta \cap \Inf = \varnothing.$
+\end{proposition}
+
+\begin{proof}
+    Suppose for contradiction that $(T,T^{*},\Lambda) \in \Theta \cap \Inf$. By \Cref{proposition:Movesingular}, $\Lambda = \{L \cdot Q_{t}\}$ where $Q_{t}$ is a pencil of quartics with smooth general member. The condition $\s(T,T^{*}) \subset \Base(\Lambda)$ forces $T \subset L$. Since not all $p_i$ can be in $\Base\{Q_t\}$ (otherwise $\{Q_t\}$ would be uniquely determined and general, but it contains $T$ in its base scheme), at least one point, say $p_{13}$, is in $L \setminus \Base\{Q_t\}$.  Then \Cref{proposition:LinDom} and \Cref{remark:splitline} imply there is an element of $\{Q_t\}$ of the form $L \cdot C$ with $C$ a cubic. But then at least $11$ of the remaining $12$ points lie on $C$, contradicting generality.
+\end{proof}
+
+\begin{theorem}
+  \label{theorem:solutionset}
+  Let $p_1, \dots, p_{13}$ be $13$ general points in $\P^{2}$, and let $\Theta$ be as above. Then
+  \[
+  \Theta = \left\{ \begin{array}{c}
+         \text{$(T,T^{*}) \in\CT$ such that}\\  \text{$T$ is a singular triad}  \\
+         \text{for $p_{1}, \dots, p_{13}$}
+    \end{array} \right\}.
+  \]
+\end{theorem}
+
+\begin{proof}
+    The set of singular triads is clearly contained in $\Theta$. The reverse inclusion follows from \Cref{lemma:ThetaInf} (which gives $\Theta \subset \Fin$), \Cref{lemma:finitehonest} (which ensures $T$ is an honest triangle), and B\'ezout's theorem.
+\end{proof}
+
+
+\section{Intersections in $\SQP$}
+\label{section:finishing}
+
+Let $p \in \P^{2}$ be a point and let $\ell \subset \P^{2}$ be a line. In this section we let $\inc(p), \lin(p)$ be the cycles on $\CT$ consisting of points $(T,T^{*})$ in $\CT$ where $T$ contains the point $p$ or where $T$ is collinear with $p$, respectively.  For brevity, we will write $\O(d)^{[3]}$ for the tautological bundle on $\Hilb_{3}\P^{2}$, pulled back to $\CT$.  Finally let $H \subset \CT$ denote the divisor class of the locus of complete triangles $(T,T^{*})$ such that $T$ intersects the line $\ell$ non-trivially.
+
+\begin{definition}
+    \label{definition:chernclasses}
+    Define $c_{i}(j) \in \CH^{i}\CT$ to be the Chern class $c_{i}\left(\O(j)^{[3]}\right)$. Define $e_k \in \CH^{k}\CT$ to be the Chern class $c_{k}(E)$, where $E$ is the rank $9$ vector bundle from \S 3.6.  Set
+    \begin{align}
+        \Delta_{0}&:= e_{3}^2-e_{2}e_{4},\\
+        \Delta_{2}&:= e_{2}^{2}-e_{1}e_{3},\\
+        \Delta_{4}&:= e_{1}^{2}-e_{2},\\
+        \Delta_{6} &:= [\CT].
+    \end{align}
+\end{definition}
+
+\begin{lemma}
+        \label{lemma:Deltas}
+        For each $i=0,1,2,3$ we have $\Delta_{2i} = \varphi_{*}\left( [\BP]^{13-i}\right).$
+\end{lemma}
+
+\begin{proof}
+        Fix $13-i$ general points and let $V$ be the space of quintic forms vanishing at those points. The class $[\BP]^{13-i}$ can be represented by the cycle parametrizing triples $(T,T^{*},\Lambda)$ where $\Lambda \subset V$. Pushing down to $\CT$, we get the degeneracy scheme of $ev: \underline{V} \to E$. The lemma follows from Porteous's formula.
+\end{proof}
+
+
+\begin{lemma}
+    \label{lemma:IncLinclasses}
+    In the Chow ring $\CH^{\bullet}\CT$, we have
+    \begin{align}
+        [\lin(p)] &= c_{2}(1),\\
+        [\inc(p)] &= H^{2} - c_{2}(1) + 2c_{2}(2)-c_{2}(3).
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    The first equation follows from the definition of the second Chern class -- the subschemes lying in some member of the pencil of lines through $p$ are precisely those comprising the cycle $\lin(p)$.  The second equation is a consequence of general formulas for $c_{2}(d)$ found in \cite{elencwajg2006explicit}.
+\end{proof}
+
+
+\begin{proof}[Proof of \Cref{theorem:main}]
+    By \Cref{theorem:solutionset} our task is to compute $\int_{\SQP} [\Dom(p)]^{13}.$ By \Cref{theorem:BPdecomposition} this equals
+    \[\int_{\CT}\varphi_{*}\left(([\BP(p)] - 4[\Inc(p)] - [\Lin(p)])^{13}\right).\]  Using the push-pull formula for $\varphi$ and \Cref{lemma:Deltas}, we compute:
+\[
+\int_{\CT} \sum_{i=0}^{3} (-1)^{i}{13 \choose i} \cdot \Delta_{2i} \cdot \left( 4 [\inc(p)]+[\lin(p)]\right)^{i}.
+\]
+
+By expressing all terms in terms of the Chern classes $e_{k}$ of $E$ and using \Cref{lemma:IncLinclasses}, we use the fixed-point analysis for $E$ from \S 3.6 and evaluate the Atiyah-Bott localization expression.  We perform this computation in \S 7.
+\end{proof}
+
+
+\section{Lingering questions}
+\label{section:questions}
+
+Countless questions remain unanswered -- we highlight some below.
+
+\begin{question}
+    \label{question:association}
+    Association's presence in all known cases of the Veronese counting problem is hard to ignore -- what is its role in the general problem?
+\end{question}
+
+In fact, a closer look shows an intriguing possibility.  In all known instances, it appears as though association is a composite of a Cremona transformation followed by a Veronese embedding.  Specifically, let $m = {n+d \choose d} + n +1$, and consider a general tuple of points $(p_1, \dots, p_{m}) \in (\P^{n})^{m}$.  Let $(q_1, \dots, q_{m}) \in (\P^{N})^{m}$ be associated to $(p_{1}, \dots, p_{m})$, where $N = {n+d \choose d}-1$. Let $\ver_{d} :\P^{n} \to \P^{N}$ denote the standard $d$-uple Veronese embedding.
+
+In every understood case, there exists a Cremona transformation $\gamma: \P^{n} \dashrightarrow \P^{n}$ and an automorphism $g: \P^{N} \to \P^{N}$ such that the composite $g \circ \ver_{d} \circ \gamma$ sends each point $p_{i}$ to its corresponding point $q_{i}$. Whether such a mapping always exists is not obvious.
+
+\begin{remark}
+\label{remark:quadroquartic}
+    In this direction, a dimension count suggests that for a fixed set of $14$ general points $a_1, \dots, a_{14}$ in $\P^{3}$, there should exist finitely many {\sl quadro-quartic} Cremona transformations $\gamma: \P^{3} \dashrightarrow \P^{3}$ such that the composition of $\gamma$ with a $2$-uple Veronese embedding sends the tuple $(a_{1}, \dots, a_{14})$ to an associated tuple $(b_{1}, \dots, b_{14}) \in (\P^{9})^{14}$.  This may hint at an approach to finding $\nu_{2,3}$.
+\end{remark}
+
+\begin{question}
+    \label{question:numerical}
+    Is it possible to confirm Coble's example using numerical algebraic geometry software like \texttt{homotopycontinuation.jl}?
+\end{question}
+
+\begin{question}
+    \label{question:monodromy}
+    It can be shown that the monodromy group of Coble's enumerative problem $\nu_{2,2}=4$ is the full symmetric group $S_{4}$.  Is the monodromy group for $\nu_{3,2}$ also the full symmetric group?
+\end{question}
+
+\begin{question}
+    \label{question:degeneration}
+    Is there a straightforward degeneration argument reproving $\nu_{2,2}=4$?
+\end{question}
+
+\begin{question}
+    \label{question:charp}
+    Association is a characteristic independent theory.  By following Coble's reasoning in characteristic $p$, we find that when $p=2$ and only when $p=2$, the number $\nu_{2,2}$ drops -- it changes from $4$ to $2$ because the $2$-torsion of a general elliptic curve in characteristic $2$ consists of only $2$ points.  Modulo which primes $p$ (if any) does our $\nu_{3,2}= 4246$ calculation change?
+\end{question}
+
+\begin{question}
+    \label{question:integral}
+    Are there other integral expressions of the form $\nu_{d,n} = \int_{X} \alpha^{m}$ where $X$ is a relatively tractable smooth projective variety and $\alpha$ is some cycle on $X$?
+\end{question}
+
+
+\section{Sage code}
+\label{section:sagecode}
+
+We provide the sage code used to compute $\nu_{3,2}$, as well as several checks. One thing to note is that we plug in specific values for $a,b,c$ into the equivariant expressions arising in the Atiyah-Bott localization formula. These are secretly constant, so the reader can verify that by changing the inputs of $a,b,c$, the calculations do not change.
+
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+  var('a','b','c')
+
+  def symmetrize(p):
+      return p(a=a,b=b,c=c) + p(a=a,b=c,c=b) + p(a=b,b=a,c=c) + p(a=b,b=c,c=a) + p(a=c,b=a,c=b) + p(a=c,b=b,c=a)
+
+  # The ith elementary symmetric polynomial
+  def sigma(i, L):
+      ind = Set(range(0,len(L)))
+      return sum([ prod([L[x] for x in S]) for S in ind.subsets(i) ])
+
+  # BUNDLE WEIGHTS AT FIXED POINTS:
+  # Weight data for the bundle E on CT.
+  E = [
+      (5*a, 5*b, 5*c, 4*a+b, 4*a+c, 4*b+c, 4*b+a, 4*c+a, 4*c+b),
+      (5*a, 4*a+b, 4*a+c, 5*c, 4*c+a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+3*b),
+      (5*b, 4*b+a, 4*b+c, 5*c, 4*c+a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+3*b),
+      (5*c, 4*c+b, 3*c+2*b, 2*c+3*b, c+4*b, 5*b, 4*c+a, 3*c+a+b, 2*c+a+2*b),
+      (5*c, 4*c+a, 3*c+2*a, 4*c+b, 3*c+a+b, 2*c+2*a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b),
+      (5*c, 4*c+a, 3*c+2*a, 2*c+3*a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b)
+      ]
+
+  # Weight data for the tangent bundle T of CT
+  T = [
+      (c-a, c-b, b-c, b-a, a-b, a-c),
+      (a-c, a-b, c-a, 2*c-2*b, b-a, c-b),
+      (c-a, 2*c-2*b, b-a, c-b, b-c, b-a),
+      (c-a, 3*c-3*b, b-a, 2*c-2*b, 2*b-c-a, c-b),
+      (3*b-3*a, 2*b-2*a, b-a, c-a, c-b, a-2*b+c),
+      (a-b, c-b, c-a, 2*b-2*a, c-b, b-a)
+      ]
+
+  c1E = [ expand(sigma(1, x)) for x in E ]
+  c2E = [ expand(sigma(2, x)) for x in E ]
+  c3E = [ expand(sigma(3, x)) for x in E ]
+  c4E = [ expand(sigma(4, x)) for x in E ]
+  c6T = [ expand(sigma(6, x)) for x in T ]
+
+  Wrong = expand(-c2E[0]*c4E[0] + c3E[0]^2)/expand(c6T[0]) + sum([symmetrize(expand(-c2E[i]*c4E[i] + c3E[i]^2)/expand(c6T[i])) for i in range(1,6)])
+
+  # Tautological bundle weights
+  OOO = [
+      (0, 0, 0), (0, b-c, 0), (0, b-c, 0),
+      (0, b-c, 2*b-2*c), (0, a-c, b-c), (0, a-c, b-c)
+      ]
+
+  Oone = [
+      (a, b, c), (a, b, c), (b, b, c),
+      (c, b, 2*b-c), (a, b, c), (a, b, c)
+      ]
+
+  Otwo = [
+      (2*a, 2*b, 2*c), (2*a, b+c, 2*c), (2*b, b+c, 2*c),
+      (2*b, b+c, 2*c), (a+c, b+c, 2*c), (a+c, b+c, 2*c)
+      ]
+
+  Othree = [
+      (3*a, 3*b, 3*c), (3*a, b+2*c, 3*c), (3*b, b+2*c, 3*c),
+      (b+2*c, 2*b+c, 3*c), (a+2*c, b+2*c, 3*c), (a+2*c, b+2*c, 3*c)
+      ]
+
+  c2Oone = [ expand(sigma(2, x)) for x in Oone ]
+  c2Otwo = [ expand(sigma(2, x)) for x in Otwo ]
+  c2Othree = [ expand(sigma(2, x)) for x in Othree ]
+  c3Otwo = [ expand(sigma(3, x)) for x in Otwo ]
+  c3Othree = [ expand(sigma(3, x)) for x in Othree ]
+
+  H = [ a+b+c, a+2*c, b+2*c, 3*c, 3*c, 3*c ]
+
+  Delta0 = [ c3E[i]^2-c2E[i]*c4E[i] for i in range(0,6)]
+  Delta2 = [ c2E[i]^2-c1E[i]*c3E[i] for i in range (0,6)]
+  Delta4 = [ c1E[i]^2-c2E[i] for i in range(0,6)]
+
+  Inc = [H[i]^2 - c2Oone[i] + 2*c2Otwo[i] - c2Othree[i] for i in range(0,6)]
+  Lin = [c2Oone[i] for i in range(0,6)]
+  FourIncPlusLin = [4*Inc[i] + Lin[i] for i in range(0,6)]
+
+  INTEGRAND = [Delta0[i] - 13*Delta2[i]*FourIncPlusLin[i] + 78*Delta4[i]*FourIncPlusLin[i]^2 - 286*FourIncPlusLin[i]^3 for i in range(0,6)]
+
+  Answer = expand(INTEGRAND[0])/expand(c6T[0]) + sum([symmetrize(expand(INTEGRAND[i])/expand(c6T[i])) for i in range(1,6)])
+
+  # FINAL COMPUTATIONS:
+  print(Wrong(a=45,b=3,c=10))   # 57728 (wrong, due to excess)
+  print(Answer(a=-20,b=9,c=7))  # 4246 (correct!)
+\end{lstlisting}
+
+
+\begin{thebibliography}{99}
+
+\bibitem[CF+89]{collino1989intersection}
+Alberto Collino, William Fulton, et al.
+Intersection rings of spaces of triangles.
+{\em Memoire de la Soci\'et\'e Math\'ematique de France}, 38:75--117, 1989.
+
+\bibitem[Cob22]{CobleAssociatedSO}
+Arthur B. Coble.
+Associated sets of points.
+{\em Transactions of the American Mathematical Society}, 24:1--20, 1922.
+
+\bibitem[Cos06a]{coskun2006degenerations}
+Izzet Coskun.
+Degenerations of surface scrolls and the Gromov-Witten invariants of Grassmannians.
+{\em Journal of Algebraic Geometry}, 15(2):223--284, 2006.
+
+\bibitem[Cos06b]{coskun2006enumerative}
+Izzet Coskun.
+The enumerative geometry of del Pezzo surfaces via degenerations.
+{\em American Journal of Mathematics}, 128(3):751--786, 2006.
+
+\bibitem[ELB06]{elencwajg2006explicit}
+Georges Elencwajg and Patrick Le Barz.
+Explicit computations in $\textrm{Hilb}^{3}\mathbf{P}^{2}$.
+In {\em Algebraic Geometry Sundance 1986}, pages 76--100. Springer, 2006.
+
+\bibitem[EP00]{EISENBUD2000127}
+David Eisenbud and Sorin Popescu.
+The projective geometry of the Gale transform.
+{\em Journal of Algebra}, 230(1):127--173, 2000.
+
+\bibitem[ES96]{ell.str}
+Geir Ellingsrud and Stein Str{\o}mme.
+Bott's formula and enumerative geometry.
+{\em Journal of the American Mathematical Society}, 9(1):175--193, 1996.
+
+\bibitem[Kee93]{keel1993functorial}
+Sean Keel.
+Functorial construction of Le Barz's triangle space with applications.
+{\em Transactions of the American Mathematical Society}, 335(1):213--229, 1993.
+
+\bibitem[LP19]{landesman2019interpolation}
+Aaron Landesman and Anand Patel.
+Interpolation problems: Del Pezzo surfaces.
+{\em Annali Scuola Normale Superiore - Classe di Scienze}, pages 1389--1428, 2019.
+
+\end{thebibliography}
+
+\end{document}

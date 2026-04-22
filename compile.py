@@ -95,9 +95,9 @@ def parse_preamble_macros(tex_source):
     # \renewcommand{\foo}{definition} or \renewcommand{\foo}[n]{definition}
     # Handle nested braces up to 2 levels deep in the definition
     for match in re.finditer(
-        r'\\(?:new|renew)command\{?\\(\w+)\}?'
+        r'\\(?:new|renew|provide)command\s*\{?\\(\w+)\}?'
         r'(?:\[(\d+)\])?'
-        r'\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
+        r'\s*\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
         preamble
     ):
         name = match.group(1)
@@ -111,9 +111,9 @@ def parse_preamble_macros(tex_source):
         else:
             macros[name] = definition
 
-    # \DeclareMathOperator{\foo}{text}
+    # \DeclareMathOperator{\foo}{text} — handles nested braces
     for match in re.finditer(
-        r'\\DeclareMathOperator\{?\\(\w+)\}?\{([^}]*)\}',
+        r'\\DeclareMathOperator\s*\{?\\(\w+)\}?\s*\{((?:[^{}]|\{[^{}]*\})*)\}',
         preamble
     ):
         name = match.group(1)
@@ -160,6 +160,8 @@ ENV_TYPES = {
     "question": "Question",
     "example": "Example",
     "claim": "Claim",
+    "problem": "Problem",
+    "assumption": "Assumption",
 }
 
 # Map envName to CSS class
@@ -174,6 +176,8 @@ ENV_CSS = {
     "question": "stacks-env",
     "example": "stacks-env",
     "claim": "stacks-env",
+    "problem": "stacks-env",
+    "assumption": "stacks-env",
     "proof": "stacks-proof",
 }
 
@@ -374,7 +378,7 @@ def tex_to_html(tex):
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
         return '$$' + body.strip() + '$$'
-    s = re.sub(r'\\begin\{equation\}(.*?)\\end\{equation\}',
+    s = re.sub(r'\\begin\{equation\*?\}(.*?)\\end\{equation\*?\}',
                equation_replace, s, flags=re.DOTALL)
 
     # align/align* → display math with aligned
@@ -385,6 +389,15 @@ def tex_to_html(tex):
         return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
     s = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}',
                align_replace, s, flags=re.DOTALL)
+
+    # eqnarray/eqnarray* → display math with aligned
+    def eqnarray_replace(m):
+        body = m.group(1)
+        body = re.sub(r'\\label\{[^}]*\}', '', body)
+        body = re.sub(r'\\nonumber', '', body)
+        return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
+    s = re.sub(r'\\begin\{eqnarray\*?\}(.*?)\\end\{eqnarray\*?\}',
+               eqnarray_replace, s, flags=re.DOTALL)
 
     # enumerate → ordered list
     def enumerate_replace(m):
@@ -423,6 +436,14 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{itemize\}(.*?)\\end\{itemize\}',
                itemize_replace, s, flags=re.DOTALL)
 
+    # \subsubsection{...} → inline heading
+    s = re.sub(r'\\subsubsection\{((?:[^{}]|\{[^{}]*\})*)\}',
+               r'<h3 class="stacks-subsections-heading">\1</h3>', s)
+
+    # \footnote{...} → parenthetical note
+    s = re.sub(r'\\footnote\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
+               r' <span style="font-size:0.9em;color:#555;">(\1)</span>', s)
+
     # --- Inline formatting ---
 
     # \emph{...} -> <em>
@@ -446,6 +467,9 @@ def tex_to_html(tex):
     # {\it text} -> <em>
     s = re.sub(r'\{\\it\s+([^}]*)\}', r'<em>\1</em>', s)
 
+    # {\bf text} -> <strong>
+    s = re.sub(r'\{\\bf\s+([^}]*)\}', r'<strong>\1</strong>', s)
+
     # ~ -> non-breaking space
     s = s.replace('~', '&nbsp;')
 
@@ -463,10 +487,17 @@ def tex_to_html(tex):
     s = s.replace('\\"a', '&auml;')
     s = s.replace("\\'e", '&eacute;')
     s = s.replace("\\'a", '&aacute;')
+    s = re.sub(r'\\o(?![a-zA-Z])', '&oslash;', s)
 
     # \square, \qedhere — remove
     s = re.sub(r'\s*\\square\s*', '', s)
     s = re.sub(r'\s*\\qedhere\s*', '', s)
+
+    # \todo{...} — remove
+    s = re.sub(r'\\todo\{(?:[^{}]|\{[^{}]*\})*\}', '', s)
+
+    # \newblock — remove (from bibliography)
+    s = s.replace('\\newblock', '')
 
     # Double newlines → paragraph breaks
     s = re.sub(r'\n\s*\n', '</p>\n<p>', s)
@@ -573,6 +604,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
         # Process \Cref before \ref to avoid partial matches
         text = re.sub(r'\\Cref\{([^}]+)\}', cref_replacer, text)
         text = re.sub(r'\\cref\{([^}]+)\}', cref_replacer, text)
+        text = re.sub(r'\\autoref\{([^}]+)\}', cref_replacer, text)
         text = re.sub(r'\\eqref\{([^}]+)\}', eqref_replacer, text)
         text = re.sub(r'\\ref\{([^}]+)\}', ref_replacer, text)
         return text
@@ -606,13 +638,19 @@ def resolve_citations(paper, citations):
 
     def cite_replacer(m):
         opt = m.group(1)  # optional argument like \cite[Section 2]{key}
-        key = m.group(2)
-        if key in citations:
-            label = citations[key]
-            if opt:
-                return f'[{label}, {opt}]'
-            return f'[{label}]'
-        return f'[{key}]'
+        keys_str = m.group(2)
+        # Handle multiple comma-separated keys like \cite{key1, key2}
+        keys = [k.strip() for k in keys_str.split(',')]
+        labels = []
+        for key in keys:
+            if key in citations:
+                labels.append(citations[key])
+            else:
+                labels.append(key)
+        label_text = ', '.join(labels)
+        if opt:
+            return f'[{label_text}, {opt}]'
+        return f'[{label_text}]'
 
     def process_content(text):
         return re.sub(r'\\cite(?:\[([^\]]*)\])?\{([^}]+)\}', cite_replacer, text)
@@ -737,7 +775,7 @@ def render_block(block, depth=0):
             label_text = f"{env_type}" + (f"&nbsp;{number}" if number else "")
             head_html = f'<strong>{label_text}.</strong>{tag_link}'
 
-        eid = block.get("label", "").replace(":", "-") or ""
+        eid = (block.get("label") or "").replace(":", "-")
 
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
