@@ -49,8 +49,8 @@ header h1 {
   color: var(--heading-color);
 }
 
-/* Navigation */
-nav {
+/* Navigation — scoped to the main-site nav (contains .nav-inner) */
+nav:has(.nav-inner) {
   background: var(--nav-bg);
   border-bottom: 2px solid #1a252f;
 }
@@ -61,7 +61,7 @@ nav {
   padding: 0 20px;
 }
 
-nav a {
+nav:has(.nav-inner) a {
   display: inline-block;
   padding: 10px 16px;
   color: var(--nav-text);
@@ -71,8 +71,8 @@ nav a {
   transition: background 0.2s;
 }
 
-nav a:hover,
-nav a.active {
+nav:has(.nav-inner) a:hover,
+nav:has(.nav-inner) a.active {
   background: rgba(255,255,255,0.18);
 }
 
