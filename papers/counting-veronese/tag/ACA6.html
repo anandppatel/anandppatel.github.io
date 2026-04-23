@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (ACA6) &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <a href="../section/S3.SS3.html">3.3. Smoothness</a> / <span>Proof (ACA6)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="AD31.html">&laquo; Proposition 3.15</a><span class="stacks-tag-current">Tag ACA6</span><a href="23EB.html">Remark 3.16 &raquo;</a></div>
+<div class="stacks-proof" id="eqn-deformI">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/ACA6.html" class="stacks-tag-link">(ACA6)</a></div>
+  <div class="stacks-env-body"><p>We will calculate the space of first order deformations of
+  $(T, T^{*}) \in \CT$, and demonstrate that it is $6$ dimensional. This is enough by Proposition&nbsp;3.14.</p>
+<p>  Let us pass to affine coordinates; we let
+  $x = X/Z, y = Y/Z, a = \check{X}/\check{Y}, c = \check{Z}/\check{Y}$. The general first order
+  deformation of the ideal $I = (x^{2},xy,y^{2})$ is given by</p>
+<p>$$\begin{aligned}I_{\varepsilon} := (x^{2} + \varepsilon(\alpha_{1}x + \beta_{1}y), xy + \varepsilon(\alpha_{2}x + \beta_{2}y), y^{2}+ \varepsilon(\alpha_{3}x+\beta_{3}y)),\end{aligned}$$
+for free choices of constants $\alpha_{i}, \beta_{j} \in \k$, while the
+general first order deformation of $J = (a^{3}, c)$ is
+$$\begin{aligned}J_{\varepsilon} = (a^{3} + \varepsilon(\gamma_{1}a^{2}+\gamma_{2}a+\gamma_{3}), c + \varepsilon(\delta_{1}a^{2}+\delta_{2}a + \delta_{3}))\end{aligned}$$
+where $\gamma_{i}$ and $\delta_{i}$ vary freely in $\k$.</p>
+<p>From (?), the corresponding first order deformation of
+the induced net of conics
+$\Lambda_{T} = \langle X^{2}, XY, Y^{2} \rangle$ is given by
+$$\begin{aligned}\Lambda_{T}(\varepsilon) := \langle X^{2} + \varepsilon(\alpha_{1}XZ + \beta_{1}YZ), XY + \varepsilon(\alpha_{2}XZ + \beta_{2}YZ), Y^{2}+ \varepsilon(\alpha_{3}XZ+\beta_{3}YZ) \rangle.\end{aligned}$$</p>
+<p>Next, we must identify the first order deformation of the net of
+conics $\Lambda_{T^{*}} = \langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle$ induced by
+the deformation (?).  First, note that
+$c^{2} \in J_{\varepsilon}$. Therefore, we must determine how the
+conics $\check{X}\check{Z}$ and $\check{Y}\check{Z}$ must be deformed.  By homogenizing the element
+$c + \varepsilon(\delta_{1}a^{2}+\delta_{2}a + \delta_{3}) \in
+J_{\varepsilon}$, we get the deformation:
+$$\begin{aligned}\check{Y}\check{Z} + \varepsilon(\delta_{1}\check{X}^{2}+\delta_{2}\check{X}\check{Y} + \delta_{3}\check{Y}^{2}).\end{aligned}$$
+Finally, by multiplying
+$c + \varepsilon(\delta_{1}a^{2}+\delta_{2}a + \delta_{3})$ by $a$,
+subtracting $\varepsilon \delta_{1} a^{3}$, then homogenizing we
+deduce the following deformation:
+$$\begin{aligned}\check{X}\check{Z} + \varepsilon(\delta_{2}\check{X}^{2} + \delta_{3}\check{X}\check{Y})\end{aligned}$$ Altogether, the corresponding first order deformation of the net $\Lambda_{T^{*}}$ is given by  
+$$\begin{aligned}\Lambda_{T^{*}}(\varepsilon) := \langle \check{X}\check{Z} + \varepsilon(\delta_{2}\check{X}^{2} + \delta_{3}\check{X}\check{Y}), \check{Y}\check{Z} + \varepsilon(\delta_{1}\check{X}^{2}+\delta_{2}\check{X}\check{Y} + \delta_{3}\check{Y}^{2}), \check{Z}^{2} \rangle\end{aligned}$$</p>
+<p>Now, we must impose the condition that the pair of deformations
+$(I_{\varepsilon}, J_{\varepsilon})$ belong in $\CT$. By definition,
+this is the condition
+$$\begin{aligned}\Lambda_{T}(\varepsilon)^{\dagger} = \Lambda_{T^{*}}\end{aligned}$$</p>
+<p>The left hand side of (?) is simple to calculate.  First, the deformation $\Lambda_{T}(\varepsilon)^{*}$ is given by: </p>
+<p>$$\begin{aligned}\Lambda_{T}(\varepsilon)^{*} = \langle \check{X}\check{Z} + \varepsilon(-\frac{\alpha_{1}}{2} \check{X}^{2} - \alpha_{2}\check{X}\check{Y} - \frac{\alpha_{3}}{2} \check{Y}^{2}), \check{Y}\check{Z} + \varepsilon(-\frac{\beta_{1}}{2} \check{X}^{2}-\beta_{2}\check{X}\check{Y} - \frac{\beta_{3}}{2} \check{Y}^{2}), \check{Z}^{2} \rangle\end{aligned}$$
+and so applying the Jacobian we get </p>
+<p>$$\begin{aligned}\Lambda_{T}(\varepsilon)^{\dagger} = \langle \check{X}\check{Z} + \varepsilon(\beta_{2}\check{X}^{2} + (\alpha_{2}-\beta_{3})\check{X}\check{Y} + \alpha_{3}\check{Y}^{2}), \check{Y}\check{Z} + \varepsilon(\beta_{1}\check{X}^{2}+(\beta_{2}-\alpha_{1})\check{X}\check{Y} - \alpha_{2}\check{Y}^{2}), \check{Z}^{2} \rangle\end{aligned}$$
+Equating term by term with (?) we get the following system of equations:</p>
+<p>$$\begin{aligned}\delta_{2} =\beta_{2}\\
+  \delta_{3} = \alpha_{2}-\beta_{3}\\
+  0 = \alpha_{3}\\
+  \delta_{1} = \beta_{1}\\
+   \delta_{2} = \beta_{2}-\alpha_{1}\\
+  \delta_{3} = -\alpha_{2}\\\end{aligned}$$</p>
+<p>We note that this system of equations clearly cuts out a
+$6$-dimensional space of solutions in the vector space
+$\k\langle \alpha_{1}, \beta_{1}, \alpha_{2}, \beta_{2}, \alpha_{3},
+\beta_{3}, \gamma_{1}, \gamma_{2}, \gamma_{3}, \delta_{1}, \delta_{2},
+\delta_{3} \rangle$ &ndash; indeed, we may freely choose
+$\gamma_{1}, \gamma_{2}, \gamma_{3}, \delta_{1}, \delta_{2},
+\delta_{3} $, after which the $\alpha$ and $\beta$ variables are
+uniquely determined, concluding the proof.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; Tag ACA6 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/tag/ACA6.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>

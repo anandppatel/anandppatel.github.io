@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.4. Thirteen point conditions &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.4. Thirteen point conditions</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.4. Thirteen point conditions</h1>
+<p class="stacks-para">From here on, let $\Gamma_{13} = \{p_{1}, \dots, p_{13}\}$ be 13 general points in
+$\P^{2}$, and set $$\Theta := \bigcap \limits_{i=1, \dots, 13} \Dom(p_i).$$
+Our next major objective is Theorem&nbsp;4.25, which states that $\Theta$ is indeed the set we must enumerate. The strategy is of course to argue that certain possible and undesirable types of points do not occur in the intersection.  We first deal with possibilities inside the open set $\Fin$ using dimension counts in  Lemma&nbsp;4.13, and Lemma&nbsp;4.14. Then we deal with undesirable possibilities inside $\Inf$ &ndash; this is more difficult, occupying Lemma&nbsp;4.16, Proposition&nbsp;4.17,  Proposition&nbsp;4.18, and Proposition&nbsp;4.19.  Proposition&nbsp;4.19 in particular uses a limit-linear series argument.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Finite base schemes</h3></p>
+<div class="stacks-lemma" id="lemma-finite">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.13.</strong> <a href="../tag/73C7.html" class="stacks-tag-link">(73C7)</a></div>
+  <div class="stacks-env-body"><p>Every point
+  $(T, T^{*}, \Lambda) \in \Theta \cap \Fin$ satisfies:
+  $(T,T^{*},\Lambda) \notin \Inc(p_{i})$ and
+  $(T,T^{*},\Lambda) \notin \Lin(p_{i})$ for all
+  $p_{i} \in \Gamma_{13}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>This follows from combining a dimension count with the condition
+  that $\Gamma_{13}$ is a general set. We only prove the $\Inc$
+  statement &ndash; the other case proceeds mutatis mutandis.</p>
+<p>  Without losing generality, we need only prove the statement
+  $(T,T^{*},\Lambda) \notin \Inc(p_{1})$.  As $\Dom(p_1)$ is
+  irreducible and $24$-dimensional,
+  $$\dim \Dom(p_1) \cap \Inc(p_1)  \leq 23.$$ And so, the locally closed
+  set $U := \Dom(p_1) \cap \Inc(p_1) \cap \Fin$ is at most $23$-dimensional.</p>
+<p>  Every $(T,T^{*},\Lambda) \in U$ determines the $0$-dimensional, length
+  $25$ scheme $\Base(\Lambda) \subset \P^{2}$. Let
+  $$U' \subset U \times (\P^{2})^{12}$$ denote the set
+  parametrizing quadruples $(T,T^{*},\Lambda,W)$ where
+  $(T,T^{*},\Lambda) \in U$ and where $W = (w_1, \dots, w_{12})$ is a
+  $12$-tuple of points in $\P^{2}$ satisfying $w_i \in \Base(\Lambda)$
+  for all $i$. Then the forgetful map $U' \to U$ is quasi-finite, and
+  hence $$\dim U' \leq 23.$$</p>
+<p>  The map $U' \to (\P^{2})^{12}$ defined by
+  $(T,T^{*}, \Lambda, W) \mapsto W$ therefore cannot dominate
+  $(\P^{2})^{12}$, and hence the set of $13$ \text{general} points
+  $\{p_1, \dots, p_{13}\}$ cannot be contained in $\Base(\Lambda)$ for
+  $(T,T^{*},\Lambda) \in \bigcap_{i=1}^{13}\Dom(p_{i}) \cap
+  \Inc(p_{1}) \cap \Fin$, implying the lemma.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-finitehonest">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.14.</strong> <a href="../tag/228E.html" class="stacks-tag-link">(228E)</a></div>
+  <div class="stacks-env-body"><p>Let $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. Then $T$ is an honest
+  triangle, and $T \cap \Gamma_{13} = \varnothing$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>The statement ``$T \cap \Gamma_{13} = \varnothing$" follows
+  immediately from Lemma&nbsp;4.13, so we will assume it and
+  show that $T$ is an honest triangle.</p>
+<p>  Pick $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. As $\Base(\Lambda)$ is
+  finite, it follows that $T \notin \Thin$ (as otherwise $\Base(\Lambda)$
+  contains the line spanned by $T$). Therefore, we need only show that $T$ is reduced.</p>
+<p>  As in the proof of Lemma&nbsp;4.13, we perform a
+  dimension count.  The locus $V \subset \Fin$ consisting of triples
+  $(T,T^{*},\Lambda)$ where $T$ is non-reduced is a Cartier
+  divisor. And so, $\dim V = 25$. Let
+  $$V' \subset V \times (\P^{2})^{13}$$ denote the scheme
+  parametrizing quadruples $(T,T^{*},\Lambda, W)$, where
+  $(T,T^{*},\Lambda) \in V$ and $W = (w_1, \dots, w_{13})$ is a 
+  $13$-tuple of points satisfying $w_{i} \in \Base(\Lambda)$ for all
+  $i$. Since the forgetful map $V' \to V$ is quasi-finite, it follows
+  that $\dim V' = 25$. Therefore the second projection
+  $V' \to (\P^{2})^{13}$ cannot be dominant, and in particular cannot
+  contain the general tuple $(p_1,\dots, p_{13})$ in its image, implying the lemma.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Dealing with infinite base schemes</h3></p>
+<p class="stacks-para">We now take on the challenge of showing emptiness of $\Theta \cap \Inf$.</p>
+<div class="stacks-definition" id="definition-1dpart">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.15.</strong> <a href="../tag/21E9.html" class="stacks-tag-link">(21E9)</a></div>
+  <div class="stacks-env-body"><p><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
+    a pencil of degree $d$ curves, with base scheme $\Base(\Lambda)$, we
+    define the <strong>fixed curve</strong> of $\Base(\Lambda)$ to be the Cartier
+    divisor on $\P^{2}$ defined by the greatest common factor of any two
+    general elements of $\Lambda$.</li>
+<li>If the fixed curve of $\Lambda$ has
+    degree $e$, we define the <strong>moving part</strong> of $\Lambda$, denoted $\Lambda'$, to be the
+    pencil of degree $d-e$ curves obtained by dividing the equations of
+    the members of $\Lambda$ by the equation of the fixed curve.</li>
+<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then a <strong>fixed point</strong> of $\Lambda$ will mean a point in $C \setminus \Base(\Lambda')$.</li>
+<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>isolated point</strong> of $\Lambda$ will mean a point in $\Base(\Lambda') \setminus C$.</li>
+<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol></p></div>
+</div>
+<div class="stacks-lemma" id="lemma-QLNo">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.16.</strong> <a href="../tag/3211.html" class="stacks-tag-link">(3211)</a></div>
+  <div class="stacks-env-body"><p>Suppose $\Lambda$ is a pencil of quintic curves whose fixed curve is a quartic $Q$.
+    Suppose furthermore that $\Lambda$ satisfies one of the following: 
+    <ol><li><strong>(a)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of at most two points, each a node,</li>
+<li><strong>(b)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of a single ordinary cusp,</li>
+<li><strong>(c)</strong> $\Base(\Lambda)$ has one embedded point at a smooth point of $Q$ while $\Sing Q$ has at most one singular point which is a node,</li>
+<li><strong>(d)</strong> $\Sing Q$ consists of a single node and this node is the embedded point of $\Base(\Lambda)$.</li></ol></p>
+<p>    Then $\Base (\Lambda)$ does not contain any subscheme of the form $\s(T,T^{*})$ for any $(T,T^{*}) \in \CT$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>The moving part $\Lambda'$ of $\Lambda$ is a pencil of lines; we let $b \in \P^{2}$ denote the base point $\Lambda'$.  Then, $\Base (\Lambda)$ contains an embedded point if and only if $b \in Q$, in which case $b$ is the sole embedded point. Before taking each case up in turn, observe that as $\s(T,T^{*})$ has $2$-dimensional Zariski tangent space at each of its points, if $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ must be supported on the singular points of $Q$ or on the embedded point of $\Base(\Lambda)$, if it exists (or both).
+    <ol><li><strong>(a)</strong> In this scenario, one of the two nodes, call it $n \in Q$, must support a length $\geq 2$ connected component $T_{n} \subset T$ of $T$. </p>
+<p>        If $T_{n}$ has length $2$, then in affine coordinates $(x,y)$ around $n$ the ideal $\I_{T_{n}}$ is $(y,x^{2})$ and so the ideal $\I_{\s(T,T^{*})}$ is given by $(y^{2},yx^{2},x^{4})$.  The ideal $\I_{\s(T,T^{*})}$ does not contain an element with non-degenerate quadratic part, and so $Q$'s local equation cannot be contained it, eliminating this case.  </p>
+<p>        If $T_{n}$ has length $3$ and is curvilinear, then in suitable \text{analytic} local coordinates $(u,v)$ around $n$, the ideal $\I_{T_{n}}$ can be taken to be $(u,v^{3})$, and so $\I_{\s(T,T^{*})} = (u^{2},uv^{3},v^{6})$.  Once again, an analytic local equation for $Q$ cannot  be contained in $\I_{\s(T,T^{*})}$ because it would have a non-degenerate quadratic term. </p>
+<p>        Finally, if $T_{n}$ is a fat point, then $\s(T,T^{*})$ (for any $T^{*}$) is contained in the cube of the maximal ideal $\m \subset \O_{\P^{2},n}$, while $Q$'s local equation lies in $\m^{2} \setminus \m^{3}$.  And so in all possible scenarios, $Q$'s local equation cannot be contained in $\I_{\s(T,T^{*})}$, which is what we needed to show.</li>
+<li><strong>(b)</strong> Let $c \in Q$ denote the cusp. If $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ is entirely supported on $c$, and hence $T$ is either fat or curvilinear. </p>
+<p>        If $T$ is a fat point, then $\I_{\s(T,T^{*})}$ is contained in the cube of the maximal ideal $\m \subset \O_{\P^{2},c}$, yet $Q$'s local equation is contained in $\m^{2} \setminus \m^{3}$ (a cusp is a double point) &ndash; so the fat possibility is eliminated. </p>
+<p>        If $T$ is curvilinear, then in suitable analytic local coordinates $(u,v)$ around $c$, we have $\I_{T} = (u,v^{3})$ and so $\I_{\s(T,T^{*})} = (u^{2},uv^{3},v^{6})$. Suppose $g(u,v)$ is an analytic local equation for $Q$. If $g \in \I_{\s(T,T^{*})}$ then, because a cusp is a double point, after scaling by an element in $\k^{\times}$ we must have $$g = u^{2} + h_1(u,v) \cdot u^{2} + h_2(u,v) \cdot uv^{3} + h_{3}(u,v) \cdot v^{6},$$ where the $h_{i}$ are power series and where $h_{1}$ has no constant term.  Now observe that there are no power series $$u(t),v(t) \in \k \llbracket t \rrbracket$$ with vanishing constant terms such that $$\ord g(u(t),v(t)) = 3,$$ a necessary condition for the germ $g$ to define a cusp. (Here the order $\ord$ of a power series with variable $t$ is the degree of the first non-zero term.) Thus the germ of a defining equation of $Q$ at $c$ cannot be contained in $\I_{\s(T,T^{*})}$, eliminating this curvilinear possibility.</li>
+<li><strong>(c)</strong> Hypothetically, if  $\s(T,T^{*}) \subset \Base (\Lambda)$ then our first claim is that $T$ must be entirely supported on the embedded point $b \in Q$:  Let $n \in Q$ be the node of $Q$ if it exists. By what is written immediately prior to the proof of part (a),  $T$ is supported somewhere in the set $\{b,n\}$. Let $T_{b}, T_{n}$ denote the connected components of $T$ supported on the respective points.  If $\length T_{n} \geq 2$, we argue as in part (a) to conclude that $\I_{\s(T,T^{*})}$ cannot contain a defining equation for $Q$.  If $\length T_{b} = 2$, then in local coordinates $(x,y)$ near $b$ the ideal $\I_{\s(T,T^{*})}$ is $(x^{2},xy^{2},y^{4})$. If  $f$ is a local defining equation of $Q$ near $b$, then the local ideal of $\Base (\Lambda)$ is given by $$\mathcal{J} := (xf,yf).$$  This ideal $\mathcal{J}$ has two linearly independent quadratic elements, modulo $(x,y)^{3}$, while $\I_{\s(T,T^{*})}$ does not.  Thus $\s(T,T^{*}) \nsubset \Base (\Lambda)$ in this case. </p>
+<p>        Therefore, we may assume that $T$ is entirely supported at the point $b$.  There are now two cases to investigate: either $T$ is a fat point, or $T$ is curvilinear. </p>
+<p>        In the fat case, $\I_{\s(T,T^*)}$ is contained in the cube of the maximal ideal $\m = (x,y) \subset \O_{\P^{2},b}$, while the two generators of $\mathcal{J}$ are not ($Q$ is smooth at $b$). So $\s(T,T^{*}) \not\subset \Base(\Lambda)$ in this case. </p>
+<p>        On the other hand, if $T$ is curvilinear a calculation as in the proof of part (b) implies that, modulo $\m^{3}$, $\I_{\s(T,T^{*})} \cap \m^{2}$ consists of a single quadratic form on $(\m/\m^{2})^{\vee}$ up to scaling. However, $\mathcal{J} \cap \m^{2}$ has two linearly independent quadratic forms modulo $\m^{3}$, and thus again $\s(T,T^{*}) \not\subset \Base (\Lambda)$. So our hypothetical situation is impossible, as we needed to show.</li>
+<li><strong>(d)</strong> Let $n \in Q$ denote the node, let $x,y \in \O_{\P^{2},n}$ be local affine coordinates of $\P^{2}$ near $n$, and let $f(x,y) \in \O_{\P^{2},n}$ denote a local defining equation of $Q$.  If, hypothetically, $\s(T,T^{*}) \subset \Base (\Lambda)$, then $T$ must be entirely supported at $n$.  As in the proof of part (c), we consider the two possibilities: $T$ is either a fat point or is curvilinear with length $3$.  If $T$ is fat, then $\I_{\s(T,T^{*})}$ is contained in $\m^{3}$, where $\m = (x,y)$ is the maximal ideal. Furthermore, $\I_{\s(T,T^{*})}$ contains exactly one element (up to scale) in $\m^{3}$, modulo $\m^{4}$. However, the ideal $\mathcal{J} := (xf,yf)$ contains two $\k$-linearly independent such elements. Thus, $T$ cannot be fat.  </p>
+<p>        If $T$ is curvilinear we observe that, modulo $\m^{4}$, the elements of $\I_{\s(T,T^{*})} \cap \m^{3}$ are binary cubic forms (on $(\m/\m^{2})^{\vee}$) all sharing a common factor which is a perfect square. This can be checked after passing to (any) analytic local coordinates $(u,v)$ &ndash; we can choose convenient coordinates where $\I_{T} = (u,v^{3})$ and so $\I_{\s(T,T^{*})} = (u^2, uv^3,v^6)$.  Indeed, modulo $(u,v)^4$ all elements in $\I_{\s(t,T^{*})} \cap (u,v)^{3}$  are multiples of $u^{2}$.  This property of having a perfect square common factor is not shared by the ideal $\mathcal{J}$, and hence $\s(T,T^*) \not\subset \Base (\Lambda)$, eliminating this curvilinear possibility.</li></ol></p></div>
+</div>
+<div class="stacks-lemma" id="proposition-infline">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.17.</strong> <a href="../tag/E8B4.html" class="stacks-tag-link">(E8B4)</a></div>
+  <div class="stacks-env-body"><p>If $(T,T^{*},\Lambda)$  is an element of $\Theta \cap \Inf$ then
+  the fixed curve of $\Base(\Lambda)$ consists of a reduced
+  line.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>We proceed by considering one by one the possible degrees of the
+  fixed curve $C \subset \Base(\Lambda)$. Each case is resolved by the tension between 
+  generality of $\Gamma_{13} = \{p_1, \dots, p_{13}\}$ (which by assumption is contained in $\Base(\Lambda)$) on the one hand, and the number of points in the intersection $\Gamma_{13} \cap C$ on the other. For ease of reading, let $\Gamma_{C} := \Gamma_{13} \cap C$.</p>
+<p><ol><li>\text{Assuming $\deg (C) = 4$},  the moving part of $\Lambda$ is a pencil of
+  lines. Furthermore, $C$ must be reduced, as at most $5$ of the
+  points of $\Gamma_{13}$ can lie on a conic. There are
+  two possibilities for the number $\# \Gamma_{C}$: either $12$ or $13$, depending on whether the basepoint of $\Lambda'$ is in $\Gamma_{13}$ or not. Suppose first that $\# \Gamma_{C} = 13$. The unique, general, pencil of quartics
+  determined by $\Gamma_{C}$ has finitely many singular members, each
+  with a <em>single</em> node located away from
+  $\Gamma_{C} = \Gamma_{13}$. However, this prevents any length $9$
+  scheme of the form $\s(T,T^{*})$ from being contained in $\Base(\Lambda)$, by parts (a), (c) and (d) of Lemma&nbsp;4.16.  </p>
+<p>  If
+  $\# \Gamma_{C} = 12$, the argument is similar: the net of quartics
+  determined by $\Gamma_{C}$ has singular members of only three types:
+  (1) a nodal curve with a unique node, (2) a curve with exactly two
+  nodes for singularities, and (3) a curve with a unique ordinary cusp.  Accordingly, $C$ is either smooth or has qualities (1), (2), or (3) just listed.  </p>
+<p>  The thirteenth point not contained in $C$ must be the unique 
+  basepoint of the moving part of $\Lambda$. So, by virtue of tangent space considerations, the only way
+  for the length $9$ scheme $\s(T,T^{*})$ to be contained in
+  $\Base(\Lambda)$ is if $\s(T,T^{*}) \subset C$. However, this is precluded by parts (a) and (b) of Lemma&nbsp;4.16.</li>
+<li>\text{Assuming $\deg (C) = 3$}, the moving part $\Lambda'$ of $\Lambda$ is a pencil of
+  conics. As before, $C$ must be reduced, as $\Lambda'$ has at
+  most $4$ of the points of $\Gamma_{13}$ in its base scheme, and so  the remaining points of $\Gamma_{13}$ cannot be contained in a line.
+  In fact, this type of reasoning shows there is only one <em>a priori</em>
+  possibility: $\# \Gamma_{C} = 9$ and $C$ is the unique (smooth)
+  cubic curve determined by $\Gamma_{C}$. The moving part $\Lambda'$ of $\Lambda$ is then a
+  pencil of conics with base-scheme consisting of the four points 
+  $\Gamma_{13} \setminus \Gamma_{C}$. The pencil $\Lambda$ 
+  does not contain a subscheme of the form $\s(T,T^{*})$ in its base
+  scheme $\Base(\Lambda)$ again by tangent space considerations, because $\Base(\Lambda)$ is the union of the smooth curve $C$ and the four reduced points $\Gamma_{13} \setminus \Gamma_{C}$.</li>
+<li>\text{Assuming $\deg (C) = 2$}, then once again $C$ must be reduced as is seen by
+  an argument similar to that found in the previous paragraph.  There
+  are only two <em>a priori</em> possibilities for $\# \Gamma_{C}$:
+  $\# \Gamma_{C} = 4$ or $5$. Now, $\# \Gamma_{C}$ cannot be $4$,
+  because then the moving part of $\Lambda$, a pencil of cubics, must
+  contain all $9$ of the points $\Gamma_{13} \setminus \Gamma_{C}$ in
+  its base scheme, contrary to the general nature of $\Gamma_{13}$.
+  Thus $\# \Gamma_{C} = 5$ and $C$ is the unique smooth conic
+  determined by $\Gamma_{C}$.  The remaining $8$ points of
+  $\Gamma_{13} \setminus \Gamma_{C}$ define a general pencil of
+  cubics, and this pencil of cubics is then the moving part $\Lambda'$ of $\Lambda$. $\Lambda'$ has
+  a $9$-th basepoint not contained in $C$ (again because $\Gamma_{13}$ is
+  general). Thus $\Base(\Lambda)$ is the smooth scheme consisting of
+  the smooth conic $C$ and $9$ reduced points not contained in $C$. This base
+  scheme evidently does not contain any subscheme of the form
+  $\s(T,T^{*})$, again by tangent space considerations.</li></ol>
+  We've finished the analysis of all cases, and the proposition
+  follows.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-Movesingular">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.18.</strong> <a href="../tag/1347.html" class="stacks-tag-link">(1347)</a></div>
+  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda) \in \Theta \cap \Inf$.  Then the moving part $\Lambda'$ of $\Lambda$ is a pencil of quartics whose general member is a smooth quartic curve.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>We argue by counting dimensions, keeping in mind that $\Gamma_{13} = (p_1, \dots, p_{13})$ is a general tuple. $\Lambda'$ must necessarily be a pencil of quartics thanks to Proposition&nbsp;4.17.</p>
+<p>Let $W$ denote the quasi-projective variety parametrizing pairs $(L,\Pi)$ where $L$ is a line in $\P^{2}$ and $\Pi$ is a pencil of quartics all sharing a singular point, and such that $\Base(\Pi)$ is finite. Such $\Pi$'s vary in a $22$-dimensional family, while a choice of $L$ provides $2$ more dimensions, and so $\dim W = 24$. </p>
+<p>For contradiction's sake, suppose $(T,T^{*},\Lambda) \in \Theta \cap \Inf$ is such that $\Base(\Lambda)$ has a line $L$ as fixed part and such that $\Pi := \Lambda'$, the moving part of $\Lambda$, satisfies $(L,\Pi) \in W$. By assumption, $\Gamma_{13}$ is contained in $\Base(\Lambda)$, and at most $2$ of the points of $\Gamma_{13}$ may lie on $L$ by generality of $\Gamma_{13}$.  On the other hand, at most $11$ of the points of $\Gamma_{13}$ may lie in the (finite) set $\Base(\Pi)$ because $\Pi$ varies in a $22$-dimensional family. Therefore, <em>exactly</em> $2$ points of $\Gamma_{13}$ must lie on $L$ and the remaining $11$ points of $\Gamma_{13}$ must lie inside $\Base(\Pi)$.  Furthermore, dimension considerations force $(L,\Pi)$ to be a general point of $W$. </p>
+<p>The contradiction will come from the fact that the base scheme $\Base (\Lambda)$ is the disjoint union of $L$ (without embedded points) and $\Base(\Pi)$. This is true because $(L,\Pi) \in W$ is general, and so  $\Base(\Pi)$ consists of one point of multiplicity $4$ along with $12$ other reduced points, none lying on $L$.  It is impossible for any scheme of the form $\s(T,T^{*})$ (which is everywhere non-reduced, has $2$-dimensional tangent space at all points, and has total length $9$) to be contained in $\Base(\Lambda) = L \cup \Base(\Pi)$, providing our contradiction.</p></div>
+</div>
+<p class="stacks-para">The next proposition is needed to remove an <em>a priori</em> possible situation in $\Theta \cap \Inf$.</p>
+<div class="stacks-lemma" id="proposition-LinDom">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.19.</strong> <a href="../tag/E014.html" class="stacks-tag-link">(E014)</a></div>
+  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda)$ is an element of  $\Dom(p) \cap \Lin(p)$ satisfying:
+<ol><li>The fixed part of $\Lambda$ is the line $L$ spanned by $T$, and</li>
+<li>$p \notin T$.</li></ol>
+Then the moving part $\Lambda'$ of $\Lambda$ satisfies $$\length \left(\Base(\Lambda') \cap L\right) = 4.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p class="stacks-para">The proof uses a limit linear series style argument.  First observe that since the fixed part of $\Lambda$ is the reduced line $L$, the moving part $\Lambda'$ is a pencil of quartics and the length of $\Base(\Lambda')\cap L$ cannot exceed $4$.   We will approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family contained in $\Dom(p)$.</p>
+<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying: 
+    <ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
+<li><strong>(b)</strong> The $b \to 0$ flat limit of $\mathcal{T}_{b}$, denoted $\mathcal{T}_{0}$, is thin. We let $L \subset \P^{2}_{b=0}$ denote the line containing $\mathcal{T}_{0}$.  ($\mathcal{T}_{0}$ is simply $T$ from the statement of the lemma, but we use calligraphic font for consistency in the following paragraphs.)</li>
+<li><strong>(c)</strong> $\mathcal{T}_{0}$ does not contain the point $p$. (This is the second assumption in the proposition.)</li>
+<li><strong>(d)</strong> The line $L$ contains $p$.</li>
+<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol></p>
+<p class="stacks-para">If $b \neq 0$, then the vector space $$V_{b} := H^{0}\left(\P^{2}_{b}, \I^{2}_{\mathcal{T}_{b}}\I_{p}(5)\right)$$ is $11$-dimensional because $\mathcal{T}_{b}$ and $p$ are in linear general position. Yet, when $b=0$, the vector space $V_{0}$ has dimension $12$.  Indeed, a quintic curve in $\P^{2}_{0}$ passing through $p$ and singular along $\mathcal{T}_{0}$ necessarily contains the line $L$ as an irreducible component and secondly its residual quartic curve $Q$ must contain $\mathcal{T}_{0}$.  The equations of such quartic curves form a $12$-dimensional vector space. Still, as $B$ is a smooth curve, the $b \to 0$ limit of $V_{b}$ is a well-defined $11$-dimensional vector space inside $V_{0}$ &ndash; the following claim is equivalent to the conclusion of the proposition:</p>
+<div class="stacks-env" id="claim-quinticforms">
+  <div class="stacks-env-head"><strong>Claim&nbsp;4.20.</strong> <a href="../tag/45DE.html" class="stacks-tag-link">(45DE)</a></div>
+  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{\begin{array}{c} Quintic forms which are a product\\ $L \cdot Q$ where $Q$ is a quartic\\ containing the divisor $\mathcal{T}_{0} + q$ on $L$\end{array}\right\}.$$</p></div>
+</div>
+<p class="stacks-para">Going forward we focus on Claim&nbsp;4.20.  We blow up $\P^{2}_{B}$  along the line $L \subset \P^{2}_{b=0}$. Let $$\widetilde{\P^{2}_{B}}$$ denote the blow up $\Bl_{L} \P^{2}_{B},$ and denote by $$\beta: \widetilde{\P^{2}_{B}} \to \P^{2}_{B}$$ the blowdown map.  The structural morphism $\pi: \widetilde{\P^{2}_{B}} \to B$ has fiber over $b \neq 0$ simply equal to $\P^{2}_{b}$, while the fiber $\pi^{-1}(\{0\})$ is the transverse union of two smooth surfaces: the exceptional divisor of $\beta$, denoted $E$,  and the proper transform of $\P^{2}_{0} \subset \P^{2}_{B}$ in the blow up, denoted $P$. $P$ maps isomorphically onto $\P^{2}_{0}$ under $\beta$.</p>
+<p class="stacks-para">The current geometric circumstance has certain features we want to emphasize:
+\begin{itemize}
+\item $\beta$ expresses $E$ as a $\P^{1}$-bundle over $L$. As such, $E$ is isomorphic to the Hirzebruch surface $\mathbb{F}_{1}$, with the intersection $E \cap P$ being the directrix curve which we denote by $D \subset E$. We let $F$ denote the divisor class of a fiber of the bundle $\beta|_{E}: E \to L$.</p>
+<p class="stacks-para">\item Since $L \cap \mathcal{T} = \mathcal{T}_{0} = \mathcal{T} \cap \P^{2}_{0}$ is a Cartier divisor on $\mathcal{T}$, it follows that $\mathcal{T}$ lifts isomorphically to $\widetilde{\P^{2}_{B}}$.  Let $\widetilde{\mathcal{T}} \subset \widetilde{\P^{2}_{B}}$ denote this lift, which is unique. (We've used here the assumption that $\mathcal{T}_{0}$ is thin.)</p>
+<p class="stacks-para">\item $E \cap \widetilde{\mathcal{T}} = \widetilde{\mathcal{T}}_{0}$. Furthermore, $\widetilde{\mathcal{T}} \cap P = \varnothing$ because the sections $t_{i}$ comprising $\mathcal{T}$, by virtue of being sections, are not tangent to $\P^{2}_{0}$ from the start.</p>
+<p class="stacks-para">\item Under $\beta$, the proper transform of the constant section $\{p\} \times B \subset \P^{2}_{B}$ becomes a section of $\pi$ which intersects $E$ at a point $\widetilde{p} \in E$ not on the directrix $D \subset E$.</p>
+<p class="stacks-para">\item Clearly $\beta(\widetilde{p}) \notin \mathcal{T}_{0}$ because $p \notin \mathcal{T}_{0}$. And therefore $\widetilde{p} \notin \widetilde{\mathcal{T}}_{0}$.</p>
+<p class="stacks-para">\item Define $\mathcal{L}$ to be the invertible sheaf $\beta^{*}\O(5)(-E)$ on $\widetilde{\P_{B}^{2}}$. Then $\mathcal{L}|_{P} \simeq \O_{P}(4)$ and $\mathcal{L}|_{E} \simeq \O_{E}(D+5F)$.
+\end{itemize}</p>
+<p class="stacks-para">Now we consider the finite, length 4 subscheme $Z := \widetilde{p} \cup \widetilde{\mathcal{T}}_{0} \subset E$.  On $E$, the term <em>line</em> refers to any \text{irreducible} curve in the linear series $|D+F|$ on $E$.  In particular, lines do not intersect the directrix $D$.</p>
+<div class="stacks-lemma" id="lemma-D2F">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.21.</strong> <a href="../tag/5DB5.html" class="stacks-tag-link">(5DB5)</a></div>
+  <div class="stacks-env-body"><p>Maintain the setting immediately prior. Then $$h^{0}(E,\I_{Z}(D+2F)) \geq 1$$ and $h^{0}(E,\I_{Z}(D+2F)) > 1$ if and only if $Z$ is contained in a line, in which case $h^{0}(E,\I_{Z}(D+2F)) = 2$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of Lemma&nbsp;4.21.</em></div>
+  <div class="stacks-env-body"><p>This follows easily after translating the statement into a claim about length 5 subschemes in the plane imposing independent conditions on conics.  To get to this translation, simply blow down the Hirzebruch surface $E$ to a plane, contracting $D$.  We omit the details.</p></div>
+</div>
+<p class="stacks-para">At this point, for clarity of exposition, we make the following simplifying assumption:</p>
+<div class="stacks-env" id="assumption-Noline">
+  <div class="stacks-env-head"><strong>Assumption&nbsp;4.22.</strong> <a href="../tag/4E6D.html" class="stacks-tag-link">(4E6D)</a></div>
+  <div class="stacks-env-body"><p>Assume that $Z \subset E$ is <strong>not</strong> contained in a line.</p></div>
+</div>
+<p class="stacks-para">Operating under this assumption, we can finish the argument. On the reducible surface $P \cup E$, the global sections of 
+$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of
+<ul><li>A global section $Q$ of $\O_{P}(4)$, and</li>
+<li>a global section of $\O_{E}(D+5F)$ which, if nonzero, defines a reducible divisor of the form $$\beta^{-1}(\mathcal{T}_{0}) \cup C$$ where $C$ is the unique curve in the linear series $|\I_{Z}(D+2F)|$ (Lemma&nbsp;4.21)</li></ul>
+satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying Assumption&nbsp;4.22, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
+<p class="stacks-para">Finally, we will explain how to finish the proof of Proposition&nbsp;4.19 in the case where Assumption&nbsp;4.22 does not hold. Suppose $Z \subset E$ is contained in a line, and call the line $L_1 \subset E$.  We then blow up the threefold $\widetilde{\P}^{2}_{B}$ along $L_1$.  Once again, $\widetilde{\mathcal{T}}$ will lift to the new blow up, as will the section which for general $b \in B$ selects the point $p$. Blowing up more and more in a similar fashion if necessary, after finitely many blow ups the strict transform of $\mathcal{T}$ and $\{p\} \times B$ are no longer collinear over $b=0$.  Then, we proceed as we did under the simplifying assumption, except now the special fiber is a chain of surfaces $E_0 \cup E_{1} \cup \dots \cup P$, the $E_{i}$'s being $\mathbb{F}_{1}$'s, glued one to the next along directrices on one side and lines on the other.  Then the line bundle $\beta^{*}\O(5)(-E_{0}-E_{1}-\dots E_{k})$ serves the same role as $\mathcal{L}$ did in the simplified situation, and the argument runs parallel to the simple case.</p>
+</div>
+</div>
+<div class="stacks-commentary" id="remark-splitline">
+  <div class="stacks-env-head"><strong>Remark&nbsp;4.23.</strong> <a href="../tag/AB0B.html" class="stacks-tag-link">(AB0B)</a></div>
+  <div class="stacks-env-body"><p>The conclusion of Proposition&nbsp;4.19 implies in particular that the pencil $\Lambda$ contains an element which is the union of the doubled line $2L$ with a cubic curve.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-ThetaInf">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.24.</strong> <a href="../tag/CB63.html" class="stacks-tag-link">(CB63)</a></div>
+  <div class="stacks-env-body"><p>Recall the set $\Theta$ from Section&nbsp;4.4. Then $\Theta \cap \Inf = \varnothing.$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>Suppose for contradiction's sake that $(T,T^{*},\Lambda) \in \Theta \cap \Inf$. By Proposition&nbsp;4.18, $\Lambda$ is a pencil of the form $\left\{L \cdot Q_{t}\right\}, t\in \P^{1}$, where $L$ is a linear form (defining a line of the same name) and where $Q_{t}$ is a pencil of quartics \text{with smooth general member}.  Considering tangent space dimensions, the condition $\s(T,T^{*}) \subset \Base (\Lambda)$ implies that $T$ is supported entirely on the set of embedded points $L \cap \Base \{Q_{t}\}$. </p>
+<p>    The first claim we make is that $T$ must in fact be a subscheme of $L$.  This is seen by checking all alternative possibilities &ndash; we will investigate the most challenging case, and leave the rest to the reader.  Let $x,y$ denote affine coordinates, and consider the situation where  $T = V(x-y^{2},y^{3})$ and $L = V(x)$. We claim that if $x \cdot q(x,y) \in (x-y^{2},y^{3})^{2}$ then the constant and linear terms of $q(x,y)$ must both vanish.  It is clear that $q$ cannot have a constant term. To prove that $q$  has no linear term, it suffices to prove the same after applying the automorphism $x \mapsto x+y^{2},  y \mapsto y$.  Thus, we must show that if $$(x+y^{2}) \cdot h(x,y) \in (x^{2},xy^{3},y^{6})$$ then $h$ has no linear term. Let $h_{1},h_{2}, \dots$ be the linear, quadratic, etc... terms of $h$, so that $h = h_1 + h_2 + \dots$  First, by noting that the $y^{3}$-term of $(x+y^{2}) \cdot h$ must vanish, we conclude that $h_{1}$ must be a multiple of $x$. Write   $h_{1}=\lambda x$ for some $\lambda \in \k$.  Next, looking at the $xy^{2}$-term  we see that the $y^{2}$-term of $h_{2}$ must be $-\lambda y^{2}$.  Finally, by considering the $y^{4}$-term we also conclude that the $y^{2}$-term of $h_{2}$ must be $0$.  Thus $\lambda = 0$ and, as claimed, $h_{1}=0$.  The conclusion is that such a $T$ is eliminated from consideration from the case-by-case analysis because it would contradict the requirement that the general element of the pencil $Q_{t}$ is a \text{smooth} quartic.  The remaining cases proceed in a similar fashion.</p>
+<p>    We therefore assume $T \subset L$.  From the containment $\s(T,T^{*}) \subset \Base \{L \cdot Q_{t}\}$, it follows that $$T \subset \Base \{Q_{t}\}.$$ Now we bring in the assumption that the 13 \text{general} points $p_{1} , \dots, p_{13}$ are contained in $\Base \Lambda$.  Not all $p_{i}$ can be contained in $\Base \{Q_{t}\}$.  Indeed, $Q_t$ would then be uniquely determined and a general pencil.  But it is not general: $\{Q_{t}\}$ contains a thin length $3$ scheme (namely $T$) in its base scheme.  It follows that at least one point, say $p_{13}$ is contained in $L \setminus \Base \{Q_{t}\}.$  Therefore, $(T,T^{*},\Lambda) \in \Dom(p_{13}) \cap \Lin(p_{13})$, and Proposition&nbsp;4.19 applies.  Remark&nbsp;4.23 then says there is an element of the pencil $\{Q_{t}\}$ of the form $L \cdot C$ where $C$ is a cubic form.  However, then at least 11 of the remaining 12 points $p_{1}, \dots, p_{12}$ are contained in the cubic defined by $C$, contradicting generality of $\{p_{1}, \dots, p_{13}\}$.  The proposition follows.</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-solutionset">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.25.</strong> <a href="../tag/2247.html" class="stacks-tag-link">(2247)</a></div>
+  <div class="stacks-env-body"><p>Let $p_1, \dots, p_{13}$
+  be 13 general points in $\P^{2}$, and let $\Theta$ be as in Section&nbsp;4.4. Then   $$\Theta = \left\{ \begin{array}{c}
+         $(T,T^{*}) \in\CT$ such that\\  $T$ is a singular triad  \\
+         for $p_{1}, \dots, p_{13}$
+    \end{array} \right\}.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>It is clear that the mentioned set of singular triads is contained in $\Theta$ &ndash; the content of the theorem lies in the  reverse inclusion.  Proposition&nbsp;4.24 gives the inclusion $\Theta \subset \Fin$. Then the theorem immediately follows from Lemma&nbsp;4.14 and B&eacute;zout's theorem.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.4. Thirteen point conditions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S4.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>

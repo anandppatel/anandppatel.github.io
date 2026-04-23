@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -84,18 +78,22 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 7: Sage code</span></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 7. Sage code</h1>
-<p class="stacks-para">We provide the sage code used to compute $\nu_{3,2}$, as well as several checks. One thing to note is that we plug in specific values for $a,b,c$ into the equivariant expressions arising in the Atiyah-Bott localization formula. These are secretly constant, so the reader can verify that by changing the inputs of $a,b,c$, the calculations do not change.</p>
+<p class="stacks-para">We provide the sage code we used to compute the number $\nu_{3,2}$, as well as several checks we performed to acquire confidence that there are no mistakes in the computation of weights of relevant bundles at fixed points. One thing to note is that we plug in specific values for $a,b,c$ into the equivariant expressions arising in the Atiyah-Bott localization formula. These are secretly constant, so the reader can verify that by changing the inputs of $a,b,c$, the various calculations below do not change. This is a further check on the integrity of the calculations.</p>
 <pre class="stacks-code"><code>var(&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;)
 
   def symmetrize(p):
       return p(a=a,b=b,c=c) + p(a=a,b=c,c=b) + p(a=b,b=a,c=c) + p(a=b,b=c,c=a) + p(a=c,b=a,c=b) + p(a=c,b=b,c=a)
-
+  
   # The ith elementary symmetric polynomial
   def sigma(i, L):
       ind = Set(range(0,len(L)))
+      
       return sum([ prod([L[x] for x in S]) for S in ind.subsets(i) ])
-
+  
   # BUNDLE WEIGHTS AT FIXED POINTS:
+  # The first entry corresponds to an honest triangle, which is unchanged under the action of S_3 permuting homogeneous coordinates, and the rest have orbits of size 6.
+  
+  
   # Weight data for the bundle E on CT.
   E = [
       (5*a, 5*b, 5*c, 4*a+b, 4*a+c, 4*b+c, 4*b+a, 4*c+a, 4*c+b),
@@ -105,7 +103,7 @@
       (5*c, 4*c+a, 3*c+2*a, 4*c+b, 3*c+a+b, 2*c+2*a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b),
       (5*c, 4*c+a, 3*c+2*a, 2*c+3*a, 4*c+b, 3*c+a+b, 3*c+2*b, 2*c+2*b+a, 2*c+3*b)
       ]
-
+  
   # Weight data for the tangent bundle T of CT
   T = [
       (c-a, c-b, b-c, b-a, a-b, a-c),
@@ -115,59 +113,160 @@
       (3*b-3*a, 2*b-2*a, b-a, c-a, c-b, a-2*b+c),
       (a-b, c-b, c-a, 2*b-2*a, c-b, b-a)
       ]
-
+  
+  # Some Chern class expressions of E at the six representative fixed points.
   c1E = [ expand(sigma(1, x)) for x in E ]
   c2E = [ expand(sigma(2, x)) for x in E ]
   c3E = [ expand(sigma(3, x)) for x in E ]
   c4E = [ expand(sigma(4, x)) for x in E ]
   c6T = [ expand(sigma(6, x)) for x in T ]
-
+  
+  # This is the Atiyah-Bott localization formula for computing -c2(E) * c4(E) + c3(E)^2. It is the wrong answer, due to excess. 
   Wrong = expand(-c2E[0]*c4E[0] + c3E[0]^2)/expand(c6T[0]) + sum([symmetrize(expand(-c2E[i]*c4E[i] + c3E[i]^2)/expand(c6T[i])) for i in range(1,6)])
-
-  # Tautological bundle weights
+  
+  # O&#x27;s tautological rank three bundle&#x27;s weights at the six fixed representative fixed points
   OOO = [
-      (0, 0, 0), (0, b-c, 0), (0, b-c, 0),
-      (0, b-c, 2*b-2*c), (0, a-c, b-c), (0, a-c, b-c)
+      (0, 0, 0),
+      (0, b-c, 0),
+      (0, b-c, 0),
+      (0, b-c, 2*b-2*c),
+      (0, a-c, b-c),
+      (0, a-c, b-c)
       ]
-
+  
+  c1OOO = [ expand(sigma(1, x)) for x in OOO ]
+  c2OOO = [ expand(sigma(2, x)) for x in OOO ]
+  c3OOO = [ expand(sigma(3, x)) for x in OOO ]
+  
+  # O(1)&#x27;s tautological rank 3 bundle&#x27;s weights at the 6 representative fixed points, followed by its Chern classes at those points.
   Oone = [
-      (a, b, c), (a, b, c), (b, b, c),
-      (c, b, 2*b-c), (a, b, c), (a, b, c)
+      (a, b, c),
+      (a, b, c),
+      (b, b, c),
+      (c, b, 2*b-c),
+      (a, b, c),
+      (a, b, c)
       ]
-
-  Otwo = [
-      (2*a, 2*b, 2*c), (2*a, b+c, 2*c), (2*b, b+c, 2*c),
-      (2*b, b+c, 2*c), (a+c, b+c, 2*c), (a+c, b+c, 2*c)
-      ]
-
-  Othree = [
-      (3*a, 3*b, 3*c), (3*a, b+2*c, 3*c), (3*b, b+2*c, 3*c),
-      (b+2*c, 2*b+c, 3*c), (a+2*c, b+2*c, 3*c), (a+2*c, b+2*c, 3*c)
-      ]
-
+  
+  c1Oone = [ expand(sigma(1, x)) for x in Oone ]
   c2Oone = [ expand(sigma(2, x)) for x in Oone ]
+  c3Oone = [ expand(sigma(3, x)) for x in Oone ]
+  
+  # O(2)&#x27;s tautological rank 3 bundle&#x27;s weights at the six representative fixed points, followed by its Chern classes at those points.
+  Otwo = [
+      (2*a, 2*b, 2*c),
+      (2*a, b+c, 2*c),
+      (2*b, b+c, 2*c),
+      (2*b, b+c, 2*c),
+      (a+c, b+c, 2*c),
+      (a+c, b+c, 2*c)
+      ]
+  
+  c1Otwo = [ expand(sigma(1, x)) for x in Otwo ]
   c2Otwo = [ expand(sigma(2, x)) for x in Otwo ]
-  c2Othree = [ expand(sigma(2, x)) for x in Othree ]
   c3Otwo = [ expand(sigma(3, x)) for x in Otwo ]
+  
+  # O(3)&#x27;s tautological bundles weights at the six representative fixed points, followed by its Chern classes at those points.
+  Othree = [
+      (3*a, 3*b, 3*c),
+      (3*a, b+2*c, 3*c),
+      (3*b, b+2*c, 3*c),
+      (b+2*c, 2*b+c, 3*c),
+      (a+2*c, b+2*c, 3*c),
+      (a+2*c, b+2*c, 3*c)
+      ]
+  
+  c1Othree = [ expand(sigma(1, x)) for x in Othree ]
+  c2Othree = [ expand(sigma(2, x)) for x in Othree ]
   c3Othree = [ expand(sigma(3, x)) for x in Othree ]
-
-  H = [ a+b+c, a+2*c, b+2*c, 3*c, 3*c, 3*c ]
-
+  
+  # The line bundle H&#x27;s weights at the six representative fixed points
+  H = [
+      a+b+c,
+      a+2*c,
+      b+2*c,
+      3*c,
+      3*c,
+      3*c
+      ]
+  # We will just use the symbol H for its first Chern class c1H
+  
+  # Delta_0&#x27;s expression at the six representative fixed points
   Delta0 = [ c3E[i]^2-c2E[i]*c4E[i] for i in range(0,6)]
+  
+  
+  # Delta_2&#x27;s expression at the six representative fixed points
   Delta2 = [ c2E[i]^2-c1E[i]*c3E[i] for i in range (0,6)]
+  
+  # Delta_4&#x27;s expression at the six representative fixed points
   Delta4 = [ c1E[i]^2-c2E[i] for i in range(0,6)]
-
+  
+  
+  
+  # THE CLASSES INC, LIN, ETC:
+  # The class Inc to be used in localization formula (tuple of 6 degree two expressions in abc)
+  
   Inc = [H[i]^2 - c2Oone[i] + 2*c2Otwo[i] - c2Othree[i] for i in range(0,6)]
+  
+  # the class of Lin to be used in localization formula (tuple of 6 degre two expressions in abc)
+  
   Lin = [c2Oone[i] for i in range(0,6)]
+  
+  # The class 4Inc + Lin. This is relevant because of the relation BP(p) = Dom(p) + 4Inc(p) + Lin(p).
+  
   FourIncPlusLin = [4*Inc[i] + Lin[i] for i in range(0,6)]
-
+  
+  # The expression we wish to integrate, an expression in a,b,c at each of the six representative fixed points.
+  
   INTEGRAND = [Delta0[i] - 13*Delta2[i]*FourIncPlusLin[i] + 78*Delta4[i]*FourIncPlusLin[i]^2 - 286*FourIncPlusLin[i]^3 for i in range(0,6)]
-
+  
+  # Application of Atiyah-Bott to integrate INTEGRAND, summing over all 31 fixed points, remembering that the honest triangle is its own S3 orbit, so we do not symmetrize it.  
+  
   Answer = expand(INTEGRAND[0])/expand(c6T[0]) + sum([symmetrize(expand(INTEGRAND[i])/expand(c6T[i])) for i in range(1,6)])
-
-  # FINAL COMPUTATIONS:
-  print(Wrong(a=45,b=3,c=10))   # 57728 (wrong, due to excess)
-  print(Answer(a=-20,b=9,c=7))  # 4246 (correct!)</code></pre>
+  
+  
+  
+  # TESTS: 
+  # Let&#x27;s compute H^6. This should be 15.
+  Hsixth = expand(H[0]^6)/expand(c6T[0]) + sum([symmetrize(expand(H[i]^6)/expand(c6T[i])) for i in range(1,6)])
+  
+  #print(Hsixth(a=2, b=5, c=-9)) This indeed yields 15.
+  
+  # Let&#x27;s compute H^4*Inc. This should be 3. 
+  HfourthInc = expand(Inc[0]*H[0]^4)/expand(c6T[0]) + sum([symmetrize(expand(Inc[i]*H[i]^4)/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(HfourthInc(a=2,b=3,c=-2)) #This indeed gives 3.
+  
+  # Let&#x27;s compute c_{3}(2)^2, which should be (4 choose 3) = 4. 
+  Otwocheck = expand(c3Otwo[0]^2)/expand(c6T[0]) + sum([symmetrize(expand(c3Otwo[i]^2)/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(Otwocheck(a=5,b=2,c=7)) #Indeed this gives 4.
+  
+  # Let&#x27;s compute c_3(3)^{2}, which should be (9 choose 3).
+  Othreecheck = expand(c3Othree[0]^2)/expand(c6T[0]) + sum([symmetrize(expand(c3Othree[i]^2)/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(Othreecheck(a=-3, b=5, c=4)) #This indeed gives (9 choose 3) = 84.
+  
+  # Let&#x27;s compute c_3(2)*c_3(3), which should be (6 choose 3) = 20.
+  Otwothreecheck = expand(c3Othree[0]*c3Otwo[0])/expand(c6T[0]) + sum([symmetrize(expand(c3Othree[i]*c3Otwo[i])/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(Otwothreecheck(a=3,b=2,c=-5)) #Indeed this gives 20.
+  
+  Lincubed = expand(Lin[0]^3)/expand(c6T[0]) + sum([symmetrize(expand(Lin[i]^3)/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(Lincubed(a=-2,b=13,c=4)) yields 0 as is should because Lin cubed is indeed 0
+  
+  IncsquaredLin = expand(Inc[0]^2 * Lin[0])/expand(c6T[0]) + sum([symmetrize(expand(Inc[i]^2 * Lin[i])/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(IncsquaredLin(a=-1,b=12,c=13)) yields 0, which it should. 
+  
+  Inccubed = expand(Inc[0]^3)/expand(c6T[0]) + sum([symmetrize(expand(Inc[i]^3)/expand(c6T[i])) for i in range(1,6)])
+  
+  # print(Inccubed(a=12,b=-3,c=5)) yields 1, as it should because Inc^3 = 1 for simple geometric reasons.
+  
+  #FINAL COMPUTATIONS:
+  print(Wrong(a=45,b=3,c=10)) # This is the wrong answer 57728, where we apply the Porteous formula to the bundle E.
+  print(Answer(a=-20,b=9,c=7)) #This gives 4246.</code></pre>
 
 <hr>
 <div class="stacks-comments">

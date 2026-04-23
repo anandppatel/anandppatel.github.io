@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.3. Point conditions on singular quintic pencils &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.3. Point conditions on singular quintic pencils</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.3. Point conditions on singular quintic pencils</h1>
+<p class="stacks-para">Fix a point $p \in \P^{2}$.  The point $p$ determines the hyperplane
+$$H_{p} \subset H^{0}(\P^{2}, \O(5))$$ consisting of quintic forms vanishing at $p$,
+and therefore also determines a codimension $2$ sub-Grassmannian
+$$\Gr\left(2, H_{p}\right) \subset \Gr\left(2, H^{0}\left(\P^{2}, \O(5)\right)\right).$$</p>
+<div class="stacks-definition" id="definition-basepointp">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.5.</strong> <a href="../tag/716E.html" class="stacks-tag-link">(716E)</a></div>
+  <div class="stacks-env-body"><p>Maintain the setting immediately
+  prior. We define $$\BP (p) \subset \SQP$$ to be
+  the subscheme $\eta^{-1}\left(\Gr(2,H_p)\right)$.</p></div>
+</div>
+<p class="stacks-para">As a set, $\BP (p)$ consists of those triples
+$(T,T^{*},\Lambda) \in \SQP$ having the property that $p \in \Base(\Lambda)$.</p>
+<div class="stacks-lemma" id="proposition-BPp">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.6.</strong> <a href="../tag/2F00.html" class="stacks-tag-link">(2F00)</a></div>
+  <div class="stacks-env-body"><p>$\BP (p)$ is a codimension 2 local complete intersection subscheme
+  of $\SQP$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p class="stacks-para">Since $\Gr(2,H_{p})$ is smooth and is a codimension $2$ subvariety of $\Gr\left(2, H^{0}(\P^{2}, \O(5))\right)$, and since $\SQP$ is also smooth, it follows that $\codim \BP(p) \leq 2$, and it suffices to show $\codim \BP(p) = 2$. It is clear that $\BP (p) \neq \SQP$, so let us assume for sake of contradiction that $C \subset \BP(p)$ is an irreducible component which is a divisor in $\SQP$.</p>
+<p class="stacks-para">Dimension constraints yield two possibilities. The first possibility is $\varphi(C) = \CT$, and the second possibility is that $\varphi(C) \subset \CT$ is a divisor.  Before continuing the proof, we prove a general claim:</p>
+<div class="stacks-lemma" id="claim-support">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.7.</strong> <a href="../tag/D12E.html" class="stacks-tag-link">(D12E)</a></div>
+  <div class="stacks-env-body"><p>Let $(T,T^{*}) \in \CT$ be arbitrary, and let $W = H^{0}(\P^{2}, \I_{\s(T,T^{*})}(5))$.  Then $$\Supp \Base(W) = \Supp T$$ if and only if $T \notin \Thin$ and otherwise $\Supp \Base(W)$ is the line $\langle T \rangle$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of 4.7.</em></div>
+  <div class="stacks-env-body"><p>The claim rests on the observation that $\Supp T = \Supp \Base (\Lambda_{T})$ if and only if $T$ is not contained in a line. Here $\Lambda_{T}$ is the net of conics (Definition&nbsp;3.1) containing $T$.  If $T \in \Thin$, then the quintic curves in $W$ are those which contain the line spanned by $T$ as a component, and whose residual quartic curve contains $T$.  From this description it is clear that $\Supp\Base(W) = \langle T \rangle$ as claimed.  </p>
+<p>    So we can and will assume $T \notin \Thin$. Then the inclusion $$\Supp \Base (H^{0}(\I_{T}^{2}(4))) \subset \Supp T$$ is seen by considering the pairwise products of  three quadratic polynomials spanning $\Lambda_{T}$.  Therefore, $\Supp \Base (H^{0}(\I_{T}^{2}(5))) \subset \Supp T$ as well. Since $\Base (W) \subset \Base (H^{0}(\I_{T}^{2}(5)))$, we conclude that $\Supp \Base (W) \subset \Supp T$. The opposite inclusion is trivial, concluding the proof.</p></div>
+</div>
+<p class="stacks-para">Returning to the proof of Proposition&nbsp;4.6, we consider the case $\varphi(C) = \CT$.  Choose a general honest triangle $(T,T^{*})$ &ndash; in particular, $p \notin T$.  Then, from Lemma&nbsp;4.7 we know that $T = \Supp \Base(W)$.  Thus, the point $p$ imposes a non-trivial condition on the elements of $W$, i.e. the vector space $V \subset W$ consisting of those $w \in W$ satisfying $w(p)=0$ has codimension $1$.  Therefore $\varphi^{-1}(\{(T, T^{*})\}) \cap C \subset \Gr(2,V)$ has codimension at least $2$ in $\varphi^{-1}(\{(T, T^{*})\})$, and hence $C$ cannot be a divisor in $\SQP$, our desired contradiction.</p>
+<p class="stacks-para">It remains to deal with the possibility that $\varphi(C)$ is a (irreducible) divisor in $\CT$. Let $(T,T^{*})$ be a general element of $\varphi(C)$, assuming it is a divisor. In particular, $p \notin T$ and if $(T,T^{*}) \in \Thin$ then $p \notin \langle T \rangle$, as otherwise $\varphi(C)$ would have codimension strictly larger than $1$.  By Lemma&nbsp;4.7, it follows that the space of sections of $W$ vanishing at $p$ is a proper subspace $V \subset W$.  Since $\varphi^{-1}(\{(T,T^{*})\}) \cap C \subset \Gr(2,V)$, and $\Gr(2,V)$ has codimension $2$ in $\Gr(2,W)$, it follows that $C$ has codimension at least $3$ in $\SQP$, a contradiction.  The proposition is now proved.</p>
+</div>
+</div>
+<p class="stacks-para">The proof of Proposition&nbsp;4.6 justifies the following definition.</p>
+<div class="stacks-definition" id="definition-D">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.8.</strong> <a href="../tag/0DB3.html" class="stacks-tag-link">(0DB3)</a></div>
+  <div class="stacks-env-body"><p><ol><li>We define $$\Dom (p) \subset \BP (p)$$ to be the unique irreducible
+  component (with reduced, induced scheme structure) whose general
+  point $(T,T^{*},\Lambda)$ satisfies
+    \begin{enumerate}</li>
+<li>$(T,T^{*})$ is an honest triangle, and</li>
+<li>$p \notin T$.</li></ol> </p>
+<p>    \item  We define $$ \Inc (p) \subset \BP (p) $$ to be the irreducible component 
+  (with reduced, induced scheme structure) consisting of triples
+  $(T,T^{*},\Lambda)$ such that $p \in T$.
+    \item  We define $$\Lin (p) \subset \BP (p)$$ to
+  be the irreducible component (with reduced, induced scheme
+  structure) whose general point corresponds to a triple $(T,T^{*}, \Lambda)$ satisfying
+  <ol><li>$T \in \Thin$</li>
+<li>$p \notin T$, and</li>
+<li>$T$ and $p$ are collinear.</li></ol>
+  \end{enumerate}</p></div>
+</div>
+<div class="stacks-commentary" id="remark-Dombundle">
+  <div class="stacks-env-head"><strong>Remark&nbsp;4.9.</strong> <a href="../tag/39CC.html" class="stacks-tag-link">(39CC)</a></div>
+  <div class="stacks-env-body"><p>Observe that if $(T,T^{*})$ is such that $p \notin T$ and if $\s(T,T^{*}) \cup \{p\}$ imposes ten independent conditions on quintic forms, then $\Dom(p)$ is the unique irreducible component of $\BP(p)$ lying over a sufficiently small neighborhood of $(T,T^{*})$.  Indeed, over a neighborhood of $(T,T^{*}) \in \CT$ the map $\eta|_{\BP(p)}: \BP(p) \to \CT$ is then a $\Gr(2,11)$-bundle.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-threecomponents">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.10.</strong> <a href="../tag/853F.html" class="stacks-tag-link">(853F)</a></div>
+  <div class="stacks-env-body"><p>$\Dom(p), \Inc(p),$ and $\Lin(p)$ are the irreducible components of $\BP(p)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>Let $Z \subset \BP(p)$ be an irreducible component, and let $(T,T^{*},\Lambda)$ be a general element of $Z$.  We must show $Z$ is one of the three listed sets.</p>
+<p>    If $p \in T$, then $Z = \Inc(p)$ (for dimension reasons) and we are done.  So we may and will assume $p \notin T$ from here.  </p>
+<p>    If $T \in \Thin$, then $\Lambda$ must be a pencil of quintics which has the line $\langle T\rangle$ in its base scheme. If $p \in \langle T \rangle$ then again by counting dimensions we conclude $Z = \Lin(p)$.  If $p \notin \langle T \rangle$ on the other hand, then the set of all such $(T,T^{*},\Lambda)$ does not have large enough dimension to contribute an irreducible component of $\BP(p)$.</p>
+<p>    If $(T,T^{*})$ is such that $T \notin \Thin$ then by Lemma&nbsp;3.23 the twisted ideal sheaf $\I_{\s(T,T^{*})}(5)$ is globally generated, and therefore $\s(T,T^{*}) \cup \{p\}$ imposes ten independent conditions on quintic forms.  Therefore, $Z = \Dom(p)$ by Remark&nbsp;4.9, finishing the proof.</p></div>
+</div>
+<p class="stacks-para">Our next objective is to determine the multiplicities of $\BP(p)$ along its three irreducible components $\Dom(p), \Inc(p),$ and $\Lin(p)$ (Lemma&nbsp;4.10).   We need a bit of preparation before continuing.  If we let $S \to \SQP$ denote the universal rank $2$ vector bundle, then we can let</p>
+<p class="stacks-para">$$\begin{aligned}S^{\dagger} \subset S \times _{\SQP}S\end{aligned}$$
+denote the bundle of frames for $S/\SQP$.  A point of $S^{\dagger}$ is a tuple $(F,G,T,T^{*})$ where $F$ and $G$ are linearly independent quintic forms which are both elements of $H^{0}\left(\P^{2}, \I_{\s(T,T^{*})}(5)\right)$.  The natural morphism $S^{\dagger} \to \SQP$ is smooth and faithfully flat (it is a $\GL_{2}$-torsor), and therefore, if we use the $\dagger$ superscript in the obvious way, it suffices to study the multiplicities of $\Dom(p)^{\dagger}, \Inc(p)^{\dagger},$ and $\Lin(p)^{\dagger}$ as irreducible components of $\BP(p)^{\dagger}$.</p>
+<p class="stacks-para">The reason for passing to $S^{\dagger}$ is that $\BP(p)^{\dagger}$ is a global complete intersection of two divisors: If we define 
+$$\begin{aligned}H_{1}(p) &:= \left\{\begin{array}{c}
+         $(F,G,T,T^{*}) \in S^{\dagger}$ such\\ that
+         $F(p)=0$.\\ 
+    \end{array} \right\} \text{ and}\\
+    H_{2}(p) &:= \left\{\begin{array}{c}
+         $(F,G,T,T^{*}) \in S^{\dagger}$ such\\ that
+         $G(p)=0$.\\ 
+    \end{array} \right\} \text{,}\end{aligned}$$
+    then $\BP(p)^{\dagger} = H_{1}(p) \cap H_{2}(p)$ as schemes. 
+ For transversality arguments, it behooves us to better illuminate the three tangent spaces of $S^{\dagger}, H_{1}(p),$ and $H_{2}(p)$ at a point $(F,G,T,T^{*})$.  We will only need to analyze the situation where $T \subset \P^{2}$ consists of three distinct points $\{a,b,c\}$, and where $F$ and $G$ possess only ordinary nodes at $a,b,c$.  We will use the language of deformation theory, working over the dual numbers $\k[\varepsilon]/(\varepsilon^{2})$.</p>
+<p class="stacks-para">A first order deformation of $F$ (resp. $G$) is given by $F + \varepsilon F'$ (resp. $G + \varepsilon G'$) where $F'$ (resp. $G'$) is a quintic form.  A first order deformation of $F$ (resp. $G$) which continues to have three nodes and which  \text{allows their locations  $a,b$ and $c$ to deform} is of the form $F + \varepsilon F'$ where $F'(a)=F'(b) = F'(c) = 0$. Therefore, the tangent space $T_{(F,G,T,T^{*})}S^{\dagger}$ is a linear subspace of the product vector space $H^{0}\left(\P^{2},\I_{T}(5)\right) \times H^{0}\left(\P^{2},\I_{T}(5)\right)$, one  which we identify next.</p>
+<p class="stacks-para">The essential question we must answer is: Given a form $F'$ vanishing at $a,b,$ and $c$, how do we determine the deformation of the nodes $a,b,c$ induced by $F + \varepsilon F'$? A local calculation reveals a clean answer. We will focus on just the point $a$. $F$ is a global section of the sheaf $\m_{a}^{2}(5)$, and therefore induces an element $$\hess_{F} \in \left(\m_{a}^{2}/\m_{a}^{3}\right) \otimes \O(5).$$ By the natural isomorphism $$\m_{a}^{2}/\m_{a}^{3} \simeq \Sym^{2}(\m_{a}/\m_{a}^{2}),$$ and in light of the inclusion (char. $\k \neq 2$) $$\Sym^{2}(\m_{a}/\m_{a}^{2}) \subset \Hom_{\k}\left(\left(\m_{a}/\m_{a}^{2}\right)^{\vee} , \m_{a}/\m_{a}^{2} \right),$$ we may view $\hess_{F}$ as an element of $$\Hom \left(\left(\m_{a}/\m_{a}^{2}\right)^{\vee} , \left(\m_{a}/\m_{a}^{2}\right) \otimes \O(5) \right).$$  The notation is chosen because in local coordinates if $f(x,y)$ is an affine quintic obtained by dehomogenizing $F$ then $\hess_{F}$ is represented by the $2 \times 2$  \text{Hessian matrix} $$\begin{bmatrix}
+        f_{xx} & f_{xy} \\
+        f_{xy} & f_{yy} \\
+    \end{bmatrix}.$$   As a consequence of $F$ having an ordinary node at $a$, we see that $\hess_{F}$ is invertible.</p>
+<p class="stacks-para">Now, suppose $F + \varepsilon F'$ is a deformation satisfying $F'(a) = 0$. Then $F'$ determines its differential $$d F'_{a} \in \left(\m_{a}/\m_{a}^{2}\right) \otimes \O(5),$$ and therefore $$\tau_{F,a}(F') := \hess_{F}^{-1}(d F'_{a})$$ is a well-defined element of the tangent space $$\left(\m_{a}/ \m_{a}^{2} \right)^{\vee} = T_{a}\P^{2}.$$ This vector is the deformation of the node at  $a$ induced by the deformation $F + \varepsilon F'$, as can easily be checked in local coordinates.  We are prepared to  express the tangent space $T_{(F,G,T,T^{*})}S^{\dagger}$: 
+    $$\begin{aligned}T_{(F,G,T,T^{*})}S^{\dagger} = \left\{ \begin{array}{c}
+            Pairs of quintics $(F',G')$ vanishing \\
+            at $T$ 
+            satisfying $\tau_{F,t}(F') = \tau_{G,t}(G')$ for \\ all three points $t \in T$
+        \end{array}
+        \right\}.\end{aligned}$$</p>
+<div class="stacks-lemma" id="LinTransverse">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.11.</strong> <a href="../tag/3B24.html" class="stacks-tag-link">(3B24)</a></div>
+  <div class="stacks-env-body"><p>The divisors $H_{1}(p)$ and $H_{2}(p)$ intersect transversely at a general point of $\Lin(p)^{\dagger}.$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>We will  exhibit a single point $$(F,G,T,T^{*}) \in \Lin(p)^{\dagger}$$ where the two tangent spaces $T_{(F,G,T,T^{*})}H_{1}(p)$ and $T_{(F,G,T,T^{*})}H_{2}(p)$ are distinct, codimension 1 spaces of the ambient tangent space $T_{(F,G,T,T^{*})}S^{\dagger}$.</p>
+<p>    Consider then, the following tuple $(F,G,T,T^{*})$ and point $p$: 
+    $$\begin{aligned}F & = XY(Y-Z)(Y-\lambda Z)Z, \\
+        G & = XY(Y-Z)(Y-\mu Z)Z ,\\
+        T & = \left\{a = [0:0:1], b = [0:1:1], c = [0:1:0] \right\},\\
+        p & = [0:\lambda:1],\end{aligned}$$
+    where $\lambda, \mu \in \k$ are to be chosen generally. $(F,G,T,T^{*})$ is evidently contained in $\Lin(p)^\dagger$: all points $a,b,c,p$ lie on the line $X=0$. Additionally, $F$ and $G$ have only simple nodes at the points $a,b,c$, and so the description in (?) of $T_{(F,G,T,T^{*})}S^{\dagger}$ as a vector space of certain pairs $(F',G')$ applies.   And so, consider the pair 
+    $$\begin{aligned}F' = Y(Y-Z)(Y-\lambda Z)Z^2,\\
+        G' = Y(Y-Z)(Y-\mu Z)Z^{2}.\end{aligned}$$
+    A local calculation (omitted) then shows that the three membership conditions of (?), namely $$\tau_{F,t}(F') = \tau_{G,t}(G'), \,\, \forall t \in T,$$ are met. Furthermore, $(F',G')$ is evidently contained in $T_{(F,G,T,T^{*})}H_{1}(p)$ (because $F'(p)=0$) and is not contained in $T_{(F,G,T,T^{*})}H_{2}(p)$ (because $G'(p) \neq 0$). The lemma follows.</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-BPdecomposition">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.12.</strong> <a href="../tag/FAF5.html" class="stacks-tag-link">(FAF5)</a></div>
+  <div class="stacks-env-body"><p>As codimension $2$ cycles in $\SQP$, 
+  $$\begin{aligned}\left[\BP(p) \right] = \left[\Dom(p) \right] + 4\left[\Inc(p)
+    \right] + \left[\Lin(p) \right].\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="daggermult">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9B34.html" class="stacks-tag-link">(9B34)</a></div>
+  <div class="stacks-env-body"><p>We must explain the multiplicities. Since the natural map $S^{\dagger} \to \SQP$ is smooth and surjective, it suffices to prove 
+    $$\begin{aligned}\left[\BP(p)^{\dagger} \right] = \left[\Dom(p)^{\dagger} \right] + 4\left[\Inc(p)^{\dagger}
+    \right] + \left[\Lin(p)^{\dagger} \right]\end{aligned}$$ as codimension 2 cycles in the frame bundle  $S^{\dagger}$.   The coefficient of $\Lin(p)^{\dagger}$ is explained by Lemma&nbsp;4.11. We will only  focus on the coefficient $4$ of $\Inc(p)^{\dagger}$, as the ideas apply equally well (and with fewer complications) to the  coefficient of $\Dom(p)^{\dagger}$. </p>
+<p>    We will choose a sufficiently general $2$-dimensional &eacute;tale-local slice of $S^\dagger$ at a general point $(F,G,T,T^{*}) \in \Inc(p)^{\dagger}$. So, let $(U,q) \subset S^{\dagger}$ be a smooth pointed surface with &eacute;tale-local coordinates $s,t$ at $q$, and suppose $q = (F,G,T,T^{*})$ is a general point of $\Inc(p)^{\dagger}$. Observe that $T = \{p, t_{2}, t_{3}\}$ is an honest triangle, so there is an &eacute;tale neighborhood $V$ of $(T,T^{*}) \in \CT$  which is isomorphic to an &eacute;tale neighborhood the point $(p,t_{2},t_{3}) \in (\P^{2})^{3}$. Let $\alpha_{1}:V \to \P^{2}$ denote projection onto the first factor.  Finally, as part of the generic hypotheses on $U$, after possibly shrinking $U$, suppose the composite $U \to V \to \P^{2}$ is unramified at $q$.  </p>
+<p>    Having made the choice of the general slice $U$, our objective is to understand the two curves $H_{i}(p) \cap U, i=1,2$ locally near $q$.  Dehomogenizing the family of forms parametrized by $U$, and letting $p = (0,0) \in \mathbb{A}^{2}$, we obtain a pair of varying polynomials dependent on $(s,t)$: 
+    $$\begin{aligned}f_{(s,t)}(x,y) = c_{11}(x-u)^{2} + c_{12}(x-u)(y-v) + c_{22}(y-v)^{2} + \dots \\
+        g_{(s,t)}(x,y) = d_{11}(x-u)^{2} + d_{12}(x-u)(y-v) + d_{22}(y-v)^{2} + \dots,\end{aligned}$$
+    where $u = u(s,t)$ and $v = v(s,t)$ are the coordinates of the particular node which coincides with the point $p$ at $s=t=0$. The coefficients $c_{ij},d_{ij}$ are also functions of $(s,t)$, and when $s=t=0$ we may assume that $f_{(0,0)}$ and $g_{(0,0)}$ are tri-nodal quintics whose tangent cones at $p=(0,0)$ do not share a line. </p>
+<p>    Now, by introducing the condition ``$H_{1}(p)$" we are simply plugging in $x=y=0$ into $f_{(s,t)}$ and requesting vanishing. This gives the equation $$c_{11}u^2 + c_{12}uv + c_{22}v^2 + \dots = 0,$$ where the excluded terms lie in $(s,t)^{3}$. We obtain a similar local equation for $H_{2}(p) \cap U$ with $c_{ij}$'s replaced with $d_{ij}$'s.  The two functions $u,v$ can be taken to be local coordinates at $q$ &ndash; this is due to the genericity assumptions on the slice $U$. It follows that the local equations $H_{i}(p) \cap U$ inherit the property of having ordinary nodes at $q$ from the fact that $f_{(0,0)}$ and $g_{(0,0)}$ both had ordinary nodes. Thus, $H_{1}(p) \cap U$ and $H_{2}(p)\cap U$ are two curves nodal at $q$.  The tangent cones of $H_{1}\cap U$ and $H_{2} \cap U$ at $q$ do not share a line because the same was true for the curves $f_{(0,0)}$ and $g_{(0,0)}$.  Thus,  the multiplicity $4$ occurring in (?) is explained.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.3. Point conditions on singular quintic pencils">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S4.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>

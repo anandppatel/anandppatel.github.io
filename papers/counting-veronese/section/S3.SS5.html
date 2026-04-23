@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.5. The vector bundle $E$ on $\CT$ &mdash; Counting 3-uple Veronese Surfaces</title>
+  <title>3.5. Some vector bundles on CT &mdash; Counting 3-uple Veronese Surfaces</title>
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../stacks.css">
   <script>
@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -81,26 +75,40 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <span>3.5. The vector bundle $E$ on $\CT$</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <span>3.5. Some vector bundles on CT</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">3.5. The vector bundle $E$ on $\CT$</h1>
-<p class="stacks-para">Consider the vector space $V_{n} := H^{0}(\P^{2}, \O(n))$ for $n \geq 4$.  We define a sheaf on $\CT$ by assigning to each point $(T,T^{*})$ the vector space
-$H^{0}(\P^{2}, \O_{\P^{2}}(n) / \I_{\s(T,T^{*})} \cdot \O_{\P^{2}}(n)).$</p>
+<h1 class="stacks-section-title">3.5. Some vector bundles on CT</h1>
+<p class="stacks-para">We simplify notation and let
+$$\s : \CT \to \Hilb_{9}\P^{2} $$ denote the squaring map
+$\mu_{2}$ from the previous section.  We let
+$$\mathcal{Z} \subset \CT \times \P^{2}$$ denote the universal length
+$9$ subscheme induced by $\s$, and write $p_1, p_2$ for the projections of
+$\CT \times \P^{2}$ to first and second factors, respectively.  Finally, we denote by $\mathcal{V}_{n}$ the sheaf 
+$$\begin{aligned}p_{1*}\left(\mathcal{I}_{\mathcal{Z}} \otimes p_{2}^{*}\O(n) \right).\end{aligned}$$</p>
 <div class="stacks-lemma" id="proposition-vectorbundle">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.18.</strong> <a href="../tag/D6CE.html" class="stacks-tag-link">(D6CE)</a></div>
-  <div class="stacks-env-body"><p>The assignment $(T,T^{*}) \mapsto H^{0}(\P^{2}, \O(n)/\I_{\s(T,T^{*})}(n))$ defines a vector bundle $E$ of rank $9$ on $\CT$ for $n \geq 4$.</p></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.22.</strong> <a href="../tag/D6CE.html" class="stacks-tag-link">(D6CE)</a></div>
+  <div class="stacks-env-body"><p>$\mathcal{V}_{n}$  is
+  a vector bundle on $\CT$ of rank ${n+2 \choose 2} - 9$ for all $n \geq 5$.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>Since $\s(T,T^{*})$ is a flat family of length $9$ subschemes over $\CT$ by Theorem&nbsp;3.16, the pushforward of $\O_{\P^{2}}(n)/\I_{\s(T,T^{*})} \cdot \O_{\P^{2}}(n)$ is locally free of rank $9$.</p></div>
+  <div class="stacks-env-body"><p>The claim being made is that every length $9$ scheme of the form  $\s(T,T^{*})$
+  imposes independent conditions on degree $n \geq 5$ homogeneous
+  forms. This can either be
+  checked on a case-by-case basis, or can be checked for example on
+  the special complete triangle $(T,T^{*})$ in
+  Proposition&nbsp;3.15, as well as its dual. Then an appeal to semi-continuity gives
+  the conclusion for any complete triangle $(T,T^{*})$ where $T$ is
+  not contained in a line.  For those complete triangles $(T,T^{*})$
+  with $T$ contained in a line, the claim can be checked directly.</p></div>
 </div>
 <div class="stacks-lemma" id="lemma-generatedquintics">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;3.19.</strong> <a href="../tag/8B7D.html" class="stacks-tag-link">(8B7D)</a></div>
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.23.</strong> <a href="../tag/8B7D.html" class="stacks-tag-link">(8B7D)</a></div>
   <div class="stacks-env-body"><p>Let  $(T,T^{*}) \in \CT$ be any point such that $T \notin \Thin$. Then the sheaf $\I_{\s(T,T^{*})}(n)$ is generated by global sections for $n \geq 4$, i.e. the scheme defined by the common vanishing of all forms in $H^{0}(\P^{2},\I_{\s(T,T^{*})}(n))$ is precisely $\s(T,T^{*})$ when $n \geq 4$.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>One checks that the $9$ conditions imposed by $\s(T,T^{*})$ on degree $n$ forms are independent for each orbit type when $n \geq 4$. This is straightforward for honest triangles and non-fat non-thin schemes; for fat&ndash;thin pairs it requires the modified ideal from Theorem&nbsp;3.16.</p></div>
+  <div class="stacks-env-body"><p>By combining an isotrivial specialization using the $\PGL(3)$ action with semi-continuity, we need only verify this for the pair $(T,T^{*})$ where, in affine coordinates $(x,y)$, $T$ is given by $V(x^2,xy,y^2)$ and $T^{*}$ defines the ``three" concurrent lines consisting of $V(x)$  reckoned 3 times.  Here, the ideal of $\s(T,T^{*})$ is $$(x^{4},x^{3}y,x^{2}y^{2},xy^{3},y^{4},x^3),$$ which is clearly generated by polynomials of degree $\leq n$ once $n \geq 4$, proving the result.</p></div>
 </div>
 
 <hr>
@@ -111,7 +119,7 @@ $H^{0}(\P^{2}, \O_{\P^{2}}(n) / \I_{\s(T,T^{*})} \cdot \O_{\P^{2}}(n)).$</p>
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 3.5. The vector bundle $E$ on $\CT$">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 3.5. Some vector bundles on CT">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S3.SS5.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

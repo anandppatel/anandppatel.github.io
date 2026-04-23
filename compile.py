@@ -195,12 +195,17 @@ def parse_tex(tex_source):
         raise ValueError("Cannot find \\begin{document}...\\end{document}")
     body = body_m.group(1)
 
+    # Strip LaTeX comments (lines starting with %)
+    body = re.sub(r'(?m)^\s*%.*$', '', body)
+    # Strip inline comments (% not preceded by \)
+    body = re.sub(r'(?<!\\)%.*$', '', body, flags=re.MULTILINE)
+
     # Remove \maketitle
     body = re.sub(r'\\maketitle', '', body)
 
-    # Remove section/subsection labels (we use them for navigation, not tags)
-    body = re.sub(r'\\label\{section:[^}]*\}', '', body)
-    body = re.sub(r'\\label\{subsection:[^}]*\}', '', body)
+    # Extract section/subsection labels before removing them
+    # These are labels like \label{sec:translation}, \label{subsection:foo}, etc.
+    section_labels = {}  # will be populated after section parsing
 
     # Remove \bibliographystyle and \bibliography commands
     body = re.sub(r'\\bibliographystyle\{[^}]*\}', '', body)
@@ -209,9 +214,9 @@ def parse_tex(tex_source):
     # Handle \begin{thebibliography}...\end{thebibliography} — just remove it
     body = re.sub(r'\\begin\{thebibliography\}.*?\\end\{thebibliography\}', '', body, flags=re.DOTALL)
 
-    sections = parse_sections(body)
+    sections, section_labels = parse_sections(body)
 
-    return {"title": title, "author": author, "sections": sections}
+    return {"title": title, "author": author, "sections": sections, "section_labels": section_labels}
 
 
 def parse_sections(body):
@@ -221,6 +226,7 @@ def parse_sections(body):
     sec_pattern = r'\\section\{((?:[^{}]|\{[^{}]*\})*)\}'
     sec_splits = re.split(sec_pattern, body)
 
+    section_labels = {}  # label -> {"number": "2", "title": "..."} etc.
     sections = []
     sec_num = 0
     for i in range(1, len(sec_splits), 2):
@@ -228,16 +234,41 @@ def parse_sections(body):
         sec_title = sec_splits[i].strip()
         sec_content = sec_splits[i+1] if i+1 < len(sec_splits) else ""
 
+        # Split subsections FIRST, then extract labels per-piece
         sub_pattern = r'\\subsection\{((?:[^{}]|\{[^{}]*\})*)\}'
         sub_splits = re.split(sub_pattern, sec_content)
 
-        pre_content = sub_splits[0]
+        # Extract section labels from pre-subsection content
+        pre_raw = sub_splits[0]
+        for lm in re.finditer(r'\\label\{([^}]+)\}', pre_raw[:300]):
+            label = lm.group(1)
+            if not any(label.startswith(p) for p in
+                       ['theorem:', 'lemma:', 'proposition:', 'corollary:',
+                        'definition:', 'remark:', 'example:', 'claim:',
+                        'problem:', 'question:', 'proof:', 'assumption:',
+                        'commentary:', 'cor:', 'prop:', 'thm:', 'def:']):
+                section_labels[label] = {"number": str(sec_num), "title": sec_title}
+        pre_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', pre_raw)
+
         subsections = []
         sub_num = 0
         for j in range(1, len(sub_splits), 2):
             sub_num += 1
             sub_title = sub_splits[j].strip()
             sub_content = sub_splits[j+1] if j+1 < len(sub_splits) else ""
+
+            # Extract subsection labels from the beginning of content
+            for lm in re.finditer(r'\\label\{([^}]+)\}', sub_content[:300]):
+                label = lm.group(1)
+                if not any(label.startswith(p) for p in
+                           ['theorem:', 'lemma:', 'proposition:', 'corollary:',
+                            'definition:', 'remark:', 'example:', 'claim:',
+                            'problem:', 'question:', 'proof:', 'assumption:',
+                            'commentary:', 'cor:', 'prop:', 'thm:', 'def:']):
+                    section_labels[label] = {"number": f"{sec_num}.{sub_num}", "title": sub_title}
+            # Remove section/subsection labels from content
+            sub_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', sub_content)
+
             subsections.append({
                 "id": f"S{sec_num}.SS{sub_num}",
                 "number": f"{sec_num}.{sub_num}",
@@ -253,7 +284,7 @@ def parse_sections(body):
             "subsections": subsections,
         })
 
-    return sections
+    return sections, section_labels
 
 
 def parse_blocks(content, sec_num):
@@ -295,21 +326,50 @@ def parse_blocks(content, sec_num):
     return blocks
 
 
+def _find_matching_end(content, env_name, start_after):
+    """Find the matching \\end{env_name} for a \\begin{env_name} that has
+    already been consumed.  Handles same-type nesting by counting depth.
+    Returns the index of the character right after \\end{env_name}, or -1."""
+    begin_tag = '\\begin{' + env_name + '}'
+    end_tag = '\\end{' + env_name + '}'
+    depth = 1
+    pos = start_after
+    while pos < len(content):
+        next_begin = content.find(begin_tag, pos)
+        next_end = content.find(end_tag, pos)
+        if next_end == -1:
+            return -1  # unmatched
+        if next_begin != -1 and next_begin < next_end:
+            depth += 1
+            pos = next_begin + len(begin_tag)
+        else:
+            depth -= 1
+            if depth == 0:
+                return next_end + len(end_tag)
+            pos = next_end + len(end_tag)
+    return -1
+
+
 def _parse_tex_blocks(content, blocks, sec_num):
-    """Parse tex content for environments and paragraphs."""
+    """Parse tex content for environments and paragraphs.
+    Uses depth-counting to correctly handle same-type nesting
+    (e.g. proof inside proof)."""
     if not content:
         return
 
-    env_pattern = re.compile(
-        r'\\begin\{(' + '|'.join(ENV_TYPES.keys()) + r')\}'
-        r'(\[[^\]]*\])?'  # optional argument like [Proof of ...]
-        r'(.*?)'
-        r'\\end\{\1\}',
-        re.DOTALL
+    env_names_alt = '|'.join(re.escape(k) for k in ENV_TYPES.keys())
+    # Match the opening \begin{envname}[optional arg]
+    begin_pattern = re.compile(
+        r'\\begin\{(' + env_names_alt + r')\}(\[[^\]]*\])?'
     )
 
     pos = 0
-    for m in env_pattern.finditer(content):
+    while pos < len(content):
+        m = begin_pattern.search(content, pos)
+        if m is None:
+            break
+
+        # Text before this environment
         pre = content[pos:m.start()].strip()
         if pre:
             for para in split_paragraphs(pre):
@@ -317,11 +377,25 @@ def _parse_tex_blocks(content, blocks, sec_num):
 
         env_name = m.group(1)
         opt_arg = m.group(2)
-        env_body = m.group(3).strip()
+        body_start = m.end()
 
-        # Extract \label{...} from the environment body
+        # Find the correctly nested \end{env_name}
+        body_end_after = _find_matching_end(content, env_name, body_start)
+        if body_end_after == -1:
+            # No matching end found; treat rest as paragraph
+            pos = m.end()
+            continue
+
+        end_tag = '\\end{' + env_name + '}'
+        env_body = content[body_start:body_end_after - len(end_tag)].strip()
+
+        # Extract \label{...} from the environment body — only if it
+        # appears before any nested \begin{...} (labels inside nested
+        # environments will be caught during recursive parsing)
         label = None
-        label_m = re.search(r'\\label\{([^}]+)\}', env_body)
+        first_begin = begin_pattern.search(env_body)
+        search_region = env_body[:first_begin.start()] if first_begin else env_body
+        label_m = re.search(r'\\label\{([^}]+)\}', search_region)
         if label_m:
             label = label_m.group(1)
             env_body = env_body[:label_m.start()] + env_body[label_m.end():]
@@ -333,15 +407,35 @@ def _parse_tex_blocks(content, blocks, sec_num):
             inner = opt_arg[1:-1]  # strip [ ]
             display_type = tex_to_html(inner)
 
-        block = {
-            "type": "env",
-            "envType": display_type,
-            "envName": env_name,
-            "content": tex_to_html(env_body),
-            "label": label,
-        }
-        blocks.append(block)
-        pos = m.end()
+        # Check if the body contains nested tracked environments.
+        # If so, recursively parse them instead of treating the whole
+        # body as a single HTML blob.
+        nested_env_check = begin_pattern.search(env_body)
+        if nested_env_check:
+            # Recursively parse to extract nested environments
+            sub_blocks = []
+            _parse_tex_blocks(env_body, sub_blocks, sec_num)
+            # Wrap in the outer environment block with nested content
+            block = {
+                "type": "env",
+                "envType": display_type,
+                "envName": env_name,
+                "content": "",  # content distributed across sub_blocks
+                "label": label,
+                "children": sub_blocks,
+            }
+            blocks.append(block)
+        else:
+            block = {
+                "type": "env",
+                "envType": display_type,
+                "envName": env_name,
+                "content": tex_to_html(env_body),
+                "label": label,
+            }
+            blocks.append(block)
+
+        pos = body_end_after
 
     trailing = content[pos:].strip()
     if trailing:
@@ -371,6 +465,10 @@ def tex_to_html(tex):
     # center → strip
     s = re.sub(r'\\begin\{center\}', '', s)
     s = re.sub(r'\\end\{center\}', '', s)
+
+    # tabular → array (MathJax compatibility in math mode)
+    s = s.replace('\\begin{tabular}', '\\begin{array}')
+    s = s.replace('\\end{tabular}', '\\end{array}')
 
     # equation environment → display math
     def equation_replace(m):
@@ -514,6 +612,14 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
     and resolve \\ref{}, \\Cref{}, and \\eqref{} cross-references."""
 
     label_map = {}  # label -> {tag, number, envType}
+
+    # Add section/subsection labels to the label map
+    for label, info in paper.get("section_labels", {}).items():
+        label_map[label] = {
+            "tag": "",
+            "number": info["number"],
+            "envType": "Section",
+        }
     env_counter = {}  # per-section counters for theorem-like envs
     all_envs = []  # ordered list of all tagged environments
 
@@ -566,6 +672,9 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
                             "number": number,
                         }
                         all_envs.append(block)
+                # Recurse into children
+                if block.get("children"):
+                    process_blocks(block["children"], _sec_n)
 
         process_blocks(sec["blocks"])
         for sub in sec["subsections"]:
@@ -598,8 +707,8 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             if label in label_map:
                 info = label_map[label]
                 number = info["number"]
-                return f"({number})" if number else "(??)"
-            return f"(??{label})"
+                return f"({number})" if number else "(?)"
+            return "(?)"
 
         # Process \Cref before \ref to avoid partial matches
         text = re.sub(r'\\Cref\{([^}]+)\}', cref_replacer, text)
@@ -609,18 +718,19 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
         text = re.sub(r'\\ref\{([^}]+)\}', ref_replacer, text)
         return text
 
-    for sec in paper["sections"]:
-        for block in sec["blocks"]:
+    def resolve_blocks(blocks):
+        for block in blocks:
             if "content" in block:
                 block["content"] = resolve_refs(block["content"])
             if "envType" in block:
                 block["envType"] = resolve_refs(block["envType"])
+            if block.get("children"):
+                resolve_blocks(block["children"])
+
+    for sec in paper["sections"]:
+        resolve_blocks(sec["blocks"])
         for sub in sec["subsections"]:
-            for block in sub["blocks"]:
-                if "content" in block:
-                    block["content"] = resolve_refs(block["content"])
-                if "envType" in block:
-                    block["envType"] = resolve_refs(block["envType"])
+            resolve_blocks(sub["blocks"])
 
     # Update registry with resolved envType names
     for env in all_envs:
@@ -655,14 +765,17 @@ def resolve_citations(paper, citations):
     def process_content(text):
         return re.sub(r'\\cite(?:\[([^\]]*)\])?\{([^}]+)\}', cite_replacer, text)
 
-    for sec in paper["sections"]:
-        for block in sec["blocks"]:
+    def process_blocks(blocks):
+        for block in blocks:
             if "content" in block:
                 block["content"] = process_content(block["content"])
+            if block.get("children"):
+                process_blocks(block["children"])
+
+    for sec in paper["sections"]:
+        process_blocks(sec["blocks"])
         for sub in sec["subsections"]:
-            for block in sub["blocks"]:
-                if "content" in block:
-                    block["content"] = process_content(block["content"])
+            process_blocks(sub["blocks"])
 
 
 # ============================================================
@@ -777,9 +890,18 @@ def render_block(block, depth=0):
 
         eid = (block.get("label") or "").replace(":", "-")
 
+        # Render body: either direct content or recursive children
+        if block.get("children"):
+            inner_html = ""
+            for child in block["children"]:
+                inner_html += render_block(child, depth)
+            body_html = inner_html
+        else:
+            body_html = f"<p>{block['content']}</p>"
+
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
-  <div class="stacks-env-body"><p>{block["content"]}</p></div>
+  <div class="stacks-env-body">{body_html}</div>
 </div>
 """
     return ""

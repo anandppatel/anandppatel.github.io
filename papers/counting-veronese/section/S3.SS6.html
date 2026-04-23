@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.6. Chern class calculation &mdash; Counting 3-uple Veronese Surfaces</title>
+  <title>3.6. A Chern class calculation using localization on $\CT$ &mdash; Counting 3-uple Veronese Surfaces</title>
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../stacks.css">
   <script>
@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -81,29 +75,41 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <span>3.6. Chern class calculation</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <span>3.6. A Chern class calculation using localization on $\CT$</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">3.6. Chern class calculation</h1>
-<p class="stacks-para">We now describe how to compute with the vector bundle $E$ using Atiyah-Bott localization.  Let $\Gm$ act on $\P^{2}$ via $t \cdot [X:Y:Z] = [t^{a}X: t^{b}Y: t^{c}Z]$ for distinct weights $a,b,c$. This induces an action on $\CT$ with finitely many fixed points.</p>
+<h1 class="stacks-section-title">3.6. A Chern class calculation using localization on $\CT$</h1>
+<p class="stacks-para">Maintain the notation in Section&nbsp;3.5 and define 
+$$ E = {p_1}_* \left(\O_{\mathcal{Z}} \otimes p_2^* \O(5)\right).$$ Then $E$ is a vector bundle of rank
+$9$ on $\CT$ &ndash; indeed, the whole point of introducing $\CT$ in the first
+place was to be able to invoke the bundle $E$.</p>
+<p class="stacks-para">The objective of this section is to evaluate the integer
+$$  c_{3}^2(E) - c_{2} (E) c_{4}(E) \in H^6(\CT, \Z) = \Z$$ using the
+technique of localization.</p>
+<p class="stacks-para">We recall the localization formula in the context of enumerative
+geometry from [ES96].  Let $X$ be a smooth projective variety
+of dimension $n$ with a $\Gm$ action.  Let $F \subset X$ be the set of
+fixed points, and assume that $F$ is finite.  Let $E$ be an
+equivariant vector bundle on $X$.  Let $p(c_1, c_2, \dots)$ be a
+polynomial in formal variables $c_1, c_2, \dots$.  Assume that $p$ is
+weighted homogeneous of degree $n$ when the variable $c_i$ is given
+weight $i$.  The goal generally is to compute
+$$ p(c_1(E), c_2(E), \dots ) \in H^{2n}(X, \Z) = \Z.$$ For $x \in F$,
+let $\sigma_i(E, x)$ be the value of the $i$th
+elementary symmetric polynomial in the weights of the $\Gm$ acting on
+$E|_x$.  Set $f(E, x) = p(\sigma_1(E, x), \sigma_2(E,x), \dots)$.</p>
 <div class="stacks-theorem" id="thm-localization">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;3.20.</strong> <a href="../tag/C8C8.html" class="stacks-tag-link">(C8C8)</a></div>
-  <div class="stacks-env-body"><p>The $\Gm$-action on $\CT$ induced by $t \cdot [X:Y:Z] = [t^{a}X: t^{b}Y: t^{c}Z]$ has exactly $31$ fixed points, decomposing into one $S_3$-orbit of size $1$ (the honest coordinate triangle) and five $S_3$-orbits of size $6$. The weights of the vector bundle $E$ and the tangent bundle of $\CT$ at each representative fixed point are explicitly computable.</p></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.24.</strong> <a href="../tag/C8C8.html" class="stacks-tag-link">(C8C8)</a></div>
+  <div class="stacks-env-body"><p>{ell.str}}]</p>
+<p>  We have the equality
+  $$ p(c_1(E), c_2(E), \dots ) = \sum_{x \in F} \frac{f(E, x)}{\sigma_n(T_X, x)}. $$</p></div>
 </div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The fixed points of $\Gm$ on $\Hilb_{3}\P^{2}$ are monomial ideals; enumerating all monomial length-$3$ ideals and lifting to $\CT$ (each non-fat one lifts uniquely, each fat one lifts to a $\P^{1}$, and we take the $\Gm$-fixed points of that $\P^1$) yields $31$ fixed points in $6$ orbits. The weights are computed directly from the monomial structure of $E$ and the tangent space.</p></div>
-</div>
-<p class="stacks-para">With the Atiyah-Bott localization formula, we obtain the ``naive'' answer:</p>
-<p class="stacks-para">$$ c_{3}(E)^{2} - c_{2}(E)c_{4}(E) = 57728. $$</p>
-<p class="stacks-para">This number $57728$ is the degree of the Porteous class, but it is <em>not</em> equal to $\nu_{3,2}$ due to an excess intersection phenomenon.</p>
-<div class="stacks-lemma" id="proposition-weightstautological">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.21.</strong> <a href="../tag/CBDB.html" class="stacks-tag-link">(CBDB)</a></div>
-  <div class="stacks-env-body"><p>The weights of the tautological bundles $\O(j)^{[3]}$ for $j=0,1,2,3$ at the $6$ representative $\Gm$-fixed points of $\CT$, as well as the weights of $E$ and the tangent bundle, are recorded in the Sage code in \S 7.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>Direct calculation from the monomial structure of the fixed points.</p></div>
-</div>
+<p class="stacks-para">We now compute the ingredients of the right hand side in
+Theorem&nbsp;3.24 for $X = \CT$.  Put homogeneous coordinates
+$[X:Y:Z]$ on $\P^2$.  Consider the $\Gm$ action on the $3$-dimensional vector space $\langle X, Y, Z \rangle$ by
+$$ t \cdot (X, Y, Z) = (t^a X, t^b Y, t^c Z),$$ where
+$(a,b,c) \in \Z^3$ are distinct, general integers.  This action of $\Gm$ on
+$\P^2$ induces compatible actions on $\check{\P}^{2}$, $\O_{\P^2}(n)$, $\Hilb_3 \P^2$, $\CT$, and
+$E$.  Observe that $S_3$ acts on $(X,Y,Z)$ by permutations, and accordingly on $a,b,c$.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -113,7 +119,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 3.6. Chern class calculation">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 3.6. A Chern class calculation using localization on $\CT$">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S3.SS6.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

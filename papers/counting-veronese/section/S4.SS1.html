@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4.1. The point condition in $\SQP$ &mdash; Counting 3-uple Veronese Surfaces</title>
+  <title>4.1. Why 57728 is wrong &mdash; Counting 3-uple Veronese Surfaces</title>
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../stacks.css">
   <script>
@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -81,61 +75,30 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.1. The point condition in $\SQP$</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.1. Why 57728 is wrong</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">4.1. The point condition in $\SQP$</h1>
-<p class="stacks-para">Fix a general point $p \in \P^{2}$.</p>
-<div class="stacks-definition" id="definition-basepointp">
-  <div class="stacks-env-head"><strong>Definition&nbsp;4.5.</strong> <a href="../tag/716E.html" class="stacks-tag-link">(716E)</a></div>
-  <div class="stacks-env-body"><p>We let $\BP(p) \subset \SQP$ denote the locus of triples $(T,T^{*},\Lambda)$ such that $p \in \Base(\Lambda)$, i.e. such that $\Lambda \subset H^{0}(\P^{2}, \I_{\s(T,T^{*}) \cup \{p\}}(5))$.</p></div>
+<h1 class="stacks-section-title">4.1. Why 57728 is wrong</h1>
+<p class="stacks-para">The calculation (?) done in the previous section is unfortunately not the number $\nu_{3,2}$.  The problem is that the  evaluation map 
+$$\begin{aligned}\underline{H^{0}(\P^{2}, \I_{\Gamma_{13}}(5))} \to E,\end{aligned}$$
+where $\Gamma_{13} \subset \P^{2}$ is a general set of $13$ points (see Section&nbsp;2.3), has $2$-dimensional kernel over certain points $(T,T^{*}) \in \CT$ which should not be counted for our enumerative problem &ndash; there is excess in the degeneracy scheme.  For a simple example, observe that if $T$ consists of three of the points of $\Gamma_{13}$, then the evaluation mapping over $(T,T^{*})$ automatically has at least a $2$-dimensional kernel. There are more complicated contributions to the excess. (Ultimately this is explained by Lemma&nbsp;4.10 below.) To dodge the excess, we change our viewpoint and work in a Grassmannian bundle over $\CT$ which we denote by $\SQP$ and call \text{the space of singular quintic pencils}.  Recall that the vector bundle $\mathcal{V}_{5}$ (see Proposition&nbsp;3.22) is related to $E$ by an exact sequence $$0 \to \mathcal{V}_{5} \to \underline{H^{0}(\P^{2}, \O(5))} \to E \to 0$$ over $\CT$.</p>
+<div class="stacks-definition" id="definition-quinticsingularpencils">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.1.</strong> <a href="../tag/7B9D.html" class="stacks-tag-link">(7B9D)</a></div>
+  <div class="stacks-env-body"><p>The <strong>space of singular quintic pencils</strong>, denoted  $\SQP$, is the
+  smooth variety $\Gr(2,\mathcal{V}_{5})$ representing $2$-dimensional subspaces in the fibers of $\mathcal{V}_{5}$.</p></div>
 </div>
-<div class="stacks-lemma" id="proposition-BPp">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;4.6.</strong> <a href="../tag/2F00.html" class="stacks-tag-link">(2F00)</a></div>
-  <div class="stacks-env-body"><p>For $p \in \P^{2}$ general, $\BP(p)$ is a codimension $2$ cycle in $\SQP$.</p></div>
+<p class="stacks-para">A point of $\SQP$ corresponds to a triple $(T, T^{*}, \Lambda)$
+where $(T,T^{*}) \in \CT$ is a complete triangle and $\Lambda$ is a
+pencil of quintic curves, all containing the length 9 scheme
+$\s(T,T^{*})$. We let $$\varphi: \SQP \to \CT$$ denote the map sending
+$(T,T^{*},\Lambda)$ to $(T,T^{*})$;  $\varphi$ is a $\Gr(2,12)$-bundle.  The variety $\SQP$ also affords a natural map
+$$\eta: \SQP \to \Gr\left(2, H^{0}(\P^{2}, \O(5))\right)$$
+with formula $\eta(T,T^{*},\Lambda) = \Lambda$.</p>
+<p class="stacks-para">Let us state the main objective of this section from the outset, to better orient the reader:</p>
+<div class="stacks-theorem" id="theorem-Domintegral">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.2.</strong> <a href="../tag/5938.html" class="stacks-tag-link">(5938)</a></div>
+  <div class="stacks-env-body"><p>Let $p \in \P^{2}$ be a point, and let $\Dom(p) \subset \SQP$ be as in Definition&nbsp;4.8 below. Then $$\nu_{3,2} = \int_{\SQP} \left[\Dom(p)\right]^{13}.$$</p></div>
 </div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The codimension of $\BP(p)$ in $\SQP$ equals the rank drop condition for the evaluation of $\Lambda$ at $p$, which is codimension $2$ in the Grassmannian fiber generically. Generality of $p$ ensures this codimension is achieved.</p></div>
-</div>
-<div class="stacks-env" id="claim-support">
-  <div class="stacks-env-head"><strong>Claim&nbsp;4.7.</strong> <a href="../tag/D12E.html" class="stacks-tag-link">(D12E)</a></div>
-  <div class="stacks-env-body"><p>Let $(T,T^{*},\Lambda) \in \BP(p)$.  Then exactly one of the following holds:
-<ol><li><strong>(i)</strong> $p \notin T$ and $\Lambda \subset H^{0}(\P^{2}, \I_{\s(T,T^{*}) \cup \{p\}}(5))$,</li>
-<li><strong>(ii)</strong> $p \in T$ and $T$ is an honest triangle containing $p$ as a vertex,</li>
-<li><strong>(iii)</strong> $T$ is contained in a line through $p$.</li></ol></p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>This is a case analysis based on the position of $p$ relative to $T$ and the tangent space behavior of $\s(T,T^{*})$ at the points of $T$.</p></div>
-</div>
-<div class="stacks-definition" id="definition-D">
-  <div class="stacks-env-head"><strong>Definition&nbsp;4.8.</strong> <a href="../tag/0DB3.html" class="stacks-tag-link">(0DB3)</a></div>
-  <div class="stacks-env-body"><p>We define the following subvarieties of $\BP(p)$:
-<ol><li>$\Dom(p)$ is the closure of the locus of $(T,T^{*},\Lambda) \in \BP(p)$ such that $p \notin T$ and $T \notin \Thin$.</li>
-<li>$\Inc(p)$ is the closure of the locus of $(T,T^{*},\Lambda)$ where $p \in T$ and $T$ is an honest triangle.</li>
-<li>$\Lin(p)$ is the closure of the locus of $(T,T^{*},\Lambda)$ where $T$ is contained in a line through $p$.</li></ol></p></div>
-</div>
-<div class="stacks-commentary" id="remark-Dombundle">
-  <div class="stacks-env-head"><strong>Remark&nbsp;4.9.</strong> <a href="../tag/39CC.html" class="stacks-tag-link">(39CC)</a></div>
-  <div class="stacks-env-body"><p>Observe that if $(T,T^{*})$ is such that $p \notin T$ and if $\s(T,T^{*}) \cup \{p\}$ imposes ten independent conditions on quintic forms, then $\Dom(p)$ is the unique irreducible component of $\BP(p)$ lying over a sufficiently small neighborhood of $(T,T^{*})$.  Indeed, over a neighborhood of $(T,T^{*}) \in \CT$ the map $\eta|_{\BP(p)}: \BP(p) \to \CT$ is then a $\Gr(2,11)$-bundle.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-threecomponents">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;4.10.</strong> <a href="../tag/853F.html" class="stacks-tag-link">(853F)</a></div>
-  <div class="stacks-env-body"><p>$\Dom(p), \Inc(p),$ and $\Lin(p)$ are the irreducible components of $\BP(p)$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>One checks that each of $\Dom(p), \Inc(p), \Lin(p)$ is irreducible and has codimension $2$ in $\SQP$ by a dimension count, and that their union is $\BP(p)$ by Claim&nbsp;4.7.</p></div>
-</div>
-<div class="stacks-theorem" id="theorem-BPdecomposition">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;4.11.</strong> <a href="../tag/FAF5.html" class="stacks-tag-link">(FAF5)</a></div>
-  <div class="stacks-env-body"><p>In the Chow group of $\SQP$, we have the cycle decomposition
-  $$ [\BP(p)] = [\Dom(p)] + 4[\Inc(p)] + [\Lin(p)].$$</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The multiplicities are determined by local intersection theory. At a general point of $\Inc(p)$, the multiplicity is $4$ because $\s(T,T^{*})$ is the square of the ideal of $T$, contributing a factor of $4$ to the tangent space calculation. At a general point of $\Lin(p)$, the multiplicity is $1$, verified by a transversality argument. The multiplicity of $\Dom(p)$ is $1$ by Remark&nbsp;4.9.</p></div>
-</div>
+<p class="stacks-para">We begin by establishing some definitions.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -145,7 +108,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.1. The point condition in $\SQP$">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.1. Why 57728 is wrong">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S4.SS1.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

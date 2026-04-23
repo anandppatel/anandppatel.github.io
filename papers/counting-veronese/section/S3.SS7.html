@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.7. The 31 fixed points of the $\Gm$ action on $\CT$ &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <span>3.7. The 31 fixed points of the $\Gm$ action on $\CT$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.7. The 31 fixed points of the $\Gm$ action on $\CT$</h1>
+<p class="stacks-para">We now list the $S_3$-orbits of the $31$ fixed points of the $\Gm$ action on
+$\CT$.  The format is $(I; J)$, where $I \subset k[X,Y,Z]$ is the homogeneous ideal
+of a length 3 scheme and $J \subset k[\check{X},\check{Y},\check{Z}]$ is a an ideal describing a length $3$ subscheme of $\check{\P}^{2}$.
+<ol><li>$(XY, YZ, XZ; \check{X} \check{Y},\check{X} \check{Z},\check{Y} \check{Z})$ &mdash; the unique 1+1+1 configuration,</li>
+<li>$(XY, XZ, Y^2; \check{X}\check{Y}, \check{X}\check{Z}, \check{Z}^2)$ and its 6 permutations &ndash; non-linear 1+2 configuration,</li>
+<li>$(X, Y^2Z; \check{Y}^2 ,\check{Y}\check{Z} , \check{Z}^2)$ and its 6 permutations &ndash; linear 1+2 configuration,</li>
+<li>$(X, Y^3; \check{Y}^2 ,\check{Y}\check{Z} , \check{Z}^2)$ and its 6 permutations &ndash; linear 3 configuration,</li>
+<li>$(X^2, XY, Y^2; \check{Z}, \check{Y}^{3})$ and its 6 permutations &ndash; fat point (non-linear 3 configuration),</li>
+<li>$(X^2, XY, Y^2; \check{Z}, \check{Y}^{2}\check{X})$ and its 6 permutations &ndash; fat point (non-linear 3 configuration).</li></ol></p>
+<p class="stacks-para">This (1)-(6) ordering of $S_3$ orbit representatives will be systematically adhered to for all the following weight computations, including throughout the <code>sage</code> code in \S 7.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.25.</strong></div>
+  <div class="stacks-env-body"><p>The weights of the $\Gm$ action on $E$ at the fixed points of type (1)-(6) are:
+<ol><li>$(5a, 5b, 5c, 4a+b, 4a+c, 4b+a, 4b+c, 4c+a, 4c+b)$,</li>
+<li>$(5a, 4a+b, 4a+c, 5c, 4c+a, 4c+b, 3c+a+b, 3c+2b, 2c+3b)$ and its 6 permutations,</li>
+<li>$(5b, 4b+a, 4b+c, 5c, 4c+a, 4c+b, 3c+a+b, 3c+2b, 2c+3b)$ and its 6 permutations,</li>
+<li>$(5c, 4c+b, 3c+2b, 2c+3b, c+4b, 5b, 4c+a, 3c+a+b, 2c+a+2b)$ and its 6 permutations,</li>
+<li>$(5c, 4c+a, 3c+2a, 4c+b, 3c+a+b, 2c+2a+b, 3c+2b, 2c+2b+a, 2c+3b)$ and its 6 permutations,</li>
+<li>$(5c, 4c+a, 3c+2a, 2c+3a, 4c+b, 3c+a+b, 3c+2b, 2c+2b+a, 2c+3b)$ and its 6 permutations.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>In order to indicate how to perform these computations, we will do the case 
+(2) as an example &ndash; the reader can then check that no new complications arise in the general calculation.  </p>
+<p>Note that in the case (2), the image in
+$\Hilb_9 \P^2$ is cut out simply by the square of the ideal; the cubic
+ $XY^{2}$ is redundant information.  The length $3$ scheme
+$T$ cut out by $\langle XY, XZ, Y^2 \rangle$ is supported at $[1:0:0]$
+and $[0:0:1]$.  Near $[1:0:0]$, we can use affine coordinates
+$y = Y/X$ and $z = Z/X$.  In these coordinates, the ideal is $(y, z)$,
+and its square is $(y^2, yz, z^2)$.  The section $X^5$ of
+$\O_{\P^2}(5)$ is $\Gm$ equivariant and non-vanishing at $[1:0:0]$.
+We thus get a $\Gm$ equivariant basis of
+$H^0(T \cap \{X \neq 0\}, \O_{\s(T,T^{*})}(5))$ given by
+$$ X^5 \langle 1, y, z \rangle.$$ The corresponding weights are
+$5a, 4a+b, 4a+c$.  Near $[0:0:1]$, we can use affine coordinates
+$x = X/Z$ and $y = Y/Z$.  In these coordinates, the ideal is
+$(x, y^2)$, and its square is $(x^2, xy^2, y^4)$.  The section $Z^5$
+of $\O_{\P^2}(5)$ is $\Gm$ equivariant section and non-vanishing at
+$[0:0:1]$.  We thus get a $\Gm$ equivariant basis of
+$H^0(T \cap \{Z \neq 0\} , \O_{\s(T,T^{*})}(5))$ given by
+$$ Z^5 \cdot \langle 1, x, y, xy, y^2, y^3 \rangle.$$
+The corresponding weights are $5c, 4c+a, 4c+b, 3c+a+b, 3c+2b, 2c+3b$.
+Combining the contributions from $[1:0:0]$ and $[0:0:1]$, we get the full set of weights.</p></div>
+</div>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.26.</strong></div>
+  <div class="stacks-env-body"><p>The weights of the $\Gm$ action on the tangent bundle at the
+ fixed points of type (1) - (6) are:
+<ol><li>$(c-a, c-b, b-c, b-a, a-b, a-c)$,</li>
+<li>$(a-c, a-b, c-a, 2c-2b, b-a, c-b)$, and its six permutations,</li>
+<li>$(c-a, 2c-2b, b-a, c-b, b-c, b-a)$, and its six permutations,</li>
+<li>$(c-a, 3c-3b, b-a, 2c-2b, 2b-c-a, c-b)$, and its six permutations,</li>
+<li>$(3b-3a, 2b-2a, b-a, c-a, c-b, a-2b+c)$, and its six permutations,</li>
+<li>$(a-b, c-b, c-a, 2b-2a, c-b, b-a)$, and its six permutations.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>To see how these are calculated, we consider two representative examples: (3) and (6).  </p>
+<p>At a complete triangle of type (3), the
+map $\varphi_{1}: \CT \to \Hilb_3 \P^2$ is a local isomorphism.
+Therefore, we have
+$$ T_p \CT \cong T_p \Hilb_3 \P^2 \cong \Hom_{\P^2} (I, \O_{\P^2}/I).$$
+At $[1:0:0]$, we have $I = (y,z)$ where $y = Y/X$ and $z = Z/X$.  So
+we get $\Hom(I, \O/I) = \k \langle \widehat y, \widehat z \rangle$
+where $\widehat y$ and $\widehat z$ are the dual variables to $y$ and
+$z$; their weights are $a-b$ and $a-c$, respectively.  At $[0:0:1]$,
+we have $I = (x,y^2)$ where $x = X/Z$ and $y = Y/Z$.  So we get
+$$\Hom(I, \O/I) = \Hom_k (\langle x, y^2 \rangle, \langle 1, y \rangle) = \k \langle \widehat x \otimes 1, \widehat x \otimes y, \widehat{y^2} \otimes 1, \widehat{y^2} \otimes y \rangle.$$
+The weights of these elements are $c-a, b-a, 2c-2b, c-b$.  Combining
+the contributions from $[1:0:0]$ and $[0:0:1]$, we get the full set of
+weights.</p>
+<p>Now we shift focus to a fixed point of type (6).  At this point,
+the map $\CT \to \Hilb_3 \check{\P}^2$ is a local isomorphism.  Denote
+by $\widehat{X}$, $\widehat{Y}$, and $\widehat{Z}$ the variables dual
+to $X$, $Y$, and $Z$.  Then the corresponding point in
+$\Hilb_3 \check{\P}^2$ is the point
+$$ \langle \widehat{Z}, \widehat{Y}^2\widehat{X} \rangle.$$ As in the
+third case, we get the weights $(c-a, 2b-2a, c-b, b-a, a-b, c-b)$.</p></div>
+</div>
+<p class="stacks-para">We can now compute top degree Chern expressions of the vector bundle $E$. In particular, using Theorem&nbsp;3.24, we get</p>
+<p class="stacks-para">$$c_3(E)^2 - c_2(E)c_4(E) = 2^7 \times 11 \times 41 = 57728.$$
+The computation is carried out in \S 7.</p>
+<p class="stacks-para">Before continuing with our story, we take a moment to collect other weight calculations which will be needed in the last section.  We maintain the 1-6 ordering of the $S_{3}$ orbits of fixed points throughout.</p>
+<div class="stacks-lemma" id="proposition-weightstautological">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.27.</strong> <a href="../tag/CBDB.html" class="stacks-tag-link">(CBDB)</a></div>
+  <div class="stacks-env-body"><p>Let $\O^{[3]}, \O(1)^{[3]},$ and $\O(2)^{[3]}$ denote the tautological rank $3$ bundles pulled back to $\CT$, and let $\O(H)$ denote the line bundle on $\CT$ corresponding to the divisor of those $(T,T^{*})$ such that $T$ meets a fixed line. The torus weights of these bundles at the fixed points in $\CT$ are listed below.  (One then applies the action of $S_3$ on the letters $\{a,b,c\}$.) 
+<ul><li>}$:] <ol><li>$(0,0,0)$</li>
+<li>$(0,b-c,0)$,</li>
+<li>$(0,b-c,0)$,</li>
+<li>$(0,b-c,2b-2c)$,</li>
+<li>$(0,a-c,b-c)$,</li>
+<li>$(0,a-c,b-c)$.</li></ol></li>
+<li>}$:] <ol><li>$(a,b,c)$,</li>
+<li>$(a,b,c)$,</li>
+<li>$(b,b,c)$,</li>
+<li>$(c,b,2b-c)$,</li>
+<li>$(a,b,c)$,</li>
+<li>$(a,b,c)$.</li></ol></li>
+<li>}$:] <ol><li>$(2a,2b,2c)$,</li>
+<li>$(2a,b+c,2c)$,</li>
+<li>$(2b,b+c,2c)$,</li>
+<li>$(2b,b+c,2c)$,</li>
+<li>$(a+c,b+c,2c)$,</li>
+<li>$(a+c,b+c,2c)$.</li></ol></li>
+<li>}$:] <ol><li>$(3a,3b,3c)$,</li>
+<li>$(3a,b+2c,3c)$,</li>
+<li>$(3b,b+2c,3c)$,</li>
+<li>$(b+2c,2b+c,3c)$,</li>
+<li>$(a+2c,b+2c,3c)$,</li>
+<li>$(a+2c,b+2c,3c)$.</li></ol></li>
+<li><ol><li>$(a+b+c)$,</li>
+<li>$(a+2c)$,</li>
+<li>$(b+2c)$,</li>
+<li>$(3c)$,</li>
+<li>$(3c)$,</li>
+<li>$(3c)$.</li></ol></li></ul></p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 3.7. The 31 fixed points of the $\Gm$ action on $\CT$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S3.SS7.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>

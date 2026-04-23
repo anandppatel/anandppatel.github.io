@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -86,30 +80,34 @@
 <h1 class="stacks-section-title">3.2. Examples</h1>
 <p class="stacks-para">Let us give some calculations related to some of the things we've introduced. As a reminder, $[X:Y:Z]$ are homogeneous
 coordinates in $\P^{2}$, and $[\check{X}:\check{Y}:\check{Z}]$ are dual
-coordinates. Brackets $\langle \rangle $
+coordinates. Thus, the point $[\check{X}:\check{Y}:\check{Z}]$ represents the line in $\P^{2}$
+defined by the equation $\check{X}X+\check{Y}Y+\check{Z}Z = 0$. Brackets $\langle \rangle $
 will denote ``$\k$-linear span''.</p>
 <div class="stacks-env" id="example-coordinatepoints">
   <div class="stacks-env-head"><strong>Example&nbsp;3.5.</strong> <a href="../tag/666A.html" class="stacks-tag-link">(666A)</a></div>
   <div class="stacks-env-body"><p>Let $T \subset \P^{2}$ be the three coordinate points (orbit (A)), so that
   $\Lambda_{T} = \langle XY, YZ, XZ \rangle $. Then
   $\Lambda_{T}^{*} = \langle \check{X}^{2}, \check{Y}^{2}, \check{Z}^{2} \rangle $, whose
-  Jacobian space is $\langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle.$ Therefore,
-  $\Lambda_{T}^{\dagger} = \langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle,$
+  Jacobian space is $\langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle
+  $.   Therefore,
+  $$\begin{aligned}\Lambda_{T}^{\dagger} = \langle \check{X}\check{Y}, \check{Y}\check{Z}, \check{X}\check{Z} \rangle,\end{aligned}$$
   which is the net of conics for the coordinate points in $\check{\P}^{2}$.</p></div>
 </div>
 <div class="stacks-env" id="example-curvillinearconic">
   <div class="stacks-env-head"><strong>Example&nbsp;3.6.</strong> <a href="../tag/8E7B.html" class="stacks-tag-link">(8E7B)</a></div>
-  <div class="stacks-env-body"><p>Let $T$ be a length three non-reduced subscheme of a conic &ndash; orbit (E).  $T$ is given by the vanishing scheme of the net $\Lambda_{T} = \langle XY, X^{2}, YZ \rangle$. Therefore, $\Lambda^{*}_{T} = \langle \check{Y}^{2}, \check{Z}^{2}, \check{X}\check{Z} \rangle$.  Computing the Jacobian space, we get $\Lambda_{T}^{\dagger} = \langle \check{Y}\check{Z}, \check{Y}\check{X}, \check{Z}^{2} \rangle$ which is the net of conics of a length three subscheme of a smooth conic in $\check{\P}^{2}$.</p></div>
+  <div class="stacks-env-body"><p>Let $T$ be a length three non-reduced subscheme of a conic &ndash; orbit (E).  $T$ is given by the vanishing scheme of the net $\Lambda_{T} = \langle XY, X^{2}, YZ \rangle$. Therefore, $\Lambda^{*}_{T} = \langle \check{Y}^{2}, \check{Z}^{2}, \check{X}\check{Z} \rangle$.  </p>
+<p>    Computing the Jacobian space, we get $$\Lambda_{T}^{\dagger} = \langle \check{Y}\check{Z}, \check{Y}\check{X}, \check{Z}^{2} \rangle$$ which is the net of conics of a length three subscheme of a smooth conic in $\check{\P}^{2}$.</p></div>
 </div>
 <div class="stacks-env" id="example-collinearZnet">
   <div class="stacks-env-head"><strong>Example&nbsp;3.7.</strong> <a href="../tag/44D2.html" class="stacks-tag-link">(44D2)</a></div>
   <div class="stacks-env-body"><p>Now suppose $T$ is a length three scheme contained in the line
     $L$ given by $Z=0$ (orbit (F)).  Then
     $\Lambda_{T} = \langle XZ, YZ, Z^{2} \rangle$.  Note that this net depends only on $L$, regardless of the particular
-    scheme $T \subset L$.  The dual space $\Lambda_{T}^{*}$ is
+    scheme $T \subset L$.</p>
+<p>    The dual space $\Lambda_{T}^{*}$ is
     $\langle \check{X}^{2},\check{X}\check{Y}, \check{Y}^{2} \rangle$, which is also easily checked to
     be its own Jacobian. Therefore,
-    $\Lambda_{T}^{\dagger} = \langle \check{X}^{2}, \check{X}\check{Y}, \check{Y}^{2} \rangle.$</p></div>
+    $$\begin{aligned}\Lambda_{T}^{\dagger} = \langle \check{X}^{2}, \check{X}\check{Y}, \check{Y}^{2} \rangle.\end{aligned}$$</p></div>
 </div>
 <div class="stacks-env" id="example-fatpointZnet">
   <div class="stacks-env-head"><strong>Example&nbsp;3.8.</strong> <a href="../tag/0951.html" class="stacks-tag-link">(0951)</a></div>
@@ -117,10 +115,43 @@ will denote ``$\k$-linear span''.</p>
   conics is $\Lambda_{T} = \langle X^{2}, XY, Y^{2}\rangle$. The dual
   space $\Lambda_{T}^{*}$ is $\langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle$. This
   latter space is its own Jacobian. Therefore
-  $\Lambda_{T}^{\dagger} = \langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle.$</p></div>
+  $$\begin{aligned}\Lambda_{T}^{\dagger} = \langle \check{X}\check{Z}, \check{Y}\check{Z}, \check{Z}^{2} \rangle.\end{aligned}$$</p></div>
 </div>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.9.</strong></div>
+  <div class="stacks-env-body"><p>Let $T \in \Hilb_{3}\P^{2}$ be arbitrary. Then $\Lambda_{T}^{\dagger}$ is the net of conics for some (not
+    necessarily unique) $T^{*} \in \Hilb_{3}\check{\P}^{2}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em></div>
+  <div class="stacks-env-body"><p>One checks this orbit by orbit &ndash; we have done the most interesting examples above.</p></div>
+</div>
+<p class="stacks-para">We can now state our main definition:</p>
+<div class="stacks-definition" id="def-CT">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.10.</strong> <a href="../tag/608D.html" class="stacks-tag-link">(608D)</a></div>
+  <div class="stacks-env-body"><p>The moduli space of <strong>complete triangles</strong> is the closed subscheme
+  $$\CT \subset \Hilb_{3}\P^{2} \times \Hilb_{3}\check{\P}^{2}$$ parametrizing
+  pairs $(T, T^{*})$ satisfying
+  $$\Lambda_{T}^{\dagger} = \Lambda_{T^{*}}.$$</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.11.</strong></div>
+  <div class="stacks-env-body"><p>The scheme structure on $\CT$ is induced by the condition
+  $\Lambda_{T}^{\dagger} = \Lambda_{T^{*}}.$ Indeed, by
+  Proposition&nbsp;3.3 and
+  Remark&nbsp;3.2, the assignments
+  $(T, T^{*}) \mapsto \Lambda_{T}^{\dagger}$ and
+  $(T, T^{*}) \mapsto \Lambda_{T^{*}}$ yield two vector subbundles of
+  the trivial bundle $\underline{H^{0}(\check{\P}^{2}, \O_{\check{\P}^{2}}(2))}$
+  over $\Hilb_{3}\P^{2} \times \Hilb_{3}\check{\P}^{2}$.  Requiring these two subbundles to be equal yields the scheme structure on
+  $\CT$. $\CT$'s functor of points is inherent in this description.</p></div>
+</div>
+<p class="stacks-para">The diagonal action of $\PGL(3)$ on $\P^{2} \times \check{\P}^{2}$ induces an action on $\CT$  thanks to the projective equivariance of the assignment
+$$\Lambda_{T} \mapsto \Lambda_{T}^{\dagger}.$$</p>
+<p class="stacks-para">From these calculations and projective equivariance of the
+construction $\Lambda_{T} \mapsto \Lambda_{T}^{\dagger}$, we conclude:</p>
 <div class="stacks-lemma" id="proposition-fatandtriple">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.9.</strong> <a href="../tag/CAB7.html" class="stacks-tag-link">(CAB7)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.12.</strong> <a href="../tag/CAB7.html" class="stacks-tag-link">(CAB7)</a></div>
   <div class="stacks-env-body"><p>Suppose $(T, T^{*}) \in \CT$. Then:
   <ol><li>$T$ is an honest triangle if and only
     if $T^{*}$ is an honest triangle. In this case, the points of
@@ -136,38 +167,38 @@ will denote ``$\k$-linear span''.</p>
   <div class="stacks-env-head"><em>Proof.</em></div>
   <div class="stacks-env-body"><p>Follows from calculations similar to those in Example&nbsp;3.5, Example&nbsp;3.8 and Example&nbsp;3.7 &ndash; we leave the details to the reader.</p></div>
 </div>
-<p class="stacks-para">We can now state our main definition:</p>
-<div class="stacks-definition" id="def-CT">
-  <div class="stacks-env-head"><strong>Definition&nbsp;3.10.</strong> <a href="../tag/608D.html" class="stacks-tag-link">(608D)</a></div>
-  <div class="stacks-env-body"><p>The moduli space of <strong>complete triangles</strong> is the closed subscheme
-  $\CT \subset \Hilb_{3}\P^{2} \times \Hilb_{3}\check{\P}^{2}$ parametrizing
-  pairs $(T, T^{*})$ satisfying
-  $\Lambda_{T}^{\dagger} = \Lambda_{T^{*}}.$</p></div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.13.</strong></div>
+  <div class="stacks-env-body"><p>From Example&nbsp;3.7, notice that if $T$ is thin
+  and $(T, T^{*}) \in \CT$, then $T^{*}$ is the fat scheme supported
+  on the point dual to the line containing $T$.</p></div>
 </div>
 <div class="stacks-lemma" id="prop-irreducible">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.11.</strong> <a href="../tag/2430.html" class="stacks-tag-link">(2430)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.14.</strong> <a href="../tag/2430.html" class="stacks-tag-link">(2430)</a></div>
   <div class="stacks-env-body"><p>The reduction $\CT_{\red}$ is $6$-dimensional and irreducible.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>From Proposition&nbsp;3.9, it suffices to show: Given
+  <div class="stacks-env-body"><p>From Proposition&nbsp;3.12, it suffices to show: Given
   a pair $(T, T^{*}) \in \CT$ with $T$ fat, there exists an
   irreducible pointed curve $(B,0)$ and a map $f \from B \to \CT$ such
   that $f(0) = (T, T^{*})$ and for all $b \in B \setminus \{0\}$, $f(b)$
   is an honest triangle.  This is sufficient because the open locus of
-  honest triangles is clearly $6$-dimensional and irreducible.</p>
-<p>  Since $T$ is fat, Proposition&nbsp;3.9 says $T^{*}$ is
-  thin. Since the open subset of $\Hilb_{3}(\check{\P}^{2})$
+  honest triangles is clearly $6$-dimensional and irreducible. Note
+  that by symmetry, we need not consider the case where $T$ is thin.</p>
+<p>  Since $T$ is fat, Proposition&nbsp;3.12 says $T^{*}$ is
+  thin. In any case, since the open subset of $\Hilb_{3}(\check{\P}^{2})$
   parametrizing triples of three distinct, non-collinear points is
   Zariski dense, there exists a pointed curve $(B,0)$ and a map
-  $f \from B \to \Hilb_{3}\check{\P}^{2}$
+  $$\begin{aligned}f \from B \to \Hilb_{3}\check{\P}^{2}\end{aligned}$$
   with $f(0) = T^{*}$, and $f(b)$ a triple of three non-collinear
   points, for all $b \neq 0$. For all points $b \in B$, the space
   $\Lambda_{f(b)}^{\dagger}$ determines a unique length three scheme
-  $T_{b}$ such that
+  $T_{b} \in \Hilb_{3}(\P^{2})$ such that
   $\Lambda_{f(b)}^{\dagger} = \Lambda_{T_{b}}$. Therefore, the map $f$
   lifts to a map $f \from B \to \CT$, and this lift has the desired
-  properties.</p></div>
+  properties, namely that $f(0) = (T, T^{*})$ and $f(b)$ is an honest triangle
+  for $b \neq 0$.</p></div>
 </div>
 
 <hr>

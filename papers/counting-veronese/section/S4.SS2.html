@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4.2. Thirteen point conditions &mdash; Counting 3-uple Veronese Surfaces</title>
+  <title>4.2. First definitions &mdash; Counting 3-uple Veronese Surfaces</title>
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../stacks.css">
   <script>
@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -81,145 +75,18 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.2. Thirteen point conditions</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.2. First definitions</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">4.2. Thirteen point conditions</h1>
-<p class="stacks-para">Now let $p_1, \dots, p_{13}$ be $13$ general points in $\P^2$.  Define the <em>solution locus</em>
-$$\Theta := \bigcap \limits_{i=1, \dots, 13} \Dom(p_i).$$</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Understanding $\Theta \cap \Fin$</h3></p>
-<div class="stacks-lemma" id="lemma-finite">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;4.12.</strong> <a href="../tag/73C7.html" class="stacks-tag-link">(73C7)</a></div>
-  <div class="stacks-env-body"><p>Every point $(T,T^{*},\Lambda)$ of $\Theta \cap \Fin$ satisfies $T \cap \{p_1, \dots, p_{13}\} = \varnothing$.  Moreover, $\Base(\Lambda)$ consists of $\s(T,T^{*})$ together with the $13$ points $p_1, \dots, p_{13}$ and three additional residual points not on $T$.</p></div>
+<h1 class="stacks-section-title">4.2. First definitions</h1>
+<div class="stacks-definition" id="definition-base">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.3.</strong> <a href="../tag/789D.html" class="stacks-tag-link">(789D)</a></div>
+  <div class="stacks-env-body"><p>Let $W \subset H^{0}(\P^{2},\O(n))$ be a subspace. The <strong>base-scheme</strong> of $W$, denoted $\Base(W)$ is the subscheme of $\P^{2}$ which is the common vanishing scheme of all elements of $W$.</p></div>
 </div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>By generality of $(p_1, \dots, p_{13})$, the pencil $\Lambda$ has a finite base scheme, and B&eacute;zout forces $\length(\Base(\Lambda)) = 25$.  Since $\length(\s(T,T^{*})) = 9$ and the $p_i$'s contribute $13$ points, the residual has length $3$.  The condition $T \cap \{p_i\} = \varnothing$ is verified by a dimension count: the locus where some $p_i \in T$ has too few degrees of freedom to accommodate general $(p_1, \dots, p_{13})$.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-finitehonest">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;4.13.</strong> <a href="../tag/228E.html" class="stacks-tag-link">(228E)</a></div>
-  <div class="stacks-env-body"><p>Let $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. Then $T$ is an honest
-  triangle, and $T \cap \Gamma_{13} = \varnothing$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The statement ``$T \cap \Gamma_{13} = \varnothing$'' follows
-  immediately from Lemma&nbsp;4.12, so we will assume it and
-  show that $T$ is an honest triangle.</p>
-<p>  Pick $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. As $\Base(\Lambda)$ is
-  finite, it follows that $T \notin \Thin$ (as otherwise $\Base(\Lambda)$
-  contains the line spanned by $T$). Therefore, we need only show that $T$ is reduced.</p>
-<p>  We perform a dimension count.  The locus $V \subset \Fin$ consisting of triples
-  $(T,T^{*},\Lambda)$ where $T$ is non-reduced is a Cartier
-  divisor of dimension $25$.
-  The scheme $V'$ parametrizing $(T,T^{*},\Lambda, W)$ where each of the $13$ points $w_i \in \Base(\Lambda)$ also has $\dim V' = 25$, so the projection $V' \to (\P^{2})^{13}$ cannot be dominant. In particular it cannot contain the general tuple $(p_1,\dots, p_{13})$ in its image.</p></div>
-</div>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Dealing with infinite base schemes</h3></p>
-<p class="stacks-para">We now take on the challenge of showing emptiness of $\Theta \cap \Inf$.</p>
-<div class="stacks-definition" id="definition-1dpart">
-  <div class="stacks-env-head"><strong>Definition&nbsp;4.14.</strong> <a href="../tag/21E9.html" class="stacks-tag-link">(21E9)</a></div>
-  <div class="stacks-env-body"><p><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
-    a pencil of degree $d$ curves, with base scheme $\Base(\Lambda)$, we
-    define the <strong>fixed curve</strong> of $\Base(\Lambda)$ to be the Cartier
-    divisor on $\P^{2}$ defined by the greatest common factor of any two
-    general elements of $\Lambda$.</li>
-<li>If the fixed curve of $\Lambda$ has
-    degree $e$, we define the <strong>moving part</strong> of $\Lambda$, denoted $\Lambda'$, to be the
-    pencil of degree $d-e$ curves obtained by dividing the equations of
-    the members of $\Lambda$ by the equation of the fixed curve.</li>
-<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then a <strong>fixed point</strong> of $\Lambda$ will mean a point in $C \setminus \Base(\Lambda')$.</li>
-<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>isolated point</strong> of $\Lambda$ will mean a point in $\Base(\Lambda') \setminus C$.</li>
-<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol></p></div>
-</div>
-<div class="stacks-lemma" id="lemma-QLNo">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;4.15.</strong> <a href="../tag/3211.html" class="stacks-tag-link">(3211)</a></div>
-  <div class="stacks-env-body"><p>Suppose $\Lambda$ is a pencil of quintic curves whose fixed curve is a quartic $Q$.
-    Suppose furthermore that $\Lambda$ satisfies one of the following:
-    <ol><li><strong>(a)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of at most two points, each a node,</li>
-<li><strong>(b)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of a single ordinary cusp,</li>
-<li><strong>(c)</strong> $\Base(\Lambda)$ has one embedded point at a smooth point of $Q$ while $\Sing Q$ has at most one singular point which is a node,</li>
-<li><strong>(d)</strong> $\Sing Q$ consists of a single node and this node is the embedded point of $\Base(\Lambda)$.</li></ol>
-    Then $\Base (\Lambda)$ does not contain any subscheme of the form $\s(T,T^{*})$ for any $(T,T^{*}) \in \CT$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The moving part $\Lambda'$ of $\Lambda$ is a pencil of lines with base point $b$. Since $\s(T,T^{*})$ has $2$-dimensional Zariski tangent space at each point, if $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ must be supported on the singular points of $Q$ or the embedded point.</p>
-<p>    In case (a), local coordinates show that $\I_{\s(T,T^{*})}$ cannot contain a defining equation for $Q$ at a node, regardless of whether $T$ is curvilinear or fat at that node.</p>
-<p>    In case (b), at the cusp $c$, if $T$ is fat then $\I_{\s(T,T^{*})} \subset \m^3$ but $Q$'s equation is in $\m^2 \setminus \m^3$. If $T$ is curvilinear, a power series argument shows the cusp singularity type is incompatible with containment.</p>
-<p>    Cases (c) and (d) are handled similarly, using the observation that the ideal $\mathcal{J} = (xf, yf)$ near the embedded point has too many linearly independent elements modulo higher powers of the maximal ideal.</p></div>
-</div>
-<div class="stacks-lemma" id="proposition-infline">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;4.16.</strong> <a href="../tag/E8B4.html" class="stacks-tag-link">(E8B4)</a></div>
-  <div class="stacks-env-body"><p>If $(T,T^{*},\Lambda)$  is an element of $\Theta \cap \Inf$ then
-  the fixed curve of $\Base(\Lambda)$ consists of a reduced
-  line.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>We proceed by considering the possible degrees of the fixed curve $C$.  For degree $4$, Lemma&nbsp;4.15 eliminates all cases. For degree $3$, generality of $(p_1,\dots,p_{13})$ forces the configuration into a unique smooth cubic with a residual pencil of conics, and tangent space considerations prevent $\s(T,T^{*})$ from being contained in this smooth base scheme. For degree $2$, similar reasoning with a smooth conic and residual pencil of cubics eliminates the possibility.</p></div>
-</div>
-<div class="stacks-lemma" id="proposition-Movesingular">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;4.17.</strong> <a href="../tag/1347.html" class="stacks-tag-link">(1347)</a></div>
-  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda) \in \Theta \cap \Inf$.  Then the moving part $\Lambda'$ of $\Lambda$ is a pencil of quartics whose general member is a smooth quartic curve.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>$\Lambda'$ is a pencil of quartics by Proposition&nbsp;4.16. If the general member had a singular point, the locus of such pencils would have dimension $22$, and a dimension count argument shows this is insufficient to accommodate $11$ of the $13$ general points in the finite base scheme while having $2$ points on the line, leading to a contradiction.</p></div>
-</div>
-<div class="stacks-lemma" id="proposition-LinDom">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;4.18.</strong> <a href="../tag/E014.html" class="stacks-tag-link">(E014)</a></div>
-  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda)$ is an element of  $\Dom(p) \cap \Lin(p)$ satisfying:
-<ol><li>The fixed part of $\Lambda$ is the line $L$ spanned by $T$, and</li>
-<li>$p \notin T$.</li></ol>
-Then the moving part $\Lambda'$ of $\Lambda$ satisfies $\length \left(\Base(\Lambda') \cap L\right) = 4.$</p></div>
-</div>
-<div class="stacks-proof" id="claim-quinticforms">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/45DE.html" class="stacks-tag-link">(45DE)</a></div>
-  <div class="stacks-env-body"><p>The proof uses a limit linear series style argument.  We approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family in $\Dom(p)$, degenerate the family of quintic forms to the reducible surface $P \cup E$ arising from blowing up $\P^{2}_{B}$ along $L$, and use the Hirzebruch surface structure of the exceptional divisor to constrain the intersection number.</p>
-<p>\begin{claim}</p>
-<p>There exists a point $q \in L$ such that the limit $\lim_{b \to 0}V_{b}$ consists of quintic forms which are a product $L \cdot Q$ where $Q$ is a quartic containing the divisor $\mathcal{T}_{0} + q$ on $L$.
-\end{claim}</p>
-<p>\begin{proof}
-This is proved by analyzing sections of the line bundle $\mathcal{L} = \beta^{*}\O(5)(-E)$ on the blown-up threefold, using the geometry of curves on the Hirzebruch surface $E \cong \mathbb{F}_1$.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-D2F">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;4.19.</strong> <a href="../tag/5DB5.html" class="stacks-tag-link">(5DB5)</a></div>
-  <div class="stacks-env-body"><p>Let $Z = \widetilde{p} \cup \widetilde{\mathcal{T}}_{0} \subset E$ where $E \cong \mathbb{F}_1$. Then $h^{0}(E,\I_{Z}(D+2F)) \geq 1$ and $h^{0}(E,\I_{Z}(D+2F)) > 1$ if and only if $Z$ is contained in a line, in which case $h^{0}(E,\I_{Z}(D+2F)) = 2$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>This follows from translating to a claim about length $5$ subschemes in the plane imposing independent conditions on conics, via blowing down the directrix.</p></div>
-</div>
-<div class="stacks-env" id="assumption-Noline">
-  <div class="stacks-env-head"><strong>Assumption&nbsp;4.20.</strong> <a href="../tag/4E6D.html" class="stacks-tag-link">(4E6D)</a></div>
-  <div class="stacks-env-body"><p>Assume that $Z \subset E$ is <strong>not</strong> contained in a line.</p></div>
-</div>
-<p class="stacks-para">Under Assumption&nbsp;4.20, the unique curve $C \in |\I_{Z}(D+2F)|$ is irreducible and meets the directrix $D$ at a single point $q$, forcing the quartic $Q$ to contain the divisor $\mathcal{T}_{0} + q$ on $L$. When the assumption fails, one iterates blow-ups until the strict transforms become non-collinear, reducing to the same argument on a chain of Hirzebruch surfaces.
-\end{proof}</p>
-<div class="stacks-commentary" id="remark-splitline">
-  <div class="stacks-env-head"><strong>Remark&nbsp;4.21.</strong> <a href="../tag/AB0B.html" class="stacks-tag-link">(AB0B)</a></div>
-  <div class="stacks-env-body"><p>The conclusion of Proposition&nbsp;4.18 implies in particular that the pencil $\Lambda$ contains an element which is the union of the doubled line $2L$ with a cubic curve.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-ThetaInf">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;4.22.</strong> <a href="../tag/CB63.html" class="stacks-tag-link">(CB63)</a></div>
-  <div class="stacks-env-body"><p>Recall the set $\Theta$. Then $\Theta \cap \Inf = \varnothing.$</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>Suppose for contradiction that $(T,T^{*},\Lambda) \in \Theta \cap \Inf$. By Proposition&nbsp;4.17, $\Lambda = \{L \cdot Q_{t}\}$ where $Q_{t}$ is a pencil of quartics with smooth general member. The condition $\s(T,T^{*}) \subset \Base(\Lambda)$ forces $T \subset L$. Since not all $p_i$ can be in $\Base\{Q_t\}$ (otherwise $\{Q_t\}$ would be uniquely determined and general, but it contains $T$ in its base scheme), at least one point, say $p_{13}$, is in $L \setminus \Base\{Q_t\}$.  Then Proposition&nbsp;4.18 and Remark&nbsp;4.21 imply there is an element of $\{Q_t\}$ of the form $L \cdot C$ with $C$ a cubic. But then at least $11$ of the remaining $12$ points lie on $C$, contradicting generality.</p></div>
-</div>
-<div class="stacks-theorem" id="theorem-solutionset">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;4.23.</strong> <a href="../tag/2247.html" class="stacks-tag-link">(2247)</a></div>
-  <div class="stacks-env-body"><p>Let $p_1, \dots, p_{13}$ be $13$ general points in $\P^{2}$, and let $\Theta$ be as above. Then
-  $$
-  \Theta = \left\{ \begin{array}{c}
-         \text{$(T,T^{*}) \in\CT$ such that}\\  \text{$T$ is a singular triad}  \\
-         \text{for $p_{1}, \dots, p_{13}$}
-    \end{array} \right\}.
-  $$</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em></div>
-  <div class="stacks-env-body"><p>The set of singular triads is clearly contained in $\Theta$. The reverse inclusion follows from Proposition&nbsp;4.22 (which gives $\Theta \subset \Fin$), Lemma&nbsp;4.13 (which ensures $T$ is an honest triangle), and B&eacute;zout's theorem.</p></div>
+<div class="stacks-definition" id="definition-finite">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.4.</strong> <a href="../tag/1BD9.html" class="stacks-tag-link">(1BD9)</a></div>
+  <div class="stacks-env-body"><p>We let $$\Inf \subset \SQP$$ denote the
+  closed subset consisting of triples $(T,T^{*},\Lambda)$ such that $\Base(\Lambda)$ is infinite. We let
+  $$\Fin \subset \SQP$$ denote the open complement of $\Inf$.</p></div>
 </div>
 
 <hr>
@@ -230,7 +97,7 @@ This is proved by analyzing sections of the line bundle $\mathcal{L} = \beta^{*}
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.2. Thirteen point conditions">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; 4.2. First definitions">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/section/S4.SS2.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

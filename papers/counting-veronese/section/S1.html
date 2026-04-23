@@ -17,12 +17,6 @@
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          s: "\\mathsf{sq}",
-          m: "\\mathfrak{m}",
-          N: "\\mathbf{N}",
-          Q: "\\mathbb{Q}",
-          R: "\\mathbb{R}",
-          C: "\\mathbb{C}",
           A: "\\operatorname{\\mathbf{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
@@ -43,6 +37,7 @@
           SQP: "\\operatorname{\\mathsf{SQP}}",
           Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
           Dom: "\\operatorname{\\mathsf{Dom}}",
           Inf: "\\operatorname{\\mathsf{Inf}}",
@@ -57,15 +52,14 @@
           Supp: "\\operatorname{Supp}",
           F: "\\operatorname{\\mathbf{F}}",
           Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}",
-          rk: "\\operatorname{rk}",
-          SL: "\\operatorname{SL}"
+          red: "\\operatorname{red}"
         }
       },
       svg: { fontCache: 'global' }
@@ -93,36 +87,30 @@ normal curve can be seen in many ways:
 <li>By an application of Goppa's lemma from the theory of association or Gale duality.</li></ul></p>
 <p class="stacks-para">A <em>$d$-uple Veronese $n$-fold</em> will mean any
 variety in $\P^{{n+d \choose n}-1}$ projectively equivalent to the
-standard $d$-uple Veronese image of $\P^n$. A parameter count
+standard $d$-uple Veronese image of $\P^n$. A parameter count 
 uncovers an infinite array of enumerative problems, with the rational normal curves occupying only the first column:</p>
 <div class="stacks-env" id="problem-main">
   <div class="stacks-env-head"><strong>Problem&nbsp;1.1.</strong> <a href="../tag/055A.html" class="stacks-tag-link">(055A)</a></div>
   <div class="stacks-env-body"><p>Determine the number of $d$-uple Veronese $n$-folds passing through ${n+d \choose d}+n+1$ general points.</p></div>
 </div>
-<p class="stacks-para">These numbers will be denoted $\nu_{d,n}$.  Problem&nbsp;1.1 has seen virtually no advancement beyond the case of rational normal curves.  Arthur Coble, about a century ago, used his new theory of association to find that $9$ general points in $\P^5$ determine precisely $4$ $2$-uple Veronese surfaces [Cob22, Theorem 19].  The configuration of these four surfaces is as special as Coble's argument showing $\nu_{2,2}=4$. He discovered, using what is now called Goppa's lemma, that a unique elliptic normal sextic curve $E \subset \P^{5}$ interpolates through the $9$ points. This implies that the $2$-uple Veronese surfaces containing all $9$ points must entirely contain $E$, an exceptional circumstance. This means that each surface corresponds to choosing a square root of the degree $6$ line bundle $\O_{E}(1)$.  And so, Coble established a correspondence
-$$
-\left\{ \begin{array}{c}
+<p class="stacks-para">These numbers will be denoted $\nu_{d,n}$.  Problem&nbsp;1.1 has seen virtually no advancement beyond the case of rational normal curves.  Arthur Coble, about a century ago, used his new theory of association to find that $9$ general points in $\P^5$ determine precisely $4$ $2$-uple Veronese surfaces [Cob22, &nbsp;Theorem 19].  The configuration of these four surfaces is as special as Coble's argument showing $\nu_{2,2}=4$. He discovered, using what is now called Goppa's lemma, that a unique elliptic normal sextic curve $E \subset \P^{5}$ interpolates through the $9$ points. This implies that the $2$-uple Veronese surfaces containing all $9$ points must entirely contain $E$, an exceptional circumstance. This means that each surface corresponds to choosing a square root of the degree $6$ line bundle $\O_{E}(1)$.  And so, Coble established a correspondence 
+$$\begin{aligned}\left\{ \begin{array}{c}
     \text{$2$-uple Veronese surfaces} \\
-     \text{containing the 9 points}
+     \text{containing the 9 points} 
 \end{array} \right\} \longleftrightarrow \left\{ \begin{array}{c}
     \text{Line bundles $L$ on $E$} \\
-     \text{satisfying $L^{2} \simeq \O_{E}(1)$}
-\end{array} \right\},
-$$
- from which he  deduced $\nu_{2,2}=4$.
+     \text{satisfying $L^{2} \simeq \O_{E}(1)$} 
+\end{array} \right\},\end{aligned}$$  from which he  deduced $\nu_{2,2}=4$. 
 There is currently no explanation for the number $4$ without the curve $E$. Specifically, no approach parallel to those available for the $n=1$ case is known.</p>
 <p class="stacks-para">Our work in this paper solves the next case of Problem&nbsp;1.1.</p>
 <div class="stacks-theorem" id="theorem-main">
   <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/61DC.html" class="stacks-tag-link">(61DC)</a></div>
   <div class="stacks-env-body"><p>Thirteen general points in $\P^{9}$ determine $4246$ $3$-uple Veronese surfaces, i.e. $\nu_{3,2} = 4246$.</p></div>
 </div>
-<p class="stacks-para">A caricature of the proof best serves to explain the contents of the paper.  The first step is to use a correspondence like the one above, though more intricate. It is the content of Theorem&nbsp;2.3 in \S 2.  This correspondence trades the counting of $3$-uple Veronese surfaces for the counting of certain triples of points in the plane called <em>singular triads</em> $T \in \Hilb_{3}\P^{2}$.  It first appeared in the work of the second author and A. Landesman [LP19] on interpolation.  We give a thorough account to keep things self-contained.</p>
-<p class="stacks-para">In order to count singular triads we need access to a vector bundle which to a point $T \in \Hilb_{3}\P^{2}$ assigns the vector space $H^{0}(\P^{2},\I^{2}_{T}(5))$ of quintic forms singular at $T$.  Unfortunately this vector bundle doesn't exist because of a familiar failure of flatness: the scheme obtained by squaring the ideal of a length $3$ scheme is not always a length $9$ scheme.  And so the second step is to deal with this non-vector-bundle. We swap out the Hilbert scheme for a birational modification we call the space of <em>complete triangles</em> $\CT$. The name is chosen because of many similarities it shares with the space of complete conics.  We study the geometry of $\CT$ in \S 3.  While it can be shown that $\CT$ is the quotient of the space of <em>ordered</em> triangles studied by S. Keel in [Kee93] by the natural symmetric group action, our construction of $\CT$ is of independent interest as it does not require first ordering triangles. The vector bundle we sought in the previous paragraph exists over $\CT$, and we gain an enumerative understanding of it using Atiyah-Bott localization.  At least at first glance, the set of singular triads is the degeneracy scheme in $\CT$ of a vector bundle map involving our newfound bundle. Porteous' formula, implemented using <code>sage</code>, then suggests that the number we seek is $57728$.</p>
-<p class="stacks-para">All is not well, however, because there is still a gnarly excess in the Porteous setup.  Our third step is to circumvent this new complication by further linearizing the problem,  switching to a $26$-dimensional Grassmannian bundle over $\CT$ which we call the space of <em>singular quintic pencils</em> $\SQP$.  Only in $\SQP$ do we finally find an excess-free vantage point.  <em>Proving</em> the lack of excess is painful, requiring a combination of dimension counting and limit linear series arguments.  This  verification is the subject of \S 4, and is the content behind Theorem&nbsp;4.2 which expresses $\nu_{3,2}$ as an integral:
-$$
-\nu_{3,2} = \int_{\SQP} \left[\Dom(p) \right]^{13}.
-$$
-The details are not so important right now, but $\Dom(p)$ is a relevant codimension $2$ subvariety of $\SQP$.   In \S 5 we compute the integral using Atiyah-Bott localization, performed with the help of <code>sage</code>. Finally, in \S 6 we discuss some of the many questions emerging from our investigation. We've included the sage code we used for the calculations in \S 7.</p>
+<p class="stacks-para">A caricature of the proof best serves to explain the contents of the paper.  The first step is to use a correspondence like (?), though more intricate. It is the content of Theorem&nbsp;2.3 in \S 2.  This correspondence trades the counting of $3$-uple Veronese surfaces for the counting of certain triples of points in the plane called \text{singular triads} $T \in \Hilb_{3}\P^{2}$.  It first appeared in the work of the second author and A. Landesman [LP19] on interpolation  <span style="font-size:0.9em;color:#555;">(It is quite plausible that Coble, the foremost expert on relationships between  association and Cremona transformations, knew about the correspondence in Theorem&nbsp;2.3.  One hypothesis as to why he didn't write about this particular correspondence might be that the resulting problem of counting singular triads posed too many complications given the technology available at the time.)</span>.  We give a thorough account to keep things self-contained.</p>
+<p class="stacks-para">In order to count singular triads we need access to a vector bundle which to a point $T \in \Hilb_{3}\P^{2}$ assigns the vector space $H^{0}(\P^{2},\I^{2}_{T}(5))$ of quintic forms singular at $T$.  Unfortunately this vector bundle doesn't exist because of a familiar failure of flatness: the scheme obtained by squaring the ideal of a length $3$ scheme is not always a length $9$ scheme.  And so the second step is to deal with this non-vector-bundle. We swap out the Hilbert scheme for a birational modification we call the space of \text{complete triangles} $\CT$. The name is chosen because of many similarities it shares with the space of complete conics.  We study the geometry of $\CT$ in \S 3.  While it can be shown that $\CT$ is the quotient of the space of \text{ordered} triangles studied by S. Keel in [Kee93] by the natural symmetric group action, our construction of $\CT$ is of independent interest as it does not require first ordering triangles. The vector bundle we sought in the previous paragraph exists over $\CT$, and we gain an enumerative understanding of it using Atiyah-Bott localization.  At least at first glance, the set of singular triads is the degeneracy scheme in $\CT$ of a vector bundle map involving our newfound bundle. Porteous' formula, implemented using <code>sage</code>, then suggests that the number we seek is $57728$.</p>
+<p class="stacks-para">All is not well, however, because there is still a gnarly excess in the Porteous setup.  Our third step is to circumvent this new complication by further linearizing the problem,  switching to a $26$-dimensional Grassmannian bundle over $\CT$ which we call the space of \text{singular quintic pencils} $\SQP$.  Only in $\SQP$ do we finally find an excess-free vantage point.  \text{Proving} the lack of excess is painful, requiring a combination of dimension counting and limit linear series arguments.  This  verification is the subject of \S 4, and is the content behind Theorem&nbsp;4.2 which expresses $\nu_{3,2}$ as an integral: 
+$$\begin{aligned}\nu_{3,2} = \int_{\SQP} \left[\Dom(p) \right]^{13}.\end{aligned}$$  The details are not so important right now, but $\Dom(p)$ is a relevant codimension $2$ subvariety of $\SQP$.   In \S 5 we compute the integral (?) using Atiyah-Bott localization, performed with the help of <code>sage</code>. Finally, in \S 6 we discuss some of the many questions emerging from our investigation. We've included the sage code we used for the calculations in \S 7.</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
   <li><a href="S1.SS1.html">1.1. Relation to other work</a></li>
