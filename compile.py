@@ -2782,6 +2782,8 @@ def compile_paper(tex_path):
 
     arxiv_id = meta.get("arxiv", "")
     journal = meta.get("journal", "")
+    artwork = meta.get("artwork", "")
+    artwork_alt_meta = meta.get("artwork_alt", "")
     base_url = f"https://anandpatel.github.io/papers/{slug}"
 
     # Read .tex source
@@ -2803,6 +2805,7 @@ def compile_paper(tex_path):
 
     # Parse document
     paper = parse_tex(tex_source)
+    artwork_alt = artwork_alt_meta or f"Pencil sketch artwork for {paper['title']}"
     print(f"Parsed: {paper['title']} by {paper['author']}")
     print(f"  {len(paper['sections'])} sections")
 
@@ -2841,6 +2844,9 @@ def compile_paper(tex_path):
     toc = head("Table of Contents", paper["title"], macros=macros)
     toc += nav_bar(paper["author"], paper["title"])
     toc += '<main class="stacks-main">\n'
+    if artwork:
+        toc += '<div class="stacks-paper-hero">\n'
+        toc += '<div class="stacks-paper-hero-text">\n'
     toc += f'<h1 class="stacks-paper-title">{paper["title"]}</h1>\n'
     toc += f'<p class="stacks-paper-author">{paper["author"]}</p>\n'
     if journal or arxiv_id:
@@ -2852,6 +2858,14 @@ def compile_paper(tex_path):
                 toc += '<br>'
             toc += f'<a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>'
         toc += '</p>\n'
+    if artwork:
+        toc += '</div>\n'
+        toc += (
+            '<img class="stacks-paper-artwork" '
+            f'src="{html_mod.escape(artwork, quote=True)}" '
+            f'alt="{html_attr(artwork_alt)}" loading="lazy">\n'
+        )
+        toc += '</div>\n'
     toc += '<hr>\n<h2 class="stacks-toc-heading">Table of Contents</h2>\n'
     toc += '<ul class="stacks-toc">\n'
 
