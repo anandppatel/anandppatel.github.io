@@ -1447,6 +1447,75 @@ def split_latex_top_level(text, delimiter):
     return parts
 
 
+def flatten_nested_tabulars_for_table_cells(body):
+    """Flatten tabulars that occur inside table cells before row splitting."""
+    out = []
+    pos = 0
+    env_re = re.compile(r'\\begin\{tabular\}')
+    while True:
+        match = env_re.search(body, pos)
+        if not match:
+            out.append(body[pos:])
+            break
+
+        i = match.end()
+        if i < len(body) and body[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(body) and depth:
+                if body[i] == "[":
+                    depth += 1
+                elif body[i] == "]":
+                    depth -= 1
+                i += 1
+        while i < len(body) and body[i].isspace():
+            i += 1
+        if i >= len(body) or body[i] != "{":
+            out.append(body[pos:match.end()])
+            pos = match.end()
+            continue
+
+        i += 1
+        depth = 1
+        while i < len(body) and depth:
+            if body[i] == "{":
+                depth += 1
+            elif body[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(body[pos:])
+            break
+
+        body_start = i
+        end_token = r'\end{tabular}'
+        end = body.find(end_token, body_start)
+        if end == -1:
+            out.append(body[pos:])
+            break
+
+        inner = body[body_start:end]
+        inner = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', inner)
+        inner_rows = []
+        for row in split_latex_top_level(inner, r'\\'):
+            row = row.strip()
+            if not row:
+                continue
+            inner_rows.append(
+                ' '.join(
+                    cell.strip()
+                    for cell in split_latex_top_level(row, '&')
+                    if cell.strip()
+                )
+            )
+
+        out.append(body[pos:match.start()])
+        out.append('<br>'.join(inner_rows))
+        pos = end + len(end_token)
+
+    return ''.join(out)
+
+
 def table_body_to_html(body):
     """Convert simple LaTeX table bodies to HTML tables."""
     captions = []
@@ -1461,6 +1530,7 @@ def table_body_to_html(body):
     body = re.sub(r'\\label\{[^}]*\}', '', body)
     body = re.sub(r'\\(?:endfirsthead|endhead|endfoot|endlastfoot)\b', '', body)
     body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', body)
+    body = flatten_nested_tabulars_for_table_cells(body)
     rows = []
     for row in split_latex_top_level(body, r'\\'):
         row = row.strip()
@@ -1812,6 +1882,7 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{subfigure\}(?:\[[^\]]*\])?(?:\{[^{}]*\})?', '', s)
     s = re.sub(r'\\end\{subfigure\}', '', s)
     s = re.sub(r'\\centering\b', '', s)
+    s = re.sub(r'\\vspace\*?(?:\[[^\]]*\])?\{[^{}]*\}', '', s)
     s = replace_latex_two_arg_commands(s, "renewcommand", lambda _name, _value: "")
 
     # tabular/longtable → semantic HTML table instead of fragile MathJax arrays.
