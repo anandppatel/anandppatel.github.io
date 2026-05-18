@@ -2037,7 +2037,6 @@ def tex_to_html(tex):
     s = s.replace("\\'{e}", '&eacute;')
     s = s.replace("\\'a", '&aacute;')
     s = s.replace("\\'{a}", '&aacute;')
-    s = re.sub(r'\\o(?![a-zA-Z])', '&oslash;', s)
 
     # \square, \qedhere — remove
     s = re.sub(r'\s*\\square\s*', '', s)
