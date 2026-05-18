@@ -1112,6 +1112,7 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
 \usepackage{xparse}
 \usepackage{tikz}
 \usepackage{tikz-cd}
+\usepackage[all]{xy}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
 \usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes,decorations.markings,decorations.pathmorphing,plotmarks,calc,patterns,fit,backgrounds}
@@ -1212,6 +1213,11 @@ def render_tikzpicture_block(tikz_source):
 def render_picture_block(picture_source):
     """Compile a LaTeX picture environment, including Inkscape overlays, to SVG."""
     return render_tikz_block(picture_source, "Figure")
+
+
+def render_xypic_block(xy_source):
+    """Compile an Xy-pic graph to inline SVG, with a readable fallback."""
+    return render_tikz_block("\\[\n" + xy_source + "\n\\]", "Xy-pic diagram")
 
 
 def normalize_geometric_alphabets(tex):
@@ -1590,6 +1596,11 @@ def tex_to_html(tex):
         lambda m: render_picture_block(m.group(0)),
         s,
         flags=re.DOTALL,
+    )
+    s = replace_latex_commands(
+        s,
+        "xygraph",
+        lambda body: render_xypic_block("\\xygraph{" + body + "}"),
     )
 
     # figure/table/subfigure wrappers are layout hints in LaTeX; keep captions
