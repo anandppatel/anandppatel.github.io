@@ -11,10 +11,10 @@ Reads a skeletal LaTeX file and generates a mini Stacks-project site:
   - section/*.html    (one page per section/subsection)
   - tag/*.html        (one page per environment)
 
-Tags are deterministic 4-hex-char hashes of the label string when an
-environment has a label. Unlabeled environments get deterministic tags
-from their paper, environment type, number, and position. All tags are
-stored in papers/tag-registry.json to prevent collisions across papers.
+Tags are stored in papers/tag-registry.json so existing tags stay stable.
+New labeled environments get deterministic 4-hex-char hashes of the paper
+slug and label string. Unlabeled environments get deterministic tags from
+their paper, environment type, number, and position.
 
 The .tex file must use:
   - \\title{...}, \\author{...}
@@ -720,10 +720,11 @@ def replace_latex_text_command(text, command, html_tag):
 # TAG ASSIGNMENT & REF RESOLUTION
 # ============================================================
 
-def assign_tags_and_numbers(paper, slug, registry, existing_tags):
+def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=None):
     """Walk the parsed paper, assign tags and environment numbers,
     and resolve \\ref{}, \\Cref{}, and \\eqref{} cross-references."""
 
+    previous_tags = previous_tags or {}
     label_map = {}  # label -> {tag, number, envType}
 
     # Add section/subsection labels to the label map
@@ -744,14 +745,19 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
 
     def assign_env_tag(block, label, number):
         if label:
-            tag_key = label
+            registry_key = label
+            tag_key = f"{slug}:{label}"
         else:
             ordinal = len(all_envs) + 1
-            tag_key = (
+            registry_key = (
                 f"auto:{slug}:{block['envName']}:"
                 f"{number or 'unnumbered'}:{ordinal}"
             )
-        tag = label_to_tag(tag_key, existing_tags)
+            tag_key = registry_key
+
+        tag = previous_tags.get(registry_key)
+        if not tag or tag in existing_tags:
+            tag = label_to_tag(tag_key, existing_tags)
         existing_tags.add(tag)
         block["tag"] = tag
 
@@ -764,7 +770,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
 
         registry[tag] = {
             "paper": slug,
-            "label": label or tag_key,
+            "label": registry_key,
             "envType": block["envType"],
             "number": number,
         }
@@ -805,7 +811,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
         if tag:
             label = f"{env_type}&nbsp;{number}" if include_type and number else (number or env_type)
             href = f"/papers/{slug}/tag/{tag}.html"
-            return f'<a href="{href}" class="stacks-ref-link">{label} <span class="stacks-ref-tag">Tag&nbsp;{tag}</span></a>'
+            return f'<a href="{href}" class="stacks-ref-link">{label} <span class="stacks-ref-tag">[{tag}]</span></a>'
         if include_type:
             return f"{env_type}&nbsp;{number}" if number else env_type
         return number if number else env_type
@@ -822,9 +828,9 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             return "".join(parts)
         return ", ".join(parts[:-1]) + ", and " + parts[-1]
 
-    def resolve_refs(text):
+    def resolve_refs(text, refs_include_type=False):
         def ref_replacer(m):
-            return resolve_ref_list(m.group(1), include_type=False)
+            return resolve_ref_list(m.group(1), include_type=refs_include_type)
 
         def cref_replacer(m):
             return resolve_ref_list(m.group(1), include_type=True)
@@ -850,7 +856,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             if "content" in block:
                 block["content"] = resolve_refs(block["content"])
             if "envType" in block:
-                block["envType"] = resolve_refs(block["envType"])
+                block["envType"] = resolve_refs(block["envType"], refs_include_type=True)
             if block.get("children"):
                 resolve_blocks(block["children"])
 
@@ -1108,11 +1114,17 @@ def compile_paper(tex_path):
 
     # Assign tags
     registry = load_registry()
+    previous_tags = {
+        info.get("label"): tag
+        for tag, info in registry.items()
+        if info.get("paper") == slug and info.get("label")
+    }
     # Remove old tags for this paper (allows clean rebuild)
     registry = {k: v for k, v in registry.items() if v.get("paper") != slug}
     existing_tags = set(registry.keys())
 
-    all_envs, label_map = assign_tags_and_numbers(paper, slug, registry, existing_tags)
+    all_envs, label_map = assign_tags_and_numbers(
+        paper, slug, registry, existing_tags, previous_tags)
 
     # Resolve citations (after ref resolution, so citations in env content are handled)
     resolve_citations(paper, citations)
