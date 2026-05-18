@@ -379,6 +379,7 @@ def parse_bibliography(meta, tex_dir, tex_source):
         if bib_m:
             bib_text = bib_m.group(1)
 
+    bib_text = cleanup_bibliography_environment(bib_text)
     citations, entries = parse_bibitems(bib_text)
 
     # source.json can provide lightweight labels for papers whose sources do
@@ -387,6 +388,16 @@ def parse_bibliography(meta, tex_dir, tex_source):
         citations.update(meta["citations"])
 
     return {"citations": citations, "entries": entries}
+
+
+def cleanup_bibliography_environment(bib_text):
+    """Remove wrapper commands from .bbl/thebibliography text."""
+    if not bib_text:
+        return ""
+    bib_text = re.sub(r'\\newcommand\{\\etalchar\}\[1\]\{\$\^\{#1\}\$\}\s*', '', bib_text)
+    bib_text = re.sub(r'\\begin\{thebibliography\}\{[^\n]*\}\s*', '', bib_text)
+    bib_text = re.sub(r'\\end\{thebibliography\}\s*', '', bib_text)
+    return bib_text.strip()
 
 
 def parse_bibitems(bib_text):
@@ -417,9 +428,14 @@ def bibliography_entry_to_html(entry):
     """Lightweight LaTeX-to-HTML cleanup for bibliography entries."""
     entry = entry.replace('\n', ' ')
     entry = re.sub(r'\s+', ' ', entry).strip()
+    entry = cleanup_bibliography_environment(entry)
     entry = re.sub(r'\\url\{([^}]*)\}', r'<a href="\1">\1</a>', entry)
     entry = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'<a href="\1">\2</a>', entry)
-    return tex_to_html(entry)
+    html = tex_to_html(entry)
+    # BibTeX uses braces to preserve capitalization. Once formatting commands
+    # are handled, those braces should not be visible in bibliography prose.
+    html = re.sub(r'\{([A-Za-z0-9][^{}]*)\}', r'\1', html)
+    return html
 
 
 def clean_bib_label(label):
@@ -1582,6 +1598,9 @@ def tex_to_html(tex):
 
     # {\it text} -> <em>
     s = re.sub(r'\{\\it\s+([^}]*)\}', r'<em>\1</em>', s)
+
+    # {\em text} -> <em> (common in BibTeX .bbl output)
+    s = re.sub(r'\{\\em\s+([^}]*)\}', r'<em>\1</em>', s)
 
     # {\bf text} -> <strong>
     s = re.sub(r'\{\\bf\s+([^}]*)\}', r'<strong>\1</strong>', s)
