@@ -1312,6 +1312,11 @@ def render_picture_block(picture_source):
     return render_tikz_block(picture_source, "Figure")
 
 
+def render_latex_display_block(display_source):
+    """Compile a display math block to inline SVG when MathJax is too fragile."""
+    return render_tikz_block("\\[\n" + display_source + "\n\\]", "Display equation")
+
+
 def render_xypic_block(xy_source):
     """Compile an Xy-pic graph to inline SVG, with a readable fallback."""
     return render_tikz_block("\\[\n" + xy_source + "\n\\]", "Xy-pic diagram")
@@ -1775,7 +1780,9 @@ def tex_to_html(tex):
         body = m.group(1)
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
-        return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
+        return render_latex_display_block(
+            '\\begin{aligned}' + body.strip() + '\\end{aligned}'
+        )
     s = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}',
                align_replace, s, flags=re.DOTALL)
 
@@ -1784,7 +1791,9 @@ def tex_to_html(tex):
         body = m.group(1)
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
-        return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
+        return render_latex_display_block(
+            '\\begin{aligned}' + body.strip() + '\\end{aligned}'
+        )
     s = re.sub(r'\\begin\{eqnarray\*?\}(.*?)\\end\{eqnarray\*?\}',
                eqnarray_replace, s, flags=re.DOTALL)
 
@@ -1861,6 +1870,8 @@ def tex_to_html(tex):
         body = m.group(1).strip()
         if 'stacks-tikzcd' in body:
             return body
+        if re.match(r'\\begin\{(?:aligned|alignedat|gathered|split)\}', body):
+            return render_latex_display_block(body)
         return '$$' + body + '$$'
     s = re.sub(r'\\\[(.*?)\\\]', bracket_display_replace, s, flags=re.DOTALL)
 
