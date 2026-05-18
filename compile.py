@@ -2273,7 +2273,32 @@ def nav_bar(author, paper_title, depth=0):
 """
 
 
-def breadcrumb_html(items, depth=0):
+def page_navigation_map(paper):
+    """Return previous/next page data for section and subsection pages."""
+    pages = []
+    for sec in paper["sections"]:
+        pages.append({
+            "id": sec["id"],
+            "href": f'section/{sec["id"]}.html',
+            "label": f'Section {sec["number"]}: {strip_html(sec["title"])}',
+        })
+        for sub in sec["subsections"]:
+            pages.append({
+                "id": sub["id"],
+                "href": f'section/{sub["id"]}.html',
+                "label": f'{sub["number"]}. {strip_html(sub["title"])}',
+            })
+
+    nav = {}
+    for idx, page in enumerate(pages):
+        nav[page["id"]] = {
+            "prev": pages[idx - 1] if idx > 0 else None,
+            "next": pages[idx + 1] if idx + 1 < len(pages) else None,
+        }
+    return nav
+
+
+def breadcrumb_html(items, depth=0, page_nav=None):
     prefix = "../" * depth
     parts = [f'<a href="{prefix}index.html">Table of contents</a>']
     for label, href in items:
@@ -2281,7 +2306,35 @@ def breadcrumb_html(items, depth=0):
             parts.append(f'<a href="{prefix}{href}">{html_mod.escape(strip_html(label))}</a>')
         else:
             parts.append(f'<span>{label}</span>')
-    return '<div class="stacks-breadcrumb">' + ' / '.join(parts) + '</div>\n'
+    breadcrumb = ' / '.join(parts)
+    if not page_nav:
+        return '<div class="stacks-breadcrumb">' + breadcrumb + '</div>\n'
+
+    nav_links = []
+    if page_nav.get("prev"):
+        prev = page_nav["prev"]
+        nav_links.append(
+            f'<a class="stacks-page-arrow stacks-page-arrow-prev" '
+            f'href="{prefix}{prev["href"]}" '
+            f'aria-label="Previous: {html_attr(prev["label"])}" '
+            f'title="Previous: {html_attr(prev["label"])}">&larr;</a>')
+    if page_nav.get("next"):
+        next_page = page_nav["next"]
+        nav_links.append(
+            f'<a class="stacks-page-arrow stacks-page-arrow-next" '
+            f'href="{prefix}{next_page["href"]}" '
+            f'aria-label="Next: {html_attr(next_page["label"])}" '
+            f'title="Next: {html_attr(next_page["label"])}">&rarr;</a>')
+
+    nav_html = (
+        '<nav class="stacks-page-nav" aria-label="Page navigation">'
+        + ''.join(nav_links)
+        + '</nav>'
+    )
+    return (
+        '<div class="stacks-breadcrumb stacks-breadcrumb-with-nav">'
+        f'<div class="stacks-breadcrumb-path">{breadcrumb}</div>{nav_html}</div>\n'
+    )
 
 
 def footer_html(arxiv_id, depth=0, has_bibliography=False):
@@ -2526,6 +2579,7 @@ def compile_paper(tex_path):
 
     all_envs, label_map = assign_tags_and_numbers(
         paper, slug, registry, existing_tags, previous_tags)
+    page_nav = page_navigation_map(paper)
 
     # Resolve citations (after ref resolution, so citations in env content are handled)
     resolve_citations(paper, citations)
@@ -2615,7 +2669,9 @@ def compile_paper(tex_path):
         sec_html = head(f'Section {sec["number"]}', paper["title"], depth=1, macros=macros)
         sec_html += nav_bar(paper["author"], paper["title"], depth=1)
         sec_html += breadcrumb_html(
-            [(f'Section {sec["number"]}: {sec["title"]}', None)], depth=1)
+            [(f'Section {sec["number"]}: {sec["title"]}', None)],
+            depth=1,
+            page_nav=page_nav.get(sec["id"]))
         sec_html += '<main class="stacks-main">\n'
         sec_html += f'<h1 class="stacks-section-title">Section {sec["number"]}. {sec["title"]}</h1>\n'
 
@@ -2645,7 +2701,7 @@ def compile_paper(tex_path):
             sub_html += breadcrumb_html([
                 (f'Section {sec["number"]}: {sec["title"]}', f'section/{sec["id"]}.html'),
                 (f'{sub["number"]}. {sub["title"]}', None),
-            ], depth=1)
+            ], depth=1, page_nav=page_nav.get(sub["id"]))
             sub_html += '<main class="stacks-main">\n'
             sub_html += f'<h1 class="stacks-section-title">{sub["number"]}. {sub["title"]}</h1>\n'
 
