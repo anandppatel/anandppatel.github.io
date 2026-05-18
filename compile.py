@@ -56,6 +56,50 @@ TEX_RENDER_CONTEXT = {
     "tex_dir": SITE_ROOT,
     "cache_dir": os.path.join(SITE_ROOT, ".tikz-cache"),
 }
+GEOMETRIC_ALPHABET_MACROS = {
+    # Keep the common ambient spaces and number systems visually uniform
+    # across papers whose source preambles use different local conventions.
+    "A": "\\mathbb{A}",
+    "AA": "\\mathbb{A}",
+    "ba": "\\mathbb{A}",
+    "bbA": "\\mathbb{A}",
+    "C": "\\mathbb{C}",
+    "CC": "\\mathbb{C}",
+    "bc": "\\mathbb{C}",
+    "bbC": "\\mathbb{C}",
+    "F": "\\mathbb{F}",
+    "FF": "\\mathbb{F}",
+    "bbF": "\\mathbb{F}",
+    "G": "\\mathbb{G}",
+    "Gr": "\\mathbb{G}",
+    "Grass": "\\mathbb{G}",
+    "Ga": "\\mathbb{G}_{a}",
+    "Gm": "\\mathbb{G}_{m}",
+    "K": "\\mathbb{K}",
+    "KK": "\\mathbb{K}",
+    "bbK": "\\mathbb{K}",
+    "N": "\\mathbb{N}",
+    "NN": "\\mathbb{N}",
+    "bn": "\\mathbb{N}",
+    "bbN": "\\mathbb{N}",
+    "P": "\\mathbb{P}",
+    "PP": "\\mathbb{P}",
+    "bP": "\\mathbb{P}",
+    "bp": "\\mathbb{P}",
+    "bbP": "\\mathbb{P}",
+    "Q": "\\mathbb{Q}",
+    "QQ": "\\mathbb{Q}",
+    "bq": "\\mathbb{Q}",
+    "bbQ": "\\mathbb{Q}",
+    "R": "\\mathbb{R}",
+    "RR": "\\mathbb{R}",
+    "br": "\\mathbb{R}",
+    "bbR": "\\mathbb{R}",
+    "Z": "\\mathbb{Z}",
+    "ZZ": "\\mathbb{Z}",
+    "bz": "\\mathbb{Z}",
+    "bbZ": "\\mathbb{Z}",
+}
 
 
 def load_registry():
@@ -286,7 +330,7 @@ def parse_preamble_macros(tex_source):
     ):
         name = match.group(1)
         nargs = match.group(2)
-        definition = match.group(3)
+        definition = normalize_geometric_alphabets(match.group(3))
         # Skip non-math macros
         if name in ('labelitemi',) or name in non_math_macros:
             continue
@@ -309,6 +353,7 @@ def parse_preamble_macros(tex_source):
         text = match.group(2).strip()
         macros[name] = "\\operatorname{" + text + "}"
 
+    macros.update(GEOMETRIC_ALPHABET_MACROS)
     return macros
 
 
@@ -994,6 +1039,7 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
         document = r"""\documentclass[tikz,border=3pt]{standalone}
 \usepackage{amsmath,amssymb,amsfonts,mathtools}
 \usepackage{mathrsfs}
+\IfFileExists{mathbbol.sty}{\usepackage{mathbbol}}{}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{transparent}
@@ -1101,6 +1147,24 @@ def render_tikzpicture_block(tikz_source):
 def render_picture_block(picture_source):
     """Compile a LaTeX picture environment, including Inkscape overlays, to SVG."""
     return render_tikz_block(picture_source, "Figure")
+
+
+def normalize_geometric_alphabets(tex):
+    """Normalize common geometric alphabet choices before MathJax rendering."""
+    alphabet = "ACFGKNPQRZ"
+
+    def normalize_letter(match):
+        return "\\mathbb{" + match.group(1) + "}"
+
+    tex = re.sub(r'\\operatorname\s*\{Gr\}', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\{\\bf\s+Gr\}', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\\bf\s+Gr\b', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\\mathbf\s*\{([' + alphabet + r'])\}', normalize_letter, tex)
+    tex = re.sub(r'\\mathbf\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    tex = re.sub(r'\{\\bf\s+([' + alphabet + r'])\}', normalize_letter, tex)
+    tex = re.sub(r'\\bf\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    tex = re.sub(r'\\mathbb\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    return tex
 
 
 def resolve_graphics_path(name):
@@ -1310,7 +1374,7 @@ def convert_latex_lists(text):
 
 def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
-    s = tex
+    s = normalize_geometric_alphabets(tex)
 
     # Text macros from the source preamble which are not MathJax macros.
     s = s.replace('\\Aletheia', '<em>Aletheia</em>')
