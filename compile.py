@@ -1046,6 +1046,104 @@ def tabular_to_html(m):
     )
 
 
+def parse_latex_item_label(text, pos):
+    """Return (optional label, content_start) after a LaTeX \\item token."""
+    while pos < len(text) and text[pos].isspace():
+        pos += 1
+    if pos >= len(text) or text[pos] != '[':
+        return None, pos
+
+    start = pos + 1
+    depth = 0
+    pos = start
+    while pos < len(text):
+        ch = text[pos]
+        if ch == '{':
+            depth += 1
+        elif ch == '}':
+            depth = max(0, depth - 1)
+        elif ch == ']' and depth == 0:
+            return text[start:pos].strip(), pos + 1
+        pos += 1
+
+    return None, start - 1
+
+
+def find_matching_latex_list_end(text, begin_match):
+    """Find the end of a possibly nested enumerate/itemize environment."""
+    token_re = re.compile(r'\\(begin|end)\{(?:enumerate|itemize)\}')
+    depth = 1
+    for match in token_re.finditer(text, begin_match.end()):
+        if match.group(1) == "begin":
+            depth += 1
+        else:
+            depth -= 1
+            if depth == 0:
+                return match.start(), match.end()
+    return None, None
+
+
+def split_latex_list_items(body):
+    """Split a LaTeX list body at top-level \\item commands."""
+    token_re = re.compile(r'\\begin\{(?:enumerate|itemize)\}|\\end\{(?:enumerate|itemize)\}|\\item\b')
+    items = []
+    depth = 0
+    current_label = None
+    current_start = None
+
+    for match in token_re.finditer(body):
+        token = match.group(0)
+        if token.startswith('\\begin'):
+            depth += 1
+            continue
+        if token.startswith('\\end'):
+            depth = max(0, depth - 1)
+            continue
+        if depth != 0:
+            continue
+
+        if current_start is not None:
+            items.append((current_label, body[current_start:match.start()].strip()))
+        current_label, current_start = parse_latex_item_label(body, match.end())
+
+    if current_start is not None:
+        items.append((current_label, body[current_start:].strip()))
+
+    return [(label, content) for label, content in items if content]
+
+
+def convert_latex_lists(text):
+    """Convert nested LaTeX enumerate/itemize environments to HTML lists."""
+    begin_re = re.compile(r'\\begin\{(enumerate|itemize)\}')
+    out = []
+    pos = 0
+    while True:
+        begin = begin_re.search(text, pos)
+        if not begin:
+            out.append(text[pos:])
+            break
+
+        end_start, end_end = find_matching_latex_list_end(text, begin)
+        if end_start is None:
+            out.append(text[pos:])
+            break
+
+        out.append(text[pos:begin.start()])
+        env = begin.group(1)
+        tag = "ol" if env == "enumerate" else "ul"
+        body = text[begin.end():end_start]
+        html_items = []
+        for label, item_content in split_latex_list_items(body):
+            item_html = convert_latex_lists(item_content)
+            if label:
+                item_html = f'<strong>{label}</strong> {item_html}'
+            html_items.append(f'<li>{item_html}</li>')
+        out.append(f'<{tag}>' + '\n'.join(html_items) + f'</{tag}>')
+        pos = end_end
+
+    return ''.join(out)
+
+
 def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
     s = tex
@@ -1172,42 +1270,19 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{eqnarray\*?\}(.*?)\\end\{eqnarray\*?\}',
                eqnarray_replace, s, flags=re.DOTALL)
 
-    # enumerate → ordered list
-    def enumerate_replace(m):
-        body = m.group(1)
-        items = re.split(r'\\item(?:\[([^\]]*)\])?', body)
-        html_items = []
-        i = 1
-        while i < len(items):
-            label = items[i]  # capture group from \item[label]
-            item_content = items[i+1] if i+1 < len(items) else ""
-            item_content = item_content.strip()
-            if item_content:
-                if label:
-                    html_items.append(f'<li><strong>{label}</strong> {item_content}</li>')
-                else:
-                    html_items.append(f'<li>{item_content}</li>')
-            i += 2
-        return '<ol>' + '\n'.join(html_items) + '</ol>'
-    s = re.sub(r'\\begin\{enumerate\}(.*?)\\end\{enumerate\}',
-               enumerate_replace, s, flags=re.DOTALL)
+    # enumerate/itemize → ordered/unordered lists.  This is recursive so
+    # nested lists and optional labels such as \item[$\O^{[3]}$:] survive.
+    s = convert_latex_lists(s)
 
-    # itemize → unordered list
-    def itemize_replace(m):
-        body = m.group(1)
-        items = re.split(r'\\item(?:\[([^\]]*)\])?', body)
-        html_items = []
-        i = 1
-        while i < len(items):
-            label = items[i]
-            item_content = items[i+1] if i+1 < len(items) else ""
-            item_content = item_content.strip()
-            if item_content:
-                html_items.append(f'<li>{item_content}</li>')
-            i += 2
-        return '<ul>' + '\n'.join(html_items) + '</ul>'
-    s = re.sub(r'\\begin\{itemize\}(.*?)\\end\{itemize\}',
-               itemize_replace, s, flags=re.DOTALL)
+    # Authors sometimes write adjacent inline math fragments separated by a
+    # spacing command, e.g. "$f=0$ \quad $(A_1)$".  The spacing command is
+    # text in HTML unless we move it back inside the math span.
+    spacing_pattern = re.compile(r'\$([^$]+)\$\s*\\(quad|qquad)\s*\$([^$]+)\$')
+    while True:
+        s_next = spacing_pattern.sub(r'$\1 \\\2 \3$', s)
+        if s_next == s:
+            break
+        s = s_next
 
     # \subsubsection{...} → inline heading
     s = replace_latex_heading_commands(
@@ -1275,6 +1350,10 @@ def tex_to_html(tex):
 
     # Double newlines → paragraph breaks
     s = re.sub(r'\n\s*\n', '</p>\n<p>', s)
+    s = re.sub(r'</p>\s*<p>\s*(<(?:ol|ul)\b)', r'\1', s)
+    s = re.sub(r'<p>\s*(<(?:ol|ul)\b)', r'\1', s)
+    s = re.sub(r'(</(?:ol|ul)>)\s*</p>\s*<p>', r'\1', s)
+    s = re.sub(r'(</(?:ol|ul)>)\s*</p>', r'\1', s)
 
     return s.strip()
 
@@ -1678,25 +1757,79 @@ def render_block(block, depth=0):
     return ""
 
 
+def find_matching_html_list_end(content, start):
+    """Find the end of a top-level HTML list, including nested lists."""
+    list_re = re.compile(r'</?(ol|ul)\b[^>]*>')
+    depth = 0
+    for match in list_re.finditer(content, start):
+        if match.group(0).startswith('</'):
+            depth -= 1
+            if depth == 0:
+                return match.end()
+        else:
+            depth += 1
+    return None
+
+
+def split_content_html_blocks(content):
+    """Split converted content into text and block-HTML pieces."""
+    block_start_re = re.compile(
+        r'<(?:ol|ul)\b'
+        r'|<(div|pre)\b[^>]*class="[^"]*'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
+        r'[^"]*"'
+    )
+    div_pre_re = re.compile(
+        r'<(?P<tag>div|pre)\b[^>]*class="[^"]*'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
+        r'[^"]*"[\s\S]*?</(?P=tag)>'
+    )
+
+    pieces = []
+    pos = 0
+    while True:
+        start = block_start_re.search(content, pos)
+        if not start:
+            pieces.append(("text", content[pos:]))
+            break
+        if start.start() > pos:
+            pieces.append(("text", content[pos:start.start()]))
+
+        if start.group(0).startswith('<ol') or start.group(0).startswith('<ul'):
+            end = find_matching_html_list_end(content, start.start())
+            if end is None:
+                pieces.append(("text", content[start.start():]))
+                break
+            pieces.append(("block", content[start.start():end]))
+            pos = end
+            continue
+
+        block = div_pre_re.match(content, start.start())
+        if not block:
+            pieces.append(("text", content[start.start():start.end()]))
+            pos = start.end()
+            continue
+        pieces.append(("block", block.group(0)))
+        pos = block.end()
+
+    return pieces
+
+
 def wrap_content_html(content, paragraph_class=None):
     """Wrap converted LaTeX in paragraphs while letting block HTML stand alone."""
     class_attr = f' class="{paragraph_class}"' if paragraph_class else ''
-    block_re = re.compile(
-        r'(<(?:div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
-        r'[^"]*"[\s\S]*?</(?:div|pre)>)'
-    )
-    if not block_re.search(content):
+    pieces = split_content_html_blocks(content.strip())
+    if all(kind == "text" for kind, _ in pieces):
         newline = '\n' if paragraph_class else ''
         return f'<p{class_attr}>{content}</p>{newline}'
-    pieces = block_re.split(content.strip())
+
     html = []
-    for piece in pieces:
-        if not piece:
+    for kind, piece in pieces:
+        if not piece or not piece.strip():
             continue
-        if block_re.fullmatch(piece):
-            html.append(piece + '\n')
-        elif piece.strip():
+        if kind == "block":
+            html.append(piece.strip() + '\n')
+        else:
             html.append(f'<p{class_attr}>{piece.strip()}</p>\n')
     return ''.join(html)
 
