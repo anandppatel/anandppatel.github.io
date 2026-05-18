@@ -71,16 +71,36 @@ def save_registry(reg):
         json.dump(reg, f, indent=2)
 
 
-def extract_latex_commands(text, command):
-    """Extract full \\command{...} commands with balanced braces."""
-    needle = "\\" + command + "{"
-    commands = []
+def iter_latex_command_spans(text, command, allow_optional=False):
+    """Yield (start, end, argument) for \\command{...} with balanced braces."""
+    needle = "\\" + command
     pos = 0
     while True:
         start = text.find(needle, pos)
         if start == -1:
             break
         i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if allow_optional and i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(text) and text[i].isspace():
+                i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = start + len(needle)
+            continue
+        arg_start = i + 1
+        i += 1
         depth = 1
         while i < len(text) and depth:
             if text[i] == "{":
@@ -89,18 +109,32 @@ def extract_latex_commands(text, command):
                 depth -= 1
             i += 1
         if depth == 0:
-            commands.append(text[start:i])
+            yield start, i, text[arg_start:i - 1]
             pos = i
         else:
             pos = start + len(needle)
-    return commands
+
+
+def extract_latex_commands(text, command):
+    """Extract full \\command{...} commands with balanced braces."""
+    return [text[start:end] for start, end, _ in iter_latex_command_spans(text, command)]
+
+
+def replace_latex_commands(text, command, callback, allow_optional=False):
+    """Replace full \\command{...} commands using a callback on the argument."""
+    pieces = []
+    pos = 0
+    for start, end, argument in iter_latex_command_spans(text, command, allow_optional):
+        pieces.append(text[pos:start])
+        pieces.append(callback(argument))
+        pos = end
+    pieces.append(text[pos:])
+    return "".join(pieces)
 
 
 def remove_latex_commands(text, command):
     """Remove full \\command{...} commands with balanced braces."""
-    for raw in extract_latex_commands(text, command):
-        text = text.replace(raw, "")
-    return text
+    return replace_latex_commands(text, command, lambda _argument: "")
 
 
 def label_to_tag(label, existing_tags):
@@ -1058,11 +1092,11 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{(?:figure|table)\}(?:\[[^\]]*\])?', '', s)
     s = re.sub(r'\\end\{(?:figure|table)\}', '', s)
     s = re.sub(r'\\centering\b', '', s)
-    s = re.sub(
-        r'\\caption(?:\[[^\]]*\])?\{((?:[^{}]|\{[^{}]*\})*)\}',
-        lambda m: f'<div class="stacks-caption">{tex_to_html(m.group(1).strip())}</div>',
+    s = replace_latex_commands(
         s,
-        flags=re.DOTALL,
+        "caption",
+        lambda caption: f'<div class="stacks-caption">{tex_to_html(caption.strip())}</div>',
+        allow_optional=True,
     )
     s = re.sub(r'\\label\{[^}]*\}', '', s)
 
