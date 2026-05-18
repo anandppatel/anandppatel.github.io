@@ -1,28 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="wobble" x="-12%" y="-12%" width="124%" height="124%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="23" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.16"/>
   </filter>
   <style>
-    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
-    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
-    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
-    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
-    .m{fill:#20242b;filter:url(#rough);opacity:.72}
-    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
-    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
-    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
-    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
+    .heavy{fill:none;stroke:#262626;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:.42;filter:url(#wobble)}
+    .mid{fill:none;stroke:#262626;stroke-width:2.0;stroke-linecap:round;stroke-linejoin:round;opacity:.30;filter:url(#wobble)}
+    .light{fill:none;stroke:#262626;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.18;filter:url(#wobble)}
+    .dash{fill:none;stroke:#262626;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 11;opacity:.26;filter:url(#wobble)}
+    .shade{fill:none;stroke:#262626;stroke-width:1.0;stroke-linecap:round;opacity:.16;filter:url(#wobble)}
+    .mark{fill:none;stroke:#6f3333;stroke-width:2.4;opacity:.50;filter:url(#wobble)}
   </style>
 </defs>
-
-  <path class="p" d="M128 390 C300 300 590 300 772 390"/>
-  <path class="q" d="M150 315 C310 225 570 225 750 315 M170 245 C320 165 555 165 730 245"/>
-  <path class="d" d="M250 188 L250 430 M420 150 L420 450 M600 188 L600 430"/>
-  <path class="q" d="M250 188 L214 145 M250 188 L288 146 M420 150 L382 108 M420 150 L458 108 M600 188 L562 146 M600 188 L638 146"/>
-  <path class="q" d="M220 458 C320 515 555 515 690 458"/>
-  <circle class="a" cx="250" cy="315" r="6"/><circle class="a" cx="420" cy="315" r="6"/><circle class="a" cx="600" cy="315" r="6"/>
-  <text class="small" x="180" y="105">every vector bundle from a branched cover</text>
+<path class="heavy" d="M128 390 C300 300 590 300 772 390"/>
+<path class="heavy" d="M128 390 C300 300 590 300 772 390" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M128 390 C300 300 590 300 772 390" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M150 315 C310 225 570 225 750 315"/>
+<path class="mid" d="M150 315 C310 225 570 225 750 315" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M150 315 C310 225 570 225 750 315" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M170 245 C320 165 555 165 730 245"/>
+<path class="mid" d="M170 245 C320 165 555 165 730 245" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M170 245 C320 165 555 165 730 245" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M250 188 L250 430"/>
+<path class="dash" d="M250 188 L250 430" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M250 188 L250 430" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M420 150 L420 450"/>
+<path class="dash" d="M420 150 L420 450" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M420 150 L420 450" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M600 188 L600 430"/>
+<path class="dash" d="M600 188 L600 430" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M600 188 L600 430" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M250 188 L214 145"/>
+<path class="mid" d="M250 188 L214 145" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M250 188 L214 145" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M250 188 L288 146"/>
+<path class="mid" d="M250 188 L288 146" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M250 188 L288 146" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M420 150 L382 108"/>
+<path class="mid" d="M420 150 L382 108" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M420 150 L382 108" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M420 150 L458 108"/>
+<path class="mid" d="M420 150 L458 108" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M420 150 L458 108" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M600 188 L562 146"/>
+<path class="mid" d="M600 188 L562 146" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M600 188 L562 146" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M600 188 L638 146"/>
+<path class="mid" d="M600 188 L638 146" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M600 188 L638 146" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M220 458 C320 515 555 515 690 458"/>
+<path class="mid" d="M220 458 C320 515 555 515 690 458" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M220 458 C320 515 555 515 690 458" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 243 315 C 243 310.1, 247.55 308, 250 308 C 254.9 308, 257 313.25, 257 315 C 257 319.9, 251.75 322, 250 322 C 245.1 322, 243 316.75, 243 315 Z"/>
+<path class="mark" d="M 243 315 C 243 310.1, 247.55 308, 250 308 C 254.9 308, 257 313.25, 257 315 C 257 319.9, 251.75 322, 250 322 C 245.1 322, 243 316.75, 243 315 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 243 315 C 243 310.1, 247.55 308, 250 308 C 254.9 308, 257 313.25, 257 315 C 257 319.9, 251.75 322, 250 322 C 245.1 322, 243 316.75, 243 315 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 413 315 C 413 310.1, 417.55 308, 420 308 C 424.9 308, 427 313.25, 427 315 C 427 319.9, 421.75 322, 420 322 C 415.1 322, 413 316.75, 413 315 Z"/>
+<path class="mark" d="M 413 315 C 413 310.1, 417.55 308, 420 308 C 424.9 308, 427 313.25, 427 315 C 427 319.9, 421.75 322, 420 322 C 415.1 322, 413 316.75, 413 315 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 413 315 C 413 310.1, 417.55 308, 420 308 C 424.9 308, 427 313.25, 427 315 C 427 319.9, 421.75 322, 420 322 C 415.1 322, 413 316.75, 413 315 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 593 315 C 593 310.1, 597.55 308, 600 308 C 604.9 308, 607 313.25, 607 315 C 607 319.9, 601.75 322, 600 322 C 595.1 322, 593 316.75, 593 315 Z"/>
+<path class="mark" d="M 593 315 C 593 310.1, 597.55 308, 600 308 C 604.9 308, 607 313.25, 607 315 C 607 319.9, 601.75 322, 600 322 C 595.1 322, 593 316.75, 593 315 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 593 315 C 593 310.1, 597.55 308, 600 308 C 604.9 308, 607 313.25, 607 315 C 607 319.9, 601.75 322, 600 322 C 595.1 322, 593 316.75, 593 315 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="shade" d="M230 250.0 C335.0 238.0,461.0 262.0,650 250.0"/>
+<path class="shade" d="M230 260.5 C335.0 248.5,461.0 272.5,650 260.5"/>
+<path class="shade" d="M230 270.9 C335.0 258.9,461.0 282.9,650 270.9"/>
+<path class="shade" d="M230 281.4 C335.0 269.4,461.0 293.4,650 281.4"/>
+<path class="shade" d="M230 291.8 C335.0 279.8,461.0 303.8,650 291.8"/>
+<path class="shade" d="M230 302.3 C335.0 290.3,461.0 314.3,650 302.3"/>
+<path class="shade" d="M230 312.7 C335.0 300.7,461.0 324.7,650 312.7"/>
+<path class="shade" d="M230 323.2 C335.0 311.2,461.0 335.2,650 323.2"/>
+<path class="shade" d="M230 333.6 C335.0 321.6,461.0 345.6,650 333.6"/>
+<path class="shade" d="M230 344.1 C335.0 332.1,461.0 356.1,650 344.1"/>
+<path class="shade" d="M230 354.5 C335.0 342.5,461.0 366.5,650 354.5"/>
+<path class="shade" d="M230 365.0 C335.0 353.0,461.0 377.0,650 365.0"/>
 
 </svg>

@@ -1,26 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="wobble" x="-12%" y="-12%" width="124%" height="124%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="23" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.16"/>
   </filter>
   <style>
-    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
-    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
-    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
-    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
-    .m{fill:#20242b;filter:url(#rough);opacity:.72}
-    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
-    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
-    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
-    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
+    .heavy{fill:none;stroke:#262626;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:.42;filter:url(#wobble)}
+    .mid{fill:none;stroke:#262626;stroke-width:2.0;stroke-linecap:round;stroke-linejoin:round;opacity:.30;filter:url(#wobble)}
+    .light{fill:none;stroke:#262626;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.18;filter:url(#wobble)}
+    .dash{fill:none;stroke:#262626;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 11;opacity:.26;filter:url(#wobble)}
+    .shade{fill:none;stroke:#262626;stroke-width:1.0;stroke-linecap:round;opacity:.16;filter:url(#wobble)}
+    .mark{fill:none;stroke:#6f3333;stroke-width:2.4;opacity:.50;filter:url(#wobble)}
   </style>
 </defs>
-
-  <path class="p" d="M178 358 C278 130 575 150 722 315 C630 462 330 480 178 358 Z"/>
-  <path class="q" d="M270 290 C358 235 522 235 642 292"/>
-  <path class="p" d="M420 92 L420 476"/><path class="d" d="M420 92 C490 205 490 365 420 476"/>
-  <circle class="a" cx="420" cy="248" r="8"/><circle class="a" cx="420" cy="330" r="8"/><circle class="a" cx="420" cy="392" r="8"/>
-  <path class="q" d="M570 140 L782 260 L570 395"/><text class="small" x="536" y="470">projection and ramification divisor</text>
+<path class="heavy" d="M178 358 C278 130 575 150 722 315 C630 462 330 480 178 358 Z"/>
+<path class="heavy" d="M178 358 C278 130 575 150 722 315 C630 462 330 480 178 358 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M178 358 C278 130 575 150 722 315 C630 462 330 480 178 358 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M270 290 C358 235 522 235 642 292"/>
+<path class="mid" d="M270 290 C358 235 522 235 642 292" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M270 290 C358 235 522 235 642 292" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="heavy" d="M420 92 L420 476"/>
+<path class="heavy" d="M420 92 L420 476" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M420 92 L420 476" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M420 92 C490 205 490 365 420 476"/>
+<path class="dash" d="M420 92 C490 205 490 365 420 476" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M420 92 C490 205 490 365 420 476" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 412 248 C 412 242.4, 417.2 240, 420 240 C 425.6 240, 428 246.0, 428 248 C 428 253.6, 422.0 256, 420 256 C 414.4 256, 412 250.0, 412 248 Z"/>
+<path class="mark" d="M 412 248 C 412 242.4, 417.2 240, 420 240 C 425.6 240, 428 246.0, 428 248 C 428 253.6, 422.0 256, 420 256 C 414.4 256, 412 250.0, 412 248 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 412 248 C 412 242.4, 417.2 240, 420 240 C 425.6 240, 428 246.0, 428 248 C 428 253.6, 422.0 256, 420 256 C 414.4 256, 412 250.0, 412 248 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 412 330 C 412 324.4, 417.2 322, 420 322 C 425.6 322, 428 328.0, 428 330 C 428 335.6, 422.0 338, 420 338 C 414.4 338, 412 332.0, 412 330 Z"/>
+<path class="mark" d="M 412 330 C 412 324.4, 417.2 322, 420 322 C 425.6 322, 428 328.0, 428 330 C 428 335.6, 422.0 338, 420 338 C 414.4 338, 412 332.0, 412 330 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 412 330 C 412 324.4, 417.2 322, 420 322 C 425.6 322, 428 328.0, 428 330 C 428 335.6, 422.0 338, 420 338 C 414.4 338, 412 332.0, 412 330 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 412 392 C 412 386.4, 417.2 384, 420 384 C 425.6 384, 428 390.0, 428 392 C 428 397.6, 422.0 400, 420 400 C 414.4 400, 412 394.0, 412 392 Z"/>
+<path class="mark" d="M 412 392 C 412 386.4, 417.2 384, 420 384 C 425.6 384, 428 390.0, 428 392 C 428 397.6, 422.0 400, 420 400 C 414.4 400, 412 394.0, 412 392 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 412 392 C 412 386.4, 417.2 384, 420 384 C 425.6 384, 428 390.0, 428 392 C 428 397.6, 422.0 400, 420 400 C 414.4 400, 412 394.0, 412 392 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M570 140 L782 260 L570 395"/>
+<path class="mid" d="M570 140 L782 260 L570 395" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M570 140 L782 260 L570 395" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="shade" d="M260 250.0 C345.0 238.0,447.0 262.0,600 250.0"/>
+<path class="shade" d="M260 262.0 C345.0 250.0,447.0 274.0,600 262.0"/>
+<path class="shade" d="M260 274.0 C345.0 262.0,447.0 286.0,600 274.0"/>
+<path class="shade" d="M260 286.0 C345.0 274.0,447.0 298.0,600 286.0"/>
+<path class="shade" d="M260 298.0 C345.0 286.0,447.0 310.0,600 298.0"/>
+<path class="shade" d="M260 310.0 C345.0 298.0,447.0 322.0,600 310.0"/>
+<path class="shade" d="M260 322.0 C345.0 310.0,447.0 334.0,600 322.0"/>
+<path class="shade" d="M260 334.0 C345.0 322.0,447.0 346.0,600 334.0"/>
+<path class="shade" d="M260 346.0 C345.0 334.0,447.0 358.0,600 346.0"/>
+<path class="shade" d="M260 358.0 C345.0 346.0,447.0 370.0,600 358.0"/>
+<path class="shade" d="M260 370.0 C345.0 358.0,447.0 382.0,600 370.0"/>
 
 </svg>

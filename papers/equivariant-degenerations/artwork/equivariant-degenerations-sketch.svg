@@ -1,27 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="wobble" x="-12%" y="-12%" width="124%" height="124%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="23" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.16"/>
   </filter>
   <style>
-    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
-    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
-    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
-    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
-    .m{fill:#20242b;filter:url(#rough);opacity:.72}
-    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
-    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
-    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
-    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
+    .heavy{fill:none;stroke:#262626;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:.42;filter:url(#wobble)}
+    .mid{fill:none;stroke:#262626;stroke-width:2.0;stroke-linecap:round;stroke-linejoin:round;opacity:.30;filter:url(#wobble)}
+    .light{fill:none;stroke:#262626;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.18;filter:url(#wobble)}
+    .dash{fill:none;stroke:#262626;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 11;opacity:.26;filter:url(#wobble)}
+    .shade{fill:none;stroke:#262626;stroke-width:1.0;stroke-linecap:round;opacity:.16;filter:url(#wobble)}
+    .mark{fill:none;stroke:#6f3333;stroke-width:2.4;opacity:.50;filter:url(#wobble)}
   </style>
 </defs>
-
-  <path class="p" d="M120 355 C230 118 380 195 442 315 C486 405 650 454 778 235"/>
-  <path class="q" d="M135 238 C280 418 405 95 520 255 C610 382 703 330 772 176"/>
-  <path class="d" d="M245 108 C270 205 270 380 230 474 M620 105 C588 215 594 390 650 464"/>
-  <circle class="a" cx="442" cy="315" r="10"/>
-  <path class="q" d="M338 154 L456 92 L610 156 M456 92 L456 236 M338 154 L456 236 L610 156"/>
-  <text class="small" x="178" y="502">plane quartic orbit degeneration</text>
+<path class="heavy" d="M120 355 C230 118 380 195 442 315 C486 405 650 454 778 235"/>
+<path class="heavy" d="M120 355 C230 118 380 195 442 315 C486 405 650 454 778 235" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M120 355 C230 118 380 195 442 315 C486 405 650 454 778 235" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M135 238 C280 418 405 95 520 255 C610 382 703 330 772 176"/>
+<path class="mid" d="M135 238 C280 418 405 95 520 255 C610 382 703 330 772 176" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M135 238 C280 418 405 95 520 255 C610 382 703 330 772 176" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M245 108 C270 205 270 380 230 474"/>
+<path class="dash" d="M245 108 C270 205 270 380 230 474" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M245 108 C270 205 270 380 230 474" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M620 105 C588 215 594 390 650 464"/>
+<path class="dash" d="M620 105 C588 215 594 390 650 464" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M620 105 C588 215 594 390 650 464" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mark" d="M 429 315 C 429 305.9, 437.45 302, 442 302 C 451.1 302, 455 311.75, 455 315 C 455 324.1, 445.25 328, 442 328 C 432.9 328, 429 318.25, 429 315 Z"/>
+<path class="mark" d="M 429 315 C 429 305.9, 437.45 302, 442 302 C 451.1 302, 455 311.75, 455 315 C 455 324.1, 445.25 328, 442 328 C 432.9 328, 429 318.25, 429 315 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mark" d="M 429 315 C 429 305.9, 437.45 302, 442 302 C 451.1 302, 455 311.75, 455 315 C 455 324.1, 445.25 328, 442 328 C 432.9 328, 429 318.25, 429 315 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M310 142 L456 86 L620 156 L456 238 Z"/>
+<path class="mid" d="M310 142 L456 86 L620 156 L456 238 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M310 142 L456 86 L620 156 L456 238 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M456 86 L456 238"/>
+<path class="mid" d="M456 86 L456 238" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M456 86 L456 238" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M310 142 L620 156"/>
+<path class="mid" d="M310 142 L620 156" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M310 142 L620 156" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="shade" d="M265 210.0 C372.5 198.0,501.5 222.0,695 210.0"/>
+<path class="shade" d="M265 221.8 C372.5 209.8,501.5 233.8,695 221.8"/>
+<path class="shade" d="M265 233.6 C372.5 221.6,501.5 245.6,695 233.6"/>
+<path class="shade" d="M265 245.5 C372.5 233.5,501.5 257.5,695 245.5"/>
+<path class="shade" d="M265 257.3 C372.5 245.3,501.5 269.3,695 257.3"/>
+<path class="shade" d="M265 269.1 C372.5 257.1,501.5 281.1,695 269.1"/>
+<path class="shade" d="M265 280.9 C372.5 268.9,501.5 292.9,695 280.9"/>
+<path class="shade" d="M265 292.7 C372.5 280.7,501.5 304.7,695 292.7"/>
+<path class="shade" d="M265 304.5 C372.5 292.5,501.5 316.5,695 304.5"/>
+<path class="shade" d="M265 316.4 C372.5 304.4,501.5 328.4,695 316.4"/>
+<path class="shade" d="M265 328.2 C372.5 316.2,501.5 340.2,695 328.2"/>
+<path class="shade" d="M265 340.0 C372.5 328.0,501.5 352.0,695 340.0"/>
 
 </svg>

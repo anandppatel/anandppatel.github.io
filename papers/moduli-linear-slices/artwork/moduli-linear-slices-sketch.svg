@@ -1,26 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="wobble" x="-12%" y="-12%" width="124%" height="124%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="23" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.16"/>
   </filter>
   <style>
-    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
-    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
-    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
-    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
-    .m{fill:#20242b;filter:url(#rough);opacity:.72}
-    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
-    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
-    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
-    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
+    .heavy{fill:none;stroke:#262626;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:.42;filter:url(#wobble)}
+    .mid{fill:none;stroke:#262626;stroke-width:2.0;stroke-linecap:round;stroke-linejoin:round;opacity:.30;filter:url(#wobble)}
+    .light{fill:none;stroke:#262626;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.18;filter:url(#wobble)}
+    .dash{fill:none;stroke:#262626;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 11;opacity:.26;filter:url(#wobble)}
+    .shade{fill:none;stroke:#262626;stroke-width:1.0;stroke-linecap:round;opacity:.16;filter:url(#wobble)}
+    .mark{fill:none;stroke:#6f3333;stroke-width:2.4;opacity:.50;filter:url(#wobble)}
   </style>
 </defs>
-
-  <path class="p" d="M135 378 C240 150 585 138 748 300 C650 465 315 480 135 378 Z"/>
-  <path class="q" d="M238 152 L205 442 M420 112 L360 478 M610 148 L520 438"/>
-  <path class="d" d="M180 325 L760 220 M210 398 L718 315 M150 250 L700 400"/>
-  <path class="q" d="M650 120 C718 155 765 208 790 282"/>
-  <text class="small" x="160" y="514">hyperplane slices vary in moduli</text>
+<path class="heavy" d="M135 378 C240 150 585 138 748 300 C650 465 315 480 135 378 Z"/>
+<path class="heavy" d="M135 378 C240 150 585 138 748 300 C650 465 315 480 135 378 Z" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M135 378 C240 150 585 138 748 300 C650 465 315 480 135 378 Z" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="heavy" d="M238 152 L205 442"/>
+<path class="heavy" d="M238 152 L205 442" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M238 152 L205 442" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="heavy" d="M420 112 L360 478"/>
+<path class="heavy" d="M420 112 L360 478" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M420 112 L360 478" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="heavy" d="M610 148 L520 438"/>
+<path class="heavy" d="M610 148 L520 438" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="heavy" d="M610 148 L520 438" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M180 325 L760 220"/>
+<path class="dash" d="M180 325 L760 220" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M180 325 L760 220" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M210 398 L718 315"/>
+<path class="dash" d="M210 398 L718 315" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M210 398 L718 315" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="dash" d="M150 250 L700 400"/>
+<path class="dash" d="M150 250 L700 400" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="dash" d="M150 250 L700 400" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="mid" d="M650 120 C718 155 765 208 790 282"/>
+<path class="mid" d="M650 120 C718 155 765 208 790 282" transform="translate(1.6 -1.1) rotate(.22 450 280)" opacity=".55"/>
+<path class="mid" d="M650 120 C718 155 765 208 790 282" transform="translate(-1.2 1.4) rotate(-.18 450 280)" opacity=".38"/>
+<path class="shade" d="M260 200.0 C350.0 188.0,458.0 212.0,620 200.0"/>
+<path class="shade" d="M260 214.6 C350.0 202.6,458.0 226.6,620 214.6"/>
+<path class="shade" d="M260 229.2 C350.0 217.2,458.0 241.2,620 229.2"/>
+<path class="shade" d="M260 243.8 C350.0 231.8,458.0 255.8,620 243.8"/>
+<path class="shade" d="M260 258.5 C350.0 246.5,458.0 270.5,620 258.5"/>
+<path class="shade" d="M260 273.1 C350.0 261.1,458.0 285.1,620 273.1"/>
+<path class="shade" d="M260 287.7 C350.0 275.7,458.0 299.7,620 287.7"/>
+<path class="shade" d="M260 302.3 C350.0 290.3,458.0 314.3,620 302.3"/>
+<path class="shade" d="M260 316.9 C350.0 304.9,458.0 328.9,620 316.9"/>
+<path class="shade" d="M260 331.5 C350.0 319.5,458.0 343.5,620 331.5"/>
+<path class="shade" d="M260 346.2 C350.0 334.2,458.0 358.2,620 346.2"/>
+<path class="shade" d="M260 360.8 C350.0 348.8,458.0 372.8,620 360.8"/>
+<path class="shade" d="M260 375.4 C350.0 363.4,458.0 387.4,620 375.4"/>
+<path class="shade" d="M260 390.0 C350.0 378.0,458.0 402.0,620 390.0"/>
 
 </svg>
