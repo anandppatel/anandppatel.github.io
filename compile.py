@@ -502,6 +502,9 @@ def parse_preamble_macros(tex_source):
             "flushleft", "flushright",
         )):
             continue
+        if name == "o" and definition == "\\overline":
+            macros[name] = ["\\overline{#1}", 1]
+            continue
         if nargs:
             macros[name] = [definition, nargs]
         else:
