@@ -1028,7 +1028,7 @@ def split_paragraphs(text):
     """Split text on blank lines without cutting through display environments."""
     protected_envs = {
         "figure", "table", "center", "equation", "equation*",
-        "align", "align*", "tikzcd", "tikzpicture", "tabular",
+        "align", "align*", "tikzcd", "tikzpicture", "tabular", "longtable",
     }
     paras = []
     current = []
@@ -1302,9 +1302,19 @@ def split_latex_top_level(text, delimiter):
     return parts
 
 
-def tabular_to_html(m):
-    """Convert simple LaTeX tabular blocks to HTML tables."""
-    body = m.group(2)
+def table_body_to_html(body):
+    """Convert simple LaTeX table bodies to HTML tables."""
+    captions = []
+
+    def capture_caption(caption):
+        captions.append(
+            f'<div class="stacks-caption">{tex_to_html(caption.strip())}</div>'
+        )
+        return ''
+
+    body = replace_latex_commands(body, "caption", capture_caption, allow_optional=True)
+    body = re.sub(r'\\label\{[^}]*\}', '', body)
+    body = re.sub(r'\\(?:endfirsthead|endhead|endfoot|endlastfoot)\b', '', body)
     body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', body)
     rows = []
     for row in split_latex_top_level(body, r'\\'):
@@ -1323,13 +1333,74 @@ def tabular_to_html(m):
         rows.append('<tr>' + ''.join(html_cells) + '</tr>')
 
     if not rows:
-        return ''
+        return ''.join(captions)
     return (
+        ''.join(captions) +
         '<div class="stacks-table-wrap">'
         '<table class="stacks-table"><tbody>'
         + ''.join(rows)
         + '</tbody></table></div>'
     )
+
+
+def tabular_to_html(m):
+    """Convert simple LaTeX tabular blocks to HTML tables."""
+    return table_body_to_html(m.group(2))
+
+
+def replace_table_environments(text):
+    """Replace tabular/longtable environments, allowing nested braces in specs."""
+    out = []
+    pos = 0
+    env_re = re.compile(r'\\begin\{(tabular|longtable)\}')
+    while True:
+        match = env_re.search(text, pos)
+        if not match:
+            out.append(text[pos:])
+            break
+
+        env_name = match.group(1)
+        i = match.end()
+        if i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            out.append(text[pos:match.end()])
+            pos = match.end()
+            continue
+
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(text[pos:])
+            break
+
+        body_start = i
+        end_token = rf'\end{{{env_name}}}'
+        end = text.find(end_token, body_start)
+        if end == -1:
+            out.append(text[pos:])
+            break
+
+        out.append(text[pos:match.start()])
+        out.append(table_body_to_html(text[body_start:end]))
+        pos = end + len(end_token)
+
+    return ''.join(out)
 
 
 def parse_latex_item_label(text, pos):
@@ -1521,6 +1592,13 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{subfigure\}(?:\[[^\]]*\])?(?:\{[^{}]*\})?', '', s)
     s = re.sub(r'\\end\{subfigure\}', '', s)
     s = re.sub(r'\\centering\b', '', s)
+    s = replace_latex_two_arg_commands(s, "renewcommand", lambda _name, _value: "")
+
+    # tabular/longtable → semantic HTML table instead of fragile MathJax arrays.
+    # Do this before general caption handling so longtable captions stay with
+    # their tables instead of becoming bogus table rows.
+    s = replace_table_environments(s)
+
     s = replace_latex_commands(
         s,
         "caption",
@@ -1538,14 +1616,6 @@ def tex_to_html(tex):
     # center → strip
     s = re.sub(r'\\begin\{center\}', '', s)
     s = re.sub(r'\\end\{center\}', '', s)
-
-    # tabular → semantic HTML table instead of fragile MathJax arrays.
-    s = re.sub(
-        r'\\begin\{tabular\}(?:\[[^\]]*\])?\{([^}]*)\}(.*?)\\end\{tabular\}',
-        tabular_to_html,
-        s,
-        flags=re.DOTALL,
-    )
 
     # equation environment → display math
     def equation_replace(m):
@@ -1675,6 +1745,7 @@ def tex_to_html(tex):
 
     # \newblock — remove (from bibliography)
     s = s.replace('\\newblock', '')
+    s = re.sub(r'\\newline\b', '<br>', s)
 
     # Double newlines → paragraph breaks
     s = re.sub(r'\n\s*\n', '</p>\n<p>', s)
