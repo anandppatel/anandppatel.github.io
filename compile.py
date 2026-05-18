@@ -291,6 +291,7 @@ def normalize_source_aliases(body):
 
 ENV_TYPES = {
     "theorem": "Theorem",
+    "Theorem": "Theorem",
     "thm": "Theorem",
     "thm*": "Theorem",
     "maintheorem": "Theorem",
@@ -304,6 +305,7 @@ ENV_TYPES = {
     "proposition": "Proposition",
     "prop": "Proposition",
     "corollary": "Corollary",
+    "Corollary": "Corollary",
     "cor": "Corollary",
     "remark": "Remark",
     "rmk": "Remark",
@@ -326,6 +328,7 @@ ENV_TYPES = {
 # Map envName to CSS class
 ENV_CSS = {
     "theorem": "stacks-theorem",
+    "Theorem": "stacks-theorem",
     "thm": "stacks-theorem",
     "thm*": "stacks-theorem",
     "maintheorem": "stacks-theorem",
@@ -335,6 +338,7 @@ ENV_CSS = {
     "proposition": "stacks-lemma",
     "prop": "stacks-lemma",
     "corollary": "stacks-lemma",
+    "Corollary": "stacks-lemma",
     "cor": "stacks-lemma",
     "definition": "stacks-definition",
     "defn": "stacks-definition",
@@ -1266,7 +1270,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
 
     def resolve_refs(text, refs_include_type=False):
         def ref_replacer(m):
-            return resolve_ref_list(m.group(1), include_type=refs_include_type)
+            return resolve_ref_list(m.group(1), include_type=False)
 
         def cref_replacer(m):
             return resolve_ref_list(m.group(1), include_type=True)
@@ -1297,9 +1301,9 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
                 resolve_blocks(block["children"])
 
     for sec in paper["sections"]:
-        sec["title"] = resolve_refs(tex_to_html(sec["title"]), refs_include_type=True)
+        sec["title"] = resolve_refs(tex_to_html(sec["title"]))
         for sub in sec["subsections"]:
-            sub["title"] = resolve_refs(tex_to_html(sub["title"]), refs_include_type=True)
+            sub["title"] = resolve_refs(tex_to_html(sub["title"]))
         resolve_blocks(sec["blocks"])
         for sub in sec["subsections"]:
             resolve_blocks(sub["blocks"])
@@ -1420,7 +1424,7 @@ def breadcrumb_html(items, depth=0):
     parts = [f'<a href="{prefix}index.html">Table of contents</a>']
     for label, href in items:
         if href:
-            parts.append(f'<a href="{prefix}{href}">{label}</a>')
+            parts.append(f'<a href="{prefix}{href}">{html_mod.escape(strip_html(label))}</a>')
         else:
             parts.append(f'<span>{label}</span>')
     return '<div class="stacks-breadcrumb">' + ' / '.join(parts) + '</div>\n'
@@ -1636,11 +1640,13 @@ def compile_paper(tex_path):
     toc += '<ul class="stacks-toc">\n'
 
     for sec in paper["sections"]:
-        toc += f'  <li><a href="section/{sec["id"]}.html">Section {sec["number"]}: {sec["title"]}</a>\n'
+        sec_title_plain = html_mod.escape(strip_html(sec["title"]))
+        toc += f'  <li><a href="section/{sec["id"]}.html">Section {sec["number"]}: {sec_title_plain}</a>\n'
         if sec["subsections"]:
             toc += '    <ul>\n'
             for sub in sec["subsections"]:
-                toc += f'      <li><a href="section/{sub["id"]}.html">{sub["number"]}. {sub["title"]}</a></li>\n'
+                sub_title_plain = html_mod.escape(strip_html(sub["title"]))
+                toc += f'      <li><a href="section/{sub["id"]}.html">{sub["number"]}. {sub_title_plain}</a></li>\n'
             toc += '    </ul>\n'
         toc += '  </li>\n'
     if has_bibliography:
@@ -1696,7 +1702,8 @@ def compile_paper(tex_path):
         if sec["subsections"]:
             sec_html += '<h2 class="stacks-subsections-heading">Subsections</h2>\n<ul>\n'
             for sub in sec["subsections"]:
-                sec_html += f'  <li><a href="{sub["id"]}.html">{sub["number"]}. {sub["title"]}</a></li>\n'
+                sub_title_plain = html_mod.escape(strip_html(sub["title"]))
+                sec_html += f'  <li><a href="{sub["id"]}.html">{sub["number"]}. {sub_title_plain}</a></li>\n'
             sec_html += '</ul>\n'
 
         sec_html += comment_form(
