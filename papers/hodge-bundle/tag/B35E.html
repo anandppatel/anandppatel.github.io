@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (B35E) &mdash; The simplicity of the Hodge Bundle</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Z: "\\mathbb{Z}",
+          V: "\\mathscr{V}",
+          M: "\\mathscr{M}",
+          O: "\\mathscr{O}",
+          I: "\\mathscr{I}",
+          CC: "\\mathbb{C}",
+          Hodge: "\\Omega",
+          Pairs: "\\mathscr{P}",
+          Sunb: "\\mathscr{S}_{unb}",
+          Qunb: "\\mathscr{Q}_{unb}",
+          C: "\\mathbb{C}",
+          sHom: "\\underline{Hom}",
+          syz: "\\operatorname{syz}",
+          Gr: "\\operatorname{Gr}",
+          Flag: "\\operatorname{Flag}",
+          id: "\\operatorname{id}",
+          Deg: "\\operatorname{Deg}",
+          Bl: "\\operatorname{Bl}",
+          tr: "\\operatorname{tr}",
+          sat: "\\operatorname{sat}",
+          Ext: "\\operatorname{Ext}",
+          Exc: "\\operatorname{Exc}",
+          Mod: "\\operatorname{Mod}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">The simplicity of the Hodge Bundle</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: The proof</a> / <a href="../section/S2.SS2.html">2.2. Some curves with two commuting involutions</a> / <span>Proof (B35E)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="8204.html">&laquo; Lemma 2.4</a><span class="stacks-tag-current">Tag B35E</span><a href="4C27.html">Lemma 2.5 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B35E.html" class="stacks-tag-link">(B35E)</a></div>
+  <div class="stacks-env-body"><p>Given a triple $(m_1,m_2,m_3) \in T$, we choose generic, mutually coprime,
+  square-free polynomials $A,B,C \in \C[x]$ of degrees $m_1, m_2, m_3$,
+  respectively. Let $K = \C(x)$.  We define a smooth projective curve $C$ as the
+  smooth model of the function field $L = K(y,z)$ where $y^{2} = AC$ and $z^{2}
+  = BC$.  Because at most one $m_i = 0$, the polynomials $AC$ and $BC$ cannot
+  both be constants; thus the extension $L/K$ forms a fully generated degree $4$
+  Galois extension with Galois group $G \cong (\Z/2\Z)^{2}$, guaranteeing $C$ is
+  a connected curve.  Since $m_i \equiv g+1 \pmod 2$, the polynomials $AC$ and
+  $BC$ have even degrees, implying that $L/K$ is unramified over $x = \infty \in
+  \P^{1}$. </p>
+<p>  By construction, the ramification of the cover $C \to \P^{1}$ lies entirely
+  over the roots of $A,B$ and $C$.  Over a root $x=p$ of $A$ or $B$, the ramification
+  profile is of type $(2,2)$ &ndash; that is, there are two points lying over $p$
+  with simple ramification occurring at each point. </p>
+<p>  Over a root $x=c$ of $C(x)$, the quadratic subextension $K(y/z)/K$ evaluates locally to
+  $(y/z)^{2} = A(c)/B(c) \neq 0$ and therefore by adjoining $y$ or $z$ we again
+  obtain two points of simple ramification over $q$.  </p>
+<p>  By the Riemann-Hurwitz formula applied to $L/K$, the genus $g_C$ satisfies:
+  $$2g_{C}-2 = 4(-2) + 2m_1 + 2m_2 + 2 m_3 = -8 + 2(g+3) = 2g-2,$$ which
+  confirms $g_{C}=g$. The automorphisms $\tau_1, \tau_2$ acting by $(y,z) \mapsto (-y,z)$
+ and $(y,z) \mapsto (y,-z)$, respectively, generate the Galois group $G$. Because $L
+ = K(z)(y)$ and $y^{2} = AC$, ramification in $C \to C_{2}$ occurs exactly where
+ the local valuation of $AC$ in $K(z)$ is odd.  Over a root $x=a$ of $A$, $AC$ has a
+ simple zero, and since $C_{2} \to \P^{1}$ is unramified there the valuation
+ remains $1$ at the two points lying in $C_{2}$ over $a$.  This gives
+ $2m_1$ fixed points so far for $\tau_1$.  </p>
+<p> At the unique point $t \in C_{2}$ lying over a root $x = c$ of $C(x)$, the local function $z$ is a local coordinate.
+ Thus $AC$ vanishes to order $2$ at $t$. Over $t$ the double cover $C \to C_2$ is unramified, and so $\tau_{1}$ swaps the two
+ resulting pre-image points of $t$ in $C$.   Therefore, the fixed point set of $\tau_1$ consists of $2m_1$ points exactly. </p>
+<p> Similar analyses for $\tau_2$ and $\tau_3 = \tau_1 \tau_{2}$, yield the conclusion that the number of fixed points
+ of $\tau_i$ is $2m_i$.</p>
+<p> Conversely, if $C$ is a genus $g$ curve with commuting involutions $\tau_1, \tau_2,
+ \tau_3 = \tau_1 \tau_2$ with disjoint fixed point sets of size $2m_{i}$
+ respectively, and such that the quotient $C/\langle \tau_1, \tau_2 \rangle
+ \simeq \P^{1}$, then the Riemann-Hurwitz analysis performed earlier for the
+ cover $C \to \P^{1}$ shows that
+ $m_1 + m_2 + m_3 = g+3$ holds. Furthermore, each $m_{i} \equiv g+1 \pmod 2$ by
+ applying Riemann-Hurwitz to the quotients $C \to C /\tau_i$. Two of the $m_i$, say $m_1, m_2$ cannot simultaneously be $0$ since then $C \to
+ \P^{1}$ would be a degree $4$ connected unramified
+ cover of $\P^{1}$, which is impossible. The lemma is shown.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on The simplicity of the Hodge Bundle &mdash; Tag B35E (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/hodge-bundle/tag/B35E.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2603.19052">arXiv:2603.19052</a>
+  </div>
+</footer>
+</body>
+</html>

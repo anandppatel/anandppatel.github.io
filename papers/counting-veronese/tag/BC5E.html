@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (BC5E) &mdash; Counting 3-uple Veronese Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          O: "\\mathcal{O}",
+          from: "\\colon",
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          CT: "\\operatorname{\\mathsf{CT}}",
+          jac: "\\operatorname{\\mathsf{Jac}}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          Fat: "\\operatorname{\\mathsf{Fat}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          SQP: "\\operatorname{\\mathsf{SQP}}",
+          Gr: "\\operatorname{Gr}",
+          CH: "\\operatorname{CH}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          BP: "\\operatorname{\\mathsf{Bpt}}",
+          Dom: "\\operatorname{\\mathsf{Dom}}",
+          Inf: "\\operatorname{\\mathsf{Inf}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          lin: "\\operatorname{\\mathsf{lin}}",
+          inc: "\\operatorname{\\mathsf{inc}}",
+          Base: "\\operatorname{\\mathsf{Base}}",
+          hess: "\\operatorname{\\mathsf{H}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Sing: "\\operatorname{Sing}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}",
+          ver: "\\operatorname{ver}",
+          Orb: "\\operatorname{Orb}",
+          red: "\\operatorname{red}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar \& Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <a href="../section/S4.SS4.html">4.4. Thirteen point conditions</a> / <span>Proof (BC5E)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="E014.html">&laquo; Proposition 4.19</a><span class="stacks-tag-current">Tag BC5E</span><a href="45DE.html">Claim 4.20 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BC5E.html" class="stacks-tag-link">(BC5E)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">The proof uses a limit linear series style argument.  First observe that since the fixed part of $\Lambda$ is the reduced line $L$, the moving part $\Lambda'$ is a pencil of quartics and the length of $\Base(\Lambda')\cap L$ cannot exceed $4$.   We will approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family contained in $\Dom(p)$.</p>
+<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying:
+    <ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
+<li><strong>(b)</strong> The $b \to 0$ flat limit of $\mathcal{T}_{b}$, denoted $\mathcal{T}_{0}$, is thin. We let $L \subset \P^{2}_{b=0}$ denote the line containing $\mathcal{T}_{0}$.  ($\mathcal{T}_{0}$ is simply $T$ from the statement of the lemma, but we use calligraphic font for consistency in the following paragraphs.)</li>
+<li><strong>(c)</strong> $\mathcal{T}_{0}$ does not contain the point $p$. (This is the second assumption in the proposition.)</li>
+<li><strong>(d)</strong> The line $L$ contains $p$.</li>
+<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol></p>
+<p class="stacks-para">If $b \neq 0$, then the vector space $$V_{b} := H^{0}\left(\P^{2}_{b}, \I^{2}_{\mathcal{T}_{b}}\I_{p}(5)\right)$$ is $11$-dimensional because $\mathcal{T}_{b}$ and $p$ are in linear general position. Yet, when $b=0$, the vector space $V_{0}$ has dimension $12$.  Indeed, a quintic curve in $\P^{2}_{0}$ passing through $p$ and singular along $\mathcal{T}_{0}$ necessarily contains the line $L$ as an irreducible component and secondly its residual quartic curve $Q$ must contain $\mathcal{T}_{0}$.  The equations of such quartic curves form a $12$-dimensional vector space. Still, as $B$ is a smooth curve, the $b \to 0$ limit of $V_{b}$ is a well-defined $11$-dimensional vector space inside $V_{0}$ &ndash; the following claim is equivalent to the conclusion of the proposition:</p>
+<div class="stacks-env" id="claim-quinticforms">
+  <div class="stacks-env-head"><strong>Claim&nbsp;4.20.</strong> <a href="../tag/45DE.html" class="stacks-tag-link">(45DE)</a></div>
+  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{\begin{array}{c} Quintic forms which are a product\\ $L \cdot Q$ where $Q$ is a quartic\\ containing the divisor $\mathcal{T}_{0} + q$ on $L$\end{array}\right\}.$$</p></div>
+</div>
+<p class="stacks-para">Going forward we focus on <a href="/papers/counting-veronese/tag/45DE.html" class="stacks-ref-link">Claim&nbsp;4.20 <span class="stacks-ref-tag">Tag&nbsp;45DE</span></a>.  We blow up $\P^{2}_{B}$  along the line $L \subset \P^{2}_{b=0}$. Let $$\widetilde{\P^{2}_{B}}$$ denote the blow up $\Bl_{L} \P^{2}_{B},$ and denote by $$\beta: \widetilde{\P^{2}_{B}} \to \P^{2}_{B}$$ the blowdown map.  The structural morphism $\pi: \widetilde{\P^{2}_{B}} \to B$ has fiber over $b \neq 0$ simply equal to $\P^{2}_{b}$, while the fiber $\pi^{-1}(\{0\})$ is the transverse union of two smooth surfaces: the exceptional divisor of $\beta$, denoted $E$,  and the proper transform of $\P^{2}_{0} \subset \P^{2}_{B}$ in the blow up, denoted $P$. $P$ maps isomorphically onto $\P^{2}_{0}$ under $\beta$.</p>
+<p class="stacks-para">The current geometric circumstance has certain features we want to emphasize:
+\begin{itemize}
+\item $\beta$ expresses $E$ as a $\P^{1}$-bundle over $L$. As such, $E$ is isomorphic to the Hirzebruch surface $\mathbb{F}_{1}$, with the intersection $E \cap P$ being the directrix curve which we denote by $D \subset E$. We let $F$ denote the divisor class of a fiber of the bundle $\beta|_{E}: E \to L$.</p>
+<p class="stacks-para">\item Since $L \cap \mathcal{T} = \mathcal{T}_{0} = \mathcal{T} \cap \P^{2}_{0}$ is a Cartier divisor on $\mathcal{T}$, it follows that $\mathcal{T}$ lifts isomorphically to $\widetilde{\P^{2}_{B}}$.  Let $\widetilde{\mathcal{T}} \subset \widetilde{\P^{2}_{B}}$ denote this lift, which is unique. (We've used here the assumption that $\mathcal{T}_{0}$ is thin.)</p>
+<p class="stacks-para">\item $E \cap \widetilde{\mathcal{T}} = \widetilde{\mathcal{T}}_{0}$. Furthermore, $\widetilde{\mathcal{T}} \cap P = \varnothing$ because the sections $t_{i}$ comprising $\mathcal{T}$, by virtue of being sections, are not tangent to $\P^{2}_{0}$ from the start.</p>
+<p class="stacks-para">\item Under $\beta$, the proper transform of the constant section $\{p\} \times B \subset \P^{2}_{B}$ becomes a section of $\pi$ which intersects $E$ at a point $\widetilde{p} \in E$ not on the directrix $D \subset E$.</p>
+<p class="stacks-para">\item Clearly $\beta(\widetilde{p}) \notin \mathcal{T}_{0}$ because $p \notin \mathcal{T}_{0}$. And therefore $\widetilde{p} \notin \widetilde{\mathcal{T}}_{0}$.</p>
+<p class="stacks-para">\item Define $\mathcal{L}$ to be the invertible sheaf $\beta^{*}\O(5)(-E)$ on $\widetilde{\P_{B}^{2}}$. Then $\mathcal{L}|_{P} \simeq \O_{P}(4)$ and $\mathcal{L}|_{E} \simeq \O_{E}(D+5F)$.
+\end{itemize}</p>
+<p class="stacks-para">Now we consider the finite, length 4 subscheme $Z := \widetilde{p} \cup \widetilde{\mathcal{T}}_{0} \subset E$.  On $E$, the term <em>line</em> refers to any \text{irreducible} curve in the linear series $|D+F|$ on $E$.  In particular, lines do not intersect the directrix $D$.</p>
+<div class="stacks-lemma" id="lemma-D2F">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.21.</strong> <a href="../tag/5DB5.html" class="stacks-tag-link">(5DB5)</a></div>
+  <div class="stacks-env-body"><p>Maintain the setting immediately prior. Then $$h^{0}(E,\I_{Z}(D+2F)) \geq 1$$ and $h^{0}(E,\I_{Z}(D+2F)) > 1$ if and only if $Z$ is contained in a line, in which case $h^{0}(E,\I_{Z}(D+2F)) = 2$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/counting-veronese/tag/5DB5.html" class="stacks-ref-link">Lemma&nbsp;4.21 <span class="stacks-ref-tag">Tag&nbsp;5DB5</span></a>.</em> <a href="../tag/3604.html" class="stacks-tag-link">(3604)</a></div>
+  <div class="stacks-env-body"><p>This follows easily after translating the statement into a claim about length 5 subschemes in the plane imposing independent conditions on conics.  To get to this translation, simply blow down the Hirzebruch surface $E$ to a plane, contracting $D$.  We omit the details.</p></div>
+</div>
+<p class="stacks-para">At this point, for clarity of exposition, we make the following simplifying assumption:</p>
+<div class="stacks-env" id="assumption-Noline">
+  <div class="stacks-env-head"><strong>Assumption&nbsp;4.22.</strong> <a href="../tag/4E6D.html" class="stacks-tag-link">(4E6D)</a></div>
+  <div class="stacks-env-body"><p>Assume that $Z \subset E$ is <strong>not</strong> contained in a line.</p></div>
+</div>
+<p class="stacks-para">Operating under this assumption, we can finish the argument. On the reducible surface $P \cup E$, the global sections of
+$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of
+<ul><li>A global section $Q$ of $\O_{P}(4)$, and</li>
+<li>a global section of $\O_{E}(D+5F)$ which, if nonzero, defines a reducible divisor of the form $$\beta^{-1}(\mathcal{T}_{0}) \cup C$$ where $C$ is the unique curve in the linear series $|\I_{Z}(D+2F)|$ (<a href="/papers/counting-veronese/tag/5DB5.html" class="stacks-ref-link">Lemma&nbsp;4.21 <span class="stacks-ref-tag">Tag&nbsp;5DB5</span></a>)</li></ul>
+satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">Tag&nbsp;4E6D</span></a>, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
+<p class="stacks-para">Finally, we will explain how to finish the proof of <a href="/papers/counting-veronese/tag/E014.html" class="stacks-ref-link">Proposition&nbsp;4.19 <span class="stacks-ref-tag">Tag&nbsp;E014</span></a> in the case where <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">Tag&nbsp;4E6D</span></a> does not hold. Suppose $Z \subset E$ is contained in a line, and call the line $L_1 \subset E$.  We then blow up the threefold $\widetilde{\P}^{2}_{B}$ along $L_1$.  Once again, $\widetilde{\mathcal{T}}$ will lift to the new blow up, as will the section which for general $b \in B$ selects the point $p$. Blowing up more and more in a similar fashion if necessary, after finitely many blow ups the strict transform of $\mathcal{T}$ and $\{p\} \times B$ are no longer collinear over $b=0$.  Then, we proceed as we did under the simplifying assumption, except now the special fiber is a chain of surfaces $E_0 \cup E_{1} \cup \dots \cup P$, the $E_{i}$'s being $\mathbb{F}_{1}$'s, glued one to the next along directrices on one side and lines on the other.  Then the line bundle $\beta^{*}\O(5)(-E_{0}-E_{1}-\dots E_{k})$ serves the same role as $\mathcal{L}$ did in the simplified situation, and the argument runs parallel to the simple case.</p>
+</div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Counting 3-uple Veronese Surfaces &mdash; Tag BC5E (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/counting-veronese/tag/BC5E.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+  </div>
+</footer>
+</body>
+</html>
