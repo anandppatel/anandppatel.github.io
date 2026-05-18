@@ -137,6 +137,64 @@ def remove_latex_commands(text, command):
     return replace_latex_commands(text, command, lambda _argument: "")
 
 
+def replace_latex_two_arg_commands(text, command, callback, allow_optional=False):
+    """Replace full \\command{...}{...} commands with balanced braces."""
+    pieces = []
+    pos = 0
+    needle = "\\" + command
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if allow_optional and i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(text) and text[i].isspace():
+                i += 1
+        args = []
+        ok = True
+        for _ in range(2):
+            if i >= len(text) or text[i] != "{":
+                ok = False
+                break
+            arg_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "{":
+                    depth += 1
+                elif text[i] == "}":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                ok = False
+                break
+            args.append(text[arg_start:i - 1])
+            if len(args) < 2:
+                while i < len(text) and text[i].isspace():
+                    i += 1
+        if not ok:
+            pos = start + len(needle)
+            continue
+        pieces.append(text[pos:start])
+        pieces.append(callback(args[0], args[1]))
+        pos = i
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
 def split_latex_heading_blocks(text, command):
     """Split text into [(title, content)] blocks for balanced LaTeX headings."""
     matches = list(iter_latex_heading_spans(text, command))
@@ -1264,10 +1322,12 @@ def tex_to_html(tex):
     )
     s = remove_latex_commands(s, "tikzset")
 
-    # figure/table wrappers are layout hints in LaTeX; keep captions and labels
-    # as plain HTML around any rendered diagrams or tables.
+    # figure/table/subfigure wrappers are layout hints in LaTeX; keep captions
+    # and labels as plain HTML around any rendered diagrams or tables.
     s = re.sub(r'\\begin\{(?:figure|table)\}(?:\[[^\]]*\])?', '', s)
     s = re.sub(r'\\end\{(?:figure|table)\}', '', s)
+    s = re.sub(r'\\begin\{subfigure\}(?:\[[^\]]*\])?(?:\{[^{}]*\})?', '', s)
+    s = re.sub(r'\\end\{subfigure\}', '', s)
     s = re.sub(r'\\centering\b', '', s)
     s = replace_latex_commands(
         s,
@@ -1351,6 +1411,25 @@ def tex_to_html(tex):
     # \footnote{...} → parenthetical note
     s = re.sub(r'\\footnote\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
                r' <span style="font-size:0.9em;color:#555;">(\1)</span>', s)
+
+    # Hyperlinks inside captions and prose should become ordinary HTML links
+    # before inline formatting/maths are handled.
+    s = replace_latex_two_arg_commands(
+        s,
+        "href",
+        lambda url, label: (
+            f'<a href="{html_mod.escape(url.strip(), quote=True)}">'
+            f'{tex_to_html(label.strip())}</a>'
+        ),
+    )
+    s = replace_latex_commands(
+        s,
+        "url",
+        lambda url: (
+            f'<a href="{html_mod.escape(url.strip(), quote=True)}">'
+            f'{html_mod.escape(url.strip())}</a>'
+        ),
+    )
 
     # --- Inline formatting ---
 
