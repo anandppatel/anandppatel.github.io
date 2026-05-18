@@ -1386,9 +1386,12 @@ def head(title, paper_title, depth=0, macros=None):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>{document_title}</title>
-  <link rel="stylesheet" href="{prefix}../../style.css">
-  <link rel="stylesheet" href="{prefix}stacks.css">
+  <link rel="stylesheet" href="{prefix}../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {{
       tex: {{
