@@ -987,6 +987,54 @@ def render_tikzpicture_block(tikz_source):
     return render_tikz_block(tikz_source, "TikZ diagram")
 
 
+def resolve_graphics_path(name):
+    """Find a graphics file referenced by \\includegraphics, if it is present."""
+    cleaned = name.strip()
+    if not cleaned:
+        return None
+    tex_dir = TEX_RENDER_CONTEXT["tex_dir"]
+    base = os.path.normpath(os.path.join(tex_dir, cleaned))
+    candidates = [base]
+    root, ext = os.path.splitext(base)
+    if not ext:
+        candidates.extend(root + suffix for suffix in (
+            ".png", ".jpg", ".jpeg", ".svg", ".gif", ".webp", ".pdf",
+        ))
+    for candidate in candidates:
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
+def render_includegraphics(argument):
+    """Render an \\includegraphics command or a clean placeholder."""
+    source_name = argument.strip()
+    graphics_path = resolve_graphics_path(source_name)
+    if not graphics_path:
+        label = html_mod.escape(source_name)
+        return (
+            '<div class="stacks-figure-missing">'
+            f'Figure file not available: <code>{label}</code>'
+            '</div>'
+        )
+
+    rel_path = os.path.relpath(graphics_path, TEX_RENDER_CONTEXT["tex_dir"])
+    rel_href = "../" + rel_path.replace(os.sep, "/")
+    escaped_href = html_mod.escape(rel_href, quote=True)
+    escaped_label = html_mod.escape(os.path.basename(graphics_path))
+    if os.path.splitext(graphics_path)[1].lower() == ".pdf":
+        return (
+            '<div class="stacks-figure-file">'
+            f'<a href="{escaped_href}">{escaped_label}</a>'
+            '</div>'
+        )
+    return (
+        '<div class="stacks-figure">'
+        f'<img src="{escaped_href}" alt="{escaped_label}">'
+        '</div>'
+    )
+
+
 def split_latex_top_level(text, delimiter):
     """Split on a LaTeX delimiter outside braces and inline math."""
     parts = []
@@ -1228,6 +1276,12 @@ def tex_to_html(tex):
         allow_optional=True,
     )
     s = re.sub(r'\\label\{[^}]*\}', '', s)
+    s = replace_latex_commands(
+        s,
+        "includegraphics",
+        render_includegraphics,
+        allow_optional=True,
+    )
 
     # center → strip
     s = re.sub(r'\\begin\{center\}', '', s)
@@ -1354,6 +1408,7 @@ def tex_to_html(tex):
     s = re.sub(r'<p>\s*(<(?:ol|ul)\b)', r'\1', s)
     s = re.sub(r'(</(?:ol|ul)>)\s*</p>\s*<p>', r'\1', s)
     s = re.sub(r'(</(?:ol|ul)>)\s*</p>', r'\1', s)
+    s = re.sub(r'<p>\s*</p>', '', s)
 
     return s.strip()
 
@@ -1775,13 +1830,17 @@ def split_content_html_blocks(content):
     """Split converted content into text and block-HTML pieces."""
     block_start_re = re.compile(
         r'<(?:ol|ul)\b'
+        r'|<h[2-4]\b[^>]*class="[^"]*stacks-subsections-heading[^"]*"'
         r'|<(div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
         r'[^"]*"'
+    )
+    heading_re = re.compile(
+        r'<(?P<tag>h[2-4])\b[^>]*class="[^"]*stacks-subsections-heading[^"]*"[\s\S]*?</(?P=tag)>'
     )
     div_pre_re = re.compile(
         r'<(?P<tag>div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
         r'[^"]*"[\s\S]*?</(?P=tag)>'
     )
 
@@ -1802,6 +1861,16 @@ def split_content_html_blocks(content):
                 break
             pieces.append(("block", content[start.start():end]))
             pos = end
+            continue
+
+        if start.group(0).startswith('<h'):
+            block = heading_re.match(content, start.start())
+            if not block:
+                pieces.append(("text", content[start.start():start.end()]))
+                pos = start.end()
+                continue
+            pieces.append(("block", block.group(0)))
+            pos = block.end()
             continue
 
         block = div_pre_re.match(content, start.start())
@@ -1862,6 +1931,7 @@ def comment_form(page_label, return_url, paper_title):
 
 def write_html(path, html):
     """Write generated HTML with stable line endings and no trailing spaces."""
+    html = re.sub(r'<p(?:\s+class="[^"]*")?>\s*</p>\n?', '', html)
     cleaned = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
     with open(path, "w") as f:
         f.write(cleaned)
