@@ -1571,9 +1571,26 @@ def parse_latex_item_label(text, pos):
     return None, start - 1
 
 
+LATEX_LIST_ENVS = (
+    "enumerate",
+    "itemize",
+    "asparaenum",
+    "inparaenum",
+    "compactenum",
+    "asparaitem",
+    "inparaitem",
+    "compactitem",
+)
+LATEX_LIST_ENV_PATTERN = "|".join(LATEX_LIST_ENVS)
+
+
+def latex_list_tag(env):
+    return "ul" if env.endswith("item") or env == "itemize" else "ol"
+
+
 def find_matching_latex_list_end(text, begin_match):
     """Find the end of a possibly nested enumerate/itemize environment."""
-    token_re = re.compile(r'\\(begin|end)\{(?:enumerate|itemize)\}')
+    token_re = re.compile(rf'\\(begin|end)\{{(?:{LATEX_LIST_ENV_PATTERN})\}}')
     depth = 1
     for match in token_re.finditer(text, begin_match.end()):
         if match.group(1) == "begin":
@@ -1587,7 +1604,11 @@ def find_matching_latex_list_end(text, begin_match):
 
 def split_latex_list_items(body):
     """Split a LaTeX list body at top-level \\item commands."""
-    token_re = re.compile(r'\\begin\{(?:enumerate|itemize)\}|\\end\{(?:enumerate|itemize)\}|\\item\b')
+    token_re = re.compile(
+        rf'\\begin\{{(?:{LATEX_LIST_ENV_PATTERN})\}}|'
+        rf'\\end\{{(?:{LATEX_LIST_ENV_PATTERN})\}}|'
+        r'\\item\b'
+    )
     items = []
     depth = 0
     current_label = None
@@ -1616,7 +1637,7 @@ def split_latex_list_items(body):
 
 def convert_latex_lists(text):
     """Convert nested LaTeX enumerate/itemize environments to HTML lists."""
-    begin_re = re.compile(r'\\begin\{(enumerate|itemize)\}')
+    begin_re = re.compile(rf'\\begin\{{({LATEX_LIST_ENV_PATTERN})\}}')
     out = []
     pos = 0
     while True:
@@ -1632,7 +1653,7 @@ def convert_latex_lists(text):
 
         out.append(text[pos:begin.start()])
         env = begin.group(1)
-        tag = "ol" if env == "enumerate" else "ul"
+        tag = latex_list_tag(env)
         body = text[begin.end():end_start]
         html_items = []
         for label, item_content in split_latex_list_items(body):
