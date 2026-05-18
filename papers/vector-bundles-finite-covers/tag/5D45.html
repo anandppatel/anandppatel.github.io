@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (5D45) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS4.html">3.4. Hurwitz spaces and Maroni loci</a> / <span>Proof (5D45)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="58FD.html">&laquo; Theorem 3.17</a><span class="stacks-tag-current">Tag 5D45</span><a href="2FE5.html">Question 4.1 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5D45.html" class="stacks-tag-link">(5D45)</a></div>
+  <div class="stacks-env-body"><p>Set $E' = E \otimes L$.
+  Let $H^{\rm sm}$ be the open subset of the Hilbert scheme of curves in $\Tot(E')$ parametrizing $[X \subset E']$ with $X$ smooth of genus $g$ embedded so that for all $y \in Y$, the scheme $X_y \subset E'_y$ is in affine general position.
+  By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, the Tschirnhausen bundle map
+  $$ \tau \from H^{\rm sm} \to M(E')$$
+  is a surjection.
+  Furthermore, the fibers of $\tau$ are orbits under the group $A$ of affine linear transformations of $E'$ over $Y$.
+  Plainly, the action of the group is faithful.</p>
+<p>  By <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>, there exists $[X \subset E'] \in H^{\rm sm}$ with $H^1(N_{X/E'}) = 0$.
+  We can now do a dimension count.
+  Note that $N_{X/E'}$ is a vector bundle on $X$ of rank $(d-1)$ and degree $(d+2)b$, where $b = g_X-1 - d(g_Y-1)$.
+  Then the dimension of $H^{\rm sm}$ at $[X \subset E']$ is given by
+  $$\begin{aligned}\dim_{[X]}H^{\rm sm} &= \chi(N_{X/E'}) \\
+                &= (d+2)b - (g_X-1)(d-1) \\
+                &= 3b - d(d-1)(g_Y-1)\end{aligned}$$
+  The dimension of the fiber of $\tau$ is given by
+  $$\begin{aligned}\dim A &= \hom(E'^\vee, \O_Y \oplus E'^\vee) \\
+           &= b - d(d-1)(g_Y-1) + h^1(\End E).\end{aligned}$$
+  As a result, the dimension of $M(E')$ at $[\phi]$ is given by
+  $$\begin{aligned}\dim_{[\phi]} M(E') &= \dim_{[X]}H^{\rm sm} - \dim A \\
+                        &= 2b - h^1(\End E).\end{aligned}$$
+  Since $\dim H_{d,g}(Y) = 2b$, the proof is complete.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag 5D45 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/5D45.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

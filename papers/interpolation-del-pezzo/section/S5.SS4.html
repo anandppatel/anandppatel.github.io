@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$ — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Interlude: Association</a> / <span>5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$</h1>
+<p class="stacks-para">\label{ssec:2-veronese-interpolation}
+We conclude this section with a result going back to Coble [Cob22, Theorem 19] and more rigorously explored in Dolgachev [Dol04, Theorems 5.2 and 5.6] showing there are four Veronese surfaces in $\bp^{5}$ containing $9$ general points (in characteristic not equal to $2$).</p>
+<p class="stacks-para">The following result follows without too much work from [Dol04] although it isn't explicitly stated there.</p>
+<p class="stacks-para">The key to finding $2$-Veronese surfaces through $9$ points is to find a genus $1$ curve through the $9$ points,
+and then find a $2$-Veronese surface containing that curve. We start off by understanding $2$-Veronese
+surfaces containing a genus $1$ curve.</p>
+<div class="stacks-lemma" id="proposition-veronese-surfaces-through-genus-1-curves">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.4.</strong> <a href="../tag/97D7.html" class="stacks-tag-link">(97D7)</a></div>
+  <div class="stacks-env-body"><p>Let $k$ be an algebraically closed field and let $E \subset \bp^5_k$
+  be a general genus $1$ curve, embedded by a complete linear series of degree
+  $6$.
+  If $\ch k \neq 2$, there are four $2$-Veronese surfaces
+  containing $E$ and if $\ch k = 2$, there are two $2$-Veronese
+  surfaces containing $E$.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.5.</strong> <a href="../tag/2BCA.html" class="stacks-tag-link">(2BCA)</a></div>
+  <div class="stacks-env-body"><p>It is shown in
+     [Dol04, Theorem 5.6] that there are exactly four $2$-Veronese surfaces containing
+  a given genus 1 curve of degree $6$ in $\bp^5$
+over a field of characteristic $0$.
+  However, the proof given there does not make it completely clear
+  why there is a unique $2$-Veronese surface through general $E$
+  corresponding to each chosen square root of the line bundle embedding
+  $E$. Therefore, we now repeat the proof in more detail,
+  and generalize it to all characteristics.
+  In fact, the proof shows there are $4$ such $2$-Veronese surfaces
+  for all $E$ if $\ch k \neq 2$, there are $2$ such $2$-Veronese surfaces
+  if $\ch k = 2$ and $E$ corresponds to a non-supersingular elliptic curve after choosing a point,
+  and there is $1$ such $2$-Veronese if $\ch k = 2$ and $E$ corresponds to a supersingular elliptic
+  curve after choosing a point.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BBA7.html" class="stacks-tag-link">(BBA7)</a></div>
+  <div class="stacks-env-body"><p>Say $E \ra \bp^5$ is given by the invertible sheaf $\scl$. For any degree three invertible sheaf
+$\scm$ with $\scm^{\otimes 2} \cong \scl$, we can map $E \ra \bp^2$ using $\scm$. Then, the composition of
+$E \ra \bp^2$ with the $2$-Veronese map $\bp^2 \ra \bp^5$ will send $E$ to $\bp^5$ by $\scl$ and so we have
+constructed a $2$-Veronese surface containing $E$. Since there are two such sheaves $\scm$
+in characteristic $2$ for a general $E$ and four in all other characteristics (since a non supersingular elliptic curve has
+two $2$ torsion points in characteristic $2$ and every genus $1$ curve has four such points in all other characteristics), it suffices to show these are the only
+$2$-Veronese surfaces containing $E$.
+That is, we only need show that for each square root $\scm$ of $\scl$, there is a unique $2$-Veronese surface
+$X \cong \bp^2$ containing $E$ so that the map $E \ra \bp^2$ is given by a basis for the global sections of $\scm$.</p>
+<p>  First, note that if an automorphism fixes $E$ pointwise then it fixes all of $\bp^5$.
+  This holds because $E$ spans $\bp^5$, and so a linear automorphism fixing $E$ pointwise would
+also fix a basis for the vector space $H^0(\sco_E(1))$ which satisfies $\bp H^0(\sco_E(1)) \cong \bp^5$. Hence, such an automorphism would
+fix all of $\bp^5$.</p>
+<p> Suppose we have two $2$-Veronese surfaces $X$ and $X'$ containing
+  $E$ so that $E$
+  we have a map $\phi_1: E \ra X$ and $\phi_2 : E \ra X'$ so that
+  both maps $\phi_1$ and $\phi_2$ are given by the same degree $3$ invertible
+sheaf $\scm$, together with a choice of basis for $H^0(E, \scm)$.
+  We will show that there exists an automorphism $\phi:\bp^5 \ra \bp^5$
+  fixing $E$ pointwise and sending $X$ to $X'$. Since any automorphism of $\bp^5$
+  fixing $E$ pointwise is the identity, this would imply $X = X'$, and would complete the proof.</p>
+<p>  First, we show there is an automorphism $\phi: \bp^5 \ra \bp^5$
+  fixing $E$ as a set and taking
+  $X$ to $X'$.
+  We know there is an automorphism $\psi:\bp^5 \ra \bp^5$ with $\psi(X) = X'$.
+  Say $\psi$ sends the curve $E \subset X$
+  to some curve $E' := \psi(E) \subset X'$.
+  Next, by our assumption that $E$ and $E'$ are two curves on $X'$ both given by
+  global sections associated to the same invertible sheaf $\scm$,
+  there is some automorphism of $\psi': X' \ra X'$ with $\psi'(E') = E$.
+  Thus, taking $\phi := \psi' \circ \psi$, we see
+  $\phi(X) = X'$ and $\phi(E) = E'$ as sets.
+  If we could arrange for $\phi|_E = \id$, we would be done, as then $\phi = \id$.</p>
+<p>  Hence, it suffices to show that $\phi|_E$ is an automorphism of $E$ fixing both
+  $X$ and $X'$.    </p>
+<p>  Let $A(E, \scm)$ denote the automorphisms $\pi:E \ra E$ with $\pi^* \scm \cong \scm$.
+  Note that we have an exact sequence
+$$\text{[Commutative diagram — see PDF]}$$
+  where the generator of the quotient $\bz/2$ is the hyperelliptic involution and the
+  subset $E[3]$ is a torsor over the $3$ torsion of $E$ with any given
+  choice of origin.
+  In particular, if we choose a point $p$ so that $\scm \cong \sco_E(3p)$,
+  we have that $E[3]$ is precisely translation by $6$-torsion.</p>
+<p>  It suffices to show that any element of $A(E, \scm)$
+  fixes the $2$-Veronese surface we constructed above corresponding
+  to $\scm$.</p>
+<p>  But, if we view $E \ra \bp^2$ by a complete linear system corresponding
+  to $\scm$, the automorphisms
+  $A(E, \scm)$ are precisely the automorphisms of $\bp^2$
+  fixing $E \subset \bp^2$ as a set.
+  These automorphisms of $\bp^2$ extend to automorphisms on $\bp^5$
+  with $\bp^2 \ra \bp^5$ embedded via the $2$-Veronese map.
+  Therefore, they also fix the $2$-Veronese surface, as desired.</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-counting-veronese-interpolation">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.6.</strong> <a href="../tag/EC44.html" class="stacks-tag-link">(EC44)</a></div>
+  <div class="stacks-env-body"><p>Through 9 general points in $\bp^5_k$ there exist four
+  $2$-Veronese surfaces $\bp^2 \ra \bp^5$ if $k$
+  is an algebraically closed field with $\ch k \neq 2$
+  and two $2$-Veronese surfaces $\bp^2 \ra \bp^5$
+  if $k$ is an algebraically closed field with $\ch k = 2$.
+  In particular, the $2$-Veronese surface satisfies interpolation.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/205C.html" class="stacks-tag-link">(205C)</a></div>
+  <div class="stacks-env-body"><p>Fix $9$ general points $p_1, \ldots, p_9 \in \bp^5$.
+  First, by [Dol04, Theorem 5.2], there is a unique genus 1 curve embedded by
+  a complete linear series through 9 general points in $\bp^5$.
+  Call this curve $E$.
+  Next, by <a href="/papers/interpolation-del-pezzo/tag/97D7.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[97D7]</span></a>,
+  there are four $2$-Veronese surfaces containing $E$
+  if $\ch k \neq 2$ and two $2$-Veronese surfaces containing $E$
+  if $\ch k = 2$.
+  To complete the proof,
+  it suffices to show that every $2$-Veronese surface containing
+  $p_1, \ldots, p_9$
+  also contains $E$.
+  Consider such a $2$-Veronese surface $X \subset \bp^5_k$ containing
+  $p_1, \ldots, p_9$.
+  Choosing an isomorphism $\phi: \bp^2_k \cong X$,
+  we have nine points $q_1, \ldots, q_9$ on $\bp^2$
+  so that $\phi(q_i) = p_i$.</p>
+<p>  Then, since $p_1, \ldots, p_9$ were general on $\bp^5_k$,
+  we have that $q_1, \ldots, q_9$ are general on $\bp^2_k$,
+  and so there is a degree $3$ genus 1 curve $C$ passing through
+  $q_1, \ldots, q_9$ on $\bp^2_k$.
+  The image of $\phi(C)\subset X$ is a degree $6$ genus $1$ curve
+  containing $p_1, \ldots, p_9$.
+  Since $E$ is the unique genus $1$ degree $6$ curve $E$ containing
+  $p_1, \ldots, p_9$, we must have $\phi(C) \cong E$,
+  and therefore $E \subset X$.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.7.</strong> <a href="../tag/AE20.html" class="stacks-tag-link">(AE20)</a></div>
+  <div class="stacks-env-body"><p>Starting with a general $\Gamma_{9} \subset \bp^{5}$, we obtain
+an associated set $A(\Gamma_{9}) \subset \bp^{2}$, a set of nine general points in the plane. It is tempting to re-embed this $\bp^{2}$ via the complete system of conics and hope that the image of the set $A(\Gamma_{9})$ is projectively equivalent to $\Gamma_{9}$.  However, this is not the case &ndash; the system of conics in $\bp^{2}$ does <em>not</em> induce association for a set of nine general points.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S5.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

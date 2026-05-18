@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (421F) — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <span>Proof (421F)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="28FF.html">&laquo; Lemma 3.2</a><span class="stacks-tag-current">Tag 421F</span><a href="4C30.html">Definition 3.3 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/421F.html" class="stacks-tag-link">(421F)</a></div>
+  <div class="stacks-env-body"><p>Let $\nu \from \coprod_{i} P_{i} \to \chain{}$ be the total normalization map. Consider the exact sequence of $\sh{O}_{\chain{}}$-sheaves
+$$0 \to \End V \to \nu_{*}\nu^{*}(\End V) \to \oplus_{i} \End (k(p_{i})^{r}) \to 0.$$
+ The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — Tag 421F (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/tag/421F.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8.2. Tools for Irreducibility of Incidence Correspondences — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Interpolation in General</a> / <span>8.2. Tools for Irreducibility of Incidence Correspondences</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">8.2. Tools for Irreducibility of Incidence Correspondences</h1>
+<p class="stacks-para">\label{ssec:tools-irreducibility}</p>
+<p class="stacks-para">A key ingredient for establishing the equivalence of conditions
+(1)-(10)
+is the irreducibility of the incidence correspondences $\Phi, \Psi$
+(&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>).
+We use this to establish that the following properties of the map
+$\pi_2$ (&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>) are equivalent:
+(1) it is surjective, (2) it is dominant, (3) it is generically finite,
+and (4) it has an isolated point
+in some fiber.
+Our goal for this subsection is to prove
+&nbsp;<a href="/papers/interpolation-del-pezzo/tag/8B7E.html" class="stacks-ref-link">Proposition&nbsp;8.11 <span class="stacks-ref-tag">[8B7E]</span></a>.</p>
+<p class="stacks-para">We start with a general upper semicontinuity result, which we will use in
+&nbsp;<a href="/papers/interpolation-del-pezzo/tag/8B7E.html" class="stacks-ref-link">Proposition&nbsp;8.11 <span class="stacks-ref-tag">[8B7E]</span></a>
+to show that if $X$ is integral than so is $\hilb X$, which we will then use in&nbsp;<a href="/papers/interpolation-del-pezzo/tag/8B7E.html" class="stacks-ref-link">Proposition&nbsp;8.11 <span class="stacks-ref-tag">[8B7E]</span></a>
+to conclude that $\Phi$ and $\Psi$ are irreducible of the same dimension.</p>
+<div class="stacks-lemma" id="proposition-upper-semicontinuous-number-of-components">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;8.10.</strong> <a href="../tag/C8DF.html" class="stacks-tag-link">(C8DF)</a></div>
+  <div class="stacks-env-body"><p>Let $f: X \ra Y$ be a flat proper map of finite type schemes over an arbitrary field
+	so that the fibers over the closed points of $Y$ are geometrically reduced. Then, the number of irreducible components of the geometric fiber of a point in $Y$
+	is upper semicontinuous on $Y$.</p></div>
+</div>
+<p class="stacks-para">This proof is that outlined in nfdc23's comments in &nbsp;[hl].</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/96EC.html" class="stacks-tag-link">(96EC)</a></div>
+  <div class="stacks-env-body"><p>To start, note that by [Gro66, Th&eacute;or\`eme 12.2.4(v)], the set of points in $Y$ with geometrically reduced
+fiber is open, and hence all fibers of $f$ are geometrically reduced, as all closed fibers are.
+Then, by [Gro66, Th&eacute;or\`eme 12.2.4(ix)], since the geometric fibers of $f$
+are reduced and hence have no embedded points, we obtain that the total multiplicity,
+as defined in [Gro65, D&eacute;finition 4.7.4], is upper semicontinuous.
+Since the total multiplicity of a reduced scheme over an algebraically closed field is equal to the number of irreducible
+components,
+the number of irreducible components of the geometric fibers is upper semicontinuous on the target.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-irreducible-and-dimension">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;8.11.</strong> <a href="../tag/8B7E.html" class="stacks-tag-link">(8B7E)</a></div>
+  <div class="stacks-env-body"><p>Suppose $X$ is an integral scheme. Then, $\Phi, \Psi$
+	as defined in &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a> are irreducible and $\dim \Phi = \dim \Psi$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/20B5.html" class="stacks-tag-link">(20B5)</a></div>
+  <div class="stacks-env-body"><p>We start by verifying that a general member of $\hilb X$ is integral if $X$ is.
+The map $\uhilb X \rightarrow \hilb X$ has general member which is reduced by
+[Gro66, Th&eacute;or\`eme 12.2.4(v)].
+Therefore, applying
+&nbsp;<a href="/papers/interpolation-del-pezzo/tag/C8DF.html" class="stacks-ref-link">Proposition&nbsp;8.10 <span class="stacks-ref-tag">[C8DF]</span></a>,
+the general point of $\hilb X$ has preimage in $\uhilb X$ which
+is integral.</p>
+<p>We now complete the proof in the case that $m = 1$ as
+the general case is completely analogous. We write
+$\lambda := \lambda_1, \Lambda := \Lambda_1, p := p_1$ for notational
+convenience.
+Observe that we have a commutative diagram of natural projections
+$$\text{[Commutative diagram — see PDF]}$$
+Observe that since the map $\rho_2$ is surjective, once
+we know $\Psi$ is irreducible, $\Phi$ will be too.</p>
+<p>Note that the map $\rho_3$ is flat.
+The assumption that the general member of $\hilb X$ is irreducible
+precisely says that the general fiber of $\rho_3$ is irreducible.
+If we have a flat map to an irreducible base, so that
+the general fiber is irreducible, then the source is irreducible
+(see, for example, [LP16, Lemma 3.2.1]).
+Hence, $\uhilb X$ is irreducible.</p>
+<p>If we knew $\rho_1$ were a Grassmannian bundle, we would then
+obtain that $\Psi$ is also irreducible.
+To see this, we have a fiber square
+$$\text{[Commutative diagram — see PDF]}$$
+The left vertical map is a Grassmannian bundle because
+the right vertical map is a Grassmannian bundle, so $\Psi$ and $\Phi$
+are irreducible.</p>
+<p>To conclude, we check that
+$\dim \Psi = \dim \Phi$.
+Note that if we take the point $(Y, \Lambda)$ in $\Phi$ chosen
+so that $\Lambda$ meets $Y$ at finitely many points, the fiber
+of $\rho_2$ over that point is necessarily $0$ dimensional.
+By upper semicontinuity of fiber dimension for proper maps, there is an open
+set of $\Phi$ on which the fiber is $0$ dimensional.
+Hence the map is generically finite, so $\dim \Phi = \dim \Psi$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 8.2. Tools for Irreducibility of Incidence Correspondences">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S8.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4. The canonical affine embedding — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.4. The canonical affine embedding</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.4. The canonical affine embedding</h1>
+<p class="stacks-para">We end the section with a basic construction that relates finite covers and their Tschirnhausen bundles.
+Let $d$ be a positive integer and assume that $\charac \k = 0$ or $\charac \k > d$.</p>
+<p class="stacks-para">Let $X$ be a curve of arithmetic genus $g_X$; let $\phi \from X \to Y$ be a finite flat morphism of degree $d$; and let $E$ be the associated Tschirnhausen bundle.
+Then we have a decomposition $\phi_* \O_X = \O_Y \oplus E^\vee$.
+The map $E^\vee \to \phi_* \O_X$ induces a surjection $\Sym^* E^\vee \to \phi_* \O_X$.
+Taking the relative spectrum gives an embedding of $X$ in the total space $\Tot(E)$ of the vector bundle associated to $E$; we often denote $\Tot(E)$ by $E$ if no confusion is likely.
+We call $X \subset E$ the <em>canonical affine embedding</em>.
+Note that the degree of $E$ is half of degree of the branch divisor of $\phi$, namely
+$$ \deg E = g_X - 1 - d(g_Y-1).$$
+For all $y \in Y$, the subscheme $X_y \subset E_y$ is in affine general position (not contained in a translate of a strict linear subspace of $E_y$).</p>
+<p class="stacks-para">The canonical affine embedding is characterized by the properties above.</p>
+<div class="stacks-lemma" id="lem-can">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.10.</strong> <a href="../tag/A565.html" class="stacks-tag-link">(A565)</a></div>
+  <div class="stacks-env-body"><p>Retain the notation above.
+  Let $F$ be a vector bundle on $Y$ of the same rank and degree as $E$, and let $\iota \from X \to F$ be an embedding over $Y$ such that for a general $y \in Y$, the scheme $\iota(X_y) \subset F_y \cong \A^{d-1}$ is in affine general position.
+  Then we have $F \cong E$, and up to an affine linear automorphism of $F / Y$, the embedding $\iota$ is the canonical affine embedding.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BECB.html" class="stacks-tag-link">(BECB)</a></div>
+  <div class="stacks-env-body"><p>The restriction map $\Sym^* F^\vee \to \phi_*\O_X = \O_Y \oplus E^\vee$ induces a map
+  $$ \lambda \from F^\vee \to E^\vee.$$
+  Since a general fiber $X_y \subset F_y$ is in affine general position, the map $\lambda$ is an injective map of sheaves.
+  But the source and the target are locally free of the same degree and rank.
+  Therefore, $\lambda$ is an isomorphism.</p>
+<p>  Recall that the affine canonical embedding is induced by the map
+  $$(0, \id) \from E^\vee \to \O_Y \oplus E^\vee = \phi_* \O_X.$$
+  Suppose $\iota$ induces the map
+  $$(\alpha, \lambda) \from F^\vee \to \O_Y \oplus E^\vee.$$
+  Compose $\iota$ with the affine linear isomorphism of $T_\alpha \from \Tot(F) \to \Tot(F)$ over $Y$ defined by the map $\Sym^*F^\vee \to \Sym^*F^\vee$ induced by
+  $$ (-\alpha, \id) \from F^\vee \to \O_Y \oplus F^\vee.$$
+  Then $T_\alpha \circ \iota \from X \to F$ is the affine canonical embedding, as desired.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 2.4. The canonical affine embedding">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S2.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

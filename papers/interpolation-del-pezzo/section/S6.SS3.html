@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6.3. Inducing association from a singular triad — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degrees $9,8$ and $7$</a> / <span>6.3. Inducing association from a singular triad</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.3. Inducing association from a singular triad</h1>
+<p class="stacks-para">We begin with a lemma describing the base locus of a pencil through $13$
+points, whose proof is straightforward.</p>
+<div class="stacks-lemma" id="lem-quinticbaselocus">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.5.</strong> <a href="../tag/BE2C.html" class="stacks-tag-link">(BE2C)</a></div>
+  <div class="stacks-env-body"><p>Assume $\Gamma_{13} \subset \bp^2$ is a general set of $13$ points, and suppose $T = \{x,y,z\}$ is a singular triad for $\Gamma_{13}$, i.e. there exists a pencil of quintics $Q_{t}$ through $\Gamma_{13}$, singular at $x,y,z$. Furthermore, assume that the general element of the pencil has a smooth genus $3$ normalization, and has ordinary nodes at $x,y,z$. In particular, this implies $T$ is not contained in a line.
+Then, the scheme theoretic base locus of the pencil $Q_{t}$ consists of $\Gamma_{13}$ and three length four schemes supported on $x,y$ and $z$.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-6h-3x-3y-3z">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.6.</strong> <a href="../tag/B27D.html" class="stacks-tag-link">(B27D)</a></div>
+  <div class="stacks-env-body"><p>In the setting of <a href="/papers/interpolation-del-pezzo/tag/BE2C.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[BE2C]</span></a>, the ten dimensional vector space $$W := H^{0}(\bp^{2}, \sci_{T}^{3}(6)) \subset H^{0}(\bp^{2}, \so(6))$$ consisting of sextics having triple points at $x,y$ and $z$ induces association for $\Gamma_{13}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F209.html" class="stacks-tag-link">(F209)</a></div>
+  <div class="stacks-env-body"><p>We use Goppa's theorem, <a href="/papers/interpolation-del-pezzo/tag/4F62.html" class="stacks-ref-link">Theorem&nbsp;5.3 <span class="stacks-ref-tag">[4F62]</span></a>. Pick a general quintic $Q$ in the pencil $Q_{t}$, and let $\nu \from \td{Q} \to Q$ denote the smooth genus $3$ normalization.
+	Let $H$ denote the hyperplane divisor class on $\bp^{2}$.
+	Note that by degree considerations and Riemann-Roch, the divisor class $H$ is nonspecial on $\td{Q}$, and $\td{Q}$ is mapped
+		via the complete linear series $|H|$. We claim that the linear system $|K_{\td{Q}} + \Gamma_{13} - H|$ from Goppa's theorem is induced by sextic curves triple at $x,y$ and $z$.</p>
+<p>Indeed, the canonical series $|K_{\td{Q}}|$ is cut out by the adjoint series consisting of conics passing through the nodes $x,y,$ and $z$.  By <a href="/papers/interpolation-del-pezzo/tag/BE2C.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[BE2C]</span></a>, the divisor $\Gamma_{13}$ is cut out by a quintic singular at $x,y,z$.  Putting these together says that sextics having triple points at $x,y,$ and $z$ cut out divisors in the linear system $|K_{\td{Q}} + \Gamma_{13} - H|$ on $\td{Q}$. </p>
+<p>Finally, notice that there cannot be a sextic triple at $x,y$ and $z$ which also vanishes identically on $Q$ &ndash; the residual curve would be a line containing $T$, but we are assuming $x,y,z$ are not collinear. Therefore, the system of sextics having triple points at $x,y,$ and $z$ cuts out the complete linear system $|K_{\td{Q}} + \Gamma_{13} - H|$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 6.3. Inducing association from a singular triad">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S6.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

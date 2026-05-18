@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (BB86) — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS4.html">3.4. The fourth test family</a> / <span>Proof (BB86)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="9140.html">&laquo; Proposition 3.18</a><span class="stacks-tag-current">Tag BB86</span><a href="C5DB.html">Proposition 3.19 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BB86.html" class="stacks-tag-link">(BB86)</a></div>
+  <div class="stacks-env-body"><p>We compute the class of $\mathcal W$ and obtain the class of $\mathcal V$ by tensoring by $\O(E)$.
+  Recall the family $\widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}}$ and the line bundle $\mathcal L$ on it defined in (3.19).
+  Set
+  $$ \mathcal A := \widetilde{\pi}_* \mathcal L \text{ and } \mathcal B := \widetilde{\pi}_* \left( \mathcal L|_{\widetilde{\mathcal Z}} \right).$$
+  Then $\mathcal A$ and $\mathcal B$ are vector bundles of rank 6 and 2, respectively.
+  By the definition of $\mathcal W$, we have the exact sequence
+  $$ 0 \to \mathcal B \to \mathcal A \to \mathcal W \to 0,$$
+  and hence $\mathcal W = \mathcal A - \mathcal B$ in the Grothendieck group.</p>
+<p>  We first compute $\mathcal B$.
+  By the push-pull formula and the description (3.20) of $\mathcal L$, we get
+  $$\mathcal B = \mathcal U \otimes \O_{\widetilde{S^{[2]}}}(-2E).$$</p>
+<p>  We now compute $\mathcal A$.
+  Recall that $\eta \colon \mathcal Y \to \widetilde{S^{[2]}} \times S$ is the blow-up at $F = \bigsqcup_i E_i \times L_i$.
+  Using (3.20) again, we get
+  $$
+    \eta_* \mathcal L = \omega_S^{-1} \otimes \mathcal I^2_{F}.
+  $$
+  Using the pair of sequences
+  $$\begin{split}
+      &0 \to \mathcal{I}^2_{F} \to \O_{\td{S^{[2]}} \times S} \to \O_{2F} \to 0, \text{ and}\\
+      &0 \to \mathcal{I}_{F}/\mathcal{I}_{F}^{2} \to \O_{2F} \to \O_{F} \to 0,
+    \end{split}$$
+  and tensoring by $\omega_S^{-1}$ gives (in the Grothendieck group)
+  $$\eta_* \mathcal L = \omega_S^{-1} \otimes \left(\O_{\widetilde{S^{[2]}} \times S} - \O_F - \mathcal{I}_F / \mathcal{I}^2_F\right).$$
+  On the component $F_i$ of $F$, the conormal bundle $\mathcal{I}_F / \mathcal{I}^2_F$ splits as a direct sum
+  $$ \pi_1^*\O_{E_i}(-E_i) \oplus \pi_2^*\O_{L_i}(1),$$
+  where $\pi_i \colon F_i \to E_i \times L_i$ are the two projections.
+  After substituting in (3.24) and pushing forward to $\widetilde{S^{[2]}}$, we get
+  $$\begin{split}
+      \mathcal A &= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
+      &= \O + \O(-E)^3 + \O(-2E)^2.
+    \end{split}$$
+  Subtracting $(3.22)$ from $(3.25)$ and tensoring by $\O(E)$ gives the result.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — Tag BB86 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/BB86.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

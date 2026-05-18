@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2. The second test family — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.2. The second test family</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.2. The second test family</h1>
+<p class="stacks-para">\begin{figure}
+    \centering
+    \begin{tikzpicture}[very thick]
+  \draw (0,0) ellipse (2 and 1.5) (2,0) node [right] {$C$};
+  \draw[shorten >=-3cm, shorten <=-3cm] (0.8, 1.4) &ndash; (5,0);
+  \draw[shorten >=-3cm, shorten <=-3cm] (0.8, -1.4) &ndash; (5,0);</p>
+<p class="stacks-para">\draw[red, fill] (5,0) circle (0.05) node [black, below] {$t$};
+  \draw[fill] (0.8, 1.4) circle (0.05) node [above right] {$s_0$};
+  \draw[fill] (0.8, -1.4) circle (0.05) node [below right] {$s_\infty$};</p>
+<p class="stacks-para">\draw[red, fill]
+  (-1, 1.3) circle (0.05) node [black, above left] {$s_1$}
+  (-1.7, 0.8) circle (0.05) node [black, above left] {$s_2$}
+  (-2, 0) circle (0.05) node [black, left] {$s_3$}
+  (-1, -1.3) circle (0.05) node [black, below left] {$s_5$}
+  (-1.7, -0.8) circle (0.05) node [black, below left] {$s_4$};
+\end{tikzpicture}</p>
+<p class="stacks-para">\caption{
+      In the second test family, we blow up the plane at the points $\{s_{1}, \dots, s_{5}, t\}$ as the seven points $\{s_1, \dots, s_5, s_0, s_\infty\}$ vary freely on a conic $C$.}
+    \label{fig:FamilyB2}
+  \end{figure}
+Forget the notation introduced in Section&nbsp;3.1.
+We take a smooth conic $C \subset \P^2$ and 7 distinct marked points $s_0, s_1, \dots, s_5, s_\infty$ on $C$.
+Let $t \in \P^2$ be the pole, with respect to $C$, of the line joining $s_0$ and $s_\infty$.
+We blow up the six points $s_1,\dots, s_5, t$ to get a cubic surface (see Figure&nbsp;2).
+As the 7 points vary on $C$, we get a 4-parameter family of cubic surfaces.</p>
+<p class="stacks-para">We now make the construction more precise, and show how to use it construct a family of cubic surfaces over $\overline {\M}_{0,7}$.
+Let $\phi \colon \mathcal C \to \overline \M_{0,7}$ be the universal curve with the universal sections denoted by $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_\infty$.
+Let $\mathcal L$ be the line bundle $\sigma_\infty^*\left(\omega_\phi\right)$ on $\overline \M_{0,7}$.
+As is customary, we denote its Chern class by $\psi_\infty$.
+Consider the rank 2 vector bundle
+$$ \mathcal A = \phi_* \O_{\mathcal C}\left(\sigma_\infty\right).$$
+It is easy to check that the evaluation maps yield an isomorphism
+$$\begin{aligned}\mathcal A &\xrightarrow{\sim} \sigma_\infty^*\O_{\mathcal C}\left( \sigma_\infty \right) \oplus \sigma_0^*\O_{\mathcal C}\left( \sigma_\infty \right)\\
+  &= \mathcal L^{-1} \oplus \O_{\overline \M_{0,7}}.\end{aligned}$$
+Set $\overline {\mathcal C} = \P \mathcal A^\vee$ with the structure map $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
+The evaluation map $\phi^*\mathcal A \to \O_{\mathcal C}\left(\sigma_\infty\right)$ yields a map $\gamma \colon \mathcal C \to \overline {\mathcal C}$.
+The effect of $\gamma$ on a stable curve $(C, s_0, \dots, s_\infty)$ is to contract all irreducible components of $C$ not containing the marked point $s_\infty$.
+The unique remaining $\P^1$ is identified with the corresponding fiber of $\overline \phi$.
+Set $\overline \sigma_i = \sigma_i \circ \gamma$; these $\overline \sigma_i$ are sections of $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
+They satisfy the following properties
+<ul><li>$\overline{\sigma}_{\infty}$ is disjoint from all the other sections, and</li>
+<li>in each fiber of $\overline \phi$, the union of all seven sections
+  is supported on at least three points.</li></ul>
+We now invoke the relative 2-Veronese embedding
+$$
+\iota \colon \overline {\mathcal C} \to \mathcal P := \P \Sym^2 \mathcal A^\vee.
+$$
+Let $\rho \colon \mathcal P \to \overline{\M}_{0,7}$ be the structure morphism.
+Then $\overline {\mathcal C} \subset \mathcal P$ is a family of smooth conics with 7 marked points $\sigma_0, \dots, \sigma_\infty$ satisfying the two properties above.</p>
+<p class="stacks-para">Let $\tau \colon \overline \M_{0,7} \to \mathcal P$ be the section obtained by fiber-wise taking the pole with respect to $\overline {\mathcal C}$ of the line joining the points $\overline \sigma_0$ and $\overline \sigma_\infty$.
+Here is an alternate description of $\tau$.
+The direct sum decomposition $\mathcal A = \O \oplus \mathcal L^{-1}$ gives the decomposition
+$$ \Sym^2 \mathcal A = \O \oplus \mathcal L^{-1} \oplus \mathcal L^{-2}.$$
+In $\P \mathcal A^\vee$, the sections $\overline \sigma_0$ and $\overline \sigma_\infty$ correspond to the projections $\mathcal A \to \O$ and $\mathcal A \to \mathcal L^{-1}$, respectively.
+Hence, in the Veronese embedding, they correspond to the projections $\Sym^2 A \to \O$ and $\Sym^2 A \to \mathcal L^{-2}$, respectively.
+Using the quadratic form on $\Sym^2 \mathcal A$ given by the Veronese conic, it is easy to check that the section $\tau$ is given by the third projection $\Sym^2 A \to \mathcal L^{-1}$.</p>
+<p class="stacks-para">We let $\Sigma \subset \overline{\mathcal C}$ denote the closed subscheme associated to the divisor $\overline \sigma_1 + \dots + \overline \sigma_5$ and $\mathcal Z \subset \mathcal P$ the disjoint union $\Sigma \sqcup \tau$.
+By <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B6DB.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[B6DB]</span></a>, $\mathcal Z \subset \mathcal P$ is a family of admissible subschemes.
+We let
+$$ \pi \colon \mathcal X \to \overline \M_{0,7}$$
+be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (see <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E785.html" class="stacks-ref-link">Definition&nbsp;2.11 <span class="stacks-ref-tag">[E785]</span></a>).</p>
+<div class="stacks-lemma" id="prop-goodnessB2">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.5.</strong> <a href="../tag/F5F3.html" class="stacks-tag-link">(F5F3)</a></div>
+  <div class="stacks-env-body"><p>The family $\pi \colon \mathcal X \to \overline \M_{0,7}$ is good.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6D50.html" class="stacks-tag-link">(6D50)</a></div>
+  <div class="stacks-env-body"><p>All fibers have finite automorphism groups by the same proof as <a href="/papers/universal-formula-counting-cubic-surfaces/tag/01D2.html" class="stacks-ref-link">Proposition&nbsp;3.2 <span class="stacks-ref-tag">[01D2]</span></a>.</p></div>
+</div>
+<p class="stacks-para">We now compute the Chern classes of the anti-canonical section bundle.</p>
+<div class="stacks-lemma" id="lem-v2">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.6.</strong> <a href="../tag/B343.html" class="stacks-tag-link">(B343)</a></div>
+  <div class="stacks-env-body"><p>Let $\mathcal V = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal V)$.
+  Then we have
+  $$
+    \begin{split}
+      \int_{\overline \M_{0,7}}v_{1}^{4} = 625&, \quad \int_{\overline \M_{0,7}}v_{1}^{2}v_{2} = 125,\quad \int_{\overline \M_{0,7}}v_{1}v_{3} = -25,\\
+      &\int_{\overline \M_{0,7}}v_2^{2} = 25,\quad \int_{\overline \M_{0,7}}v_{4} = -6.
+    \end{split}
+  $$</p></div>
+</div>
+<p class="stacks-para">For the proof, we use the following.</p>
+<div class="stacks-lemma" id="lem-push">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.7.</strong> <a href="../tag/38DB.html" class="stacks-tag-link">(38DB)</a></div>
+  <div class="stacks-env-body"><p>Let $\pi \colon P \to B$ be a $\P^1$-bundle with a section $\sigma$.
+  Let $D \subset P$ be a divisor of relative degree $d$ with respect to $\pi$ with $d \geq -1$.
+  Then, in the Grothendieck group of $B$, we have
+  $$ [\pi_* \O(D)] = [\sigma^*\O(D)] + \dots + [\sigma^*\O(D-(d-1)\sigma)].$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/66A6.html" class="stacks-tag-link">(66A6)</a></div>
+  <div class="stacks-env-body"><p>We induct on $d$.
+  Both sides are 0 for $d = -1$.
+  The exact sequence
+  $$ 0 \to \O(D-\sigma) \to \O(D) \to \O(D)|_\sigma \to 0$$
+  pushed-forward to $B$ provides the induction step.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B343.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[B343]</span></a>.</em> <a href="../tag/2477.html" class="stacks-tag-link">(2477)</a></div>
+  <div class="stacks-env-body"><p>Recall that $\mathcal X \to \overline \M_{0,7}$ is the cubic surface associated to $\mathcal Z \subset \mathcal P$ in the $\P^2$-bundle $\rho \colon \mathcal P \to \overline \M_{0,7}$.
+  By construction, we have
+  $$ \mathcal V = \rho_*(\mathcal I_{\mathcal Z} \otimes \omega^{-1}_\rho).$$
+  Hence, in the Grothendieck group of $\overline \M_{0,7}$, we have
+  $$[\mathcal V] = \rho_*(\omega_\rho^{-1}) - \rho_*(\omega_\rho^{-1}|_{\mathcal Z}).$$
+  By the relative Euler sequence, we see that $\omega^{-1}_\rho$ is isomorphic to $\O_{\mathcal P}(3) \otimes \rho^* \det (\Sym^2 \mathcal A)^\vee$, and hence the first term in (3.6) is
+  $$\rho_*(\omega_\rho^{-1}) = \Sym^3(\Sym^2 \mathcal A) \otimes \mathcal L^3.$$
+  Since $\mathcal Z$ is the disjoint union $\Sigma \cup \tau$, the second term is a sum
+  $$ \rho_*(\omega_\rho^{-1}|_{\mathcal Z}) = \rho_*(\omega_\rho^{-1}|_{\tau}) + \rho_*(\omega_\rho^{-1}|_{\Sigma}). $$
+  Since $\tau$ is defined by the surjection $\Sym^2 \mathcal A \to \mathcal L^{-1}$, the restriction $\omega_\rho^{-1}|_\tau$ is trivial.
+  To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal C} = \P A^\vee$ and let $D = \omega_\rho^{-1}|_{\overline C} = \O(6) \otimes \overline \phi^* \mathcal L^3$.
+  Thus, in the Grothendieck group, we have
+  $$\rho_*(\omega_\rho^{-1}|_{\Sigma}) = \overline\phi_*\left(D\right) - \overline\phi_* \left( D(-\Sigma)\right).$$
+  We now use <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_\infty$ to compute the terms on the right hand side of (3.8).
+  Putting this together with (3.6) and (3.7), we get
+  $$ [\mathcal V] = \mathcal L^{-3}+ \mathcal L^{1}+ \mathcal L^{-1}+ \mathcal L^{-2}$$
+  in the Grothendieck group.
+  The result is now a simple computation using $c_1(\mathcal L) = \psi_\infty$ and $\int_{\overline \M_{0,7}} \psi_\infty^4 = 1$.</p></div>
+</div>
+<p class="stacks-para">Having computed the Chern classes, we find the degree of the map $\overline \M_{0,7} \dashrightarrow \M$.</p>
+<div class="stacks-lemma" id="prop-deg2">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.8.</strong> <a href="../tag/6556.html" class="stacks-tag-link">(6556)</a></div>
+  <div class="stacks-env-body"><p>The degree of the map $\overline \M_{0,7} \dashrightarrow \M$, induced by $\pi \colon \mathcal X \to \overline \M_{0,7}$ is $2 \times 72 \times 6!$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A625.html" class="stacks-tag-link">(A625)</a></div>
+  <div class="stacks-env-body"><p>The map lifts to $\overline \M_{0,7} \dashrightarrow \M^\dagger$.
+  Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, we must prove that the degree of $\overline \M_{0,7} \dashrightarrow \M^\dagger$ is $2$.</p>
+<p>  Recall that $\M^\dagger$ is isomorphic to the configuration space of 6 points in $\P^2$.
+  Given a general 6-tuple of points $(s_1,\dots, s_5, y)$ in $\P^2$, there is a unique conic $C$ passing through $s_1,\dots, s_5$.
+  Let $x$ and $y$ be the two points of $\Polar_C(t) \cap C$.
+  Then the two pre-images of $(s_1,\dots, s_5, t)$ in $\overline \M_{0,7}$ are $(C, x, s_1, \dots, s_5, y)$ and $(C,y, s_1, \dots, s_5, x)$.
+  The proof is thus complete.</p></div>
+</div>
+<p class="stacks-para">Using <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E2B1.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E2B1]</span></a> and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
+(2.3) for a general cubic surface $X$:
+$$\begin{aligned}625 a_{1^{4}} + 125 a_{1^{2}2} - 25a_{13} + 25a_{2^2} - 6 a_{4} = 2 \times 72 \times 6!.\end{aligned}$$</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — 3.2. The second test family">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/section/S3.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

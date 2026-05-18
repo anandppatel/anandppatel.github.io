@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1. The first test family — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.1. The first test family</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.1. The first test family</h1>
+<p class="stacks-para">\begin{figure}
+  \centering
+  \begin{tikzpicture}[very thick]
+  \draw (0,0) ellipse (2 and 1.5) (2,0) node [right] {$C$};
+  \draw[red,fill] (-3, 0) circle (0.05) node [black, left] {$z_0$};
+  \draw[red, fill] (1.4, 1.05) circle (0.05) node [black, above right] {$z_1$}
+  (0,1.5) circle (0.05) node [black, above] {$z_2$}
+  (-1.7,.8) circle (0.05) node [black, left] {$z_3$}
+  (-1.4,-1.1) circle (0.05) node [black, left] {$z_4$}
+  (1.4,-1.05) circle (0.05) node [black, below right] {$z_5$};
+\end{tikzpicture}</p>
+<p class="stacks-para">\caption{In the first test family, we blow up the plane along $\{z_0, \dots, z_5\}$ as $z_0$ stays fixed and $z_1,\dots,z_5$ vary in a general 4-dimensional series on a fixed conic $C$.}
+  \label{fig:FamilyB1}
+\end{figure}
+Fix a point $z_0$ and a conic $C \subset \P^2$ not containing $z_0$.
+We vary 5 points $z_1, \dots, z_5$ in a general 4-dimensional linear series on $C$.
+Blowing up the six points $\{z_0, \dots, z_5\}$ gives a 4-parameter family of cubic surfaces; see Figure&nbsp;1.</p>
+<div class="stacks-lemma" id="prop-B1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.1.</strong> <a href="../tag/B6DB.html" class="stacks-tag-link">(B6DB)</a></div>
+  <div class="stacks-env-body"><p>Let $C$ be a plane conic, $Z \subset C$ a subscheme of length 5, and $z_0 \in \P^2$ a point not on $C$.
+  Then the subscheme $Z \cup \{z_0\} \subset \P^2$ is admissible.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/533B.html" class="stacks-tag-link">(533B)</a></div>
+  <div class="stacks-env-body"><p>The subscheme $Z' = Z \cup \{z_0\}$ is clearly curvilinear.
+  Checking that $\mathcal I_{Z'} \otimes \O(3)$ is generated by its global sections is straightforward.</p></div>
+</div>
+<p class="stacks-para">We now formally define the family.
+Let $H = C^{[5]}$ be the Hilbert scheme of 5 points in $C$, so that $H \cong \P^5$, and let $B \cong \P^4 \subset H \cong \P^5$ be a general hyperplane.
+Let $Z \subset B \times C$ be the restriction of the universal closed subscheme.
+Set
+$$Z' = Z \sqcup \left(B \times \{z_0\}\right) \subset B \times \P^2.$$
+Our family
+$$\pi \colon X \to B$$
+is the family of cubic surfaces associated to $Z' \subset B \times \P^2$ (see <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E785.html" class="stacks-ref-link">Definition&nbsp;2.11 <span class="stacks-ref-tag">[E785]</span></a>).</p>
+<div class="stacks-lemma" id="prop-goodnessB1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.2.</strong> <a href="../tag/01D2.html" class="stacks-tag-link">(01D2)</a></div>
+  <div class="stacks-env-body"><p>The family $\pi \colon X \to B$ is good.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8459.html" class="stacks-tag-link">(8459)</a></div>
+  <div class="stacks-env-body"><p>We show that for every $b \in B$, the group $\Aut(X_b)$ is finite (see <a href="/papers/universal-formula-counting-cubic-surfaces/tag/6A03.html" class="stacks-ref-link">Example&nbsp;2.5 <span class="stacks-ref-tag">[6A03]</span></a>).
+  By <a href="/papers/universal-formula-counting-cubic-surfaces/tag/96E0.html" class="stacks-ref-link">Proposition&nbsp;2.13 <span class="stacks-ref-tag">[96E0]</span></a>, it suffices to show that the group $\Aut(\P^2, Z_b')$ is finite.
+  Since the support of $Z_b'$ is finite, it suffices to show that the subgroup of $\Aut(\P^2, Z'_b)$ that acts trivially on the support is finite.
+  Let $\sigma \in \Aut(\P^2, Z'_b)$ act trivially on the support.
+  Since $C$ is the unique conic containing $Z_b$, the element $\sigma$ must preserve $C$.
+  Since $\sigma(z_0) = z_0$, and $\sigma$ preserves $C$, it must fix the pair of points $\Polar_C(z_0) \cap C$.
+  Since $B \subset \Hilb^5C$ is general, we may assume that it does not contain the finitely many length 5 schemes supported on $\Polar_C(z_0) \cap C$.
+  Then $\sigma$ fixes at least 3 points of $C$, namely the two points $\Polar_C(z_0) \cap C$ and the points of $Z \subset C$.
+  It follows that $\sigma$ fixes all points of $C$ and hence all points of $\P^2$.</p></div>
+</div>
+<p class="stacks-para">We now compute with the Chern classes of the anti-canonical section bundle.</p>
+<div class="stacks-lemma" id="lem-v1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.3.</strong> <a href="../tag/0D52.html" class="stacks-tag-link">(0D52)</a></div>
+  <div class="stacks-env-body"><p>Let $\mathcal V = \pi_* \left( \omega_{X/B}^{-1} \right)$.
+  Then we have
+  $$
+    \int_{B}v_{1}^{4} = 16, \quad \int_{B}v_{1}^{2}v_{2} = 4,\quad \int_{B}v_{1}v_{3} =0,\quad \int_{B}v_2^{2} = 1,\quad \int_{B}v_{4} = 0.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B021.html" class="stacks-tag-link">(B021)</a></div>
+  <div class="stacks-env-body"><p>By the construction of the cubic surface, we see that $\mathcal V$ is the rank 4 bundle
+$$ \mathcal V = \pi_* (\mathcal I_{Z'} \otimes \omega_{\pi}^{-1}),$$
+where $\pi \colon B \times \P^2 \to B$ is the first projection.
+It contains the constant rank 2 bundle
+$$\pi_*\left( \mathcal I_{B \times C} \otimes \mathcal I_{B \times z_0} \otimes \omega_\pi^{-1} \right) = H^0\left(\mathcal I_{C} \otimes \mathcal I_{z_0} \otimes \omega_{\P^2}^{-1}\right) \otimes \O_{B},$$
+and the quotient is the rank 2 bundle $\pi_*\left( I_{Z/B \times C} \otimes \omega_\pi^{-1} \right)$.
+To identify the quotient, note that $Z \subset B \times C$ is a divisor of class $(1,5)$ and $\omega^{-1}_{\pi}|_{B\times C}$ is isomorphic to $\O(0,6)$.
+Hence, $I_{Z/B \times C} \otimes \omega_\pi^{-1}$ is isomorphic to $\O(-1,1)$, and therefore
+$$\begin{split}
+    \pi_*\left( I_{Z/B \times C} \otimes \omega_\pi^{-1} \right) \cong \O_{B}(-1)^{2}.
+  \end{split}$$
+By combining (3.1) and (3.2), we see that $\mathcal V$ is an extension
+$$0 \to \O_{B}^2 \to \mathcal V \to \O_{B}(-1)^2 \to 0.$$
+The Chern class calculation is now straightforward using the Whitney sum formula.</p></div>
+</div>
+<p class="stacks-para">Let us find the degree of the map to moduli $B \dashrightarrow \M$.</p>
+<div class="stacks-lemma" id="lem-deg1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.4.</strong> <a href="../tag/F787.html" class="stacks-tag-link">(F787)</a></div>
+  <div class="stacks-env-body"><p>The degree of $B \dashrightarrow \M$ is $4320$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6892.html" class="stacks-tag-link">(6892)</a></div>
+  <div class="stacks-env-body"><p>Consider the space of marked cubic surfaces $\M^\dagger$, which is isomorphic to the configuration space of 6 ordered points on $\P^2$.
+  We have the action of $S_5$ on $\M^\dagger$ via permutations of the last 5 points.
+  The map $B \dashrightarrow \M$ lifts to
+  $$B \to \M^\dagger / S_5,$$
+  where $b \in B$ is mapped to $(z_0, z_1 + \dots + z_5)|_b$.
+  Let us compute the degree of this map.
+  Given a general $(y_0, y_1 + \dots + y_5)$ in $\M^\dagger / S_5$, there is a unique conic $Q$ through $y_1 + \dots + y_5$.
+  Note that there exists an automorphism of $\P^2$ that takes $(C, z_0)$ to $(Q, y_0)$, and such an automorphism is unique up to automorphisms preserving $(C, z_0)$.
+  Suppose, under one such automorphism, $y_1 + \dots + y_5 \subset Q$ is taken to $z_1' + \dots + z_5' \subset C$.
+  We must find out how many points of $B$ are equivalent to $z_1' + \dots + z_5'$ up to an automorphism of $\P^2$ preserving $(C, z_0)$.
+  Let $w_0 + w_\infty \subset C$ be the scheme $\Polar_C(z_0) \cap C$.
+  Then we have
+   $$\Aut(\P^2, C, z_0) = \Aut(C, w_0 + w_{\infty}) \cong \G_m \rtimes \Z/2\Z. $$
+   Choose an isomorphism $C \cong \P^1$ such that $w_0$ and $w_\infty$ are identified with $[0:1]$ and $[1:0]$.
+   Then the $\G_m$ corresponds to the diagonal $\G_m \subset \PGL_2$ and the $\Z/2\Z$ corresponds to the swapping of the two homogeneous coordinates.
+   Write $z_1' + \dots + z_5'$ as the vanishing locus of a binary quintic form $F$.
+   It is easy to see that under the action of the $\G_m$, the closure of the orbit of $V(F)$ in $C^{[5]} \cong \P^5$ is a rational normal curve.
+   Hence, a general hyperplane $B$ intersects the orbit in 5 points.
+   Accounting for the additional $\Z/2\Z$, we conclude that there are precisely 10 points of $B$ equivalent to $z_1' + \dots + z_5'$ up to an automorphism of $\P^2$ preserving $(C, z_0)$.
+   Thus, the degree of the map in (3.4) is 10.</p>
+<p>   Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, the degree of $B \to \M$ is
+   $$72 \times 6! / 5! \times 10 = 4320.$$</p></div>
+</div>
+<p class="stacks-para">Using <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E2B1.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E2B1]</span></a> and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
+(2.3) for a general cubic surface $X$:
+$$\begin{aligned}16 \cdot a_{1^4} + 4 \cdot a_{1^2 2} + a_{2^2} = 4320.\end{aligned}$$</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — 3.1. The first test family">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/section/S3.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

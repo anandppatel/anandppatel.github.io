@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (0023) — Complete families of generic covers of elliptic curves</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          Q: "\\mathbb{Q}",
+          O: "\\mathcal{O}",
+          HdgX: "\\mathsf{Hur}_{d,g}(X)",
+          HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
+          from: "\\colon",
+          C: "\\mathsf{C}",
+          Mgbar: "\\overline{\\mathcal{M}}_{g}",
+          Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
+          Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
+          St: "\\mathsf{Hur}_{d,g}^{\\Diamond}(X)",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Hur: ["\\mathsf{Hur}_{#1,#2}", 2],
+          Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
+          Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
+          Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          ch: "\\operatorname{ch}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          Proj: "\\operatorname{Proj}",
+          G: "\\operatorname{\\mathbb{G}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          univ: "\\operatorname{\\mathsf{univ}}",
+          E: "\\operatorname{\\mathsf{E}}",
+          V: "\\operatorname{\\mathsf{Vect}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Bog: "\\operatorname{Bog}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Complete families of generic covers of elliptic curves</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Evidence for the conjectures</a> / <a href="../section/S3.SS1.html">3.1. The genus 2 situation</a> / <span>Proof (0023)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="8F9E.html">&laquo; Proposition 3.11</a><span class="stacks-tag-current">Tag 0023</span><a href="3555.html">Proof of Theorem 3.2 [14AF]  &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0023.html" class="stacks-tag-link">(0023)</a></div>
+  <div class="stacks-env-body"><p>The proposition will fall out of carefully counting the elements of $M_{d}$ and then using <a href="/papers/complete-families-generic-covers/tag/597B.html" class="stacks-ref-link">Lemma&nbsp;3.10 <span class="stacks-ref-tag">[597B]</span></a> &ndash; the Kronecker deltas will correspond to the two edge cases in <a href="/papers/complete-families-generic-covers/tag/597B.html" class="stacks-ref-link">Lemma&nbsp;3.10 <span class="stacks-ref-tag">[597B]</span></a>. </p>
+<p>    First, the set of lattices $\Lambda \subset \Z^{2}$ of index $d$ is in natural bijection with the set of integer matrices $$\begin{pmatrix}
+        a & c \\
+        0 & b
+    \end{pmatrix}$$ where $a,b > 0$, $0 \leq c < a$, and $ab=d$. In terms of this bijection, the condition that $\Z^{2}/\Lambda$ is cyclic is expressed by the condition that $\gcd(a,b,c)=1$. </p>
+<p>    For each choice of factorization $ab=d$, the condition $\gcd(a,b,c)=1$ can be replaced by the condition: <em>any prime $p$ dividing both $a$ and $b$ does not divide $c$.</em> Thus, for a fixed $a$ dividing $d$, the number of possible choices for $c$ is $$ a \cdot \prod_{p \mid a \,\, \text{and} \,\, p \mid b}\left(1 - \frac{1}{p} \right).$$ Summing over all factorizations we get
+    $$\begin{aligned}\sum_{ab=d}\left[ \prod_{p \mid a \,\, \text{and} \,\, p \mid b}\left(1 - \frac{1}{p} \right) \right] &= \prod_{p^{n}\mid \mid d}\left[1 + \left( \sum_{i=1}^{n-1}p^{i}\left(1-\frac{1}{p}\right) \right) + p^{n} \right]\\
+    &= \prod_{p^{n} \mid \mid d}(p^{n}+p^{n-1}),\end{aligned}$$
+    where ``$p^{n} \mid \mid d$'' means ``$p^{n}$ is the largest power of $p$ dividing $d$."</p>
+<p>    Now, accounting for the $\eta$ part of the data of an element $(\Lambda,\eta) \in M_{d}$, we conclude that for $d \geq 2$, $$|M_{d}| = \phi(d)\prod_{p^{n} \mid \mid d}(p^{n}+p^{n-1}) = \prod_{p^{n} \mid \mid d}p^{2n-2}(p^{2}-1)$$ where $\phi$ is the Euler phi function, and hence by <a href="/papers/complete-families-generic-covers/tag/597B.html" class="stacks-ref-link">Lemma&nbsp;3.10 <span class="stacks-ref-tag">[597B]</span></a> we conclude that when $d \geq 3$,
+    $$\begin{aligned}2|A_{d}(x)| = \prod_{p^{n} \mid \mid d}p^{2n-2}(p^{2}-1).\end{aligned}$$</p>
+<p>    When $d=1$ (3.4) is almost right: The left side is $0$ while the right side is $1$ because it is a product over an empty set.  When $d=2$ (3.4) is also almost right: The left side should be replaced by $|A_{2}(x)|$ because of the $d=2$ exception in <a href="/papers/complete-families-generic-covers/tag/597B.html" class="stacks-ref-link">Lemma&nbsp;3.10 <span class="stacks-ref-tag">[597B]</span></a>.  When we adjust $2 | A_{d}(x)|$ by the Kronecker deltas in the statement of the proposition, we find that the function $$F(d) := 2|A_{d}(x)|+\delta_{d,1}-3\delta_{d,2}$$ has output $\prod_{p^{n} \mid \mid d}p^{2n-2}(p^{2}-1)$, which is plainly multiplicative in $d$. The proposition follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Complete families of generic covers of elliptic curves — Tag 0023 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/complete-families-generic-covers/tag/0023.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (06E1) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS3.html">3.3. The general case</a> / <span>Proof (06E1)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="47FD.html">&laquo; Theorem 3.13</a><span class="stacks-tag-current">Tag 06E1</span><a href="0507.html">Remark 3.14 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/06E1.html" class="stacks-tag-link">(06E1)</a></div>
+  <div class="stacks-env-body"><p>Choose an isotrivial degeneration $E_0$ of $E$ of the form
+  $$ E_0 = L_1 \oplus \dots \oplus L_{d-1},$$
+  where the $L_i$'s are line bundles with $\deg L_i + (2g_Y-1) \leq \deg L_{i+1}$.
+  That is, let $(\Delta, 0)$ be a pointed curve and $\mathcal E$ a vector bundle on $Y \times \Delta$ such that $\mathcal E|_0 = E_0$ and $\mathcal E|_t \cong E$ for all $t \in \Delta \setminus \{0\}$.
+  Such a degeneration exists by <a href="/papers/vector-bundles-finite-covers/tag/E16D.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E16D]</span></a>.
+  After replacing $\mathcal E$ by $\mathcal E \otimes \lambda$ for a line bundle $\lambda$ on $Y$ of large degree, we may also assume that $\deg L_1 \geq 2g_Y-1$.</p>
+<p>  By <a href="/papers/vector-bundles-finite-covers/tag/FFB0.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[FFB0]</span></a>, there exists a nodal curve $W$ and a finite flat morphism $W \to Y$ with Tschirnhausen bundle $E_0$.
+  By the key proposition (<a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>), there exists an $n$ such that for any line bundle $L$ of degree at least $n$, we can find a smooth curve $X_0$ and a finite map $X_0 \to Y$ with Tschirnhausen bundle $E_0' = E_0 \otimes L$ satisfying $H^1(N_{X_0/E_0'}) = 0$.
+  Set $\mathcal E' = \mathcal E \otimes L$.
+  Let $\mathcal H$ be the component of the relative Hilbert scheme of $\Tot(\mathcal E') / \Delta$ containing the point $[X_0 \subset E_0']$.
+  Since $H^1(N_{X_0 / E'_0}) = 0$, the map $\mathcal H \to \Delta$ is smooth at $[X_0 \subset E'_0]$ by \cite[Theorem&nbsp;3.2.12]{ser:06}.
+  In particular, $\mathcal H \to \Delta$ is dominant.
+  As a result, there exists a point $[X \subset \mathcal E'_t] \in \mathcal H$, where $X$ is smooth and $t \in \Delta$ is generic.
+  By the choice of $\mathcal E$, we have $\mathcal E'_t = E \otimes L$.
+  Since $H^1(N_{X_0/E_0 \otimes L}) = 0$, we can also ensure that $H^1(N_{X/E \otimes L}) = 0$ by semi-continuity.
+  Let $\phi \from X \to Y$ be the projection.
+  By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, we get that $E_\phi \cong E \otimes L$ and $X \subset E \otimes L$ is the canonical affine embedding of $\phi$.
+  The proof is now complete.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag 06E1 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/06E1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

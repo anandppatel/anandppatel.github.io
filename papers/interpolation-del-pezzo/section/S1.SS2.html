@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2. Interpolation: a lay of the land — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Interpolation: a lay of the land</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.2. Interpolation: a lay of the land</h1>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Rational normal curves</h3>
+\label{sssec:castelnuovos-lemma}</p>
+<p class="stacks-para">Interpolation holds for rational normal curves.
+This is precisely the well known fact that through $r+3$ general points in $\bp^{r}$ there exists a unique rational normal curve $\bp^{1} \subset \bp^{r}$.  A dimension count provides evidence for existence: the (main component of the) Hilbert scheme of rational normal curves is $r^{2}+2r-3 = (r+3)(r-1)$ dimensional, and the requirement of passing through a point imposes $r-1$ conditions on rational normal curves. Therefore we <em>expect</em> finitely many rational normal curves through $r+3$ general points.
+``Counting constants'' as above  only provides a plausibility argument for existence of rational curves interpolating through the required points &ndash; it is not a proof. To illustrate this, we give an example where interpolation is not satisfied, even though the dimension count says otherwise.</p>
+<div class="stacks-env" id="example-">
+  <div class="stacks-env-head"><strong>Example&nbsp;1.1.</strong> <a href="../tag/2A0E.html" class="stacks-tag-link">(2A0E)</a></div>
+  <div class="stacks-env-body"><p>A parameter count suggests there should be a genus $4$ canonical curve through $12$ general points in $\bp^{3}$: The dimension of the Hilbert scheme of canonical curves is $\dim \mathscr M_4 + \dim Aut(\bp^3) = 3 \cdot 4 - 3 + 4^2 - 1 = 24$ and each point imposes two conditions on a curve in $\bp^3$, so that
+	we expect a $0$ dimensional family through $12 = 24/2$ points. However, such a canonical
+	curve is a complete intersection of a quadric and a cubic.
+	Since
+	a quadric is determined by $9$ general points,
+	the curve,
+	which lies on the quadric, cannot contain $12$ general points.
+	In other words, canonical genus $4$ curves do not satisfy interpolation.</p></div>
+</div>
+<p class="stacks-para">There are many proofs that there is a unique rational normal curve through $r + 3$ points in $\bp^r$.  One proof proceeds by directly constructing a rational normal curve using explicit equations.  Another approach is via a degeneration argument, as in <a href="/papers/interpolation-del-pezzo/tag/CC8B.html" class="stacks-ref-link">Example&nbsp;1.6 <span class="stacks-ref-tag">[CC8B]</span></a>. One can also use <em>association</em> (see [EP00]) to deduce the lemma.  A purely synthetic proof also exists, as is found in [PP15, Proposition 2.4.4].
+<h3 class="stacks-subsections-heading">Higher genus curves</h3> One way to generalize interpolation
+for rational normal curves is to consider higher genus curves in projective space. For many reasons it is simpler to consider curves embedded via nonspecial linear systems.
+Interpolation for arbitrary rational curves, not just rational normal curves, was proven in [Sac80],
+and later independently proven in [Ran07].
+Hence, it is natural to ask whether curves of higher genus satisfy interpolation.
+The related question of semistability for curves of genus 1 was explored in
+[EL92],
+which was later used in
+[Bal17, Theorem 1] to prove that elliptic normal curves satisfy interpolation.</p>
+<p class="stacks-para">Around the same time, it was shown in [Ata14, Theorem 7.1] that nonspecial curves, apart from those of genus $2$ and degree $5$, in $\mathbb P^3$ satisfy interpolation.
+This was generalized from $\mathbb P^3$ to projective spaces of arbitrary dimension in the following comprehensive recent result of Atanasov&ndash;Larson&ndash;Yang:</p>
+<div class="stacks-theorem" id="thm-NaskoEricDavid">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/9DC8.html" class="stacks-tag-link">(9DC8)</a></div>
+  <div class="stacks-env-body"><p>Strong interpolation holds for the main component of the Hilbert scheme parameterizing nonspecial curves of degree $d$, genus $g$ in projective space $\bp^{r}$, with $d \geq g + r$ unless
+$$\begin{aligned}(d,g,r) \in \left\{ (5,2,3), (6,2,4), (7,2,5) \right\}.\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">It is also shown in
+[Ste03, p.\ 108]
+(which combines the work in &nbsp;[Ste89],
+dealing with the canonical curves of genus not equal to $8$ and
+&nbsp;[Ste96, Proposition, p.\ 3715],
+dealing with canonical curves of genus 8)
+that canonical curves of genus at least $3$ fail to satisfy weak interpolation if and only if their genus is $4$ or $6$.</p>
+<p class="stacks-para">In fact, the above leads to a complete classification of
+whether Castelnuovo curves satisfy weak interpolation:</p>
+<div class="stacks-env" id="example-">
+  <div class="stacks-env-head"><strong>Example&nbsp;1.3.</strong> <a href="../tag/A0E7.html" class="stacks-tag-link">(A0E7)</a></div>
+  <div class="stacks-env-body"><p>Castelnuovo curves of degree $d$ and genus $g$ in $\bp^r$
+	satisfy weak interpolation if and only if
+	$d \leq 2r$ and
+	$(d,g,r) \notin \left\{ (5,2,3), (6,2,4), (7,2,5), (6,4,3), (10,6,5) \right\}$.
+	Further, a Castelnuovo curve of degree $d$ and genus $g$
+	in $\bp^r$ of degree not equal
+	to $2r$ satisfies interpolation if and only if
+	$d < 2r$ and $(d,g,r) \notin \left\{ (5,2,3), (6,2,4), (7,2,5) \right\}$.</p>
+<p>	The proof of this statement is not difficult given the above results.
+	When, $d < 2r$, the statement follows from
+	<a href="/papers/interpolation-del-pezzo/tag/9DC8.html" class="stacks-ref-link">Theorem&nbsp;1.2 <span class="stacks-ref-tag">[9DC8]</span></a>.
+	When $d = 2r$, it follows from
+[Ste03, p.\ 108].
+Finally, to see that Castelnuovo curves of degree $d < 2r$, do not
+satisfy weak interpolation, note that such a curve lies on a surface of minimal degree. However, if weak interpolation is equivalent to the Castelnuovo
+curve passing through $n$ points, a dimension count shows that there will be such surface
+of minimal degree passing through $n$ points, and so there can be no
+such Castelnuovo curve.</p></div>
+</div>
+<p class="stacks-para">To summarize the above example, canonical curves approximately
+``form the boundary'' between Castelnuovo curves satisfying
+interpolation and
+Castelnuovo curves not satisfying interpolation.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Higher dimensional varieties: Varieties of minimal degree</h3></p>
+<p class="stacks-para">Recent work of the first author [Lan18], establishes interpolation for all varieties of minimal degree. Recall
+that a variety of dimension $k$ and degree $d$ in $\bp^n$
+is of minimal degree
+if it is not contained in a hyperplane and
+$d + k = n - 1$.
+By [EH87, Theorem 1], an irreducible variety is of minimal degree if and only if
+it is a degree 2 hypersurface, the $2$-Veronese in $\bp^5$
+or a rational normal scroll.</p>
+<div class="stacks-theorem" id="thm-stronginterpscroll">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.4.</strong> <a href="../tag/F076.html" class="stacks-tag-link">(F076)</a></div>
+  <div class="stacks-env-body"><p>Smooth varieties of minimal degree satisfy interpolation.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.5.</strong> <a href="../tag/A04E.html" class="stacks-tag-link">(A04E)</a></div>
+  <div class="stacks-env-body"><p>Parts of &nbsp;<a href="/papers/interpolation-del-pezzo/tag/F076.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[F076]</span></a>
+	have been previously established. For example,
+	the dimension $1$ case is covered in 1.2.1.
+	The Veronese surface was shown to satisfy interpolation
+	in [Cob22, Theorem 19],
+	see &nbsp;Section&nbsp;5.4
+	for a more detailed description of this proof.
+	It was already established that $2$-dimensional
+	scrolls satisfy interpolation in
+	Coskun's thesis &nbsp;[Cos06a, Example, p.\ 2], and furthermore,
+	Coskun gives a method for computing the number of scrolls
+	meeting a specified collection of general linear spaces.
+	Finally, weak interpolation was established for
+	scrolls of degree $d$ and dimension $k$ with
+	$d \geq 2k - 1$ in [EP00, Theorem 4.5].</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 1.2. Interpolation: a lay of the land">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S1.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

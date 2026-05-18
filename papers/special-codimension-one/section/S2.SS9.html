@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.9. Intersection multiplicities. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Compactifications.</a> / <span>2.9. Intersection multiplicities.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.9. Intersection multiplicities.</h1>
+<p class="stacks-para">\label{intersectionmultiplicities}</p>
+<p class="stacks-para">We now indicate how to compute intersection multiplicities of a one parameter family lying entirely in the boundary with boundary divisors.  For this, we review the description of the deformation spaces of admissible covers found in [HM82].</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+    Pick any boundary divisor $\Delta \subset \Hdg^{\rm{adm}}$, and choose a general admissible cover $[\alpha \colon C \longrightarrow P] \in \Delta$.  Let $p \in P$ be the unique node, and let $(r_1,r_2,...,r_k)$ be the local degrees of $\alpha$ occurring at the nodes $(q_1,...,q_k)$ above $p$.  A description of the complete local ring $\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}$ is given by Harris and Mumford in [HM82] as:
+    $$\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha} = \Spec k[[z_{1}, ... , z_{b-4}, t_1,t_2, ... , t_k, s]]/ (t_1^{r_1} = t_2^{r_2} = ... = t_k^{r_k} = s).$$ This presentation is such that  $$\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)} = k[[z_{1}, ... ,z_{b-4}, s]]$$ and the obvious map $\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)} \to \compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}$ gives the complete local description of the branch morphism $$\Br^{\rm{adm}} \from \Hdg^{\rm{adm}} \to [\overline{\M}_{0,b}/\mathfrak{S}_{b}].$$</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3> \label{localcoordinates}
+    Above the veresal deformation space $<strong>Def</strong>\, \alpha := \Spf{\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}}$, there is a versal family:
+     $$\xymatrix @C -1.5pc  {
+    C \subset \mathcal{\cC} \ar[rr]^{\compl{\alpha}} \ar[rd]_\varphi&&
+    {P} \subset \mathcal{\cP} \ar[ld]^\pi \\
+    &<strong>Def</strong>\, \alpha}$$
+     Locally around the node $p \in {P} \subset \cP$, $\cP$ has local equation $uv=s$.  At the nodes $q_{i} \in C \subset \cC$, $i = 1,2,...,k$, the total space $\cC$ has local equation $x_i y_i = t_i$.  In these local coordinates, the admissible cover $\compl{\alpha}$ is locally given by $u \mapsto x_{i}^{r_{i}}$ and $v \mapsto y_{i}^{r_{i}}$. Furthermore, the equations $s = t_{1} =  ... = t_{k} = 0$ cuts out the divisor $\Delta$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+     This local description of the boundary allows us to understand intersection multiplicities of partial pencil families with boundary components. So let
+     $$\alpha \from \cC \to \cP \to S$$ be a general family contained in $\Delta$. Furthermore, let $R_{i} = L_{i}$, $i=1,...,k$ be the glued sections mapping to a marked section of nodes $<strong>0</strong> \subset \cP$, where, around the section $R_{i} = L_{i}$ the map $\alpha$ has local degree $r_{i}$ over $<strong>0</strong>$.</p>
+<p class="stacks-para">The admissibility condition at the nodes tells us that $$\deg (N_{L_{i}/\cC_{L}}\otimes N_{R_{i}/\cC_{R}})^{\otimes r_i} = \deg (N_{L_{j}/\cC_{L}}\otimes N_{R_{j}/\cC_{R}})^{\otimes r_j} = \deg (N_{<strong>0</strong>/\cP_{L}}\otimes N_{<strong>0</strong>/\cP_{R}}).$$ Here the $N_{\bullet}$ denote normal bundles.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+    Suppose furthermore that $S \to \Hdg^{\rm{adm}}$ comes from a family $S \to  \Hdgn$, i.e. that $S \to \Hdg^{\rm{adm}}$ is the coarse space of a <em>twisted</em> partial pencil. The family $S \to \Hdgn$ will have intersection number $$S \cdot \Delta' = {\rm deg}\, (N_{<strong>0</strong>/\cP_{L}}\otimes N_{<strong>0</strong>/\cP_{R}})/lcm(r_1,...,r_k)$$ with the boundary divisor $\Delta' \subset \Hdg$ in which it lies.  (We assume that $S \to \Hdgn$ does not have additional isolated intersections with $\Delta'$, in which case we must add these contributions appropriately.) This follows from the observation that the order of ramification of the branch map from the normalization $$\Br^{\nu} \from (<strong>Def</strong>\, \alpha)^{\nu} \to \Spf{\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)}}$$ is $lcm(r_{1},...,r_{k})$.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 2.9. Intersection multiplicities.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S2.SS9.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

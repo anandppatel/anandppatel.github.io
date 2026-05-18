@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.12. Constructing families of pentagonal curves. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <span>3.12. Constructing families of pentagonal curves.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.12. Constructing families of pentagonal curves.</h1>
+<p class="stacks-para">The middle map
+$$m \from \pi^{*}\cN_{2}(-3) \to \pi^{*}\cN_{1}(-2)$$
+in the Casnati-Ekedahl resolution of a pentagonal curve $C \subset \P(\cE)$ is well-known [Cas96] to be  ``skew-symmetric" in the following sense. By duality, $\cN_{2} = \dual{\cN_{1}} \otimes \det \cE$ where $\cN_{1}$ is simply the Casnati-Ekedahl bundle which we have been calling $\cF$.   A homomorphism from $\pi^{*}\dual{\cF}\otimes \det{\cE}(-3)$ to $\pi^{*}\cF(-2)$  can be thought of as an element of the vector space $$H^{0}(\P^{1}, \cF\otimes \cF \otimes \cE \otimes \det \dual{\cE}),$$  and a skew symmetric element is by definition an element of the subspace $$H^{0}(\P^{1}, \bigwedge^{2}\cF \otimes \cE \otimes \det \dual{\cE}).$$</p>
+<p class="stacks-para">The homomorphism $\sfM$ can be regarded as an element (which we continue to call $\sfM$) in $$H^{0}(\P^{1}, Hom(\bigwedge^{2}\dual{\cF}, \cE \otimes \det \dual{\cE})).$$   It is also easy to check (e.g. for all points $p \in \P^{1}$) that $$m \from \bigwedge^{2}\dual{\cF} \to \cE \otimes \det \dual{\cE}$$ is surjective. Let
+$$0 \to \cK \to \bigwedge^{2}\dual{\cF} \to \cE \otimes \det \dual{\cE} \to 0$$  be the resulting exact sequence of vector bundles.  This sequence gives rise to a chain of inclusions $C \subset \P(\cE) = \P(\cE \otimes \det \dual{\cE}) \subset \P(\bigwedge^{2}\dual{\cF})$, where the first inclusion is the relative canonical embedding of $\alpha \from C \to \P^{1}.$</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Constructing families of pentagonal curves I.</h3></p>
+<p class="stacks-para">Our first  family of pentagonal curves is a generic pencil $$\P^{1}_{t} \subset \P(H^{0}(\P^{1}, \bigwedge^{2}\cF \otimes \cE \otimes \det \dual{\cE})).$$</p>
+<p class="stacks-para">Let $f \from \cC \to \P^{1}_{t}$ be the resulting family of pentagonal curves.  A parameter count shows that the closed locus $Z \subset \P(H^{0}(\P^{1}, \bigwedge^{2}\cF \otimes \cE \otimes \det \dual{\cE}))$  parametrizing subschemes which are worse-than-nodal has codimension two.  This leads to the following proposition analogous to <a href="/papers/special-codimension-one/tag/E6F1.html" class="stacks-ref-link">Proposition&nbsp;3.14 <span class="stacks-ref-tag">[E6F1]</span></a> and <a href="/papers/special-codimension-one/tag/12E7.html" class="stacks-ref-link">Proposition&nbsp;3.16 <span class="stacks-ref-tag">[12E7]</span></a>:</p>
+<div class="stacks-lemma" id="prop-flexiblefive">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.19.</strong> <a href="../tag/B328.html" class="stacks-tag-link">(B328)</a></div>
+  <div class="stacks-env-body"><p>Let $[\P^{1}_{t}] \in A_{1}(\td{\H}_{5,g} \setminus \sfM \cup \sfCE)$ be the curve class given by a pencil $\P^{1}_{t} \subset \P(H^{0}(\P^{1}, \bigwedge^{2}\cF \otimes \cE \otimes \det \dual{\cE}))$ as above. Then there exists a positive integer $m$ with the following property: There exists an irreducible proper curve of class $m[\P^{1}_{t}]$ contained in $\td{\H}_{4,g} \setminus (\sfM \cup \sfCE)$ which passes through any two prescribed points $\alpha_{1}, \alpha_{2} \in \td{\H}_{5,g} \setminus (\sfM \cup \sfCE)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4080.html" class="stacks-tag-link">(4080)</a></div>
+  <div class="stacks-env-body"><p>The proof goes exactly like the proof of <a href="/papers/special-codimension-one/tag/12E7.html" class="stacks-ref-link">Proposition&nbsp;3.16 <span class="stacks-ref-tag">[12E7]</span></a>.</p></div>
+</div>
+<div class="stacks-theorem" id="thm-Extremal5">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.20.</strong> <a href="../tag/2ECB.html" class="stacks-tag-link">(2ECB)</a></div>
+  <div class="stacks-env-body"><p>The effective divisors $\sfM$ and $\sfCE$ are rigid and span extremal rays in the effective cone of divisors $\Eff (\overline{\H}^{(2)}_{5,g}).$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A061.html" class="stacks-tag-link">(A061)</a></div>
+  <div class="stacks-env-body"><p>The proof is exactly like the proof of <a href="/papers/special-codimension-one/tag/949E.html" class="stacks-ref-link">Theorem&nbsp;3.17 <span class="stacks-ref-tag">[949E]</span></a> once we know the irreducibility of $\sfM$ and $\sfCE$. The former is found in part $(4)$ of <a href="/papers/special-codimension-one/tag/C76B.html" class="stacks-ref-link">Theorem&nbsp;1.9 <span class="stacks-ref-tag">[C76B]</span></a>, while the irreducibility is proved in [DP15][Proposition&nbsp;5.2].</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Constructing families of pentagonal curves II.</h3>\label{pentagonalconstruction}
+The geometric description of the embedding $i \from C \into \P(\bigwedge^{2}\dual{\cF})$ is particularly simple and easy to work with, and allows for a second useful construction of families of pentagonal curves.</p>
+<p class="stacks-para">Inside the $\P^{9}$-bundle $\P(\bigwedge^{2}\dual{\cF})$ lies is the Grassmannian bundle $\bG \subset \P(\bigwedge^{2}\dual{\cF})$ which parametrizes the decomposable alternating tensors $a \wedge b$.  $\bG$ restricts to the Grassmannian $\bG(1,4) \subset \P^{9}$ in every fiber of the projective bundle $\P(\bigwedge^{2}\dual{\cF})$.   The curve $C$ is simply the intersection of the sub scroll $\P(\cE \otimes \det \dual{\cE})$ with $\bG$ in $\P(\bigwedge^{2}\dual{\cF})$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+We rephrase this more conveniently for our purposes.  Let $\zeta$ denote the divisor class on $\bG$ associated to the restriction of the natural $\cO(1)$ on $\P(\bigwedge^{2}\dual{\cF})$, and let $f$ denote the fiber of the natural projection $\varphi \from \bG \to \P^{1}$.   Since the kernel $\cK$ in (3.16) is a rank $6$ vector bundle on $\P^{1}$, it splits as
+$$\cK = \cO_{\P^{1}}(-k_{1}) \oplus ... \oplus \cO_{\P^{1}}(-k_{6}).$$
+What this means is that the curve $C \subset \bG$, being the intersection of $\P(\cE \otimes \det \dual{\cE})$ with $\bG$, is a complete intersection of six divisors $H_{i}$  $(i = 1, ... ,  6)$ on $\bG$ with divisor classes $[H_{i}] = \zeta + k_{i}f$.</p>
+<p class="stacks-para">From sequence (3.16) (and by recalling from <a href="/papers/special-codimension-one/tag/2558.html" class="stacks-ref-link">Proposition&nbsp;1.14 <span class="stacks-ref-tag">[2558]</span></a> that $\deg \cF = 2 \deg \cE = 2(g+4)$), we conclude  $$\deg \cK = - \sum k_{i} = -5(g+4).$$ Let us order the $k_{i}$ so  $k_{1} \geq ... \geq k_{6}$.   Then $H_{1}$ is the largest effective divisor among the hyperplane sections $H_{i}$, meaning $H_{1} - H_{j}$ is effective for all $j \geq 2$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+We consider the surface $$\F := \bigcap_{i = 2}^{6} H_{i}.$$ $\F$ will be the surface on which we construct families as in section 2.11.  $\F$ is easily seen to be a genus $1$ fibration over $\P^{1}$ &ndash; we let $\varphi \from \F \to \P^{1} $ denote the natural projection.  Our pencils will lie in the linear system $|H_{1}|$, considered as a system of divisors on $\F$.  We also assume that $\F$ is a smooth surface - this can be verified by Bertini's theorem in all cases we consider.</p>
+<div class="stacks-lemma" id="pentnum">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.21.</strong> <a href="../tag/7097.html" class="stacks-tag-link">(7097)</a></div>
+  <div class="stacks-env-body"><p>Let $\P^{1}_{t} \subset |H_{1}|$ be a general pencil of curves on $\F$.  Assume the base locus of $\P^{1}_{t}$ is simple, and that all curves parametrized are at-worst-nodal.  Let $p \from X \to \P^{1}_{t}$ denote the total space of the pencil.
+Then
+$$\begin{aligned}\lambda \cdot {p} & = 2g+3-k_{1},\\
+\delta \cdot p & =  13g + 32 - 7k_{1}.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BEE6.html" class="stacks-tag-link">(BEE6)</a></div>
+  <div class="stacks-env-body"><p>We first compute the relevant numerical invariants of the surface $\F$.  Adjunction on the relative Grassmannian $\bG \subset \P (\bigwedge^{2} \dual{\cF})$ gives the equality $$\deg K_{\F} = (\sum_{i=2}^{6}(\zeta + k_{i}f) + K_{\bG})|_{\F},$$
+so we must compute the canonical class $K_{\bG}$. </p>
+<p>The relative tangent bundle for $g \colon \bG \longrightarrow <strong>P</strong>^1$ is $$T_g = Hom(S^3,Q^2) = \dual{(S^3)} \otimes Q^2.$$ Here $S^{3}$ and $Q^{2}$ are the universal sub and quotient bundles parametrized by the relative Grassmannian $\bG$. In other words, $c_{1}(Q^{2}) = \zeta$, while $c_{1}(S^{3}) = -\zeta + g^{*}c_{1}(\dual{\cF})$. Therefore,
+$$\begin{aligned}K_{\bG} + 2f &= -c_1 ((S^3)^ {\vee} \otimes Q^2)\\
+& = - [3\zeta + 2(\zeta - g^{*}c_{1}\dual{\cF})]\\
+ & = -5\zeta + 2 c_{1}\dual{\cF} \cdot f\\\end{aligned}$$</p>
+<p>Altogether, the canonical class of $\bG$ is
+$$K_{\bG} = -5\zeta + (2 c_{1}\dual{\cF} - 2)\cdot f.$$</p>
+<p>From this, we conclude that the canonical class $K_{\F}$ is
+$$\begin{aligned}K_{\F} &= (H_{2} + H_{3}+...+H_{6} + K_{\bG}) \\
+&= (\sum_{i=2}^{6}k_{i} + 2 c_{1}\dual{\cF} - 2)\cdot f\\
+&= (g+2-k_{1})\cdot f\end{aligned}$$
+where we have suppressed the ``restriction" symbols.</p>
+<p>We must also compute relevant intersection products on $\bG$.  We first notice that on $\bG$,  $$\zeta^6\cdot f = 5.$$ Indeed, the Grassmannian $\bG(1,4) \subset \P^{9}$ has degree $5$. Secondly we note that $$\zeta^7 = a\cdot c_{1}\dual{\cF} + b$$ for some fixed constants $a,b$ which do not depend on $\mathcal{F}$. This follows from the fact that $\zeta^7 - (\zeta + l\cdot f)^7$ is a linear function in $l$.  It easily follows that $b=0$ and $a=14$, so that:
+$$\zeta^7 = 14c_{1}\dual{\cF}.$$</p>
+<p>On $\F$, we consider the linear series $|\zeta + k_1 f|$ and a general pencil $p \subset |\zeta + k_1 f|$. The pencil $p$ has $B = (\zeta + k_1 f)^2$ basepoints.  This number can now be calculated:</p>
+<p>$$\begin{aligned}B &= (\zeta + k_{1} f)^2\cdot [\F] = (\zeta + k_{1} f) \cdot \prod_{i=1}^{6}(\zeta + k_{i} f)\\
+&= \zeta^7+ (2 k_1+k_2+ ... +k_6)\zeta^6\cdot f\\
+& = \zeta^7+5(5(g+4) + k_{1})\\
+&= 14c_{1}\dual{\cF} + 25(g+4) + 5k_{1}\\
+& = 5k_{1}-3(g+4).\end{aligned}$$
+Here we have used $c_{1}(\cF) = 2c_{1}(\cE) = 2(g+4)$ and $\sum_{i}k_{i} = 5(g+4)$.
+Since $\F$ is assumed to be smooth, we can determine the topological Euler characteristic $\chi_{\top}(\F)$ by the Noether formula:
+$$\chi(\mathcal{O}_\F) = \frac{K_{\F}^2 + \chi_{\top}(\F)}{12} = \frac{\chi_{\top}(\F)}{12}.$$</p>
+<p>On the other hand, let $g \from \F \to \P^{1}$ be the projection which realizes $\F$ as a family of genus $1$ curves. (These are degree five elliptic normal curves.) Then Grothendieck-Riemann-Roch applied to the family $g$ gives:
+$$\lambda_{g} =  \chi(\mathcal{O}_\F) - \chi(\mathcal{O}_{<strong>P</strong>^1})\chi(\mathcal{O}_{E_{gen}}).$$
+which implies
+$$\chi(\mathcal{O}_\F) = c_{1}\mathcal{E} - k_{1}$$
+and thus
+$$ \chi_{\top}(\F) = 12(c_{1}\mathcal{E} - k_{1}).$$</p>
+<p> The total space of the pencil $X$ is the blow up of $\F$ at the $B = 5m_6-3c_1\mathcal{E}$ basepoints, therefore: $$\chi_{\top}(X) = 12(c_{1}\mathcal{E} - k_{1}) + 5k_{1} -3c_1\mathcal{E} = 9c_{1}\mathcal{E} - 7k_{1}$$</p>
+<p>This implies  $$\delta \cdot p = 9c_{1}\mathcal{E} - 7k_{1} - 2(2-2g) = 13g - 7k_{1} + 32$$ Furthermore, we know  $$\chi(\mathcal{O}_{\F}) = \chi(\mathcal{O}_{X}) =  c_{1}\mathcal{E} - k_{1}$$ which means $$\lambda \cdot p = 2g - k_{1} +3.$$</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 3.12. Constructing families of pentagonal curves.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S3.SS12.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

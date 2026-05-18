@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (1620) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS2.html">3.2. Smoothing out</a> / <span>Proof (1620)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="3AC7.html">&laquo; Proposition 3.8</a><span class="stacks-tag-current">Tag 1620</span><a href="664D.html">Remark 3.9 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/1620.html" class="stacks-tag-link">(1620)</a></div>
+  <div class="stacks-env-body"><p>We have the exact sequence
+  $$ 0 \to N_{Z /\widetilde{P}} \to \nu_*\nu^* N_{Z/\widetilde{P}} \to N_{Z /\widetilde{P}}\big |_{\gamma \cup \delta_S} \to 0.$$
+  The long exact sequence on cohomology gives
+  $$ H^0\left(\nu^* N_{Z/\widetilde{P}}\right) \to H^0\left(N_{Z/\widetilde{P}}\big|_{\gamma \cup \delta_S}\right) \to H^1\left(N_{Z/\widetilde{P}}\right) \to H^1\left(\nu^* N_{Z/\widetilde{P}}\right) \to 0.$$
+  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, we have $H^1(\nu^* N_{Z/\widetilde{P}}|_{R_y}) = 0$.
+  By <a href="/papers/vector-bundles-finite-covers/tag/411F.html" class="stacks-ref-link">Proposition&nbsp;3.5 <span class="stacks-ref-tag">[411F]</span></a>, we have $H^1(\nu^* N_{Z/\widetilde{P}}|_{X^\nu}) = 0$.
+  By combining the two, we get $H^1(\nu^* N_{Z/\widetilde{P}}) = 0$.</p>
+<p>  We now show that the map
+  $$\nu_{*} \nu^* N_{Z/\widetilde{P}} \to N_{Z/\widetilde{P}}\big|_{\gamma \cup \delta_S}$$
+  is surjective on global sections.
+  Note that we have a decomposition
+  $$ \nu^* N_{Z/\widetilde{P}} = \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right) \bigoplus \nu^* \left(N_{Z/\widetilde{P}}\big|_{R_S}\right).$$
+  Furthermore, by <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, $\nu^* N_{Z/\widetilde{P}}|_{R_S}$ is decomposed by the split exact sequence
+  $$ 0 \to N_{R_S/P_S} \to \nu^* N_{Z/\widetilde{P}}\big|_{R_S} \to F \to 0.$$
+  Consider the diagram of sheaves on $Z$
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the bundle $N_{R_S/P_S}$ is positive enough for $q$ to be surjective on global sections.
+  Therefore, to prove that $r$ is surjective on global sections, it suffices to prove the same for $s$.
+  Recall our notation $e$ for the map $F \to N_{\delta_S/X} \otimes N_{\delta_S/R_S}$.
+  We have the following diagram of sheaves on $Y$
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  where we have abused notation somewhat to denote both maps $Z^\nu \to Y$ and $Z \to Y$ by the same letter $\phi$.
+  From the diagram, we see that it suffices to prove that
+  $$\phi_* \left(\nu^* \left(N_{Z/\widetilde{P}}\big|_X\right)\right) \to \phi_*\left(N_{Z/\widetilde{P}} \big|_\gamma\right) \oplus \coker \phi_*e$$
+  is surjective on global sections.
+  As a consequence (3.11) of the definition of $K$, we have the exact sequence
+  $$ 0 \to K \to \phi_* \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right) \to \phi_*\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right)\oplus \coker \phi_*e \to 0.$$
+  We have replaced $\chi^*$ in (3.11) by $\nu^*$ above, but this is harmless as the pullbacks are in any case supported on $X^\nu$.
+  By <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a>, we may assume that $H^1(K) = 0$.
+  Therefore, we get that the map
+  $$\phi_* \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right)\to \phi_*\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right) \oplus \coker \phi_*e$$
+  is surjective on global sections.
+  Since
+  $$ H^0\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right) \to H^0\left(N_{Z/\widetilde{P}} \big|_\gamma\right)$$
+  is clearly surjective, we conclude that (3.19) is surjective on global sections.
+  The proof of <a href="/papers/vector-bundles-finite-covers/tag/3AC7.html" class="stacks-ref-link">Proposition&nbsp;3.8 <span class="stacks-ref-tag">[3AC7]</span></a> is now complete.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag 1620 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/1620.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

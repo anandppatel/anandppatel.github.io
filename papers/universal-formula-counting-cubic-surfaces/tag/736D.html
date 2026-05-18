@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (736D) — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS3.html">3.3. The third test family</a> / <span>Proof (736D)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="DE47.html">&laquo; Proposition 3.10</a><span class="stacks-tag-current">Tag 736D</span><a href="2D39.html">Proposition 3.11 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/736D.html" class="stacks-tag-link">(736D)</a></div>
+  <div class="stacks-env-body"><p>We begin by finding the class of $\mathcal V$ in the Grothendieck group of $\widehat \M_{0,7}$.
+  The computation parallels the computation in the proof <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B343.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[B343]</span></a>, so we will be brief.
+  Recall that $\phi \colon \mathcal C \to \widehat \M_{0,7}$ is the universal curve with sections $\sigma_0, \sigma_1, \dots, \sigma_\infty$.
+  Setting $\mathcal L = \sigma_\infty^* \omega_\phi$, recall the bundles
+  $$\begin{aligned}\mathcal A = \O \oplus \mathcal L^{-1} \text{ from (3.10), and }
+    \mathcal S = \O \oplus \mathcal L^{-2} \oplus \mathcal L^{-3} \text{ from (3.11)}.\end{aligned}$$
+  Recall that $\rho \colon \P \mathcal S^\vee \to \widehat \M_{0,7}$ is the structure map and $\mathcal Z \subset \mathcal C$ the subscheme corresponding to the divisor $s_1 + \dots + s_5 + s_\infty$.
+  In the Grothendieck group of $\widehat \M_{0,7}$, we have
+  $$\begin{split}
+      \mathcal V &= \rho_* \omega^{-1}_\rho - \phi_* \left( \nu^* \omega^{-1}_\rho |_{\mathcal Z}\right)\\
+      &= (\Sym^3 \mathcal S) \otimes \det \mathcal S^\vee - \phi_*\left(\mathcal \O\left(9\sigma_\infty\right) \otimes \phi^*\det \mathcal S^\vee|_{\mathcal Z}\right)\\
+      &= (\Sym^3 \left( \O \oplus \mathcal L^{-2} \oplus \mathcal L^{-3} \right)) \otimes \mathcal L^5 - \phi_*\left(\mathcal \O\left(9\sigma_\infty\right) \otimes \phi^*\mathcal L^5\right) \\
+      & \qquad +  \phi_*\left(\mathcal \O\left(9\sigma_\infty-{\mathcal Z}\right) \otimes \phi^*\mathcal L^5\right)\\
+      &= \mathcal L^{-1} - \mathcal L^4 + (\mathcal L^2 + \mathcal L^3 + \mathcal L^4 + \mathcal L^5) \otimes \O\left(-\Delta_0\right).
+    \end{split}$$
+  Here $\Delta_0 \subset \widehat \M_{0,7}$ is the divisor $\sigma_0^* \O(\sigma_1 + \dots + \sigma_5)$.
+  This is the locus of marked curves where the marked point $\sigma_0$ coincides with $\sigma_i$ for some $i = 1, \dots, 5$.
+  In the last step of the computation, we have used <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_0$ and that
+  $$ \sigma_0^* \O(\sigma_0) = \sigma_\infty^*\O(-\sigma_\infty) = \mathcal L,$$
+  which holds since $\sigma_0$ and $\sigma_\infty$ are two disjoint sections of a $\P^1$-bundle.
+  The rest is a straightforward computation using the Whitney sum formula.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — Tag 736D (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/736D.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5. The Maroni loci $\sfM(\cE)$. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Invariants of a branched cover.</a> / <span>1.5. The Maroni loci $\sfM(\cE)$.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.5. The Maroni loci $\sfM(\cE)$.</h1>
+<p class="stacks-para">The Hurwitz space $\H_{d,g}$ contains natural subvarieties (or substacks) which we call the <em>Maroni loci</em> $\sfM(\cE)$.  More precisely, we make the following definition:</p>
+<div class="stacks-definition" id="def-maroni">
+  <div class="stacks-env-head"><strong>Definition&nbsp;1.7.</strong> <a href="../tag/8499.html" class="stacks-tag-link">(8499)</a></div>
+  <div class="stacks-env-body"><p>Let $\cE$ be a rank $d-1$, degree $g+d-1$ vector bundle on $\P^1$.  Then the <em>Maroni locus</em> $\sfM(\cE)$ is defined as
+$$\sfM(\cE) := \overline {\{[\alpha \from C \to \P^1] \in \H_{d,g} \mid \cE_{\alpha} = \cE\}}.$$</p></div>
+</div>
+<p class="stacks-para">Clearly if $\sfM(\cE)$ is nonempty then  $\deg \cE = g+d-1$ and $\rk \cE = d-1$.  However, more can be said about $\cE$ in this situation.  For instance, $\cE$ cannot have any nonpositive summands, since this would force $C$ to be disconnected.  Write $$\mathcal{E} = \cO(a_{1}) \oplus \cO(a_{2}) ... \oplus \cO(a_{d-1})$$ with $0 < a_{1} \leq a_{2} \leq ... \leq a_{d-1}$.   and set $\lfloor \cE \rfloor : = a_{1}$.</p>
+<div class="stacks-definition" id="tame">
+  <div class="stacks-env-head"><strong>Definition&nbsp;1.8.</strong> <a href="../tag/D3D7.html" class="stacks-tag-link">(D3D7)</a></div>
+  <div class="stacks-env-body"><p>We maintain the notation above. A vector bundle $\cE$ of rank $d-1$ and degree $g+d-1$  on $\P^1$ is <em>tame</em> if $a_{i} - a_{i-1} \leq \lfloor \cE \rfloor$ for all $i = 2, ... ,d-1$.</p></div>
+</div>
+<p class="stacks-para">Among all tame bundles $\cE$ with fixed $\lfloor \cE \rfloor = m$, there is a most generic one, which we call $\cE[m]$.  It is the unique tame bundle which maximizes the sum $(d-1)a_{1} + (d-2)a_{2} + ... + a_{d-1}$.</p>
+<p class="stacks-para">The most comprehensive theorem on the geometry of the Maroni loci to date is found in [DP15], which relies heavily on the work of Ohbuchi [Ohb97] and Coppens [Cop99]:</p>
+<div class="stacks-theorem" id="thm-maroniloci">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.9.</strong> <a href="../tag/C76B.html" class="stacks-tag-link">(C76B)</a></div>
+  <div class="stacks-env-body"><p>Let $m$ be an integer satisfying $\frac{g+d-1}{{d \choose 2}} \leq m \leq  \frac{g+d-1}{d-1} $.
+  <ol><li>If $\sfM(\cE)$ is nonempty, then $\cE$ is a tame bundle.</li>
+<li>If $\lfloor \cE \rfloor \leq m$ then $\sfM(\cE) \subset \sfM(\cE[m])$.</li>
+<li>$\sfM(\cE[m]) \subset \sfM(\cE[m+1])$ for all $m$.</li>
+<li>$\sfM(\cE[m])$ is an irreducible subvariety of $\H_{d,g}$ of codimension $g-(d-1)m + 1$ unless $m = \lfloor \frac{g+d-1}{d-1} \rfloor$, in which case $\sfM(\cE[m]) =  \H_{d,g}$.</li></ol></p></div>
+</div>
+<p class="stacks-para">In particular, point $(4)$ says that a general cover $\alpha \from C \to \P^1$ has a balanced Tschirnhausen bundle $\cE_{\alpha}$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">The Maroni divisor $\sfM \subset \H_{d,g}$.</h3>  Item $(4)$ in <a href="/papers/special-codimension-one/tag/C76B.html" class="stacks-ref-link">Theorem&nbsp;1.9 <span class="stacks-ref-tag">[C76B]</span></a> gives a complete description of all divisorial Maroni loci.   Setting the codimension $g-(d-1)m +1$ equal to $1$ gives the divisibility relation
+$$(d-1) \mid g.$$
+When this congruence condition is met, the general Tschirnhausen bundle $\cE^{gen}$ is <em>perfectly</em> balanced, i.e.
+$$\cE^{gen} = \cO(k)^{\oplus d-1}$$ where $k = g/(d-1) +1$.
+Consider the special bundle
+$$\cE^{sp} := \cO(k-1) \oplus \cO(k)^{d-3} \oplus \cO(k+1).$$ Then the Maroni locus $\sfM(\cE^{sp})$ is precisely the locus $\sfM$ from <a href="/papers/special-codimension-one/tag/76AC.html" class="stacks-ref-link">Definition&nbsp;1.1 <span class="stacks-ref-tag">[76AC]</span></a>.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 1.5. The Maroni loci $\sfM(\cE)$.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S1.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

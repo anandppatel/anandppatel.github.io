@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1. Inflations — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.1. Inflations</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.1. Inflations</h1>
+<p class="stacks-para">Let $E$ be a vector bundle on $Y$.
+  A <em>degree $n$ inflation</em> of $E$ is a vector bundle $\widetilde E$ along with an injective map of sheaves $E \to \widetilde E$ whose cokernel is finite of length $n$.
+  If the cokernel is supported on a subscheme $S \subset Y$, then we say that $E \to \widetilde E$ is an inflation of $E$ at $S$.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.1.</strong> <a href="../tag/F694.html" class="stacks-tag-link">(F694)</a></div>
+  <div class="stacks-env-body"><p>Let $E \to \widetilde E$ be a degree one inflation.
+    In standard parlance, $E$ and $\widetilde E$ are said to be related by an <em>elementary transformation</em>.
+    We use ``inflation'' only to emphasize the asymmetry in the relationship.</p></div>
+</div>
+<p class="stacks-para">Let $E \to \widetilde E$ be an inflation of degree $n$.
+Then the dual bundle $\widetilde E^\vee$ is a sub-sheaf of $E^\vee$ and the quotient is finite of length $n$.
+Thus, a degree $n$ inflation of $E$ is equivalent to a sub-sheaf of $E^\vee$ of co-length $n$, which in turn is equivalent to a quotient of $E^\vee$ of length $n$.
+Therefore, we can identify the set of degree $n$ inflations of $E$ with the points of the quot scheme $\Quot(E^\vee, n)$.
+It is easy to see that $\Quot(E^\vee, n)$ is smooth and connected, hence irreducible.
+Therefore, it makes sense to talk about a ``general'' degree $n$ inflation of $E$.</p>
+<p class="stacks-para">We wish to study the effect of an inflation on cohomology.</p>
+<div class="stacks-lemma" id="prop-inf_inf">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.2.</strong> <a href="../tag/8090.html" class="stacks-tag-link">(8090)</a></div>
+  <div class="stacks-env-body"><p>Let $E \to \widetilde E$ be an inflation.
+  Then $h^1(Y, \widetilde E) \leq h^1(Y, E)$.
+  In particular, if $H^1(Y, E) = 0$, then $H^1(Y, \widetilde E) = 0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3FCF.html" class="stacks-tag-link">(3FCF)</a></div>
+  <div class="stacks-env-body"><p>Apply the long exact sequence on cohomology to $0 \to E \to \widetilde E \to \widetilde E/E \to 0$, and use that $\widetilde E/E$ has zero-dimensional support.</p></div>
+</div>
+<p class="stacks-para">Fix a point $y \in Y$.
+Denote the fiber at $y$ by the subscript $y$.
+Consider an inflation $E \to \widetilde E$ of degree $d$ whose cokernel is supported (scheme-theoretically) at $y$,
+say
+$$0 \to E \to \widetilde E \to B \to 0,$$
+where the cokernel is annihilated by the maximal ideal $m_y \subset O_Y$.
+Restricting this sequence to $y$, we get a sequence of vector spaces
+$$ 0 \to A \to E|_y \to \widetilde E|_y \to B \to 0.$$
+In this setting, we have a canonical isomorphism $A = B \otimes m_y/m_y^2$.
+One way to see this is by dualizing the original sequence to obtain
+$$A^\vee = \shExt^1(B, \O_Y) = B^\vee \otimes T_yY.$$
+A more explicit description of the isomorphism is as follows.
+Choose a uniformizer $t$ in $m_y$.
+Given $s \in B$, choose a lift $\widetilde s$ in the stalk $\widetilde E_y$.
+Then $t  \widetilde s$ is an element of the stalk $E_y$, whose evaluation at $y$ is in the kernel $A$ of $E|_y \to \widetilde E|_y$.
+The isomorphism $B \otimes m_y / m_y^2 \to A$ sends $s \otimes t$ to the evaluation of $t \widetilde s \in A$.</p>
+<p class="stacks-para">The dual of (2.1) is the sequence
+$$ 0 \to \widetilde E ^\vee \to E^\vee \to A^\vee \to 0,$$
+where the cokernel is supported at $y$.
+Thus, the inflation $E \to \widetilde E$ is determined by the surjection
+$$E^\vee_y \to A^\vee = B^\vee \otimes T_yY.$$
+We call (2.2) the <em>defining quotient</em> of the inflation $E \to \widetilde E$.</p>
+<p class="stacks-para">Let $V \subset E^\vee \otimes \Omega_Y|_y$ be the image of the evaluation map
+$$ H^0\left(E^\vee \otimes \Omega_Y\right) \to E^\vee \otimes \Omega_Y|_y.$$
+Let $q \from E^\vee_y \to k^d$ be a surjection and denote by $E \to \widetilde E_q$ the degree $d$ inflation of $E$ at $y$ corresponding to $q$.</p>
+<div class="stacks-lemma" id="prop-good_bad_inf">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/486C.html" class="stacks-tag-link">(486C)</a></div>
+  <div class="stacks-env-body"><p>With the notation above, let $q_V \from V \to k^d \otimes \Omega_Y|_y$ be the restriction of $q \otimes \id$ to $V$.
+  Then we have
+  $$\begin{aligned}h^0(Y, \widetilde E_q) &= h^0(Y, E) + d - \rk q_V, \text{ and }\\
+    h^1(Y, \widetilde E_q) &= h^1(Y, E) - \rk q_V.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/17ED.html" class="stacks-tag-link">(17ED)</a></div>
+  <div class="stacks-env-body"><p>We have the exact sequence $0 \to \widetilde E_q^\vee \to E^\vee \xrightarrow{q} k^d \to 0$, where the cokernel is supported at $y$.
+  Tensoring by $\Omega_Y$, taking the long exact sequence in cohomology, and using Serre duality yields the proposition.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-inf_1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.4.</strong> <a href="../tag/AF05.html" class="stacks-tag-link">(AF05)</a></div>
+  <div class="stacks-env-body"><p>Suppose $E$ is such that $h^1(Y, E) \neq 0$.
+  Then, for a general degree 1 inflation $E \to \widetilde E$, we have
+  $$ h^1(Y, \widetilde E) = h^1(Y, E) - 1 \text{ and } h^0(Y, \widetilde E) = h^0(Y, E).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4334.html" class="stacks-tag-link">(4334)</a></div>
+  <div class="stacks-env-body"><p>If $h^1(E) = h^0(E^\vee \otimes \Omega_Y) \neq 0$, the space $V \subset E^\vee \otimes \Omega_Y|_y$ defined above is non-zero if $y \in Y$ is general.
+  Then, for a general choice of $q \from E^\vee_q \to k$, we have $\rk q_V = 1$.
+  The statement now follows from <a href="/papers/vector-bundles-finite-covers/tag/486C.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[486C]</span></a>.</p></div>
+</div>
+<p class="stacks-para">We will need a slight strengthening of <a href="/papers/vector-bundles-finite-covers/tag/AF05.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[AF05]</span></a>.
+Suppose $y \in Y$ is such that the image $V$ of the evaluation map
+$$H^0(E^\vee \otimes \Omega_Y) \to E^\vee\otimes \Omega_Y|_y$$
+is non-zero.
+Suppose we have a set $S$ of surjections $E^\vee_y \to k^d$.
+A surjection $q \from E^\vee_y \to k^d$ gives a $(d-1)$ dimensional linear subspace $\Lambda_q \subset \P E^\vee_y$.</p>
+<div class="stacks-lemma" id="prop-lingen_1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.5.</strong> <a href="../tag/2285.html" class="stacks-tag-link">(2285)</a></div>
+  <div class="stacks-env-body"><p>Suppose the linear span of $\bigcup_{q \in S} \Lambda_q$ is the entire projective space $\P E^\vee_y$.
+  Then for some $q \in S$ we have
+  $$ h^1(Y, \widetilde E_q) \leq h^1(Y, E) - 1$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E301.html" class="stacks-tag-link">(E301)</a></div>
+  <div class="stacks-env-body"><p>By the spanning assumption, we must have $\rk q_V \geq 1$ for some $q \in S$.
+  Then the statement follows from <a href="/papers/vector-bundles-finite-covers/tag/486C.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[486C]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Repeated applications of <a href="/papers/vector-bundles-finite-covers/tag/AF05.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[AF05]</span></a> yield the following important consequence.</p>
+<div class="stacks-lemma" id="prop-inf_cohom">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;2.6.</strong> <a href="../tag/E1CE.html" class="stacks-tag-link">(E1CE)</a></div>
+  <div class="stacks-env-body"><p>Let $n \geq h^1(Y, E)$ be a non-negative integer.
+  Then a general degree $n$ inflation $E \to \widetilde E$ satisfies $H^1(Y, \widetilde E) = 0$.</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/8090.html" class="stacks-ref-link">Proposition&nbsp;2.2 <span class="stacks-ref-tag">[8090]</span></a> and <a href="/papers/vector-bundles-finite-covers/tag/E1CE.html" class="stacks-ref-link">Corollary&nbsp;2.6 <span class="stacks-ref-tag">[E1CE]</span></a> together imply the following.</p>
+<div class="stacks-lemma" id="cor-gen_inf">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;2.7.</strong> <a href="../tag/1E0F.html" class="stacks-tag-link">(1E0F)</a></div>
+  <div class="stacks-env-body"><p>Let $E$ be a vector bundle on $Y$ of rank $r$.
+  For large enough $n$, any vector bundle $E'$ of rank $r$ that contains a general degree $n$ inflation of $E$ satisfies $H^1(Y, E') = 0$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 2.1. Inflations">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S2.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

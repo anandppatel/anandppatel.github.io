@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3. Covers of genus $0$ and $1$. — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.3. Covers of genus $0$ and $1$.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.3. Covers of genus $0$ and $1$.</h1>
+<p class="stacks-para">We will now gather some relevant facts about genus $0$ and genus $1$ covers of $\P^1$.</p>
+<div class="stacks-lemma" id="lowG">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.7.</strong> <a href="../tag/8A3F.html" class="stacks-tag-link">(8A3F)</a></div>
+  <div class="stacks-env-body"><p>Let $\alpha \colon R \to \P^1$ and $\beta \from X \to \P^1$ be degree $d$ covers where $R$ is a smooth rational curve and $X$ is a smooth elliptic curve. Then:
+<ol><li>\label{item-E-rational} $E_{\alpha} = \sh O(1)^{\oplus d-1}$,</li>
+<li>\label{item-F-rational}  $F_{\alpha} = \sh O(1)^{\oplus d-3} \oplus \sh O(2)^{\oplus \binom{d-2}{2}}$</li>
+<li>\label{item-E-elliptic} $E_{\beta} = \sh O(1)^{\oplus d-2} \oplus \sh O(2)$</li>
+<li>\label{item-F-elliptic} $F_{\beta} =  \sh O(2)^{\oplus \frac{d(d-3)}{2}}$</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8FF7.html" class="stacks-tag-link">(8FF7)</a></div>
+  <div class="stacks-env-body"><p>For Item&nbsp;1, note that the sequence
+$$
+0 \to \sh{O}_{\P^1} \to \alpha_*\sh{O}_C \to E_{\alpha}^\vee \to 0
+$$
+splits, and therefore $H^0(E_{\alpha}^\vee)=0$. This means all summands of $E_{\alpha}$ are positive and add up to $ d-1$.  Therefore, all summands must have degree one.</p>
+<p>For Item&nbsp;2, note that using the relative canonical factorization $\iota \from R \to \P E$, we may think of $R$ as lying inside $\P E$. The series $|\zeta - f|$ on $\P E$ restricts to the complete series $\sh O_{R}(d-2)$, and the morphism $q \from \P E \to \P^{d-2}$ given by the series $|\zeta - f|$ restricts to the embedding of $R$ into $\P^{d-2}$ as a rational normal curve. </p>
+<p>The rational normal curve $R$ is contained in a $\binom{d-2}{2}$ dimensional space of quadrics.  The divisor class of these quadrics, when pulled back along $q$, is $2\zeta - 2f$.  </p>
+<p>Recall the exact sequence on the target $\P^1$:
+$$0 \to F_{\alpha} \to \Sym^{2}E_{\alpha} \to \alpha_{*}{\omega^{2}_{\alpha}} \to 0.$$
+We twist by $\sh O(-2)$ and consider global sections, to get:
+$$\begin{aligned}H^0(\P^1, F_{\alpha}(-2)) = & \ker (H^0(\P^1, \Sym^2E_{\alpha} (-2)) \to
+H^0(\P^1, \alpha_{*}{\omega^{2}_{\alpha}}(-2))) \\
+= &\ker (H^0(\P E_\alpha, 2\zeta-2f) \to H^0(R, (2\zeta -2f)|_R)) \\
+= & \ker (H^0(\P^{d-2}, \sh{O}_{\P^{d-2}}(2)) \to H^0(R,\sh{O}_{\P^{d-2}}(2)|_R ))\end{aligned}$$</p>
+<p>The previous paragraph along with projective normality of $R \subset \P^{d-2}$ imply that $h^{0}(F_{\alpha}(-2)) = \binom{d-2}{2}$.  We conclude by noting that (2.10) shows that no degree of a summand of $F_{\alpha}$ may exceed $2$, and the degree of $F_{\alpha}$ must be $(d-3)(d-1)$.  This forces its splitting type to be $\sh O(1)^{\oplus d-3} \oplus \sh O(2)^{\oplus \binom{d-2}{2}}$.</p>
+<p>For Item&nbsp;3, we note that all $d-1$ summands of $E_{\beta}$ are positive, and their degrees sum to $d$.  Therefore $E_{\beta}$ must be as indicated.</p>
+<p>Finally, for Item&nbsp;4, see that the pencil of sections of $\beta^{*}\sh O_{\P^{1}}(1)$ on $X$ forms a two dimensional vector subspace of its complete linear system.  The complete series gives an embedding of $X$ into the projective space $\P^{d-1}$, and the map $\beta$ is realized as projection from a general $(d-3)$-dimensional linear space $\Lambda \subset \P^{d-1}$ disjoint from $X$. </p>
+<p>We note that $\P E$, as an abstract scroll, is isomorphic to $Y := Bl_{\Lambda}\P^{d-1}$. The linear system $|\zeta - f|$ provides the map $f \from \P E \to \P^{d-1}$.  Furthermore, the linear system $|2\zeta - 2f|$ parametrizes the quadric hypersurfaces in $\P^{d-1}$.  Therefore, $h^{0}(F_{\beta}(-2))$ is simply the vector space dimension of quadrics in $\P^{d-1}$ containing the elliptic normal curve $X \subset \P^{d-1}$, which is easily calculated to be $d(d-3)/2$. </p>
+<p>Next we show that $h^{0}(F_{\beta}(-3)) = 0$. An element of the linear system $|2\zeta - 3f|$ corresponds to a quadric in $\P^{d-1}$ which splits off a  hyperplane component $\Gamma$ containing $\Lambda$.  No such quadric can contain the elliptic normal curve $X$, by nondegeneracy of the curve.  This means  $h^{0}(F_{\beta}(-3)) = 0$.  </p>
+<p>Therefore, the largest degree summand of $F_{\beta}$ is $\cO(2)$. Since the degree of $F_{\beta}$, by sequence (2.10), is $d(d-3)$ we conclude that $F_{\beta}$ must split as $\cO(2)^{\oplus \frac{d(d-3)}{2}}$.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.8.</strong> <a href="../tag/F851.html" class="stacks-tag-link">(F851)</a></div>
+  <div class="stacks-env-body"><p>Of course <a href="/papers/invariants-branched-cover/tag/8A3F.html" class="stacks-ref-link">Lemma&nbsp;2.7 <span class="stacks-ref-tag">[8A3F]</span></a> part $(d)$ also follows from the much more general <a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a>.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — 2.3. Covers of genus $0$ and $1$.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/section/S2.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

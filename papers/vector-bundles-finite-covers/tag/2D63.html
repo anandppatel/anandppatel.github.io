@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (2D63) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS2.html">3.2. Smoothing out</a> / <span>Proof (2D63)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="DA66.html">&laquo; Proposition 3.12</a><span class="stacks-tag-current">Tag 2D63</span><a href="6FA2.html">Proof of Proposition 3.3 [51A7]  &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2D63.html" class="stacks-tag-link">(2D63)</a></div>
+  <div class="stacks-env-body"><p>Since $H^1(N_{Z/\widetilde{P}}) = 0$, we get that the Hilbert scheme of $\widetilde{P}$ is smooth at $[Z]$, proving (1).
+  As a result, every first order deformation of $Z \subset \widetilde{P}$ extends to a deformation over the germ of a smooth curve.
+  To show that $Z$ is the limit of smooth curves, it suffices to show that for every node $p \in Z$, the natural map $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p$ is surjective on global sections.
+  Recall that $Z$ has two kinds of nodes: the nodes $\gamma$, which are the nodes of $X$; and the nodes $\delta_S$, which are the nodes introduced because we attached the rational normal curves.</p>
+<p>  First we deal with the nodes $\gamma$.
+  Let $\chi \from Z^\chi \to Z$ be the partial normalization at these nodes.
+  Let $I_\gamma \subset \O_Z$ be the ideal sheaf of $\gamma \subset Z$.
+  We have
+  $$ N_{Z/\widetilde{P}} \otimes I_{\gamma} = \chi_* \left( \chi^*N_{Z/\widetilde{P}}(-\Gamma) \right).$$
+  Thus, if $\nu \from Z^\nu \to Z$ is the full normalization, we get the sequence
+  $$ 0 \to N_{Z/\widetilde{P}} \otimes I_\gamma \to \nu_*\nu^* N_{Z/\widetilde{P}} \to \nu_* \left(\nu^*N_{Z/\widetilde{P}}\big|_\Gamma\right) \oplus N_{Z/\widetilde{P}}\big |_{\delta_S} \to 0.$$
+  By the observation in <a href="/papers/vector-bundles-finite-covers/tag/664D.html" class="stacks-ref-link">Remark&nbsp;3.9 <span class="stacks-ref-tag">[664D]</span></a>, we know that
+  $$ \nu_*\nu^* N_{Z/\widetilde{P}} \to \nu_* \left(\nu^*N_{Z/\widetilde{P}}\big|_\Gamma\right) \oplus N_{Z/\widetilde{P}}\big |_{\delta_S}.$$
+  is surjective on global sections.
+  Therefore, we get that $H^1(N_{Z/\widetilde{P}} \otimes I_\gamma) = 0$.
+  This, in turn, implies that
+  $$H^0(N_{Z/\widetilde{P}}) \to H^0(N_{Z/\widetilde{P}}|_\gamma)$$
+  is surjective.
+  By combining with the surjection
+  $$ N_{Z/\widetilde{P}}\big|_\gamma \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\gamma},$$
+  we conclude that $H^0(N_{Z/\widetilde{P}}) \to H^0(\shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p)$ is surjective for all $p \in \gamma$.</p>
+<p>  Next, we consider a node $p \in \delta_S$ lying over $y \in S$.
+  We have the equality
+  $$ \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y} = N_{\delta_y/R_y}\otimes N_{\delta_y/X}.$$
+  Set $S^- = S \setminus \{y\}$.
+  Denote by the superscript $-$ the analogous objects for $S^-$.
+  We may assume that $S$ is big enough to have $H^1(N_{Z^-/\widetilde{P}^-}) = 0$.
+  Let $\mu \from Z^- \sqcup R_y \to Z$ be the partial normalization at the nodes $\delta_y$.
+  We have the sequence
+  $$ 0 \to N_{Z^-/\widetilde{P}^-} \to \mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to  N_{\delta_y/R_y}\otimes N_{\delta_y/X} = \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y} \to 0$$
+  analogous to the bottom row of (3.3).
+  Since $H^1(N_{Z^-/\widetilde{P}^-}) = 0$, the long exact sequence in cohomology implies that
+  $$ \mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y}$$
+  is surjective on global sections.
+  In particular,
+  $$\mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{p}$$
+  is surjective on global sections.</p>
+<p>  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the map
+  $$\mu^* N_{Z/\widetilde{P}}\big|_{R_y} \to N_{Z/\widetilde{P}}\big|_p$$
+  is surjective on global sections.</p>
+<p>  By combining (3.22) and (3.23), we see that $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z,\O_Z)_p$ is surjective on global sections.
+  We have thus taken care of both types of nodes, proving (2).</p>
+<p>  It remains to prove the last statement about $\O_Y(S)$.
+  For that, assume that $n$ is large enough so that the conclusions above hold for a generic $S$ of size $n - 2g_Y$.
+  Then we may enlarge $S$ to a set $S^+$ by adding an appropriate set of $2g_Y$ points so that the same conclusions hold and $\O_Y(S^+)$ is isomorphic to a given line bundle of degree $n$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag 2D63 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/2D63.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof of Proposition 3.3 [51A7] (6FA2) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS2.html">3.2. Smoothing out</a> / <span>Proof of Proposition 3.3 [51A7] (6FA2)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="2D63.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 6FA2</span><a href="47FD.html">Theorem 3.13 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>.</em> <a href="../tag/6FA2.html" class="stacks-tag-link">(6FA2)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a>, there exists a family of smooth curves in $\widetilde{P}$ whose flat limit is $Z$.
+  Let $X'$ be a general member of such a family.
+  This curve satisfies the following conditions (see Figure&nbsp;3):
+  <ol><li>$\deg (X' \cdot E_y) = d-1$ for all $y \in S$,</li>
+<li>$\deg (X' \cdot P_y) = 1$ for all $y \in S$,</li>
+<li>$X' \cap \widetilde H = \varnothing$,</li>
+<li>$g(X') = g(X) + n(d-1)$,</li>
+<li>$H^1(N_{X' / \widetilde{P}}) = 0$.</li></ol></p>
+<p>  \begin{figure}[ht]
+  \begin{tikzpicture}
+    \draw
+    node at (0,0) {\includegraphics{drawingprime.png}}
+    node at (-3.3,-1.5) {$X'$}
+    node at (-3.3, 1.0) {$\widetilde H$}
+    node at (3.2, -1.0) {$P_y$}
+    node at (2.8, 1.0) {$E_y$};
+  \end{tikzpicture}
+  \caption{A smoothing $X'$ of $X$ after attaching a large number of general rational normal curves}
+  \label{fig:bldown}
+\end{figure}</p>
+<p>  Let $\widetilde{P} \to P'$ be the blowing down of all the $P_y$ for $y \in S$.
+  Then $P' \to Y$ is a $\P^{d-1}$ bundle and the map $X' \to P'$ is an embedding.
+  Similarly, $\widetilde H \to P'$ is also an embedding.</p>
+<p>  We claim that the complement of $\widetilde H$ in $P'$ is isomorphic to $\Tot(E')$, where $E' = E \otimes \O_Y(S)$.</p>
+<p>  To see this, let us recall some generalities.
+  Let $V$ be a vector bundle of rank $d$ on $Y$; set $P = \P V$; and let $H \subset P$ be a divisor such that for each $y \in Y$, the fiber $H_y$ is a hyperplane in $P_y$.
+  In general, the complement $P \setminus H$ is an affine space bundle over $Y$.
+  If we have a section $\sigma \from Y \to P \setminus H$, then $P \setminus H \to Y$ is the total space of a vector bundle $E$.
+  The bundle $E$ can be recovered from $\sigma$ as
+  $$ E = N_{\sigma(Y) / P}.$$</p>
+<p>  Coming back to our situation, let $\sigma \from Y \to P = \P(\O_Y \oplus E)$ be a section disjoint from $H$.
+  Denote by $\sigma' \from Y \to P'$ the section obtained from $\sigma$ by composing with the the blow-up and blow-down rational map $\beta \from P \dashrightarrow P'$ (which is regular in a neighborhood of $\sigma(Y)$).
+  Then $\sigma' \subset P'$ is disjoint from $\widetilde H \subset P'$.
+  Therefore, $P' \setminus \widetilde H$ is the total space of a vector bundle.
+  To identify this bundle, consider the map
+  $$N_{\sigma(Y) / P} \xrightarrow{d\beta} N_{\sigma'(Y)/P'},$$
+  which is an isomorphism on $Y \setminus S$ and identically zero when restricted to $S$.
+  A simple local computation shows that, the cokernel is supported scheme-theoretically on $S \subset Y$.
+  Therefore, we have an isomorphism
+  $$ N_{\sigma(Y) / P} \otimes \O_Y(S) \simeq N_{\sigma'(Y)/P'}.$$
+  Therefore, we conclude that the complement of $H'$ in $P'$ the total space of $E' = E \otimes \O_Y(S)$.</p>
+<p>  Note that $X'$ and $\widetilde H$ remain disjoint in $P'$, and hence we get an embedding $X' \subset E'$.
+  <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a> implies that $X' \subset E'$ is the canonical affine embedding.</p>
+<p>  Next, note that we have an injection
+  $$ N_{X'/\widetilde{P}} \to N_{X'/E'} $$
+  with finite quotient, supported on $\bigcup_{y \in S} X' \cap P_y$.
+  Since $H^1(N_{X'/\widetilde{P}}) = 0$, we get $H^1(N_{X'/E'}) = 0$.</p>
+<p>  Finally, by the last assertion of <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a>, we may take $\O_Y(S)$ to be any prescribed line bundle of degree $n$ if $n$ is large enough.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag 6FA2 (Proof of Proposition 3.3 [51A7])">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/6FA2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

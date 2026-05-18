@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2. Strategy of proof — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Strategy of proof</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.2. Strategy of proof</h1>
+<p class="stacks-para">The proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> proceeds by degeneration.
+To help the reader, we first outline our approach to a weaker version of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a>.
+In the weaker version, we consider not the vector bundle $E$ itself, but its projectivization $\P E$, which we call the <em>Tschirnhausen scroll</em>.
+A branched cover with Gorenstein fibers $\phi \from X \to Y$ with Tschirnhausen bundle $E$ factors through a <em>relative canonical embedding</em> $\iota \from X \hookrightarrow \P E$ by the main theorem in \cite{cas:96}.</p>
+<div class="stacks-theorem" id="thm-weak">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.6.</strong> <a href="../tag/3E0C.html" class="stacks-tag-link">(3E0C)</a></div>
+  <div class="stacks-env-body"><p>Let $E$ be any vector bundle on a smooth projective curve $Y$.
+  Then the scroll $\P E$ is the Tschirnhausen scroll of a finite cover $\phi \from X \to Y$ with $X$ smooth.</p></div>
+</div>
+<p class="stacks-para">The following steps outline a proof of <a href="/papers/vector-bundles-finite-covers/tag/3E0C.html" class="stacks-ref-link">Theorem&nbsp;1.6 <span class="stacks-ref-tag">[3E0C]</span></a> which parallels the proof of the stronger <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a>.
+We omit the details, since they are subsumed by the results in the paper.</p>
+<p class="stacks-para">\begin{enumerate}
+\item First consider the case
+  $$E = L_1 \oplus \dots \oplus L_{d-1},$$
+  where the $L_i$ are line bundles on $Y$ whose degrees satisfy
+  $$ \deg L_i \ll \deg L_{i+1}.$$
+  For such $E$, we construct a nodal cover $\psi \from X \to Y$ such that $\P E_{\psi} = \P E$.
+  For example, we may take $X$ to be a nodal union of $d$ copies of $Y$, each mapping isomorphically to $Y$ under $\psi$, where the $i$th copy meets the $(i+1)$th copy along nodes lying in the linear series $|L_i|$.</p>
+<p class="stacks-para">\item
+  Consider $X \subset \P E$, where $X$ is the nodal curve constructed above.
+  We now attempt to find a smoothing of $X$ in $\P E$.
+  However, the normal bundle $N_{X/ \P E}$ may be quite negative.
+  Fixing this negativity is the most crucial step.</p>
+<p class="stacks-para">To overcome the negativity, we draw motivation from Mori's idea to deform maps from curves to projective varieties, which says that a map from a curve to a projective variety becomes more flexible after attaching sufficiently free rational tails.
+  If we view a cover $X \to Y$ as a map from (a stacky modification of) $Y$ to the classifying stack $BS_d$ as done in \cite{abr.cor.vis:03}, then attaching flexible rational tails can be interpreted as attaching general rational normal curves to $X$ in the fibers of $\P E \to Y$.
+  Of course, the classifying stack $BS_d$ is not a projective variety, so the above only serves as an inspiration.</p>
+<p class="stacks-para">\item
+  Given a general point $y \in Y$, the $d$ points $\psi^{-1}(y) \subset \P E_{y} \simeq \P^{d-2}$ are in linear general position, and therefore they lie on many smooth rational normal curves $R_{y} \subset \P E_{y}$.
+  Choose a large subset $S \subset Y$, and attach general rational normal curves $R_y$ for each $y \in S$ to $X$, obtaining a new nodal curve $Z \subset \P E$.</p>
+<p class="stacks-para">\item
+  The key technical step is showing that the new normal bundle $N_{Z/\P E}$ is sufficiently positive.
+  Using this positivity, we get that $Z$ is the flat limit of a family of smooth, relatively-canonically embedded curves $X_t \subset \P E$.
+  The generic cover $\phi \from X_t \to Y$ in this family satisfies $E_\phi \cong L_1 \oplus \dots \oplus L_{d-1}$.</p>
+<p class="stacks-para">\item
+  We tackle the case of an arbitrary bundle $E$ as follows.
+  <ol><li>We note that every vector bundle $E$ degenerates <em>isotrivially</em> to a bundle of the form $E_0 = L_1 \oplus \dots \oplus L_{d-1}$ treated in the previous steps.</li>
+<li>We take a cover $X_0 \to Y$ with Tschirnhausen bundle $E_0$ constructed above.
+    Using the abundant positivity of $N_{X_0/\P E_0}$, we show that $X_0 \subset \P E_0$ deforms to $X \subset \P E$.
+    The cover $\phi \from X \to Y$ satisfies $E_\phi \cong  E$.</li></ol>
+\end{enumerate}
+We need to refine the strategy above to handle the vector bundle $E$ itself, and not just its projectivization.
+Therefore, we work with the <em>canonical affine embedding</em> of $X$ in the total space of $E$.
+The proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> involves carrying out the steps outlined above for the embedding $X \subset E$ relative to the divisor of hyperplanes at infinity in a projective completion of $E$.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 1.2. Strategy of proof">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S1.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

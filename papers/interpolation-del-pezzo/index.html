@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table of Contents — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<main class="stacks-main">
+<h1 class="stacks-paper-title">Interpolation Problems: Del Pezzo Surfaces</h1>
+<p class="stacks-paper-author">Aaron Landesman, Anand Patel</p>
+<p class="stacks-paper-meta"><em>Annali Scuola Normale Superiore - Classe de Sciences</em> (2019): 1389&ndash;1428<br><a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a></p>
+<hr>
+<h2 class="stacks-toc-heading">Table of Contents</h2>
+<ul class="stacks-toc">
+  <li><a href="section/S1.html">Section 1: Introduction</a>
+    <ul>
+      <li><a href="section/S1.SS1.html">1.1. Relevance of Interpolation</a></li>
+      <li><a href="section/S1.SS2.html">1.2. Interpolation: a lay of the land</a></li>
+      <li><a href="section/S1.SS3.html">1.3. Approaches to interpolation</a></li>
+      <li><a href="section/S1.SS4.html">1.4. Main results of this paper</a></li>
+      <li><a href="section/S1.SS5.html">1.5. Organization of Paper</a></li>
+      <li><a href="section/S1.SS6.html">1.6. Notation and conventions</a></li>
+      <li><a href="section/S1.SS7.html">1.7. Acknowledgments</a></li>
+    </ul>
+  </li>
+  <li><a href="section/S2.html">Section 2: Degree 5 del Pezzos</a>
+  </li>
+  <li><a href="section/S3.html">Section 3: Degree $6$ del Pezzos</a>
+  </li>
+  <li><a href="section/S4.html">Section 4: The degree $8$, type 0 del Pezzos</a>
+  </li>
+  <li><a href="section/S5.html">Section 5: Interlude: Association</a>
+    <ul>
+      <li><a href="section/S5.SS1.html">5.1. Preliminaries</a></li>
+      <li><a href="section/S5.SS2.html">5.2. Inducing association from an ambient linear system</a></li>
+      <li><a href="section/S5.SS3.html">5.3. Goppa's theorem</a></li>
+      <li><a href="section/S5.SS4.html">5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$</a></li>
+    </ul>
+  </li>
+  <li><a href="section/S6.html">Section 6: Degrees $9,8$ and $7$</a>
+    <ul>
+      <li><a href="section/S6.SS1.html">6.1. Results</a></li>
+      <li><a href="section/S6.SS2.html">6.2. How singular triads arise</a></li>
+      <li><a href="section/S6.SS3.html">6.3. Inducing association from a singular triad</a></li>
+      <li><a href="section/S6.SS4.html">6.4. The bijection between singular triads and Veroneses</a></li>
+      <li><a href="section/S6.SS5.html">6.5. Existence of singular triads</a></li>
+      <li><a href="section/S6.SS6.html">6.6. The remaining del Pezzo surfaces and tricanonical genus 3 curves</a></li>
+      <li><a href="section/S6.SS7.html">6.7. Enumerating singular triads: observations and obstacles</a></li>
+    </ul>
+  </li>
+  <li><a href="section/S7.html">Section 7: Further Questions</a>
+  </li>
+  <li><a href="section/S8.html">Section 8: Interpolation in General</a>
+    <ul>
+      <li><a href="section/S8.SS1.html">8.1. Definition and Equivalent Characterizations of Interpolation</a></li>
+      <li><a href="section/S8.SS2.html">8.2. Tools for Irreducibility of Incidence Correspondences</a></li>
+      <li><a href="section/S8.SS3.html">8.3. Tools for Showing Equality of Dimensions of the Source and Target</a></li>
+      <li><a href="section/S8.SS4.html">8.4. Deformation Theory Tools</a></li>
+      <li><a href="section/S8.SS5.html">8.5. Proof of &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a></a></li>
+      <li><a href="section/S8.SS6.html">8.6. Complete intersections</a></li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2 class="stacks-toc-heading">Tags</h2>
+<table class="stacks-tag-table">
+<tr><th>Tag</th><th>Type</th><th>Number</th></tr>
+<tr><td><a href="tag/2A0E.html">2A0E</a></td><td>Example</td><td>1.1</td></tr>
+<tr><td><a href="tag/9DC8.html">9DC8</a></td><td>Theorem</td><td>1.2</td></tr>
+<tr><td><a href="tag/A0E7.html">A0E7</a></td><td>Example</td><td>1.3</td></tr>
+<tr><td><a href="tag/F076.html">F076</a></td><td>Theorem</td><td>1.4</td></tr>
+<tr><td><a href="tag/A04E.html">A04E</a></td><td>Remark</td><td>1.5</td></tr>
+<tr><td><a href="tag/CC8B.html">CC8B</a></td><td>Example</td><td>1.6</td></tr>
+<tr><td><a href="tag/42F6.html">42F6</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/D5A2.html">D5A2</a></td><td>Theorem</td><td>2.1</td></tr>
+<tr><td><a href="tag/285E.html">285E</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/32BC.html">32BC</a></td><td>Remark</td><td>2.2</td></tr>
+<tr><td><a href="tag/849B.html">849B</a></td><td>Lemma</td><td>3.1</td></tr>
+<tr><td><a href="tag/B5CA.html">B5CA</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/BF4A.html">BF4A</a></td><td>Lemma</td><td>3.2</td></tr>
+<tr><td><a href="tag/3B30.html">3B30</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/BE3E.html">BE3E</a></td><td>Lemma</td><td>3.3</td></tr>
+<tr><td><a href="tag/5532.html">5532</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/F427.html">F427</a></td><td>Theorem</td><td>3.4</td></tr>
+<tr><td><a href="tag/B5D9.html">B5D9</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/4060.html">4060</a></td><td>Lemma</td><td>4.1</td></tr>
+<tr><td><a href="tag/BCA0.html">BCA0</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/ABA6.html">ABA6</a></td><td>Lemma</td><td>4.2</td></tr>
+<tr><td><a href="tag/C494.html">C494</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/447C.html">447C</a></td><td>Lemma</td><td>4.3</td></tr>
+<tr><td><a href="tag/E7F6.html">E7F6</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/E8C9.html">E8C9</a></td><td>Theorem</td><td>4.4</td></tr>
+<tr><td><a href="tag/8B00.html">8B00</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/67D4.html">67D4</a></td><td>Remark</td><td>4.5</td></tr>
+<tr><td><a href="tag/6174.html">6174</a></td><td>Definition</td><td>5.1</td></tr>
+<tr><td><a href="tag/21A5.html">21A5</a></td><td>Definition</td><td>5.2</td></tr>
+<tr><td><a href="tag/4F62.html">4F62</a></td><td>Theorem</td><td>5.3</td></tr>
+<tr><td><a href="tag/97D7.html">97D7</a></td><td>Proposition</td><td>5.4</td></tr>
+<tr><td><a href="tag/2BCA.html">2BCA</a></td><td>Remark</td><td>5.5</td></tr>
+<tr><td><a href="tag/BBA7.html">BBA7</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/EC44.html">EC44</a></td><td>Theorem</td><td>5.6</td></tr>
+<tr><td><a href="tag/205C.html">205C</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/AE20.html">AE20</a></td><td>Remark</td><td>5.7</td></tr>
+<tr><td><a href="tag/4EC0.html">4EC0</a></td><td>Theorem</td><td>6.1</td></tr>
+<tr><td><a href="tag/69E6.html">69E6</a></td><td>Proof assuming <a href="/papers/interpolation-del-pezzo/tag/D96B.html" class="stacks-ref-link">Theorem&nbsp;6.8 <span class="stacks-ref-tag">[D96B]</span></a> and <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a></td><td></td></tr>
+<tr><td><a href="tag/C70E.html">C70E</a></td><td>Definition</td><td>6.2</td></tr>
+<tr><td><a href="tag/3A86.html">3A86</a></td><td>Remark</td><td>6.3</td></tr>
+<tr><td><a href="tag/E409.html">E409</a></td><td>Theorem</td><td>6.4</td></tr>
+<tr><td><a href="tag/BE2C.html">BE2C</a></td><td>Lemma</td><td>6.5</td></tr>
+<tr><td><a href="tag/B27D.html">B27D</a></td><td>Proposition</td><td>6.6</td></tr>
+<tr><td><a href="tag/F209.html">F209</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/AA38.html">AA38</a></td><td>Proposition</td><td>6.7</td></tr>
+<tr><td><a href="tag/4D58.html">4D58</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/D96B.html">D96B</a></td><td>Theorem</td><td>6.8</td></tr>
+<tr><td><a href="tag/FC8C.html">FC8C</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/0C7B.html">0C7B</a></td><td>Definition</td><td>6.9</td></tr>
+<tr><td><a href="tag/395E.html">395E</a></td><td>Theorem</td><td>6.10</td></tr>
+<tr><td><a href="tag/4470.html">4470</a></td><td>Definition</td><td>6.11</td></tr>
+<tr><td><a href="tag/0F93.html">0F93</a></td><td>Lemma</td><td>6.12</td></tr>
+<tr><td><a href="tag/1DB6.html">1DB6</a></td><td>Lemma</td><td>6.13</td></tr>
+<tr><td><a href="tag/F6C9.html">F6C9</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/AAED.html">AAED</a></td><td>Lemma</td><td>6.14</td></tr>
+<tr><td><a href="tag/414B.html">414B</a></td><td>Remark</td><td>6.15</td></tr>
+<tr><td><a href="tag/22DE.html">22DE</a></td><td>Lemma</td><td>6.16</td></tr>
+<tr><td><a href="tag/4E8E.html">4E8E</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/7977.html">7977</a></td><td>Lemma</td><td>6.17</td></tr>
+<tr><td><a href="tag/0702.html">0702</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/2908.html">2908</a></td><td>Lemma</td><td>6.18</td></tr>
+<tr><td><a href="tag/4767.html">4767</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/49C4.html">49C4</a></td><td>Corollary</td><td>6.19</td></tr>
+<tr><td><a href="tag/119E.html">119E</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/A97F.html">A97F</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/4954.html">4954</a></td><td>Remark</td><td>6.20</td></tr>
+<tr><td><a href="tag/F129.html">F129</a></td><td>Corollary</td><td>6.21</td></tr>
+<tr><td><a href="tag/5F7F.html">5F7F</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/4C52.html">4C52</a></td><td>Remark</td><td>6.22</td></tr>
+<tr><td><a href="tag/1F74.html">1F74</a></td><td>Corollary</td><td>6.23</td></tr>
+<tr><td><a href="tag/5B8A.html">5B8A</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/98EF.html">98EF</a></td><td>Remark</td><td>6.24</td></tr>
+<tr><td><a href="tag/FB50.html">FB50</a></td><td>Remark</td><td>6.25</td></tr>
+<tr><td><a href="tag/91C6.html">91C6</a></td><td>Corollary</td><td>6.26</td></tr>
+<tr><td><a href="tag/1BB9.html">1BB9</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/8895.html">8895</a></td><td>Question</td><td>7.1</td></tr>
+<tr><td><a href="tag/B2F8.html">B2F8</a></td><td>Question</td><td>7.2</td></tr>
+<tr><td><a href="tag/2F88.html">2F88</a></td><td>Question</td><td>7.3</td></tr>
+<tr><td><a href="tag/F889.html">F889</a></td><td>Question</td><td>7.4</td></tr>
+<tr><td><a href="tag/895E.html">895E</a></td><td>Question</td><td>7.5</td></tr>
+<tr><td><a href="tag/1CBE.html">1CBE</a></td><td>Question</td><td>7.6</td></tr>
+<tr><td><a href="tag/9C4E.html">9C4E</a></td><td>Question</td><td>7.7</td></tr>
+<tr><td><a href="tag/4C28.html">4C28</a></td><td>Question</td><td>7.8</td></tr>
+<tr><td><a href="tag/2B81.html">2B81</a></td><td>Definition</td><td>8.1</td></tr>
+<tr><td><a href="tag/C64A.html">C64A</a></td><td>Definition</td><td>8.2</td></tr>
+<tr><td><a href="tag/2885.html">2885</a></td><td>Definition</td><td>8.3</td></tr>
+<tr><td><a href="tag/6FAF.html">6FAF</a></td><td>Remark</td><td>8.4</td></tr>
+<tr><td><a href="tag/D6A8.html">D6A8</a></td><td>Definition</td><td>8.5</td></tr>
+<tr><td><a href="tag/CA04.html">CA04</a></td><td>Remark</td><td>8.6</td></tr>
+<tr><td><a href="tag/2AF2.html">2AF2</a></td><td>Theorem</td><td>8.7</td></tr>
+<tr><td><a href="tag/7F48.html">7F48</a></td><td>Remark</td><td>8.8</td></tr>
+<tr><td><a href="tag/04E1.html">04E1</a></td><td>Remark</td><td>8.9</td></tr>
+<tr><td><a href="tag/C8DF.html">C8DF</a></td><td>Proposition</td><td>8.10</td></tr>
+<tr><td><a href="tag/96EC.html">96EC</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/8B7E.html">8B7E</a></td><td>Proposition</td><td>8.11</td></tr>
+<tr><td><a href="tag/20B5.html">20B5</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/2425.html">2425</a></td><td>Lemma</td><td>8.12</td></tr>
+<tr><td><a href="tag/40C1.html">40C1</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/1A35.html">1A35</a></td><td>Lemma</td><td>8.13</td></tr>
+<tr><td><a href="tag/D1A2.html">D1A2</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/71DA.html">71DA</a></td><td>Proposition</td><td>8.14</td></tr>
+<tr><td><a href="tag/2EAA.html">2EAA</a></td><td>Proof</td><td></td></tr>
+<tr><td><a href="tag/66ED.html">66ED</a></td><td>Proof of &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a></td><td></td></tr>
+<tr><td><a href="tag/4705.html">4705</a></td><td>Definition</td><td>8.15</td></tr>
+<tr><td><a href="tag/584C.html">584C</a></td><td>Lemma</td><td>8.16</td></tr>
+<tr><td><a href="tag/614B.html">614B</a></td><td>Proof</td><td></td></tr>
+</table>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

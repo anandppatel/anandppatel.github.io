@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.1. Transverse residues — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: The maximal rank problem for maximally connected chains</a> / <span>5.1. Transverse residues</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.1. Transverse residues</h1>
+<p class="stacks-para">\newcommand{\Xright}{X_{\text{right}}}
+\newcommand{\Hright}{H_{\text{right}}}
+\newcommand{\Lambdaright}{\Lambda_{\text{right}}}</p>
+<p class="stacks-para">\newcommand{\Hleft}{H_{\text{left}}}
+\newcommand{\Lambdaleft}{\Lambda_{\text{left}}}
+\newcommand{\Xleft}{X_{\text{left}}}</p>
+<p class="stacks-para">\newcommand{\Rmiddle}{R_{\text{middle}}}</p>
+<p class="stacks-para">We now adapt <a href="/papers/invariants-branched-cover/tag/8F7E.html" class="stacks-ref-link">Construction&nbsp;5.3 <span class="stacks-ref-tag">[8F7E]</span></a> to prove <a href="/papers/invariants-branched-cover/tag/C417.html" class="stacks-ref-link">Claim&nbsp;4.16 <span class="stacks-ref-tag">[C417]</span></a>.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/C417.html" class="stacks-ref-link">Claim&nbsp;4.16 <span class="stacks-ref-tag">[C417]</span></a>.</em> <a href="../tag/1821.html" class="stacks-tag-link">(1821)</a></div>
+  <div class="stacks-env-body"><p>From now on the ambient dimension $r$ will be odd. We want to show that a general maximally connected chain $X\subset \P^r$ of length $r+2$ has transverse residues, as in <a href="/papers/invariants-branched-cover/tag/C89F.html" class="stacks-ref-link">Definition&nbsp;4.12 <span class="stacks-ref-tag">[C89F]</span></a>. This means we
+partition $X$ in three groups: the middle link $\Rmiddle$, and the $\frac{r+1}{2}$ links coming before ($\Xleft$) and after ($\Xright$) it. We want to show that a pair of
+quadrics $Q_{\text{left}}$ and $ Q_{\text{right}}$ containing $\Xleft$ and $\Xright$ respectively cannot have the same residual intersections with $\Rmiddle$.</p>
+<p>It is enough to exhibit a single example of such an $X$. Consider an $X$ with the following properties:
+<ul><li>$\Rmiddle$ is a smooth rational normal curve</li>
+<li>$\Rmiddle \cup \Xright$ and $\Xleft \cup \Rmiddle$ are exactly as in <a href="/papers/invariants-branched-cover/tag/8F7E.html" class="stacks-ref-link">Construction&nbsp;5.3 <span class="stacks-ref-tag">[8F7E]</span></a>. That is, to construct $\Xright$, choose a hyperplane $H$ and let $R_i=L_i \cup \overline{R}_i$, where:
+    \begin{itemize}</li>
+<li>$L_1$ is a general secant line to $\Rmiddle$</li>
+<li>$\overline{R}_1$ is a general rational normal curve in the hyperplane $H$ containing $\Rmiddle \cap H$ and $L_1 \cap H$</li>
+<li>$\overline{R}_1\cup \overline{R}_2\cup \overline{R}_3 \cup \ldots \cup \overline{R}_{\frac{r+1}{2}}\subset H$ form a
+        general maximally connected chain in $H$.</li>
+<li>$L_{i}$ is a general line joining $L_{i-1}$ and $\overline{R}_{i}$ for $i=2,\ldots,\frac{r+1}{2}$.</li></ul>
+\end{itemize}</p>
+<p> We claim that such a curve $X$ has transverse residues.    Let $\Lambdaright$ be the linear span of $L_1,L_2,\ldots, L_{\frac{r+1}{2}}$. Any quadric containing $\Xright$ must split as $H \cup \Hright$, where $\Hright$ is a hyperplane containing $\Lambdaright$. Otherwise, the restriction of such quadric to $H$ would contain a general maximally connected chain of length $\frac{r+1}{2}$, which <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a> says cannot exist.</p>
+<p>    The $r-2$ points of residual intersection of the reducible quadric $ H\cup \Hright $  with $\Rmiddle$ is the set $\Rmiddle\cap \Hright$ minus the pair of points in $L_1 \cap \Rmiddle= \Lambdaright \cap \Rmiddle$. Therefore, to see how the residual points vary in $\Rmiddle$, we only need to remember the linear space $\Lambdaright$.</p>
+<p>    Define $\Lambdaleft$ analogously. Note that we may choose the pair of
+    $(\Lambdaright, \Lambdaleft)$ arbitrarily, as long as they meet $\Rmiddle$ in a pair of points each. This is because when performing <a href="/papers/invariants-branched-cover/tag/8F7E.html" class="stacks-ref-link">Construction&nbsp;5.3 <span class="stacks-ref-tag">[8F7E]</span></a>, we may first choose the lines $L_i$ arbitrarily, and then choose fitting $\overline{R}_i$.</p>
+<p>So we want to show that for $\Lambdaright$ and $\Lambdaleft$ generic, there are no hyperplanes $\Hleft$ and $\Hright$ containing the respective linear spaces $\Lambdaleft, \Lambdaright$ whilst having the same residual intersection on $\Rmiddle$. Consider the incidence correspondence:
+$$\begin{aligned}\Sigma := \big\{ (\Lambdaleft,\Lambdaright&, \Hleft,\Hright, p_1,\ldots ,p_{r-2}) \mid\\
+& \#(\Lambdaleft \cap \Rmiddle)=\#(\Lambdaright \cap \Rmiddle)=2, \\
+& \Lambdaleft \subset \Hleft, \, \Lambdaright \subset \Hright, \\
+& \{p_1,\ldots ,p_{r-2}\} \cup (\Lambdaleft \cap \Rmiddle) = \Hleft \cap \Rmiddle, \\
+& \{p_1,\ldots ,p_{r-2}\} \cup (\Lambdaright \cap \Rmiddle) = \Hright \cap \Rmiddle
+\big\}\end{aligned}$$
+ That is, the points $p_i$ are the (common) residual intersection of the hyperplanes $\Lambda\subset H$ with
+ $\Rmiddle$. The incidence correspondence $\Sigma$ admits a projection map to:
+ $$
+ \Sigma'= \big\{(\Lambdaleft, \Lambdaright) \mid
+ \#(\Lambdaleft \cap \Rmiddle)=\#(\Lambdaright \cap \Rmiddle)=2
+ \big\}
+ $$</p>
+<p> We want to show that the map $\Sigma \to \Sigma'$ is not dominant. We do this by showing that $\dim \Sigma < \dim \Sigma'$, as follows.
+$$\begin{aligned}\dim \Sigma = & \,r-2 & \text{ (choose the $p_i$'s)}\\
+& +2 + 2 & \text{ (choose $\Lambdaleft\cap \Rmiddle$, $\Lambdaright \cap \Rmiddle$)} \\
+& + 0 + 0 & \text{ ($\Hleft, \Hright$ are the span of $p_i$'s and $\Lambda\cap \Rmiddle$)}\\
+& + \frac{(r-3)(r-1)}{4} & \text{ (choose $\Lambdaright\subset \Hright$ containing $\Lambdaright \cap \Rmiddle$)}\\&+\frac{(r-3)(r-1)}{4} & \text{ (same for $\Lambdaleft$)}\\
+ =& \frac{(r-1)^2}{2} +3 &\end{aligned}$$
+while
+$$\begin{aligned}\dim \Sigma' = &\, 2+2  & \text{ (choose pair points $\Lambda \cap \Rmiddle$)}\\
+& +\frac{(r-1)^2}{4} & \text{ (choose $\Lambdaright$ containing $\Lambdaright \cap \Rmiddle$)}\\
+&+\frac{(r-1)^2}{4} & \text{ (same for $\Lambdaleft$)}\\
+ = &\frac{(r-1)^2}{2}+4\\
+ =&\dim \Sigma+1 &\end{aligned}$$
+which is as we desired. This completes the proof of <a href="/papers/invariants-branched-cover/tag/C417.html" class="stacks-ref-link">Claim&nbsp;4.16 <span class="stacks-ref-tag">[C417]</span></a>.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — 5.1. Transverse residues">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/section/S5.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

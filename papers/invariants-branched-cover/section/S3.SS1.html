@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1. Directrices and Filtrations — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <span>3.1. Directrices and Filtrations</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.1. Directrices and Filtrations</h1>
+<p class="stacks-para">A balanced bundle on $\P^1$ has a canonically defined <em>directrix</em> subbundle.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.3.</strong> <a href="../tag/4C30.html" class="stacks-tag-link">(4C30)</a></div>
+  <div class="stacks-env-body"><p>Let $V = \sh O(m)^{\oplus a} \oplus \sh O(m+1)^{\oplus b}$ be a balanced vector bundle on $\P^1$.  Then the <em>directrix</em> subbundle $W$ is the summand $\sh O(m+1)^{\oplus b}$.</p></div>
+</div>
+<p class="stacks-para">Now let us mark two points $0$ and $\infty$ on $\P^1$, and let $[s : t]$ be homogeneous coordinates on $\P^1$ with $0 = [0 :1]$ and $\infty = [1 :0 ]$. Suppose $V$ is a balanced vector bundle on $\P^1$ and $W \subset V$ its directrix subbundle. Of course, there is no canonical identification of $V|_{0}$ with $V|_{\infty}$, since the vector bundle is not trivial.
+However, since $W = \sh O(m+1)^{\oplus b}$, the subbundle $\P W \subset \P V$ <em>is</em> trivial.
+Therefore, the subspace $W|_{0} \subset V|_{0}$ naturally corresponds to the subspace $W|_{\infty} \subset V|_{\infty}$, <em>as a subspace</em>.  Similarly, any linear subspace $L|_{0} \subset W|_{0}$ corresponds to a unique subspace $L_{\infty} \subset W_{\infty}$.</p>
+<p class="stacks-para">By the same token, since $V/W = \sh O(m)^{\oplus a}$, we see that any subspace $N|_{0} \subset V/W|_{0}$ can be naturally identified with a subspace $N|_{\infty} \subset V/W|_{\infty}$.  To summarize we have established the following.</p>
+<div class="stacks-lemma" id="transport">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.4.</strong> <a href="../tag/A69B.html" class="stacks-tag-link">(A69B)</a></div>
+  <div class="stacks-env-body"><p>Let $W \subset V$ be as above.  Then subspaces of $W|_{0}$ are in natural one to one correspondence with subspaces of $W|_{\infty}$.  Furthermore, intermediate subspaces $W|_{0} \subset N_{0} \subset V|_{0}$ are in natural one to one correspondence with intermediate subspaces $W|_{\infty} \subset N_{\infty} \subset V|_{\infty}.$</p></div>
+</div>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.5.</strong> <a href="../tag/6F2C.html" class="stacks-tag-link">(6F2C)</a></div>
+  <div class="stacks-env-body"><p>Let $F^{\bullet}$ be an increasing filtration of a vector space $A$, and let $B \subset A$ be a subspace.  We say that $F^{\bullet}$ <em>contains</em> $B$ if $B = F^{i}$ for some $i$.</p></div>
+</div>
+<div class="stacks-lemma" id="flag_transport">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;3.6.</strong> <a href="../tag/BB4E.html" class="stacks-tag-link">(BB4E)</a></div>
+  <div class="stacks-env-body"><p>The filtrations $F^{\bullet}_{0}$ of $V|_{0}$ containing $W|_{0}$ are in natural one to one correspondence with the filtrations $F^{\bullet}_{\infty}$ of $V|_{\infty}$ containing $W|_{\infty}$.</p></div>
+</div>
+<p class="stacks-para">We let $$r \from \big\{\text{filt. $F^{\bullet}_{0}$ of $V|_{0}$ containing $W|_{0}$ }\big\} \to \big\{\text{filt. $F^{\bullet}_{\infty}$ of $V|_{\infty}$ containing $W|_{\infty}$}\big\}$$ denote the natural correspondence, and let $l$ denote its inverse. We call $r(F^{\bullet}_{0})$ the <em>right transport</em> of $F^{\bullet}_{0}$, and $l(F^{\bullet}_{\infty})$ the <em>left transport</em> of $F^{\bullet}_{\infty}$</p>
+<p class="stacks-para">For a balanced vector bundle $V$ with directrix $W \subset V$, we define $$G^{\bullet}(V):= \{0 \subset W \subset V\}$$ to be the <em>directrix flag</em> of $V$.  Furthermore, we let $G^{\bullet}(V|_{0})$ and $G^{\bullet}(V|_{\infty})$ denote the respective flags in $V|_{0}$ and $V|_{\infty}$.</p>
+<div class="stacks-definition" id="refine">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.7.</strong> <a href="../tag/4A0C.html" class="stacks-tag-link">(4A0C)</a></div>
+  <div class="stacks-env-body"><p>Let $F^{\bullet} = \{0 = F^{0} \subset F^{1} \subset \ldots \subset F^{N} = A\}$ and $G^{\bullet} =\{0  \subset B \subset A\}$ be two filtrations of a $k$-vector space $A$. Then the <em>modification of $F^{\bullet}$ by $G^{\bullet}$</em>, denoted $F \vee G$, is the flag with elements $(F \vee G)^{i} = F^{i} \cap B$ for $i \leq N$, and $(F \vee G)^{j} = B+F^{j-N}$ for $j \geq N$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">The two natural filtrations at a node.</h3>
+\label{subsub-the-two-natural-filtrations}
+Now let $\chain{} := P_1 \cup P_2 \cup \ldots \cup P_k$ be a chain of $\P^1$'s.  Recall that we let $0_{i}$ and $\infty_{i}$ denote marked points $0$ and $\infty$ on the respective $P_{i}$, and $p_{j}$ be the node joining $P_{j}$ with $P_{j+1}$, so that $p_{j} = \infty_{j} = 0_{j+1}$.</p>
+<p class="stacks-para">Let $V$ be a rank $r$ vector bundle on $\chain{}$.  We continue to assume that each $V_{i}$ is balanced, and let $W_{i} \subset V_{i}$ be the $i$-th directrix subbundle.</p>
+<p class="stacks-para">At each node $p_{j}$ there are two natural filtrations of $V|_{p_{j}}$, called the <em>left filtration</em> $L^{\bullet}_{j}$ and the <em>right filtration</em> $R^{\bullet}_{j}$, which we describe inductively.  Let $L^\bullet_1 =G^\bullet(V_1|_0)$,
+and inductively define  $L^{\bullet}_{j}$ as the filtration given by
+$$
+L^{\bullet}_{j} := r\left(L^\bullet_{j-1} \wedge G^\bullet(V_j|_0) \right) \text{.}
+$$
+In words, we sequentially right transport and modify the directrix flags of the vector bundles $V_{i}$, beginning at $V_{1}$ and ending at $V_{j}$.  The filtration $R^{\bullet}_{j}$ is defined similarly, except we begin at $V_{k}$ and then sequentially left transport and modify the directrix subbundles until we reach $V_{j+1}$:
+$$
+R^\bullet_j=l\left(R^\bullet_{j+1}\wedge G^\bullet(V_{j+1}|_\infty) \right)
+$$</p>
+<p class="stacks-para">The essential point is that the collection of filtrations $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ completely captures the ``relative position'' of the system of directrices $W_{i} \subset V_{i}$.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.8.</strong> <a href="../tag/B59A.html" class="stacks-tag-link">(B59A)</a></div>
+  <div class="stacks-env-body"><p>We say that a vector bundle $V$ on $\chain{} = P_{1} \cup \ldots \cup P_{k}$ as above <em>has transverse directrices</em> if the filtrations $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ meet transversely for each node $p_{j}$.</p></div>
+</div>
+<p class="stacks-para">\begin{figure}</p>
+<p>\begingroup \makeatletter \providecommand\color[2][]{\errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}\renewcommand\color[2][]{}}\providecommand\transparent[1]{\errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}\renewcommand\transparent[1]{}}\providecommand\rotatebox[2]{#2}\ifx\svgwidth\undefined \setlength{\unitlength}{295.19999313bp}\ifx\svgscale\undefined \relax \else \setlength{\unitlength}{\unitlength * \real{\svgscale}}\fi \else \setlength{\unitlength}{\svgwidth}\fi \global\let\svgwidth\undefined \global\let\svgscale\undefined \makeatother \begin{picture}(1,1.21951222)\put(0,0){\includegraphics[width=\unitlength,page=1]{transverse-directrices-large.pdf}}</p>
+<p class="stacks-para">\put(0.21189035,0.772){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$P_1$}}}\put(0.21189035,1.07){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P W_1$}}}\put(0.21189035,1.18560758){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P V_1$}}}</p>
+<p class="stacks-para">\put(0.68,0.763){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$P_2$}}}\put(0.68,.975){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P W_2$}}}\put(0.68,1.17429298){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P V_2$}}}</p>
+<p class="stacks-para">\put(0.075,0.16540723){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$P_1$}}}\put(0.075,0.36718442){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P W_1$}}}\put(0.075,0.55764696){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P V_1$}}}</p>
+<p class="stacks-para">\put(.43,0.60856272){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P V_2$ }}}\put(.43,0.21443724){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$P_2$}}}\put(.43,0.48){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P W_2$}}}</p>
+<p class="stacks-para">\put(.823,0.50673123){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P V_3$}}}\put(.823,0.30495405){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P W_3$}}}\put(.823,0.09563389){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$P_3$}}}</p>
+<p class="stacks-para">\put(0.6,0.53){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\small \smash{$\P T$}}}\end{picture}\endgroup  \caption[Some bundles whose directrices fail to meet transversely.]{Some bundles whose directrices fail to meet transversely.</p>
+<p class="stacks-para">In the first diagram, the codimension 2 directrix $\P W_2$ of $\P V_2$ meets the codimension 1 directrix $\P W_1$ of $\P V_1$
+over the node $P_1 \cap P_2$, even though $\P V$ is a $\P^2$-bundle.</p>
+<p class="stacks-para">In the second diagram, although adjacent directrices meet transversely, if we transport the flag above node
+ $P_1 \cap P_2$ to node $P_2 \cap P_3$ via the minimal subbundle $\P T$, we get non-transverse intersection with
+ $\P W_3$.
+}
+\label{figure:transverse-directrices}</p>
+<p>\end{figure}</p>
+<p class="stacks-para">See Figure&nbsp;2 for examples of bundles whose directrices fail to meet transversely. We can now state the theorem which characterizes balanced vector bundles on chains of $\P^{1}$'s.</p>
+<div class="stacks-theorem" id="criteria">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.9.</strong> <a href="../tag/631D.html" class="stacks-tag-link">(631D)</a></div>
+  <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{} = P_{1} \cup  \ldots \cup P_{k}$.  Then  $h^{1}(\End V) = 0$ if and only if
+<ol><li>\label{criteria:cond1} Each $V_i$ is balanced, for $i = 1, \ldots, k$, and</li>
+<li>\label{criteria:cond2} $V$ has transverse directrices.</li></ol></p></div>
+</div>
+<p class="stacks-para">The remainder of this section will be spent proving <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>.</p>
+<p class="stacks-para"><a href="/papers/invariants-branched-cover/tag/28FF.html" class="stacks-ref-link">Lemma&nbsp;3.2 <span class="stacks-ref-tag">[28FF]</span></a> already states that if $V$ is balanced,
+then each $V_i$ is balanced as well. The following proposition shows that $V$ also has to have
+transverse directrices.</p>
+<div class="stacks-lemma" id="deform">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.10.</strong> <a href="../tag/680F.html" class="stacks-tag-link">(680F)</a></div>
+  <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{}$ such that $V_{i}$ are balanced for all $i$. Furthermore, suppose there is a node $p_{j}$  where $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ fail to intersect transversely.  Then $V$ is not balanced, i.e. $V$ admits a non trivial first order deformation.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/680F.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[680F]</span></a>.</em> <a href="../tag/9E1F.html" class="stacks-tag-link">(9E1F)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">We can produce non-trivial deformations of $V$ by modifying the gluing over $p_j$, in a way that the filtrations
+$L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ become transverse. While it is clear that there will be non-trivial deformations over a DVR, we need to check that the restriction to $\D=\spec k[\epsilon]/(\epsilon^2)$ is still
+non-trivial.</p>
+<p class="stacks-para">We get our hands on the first order deformations from
+the boundary map $$\delta \from \oplus_{i}  H^{0}(\End k(p_{i})^{ r}) \to H^1(\End V).$$
+Given $M = (M_{1},  \ldots , M_{k-1}) \in  \oplus _{i} H^{0}(\End k(p_{i})^{ r})$, we construct the corresponding first order deformation $\delta(M)$ of $V$ as follows. Take
+the (trivially deformed) bundle $V_i \times \D$ on each component $P_i \times \D$, and glue these vector bundles using the map
+$$
+	f_i+\epsilon M_i \from \left(V_i|_{\infty} \times \D \right) \to \left(V_{i+1}|_0 \times \D \right)
+$$
+where $f_i\from V_i|_\infty \to V_{i+1}|_0$ are the original gluing maps for the vector bundle $V$ on $P$.</p>
+<p class="stacks-para">We claim that a generic choice of $M$ makes the deformation obtained by the gluings above nontrivial. As a matter of fact, we can even take
+$M_i=0$ for $i\neq j$, as long as $M_j$ <em>separates</em> the flags $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ in
+the following sense.</p>
+<div class="stacks-definition" id="definition-separation">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.11.</strong> <a href="../tag/8D36.html" class="stacks-tag-link">(8D36)</a></div>
+  <div class="stacks-env-body"><p>Let $V$ be an $r$-dimensional $k$-vector space, and let $V[\epsilon]$ be the module $V \otimes_{k} k[\epsilon]/(\epsilon^2)$.  Suppose $A$ and $B$ are subspaces of $V$ which fail to meet properly. Let $M$ be an endomorphism of $V$ and consider the invertible module map $$f_{M} := Id + \epsilon M \from V[\epsilon] \to V[\epsilon].$$ </p>
+<p>We say that $M$ <em>separates</em> $A$ and  $B$ if the submodule $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat as a $k[\epsilon]/(\epsilon^2)$-module.</p></div>
+</div>
+<p class="stacks-para">Note that if $M_j$ separates  the flags $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$, then the deformation is not trivial.
+We just have to show that a generic choice of $M_j$ does separate these flags. The following lemma assures that this is the case.</p>
+<div class="stacks-lemma" id="lemma-separate">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.12.</strong> <a href="../tag/66DE.html" class="stacks-tag-link">(66DE)</a></div>
+  <div class="stacks-env-body"><p>Let $V$, $A$, and $B$ be as in <a href="/papers/invariants-branched-cover/tag/8D36.html" class="stacks-ref-link">Definition&nbsp;3.11 <span class="stacks-ref-tag">[8D36]</span></a>. Then there exists $M \in \End V$ which separates $A$ and $B$.  Furthermore, the general choice of $M$ separates $A$ and $B$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/66DE.html" class="stacks-ref-link">Lemma&nbsp;3.12 <span class="stacks-ref-tag">[66DE]</span></a>.</em> <a href="../tag/AC4E.html" class="stacks-tag-link">(AC4E)</a></div>
+  <div class="stacks-env-body"><p>Note that flat and free are the same notion for the local Artinian ring $k[\epsilon]/(\epsilon^{2})$.  Furthermore, a $k[\epsilon]/(\epsilon^{2})$-module $N$ is flat if and only if the multiplication map
+$\times \epsilon \from \left(N/\epsilon N \right) \to N$ is injective. </p>
+<p>We now choose a basis $\{v_{1}, \ldots , v_{r}\}$ for $V$ such that $A = \langle v_{1}, \ldots ,v_{a}\rangle$ and $B = \langle v_{m+1}, \ldots , v_{m+b}\rangle$, and assume that $m+b < r$ and $m+1 \leq a$, so that $A$ and $B$ do not meet properly.  Now consider the endomorphism $M \in \End V$ which is $0$ on all $v_{i}$ except sends $v_{m+1}$ to $v_{r}$.   Then $f_{M}(B[\epsilon]) = \langle v_{m+1} + \epsilon v_{r}, v_{m+2}, \ldots ,v_{m+b}\rangle \subset V[\epsilon]$.  The element $\epsilon v_{m+1}$ is annihilated by $\epsilon$, but is non-zero in the quotient module $A[\epsilon] \cap f_{M}(B[\epsilon])/\epsilon(A[\epsilon] \cap f_{M}(B[\epsilon]))$. Hence, $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat.</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/invariants-branched-cover/tag/66DE.html" class="stacks-ref-link">Lemma&nbsp;3.12 <span class="stacks-ref-tag">[66DE]</span></a> now implies <a href="/papers/invariants-branched-cover/tag/680F.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[680F]</span></a>.</p>
+</div>
+</div>
+<p class="stacks-para"><a href="/papers/invariants-branched-cover/tag/680F.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[680F]</span></a> tells us conditions (1) and (2) are necessary in <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>. Now we must prove sufficiency.
+Specifically, we must show that if $V$ has transverse directrices, then the difference map
+$$
+D\from \oplus_{i}H^{0}(P_{i}, \End V_{i}) \to \oplus_{i} \End (k(p_{i})^{r})
+$$
+is surjective. For $M \in \oplus_{i}H^{0}(P_{i}, \End V_{i})$, denote by $D_i(M)$ the $i$-th component of $D(M) \in \oplus_{i} \End (k(p_{i})^{r})$.
+It is enough to show that for each $j$, we can choose $M$ such that $D_i(M)=0$ for all
+$i \neq j$, while  $D_j(M) \in \End (k(p_j)^r)$ is arbitrary.</p>
+<p class="stacks-para">We will first choose $M_i$ for $i< j$ such that $D_i(M)=0$ for all $i<j$, and see what constraints we have on
+$M_{j-1}|_{\infty}$. We will then do the same from the other side, starting at $M_{k-1}$ and going down to $M_j$, and
+then conclude that the difference $D_j(M)=M_{j-1}|_\infty- M_j|_0$ can be made to be arbitrary.</p>
+<p class="stacks-para">To express the constraints on $M_{j-1}|_{\infty}$, let us introduce the following notation:</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.13.</strong> <a href="../tag/EE33.html" class="stacks-tag-link">(EE33)</a></div>
+  <div class="stacks-env-body"><p>We say that an endomorphism $M \in \End(V)$ of a vector space $V$ <em>respects the flag</em>
+$0 \subset F_1 \subset F_2 \subset \ldots \subset F_r \subset V$ if $M$ preserves the $F_i$ as subspaces of $V$.</p></div>
+</div>
+<p class="stacks-para">We now can state the following.</p>
+<div class="stacks-lemma" id="lemma-leftside">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.14.</strong> <a href="../tag/044A.html" class="stacks-tag-link">(044A)</a></div>
+  <div class="stacks-env-body"><p>We can choose $M_i \in H^{0}(P_{i}, \End V_{i})$ for $i< j$ such that $D_i(M)=0$ for $i<j$,
+and $M_{j-1}|_{\infty}\in \End (k(p_j)^r)$ is an arbitrary endomorphism that preserves the left flag
+$L^\bullet_j$.</p></div>
+</div>
+<p class="stacks-para">Of course the analogous result is true if we started from the right: we can choose $M_i \in H^{0}(P_{i}, \End V_{i})$ for $i \geq j$ such that $D_i(M)=0$ for $i>j$ and $M_j|_0 \in  H^{0}(P_{i}, \End V_{i})$ is an arbitrary
+endomorphism preserving the <em>right</em> flag $R^\bullet_j$. Now we only have to assure that we can arrange the difference  $M_{j-1}|_{\infty}-M_j|_0$ to be arbitrary. The following lemma does that.</p>
+<div class="stacks-lemma" id="lemma-transverse-flags">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.15.</strong> <a href="../tag/8893.html" class="stacks-tag-link">(8893)</a></div>
+  <div class="stacks-env-body"><p>If $F^\bullet$ and $G^\bullet$ are transverse flags of a vector space $V$, then any endomorphism of $V$ can be written as a difference of an endomorphism respecting the flag $F^\bullet$, and one respecting $G^\bullet$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/8893.html" class="stacks-ref-link">Lemma&nbsp;3.15 <span class="stacks-ref-tag">[8893]</span></a>.</em> <a href="../tag/59F6.html" class="stacks-tag-link">(59F6)</a></div>
+  <div class="stacks-env-body"><p>Without loss of generality, we may assume that $F^\bullet$ and $G^\bullet$ are complete flags. Indeed, if they are not, just choose generic finer complete flags containing them, and the problem only becomes more restrictive.</p>
+<p>Now pick a basis $v_1,\ldots, v_n$ of $V$ such that $\langle v_i \rangle = F^i \cap G^{n-i-1}$. In this basis,
+endomorphisms preserving $F^\bullet$ are upper triangular matrices, and the ones respecting $G^\bullet$ are the lower
+triangular ones. And any matrix can be written as a difference of two such matrices.</p></div>
+</div>
+<p class="stacks-para">To complete the proof of <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>, we only need to prove <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>.</em> <a href="../tag/A182.html" class="stacks-tag-link">(A182)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">We proceed by induction on the length of the chain $\chain{}$. If there is only one component, the claim states that for
+any endomorphism $\overline{M}:V_1|_\infty \to V_1|_\infty$ which sends the restriction of the directrix $W|_{\infty}$  to itself,
+we can find $M \in H^0(\End(V_1))$ such that $M|_\infty = \overline{M}$.</p>
+<p class="stacks-para">Fix a splitting $V_1 = \sh{O}(m)^a \oplus \sh{O}(m+1)^b$. Then $\End(V_1)= \sh{O}^{a^2} \oplus \sh{O}(1)^{ab} \oplus
+\sh{O}(-1)^{ab} \oplus \sh{O}^{b^2}$, and we can realize this splitting more naturally by realizing an element of $\End V_1$ as an $(a+b) \times (a+b)$ matrix block matrix. For
+example, for $a=2, b=3$, we have
+$$
+\End V_1 =
+\left[
+\begin{array}{cc|ccc}
+\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\
+\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\ \hline
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}
+\end{array}
+\right]
+$$
+The global sections of $\End(V_1)$ restrict to an arbitrary block upper triangular matrix at $\infty$. And being
+block upper triangular exactly means that the directrix is preserved. This proves the case for one component.</p>
+<p class="stacks-para">For the induction step, we are given an endomorphism $\overline{M}$ of $V_{j-1}|_{\infty}$ preserving $L^\bullet_j$,
+and we want to find $M \in H^0(\End(V_{j-1})$ such that
+<ul><li>$M|_{\infty}=\overline{M}$, and</li>
+<li>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</li></ul></p>
+<p class="stacks-para">This is enough for our purposes, because by induction we can choose global sections of $\End(V_i)$ for $i<j-1$ such that
+all differences $D_i$ are zero, for $i<j-1$, and produce $M|_0$ over the $(j-1)$-th node.</p>
+<p class="stacks-para">We will choose an appropriate splitting of $V_{j-1}$ so that endomorphisms preserving the flags $L^\bullet_{j-1}$
+and $L^\bullet_j$ become block matrices.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.16.</strong> <a href="../tag/2870.html" class="stacks-tag-link">(2870)</a></div>
+  <div class="stacks-env-body"><p>An ordered basis $v_1,\ldots, v_n$ <em>generates the flag</em> $F^\bullet$ if each $F^i$ is the span of
+$v_1,v_2,\ldots, v_{n_i}$ for some $n_i$.</p></div>
+</div>
+<div class="stacks-env" id="basis">
+  <div class="stacks-env-head"><strong>Claim&nbsp;3.17.</strong> <a href="../tag/BD5C.html" class="stacks-tag-link">(BD5C)</a></div>
+  <div class="stacks-env-body"><p>We may choose an ordered basis $v_1,\ldots, v_n$ of $V_{j-1}|_0$ generating $L^\bullet_{j-1}$ and
+such that $W_{j-1}|_{0}=\langle v_k,v_{k+1}, \ldots, v_n \rangle$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/BD5C.html" class="stacks-ref-link">Claim&nbsp;3.17 <span class="stacks-ref-tag">[BD5C]</span></a>.</em> <a href="../tag/2D76.html" class="stacks-tag-link">(2D76)</a></div>
+  <div class="stacks-env-body"><p>We use the same idea as in the proof of <a href="/papers/invariants-branched-cover/tag/8893.html" class="stacks-ref-link">Lemma&nbsp;3.15 <span class="stacks-ref-tag">[8893]</span></a>. Complete $L^\bullet_{j-1}$
+and $G^\bullet=(0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ to generic complete flags $\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
+Since $G^\bullet$ is transverse to $L^\bullet_{j-1}$ by assumption, so is
+$\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
+Choose $v_i$ such that $\langle v_i \rangle = \widehat{L}^i_{j-1} \cap \widehat{G}^{n-i-1}$.</p></div>
+</div>
+<p class="stacks-para">Note that the modification $L^\bullet_{j-1} \wedge (0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ is generated by the
+ordered basis $(v_k,v_{k+1},\ldots, v_n, v_1, v_2, \ldots, v_{k-1})$.</p>
+<p class="stacks-para">Now pick a splitting of $V_{j-1}$ that restricts to the basis $v_1,\ldots, v_n$ over zero. Let us write the matrix $M \in H^0(\End(V_{j-1}))$ in this basis.
+For convenience, we will use block notation, separating the vectors generating $W$ (that is, $v_k,\ldots, v_n$), from the remaining $v_1,\ldots, v_{k-1}$.</p>
+<p class="stacks-para">$$
+M =
+\left[
+\begin{array}{c|c}
+M(V/W,V/W) & M(W,V/W) \\ \hline
+M(V/W,W) & M(W,W)
+\end{array}
+\right]
+$$
+We want $M|_0$ to respect the flag $L^\bullet_{j-1}$, and $M|_\infty$ to be the given matrix $\overline{M}$ respecting the $L_j$ flag. In this block notation this
+translates into the following conditions:
+<ol><li>The matrix $M(V/W,V/W)$ is upper block triangular when restricted to both zero and infinity (for the same block shapes). The entries of
+	$M(V/W,V/W)$ are valued in $\sh{O}_{\P^1}$, so we must take the constant matrix specified by $\overline{M}$.</li>
+<li>The same applies for the block $M(W,W)$: we want it to be upper block triangular at zero, with the restriction at infinity specified by $\overline{M}$.  Since the matrix $M(W,W)$ is valued in $\sh{O}_{\P^1}$, we must use a constant matrix.</li>
+<li>The entries of $M(W,V/W)$ are valued in $\sh{O}_{\P^1}(-1)$, so it has to be the zero matrix. This poses no problems, because at infinity the
+	corresponding block of $\overline{M}$ is automatically zero to begin with.</li>
+<li>Finally, the block $M(V/W,W)$ must restrict to a specified matrix  over infinity (given by $\overline{M}$), but has to vanish over zero. This can be
+	achieved, because all the entries are valued in $\sh{O}_{\P^1}(1)$, so we may take linear functions interpolating between arbitrary values
+	at zero and infinity.</li></ol></p>
+<p class="stacks-para">This completes the proof <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>, and hence by induction the proof of <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>.</p>
+</div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — 3.1. Directrices and Filtrations">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/section/S3.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

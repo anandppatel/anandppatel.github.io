@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6.5. Existence of singular triads — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degrees $9,8$ and $7$</a> / <span>6.5. Existence of singular triads</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.5. Existence of singular triads</h1>
+<p class="stacks-para">\label{ssec:existence-of-singular-triads}</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.9.</strong> <a href="../tag/0C7B.html" class="stacks-tag-link">(0C7B)</a></div>
+  <div class="stacks-env-body"><p>Define $\Phi \subset \Hilb_{3}\bp^{2} \times \Hilb_{13}\bp^{2}$ to be the closure of the set of
+pairs
+$(\{x,y,z\}, \Gamma_{13}) \subset \Hilb_3\bp^2 \times \Hilb_{13} \bp^2$ for which $\left\{ x, y, z \right\}$ is disjoint from the support of $\Gamma_{13}$, and for which there exists a pencil of quintics singular at $x,y,z$ whose base locus is precisely $\left\{ x,y,z \right\} \cup \Gamma_{13}$.
+Define the projections
+$$\text{[Commutative diagram — see PDF]}$$</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-DegenerateConfigurationInClosure">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.10.</strong> <a href="../tag/395E.html" class="stacks-tag-link">(395E)</a></div>
+  <div class="stacks-env-body"><p>There exists a point $(\{x,y,z\}, A_{13}) \in \Phi$ which is isolated in its fiber under the second projection $\pi_{2} \from \Phi \to \Hilb_{13}\bp^{2}$. In particular, $\pi_{2}$ is dominant, and a general set $\Gamma_{13}$ possesses a singular triad.</p></div>
+</div>
+<p class="stacks-para">The rest of the section is devoted to the proof of <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>.  Before we proceed with the proof in Subsection 6.5.2, we set some notation and outline the idea of the proof in
+6.5.1</p>
+<div class="stacks-definition" id="definition-">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.11.</strong> <a href="../tag/4470.html" class="stacks-tag-link">(4470)</a></div>
+  <div class="stacks-env-body"><p>Let $x_0, x_1, x_2$ denote three fixed non-collinear points in $\bp^2$ and set $l_{i,j} :=\overline{x_{i}x_{j}}$ forming the coordinate triangle. </p>
+<p>Let $X := \Bl_{\{x_{0},x_{1},x_{2}\}}\bp^{2}$, and let $E_{i}$ denote the exceptional divisor over $x_{i}$, $i = 1,2,3$. Set $L_{i,j}$ to be the proper transforms of the lines $l_{i,j} := \overline{x_i, x_j}$.   We let $H$ denote the hyperplane class on $\bp^{2}$ and its pullback on $X$.  By a <em>line</em> in $X$, we mean an element of the linear system $|H|$ on $X$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">The idea of the Proof of <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>.</h3>
+\label{sssec:degeneration-proof-idea}</p>
+<p class="stacks-para">In order to prove <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>, we will
+construct a particular set $[\Gamma_{13}] \in \Hilb_{13} \bp^2$ which
+we will be able to see is isolated in its fiber under the map $\pi_2$.
+The construction is as follows.
+Start by choosing a general line $M$ and a general point $p_{7}$
+not on $M$. Then, choose points
+$$\begin{aligned}p_1, p_2 &\in \ell_{0,1} \\
+	p_3, p_4 &\in \ell_{0,2} \\
+	p_5, p_6 &\in \ell_{1,2} \\
+	p_8, p_9, p_{10} &\in M\end{aligned}$$
+all general with respect to the above conditions.
+We will then see that there is an element $(\left( x_0, y_0, z_0 \right), \Gamma_{13}) \in \Phi$ so that $p_1 \cup \cdots \cup p_{10} \subset \Gamma_{13}$,
+and further that the remaining degree three scheme of $\Gamma_{13}$ is
+supported on $M$. The hard part of the proof will be seeing that this
+configuration lies in $\Phi$. This is done in <a href="/papers/interpolation-del-pezzo/tag/49C4.html" class="stacks-ref-link">Corollary&nbsp;6.19 <span class="stacks-ref-tag">[49C4]</span></a>.
+Once we know this configuration does lie in $\Phi$, it is not difficult
+to see it is isolated. Since $\Gamma_{13}$ intersects $M$ with degree $6$,
+every quintic containing $\Gamma_{13}$ must contain $M$. We are then looking
+for a pencil of quartics with base locus containing $p_1, \ldots, p_6, p_7$
+and having three additional singular nodes.
+If the three singular nodes
+do not lie on $M$, then this can only happen if the pencil of quartics
+contains curves in its base locus. A case by case analysis shows
+that if the three nodes are not collinear, the only possibility, up to permutation of the points, is that the base locus of this pencil of quartics is
+$\ell_{0,1} \cup \ell_{0,2} \cup \ell_{1,2} \cup p_{7}$ and the moving part
+of this pencil is the pencil of lines containing $p_{7}$. This
+will be isolated in its fiber.
+Then, this means $\pi_2$ is dominant
+because both varieties are irreducible and
+$\dim \Phi = 26 = \dim \Hilb_{13}\bp^2$, as shown in <a href="/papers/interpolation-del-pezzo/tag/1DB6.html" class="stacks-ref-link">Lemma&nbsp;6.13 <span class="stacks-ref-tag">[1DB6]</span></a>. This concludes our sketch of the idea of the proof.</p>
+<p class="stacks-para">The proof of the following lemma is straightforward, and we omit its proof.</p>
+<div class="stacks-lemma" id="lem-generalquinticpencil">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.12.</strong> <a href="../tag/0F93.html" class="stacks-tag-link">(0F93)</a></div>
+  <div class="stacks-env-body"><p>Let $\Gamma_{10} \subset X$ be ten general points. Then there is a unique pencil in the linear system $|5H - 2E_{1} - 2E_{2} - 2E_{3}|$ containing $\Gamma_{10}$  in its base locus.  Furthermore, the base locus of this pencil consists of the union of  $\Gamma_{10}$, and three residual points $\{a,b,c\} \subset S$ disjoint from $\Gamma_{10}$.</p></div>
+</div>
+<div class="stacks-lemma" id="lem-dimensionPhi">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.13.</strong> <a href="../tag/1DB6.html" class="stacks-tag-link">(1DB6)</a></div>
+  <div class="stacks-env-body"><p>$\Phi$ is $26$-dimensional.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F6C9.html" class="stacks-tag-link">(F6C9)</a></div>
+  <div class="stacks-env-body"><p>First select three general points $\{x,y,z\}$ in $\bp^{2}$, giving $6$ dimensions. Using <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a>, a general pencil of quintics singular at $\{x,y,z\}$ is determined by choosing ten general points to be in its base locus. The remaining three points of the base locus are determined
+	by the initial choice of 10, by <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a>. In total, we have that $\Phi$ is $26 = 6 + 2 \cdot 10$ dimensional.</p></div>
+</div>
+<p class="stacks-para">Let $\Gamma_{10}(t) = \{p_{1}(t), p_{2}(t), ... , p_{10}(t)\} \subset X \times \Delta$ be a family of ten points, parameterized by $\Delta := \Spec k[[t]]$, general among those with the following properties:</p>
+<p class="stacks-para">\begin{enumerate}
+\item Over the generic point $\eta \in \Delta$, the points $p_{i}(\eta)$ are general in the sense of <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a>.</p>
+<p class="stacks-para">\item Over the special point $t=0$, the ten points $p_{i}(0)$ are situated as follows:</p>
+<p class="stacks-para"><ol><li>$p_{1}(0), p_{2}(0)$ are general in $L_{0,1}$.</li>
+<li>$p_{3}(0), p_{4}(0)$ are general in $L_{0,2}$.</li>
+<li>$p_{5}(0), p_{6}(0)$ are general in $L_{1,2}$.</li>
+<li>$p_{7}(0)$ is general in $X$.</li>
+<li>$p_{8}(0), p_{9}(0), p_{10}(0)$ are general on a general line $M \subset X$.</li></ol>
+\end{enumerate}</p>
+<p class="stacks-para">By <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a>, there are three residual points $\{a(\eta), b(\eta), c(\eta)\}$ defined by the ten points $\{p_{i}(\eta)\}_{i=1, ... , 10}$. We let $\{a(t), b(t), c(t)\}$ denote the closures of these points.  (Note: a base change may be required to say the three residual basepoints $\{p_{i}(\eta)\}_{i=1, ... , 10}$ are defined over $\Spec k((t))$. Performing such a base change does not affect the rest of the arguments.)</p>
+<p class="stacks-para">Now let $\scx$ be the threefold which is the blow up of $X \times \Delta$ at the union of the three curves $L_{i,j} \subset X \times \{0\}$, and let $\beta \from \scx \to X \times \Delta$ be the blow up map.  Let $f \from \scx \to \Delta$ denote the composition of $\beta$ with the projection onto the second factor of $X \times \Delta$.  $\scx_{\eta}$ and $\scx_{0}$ will denote the general and special fibers of $f$.  Note that $\scx_{\eta} = X_{\eta} := X \times \Spec k((t))$.</p>
+<p class="stacks-para">There are three exceptional divisors $F_{i,j}$ lying over the corresponding curves $L_{i,j} \subset X \times \{0\}$.  The map $f$ is a flat family of surfaces, with generic fiber $\scx_{\eta} = X_{\eta}$ and with special fiber $\scx_{0}$ a simple normal crossing union of four surfaces:
+the exceptional divisors $F_{i,j}$, and $X$.  Their incidence is as follows: The surfaces $F_{i,j}$ are pairwise disjoint and $F_{i,j} \cap X = L_{i,j}$.</p>
+<p class="stacks-para">Each exceptional divisor $F_{i,j}$ is isomorphic to the Hirzebruch surface $\F_{1}$. This is because each rational curve $L_{i,j} \subset X_{0}$ has self-intersection $(-1)$, and therefore has normal bundle $N_{L_{i,j}/X \times \Delta} \cong \so(-1)\oplus \so.$</p>
+<p class="stacks-para">On $\F_{1}$, we let $S$ denote the divisor class of a <em>codirectrix</em>, a section class having self-intersection $+1$.
+	We denote by $R$ the ruling line class.  We let $S_{i,j}$ and $R_{i,j}$ denote the corresponding divisor classes on $F_{i,j}$.</p>
+<p class="stacks-para">Let $\scl$ be the line bundle $\beta^{*}(\so_{X \times \Delta}(5H - 2E_{1}-2E_{2}-2E_{3}))$, and let $p'_{i}(t) \subset \scx$ denote the lifts of $p_{i}(t)$ to $\scx$. In other words, $\{p'_{i}(t) \}_{i=1, ... 10}$ are the closures of the points $\{p_{i}(\eta)\} \in X_{\eta} = \scx_{\eta}$ in $\scx$.</p>
+<p class="stacks-para">By the generality assumptions on the $1$-parameter family of points $\{p_{i}(t)\}_{i=1, ... , 10}$ in $X \times \Delta$, we may assume the following about the central configuration of points $p'_{i}(0)$ in $\scx_{0}$:
+<ol><li>The points $p'_{1}(0), p'_{2}(0)$ are general in $F_{0,1}$.</li>
+<li>The points $p'_{3}(0), p'_{4}(0)$ are general in $F_{0,2}$.</li>
+<li>The points $p'_{5}(0), p'_{6}(0)$ are general in $F_{1,2}$.</li>
+<li>The points $m_{i,j} := M \cap L_{i,j}$ are general in $F_{i,j}$ with respect to the other two points mentioned in each part above.</li></ol></p>
+<p class="stacks-para">\begin{figure}
+$$\text{[Commutative diagram — see PDF]}$$
+\caption{A pictorial summary of relevant schemes}
+\end{figure}</p>
+<p class="stacks-para">Set $$\scl ' := \scl(-F_{0,1} - F_{0,2} - F_{1,2}).$$
+The following lemma is straightforward to prove.</p>
+<div class="stacks-lemma" id="lem-restrictionsofLprime">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.14.</strong> <a href="../tag/AAED.html" class="stacks-tag-link">(AAED)</a></div>
+  <div class="stacks-env-body"><p>The line bundle $\scl '$ restricts to $\so_{F_{i,j}}(S_{i,j} + R_{i,j})$ on the exceptional divisors $F_{i,j} \subset \scx_{0}$ and restricts to $\so_{X}(2H)$ on $X \subset \scx_{0}$.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.15.</strong> <a href="../tag/414B.html" class="stacks-tag-link">(414B)</a></div>
+  <div class="stacks-env-body"><p>For the benefit of the reader, we give an alternate description of the linear system $|S + R|$ on $\F_{1}$ appearing in the above lemma.  If we view $\F_{1}$ as the blow up of $\bp^{2}$ at a point $q \in \bp^{2}$, then the linear system $|S+R|$ is the system of conics through the point $q$.  </p>
+<p>In particular, if three more general points are chosen on $\F_{1}$, there will be a unique pencil of curves in $|S+R|$ containing them.</p></div>
+</div>
+<p class="stacks-para">Now consider the sheaf $\scf := \sci_{\{p'_{i}(t)\}_{i=1, ..., 10}} \otimes \scl '$ .</p>
+<div class="stacks-lemma" id="lem-cohomologybasechange">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.16.</strong> <a href="../tag/22DE.html" class="stacks-tag-link">(22DE)</a></div>
+  <div class="stacks-env-body"><p>The $k[[t]]$-module $H^{0}(\scx, \scf)$ is free of rank $2$.  Furthermore, the restriction map $$H^{0}(\scx, \scf) \to H^{0}(\scx_{0}, \scf|_{\scx_{0}})$$ is surjective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4E8E.html" class="stacks-tag-link">(4E8E)</a></div>
+  <div class="stacks-env-body"><p>$\scf$ is a torsion free sheaf, hence $H^{0}(\scx, \scf)$ is a torsion free $k[[t]]$-module, i.e. it is free. <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a> tells us that the rank must be $2$.</p>
+<p>By Grauert's theorem, it suffices to show $$h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2.$$  </p>
+<p>A section $s$ of $\scf|_{\scx_{0}}$ is a section of $\scl ' |_{\scx_{0}}$ vanishing at the ten points $p'_{i}(0)$. We will now analyze what the zero locus of $s$ must be on each of the four components of $\scx_{0}$, beginning with $X$. </p>
+<p>The restriction $s|_{X}$ vanishes on a conic containing $p'_{7}(0), p'_{8}(0), p'_{9}(0),$ and $p'_{10}(0)$. Since the latter three points are collinear lying on the line $M$, such a conic is degenerate, of the form $M \cup N$, where $N$ is any line containing $p'_{7}(0)$. </p>
+<p>The restriction $s|_{F_{0,1}}$ vanishes on a divisor of class $|S_{0,1} + R_{0,1}|$ containing the pair of points $p'_{1}(0), p'_{2}(0)$.  Similar descriptions hold for the remaining two components. </p>
+<p>A section $s$ of $\scf |_{\scx_{0}}$ consists of sections on each component which agree on the intersection curves $L_{i,j}$.
+We claim that such a global section is determined, up to scaling, by its restriction to the component $X$.  Indeed, by choosing a conic of the form $M \cup N$, we determine two points $m_{i,j}, n_{i,j}$ on each line $L_{i,j}$, namely the intersections $M \cap L_{i,j}$, $N \cap L_{i,j}$.  </p>
+<p>From the generality assumptions we have imposed, we get that there is a unique curve in the class $|S_{0,1} + R_{0,1}|$ containing the four points  $p'_{1}(0), p'_{2}(0), m_{0,1},$ and $n_{0,1}$.  Similarly for the other components $F_{i,j}$.
+It follows that any global section of $\scf$ is determined, up to scaling, by its restriction to $X$. But the restriction to $X$ is a degenerate conic of the form $M \cup N$ as described above, and therefore $h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2$, as we claimed.</p></div>
+</div>
+<div class="stacks-lemma" id="lem-centralbaselocus">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.17.</strong> <a href="../tag/7977.html" class="stacks-tag-link">(7977)</a></div>
+  <div class="stacks-env-body"><p>The common zero locus of all sections of $\scf |_{\scx_{0}}$ is $M \cup \{p'_{1}(0) , ... , p'_{6}(0) , p'_{7}(0)\}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0702.html" class="stacks-tag-link">(0702)</a></div>
+  <div class="stacks-env-body"><p>This follows from the description of the zero loci of sections of  $\scf |_{\scx_{0}}$ found in the proof of <a href="/papers/interpolation-del-pezzo/tag/22DE.html" class="stacks-ref-link">Lemma&nbsp;6.16 <span class="stacks-ref-tag">[22DE]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Let $\langle f_{1}, f_{2} \rangle$ be a $k [[t]]$-basis for $H^{0}(\scx, \scf)$.
+Note that, $\langle f_{1}, f_{2} \rangle$ restricts to a basis $H^{0}(\scx_{0}, \scf|_{\scx_{0}})$ by <a href="/papers/interpolation-del-pezzo/tag/22DE.html" class="stacks-ref-link">Lemma&nbsp;6.16 <span class="stacks-ref-tag">[22DE]</span></a>.</p>
+<div class="stacks-lemma" id="lem-familybaseloci">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.18.</strong> <a href="../tag/2908.html" class="stacks-tag-link">(2908)</a></div>
+  <div class="stacks-env-body"><p>Maintain the notation above, and let $\scy \subset \scx$ defined by $f_{1} = f_{2} = 0$ be the common zero scheme.  Then, as schemes, $\scy \cap \scx_{0} =  M \cup \{p'_{1}(0) , ... , p'_{6}(0) , p'_{7}(0)\}$ and $\scy \cap \scx_{\eta} = \{p_{1}(\eta), ... , p_{10}(\eta), a(\eta), b(\eta), c(\eta)\}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4767.html" class="stacks-tag-link">(4767)</a></div>
+  <div class="stacks-env-body"><p>The generality assumptions on the original family of points $p_{i}(t)$ and <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a> ensure the statement regarding $\scy \cap \scx_{\eta}$. Then, $\scy \cap \scx_{0} =  M \cup \{p'_{1}(0) , ... , p'_{6}(0) , p'_{7}(0)\}$ follows from <a href="/papers/interpolation-del-pezzo/tag/7977.html" class="stacks-ref-link">Lemma&nbsp;6.17 <span class="stacks-ref-tag">[7977]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Now let $\{a'(t), b'(t), c'(t)\}$ denote the closures of $\{a(\eta), b(\eta), c(\eta)\}$ in $\scx$.</p>
+<div class="stacks-lemma" id="cor-closureofresidual">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.19.</strong> <a href="../tag/49C4.html" class="stacks-tag-link">(49C4)</a></div>
+  <div class="stacks-env-body"><p>The scheme $\{p'_{8}(t), p'_{9}(t), p'_{10}(t), a'(t), b'(t), c'(t)\} \cap \scx_{0}$ is contained in the line $M \subset X \subset \scx_{0}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/119E.html" class="stacks-tag-link">(119E)</a></div>
+  <div class="stacks-env-body"><p>This follows from <a href="/papers/interpolation-del-pezzo/tag/2908.html" class="stacks-ref-link">Lemma&nbsp;6.18 <span class="stacks-ref-tag">[2908]</span></a>.  Indeed, $$\{p'_{8}(t), p'_{9}(t), p'_{10}(t), a'(t), b'(t), c'(t)\} \cap \scx_{0}$$ must be a subscheme of $\scy \cap \scx_{0} =  M \cup \{p'_{1}(0) , ... , p'_{6}(0) , p'_{7}(0)\}$.  The sections $\{a'(t), b'(t), c'(t)\}$ cannot limit to any of the seven isolated points $\{p'_{1}, ... , p'_{7}\}$, since these seven points occur with multiplicity one in the scheme $\scy \cap \scx_{0}$. Therefore, the points $\{a'(0), b'(0), c'(0)\}$  must limit to $M$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Proof of <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>.</h3>
+\label{sssec:degeneration-proof}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A97F.html" class="stacks-tag-link">(A97F)</a></div>
+  <div class="stacks-env-body"><p>A one parameter family of thirteen points $$\{p_{1}(t), ... , p_{10}(t), a(t), b(t), c(t)\}$$ discussed above limits, at $t=0$, to a configuration which we call $\Gamma_{13} \subset \bp^{2}$.  (Technically, $\Gamma_{13}$ is a set in $X$, but we view it as a set in $\bp^{2}$, since $\Gamma_{13}$ avoids the exceptional divisors in $X$.)</p>
+<p>Now we argue that the pair $(\{x_{0},y_{0},z_{0}\}, \Gamma_{13})$ is isolated in its fiber under the projection $\pi_{2} \from \Phi \to \Hilb_{13}\bp^2$.</p>
+<p>It suffices to show that there are only finitely many noncollinear triads $T \subset \bp^{2}$ disjoint from $\Gamma_{13}$ for which there is a pencil of quintics $C_{t}$ all singular at $T$ and containing $\Gamma_{13}$.</p>
+<p>Any pencil of quintics containing $\Gamma_{13}$ must contain the line $M$ in its base locus, since $6$ of the points of $\Gamma_{13}$, $\{p_{8}(0), p_{9}(0), p_{10}(0), a(0), b(0), c(0)\}$ lie on this line (<a href="/papers/interpolation-del-pezzo/tag/49C4.html" class="stacks-ref-link">Corollary&nbsp;6.19 <span class="stacks-ref-tag">[49C4]</span></a>). Therefore, the residual quartic curves of the pencil, denoted $C'_{t}$, form a pencil of curves singular at $T$, and containing $\{p_{1}(0), ... , p_{6}(0), p_{7}(0)\}$ in its base locus.  Note that the set $\{p_{1}(0), ... , p_{6}(0), p_{7}(0)\}$ is a general set of seven points in the plane.</p>
+<p>By degree considerations, a pencil of quartics $C'_{t}$ singular at $T$ and having $7$ remaining points in its base locus is forced to have an entire curve $B$ in its base locus.   The curve $B$ must have degree $1, 2,$ or $3$.  </p>
+<p>A straightforward combinatorial check shows that if the three points of $T$ are not collinear, the curve $B$ must be the union of three lines joined by three pairs of points among the set $\{p_{1}(0) ,... ,p_{6}(0), p_{7}(0)\}$, and the triad $T$ is the vertices of the triangle $B$.  All told, there are only finitely many possibilities for $T$, which in turn implies that $(\{x_{0},y_{0},z_{0}\}, \Gamma_{13})$ is isolated in its fiber under projection $\pi_{2} \from \Phi \to \Hilb_{13}\bp^2$.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-630">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.20.</strong> <a href="../tag/4954.html" class="stacks-tag-link">(4954)</a></div>
+  <div class="stacks-env-body"><p>The method of proof for <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a> actually shows that there are at least $630$  $3$-Veronese surfaces through thirteen general points in $\bp^{9}$. The reason for this is that we made several
+choices in constructing an isolated point of the incidence correspondence.
+We choose one of the points $p_1, \ldots, p_6, p_7$ to not lie
+in the triangle containing the nodal base locus, and we then chose a division
+of the remaining six points into three pairs of two points.
+In total there are $7 \cdot \frac{6!}{2! \cdot 2! \cdot 2!} = 630$
+such choices, and hence at least $630$ isolated points.
+Then it follows that there are at least $630$ $3$-Veronese surfaces
+through a general set of $13$ points by
+[Sha13, II.6.3, Theorem 3].</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 6.5. Existence of singular triads">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S6.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 7 — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 7: Further Questions</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 7. Further Questions</h1>
+<p class="stacks-para">We conclude with some interesting open interpolation problems.</p>
+<p class="stacks-para">Since weak interpolation is equivalent to interpolation
+for del Pezzo surfaces of degrees $3,4,5$, and $9$,
+it is immediate from theorem:main that
+del Pezzo surfaces of degree $3, 4, 5$ and $9$ surfaces satisfy interpolation,
+while the remaining del Pezzo surfaces satisfy weak interpolation.</p>
+<div class="stacks-env" id="question-">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.1.</strong> <a href="../tag/8895.html" class="stacks-tag-link">(8895)</a></div>
+  <div class="stacks-env-body"><p>Do all del Pezzo surfaces satisfy strong interpolation?
+	If so, how many del Pezzo surfaces meet
+	a collection of points and a linear space,
+	as given in Table&nbsp;1?</p></div>
+</div>
+<p class="stacks-para">It was mentioned in the introduction that plane conics
+constitute all anticanonically embedded Fano varieties of dimension 1 and
+del Pezzo surfaces constitute those of dimension 2.
+As we have seen these both satisfy weak interpolation.
+Further, there is a complete classification of Fano
+varieties in dimension 3 [IP99].
+Unfortunately, it is immediately clear that not all
+Fano varieties in dimension more than 3 satisfy interpolation.
+A counterexample is provided by the complete intersection of
+a quadric and cubic hypersurface in $\bp^5$.
+This leads to the following question:</p>
+<div class="stacks-env" id="question-">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.2.</strong> <a href="../tag/B2F8.html" class="stacks-tag-link">(B2F8)</a></div>
+  <div class="stacks-env-body"><p>Which Fano threefolds, embedded by their
+	anticanonical sheaf, satisfy weak interpolation?
+	Which Fano threefolds, embedded by their anticanonical sheaf,
+	satisfy interpolation? Which Fano varieties in dimension more than $3$ satisfy
+	interpolation?</p></div>
+</div>
+<p class="stacks-para">In another direction, we may note that surfaces of minimal degree satisfy
+interpolation, that is, surfaces of degree $d-1$ in $\bp^d$ satisfy
+interpolation by <a href="/papers/interpolation-del-pezzo/tag/F076.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[F076]</span></a>.
+In this paper, we show that all smooth surfaces of one more than minimal
+degree, which are not projections of surfaces of degree $d$ from $\bp^{d+1}$
+as described in [Cos06b, Theorem 2.5].
+satisfy interpolation. That is, surfaces of degree $d$ in $\bp^d$ satisfy interpolation.</p>
+<div class="stacks-env" id="question-">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.3.</strong> <a href="../tag/2F88.html" class="stacks-tag-link">(2F88)</a></div>
+  <div class="stacks-env-body"><p>Do all smooth surfaces of degree $d$ in $\bp^d$ satisfy
+	interpolation? Equivalently, using
+	[Cos06b, Theorem 2.5]
+	theorem:main,
+			do projections of surfaces of minimal
+	degree from a point
+	satisfy interpolation?</p></div>
+</div>
+<p class="stacks-para">While all smooth linearly normal nondegenerate surfaces of degree $d$ in $\bp^d$
+satisfy weak interpolation, note that not all surfaces of degree $d+2$
+in $\bp^d$ will satisfy interpolation.
+This is because the complete
+intersection of a quadric and cubic hypersurface in $\bp^4$ does not
+satisfy interpolation.
+So, in some way, surfaces of degree $d + 1$ in $\bp^d$
+are the turning point between surfaces satisfying interpolation
+and surfaces not satisfying interpolation.
+This leads naturally to the following question.</p>
+<div class="stacks-env" id="question-">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.4.</strong> <a href="../tag/F889.html" class="stacks-tag-link">(F889)</a></div>
+  <div class="stacks-env-body"><p>Do surfaces of degree $d + 1$ in $\bp^d$ satisfy interpolation?</p></div>
+</div>
+<p class="stacks-para">From <a href="/papers/interpolation-del-pezzo/tag/F076.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[F076]</span></a>, we know that varieties of dimension
+$k$ and degree $d$ in $\bp^{d+k-1}$ satisfy interpolation.
+In this paper we have seen that varieties of degree $2$ and
+dimension $2$ (which are nondegenerate and not projections
+of varieties of minimal degree)
+in
+$\bp^{d + 2 - 2} = \bp^d$ satisfy interpolation.
+This too  offers an immediate generalization.</p>
+<div class="stacks-env" id="question-">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.5.</strong> <a href="../tag/895E.html" class="stacks-tag-link">(895E)</a></div>
+  <div class="stacks-env-body"><p>Do varieties of dimension $k$ and degree $d$ in
+	$\bp^{d+k-2}$ satisfy interpolation?</p></div>
+</div>
+<p class="stacks-para">Similarly, we have seen the very beginnings of interpolation
+for Veronese embeddings. That is, by the discussion in
+1.2.1,
+all rational normal curves which are the Veronese embeddings
+of $\bp^1$ satisfy interpolation. In general, interpolation
+of the $r$-Veronese embedding of $\bp^n$ which is the image of
+$\bp^n \rightarrow \bp^{\binom{n+r}{n}-1}$ is equivalent
+to the question of whether the Veronese surface
+passes through $\binom{n+r}{r} + n +1$ points.
+Unlike the del Pezzo surfaces and rational normal scrolls,
+Veronese embeddings are a class of varieties for
+which interpolation only imposes point conditions, and not
+an additional linear space condition. Perhaps
+this coincidence may be helpful in finding the solution to
+the following question.</p>
+<div class="stacks-env" id="question-veronese-interpolation">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.6.</strong> <a href="../tag/1CBE.html" class="stacks-tag-link">(1CBE)</a></div>
+  <div class="stacks-env-body"><p>Does the image of the $r$-Veronese embedding $\bp^n \rightarrow \bp^{\binom{n+r}{r}-1}$ satisfy interpolation?
+	That is, is there a Veronese embedding containing
+	$\binom{n+r}{r} + n + 1$ general points in $\bp^{\binom{n+r}{r}-1}$?</p></div>
+</div>
+<p class="stacks-para">If the answer to &nbsp;<a href="/papers/interpolation-del-pezzo/tag/1CBE.html" class="stacks-ref-link">Question&nbsp;7.6 <span class="stacks-ref-tag">[1CBE]</span></a>
+is affirmative, it would be very interesting to know how many
+Veronese varieties pass through the correct number of points.
+Using 1.2.1,
+we know there is precisely one $r$-Veronese $\bp^1$ through
+$\binom{r+1}{1} + 1 +1  = r+3$ points in $\bp^r$.
+Additionally,  <a href="/papers/interpolation-del-pezzo/tag/EC44.html" class="stacks-ref-link">Theorem&nbsp;5.6 <span class="stacks-ref-tag">[EC44]</span></a>
+tells us there are $4$ $2$-Veronese surfaces through $9$ general
+points in $\bp^5$. In this paper, we have shown that there are at least $630$ $3$-Veronese surfaces through $13$ general points in $\bp^{9}$. See <a href="/papers/interpolation-del-pezzo/tag/4954.html" class="stacks-ref-link">Remark&nbsp;6.20 <span class="stacks-ref-tag">[4954]</span></a>.</p>
+<div class="stacks-env" id="question-veronese-enumeration">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.7.</strong> <a href="../tag/9C4E.html" class="stacks-tag-link">(9C4E)</a></div>
+  <div class="stacks-env-body"><p>How many $r$-Veronese varieties of dimension
+	$n$ pass through
+	$\binom{n+r}{r} + n + 1$ general points in $\bp^{\binom{n+r}{r}-1}$?</p></div>
+</div>
+<p class="stacks-para">We have also seen in Coble's work that any two $2$-Veronese
+surfaces through $9$ general points in $\bp^5$
+intersect along a genus 1 curve through those $9$ points.
+This leads to the question:</p>
+<div class="stacks-env" id="question-intersect-curve">
+  <div class="stacks-env-head"><strong>Question&nbsp;7.8.</strong> <a href="../tag/4C28.html" class="stacks-tag-link">(4C28)</a></div>
+  <div class="stacks-env-body"><p>Suppose there are at least two $r$-Veronese varieties
+	of dimension $n$ passing through
+	$\binom{n+r}{r} + n + 1$ general points in $\bp^{\binom{n+r}{r}-1}$.
+	Do they have positive dimensional intersection?</p></div>
+</div>
+<p class="stacks-para">\appendix</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — Section 7: Further Questions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S7.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>
