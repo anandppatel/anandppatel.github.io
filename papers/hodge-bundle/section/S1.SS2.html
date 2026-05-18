@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.2. Context and further directions &mdash; The Simplicity of the Hodge Bundle</title>
+  <title>1.2. Context and further directions &mdash; The simplicity of the Hodge Bundle</title>
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../stacks.css">
   <script>
@@ -12,7 +12,31 @@
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
         macros: {
-          operatorname: ['\\mathrm{#1}', 1]
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          Z: "\\mathbb{Z}",
+          V: "\\mathscr{V}",
+          M: "\\mathscr{M}",
+          O: "\\mathscr{O}",
+          I: "\\mathscr{I}",
+          CC: "\\mathbb{C}",
+          Hodge: "\\Omega",
+          Pairs: "\\mathscr{P}",
+          Sunb: "\\mathscr{S}_{unb}",
+          Qunb: "\\mathscr{Q}_{unb}",
+          C: "\\mathbb{C}",
+          sHom: "\\underline{Hom}",
+          syz: "\\operatorname{syz}",
+          Gr: "\\operatorname{Gr}",
+          Flag: "\\operatorname{Flag}",
+          id: "\\operatorname{id}",
+          Deg: "\\operatorname{Deg}",
+          Bl: "\\operatorname{Bl}",
+          tr: "\\operatorname{tr}",
+          sat: "\\operatorname{sat}",
+          Ext: "\\operatorname{Ext}",
+          Exc: "\\operatorname{Exc}",
+          Mod: "\\operatorname{Mod}"
         }
       },
       svg: { fontCache: 'global' }
@@ -25,15 +49,37 @@
   <div class="stacks-header-inner">
     <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">The Simplicity of the Hodge Bundle</a>
+    <a href="../index.html" class="stacks-paper-link">The simplicity of the Hodge Bundle</a>
   </div>
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Context and further directions</span></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.2. Context and further directions</h1>
-<p class="stacks-para">Theorem&nbsp;1.1 is an extension of the well-known result that $\Omega_{g}$ does not contain any line sub-bundles, a result proved first by Teixidor-i-Bigas [TEI88], and later by Hain [HAI13] with different methods. A nice short proof of the line bundle case is given in [BGP23].</p>
-<p class="stacks-para">However, the techniques of these authors are limited to the study of line sub-bundles, and therefore do not generalize to higher rank. The approach taken here is completely different: we leverage a special family of curves to exploit and how to exploit them.</p>
-<p class="stacks-para">There are more directions to go beyond Theorem&nbsp;1.1. For instance, if we let $\Omega_{g}^{(n)}$ denote the vector bundle parameterizing sections of $\omega_{C}^{\otimes n}$ (so that $\Omega_{g}^{(1)}=\Omega_{g}$) then one could ask the same question as to whether any holomorphic sub-bundles exist. This expanded setting brings with it some complications: For infinitely many values of $n$ there do exist holomorphic line sub-bundles of $\Omega_{g}^{(n)}$ due to the existence of various types of Weierstrass divisors. It is then natural to wonder, for instance, if Weierstrass divisors account for all line sub-bundles. This would be a rigidity result much in the spirit of those discussed in [FAR23].</p>
+<p class="stacks-para">Theorem&nbsp;1.1 is another instance of the general 
+philosophy that ``the universal object holds no surprises.'' It is important to note that the
+analogous problem over the Deligne-Mumford compactification $\overline{\M}_{g}$,
+where $\Omega_{g}$ is replaced by its usual extension (parameterizing sections of
+the dualizing sheaf), is trivially easy:  One looks at a stable curve $C$ obtained by
+attaching $g$ copies $E_{i}$ of the same elliptic curve $E$ to $\P^{1}$ at $g$ points $p_{1}, \dots, p_{g}$ on $\P^{1}$.
+Then any sub-bundle must restrict to a direct sum of some set of
+the $g$ natural lines $H^{0}(E_{i},\omega_{C}|_{E})$ in the space of differentials on this curve.  But these
+lines are permuted transitively under monodromy when moving the $g$ points of
+attachment, showing that the sub-bundle must have rank $g$.  This sort of argument also precludes the existence of sub-bundles of
+the Hodge bundle over the space of principally polarized abelian varieties $\mathscr{A}_{g}$.</p>
+<p class="stacks-para">The proof of Theorem&nbsp;1.1 given here is similar in spirit
+to the simple argument given above for $\overline{\M}_{g}$ and
+$\mathscr{A}_{g}$ in that it exploits curves with non-trivial automorphisms.
+The challenge lies in finding the exact constellation of curves to exploit and
+how to exploit them.</p>
+<p class="stacks-para">There are more directions to go
+beyond Theorem&nbsp;1.1.  For instance, if we let
+$\Omega_{g}^{(n)}$ denote the vector bundle parameterizing sections of
+$\omega_{C}^{\otimes n}$  (so that $\Omega_{g}^{(1)} = \Omega_{g}$) then one
+could ask the same question as to whether any holomorphic sub-bundles exist.
+This expanded setting brings with it some complications: For infinitely many values of
+$n$ there do exist holomorphic line sub-bundles of $\Omega_{g}^{(n)}$ due to the existence of various types
+of Weierstrass divisors. It is then natural to wonder, for instance, if Weierstrass divisors
+account for all line sub-bundles. This would be a rigidity result much in the spirit of those discussed in   [Far23].</p>
 
 <hr>
 <div class="stacks-comments">
@@ -43,7 +89,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The Simplicity of the Hodge Bundle &mdash; 1.2. Context and further directions">
+      <input type="hidden" name="_subject" value="Comment on The simplicity of the Hodge Bundle &mdash; 1.2. Context and further directions">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/hodge-bundle/section/S1.SS2.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
