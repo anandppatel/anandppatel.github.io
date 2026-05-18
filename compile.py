@@ -583,6 +583,11 @@ def clean_bib_label(label):
     """Convert BibTeX's small LaTeX label fragments into plain HTML text."""
     label = re.sub(r'\{\\etalchar\{([^}]*)\}\}', r'\1', label)
     label = label.replace('{', '').replace('}', '')
+    label = label.replace('~', ' ')
+    natbib_match = re.match(r'(.+?\(\d{4}[a-z]?\)).+', label)
+    if natbib_match:
+        label = natbib_match.group(1)
+    label = re.sub(r'(?<!\s)\((\d{4}[a-z]?)\)', r' (\1)', label)
     return label
 
 
@@ -2325,8 +2330,10 @@ def resolve_citations(paper, citations):
         return opt
 
     def cite_replacer(m):
-        opt = m.group(1)  # optional argument like \cite[Section 2]{key}
-        keys_str = m.group(2)
+        # Optional arguments like \cite[Section 2]{key} or
+        # natbib's \citep[see][Section 2]{key}.
+        opts = [opt for opt in (m.group(1), m.group(2)) if opt]
+        keys_str = m.group(3)
         # Handle multiple comma-separated keys like \cite{key1, key2}
         keys = [k.strip() for k in keys_str.split(',')]
         labels = []
@@ -2336,12 +2343,16 @@ def resolve_citations(paper, citations):
             else:
                 labels.append(key)
         label_text = ', '.join(labels)
-        if opt:
-            return f'[{label_text}, {format_cite_option(opt)}]'
+        if opts:
+            return f'[{label_text}, {", ".join(format_cite_option(opt) for opt in opts)}]'
         return f'[{label_text}]'
 
     def process_content(text):
-        return re.sub(r'\\cite(?:\[([^\]]*)\])?\{([^}]+)\}', cite_replacer, text)
+        return re.sub(
+            r'\\cite(?:p|t|alp|alt)?\*?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]+)\}',
+            cite_replacer,
+            text,
+        )
 
     def process_blocks(blocks):
         for block in blocks:
