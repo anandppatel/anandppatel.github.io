@@ -85,40 +85,48 @@
 <li>Let $M_D: D\to \mb{A}^{d\times n}$ be a morphism from $D$ to the space of matrices that maps the generic point to a rank $d$ matrix with no identically zero column.</li>
 <li>Let $P$ be the rank polytope corresponding to the image of the generic point of $D$ under $M_D$. Equivalently, it is the rank polytope of $M_D$ evaluated at a general point.</li></ol>
 <p class="stacks-para">The generalized matrix orbits $\op{M_D(p)} \subset (\mb{P}^r)^n$ form a flat family over some open subset $U \subset D\setminus \{0\}$. We are interested in extending this family to a flat family of subvarieties of $(\mb{P}^r)^n$ over $U \cup \{0\}$. In other words, we are interested in the flat limit of the generalized matrix orbits $\op{M_D(p)}$ as $p \to 0$.</p>
-<p class="stacks-para">We will show that the components of this flat limit have multiplicity $1$ and are of the form $\op{M_1}, \ldots, \op{M_k}$ for certain $d\times n$ matrices $M_1, \ldots, M_k$. We can take $M_1 =M_D(0)$ if $\op{M_D(0)}$ is nonzero. degenerationfibers below, which is the main result of this section, describes the sibling orbits $\op{M_1}, \ldots, \op{M_k}$. It states that the matrices $M_i$ arise from a particular ``regular subdivision'' of $P$, and they are all what we call ``orb-limits'' of $M_D$.</p>
-<p class="stacks-para">\begin{Def}
-Given a convex polytope $P$, a <em>subdivision</em> of $P$ is a decomposition $P=P_1 \cup \ldots \cup P_k$ into convex polytopes of the same dimension where each pairwise intersection $P_i \cap P_j$ is either empty or a common proper face of $P_i$ and $P_j$. The faces of the $P_i$ are called the <em>faces</em> of the subdivision, and the polytopes $P_i$ are called the <em>facets</em> of the subdivision.
-\end{Def}</p>
-<p class="stacks-para">\begin{Def}</p>
-<p>Let $P$ be a (possibly unbounded) convex polytope, and let $h:P \to \mb{R}$ be a piecewise affine convex function. Denote by $P^h$ for the lower convex hull of $\{(p,h(p))\mid p \in P\}\subset P \times \mb{R}$. The facets of $P^h$ each have dimension $\dim(P)$, and the projections of these facets to $P$ form a subdivision of $P$, called the <em>regular subdivision of $P$ with lifting function $h$</em>.</p>
-<p class="stacks-para">If $P$ is bounded, then given a function $h:\Vt(P)\to \mb{R}$, we define $P^h$ as the lower convex hull of $\{(v,h(v)) \mid v \in \Vt(P)\} \subset P \times \mb{R}$ and as above use the facets of $P^h$ to define the regular subdivison of $P$ with lifting function $h$. Extending $h$ to a piecewise affine convex function on all of $P$ by defining $h(p) \in \mb{R}$ as the unique value such that $(p,h(p)) \in P^h$ induces the same $P^h$ and regular subdivision.</p>
-<p class="stacks-para">\end{Def}
-\begin{Rem}
-Adding an affine function to $h$ or multiplying it by a positive scalar yields the same decomposition of $P$.
-\end{Rem}
-\begin{Def}
-Define the height function $h_{M_D} : \Vt(P) \to \mb{Z}$ by $$h_{M_D}(v) = \operatorname{ord}_t \det(M_D^v)$$ where for a matrix $M$ and a subset of columns $v$, we define $M^v$ to be the restriction of $M$ to the $v$ columns.
-\end{Def}
-\begin{Def}</p>
-<p>We say that $M_D$ <em>simply orb-limits</em> to a matrix $M$ if there exist maps $\gamma_T: D\setminus\{0\}\to T$ and $\gamma_{GL}: D\setminus\{0\}\to GL_{d}$ such that $M=\lim_{p \to 0}\gamma_{GL}(p) M_D(p) \gamma_T(p) $. We say that $M_D$ <em>orb-limits</em> to a matrix $M$ if $M_D$ simply orb-limits to $M$ after pulling back to a finite cover by a nonsingular curve (possibly everywhere ramified) of an open neighborhood of $0\in D$.
-\end{Def}</p>
+<p class="stacks-para">We will show that the components of this flat limit have multiplicity $1$ and are of the form $\op{M_1}, \ldots, \op{M_k}$ for certain $d\times n$ matrices $M_1, \ldots, M_k$. We can take $M_1 =M_D(0)$ if $\op{M_D(0)}$ is nonzero. <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a> below, which is the main result of this section, describes the sibling orbits $\op{M_1}, \ldots, \op{M_k}$. It states that the matrices $M_i$ arise from a particular ``regular subdivision'' of $P$, and they are all what we call ``orb-limits'' of $M_D$.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.1.</strong> <a href="../tag/1A51.html" class="stacks-tag-link">(1A51)</a></div>
+  <div class="stacks-env-body"><p>Given a convex polytope $P$, a <em>subdivision</em> of $P$ is a decomposition $P=P_1 \cup \ldots \cup P_k$ into convex polytopes of the same dimension where each pairwise intersection $P_i \cap P_j$ is either empty or a common proper face of $P_i$ and $P_j$. The faces of the $P_i$ are called the <em>faces</em> of the subdivision, and the polytopes $P_i$ are called the <em>facets</em> of the subdivision.</p></div>
+</div>
+<div class="stacks-definition" id="regularsubdef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.2.</strong> <a href="../tag/0D2C.html" class="stacks-tag-link">(0D2C)</a></div>
+  <div class="stacks-env-body"><p>Let $P$ be a (possibly unbounded) convex polytope, and let $h:P \to \mb{R}$ be a piecewise affine convex function. Denote by $P^h$ for the lower convex hull of $\{(p,h(p))\mid p \in P\}\subset P \times \mb{R}$. The facets of $P^h$ each have dimension $\dim(P)$, and the projections of these facets to $P$ form a subdivision of $P$, called the <em>regular subdivision of $P$ with lifting function $h$</em>.</p>
+<p>If $P$ is bounded, then given a function $h:\Vt(P)\to \mb{R}$, we define $P^h$ as the lower convex hull of $\{(v,h(v)) \mid v \in \Vt(P)\} \subset P \times \mb{R}$ and as above use the facets of $P^h$ to define the regular subdivison of $P$ with lifting function $h$. Extending $h$ to a piecewise affine convex function on all of $P$ by defining $h(p) \in \mb{R}$ as the unique value such that $(p,h(p)) \in P^h$ induces the same $P^h$ and regular subdivision.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.3.</strong> <a href="../tag/94B9.html" class="stacks-tag-link">(94B9)</a></div>
+  <div class="stacks-env-body"><p>Adding an affine function to $h$ or multiplying it by a positive scalar yields the same decomposition of $P$.</p></div>
+</div>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.4.</strong> <a href="../tag/D53E.html" class="stacks-tag-link">(D53E)</a></div>
+  <div class="stacks-env-body"><p>Define the height function $h_{M_D} : \Vt(P) \to \mb{Z}$ by $$h_{M_D}(v) = \operatorname{ord}_t \det(M_D^v)$$ where for a matrix $M$ and a subset of columns $v$, we define $M^v$ to be the restriction of $M$ to the $v$ columns.</p></div>
+</div>
+<div class="stacks-definition" id="orblimitdef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.5.</strong> <a href="../tag/276C.html" class="stacks-tag-link">(276C)</a></div>
+  <div class="stacks-env-body"><p>We say that $M_D$ <em>simply orb-limits</em> to a matrix $M$ if there exist maps $\gamma_T: D\setminus\{0\}\to T$ and $\gamma_{GL}: D\setminus\{0\}\to GL_{d}$ such that $M=\lim_{p \to 0}\gamma_{GL}(p) M_D(p) \gamma_T(p) $. We say that $M_D$ <em>orb-limits</em> to a matrix $M$ if $M_D$ simply orb-limits to $M$ after pulling back to a finite cover by a nonsingular curve (possibly everywhere ramified) of an open neighborhood of $0\in D$.</p></div>
+</div>
 <p class="stacks-para">We note that if $M_D$ orb-limits or simply orb-limits to a matrix $M$, then it also does so after pulling back to a finite cover by a nonsingular curve (possibly everywhere ramified) of an open neighborhood of $0\in D$.</p>
 <p class="stacks-para">Recall that $\op{M}$ was defined in such a way that it is either zero or of dimension $(r+1)d-1$.</p>
-<p class="stacks-para">\begin{Thm}
-Let $D$ be a smooth affine $1$-dimensional $K$-scheme of finite type, let $0 \in D$ be a closed point, and let $t$ be a uniformizing parameter for $D$ around $0$. Let $M_D : D \to \mb{A}^{d \times n}$ be a morphism that maps the generic point of $D$ to a rank $d$ matrix with no identically zero column.</p>
-<p class="stacks-para">Consider the map $\psi: \mb{P}^{(r+1)\times d-1}\times D \dashrightarrow (\mb{P}^r)^n\times D$ given by $(\widetilde A,p) \mapsto (\widetilde{AM_D(p)},p)$. Let $U\subset \mb{P}^{(r+1)\times d-1}\times (D \setminus \{0\})$ be a dense open subset of the domain of definition of $\psi$, and let $\wt{\mc{O}}$ be the family $\overline{\psi(U)} \subset (\mb{P}^{r})^n\times D$. Then</p>
+<div class="stacks-theorem" id="degenerationfibers">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.6.</strong> <a href="../tag/F6CF.html" class="stacks-tag-link">(F6CF)</a></div>
+  <div class="stacks-env-body"><p>Let $D$ be a smooth affine $1$-dimensional $K$-scheme of finite type, let $0 \in D$ be a closed point, and let $t$ be a uniformizing parameter for $D$ around $0$. Let $M_D : D \to \mb{A}^{d \times n}$ be a morphism that maps the generic point of $D$ to a rank $d$ matrix with no identically zero column.</p>
+<p>Consider the map $\psi: \mb{P}^{(r+1)\times d-1}\times D \dashrightarrow (\mb{P}^r)^n\times D$ given by $(\widetilde A,p) \mapsto (\widetilde{AM_D(p)},p)$. Let $U\subset \mb{P}^{(r+1)\times d-1}\times (D \setminus \{0\})$ be a dense open subset of the domain of definition of $\psi$, and let $\wt{\mc{O}}$ be the family $\overline{\psi(U)} \subset (\mb{P}^{r})^n\times D$. Then</p>
 <ol><li>The family $\wt{\mc{O}}$ is locally flat over $0 \in D$.</li>
 <li>The fiber of $\wt{\mc{O}}$ over a general point $p \in D$ set-theoretically contains $\op{M_D(p)}$, and it is equal (as an algebraic cycle) to $\op{M_D(p)}$ if it is $((r+1)d-1)$-dimensional.</li>
-<li>Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by Section&nbsp;6.2.) Then the fiber of $\wt{\mc{O}}$ over $0 \in D$ is equal to
+<li>Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by <a href="/papers/orbits-equivariant-quantum/tag/387B.html" class="stacks-ref-link">Lemma&nbsp;6.14 <span class="stacks-ref-tag">[387B]</span></a>.) Then the fiber of $\wt{\mc{O}}$ over $0 \in D$ is equal to
 $$\bigcup_{i=1}^{k}\op{M_i}$$
 as an $((r+1)d-1)$-dimensional algebraic cycle.</li></ol>
-<p class="stacks-para">\end{Thm}</p>
-<p class="stacks-para">Because the fibers of a flat family of cycles in $(\mb{P}^r)^n$ have the same equivariant Chow class, degenerationfibers has the following immediate corollary.</p>
-<p class="stacks-para">\begin{Cor}
-Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by Section&nbsp;6.2.) Let $p\in D$ be a general point. Then we have the equality of equivariant Chow classes
-$$\begin{aligned}\opc{M_D(p)}=\sum_{i=1}^{k}\opc{M_i}.\end{aligned}$$
-\end{Cor}</p>
-<p class="stacks-para">The remainder of this section is dedicated to the proof of degenerationfibers.</p>
+</div>
+</div>
+<p class="stacks-para">Because the fibers of a flat family of cycles in $(\mb{P}^r)^n$ have the same equivariant Chow class, <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a> has the following immediate corollary.</p>
+<div class="stacks-lemma" id="siorbit">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.7.</strong> <a href="../tag/E453.html" class="stacks-tag-link">(E453)</a></div>
+  <div class="stacks-env-body"><p>Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by <a href="/papers/orbits-equivariant-quantum/tag/387B.html" class="stacks-ref-link">Lemma&nbsp;6.14 <span class="stacks-ref-tag">[387B]</span></a>.) Let $p\in D$ be a general point. Then we have the equality of equivariant Chow classes
+$$\begin{aligned}\opc{M_D(p)}=\sum_{i=1}^{k}\opc{M_i}.\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">The remainder of this section is dedicated to the proof of <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a>.</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
   <li><a href="S6.SS1.html">6.1. Non-equivariant additivity</a></li>

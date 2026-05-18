@@ -78,11 +78,12 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">6.2. Regular subdivisions arising from degenerations</h1>
 <p class="stacks-para">The following lemma connects degenerations of generalized matrix orbits and regular subdivisions of rank polytopes.</p>
-<p class="stacks-para">\begin{Lem}</p>
-<p>Let $F$ be a nonempty face of the regular subdivision of $P$ with lifting function $h_{M_D}$. Then $M_D$ orb-limits to some matrix $M$ with $P_M=F$.
-\end{Lem}</p>
+<div class="stacks-lemma" id="lpath">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.14.</strong> <a href="../tag/387B.html" class="stacks-tag-link">(387B)</a></div>
+  <div class="stacks-env-body"><p>Let $F$ be a nonempty face of the regular subdivision of $P$ with lifting function $h_{M_D}$. Then $M_D$ orb-limits to some matrix $M$ with $P_M=F$.</p></div>
+</div>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7E77.html" class="stacks-tag-link">(7E77)</a></div>
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/ACA5.html" class="stacks-tag-link">(ACA5)</a></div>
   <div class="stacks-env-body"><p>As in the definition of a regular subdivision, extend $h_{M_D}$ to a function on all of $P$, and let $P^h \subset P\times \mb{R}$ be the lower convex hull of $\{(v,h_{M_D}(v))\mid v\in \Vt(P)\}$. Because $F$ is the projection of a face of $P^h$, there exists an affine function $L_{i,F}:\mb{R}^n\to \mb{R}$ defined over $\mathbb{Q}$ such that $L_F(p) \le h_{M_D}(p)$ for all $p \in P$ and $F = \{p \in P \mid L_{F}(p)=h_{M_D}(p)\}$. There exists a positive integer $N$ such that $L_F(x_1,\ldots,x_n)=\sum_{i=1}^n a_{i,F}x_i+c_F$ for constants $c_F,a_{i,F}\in \frac{1}{N}\mb{Z}$.</p>
 <p>Let $\wt{D}\to D$ be a finite cover with $\wt{D}$ nonsingular and a choice of point $\wt{0}$ mapping to $0$ such that the uniformizing parameter $s$ around $\wt{0}$ has $\operatorname{ord}_{s}(t)=N$. Then the height function of the composition $M_{\wt{D}}: \tilde{D}\to D\to \mb{A}^{d\times n}$ is $Nh_{M_D}$. Therefore, by pulling back to this cover, we may assume $c_F,a_{i,F}\in \mb{Z}$ for all $1 \le i \le n$. </p>
 <p>Define $\gamma_T: D \setminus \{0\} \to T\cong  (K^{\times})^n$ by $(t^{-a_{1,F}},\ldots,t^{-a_{n,F}})$.  Let $\pi_{{\rm Gr}}: \mb{A}^{d\times n}\dashrightarrow \Gr(d,n)$ be the map sending a matrix $M$ to the span of the rows of $M$. Consider the morphism $M_D \gamma_T : D\setminus\{0\} \to \mb{A}^{d\times n}$ given by pointwise multiplication. The composite $\pi_{{\rm Gr}}\circ (M_D\gamma_T): D\setminus\{0\}\to \Gr(d,n)$ extends uniquely to $D$ because $\Gr(d,n)$ is projective.</p>
@@ -261,41 +262,43 @@ so $$\operatorname{ord}_t \det((M'_D)^v) = \operatorname{ord}_t(\det \gamma_{GL}
 </div>
 </div>
 <p class="stacks-para">Hence, we have some information about the special fibers of degenerations of generalized matrix orbits. Now we want to understand the general fibers. The following technical lemma is necessary to compare images of general fibers of a family with general fibers of the image of a family.</p>
-<p class="stacks-para">\begin{Lem}
-Let $S$ be a Noetherian integral $K$-scheme. Suppose that $X,Y$ are finite type schemes over $S$ such that $X\to S$ has integral general fiber. Let $\phi: X\to Y$ be a morphism of $S$-schemes that is generically finite onto its image. Then for $s\in S$ general, the scheme-theoretic image of $\phi|_{s}$ agrees with the fiber of the scheme-theoretic image of $\phi$ over $s$.
-\end{Lem}</p>
+<div class="stacks-lemma" id="simage">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.15.</strong> <a href="../tag/552F.html" class="stacks-tag-link">(552F)</a></div>
+  <div class="stacks-env-body"><p>Let $S$ be a Noetherian integral $K$-scheme. Suppose that $X,Y$ are finite type schemes over $S$ such that $X\to S$ has integral general fiber. Let $\phi: X\to Y$ be a morphism of $S$-schemes that is generically finite onto its image. Then for $s\in S$ general, the scheme-theoretic image of $\phi|_{s}$ agrees with the fiber of the scheme-theoretic image of $\phi$ over $s$.</p></div>
+</div>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9811.html" class="stacks-tag-link">(9811)</a></div>
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7646.html" class="stacks-tag-link">(7646)</a></div>
   <div class="stacks-env-body"><p>Without loss of generality, we can restrict $S$ so the fibers of $X\to S$ are equidimensional [Sta18, Tag 05F7]. The scheme-theoretic image of $\phi$ is $\overline{\phi(X)}$ with the induced reduced subscheme structure [Sta18, Tag 056B]. It is clear that the scheme-theoretic image of $\phi|_{s}$ is contained in the fiber of $\overline{\phi(X)}$  over $s$. To show the other inclusion, we claim the geometric generic fiber of $\overline{\phi(X)}$ over $S$ is integral [DG67, IV 12.1.1 (x)]. </p>
 <p>Let $\Spec(\overline{L})\to S$ be the geometric generic point. Scheme-theoretic image of a quasicompact morphism commutes with flat base change [Sta18, Tag 081I], so the scheme-theoretic image of $\phi$ pulled back to $Y\times_S \Spec(\overline{L})$ agrees with the scheme-theoretic image of the induced map $X\times_S\Spec(\overline{L})\to Y\times_S \Spec(\overline{L})$, which is integral.  </p>
 <p>Therefore, the general fiber of $\overline{\phi(X)}$ over $S$ is integral [Sta18, Tag 0551]. Therefore, we can restrict $S$ so that every fiber of $\overline{\phi(X)}$ over $S$ is integral. Then, by dimension reasons, this shows that the scheme-theoretic image of $\phi|_{s}$ is equal to the fiber of $\overline{\phi(X)}$  over $s$.</p></div>
 </div>
-<p class="stacks-para">\begin{comment}
-\begin{Lem}</p>
-<p>Given $M_D: D\to \mb{A}^{d\times n}$, consider the map $\phi:\mb{A}^{(r+1)\times d}\times_{K^*} (K^*)^n \times D \to \mb{A}^{(r+1)\times n}\times D$ given by $(A,B,t)\mapsto (AM(t)B,t)$.
-The closure of the image of $\phi$ is some family $\wt{\mc{O}}\subset \mb{A}^{r\times n}\times D$ over $D$ whose fiber over a general point $p\in D$ is $\overline{\mb{A}^{r\times d}M_D(p)T}=\oa{M_D(p)}$ if it is of dimension $(r+1)d+n-1$, and whose fiber over $0\in D$ set-theoretically contains $\overline{\mb{A}^{r\times d}MT}$ for every $M$ that $M_D(t)$ orb-limits to.
-\end{Lem}</p>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-lemma" id="siorbit">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.16.</strong> <a href="../tag/453E.html" class="stacks-tag-link">(453E)</a></div>
+  <div class="stacks-env-body"><p>Given $M_D: D\to \mb{A}^{d\times n}$, consider the map $\phi:\mb{A}^{(r+1)\times d}\times_{K^*} (K^*)^n \times D \to \mb{A}^{(r+1)\times n}\times D$ given by $(A,B,t)\mapsto (AM(t)B,t)$.
+The closure of the image of $\phi$ is some family $\wt{\mc{O}}\subset \mb{A}^{r\times n}\times D$ over $D$ whose fiber over a general point $p\in D$ is $\overline{\mb{A}^{r\times d}M_D(p)T}=\oa{M_D(p)}$ if it is of dimension $(r+1)d+n-1$, and whose fiber over $0\in D$ set-theoretically contains $\overline{\mb{A}^{r\times d}MT}$ for every $M$ that $M_D(t)$ orb-limits to.</p></div>
+</div>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2829.html" class="stacks-tag-link">(2829)</a></div>
-  <div class="stacks-env-body"><p>Lemma simage implies the fiber of $\wt{\mc{O}}\to D$ over $p\in D$ is $\overline{\mb{A}^{r\times d}M_D(p)T}$ for $p\in D$ general provided the map is generically finite, which is equivalent to the dimension statement. To prove the statement of the special fiber over $0\in D$, it suffices to prove it after a finite cover of a neighborhood of $0\in D$. After this replacement, we get maps $\gamma_T:D\to T$ and $\gamma_{GL}: D\to GL_d$ such that the matrix $M=(\gamma_{GL_d} M_D \gamma_{T})(0)$.
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/07A7.html" class="stacks-tag-link">(07A7)</a></div>
+  <div class="stacks-env-body"><p>Lemma <a href="/papers/orbits-equivariant-quantum/tag/552F.html" class="stacks-ref-link">6.15 <span class="stacks-ref-tag">[552F]</span></a> implies the fiber of $\wt{\mc{O}}\to D$ over $p\in D$ is $\overline{\mb{A}^{r\times d}M_D(p)T}$ for $p\in D$ general provided the map is generically finite, which is equivalent to the dimension statement. To prove the statement of the special fiber over $0\in D$, it suffices to prove it after a finite cover of a neighborhood of $0\in D$. After this replacement, we get maps $\gamma_T:D\to T$ and $\gamma_{GL}: D\to GL_d$ such that the matrix $M=(\gamma_{GL_d} M_D \gamma_{T})(0)$.
 Then $\overline{\mb{A}^{(r+1)\times d}MT}\times \{0\}$ is contained in the closure of the image of $\phi$.</p></div>
 </div>
 <p class="stacks-para">\end{comment}</p>
-<p class="stacks-para">We are now ready to prove degenerationfibers.</p>
+<p class="stacks-para">We are now ready to prove <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a>.</p>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of degenerationfibers.</em> <a href="../tag/631F.html" class="stacks-tag-link">(631F)</a></div>
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a>.</em> <a href="../tag/2472.html" class="stacks-tag-link">(2472)</a></div>
   <div class="stacks-env-body"><p>Part (a) follows directly from $\psi(U) \subset (\mb{P}^r)^n \times (D \setminus \{0\})$.</p>
 <p>Next, we prove (b). Given a general $\wt A \in \mb{P}^{(r+1)\times d-1}$, we have $(\wt{AM_D(p)}, p) \in \wt{\mc{O}}$. It follows that the fiber of $\wt{\mc{O}}$ over $p \in D$ set-theoretically contains $\op{M_D(p)}$.
 If the fiber of $\wt{\mc{O}}$ over $p$ is $((r+1)d-1)$-dimensional, then the map $\psi$ is generically finite onto its image. We claim that $\psi$ is generically injective. Indeed, assume that $\psi(\wt{A}, p') = \psi(\wt{B}, p')$ is a general element of $\im(\psi)$ for $(r+1) \times d$ matrices $A, B$ and $p' \in D$. Then this is further equal to $\psi(\wt{A+ \lambda B},p')$ for general $\lambda$, contradicting generic finiteness if $\wt{A} \neq \wt{B}$.
-Hence, by simage, the fiber of $\wt{\mc{O}}$ over $p$ is the closure of the image of $\psi|_{(\mb{P}^{(r+1)\times d-1} \times \{p\}) \cap U}$, which is $\op{M_D(p)}$.</p>
+Hence, by <a href="/papers/orbits-equivariant-quantum/tag/552F.html" class="stacks-ref-link">Lemma&nbsp;6.15 <span class="stacks-ref-tag">[552F]</span></a>, the fiber of $\wt{\mc{O}}$ over $p$ is the closure of the image of $\psi|_{(\mb{P}^{(r+1)\times d-1} \times \{p\}) \cap U}$, which is $\op{M_D(p)}$.</p>
 <p>Finally, we prove (c). We claim that the fiber $\wt{\mc{O}}_0$ contains each $\op{M_i}$. By replacing $D$ with a suitable finite cover by a nonsingular curve and $M_D$ with an extension to $D$ of $\gamma_{GL} M_D \gamma_T$ for suitable $\gamma_{GL} : D \setminus \{0\} \to GL_{r+1}$ and $\gamma_T : D \setminus \{0\} \to T$, we may assume that $M = M_D(0)$. Given a general $\tilde A \in \mb{P}^{(r+1)\times d-1}$, we have $(\wt{AM_D(p)}, p) \in \wt{\mc{O}}$ for general $p \in D$. Taking the limit as $p \to 0$ yields $(\wt{AM_D(0)}, 0) \in \wt{\mc{O}}$. Since $\tilde A$ is general, it follows that the fiber of $\wt{\mc{O}}$ over $0 \in D$ set-theoretically contains $\op{M_i}$ as desired.</p>
-<p>Now, we claim that the nonzero $\op{M_i}$ are distinct. Assume to the contrary that $\op{M_i} = \op{M_j} \neq 0$ for some $1 \leq i< j \leq k$. Then the non-equivariant classes satisfy $\opc{M_i} = \opc{M_j} \neq 0$. By NE, there exists $(e_1,\ldots, e_n)\in \mb{Z}^n$ such that for any $0 < \epsilon_1, \ldots, \epsilon_n$ with $\sum_{i=1}^n \epsilon_i = 1$ we have $(e_1 + \epsilon_1, \ldots, e_n + \epsilon_n)$ is contained in $(r+1) (P_{M_i} \cap P_{M_j})$. But $(r+1) (P_{M_i} \cap P_{M_j})$ has codimension at least $1$ in the hyperplane $\{\sum x_i= (r+1)d\}$, so we cannot have the containment for all choices of $\epsilon_i$.</p>
+<p>Now, we claim that the nonzero $\op{M_i}$ are distinct. Assume to the contrary that $\op{M_i} = \op{M_j} \neq 0$ for some $1 \leq i< j \leq k$. Then the non-equivariant classes satisfy $\opc{M_i} = \opc{M_j} \neq 0$. By <a href="/papers/orbits-equivariant-quantum/tag/48AB.html" class="stacks-ref-link">Theorem&nbsp;5.2 <span class="stacks-ref-tag">[48AB]</span></a>, there exists $(e_1,\ldots, e_n)\in \mb{Z}^n$ such that for any $0 < \epsilon_1, \ldots, \epsilon_n$ with $\sum_{i=1}^n \epsilon_i = 1$ we have $(e_1 + \epsilon_1, \ldots, e_n + \epsilon_n)$ is contained in $(r+1) (P_{M_i} \cap P_{M_j})$. But $(r+1) (P_{M_i} \cap P_{M_j})$ has codimension at least $1$ in the hyperplane $\{\sum x_i= (r+1)d\}$, so we cannot have the containment for all choices of $\epsilon_i$.</p>
 <p>Since $\wt{\mc{O}}_0$ contains each $\op{M_i}$, the $((r+1)d-1)$-dimensional algebraic cycle $$Z = \wt{\mc{O}}_0 - \bigcup_{i=1}^n \op{M_i}$$ is effective. The nonzero $\op{M_i}$ are distinct and irreducible of dimension $(r+1)d - 1$ and $\wt{\mc{O}}$ is locally flat at $0 \in D$, so we have the equality of non-equivariant Chow classes
 $$[Z] = [\wt{\mc{O}}_0] - \sum_{i=1}^n \opc{M_i}
 = [\wt{\mc{O}}_p] - \sum_{i=1}^n \opc{M_i}
 = \opc{M_D(p)} - \sum_{i=1}^n \opc{M_i}
 = 0$$
-for $p$ general, where the third equality follows from (b) and the fourth equality follows from realvalnoneq. Hence $Z = 0$, as desired.</p></div>
+for $p$ general, where the third equality follows from (b) and the fourth equality follows from <a href="/papers/orbits-equivariant-quantum/tag/23B3.html" class="stacks-ref-link">Theorem&nbsp;6.11 <span class="stacks-ref-tag">[23B3]</span></a>. Hence $Z = 0$, as desired.</p></div>
 </div>
 
 <hr>
