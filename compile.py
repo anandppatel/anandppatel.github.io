@@ -245,8 +245,14 @@ def split_latex_heading_blocks(text, command):
     blocks = []
     for idx, (start, end, title) in enumerate(matches):
         next_start = matches[idx + 1][0] if idx + 1 < len(matches) else len(text)
-        blocks.append((title.strip(), text[end:next_start]))
+        blocks.append((clean_heading_title(title), text[end:next_start]))
     return text[:matches[0][0]] if matches else text, blocks
+
+
+def clean_heading_title(title):
+    """Remove invisible LaTeX spacing commands from section-like headings."""
+    title = re.sub(r'\\(?:unskip|ignorespaces)\b', '', title)
+    return title.strip()
 
 
 def iter_latex_heading_spans(text, command):
@@ -527,6 +533,7 @@ def extract_latex_command_bodies(tex_source, command):
 def clean_latex_metadata(text):
     """Lightweight cleanup for title/author strings displayed as HTML."""
     text = re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'\\(?:unskip|ignorespaces)\b', '', text)
     text = text.replace(r'\&', '&')
     text = text.replace(r'\and', ', ')
     text = text.replace(' ,', ',')
