@@ -429,13 +429,51 @@ def bibliography_entry_to_html(entry):
     entry = entry.replace('\n', ' ')
     entry = re.sub(r'\s+', ' ', entry).strip()
     entry = cleanup_bibliography_environment(entry)
+    # Plain BibTeX styles use a short rule for "same author as above".  In
+    # HTML an em dash carries the same meaning without leaking raw TeX.
+    entry = re.sub(
+        r'\\leavevmode\\vrule\s+height\s+[-.\d]+pt\s+depth\s+[-.\d]+pt\s+width\s+[-.\d]+pt',
+        '&mdash;',
+        entry,
+    )
     entry = re.sub(r'\\url\{([^}]*)\}', r'<a href="\1">\1</a>', entry)
     entry = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'<a href="\1">\2</a>', entry)
     html = tex_to_html(entry)
     # BibTeX uses braces to preserve capitalization. Once formatting commands
     # are handled, those braces should not be visible in bibliography prose.
-    html = re.sub(r'\{([A-Za-z0-9][^{}]*)\}', r'\1', html)
+    html = strip_text_braces_outside_math(html)
     return html
+
+
+def strip_text_braces_outside_math(text):
+    """Remove BibTeX capitalization braces while leaving MathJax braces alone."""
+    pieces = []
+    current = []
+    in_math = False
+    i = 0
+    while i < len(text):
+        char = text[i]
+        prev = text[i - 1] if i else ""
+        if char == "$" and prev != "\\":
+            if not in_math:
+                segment = "".join(current).replace("{", "").replace("}", "")
+                pieces.append(segment)
+                current = ["$"]
+                in_math = True
+            else:
+                current.append("$")
+                pieces.append("".join(current))
+                current = []
+                in_math = False
+            i += 1
+            continue
+        current.append(char)
+        i += 1
+    segment = "".join(current)
+    if not in_math:
+        segment = segment.replace("{", "").replace("}", "")
+    pieces.append(segment)
+    return "".join(pieces)
 
 
 def clean_bib_label(label):
@@ -1593,17 +1631,15 @@ def tex_to_html(tex):
     s = replace_latex_text_command(s, "textbf", "strong")
     s = replace_latex_text_command(s, "texttt", "code")
 
-    # {\sl text} -> <em>
-    s = re.sub(r'\{\\sl\s+([^}]*)\}', r'<em>\1</em>', s)
-
-    # {\it text} -> <em>
-    s = re.sub(r'\{\\it\s+([^}]*)\}', r'<em>\1</em>', s)
-
-    # {\em text} -> <em> (common in BibTeX .bbl output)
-    s = re.sub(r'\{\\em\s+([^}]*)\}', r'<em>\1</em>', s)
-
-    # {\bf text} -> <strong>
-    s = re.sub(r'\{\\bf\s+([^}]*)\}', r'<strong>\1</strong>', s)
+    # Declaration-style formatting from BibTeX .bbl output.  These often
+    # contain capitalization braces, so regexes that stop at the first brace
+    # corrupt titles; use balanced scanning instead.
+    s = replace_latex_declaration_group(s, "sl", "em")
+    s = replace_latex_declaration_group(s, "it", "em")
+    s = replace_latex_declaration_group(s, "em", "em")
+    s = replace_latex_declaration_group(s, "bf", "strong")
+    s = replace_latex_declaration_group(s, "tt", "code")
+    s = replace_latex_declaration_group(s, "sc", "span", ' class="stacks-small-caps"')
 
     # ~ -> non-breaking space
     s = s.replace('~', '&nbsp;')
@@ -1625,7 +1661,9 @@ def tex_to_html(tex):
     s = s.replace('\\"o', '&ouml;')
     s = s.replace('\\"a', '&auml;')
     s = s.replace("\\'e", '&eacute;')
+    s = s.replace("\\'{e}", '&eacute;')
     s = s.replace("\\'a", '&aacute;')
+    s = s.replace("\\'{a}", '&aacute;')
     s = re.sub(r'\\o(?![a-zA-Z])', '&oslash;', s)
 
     # \square, \qedhere — remove
@@ -1674,6 +1712,37 @@ def replace_latex_text_command(text, command, html_tag):
             break
         body = text[body_start:i - 1]
         out.append(f"<{html_tag}>{body}</{html_tag}>")
+        pos = i
+    return "".join(out)
+
+
+def replace_latex_declaration_group(text, command, html_tag, attrs=""):
+    """Replace groups like {\\em ...} or {\\sc ...} using balanced braces."""
+    out = []
+    pos = 0
+    pattern = re.compile(r'\{\\' + re.escape(command) + r'(?![A-Za-z])')
+    while True:
+        match = pattern.search(text, pos)
+        if not match:
+            out.append(text[pos:])
+            break
+        out.append(text[pos:match.start()])
+        i = match.end()
+        if i < len(text) and text[i].isspace():
+            i += 1
+        body_start = i
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(text[match.start():])
+            break
+        body = text[body_start:i - 1]
+        out.append(f"<{html_tag}{attrs}>{body}</{html_tag}>")
         pos = i
     return "".join(out)
 
