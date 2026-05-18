@@ -1,21 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="line" d="M180 375 C245 185,530 145,725 285 C650 452,350 478,180 375 Z"/>
-  <path class="thin" d="M120 250 L795 340 M140 300 L775 300 M150 365 L735 218"/>
-  <circle class="accent" cx="355" cy="281" r="7"/><circle class="accent" cx="477" cy="298" r="7"/><circle class="accent" cx="603" cy="315" r="7"/>
-  <path class="dash" d="M270 412 C400 365,550 340,700 355"/>
+  <path class="p" d="M165 390 C230 170 550 138 730 290 C650 470 345 485 165 390 Z"/>
+  <path class="q" d="M145 250 L800 340 M150 310 L780 310 M165 365 L735 205"/>
+  <circle class="a" cx="338" cy="282" r="7"/><circle class="a" cx="468" cy="298" r="7"/><circle class="a" cx="602" cy="316" r="7"/><circle class="a" cx="664" cy="326" r="7"/>
+  <path class="d" d="M270 420 C405 360 552 345 700 360"/>
+  <text class="small" x="118" y="134">lines with high-order contact</text>
 
 </svg>

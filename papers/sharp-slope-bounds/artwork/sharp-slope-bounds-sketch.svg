@@ -1,21 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="line" d="M160 380 C260 220,360 220,450 380 C535 220,645 220,760 380"/>
-  <path class="thin" d="M170 285 C290 405,360 405,450 285 C535 405,640 405,750 285"/>
-  <path class="dash" d="M290 145 C275 250,285 370,320 455 M610 145 C625 250,615 370,580 455"/>
-  <circle class="mark" cx="290" cy="300" r="6"/><circle class="mark" cx="450" cy="330" r="6"/><circle class="mark" cx="610" cy="300" r="6"/>
+  <path class="p" d="M155 385 C260 218 360 218 450 385 C535 218 645 218 760 385"/>
+  <path class="q" d="M165 285 C290 408 360 408 450 285 C535 408 640 408 750 285"/>
+  <path class="d" d="M290 142 C275 250 285 374 320 458 M610 142 C625 250 615 374 580 458"/>
+  <path class="q" d="M130 458 L770 458 M220 458 L270 505 M450 458 L450 505 M680 458 L630 505"/>
+  <circle class="a" cx="290" cy="300" r="6"/><circle class="a" cx="450" cy="330" r="6"/><circle class="a" cx="610" cy="300" r="6"/>
+  <text class="small" x="176" y="110">trigonal covers, boundary divisors, sharp slopes</text>
 
 </svg>

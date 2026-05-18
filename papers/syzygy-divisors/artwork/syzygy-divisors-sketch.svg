@@ -1,22 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="thin" d="M150 170 L300 170 L300 250 L450 250 L450 330 L600 330 L600 410 L750 410"/>
-  <path class="line" d="M150 250 L300 250 M300 330 L450 330 M450 410 L600 410"/>
-  <path class="dash" d="M300 170 L450 250 M450 250 L600 330 M600 330 L750 410"/>
-  <circle class="mark" cx="300" cy="250" r="7"/><circle class="mark" cx="450" cy="330" r="7"/><circle class="accent" cx="600" cy="410" r="8"/>
-  <path class="thin" d="M170 470 C315 500,520 500,730 468"/>
+  <path class="p" d="M135 392 C300 292 590 292 765 392"/>
+  <path class="d" d="M260 160 L260 430 M440 130 L440 450 M620 160 L620 430"/>
+  <path class="q" d="M185 165 L318 165 L318 245 L450 245 L450 325 L585 325 L585 405 L718 405"/>
+  <path class="p" d="M185 245 L318 245 M318 325 L450 325 M450 405 L585 405"/>
+  <circle class="a" cx="318" cy="245" r="7"/><circle class="a" cx="450" cy="325" r="7"/><circle class="a" cx="585" cy="405" r="7"/>
+  <text class="small" x="185" y="112">syzygy bundles over a Hurwitz space</text>
 
 </svg>

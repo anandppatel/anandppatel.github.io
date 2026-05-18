@@ -1,20 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="line" d="M130 350 C300 250,580 250,770 350"/><path class="thin" d="M130 290 C300 190,580 190,770 290"/><path class="thin" d="M130 410 C300 310,580 310,770 410"/>
-  <path class="dash" d="M210 210 C230 275,230 360,210 440 M345 178 C370 262,370 368,345 462 M510 178 C535 262,535 368,510 462 M665 210 C690 285,690 365,665 440"/>
-  <circle class="accent" cx="210" cy="350" r="8"/><circle class="accent" cx="345" cy="350" r="8"/><circle class="accent" cx="510" cy="350" r="8"/><circle class="accent" cx="665" cy="350" r="8"/>
+  <path class="p" d="M130 378 C300 270 590 270 770 378"/>
+  <path class="q" d="M170 280 C320 182 555 182 730 280"/>
+  <path class="q" d="M210 210 C338 145 540 145 692 210"/>
+  <path class="d" d="M250 188 L250 430 M420 150 L420 450 M600 188 L600 430"/>
+  <path class="q" d="M250 188 L214 145 M250 188 L288 146 M420 150 L382 108 M420 150 L458 108 M600 188 L562 146 M600 188 L638 146"/>
+  <path class="q" d="M230 432 L650 432 M230 432 L330 485 M330 485 L720 485 M650 432 L720 485"/>
+  <text class="small" x="246" y="520">relative canonical scroll and syzygy bundles</text>
 
 </svg>

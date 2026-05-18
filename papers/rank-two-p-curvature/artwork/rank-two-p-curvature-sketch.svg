@@ -1,22 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="line" d="M185 330 C245 145,585 125,720 300 C625 445,330 455,185 330 Z"/>
-  <path class="thin" d="M270 310 C335 240,430 240,500 310 C555 365,640 365,700 310"/>
-  <path class="dash" d="M260 190 C345 112,520 112,642 190 M235 405 C360 495,540 490,665 405"/>
-  <path class="thin" d="M315 270 C350 245,405 245,435 270 M520 350 C560 375,615 370,650 338"/>
-  <circle class="accent" cx="315" cy="270" r="7"/><circle class="accent" cx="650" cy="338" r="7"/>
+  <path class="p" d="M178 330 C242 145 586 125 725 300 C625 450 328 458 178 330 Z"/>
+  <path class="q" d="M270 310 C335 238 430 238 500 310 C555 368 642 368 703 310"/>
+  <path class="d" d="M260 190 C345 112 520 112 642 190 M235 405 C360 495 540 490 665 405"/>
+  <path class="q" d="M306 267 C350 230 415 238 438 282 M515 345 C562 385 630 370 652 328"/>
+  <circle class="a" cx="306" cy="267" r="7"/><circle class="a" cx="652" cy="328" r="7"/>
+  <path class="q" d="M120 130 L220 130 M170 80 L170 180 M700 415 l45 0 m-22 -23 l0 45"/>
+  <text class="small" x="236" y="105">rank two connection; p-curvature vanishes</text>
 
 </svg>

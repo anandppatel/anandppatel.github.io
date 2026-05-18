@@ -1,21 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-hidden="true">
 <defs>
-  <filter id="pencil" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="8" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="17" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <style>
-    .line{fill:none;stroke:#263241;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.76}
-    .thin{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencil);opacity:.55}
-    .dash{fill:none;stroke:#263241;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11 12;filter:url(#pencil);opacity:.45}
-    .mark{fill:#263241;opacity:.78;filter:url(#pencil)}
-    .accent{fill:#8b2f2f;opacity:.8;filter:url(#pencil)}
+    .p{fill:none;stroke:#20242b;stroke-width:4.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.74}
+    .q{fill:none;stroke:#20242b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.48}
+    .r{fill:none;stroke:#20242b;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);opacity:.30}
+    .d{fill:none;stroke:#20242b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;filter:url(#rough);opacity:.42}
+    .m{fill:#20242b;filter:url(#rough);opacity:.72}
+    .a{fill:#8c2f2f;stroke:#8c2f2f;stroke-width:1.8;filter:url(#rough);opacity:.8}
+    .wash{fill:#20242b;opacity:.045;filter:url(#rough)}
+    .txt{font-family:EB Garamond, Georgia, serif;font-size:35px;fill:#20242b;opacity:.55;filter:url(#rough)}
+    .small{font-family:EB Garamond, Georgia, serif;font-size:25px;fill:#20242b;opacity:.50;filter:url(#rough)}
   </style>
 </defs>
 
-  <path class="line" d="M185 395 C230 180,450 105,690 180 C730 280,630 390,390 420 C300 432,230 420,185 395 Z"/>
-  <path class="thin" d="M250 358 C330 270,500 235,665 250 M248 308 C360 205,510 170,650 188 M315 410 C360 285,430 180,505 132 M445 420 C468 300,525 205,610 160"/>
-  <circle class="mark" cx="318" cy="336" r="6"/><circle class="mark" cx="432" cy="270" r="6"/><circle class="mark" cx="574" cy="244" r="6"/><circle class="mark" cx="520" cy="356" r="6"/>
-  <path class="dash" d="M205 155 C310 95,522 80,705 132"/>
+  <path class="p" d="M168 410 C230 165 490 92 710 205 C735 335 625 438 380 438 C285 438 205 425 168 410 Z"/>
+  <path class="q" d="M230 360 C365 260 520 232 685 260 M245 300 C365 198 525 160 668 188 M322 430 C363 305 430 190 502 122 M470 438 C492 310 545 205 625 170"/>
+  <circle class="a" cx="290" cy="350" r="6"/><circle class="a" cx="360" cy="302" r="6"/><circle class="a" cx="455" cy="260" r="6"/><circle class="a" cx="548" cy="238" r="6"/><circle class="a" cx="630" cy="280" r="6"/><circle class="a" cx="510" cy="365" r="6"/>
+  <path class="q" d="M110 170 L195 112 L280 170 L195 228 Z M195 112 L195 228 M110 170 L280 170"/>
+  <text class="small" x="94" y="253">3-uple Veronese surface through points</text>
 
 </svg>
