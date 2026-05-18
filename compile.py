@@ -1220,6 +1220,36 @@ def render_xypic_block(xy_source):
     return render_tikz_block("\\[\n" + xy_source + "\n\\]", "Xy-pic diagram")
 
 
+def replace_xypic_commands(text):
+    """Render Xy-pic commands, including xymatrix spacing modifiers, to SVG."""
+    pieces = []
+    pos = 0
+    command_re = re.compile(r'\\(?:xygraph|xymatrix)\b')
+    while True:
+        match = command_re.search(text, pos)
+        if not match:
+            break
+        brace = text.find("{", match.end())
+        if brace == -1:
+            break
+        i = brace + 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth != 0:
+            pos = match.end()
+            continue
+        pieces.append(text[pos:match.start()])
+        pieces.append(render_xypic_block(text[match.start():i]))
+        pos = i
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
 def normalize_geometric_alphabets(tex):
     """Normalize common geometric alphabet choices before MathJax rendering."""
     alphabet = "ACFGKNPQRZ"
@@ -1597,11 +1627,7 @@ def tex_to_html(tex):
         s,
         flags=re.DOTALL,
     )
-    s = replace_latex_commands(
-        s,
-        "xygraph",
-        lambda body: render_xypic_block("\\xygraph{" + body + "}"),
-    )
+    s = replace_xypic_commands(s)
 
     # figure/table/subfigure wrappers are layout hints in LaTeX; keep captions
     # and labels as plain HTML around any rendered diagrams or tables.
