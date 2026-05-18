@@ -2484,9 +2484,11 @@ def head(title, paper_title, depth=0, macros=None):
   <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {{
+      loader: {{ load: ['[tex]/bboldx'] }},
       tex: {{
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: {{ '[+]': ['bboldx'] }},
         macros: {{
           operatorname: ['\\\\mathrm{{#1}}', 1]{macro_block}
         }}
@@ -2494,7 +2496,7 @@ def head(title, paper_title, depth=0, macros=None):
       svg: {{ fontCache: 'global' }}
     }};
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 """
