@@ -38,6 +38,7 @@ import sys
 import json
 import hashlib
 import html as html_mod
+import shutil
 
 # ============================================================
 # CONFIGURATION
@@ -90,6 +91,10 @@ def parse_preamble_macros(tex_source):
     preamble = tex_source[:m.start()]
 
     macros = {}
+    non_math_macros = {
+        # Presentation macros used by the PDF source, not MathJax macros.
+        "Aletheia", "human", "ai",
+    }
 
     # \newcommand{\foo}{definition} or \newcommand{\foo}[n]{definition}
     # \renewcommand{\foo}{definition} or \renewcommand{\foo}[n]{definition}
@@ -104,7 +109,12 @@ def parse_preamble_macros(tex_source):
         nargs = match.group(2)
         definition = match.group(3)
         # Skip non-math macros
-        if name in ('labelitemi',):
+        if name in ('labelitemi',) or name in non_math_macros:
+            continue
+        if any(token in definition for token in (
+            "\n", "\\begin", "\\end", "\\noindent", "\\vspace", "\\hspace",
+            "tcolorbox", "minipage", "flushleft", "flushright",
+        )):
             continue
         if nargs:
             macros[name] = [definition, int(nargs)]
@@ -138,10 +148,17 @@ def parse_citations(meta, tex_dir):
         for m in re.finditer(r'\\bibitem\[([^\]]*)\]\{([^}]*)\}', bbl):
             short_label = m.group(1)
             key = m.group(2)
-            citations[key] = short_label
+            citations[key] = clean_bib_label(short_label)
         return citations
 
     return {}
+
+
+def clean_bib_label(label):
+    """Convert BibTeX's small LaTeX label fragments into plain HTML text."""
+    label = re.sub(r'\{\\etalchar\{([^}]*)\}\}', r'\1', label)
+    label = label.replace('{', '').replace('}', '')
+    return label
 
 
 # ============================================================
@@ -214,9 +231,28 @@ def parse_tex(tex_source):
     # Handle \begin{thebibliography}...\end{thebibliography} — just remove it
     body = re.sub(r'\\begin\{thebibliography\}.*?\\end\{thebibliography\}', '', body, flags=re.DOTALL)
 
+    equation_labels = parse_equation_labels(body)
     sections, section_labels = parse_sections(body)
 
-    return {"title": title, "author": author, "sections": sections, "section_labels": section_labels}
+    return {
+        "title": title,
+        "author": author,
+        "sections": sections,
+        "section_labels": section_labels,
+        "equation_labels": equation_labels,
+    }
+
+
+def parse_equation_labels(body):
+    """Find numbered equation labels before TeX fragments are HTML-converted."""
+    labels = {}
+    number = 0
+    for m in re.finditer(r'\\begin\{equation\}(.*?)\\end\{equation\}', body, re.DOTALL):
+        number += 1
+        label_m = re.search(r'\\label\{([^}]+)\}', m.group(1))
+        if label_m:
+            labels[label_m.group(1)] = str(number)
+    return labels
 
 
 def parse_sections(body):
@@ -395,7 +431,11 @@ def _parse_tex_blocks(content, blocks, sec_num):
         label = None
         first_begin = begin_pattern.search(env_body)
         search_region = env_body[:first_begin.start()] if first_begin else env_body
-        label_m = re.search(r'\\label\{([^}]+)\}', search_region)
+        label_m = None
+        for candidate in re.finditer(r'\\label\{([^}]+)\}', search_region):
+            if not candidate.group(1).startswith("eq:"):
+                label_m = candidate
+                break
         if label_m:
             label = label_m.group(1)
             env_body = env_body[:label_m.start()] + env_body[label_m.end():]
@@ -453,7 +493,59 @@ def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
     s = tex
 
+    # Text macros from the source preamble which are not MathJax macros.
+    s = s.replace('\\Aletheia', '<em>Aletheia</em>')
+
     # --- Block-level environments (before inline processing) ---
+
+    # Human-AI interaction card.
+    def interaction_begin_replace(m):
+        raw_link = html_mod.escape(m.group(2).strip())
+        link_html = (
+            f'<div class="interaction-source">'
+            f'<a href="{raw_link}">Raw prompts and outputs</a></div>'
+            if raw_link else ''
+        )
+        return (
+            '<div class="interaction-log">'
+            '<div class="interaction-title">Human-AI Interaction Card</div>'
+            + link_html
+        )
+
+    s = re.sub(
+        r'\\begin\{interactionlog\}(?:\[([^\]]*)\])?\{([^}]*)\}',
+        interaction_begin_replace,
+        s,
+    )
+    s = s.replace('\\end{interactionlog}', '</div>')
+
+    def human_replace(m):
+        message = tex_to_html(m.group(1).strip())
+        return (
+            '<div class="interaction-row interaction-human">'
+            f'<div class="interaction-bubble">{message}</div>'
+            '<div class="interaction-speaker">Human</div>'
+            '</div>'
+        )
+
+    s = re.sub(r'\\human\{((?:[^{}]|\{[^{}]*\})*)\}', human_replace, s, flags=re.DOTALL)
+
+    def ai_replace(m):
+        name = tex_to_html(m.group(1).strip())
+        message = tex_to_html(m.group(2).strip())
+        return (
+            '<div class="interaction-row interaction-ai">'
+            f'<div class="interaction-speaker">{name}</div>'
+            f'<div class="interaction-bubble">{message}</div>'
+            '</div>'
+        )
+
+    s = re.sub(
+        r'\\ai\{((?:[^{}]|\{[^{}]*\})*)\}\{((?:[^{}]|\{[^{}]*\})*)\}',
+        ai_replace,
+        s,
+        flags=re.DOTALL,
+    )
 
     # tikzcd → placeholder
     s = re.sub(
@@ -619,6 +711,12 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             "tag": "",
             "number": info["number"],
             "envType": "Section",
+        }
+    for label, number in paper.get("equation_labels", {}).items():
+        label_map[label] = {
+            "tag": "",
+            "number": number,
+            "envType": "Equation",
         }
     env_counter = {}  # per-section counters for theorem-like envs
     all_envs = []  # ordered list of all tagged environments
@@ -866,6 +964,9 @@ def footer_html(arxiv_id):
 def render_block(block, depth=0):
     prefix = "../" * depth
     if block["type"] == "para":
+        stripped = block["content"].strip()
+        if stripped.startswith('<div class="interaction-') or stripped == '</div>':
+            return stripped + '\n'
         return f'<p class="stacks-para">{block["content"]}</p>\n'
     elif block["type"] == "code":
         return block["content"] + '\n'
@@ -987,6 +1088,10 @@ def compile_paper(tex_path):
         print(f"    Tag {env['tag']}: {env['envType']} {env.get('number','')}")
 
     # Create output dirs
+    for subdir in ("tag", "section"):
+        old_dir = os.path.join(out_dir, subdir)
+        if os.path.isdir(old_dir):
+            shutil.rmtree(old_dir)
     os.makedirs(os.path.join(out_dir, "tag"), exist_ok=True)
     os.makedirs(os.path.join(out_dir, "section"), exist_ok=True)
 
