@@ -350,10 +350,14 @@ def parse_preamble_macros(tex_source):
         preamble
     ):
         name = match.group(1)
-        text = match.group(2).strip()
+        text = normalize_geometric_alphabets(match.group(2).strip())
         macros[name] = "\\operatorname{" + text + "}"
 
-    macros.update(GEOMETRIC_ALPHABET_MACROS)
+    for name, definition in GEOMETRIC_ALPHABET_MACROS.items():
+        if name in {"A", "C", "F", "G", "Gr", "Grass", "K", "N", "P", "Q", "R", "Z"}:
+            macros[name] = definition
+        else:
+            macros.setdefault(name, definition)
     return macros
 
 
@@ -1852,6 +1856,11 @@ def resolve_citations(paper, citations):
     if not citations:
         return
 
+    def format_cite_option(opt):
+        opt = opt.replace("~", "&nbsp;")
+        opt = opt.replace(r"\S", "&sect;")
+        return opt
+
     def cite_replacer(m):
         opt = m.group(1)  # optional argument like \cite[Section 2]{key}
         keys_str = m.group(2)
@@ -1865,7 +1874,7 @@ def resolve_citations(paper, citations):
                 labels.append(key)
         label_text = ', '.join(labels)
         if opt:
-            return f'[{label_text}, {opt}]'
+            return f'[{label_text}, {format_cite_option(opt)}]'
         return f'[{label_text}]'
 
     def process_content(text):
