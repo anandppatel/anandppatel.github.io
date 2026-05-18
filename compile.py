@@ -40,6 +40,8 @@ import json
 import hashlib
 import html as html_mod
 import shutil
+import subprocess
+import tempfile
 
 # ============================================================
 # CONFIGURATION
@@ -48,6 +50,11 @@ import shutil
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 TAG_REGISTRY_PATH = os.path.join(SITE_ROOT, "papers", "tag-registry.json")
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
+TEX_RENDER_CONTEXT = {
+    "preamble": "",
+    "tex_dir": SITE_ROOT,
+    "cache_dir": os.path.join(SITE_ROOT, ".tikz-cache"),
+}
 
 
 def load_registry():
@@ -724,6 +731,156 @@ def split_paragraphs(text):
     return [p.strip() for p in paras if p.strip()]
 
 
+def configure_tex_renderer(tex_source, tex_dir):
+    """Store enough source context to render embedded LaTeX graphics."""
+    declarations = []
+    for name, definition in parse_preamble_macros(tex_source).items():
+        if isinstance(definition, list):
+            body, nargs = definition
+            arg_spec = f"[{nargs}]"
+            empty_args = "".join("{}" for _ in range(nargs))
+            declarations.append(f"\\providecommand{{\\{name}}}{arg_spec}{empty_args}")
+            declarations.append(f"\\renewcommand{{\\{name}}}{arg_spec}{{{body}}}")
+        else:
+            declarations.append(f"\\providecommand{{\\{name}}}{{}}")
+            declarations.append(f"\\renewcommand{{\\{name}}}{{{definition}}}")
+    TEX_RENDER_CONTEXT["preamble"] = "\n".join(declarations)
+    TEX_RENDER_CONTEXT["tex_dir"] = tex_dir
+    TEX_RENDER_CONTEXT["cache_dir"] = os.path.join(tex_dir, ".tikz-cache")
+
+
+def strip_svg_header(svg):
+    """Remove XML/doctype wrappers so the SVG can be embedded inline."""
+    svg = re.sub(r'<\?xml[^>]*>\s*', '', svg, count=1)
+    svg = re.sub(r'<!DOCTYPE[^>]*(?:\[[\s\S]*?\]\s*)?>\s*', '', svg, count=1)
+    svg = re.sub(r'<!--.*?-->\s*', '', svg, flags=re.DOTALL)
+    return svg.strip()
+
+
+def render_tikzcd_block(tikz_source):
+    """Compile a tikzcd environment to inline SVG, with a readable fallback."""
+    cache_dir = TEX_RENDER_CONTEXT["cache_dir"]
+    os.makedirs(cache_dir, exist_ok=True)
+    digest = hashlib.sha256(
+        (TEX_RENDER_CONTEXT["preamble"] + "\n" + tikz_source).encode()
+    ).hexdigest()[:16]
+    svg_path = os.path.join(cache_dir, f"{digest}.svg")
+
+    if not os.path.exists(svg_path):
+        document = r"""\documentclass[tikz,border=3pt]{standalone}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+""" + TEX_RENDER_CONTEXT["preamble"] + r"""
+\begin{document}
+""" + tikz_source + r"""
+\end{document}
+"""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tex_file = os.path.join(tmpdir, "diagram.tex")
+            with open(tex_file, "w", encoding="utf-8") as f:
+                f.write(document)
+            try:
+                subprocess.run(
+                    ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "diagram.tex"],
+                    cwd=tmpdir,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    timeout=30,
+                    check=True,
+                )
+                subprocess.run(
+                    ["pdftocairo", "-svg", "diagram.pdf", svg_path],
+                    cwd=tmpdir,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    timeout=30,
+                    check=True,
+                )
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError) as exc:
+                message = html_mod.escape(str(exc))
+                source = html_mod.escape(tikz_source)
+                return (
+                    '<pre class="stacks-latex-fallback" '
+                    f'title="{message}">{source}</pre>'
+                )
+
+    try:
+        with open(svg_path, encoding="utf-8") as f:
+            svg = strip_svg_header(f.read())
+    except OSError:
+        source = html_mod.escape(tikz_source)
+        return f'<pre class="stacks-latex-fallback">{source}</pre>'
+
+    svg = re.sub(r'<svg\b', '<svg class="stacks-tikzcd-svg"', svg, count=1)
+    return (
+        '<div class="stacks-tikzcd" role="img" '
+        'aria-label="Commutative diagram">'
+        f'{svg}</div>'
+    )
+
+
+def split_latex_top_level(text, delimiter):
+    """Split on a LaTeX delimiter outside braces and inline math."""
+    parts = []
+    start = 0
+    depth = 0
+    in_math = False
+    i = 0
+    while i < len(text):
+        char = text[i]
+        prev = text[i - 1] if i else ''
+        if char == '$' and prev != '\\':
+            in_math = not in_math
+            i += 1
+            continue
+        if not in_math:
+            if char == '{':
+                depth += 1
+            elif char == '}' and depth:
+                depth -= 1
+            elif depth == 0 and text.startswith(delimiter, i):
+                parts.append(text[start:i])
+                i += len(delimiter)
+                start = i
+                continue
+        i += 1
+    parts.append(text[start:])
+    return parts
+
+
+def tabular_to_html(m):
+    """Convert simple LaTeX tabular blocks to HTML tables."""
+    body = m.group(2)
+    body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', body)
+    rows = []
+    for row in split_latex_top_level(body, r'\\'):
+        row = row.strip()
+        if not row:
+            continue
+        cells = [cell.strip() for cell in split_latex_top_level(row, '&')]
+        html_cells = []
+        for cell in cells:
+            cell = re.sub(
+                r'\\multicolumn\{\d+\}\{[^}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}',
+                r'\1',
+                cell,
+            )
+            html_cells.append(f'<td>{tex_to_html(cell)}</td>')
+        rows.append('<tr>' + ''.join(html_cells) + '</tr>')
+
+    if not rows:
+        return ''
+    return (
+        '<div class="stacks-table-wrap">'
+        '<table class="stacks-table"><tbody>'
+        + ''.join(rows)
+        + '</tbody></table></div>'
+    )
+
+
 def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
     s = tex
@@ -783,10 +940,10 @@ def tex_to_html(tex):
         flags=re.DOTALL,
     )
 
-    # tikzcd → placeholder
+    # tikzcd → inline SVG rendered by LaTeX when possible.
     s = re.sub(
-        r'\\begin\{tikzcd\}.*?\\end\{tikzcd\}',
-        r'\\text{[Commutative diagram — see PDF]}',
+        r'\\begin\{tikzcd\}(?:\[[^\]]*\])?.*?\\end\{tikzcd\}',
+        lambda m: render_tikzcd_block(m.group(0)),
         s, flags=re.DOTALL
     )
 
@@ -794,13 +951,19 @@ def tex_to_html(tex):
     s = re.sub(r'\\begin\{center\}', '', s)
     s = re.sub(r'\\end\{center\}', '', s)
 
-    # tabular → array (MathJax compatibility in math mode)
-    s = s.replace('\\begin{tabular}', '\\begin{array}')
-    s = s.replace('\\end{tabular}', '\\end{array}')
+    # tabular → semantic HTML table instead of fragile MathJax arrays.
+    s = re.sub(
+        r'\\begin\{tabular\}(?:\[[^\]]*\])?\{([^}]*)\}(.*?)\\end\{tabular\}',
+        tabular_to_html,
+        s,
+        flags=re.DOTALL,
+    )
 
     # equation environment → display math
     def equation_replace(m):
         body = m.group(1)
+        if 'stacks-tikzcd' in body:
+            return body.strip()
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
         return '$$' + body.strip() + '$$'
@@ -893,9 +1056,13 @@ def tex_to_html(tex):
     # ~ -> non-breaking space
     s = s.replace('~', '&nbsp;')
 
-    # \[ ... \] -> $$ ... $$
-    s = re.sub(r'\\\[', '$$', s)
-    s = re.sub(r'\\\]', '$$', s)
+    # \[ ... \] -> $$ ... $$, except rendered diagram blocks.
+    def bracket_display_replace(m):
+        body = m.group(1).strip()
+        if 'stacks-tikzcd' in body:
+            return body
+        return '$$' + body + '$$'
+    s = re.sub(r'\\\[(.*?)\\\]', bracket_display_replace, s, flags=re.DOTALL)
 
     # --- -> &mdash;   -- -> &ndash;
     s = s.replace('---', '&mdash;')
@@ -1005,7 +1172,12 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
             )
             tag_key = registry_key
 
-        tag = previous_tags.get(registry_key)
+        tag = None
+        previous_for_key = previous_tags.get(registry_key)
+        if isinstance(previous_for_key, list) and previous_for_key:
+            tag = previous_for_key.pop(0)
+        elif previous_for_key:
+            tag = previous_for_key
         if not tag or tag in existing_tags:
             tag = label_to_tag(tag_key, existing_tags)
         existing_tags.add(tag)
@@ -1275,7 +1447,7 @@ def render_block(block, depth=0):
         stripped = block["content"].strip()
         if stripped.startswith('<div class="interaction-') or stripped == '</div>':
             return stripped + '\n'
-        return f'<p class="stacks-para">{block["content"]}</p>\n'
+        return wrap_content_html(block["content"], "stacks-para")
     elif block["type"] == "code":
         return block["content"] + '\n'
     elif block["type"] == "env":
@@ -1306,7 +1478,7 @@ def render_block(block, depth=0):
                 inner_html += render_block(child, depth)
             body_html = inner_html
         else:
-            body_html = f"<p>{block['content']}</p>"
+            body_html = wrap_content_html(block["content"])
 
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
@@ -1314,6 +1486,29 @@ def render_block(block, depth=0):
 </div>
 """
     return ""
+
+
+def wrap_content_html(content, paragraph_class=None):
+    """Wrap converted LaTeX in paragraphs while letting block HTML stand alone."""
+    class_attr = f' class="{paragraph_class}"' if paragraph_class else ''
+    block_re = re.compile(
+        r'(<(?:div|pre)\b[^>]*class="[^"]*'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-latex-fallback)'
+        r'[^"]*"[\s\S]*?</(?:div|pre)>)'
+    )
+    if not block_re.search(content):
+        newline = '\n' if paragraph_class else ''
+        return f'<p{class_attr}>{content}</p>{newline}'
+    pieces = block_re.split(content.strip())
+    html = []
+    for piece in pieces:
+        if not piece:
+            continue
+        if block_re.fullmatch(piece):
+            html.append(piece + '\n')
+        elif piece.strip():
+            html.append(f'<p{class_attr}>{piece.strip()}</p>\n')
+    return ''.join(html)
 
 
 def comment_form(page_label, return_url, paper_title):
@@ -1373,6 +1568,7 @@ def compile_paper(tex_path):
     # Read .tex source
     with open(tex_path, errors="replace") as f:
         tex_source = f.read()
+    configure_tex_renderer(tex_source, out_dir)
 
     # Extract MathJax macros from preamble
     macros = parse_preamble_macros(tex_source)
@@ -1393,11 +1589,10 @@ def compile_paper(tex_path):
 
     # Assign tags
     registry = load_registry()
-    previous_tags = {
-        info.get("label"): tag
-        for tag, info in registry.items()
-        if info.get("paper") == slug and info.get("label")
-    }
+    previous_tags = {}
+    for tag, info in registry.items():
+        if info.get("paper") == slug and info.get("label"):
+            previous_tags.setdefault(info.get("label"), []).append(tag)
     # Remove old tags for this paper (allows clean rebuild)
     registry = {k: v for k, v in registry.items() if v.get("paper") != slug}
     existing_tags = set(registry.keys())
