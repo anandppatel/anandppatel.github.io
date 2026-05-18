@@ -80,10 +80,10 @@
   <div class="stacks-env-body"><p>First note that if $\mu^{\max}(i)=m+\frac{k-1}{k}$ for $m$ an integer, then
 $$\begin{aligned}\mu^{\max}(i+1)&=\max_j \{\frac{\lfloor(\mu^{\max}(j)+\frac{1}{k})(i+1-j)\rfloor}{i+1-j}\mid 0<j\leq i\}\\
     &= \lfloor m+\frac{k-1}{k}+\frac{1}{k}\rfloor = m+1.\end{aligned}$$
-In particular, there is a unique $i_0$ for which $\mu^{\max}(i_0)=\frac{k-1}{k}$ and $\mu^{\max}(i_0+1)=1=1+\mu^{\max}(1)$. </p>
-<p>We will now show $\mu^{\max}(n) = \mu^{\max}(n-i_0) + 1$ for all $n\geq i_0$ using induction on $n$. For the case $n=i_0+1$, $\mu^{\max}(i_0+1)=1$ from above. </p>
+In particular, there is a unique $i_0$ for which $\mu^{\max}(i_0)=\frac{k-1}{k}$ and $\mu^{\max}(i_0+1)=1=1+\mu^{\max}(1)$.</p>
+<p>We will now show $\mu^{\max}(n) = \mu^{\max}(n-i_0) + 1$ for all $n\geq i_0$ using induction on $n$. For the case $n=i_0+1$, $\mu^{\max}(i_0+1)=1$ from above.</p>
 <p>Now suppose $n>i_0+1$.  We first note that $$\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)=(\lfloor\frac{n-1}{i_0}\rfloor-1)+\frac{k-1}{k}$$ is $\frac{k-1}{k}$ by induction.</p>
-<p>Now, we claim that $\mu^{\max}(i)<\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$ for all $i<i_0 \lfloor \frac{n-1}{i_0}\rfloor$. Since $\mu^{\max}(j)$ is weakly increasing in $j$, the point is to prove they are not equal. If $\mu^{\max}(i)$ was equal to $\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$, then $\mu^{\max}(i+1)= \mu^{\max}(i)$, which contradicts (6.1). </p>
+<p>Now, we claim that $\mu^{\max}(i)<\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$ for all $i<i_0 \lfloor \frac{n-1}{i_0}\rfloor$. Since $\mu^{\max}(j)$ is weakly increasing in $j$, the point is to prove they are not equal. If $\mu^{\max}(i)$ was equal to $\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$, then $\mu^{\max}(i+1)= \mu^{\max}(i)$, which contradicts (6.1).</p>
 <p>By Lemma <a href="/papers/moduli-linear-slices/tag/D37C.html" class="stacks-ref-link">6.2 <span class="stacks-ref-tag">[D37C]</span></a>, $\mu^{\max}(n)$ will be determined by the $i$ between $0$ and $n$ such that $\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}$ is maximized. Let $i(n)$ be this $i$. We claim $i(n) \geq i_0\lfloor \frac{n-1}{i_0}\rfloor$. To get a contradiction, suppose that $i(n) <i_0 \lfloor \frac{n-1}{i_0}\rfloor$.</p>
 <p>Since we have shown above that $\mu^{\max}(i(n))<\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0} \rfloor)$, $\mu^{\max}(i(n))+\frac{1}{k}< \mu^{\max}(i_0 \lfloor \frac{n-1}{i_0} \rfloor)+\frac{1}{k}=\lfloor \frac{n-1}{i_0}\rfloor$, contradicting $i(n) <i_0 \lfloor \frac{n-1}{i_0}\rfloor$.</p>
 <p>Since $i(n) \geq i_0\lfloor \frac{n}{i_0}\rfloor$,
@@ -97,7 +97,7 @@ $$\begin{aligned}i(n)-i_0 &= i(n-i_0).\end{aligned}$$</p>
 <p>Next, we want to show the statement regarding $B_k(n)$. It suffices to show that $B_k^{\low}(n)=B_k^{\up}(n)$ for all $n$. We will show this by induction and can assume $n> 3i_0$ and $B_k^{\low}(i)=B_k^{\up}(i)$ for all $0<i<n$. As before, let $i(n)$ be the minimum $i$ that maximizes $\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}$.
 By definition, we want to show
 $$\begin{aligned}B_k(i(n))+\lfloor(\mu^{\max}(i(n))+\frac{1}{k})(n-i(n))\rfloor&= \max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor\mid 0<i<n\}.\end{aligned}$$
-The inequality $\leq$ is clear as the left side is one of the terms on the right side. Let $i'$ be an index maximizing the right side. We want to show that $i'> i_0$. If $i'\leq i_0$, then $B^{\up}_k(i')+\lfloor(\mu^{\max}(i')+\frac{1}{k})(n-i')\rfloor$ is less than $n$ as $\mu^{\max}_{i'}+\frac{1}{k}\leq 1$ and $B^{\up}(i')\leq \mu^{\max}(i')i'<i'$. We also crudely bound $B_k^{\low}(n)$ from below. </p>
+The inequality $\leq$ is clear as the left side is one of the terms on the right side. Let $i'$ be an index maximizing the right side. We want to show that $i'> i_0$. If $i'\leq i_0$, then $B^{\up}_k(i')+\lfloor(\mu^{\max}(i')+\frac{1}{k})(n-i')\rfloor$ is less than $n$ as $\mu^{\max}_{i'}+\frac{1}{k}\leq 1$ and $B^{\up}(i')\leq \mu^{\max}(i')i'<i'$. We also crudely bound $B_k^{\low}(n)$ from below.</p>
 <p>To do so, we first bound $B_k^{\low}(3i_0)$ by $3i_0$. From the statement of <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a> regarding $\mu^{\max}$, we know $\mu^{\max}(j)\geq m$ for all $i>m\cdot i_0$. Then,
 $$\begin{aligned}B_k^{\low}(n)&\geq 0\cdot i_0+1\cdot i_0+2\cdot i_0+3(n-3i_0).\end{aligned}$$
  Since $n>3i_0$, $3i_0 + 3(n-3i_0)=2(n-3i_0)+n>n$, yielding a contradiction.</p>

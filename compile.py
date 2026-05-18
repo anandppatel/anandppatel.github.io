@@ -996,6 +996,8 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
 \usepackage{mathrsfs}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{calc}
 \usepackage{xparse}
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -1040,8 +1042,21 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
                     timeout=30,
                     check=True,
                 )
+                pdf_for_svg = "diagram.pdf"
+                if shutil.which("pdfcrop"):
+                    subprocess.run(
+                        ["pdfcrop", "diagram.pdf", "diagram-crop.pdf"],
+                        cwd=tmpdir,
+                        env=env,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.STDOUT,
+                        text=True,
+                        timeout=30,
+                        check=True,
+                    )
+                    pdf_for_svg = "diagram-crop.pdf"
                 subprocess.run(
-                    ["pdftocairo", "-svg", "diagram.pdf", svg_path],
+                    ["pdftocairo", "-svg", pdf_for_svg, svg_path],
                     cwd=tmpdir,
                     env=env,
                     stdout=subprocess.PIPE,
@@ -1081,6 +1096,11 @@ def render_tikzcd_block(tikz_source):
 def render_tikzpicture_block(tikz_source):
     """Compile a tikzpicture environment to inline SVG, with a readable fallback."""
     return render_tikz_block(tikz_source, "TikZ diagram")
+
+
+def render_picture_block(picture_source):
+    """Compile a LaTeX picture environment, including Inkscape overlays, to SVG."""
+    return render_tikz_block(picture_source, "Figure")
 
 
 def resolve_graphics_path(name):
@@ -1359,6 +1379,18 @@ def tex_to_html(tex):
         s, flags=re.DOTALL
     )
     s = remove_latex_commands(s, "tikzset")
+    s = re.sub(
+        r'\\begingroup\b.*?\\begin\{picture\}.*?\\end\{picture\}.*?\\endgroup\b',
+        lambda m: render_picture_block(m.group(0)),
+        s,
+        flags=re.DOTALL,
+    )
+    s = re.sub(
+        r'\\begin\{picture\}.*?\\end\{picture\}',
+        lambda m: render_picture_block(m.group(0)),
+        s,
+        flags=re.DOTALL,
+    )
 
     # figure/table/subfigure wrappers are layout hints in LaTeX; keep captions
     # and labels as plain HTML around any rendered diagrams or tables.
