@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>2.3. Some lemmas on multiplication of polynomials — Moduli of linear sections of a general hypersurface</title>
+  <title>2.3. Log tangent sheaves — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,90 +67,42 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <span>2.3. Some lemmas on multiplication of polynomials</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.3. Log tangent sheaves</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">2.3. Some lemmas on multiplication of polynomials</h1>
-<p class="stacks-para">\begin{notation}
-  Throughout  Section&nbsp;2.3, we will keep the following notation.
-  \begin{enumerate}
-    \item Suppose $n_{1}, \dots n_{k}$ are positive integers such that $\sum_{i=1}^{k}n_{i}=d$ and $\sum_{i=1}^{k}(n_{i}-1)=2r-2$ for some positive $r$.</p>
-<p class="stacks-para">\item Let $P_{m}$ denote the vector space of polynomials in one variable $z$ with degree $\leq m$.</p>
-<p class="stacks-para">\item Finally, let $\alpha_{1}, \dots, \alpha_{k} \in \A^{1} = \Spec k[z]$ be distinct points.</p>
-<p class="stacks-para">\end{enumerate}</p>
-<p class="stacks-para">\end{notation}</p>
-<h3 class="stacks-subsections-heading">First Lemma</h3>
-<div class="stacks-lemma" id="lemma-surjection">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.22.</strong> <a href="../tag/8F91.html" class="stacks-tag-link">(8F91)</a></div>
-  <div class="stacks-env-body"><p>There exists an $r-1$-dimensional subspace $V_{r-1} \subset P_{d-1}$ such that the multiplication-then-restriction map
-  $$\begin{aligned}\rho: P_{1} \otimes V_{r-1} \to \bigoplus_{i=1}^{k}k[z]/(z-\alpha_{i})^{n_{i}-1}\end{aligned}$$
-  is an isomorphism.</p></div>
+<h1 class="stacks-section-title">2.3. Log tangent sheaves</h1>
+<p class="stacks-para">We now introduce the main tool of the paper. We suspect <a href="/papers/moduli-linear-slices/tag/3AF1.html" class="stacks-ref-link">Lemma&nbsp;2.1 <span class="stacks-ref-tag">[3AF1]</span></a> is well-known to experts but include a proof for want of a suitable reference. Everything in this section should work for a reduced divisor in an arbitrary smooth ambient variety, but we will focus on the case that the ambient variety is projective space in this paper.</p>
+<p class="stacks-para">Let $D\subset \mathbb{P}^n$ be a reduced hypersurface. Viewing $D$ as a divisor in the smooth ambient variety $\mathbb{P}^n$, we get the log tangent sheaf $T_{\mathbb{P}^n}(-\log D)$, which sits inside the exact sequence
+$$\begin{aligned}0\to T_{\mathbb{P}^n}(-\log D)\to T_{\mathbb{P}^n}\to \mathscr{O}_D(D)\to \mathscr{O}_{D_{{\rm sing}}}(D)\to 0,\end{aligned}$$
+where $D_{{\rm sing}}$ is the singular subscheme cut out of $\mathbb{P}^n$ by the equation for $D$ and its partials. In terms of background, we  only assume what is covered in [Lia13, 2.1.2], but see [Sai80] for the original reference. One can check that $T_{\mathbb{P}^n}(-\log D)$ is a vector bundle when $D$ is smooth using local coordinates; in general $T_{\mathbb{P}^n}(-\log D)$ is a reflexive sheaf.</p>
+<p class="stacks-para">Informally, local sections of $T_{\mathbb{P}^n}(-\log D)$ represent local vector fields which are tangent to $D$. This can be seen explicitly by noting that the map $T_{\mathbb{P}^n}\to \cO_D(D)$ in the exact sequence above is given by $\theta\mapsto \theta(f)$, where $\theta$ is a vector field and $f$ is the (local) equation for $D$. If we identify $\cO_D(D)$ with $N_{D/\mathbb{P}^n}$, the map $T_{\mathbb{P}^n}\to \cO_D(D)$ is also $T_{\mathbb{P}^n}\to T_{\mathbb{P}^n}|_{D}\to N_{D/\mathbb{P}^n}$.</p>
+<p class="stacks-para">Let $\mathbb{P}^k\xrightarrow{\iota} \mathbb{P}^n$ be a map defined by degree $e$ homogeneous forms, and suppose $Z \subset \mathbb{P}^{n}$ is a subscheme.  We say an infinitesimal deformation $\iota_{\epsilon} : \mathbb{P}^{k}\times\Spec \mathbb{C}[\epsilon]/(\epsilon^{2}) \to \mathbb{P}^{n}$ <em>preserves $\iota^{-1</em>(Z)$} if $\iota_{\epsilon}^{-1}(Z) \subset \mathbb{P}^{k}\times\Spec \mathbb{C}[\epsilon]/(\epsilon^{2})$ is the trivial deformation $\iota^{-1}(Z)\times \Spec \mathbb{C}[\epsilon]/(\epsilon^{2})$.
+The point of this section is to prove the following lemma.</p>
+<div class="stacks-lemma" id="logtangent">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.1.</strong> <a href="../tag/3AF1.html" class="stacks-tag-link">(3AF1)</a></div>
+  <div class="stacks-env-body"><p>Let $\mathbb{P}^k\xrightarrow{\iota} \mathbb{P}^n$ be a map defined by degree $e$ homogeneous forms whose image is not contained in $D$. Global sections of $\iota^{*}T_{\mathbb{P}^n}(-\log D)$ correspond to deformations of the map $\iota$ preserving the hypersurface $\iota^{-1}(D)$.</p></div>
 </div>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B891.html" class="stacks-tag-link">(B891)</a></div>
-  <div class="stacks-env-body"><p>We will explicitly construct a vector space $V_{r-1}$ with the desired property.  </p>
-<p>  Our construction is slightly different depending on the parities of the numbers $n_{i}$.  So, for the convenience of the reader, let us first assume all $n_{i}$ are odd. </p>
-<p>  Then for each $i$, we define the polynomial
-  $$\begin{aligned}p_{i} := \prod_{j \neq i}(z-\alpha_{j})^{n_{j}-1}.\end{aligned}$$</p>
-<p>  Next, for each $i$  consider the vector space
-  $$\begin{aligned}A_{i} := \Span\left\{p_{i} \cdot 1,p_{i} \cdot (z-\alpha_{i})^{2}, p_{i}\cdot (z-\alpha_{i})^{4}, \dots,p_{i} \cdot (z-\alpha_{i})^{n_{i}-3} \right\}.\end{aligned}$$</p>
-<p>  Then it is immediately verified that
-  $$\begin{aligned}\rho(P_{1} \otimes A_{i}) = (0, \dots, k[z]/(z-\alpha_{i})^{n_{i}-1}, 0 ,\dots).\end{aligned}$$
-  Note that $\dim A_{i} = (n_{i}-1)/2$.  By letting $V_{r-1} = A_{1}+ \dots+ A_{k}$, the lemma follows in this case.  </p>
-<p>  Now suppose $n_{1}$ is even. Since $\sum_{}^{}(n_{i}-1)$ is even, we may assume without loss of generality that $n_{2}$ is also even.
-   Then we define the polynomials
-   $$\begin{aligned}q_{1} = (z-\alpha_{2})^{n_{2}-2}\prod_{j \neq 1,2}(z-\alpha_{j})^{n_{j}-1}\\
-     q_{2} = (z-\alpha_{1})^{n_{1}-2}\prod_{j \neq 1,2}(z-\alpha_{j})^{n_{j}-1}.\end{aligned}$$
-   Next set
-   $$\begin{aligned}B_{1,2}:= \Span\left\{ q_{1}, q_{1}(z-\alpha_{1})^{2}, q_{1}(z-\alpha_{1})^{4}  \dots q_{1}(z-\alpha_{1})^{n_{1}-2} = q_{2}(z-\alpha_{2})^{n_{2}-2}, \dots, q_{2}(z-\alpha_{2})^{2}, q_{2} \right\}.\end{aligned}$$
-   Then it is straightforward to verify that
-   $$\begin{aligned}\rho(P_{1} \otimes B_{1,2}) = (k[z]/(z-\alpha_{1})^{n_{1}-1},k[z]/(z-\alpha_{2})^{n_{2}-1},0,0, \dots ).\end{aligned}$$
-   Note that $\dim B_{1,2} = (n_{1}+ n_{2}-2)/2$. By pairing up the remaining even $n_{i}$ and creating the analogous vector spaces $B_{i,j}$, and then for odd $n_{i}$ using the spaces $A_{i}$, one can check that
-   $$\begin{aligned}V_{r-1}:= \sum_{n_{i}\text{\,\,odd}} A_{i} + B_{1,2} + \dots\end{aligned}$$
-   has the desired property, i.e. that $\rho$ is an isomorphism.</p></div>
-</div>
-<h3 class="stacks-subsections-heading">Second Lemma</h3>
-<div class="stacks-lemma" id="lemma-transversetothing">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.23.</strong> <a href="../tag/D46C.html" class="stacks-tag-link">(D46C)</a></div>
-  <div class="stacks-env-body"><p>Maintain the setup before the previous lemma. Then there exists an $r-1$-dimensional subspace $V_{r-1} \subset P_{d-1}$ such that the multiplication-then-restriction map
-  $$\begin{aligned}\rho': P_{1}\otimes V_{r-1} \to k[z]/(z-\alpha_{1})^{n_{1}} \oplus_{i=2}^{k}k[z]/(z-\alpha_{i})^{n_{i}-1}\end{aligned}$$
-  has the following properties:</p>
-<ol><li>$\rho'$ is injective.</li>
-<li>The image of $\rho'$ does not contain the element
-      $$\begin{aligned}w = ((z-\alpha_{1})^{n_{1}-1},0,0,\dots).\end{aligned}$$</li></ol>
-</div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B01F.html" class="stacks-tag-link">(B01F)</a></div>
-  <div class="stacks-env-body"><p>The spaces $V_{r-1}$ constructed in the proof of <a href="/papers/moduli-linear-slices/tag/8F91.html" class="stacks-ref-link">Lemma&nbsp;2.22 <span class="stacks-ref-tag">[8F91]</span></a> satisfy these two properties.  We leave the verification to the reader.</p></div>
-</div>
-<div class="stacks-commentary" id="remark-openproperty">
-  <div class="stacks-env-head"><strong>Remark&nbsp;2.24.</strong> <a href="../tag/7AE4.html" class="stacks-tag-link">(7AE4)</a></div>
-  <div class="stacks-env-body"><p>The conditions in these two lemmas are open &ndash; a general $V_{r-1} \subset P_{d-1}$ will have the desired properties in each lemma.</p></div>
-</div>
-<div class="stacks-theorem" id="theorem-versal">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;2.25.</strong> <a href="../tag/4CBD.html" class="stacks-tag-link">(4CBD)</a></div>
-  <div class="stacks-env-body"><p>Let $\sum_{i=1}^{k}m_{k}=d$, and suppose $\sum_{i}^{}m_{i}-1 = 2r-2$.  Suppose $\left( X,\ell \right)$ is a general point in $I_{k}\left( m_{1}, \dots , m_{k} \right)$.  Then the point-line correspondence $\pi: \Sigma \to \G\left( 1,r \right)$ is mini-versal near the $k$-incident line  $[\ell] \in \G\left( 1,r \right)$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/847E.html" class="stacks-tag-link">(847E)</a></div>
-  <div class="stacks-env-body"><p>The map $\rho$ in <a href="/papers/moduli-linear-slices/tag/8F91.html" class="stacks-ref-link">Lemma&nbsp;2.22 <span class="stacks-ref-tag">[8F91]</span></a> is the differential of (any of) the induced maps
-  $$\begin{aligned}\left( U, \left[ \ell \right] \right) \to W_{m_{1}} \times \dots W_{m_{k}}\end{aligned}$$
-  from <a href="/papers/moduli-linear-slices/tag/110D.html" class="stacks-ref-link">Proposition&nbsp;2.7 <span class="stacks-ref-tag">[110D]</span></a> (Here $U$ is an &eacute;tale neighborhood of $\ell$). The theorem follows immediately from <a href="/papers/moduli-linear-slices/tag/110D.html" class="stacks-ref-link">Proposition&nbsp;2.7 <span class="stacks-ref-tag">[110D]</span></a>.</p></div>
-</div>
-<div class="stacks-lemma" id="corollary-versalkincident">
-  <div class="stacks-env-head"><strong>Corollary&nbsp;2.26.</strong> <a href="../tag/BC02.html" class="stacks-tag-link">(BC02)</a></div>
-  <div class="stacks-env-body"><p>Let $X \subset \P^{r}$ be a general degree $d \geq 2r-1$ hypersurface, and let $k = d-(2r-2)$. Then
-  $$\begin{aligned}\left( \Sigma \subset \P \to \G\left( 1,r \right) \right)\end{aligned}$$
-  is versal at every $k$-incident line $\left[ \ell \right] \in \G\left( 1,r \right)$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0BAB.html" class="stacks-tag-link">(0BAB)</a></div>
-  <div class="stacks-env-body"><p>When $k = d-2(r-1)$, the irreducible variety $I_{k}\left( m_{1}, \dots, m_{k} \right)$ maps generically finitely onto $\P^{N}$. The locus consisting of pairs $(X,\ell) \in I_{k}(m_{1}, \dots , m_{k})$ for which the point-line correspondence fails to be versal at $\ell$ is a strict (closed) subset of $I_{k}\left( m_{1}, \dots ,m_{k} \right)$ by <a href="/papers/moduli-linear-slices/tag/4CBD.html" class="stacks-ref-link">Theorem&nbsp;2.25 <span class="stacks-ref-tag">[4CBD]</span></a>. Since this is true for all multiplicity data $\left( m_{1}, \dots, m_{k} \right)$, we conclude that there is a Zariski open subset of $\P^{N}$ for which the corollary holds.</p></div>
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/87B0.html" class="stacks-tag-link">(87B0)</a></div>
+  <div class="stacks-env-body"><p>First, sections of $\iota^{*}T_{\mathbb{P}^n}$ correspond to deformations of $\iota$. More explicitly, $\iota$ is defined by an $n+1$ tuple of degree $e$ forms in $k+1$ variables $A_0(s_0,\ldots,s_k),\ldots,A_n(s_0,\ldots,s_k)$ sending $[s_0:\cdots:s_k]$ to $[A_0(s_0,\ldots,s_k):\cdots:A_n(s_0,\ldots,s_k)]$. </p>
+<p>A deformation $\iota_{\epsilon}$ of $\iota$ is given by another $n+1$ tuple of degree $e$ forms in $k+1$ variables $B_0(s_0,\ldots,s_k),\ldots,B_n(s_0,\ldots,s_k)$. Explicitly, as a map from $\operatorname{Spec}(\mathbb{C}[\epsilon]/(\epsilon^2))\times \mathbb{P}^k\to \mathbb{P}^n$ this is given in coordinates by $\epsilon,[s_0,\ldots,s_k]$ mapping to $[A_0(s_0,\ldots,s_k)+\epsilon B_0(s_0,\ldots,s_k):\cdots:A_n(s_0,\ldots,s_k)+\epsilon B_n(s_0,\ldots,s_k)]$. The vector space of deformations is given by the quotient space of $n+1$-tuples of degree $e$ forms $(B_0,\ldots,B_{n})$ modulo the 1-dimensional vector space generated by $(A_0,\ldots,A_{n})$. </p>
+<p>Let $D$ be defined by $F=0$ where $F$ is a reduced homogenous form in $n+1$ variables. If we pull back the form $F$ under the deformed map  $\iota_{\epsilon}$, we obtain
+$$\begin{aligned}F(A_0(s_0,\ldots,s_k)+\epsilon B_0(s_0,\ldots,s_k),\ldots,A_n(s_0,\ldots,s_k)+\epsilon B_n(s_0,\ldots,s_k))&=\\
+    F(A_0(s_0,\ldots,s_k),\ldots,A_n(s_0,\ldots,s_k))+&\\\epsilon \sum_{i=0}^{n}B_i(s_0,\ldots,s_k) \cdot \partial_iF (A_0(s_0,\ldots,s_k),\ldots,A_n(s_0,\ldots,s_k))&.\end{aligned}$$
+Therefore, deformations $\iota_{\epsilon}$ that preserve $\iota^{-1}(D)$ correspond to choices of $B_0,\ldots,B_n$ such that
+$$\begin{aligned}\sum_{i=0}^{n}B_i(s_0,\ldots,s_k)\cdot \partial_iF (A_0(s_0,\ldots,s_k),\ldots,A_n(s_0,\ldots,s_k))\end{aligned}$$
+is a scalar multiple of $F$. </p>
+<p>Now, we wish to realize this latter condition as producing sections of the pulled back log tangent sheaf. First, the sections of the pulled back tangent sheaf $\iota^{*}T_{\mathbb{P}^n}$ can be computed via the Euler sequence
+$$\begin{aligned}0\to \mathscr{O}_{\mathbb{P}^k}\to \mathscr{O}_{\mathbb{P}^k}(e)^{n+1}\to \iota^{*}T_{\mathbb{P}^n}\to 0\end{aligned}$$
+to be the quotient space of $n+1$-tuples of linear forms $(B_0,\ldots,B_{n})$ modulo the 1-dimensional vector space generated by $(A_0,\ldots,A_{n})$. </p>
+<p>The restricted vector field corresponding to $(B_0,\ldots,B_{n})$ is $\sum_{i=0}^{n}B_i\frac{\partial}{\partial x_i}$. Recall that $T_{\mathbb{P}^n}(-\log D)$ is the kernel of the map $T_{\mathbb{P}^n}\to \mathscr{O}_D(D)$ sending a vector field $\theta:=\sum_{i=0}^{n}B_i\frac{\partial}{\partial x_i}$ to $\theta(F)$. </p>
+<p>In other words, the defining equation is
+$$\begin{aligned}\sum_{i=0}^{n}B_i\frac{\partial}{\partial x_i}F \equiv 0 \pmod{F}.\end{aligned}$$
+Pulling back this under $\iota$ yields exactly (2.1).</p></div>
 </div>
 
 <hr>
@@ -158,7 +113,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 2.3. Some lemmas on multiplication of polynomials">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — 2.3. Log tangent sheaves">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S2.SS3.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -172,7 +127,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

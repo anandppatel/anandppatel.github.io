@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>2.2. Lines meeting $X$ infrequently — Moduli of linear sections of a general hypersurface</title>
+  <title>2.2. The map to moduli $\Phi$ — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,122 +67,22 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <span>2.2. Lines meeting $X$ infrequently</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.2. The map to moduli $\Phi$</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">2.2. Lines meeting $X$ infrequently</h1>
-<p class="stacks-para">\begin{notation}
-Let $\sum_{i}^{k}m_{i} = d$, $\sum_{i=1}^{j}n_{i}=d$, and let $\P^{N}$ denote the projective space of degree $d$ hypersurfaces in $\P^{r}$. We define the following three types of incidence correspondences:
-\begin{enumerate}
-  \item $$\begin{aligned}I_{k} & \left( m_{1}, \dots, m_{k} \right) =\\
-      & \overline{\left\{ (X,\ell) \mid X \cap \ell = \sum_{i}m_{i}p_{i}, \, \, \text{for distinct $p_{i} \in \ell$} \right\}} \subset \P^{N} \times \G\left( 1,r \right)\end{aligned}$$
-\item  $$\begin{aligned}I'_{k} &  \left( m_{1}, \dots, m_{k} \right) =\\
-   & \overline{\left\{ (X,\ell,p_{1}, \dots, p_{k}) \mid X \cap \ell = \sum_{i}m_{i}p_{i} \right\}} \subset \P^{N} \times \P \times_{\G\left( 1,r \right)} \dots \times_{\G\left( 1,r \right)}\P\end{aligned}$$
- \item $$\begin{aligned}&  I_{k,j}''  \left( m_{1},\dots, m_{k} \mid n_{1},  \dots, n_{j}\right) =\\
-   &  \overline{\left\{ (X, \ell, p_{1}, \dots, p_{k}, \ell', q_{1}, \dots, q_{j}) \mid X\cap \ell = \sum_{i}m_{i}p_{i}, \, \, \,  X \cap \ell' = \sum_{i}n_{i}q_{i} \right\}}\end{aligned}$$</p>
-<p class="stacks-para">\end{enumerate}</p>
-<p class="stacks-para">The closures are taken of the sets where the objects parametrized are all distinct (for points) and do not intersect (for lines).</p>
-<p class="stacks-para">\end{notation}</p>
-<h3 class="stacks-subsections-heading">Lemmas on correspondences</h3>
-<div class="stacks-lemma" id="lemma-Ikirreducible">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.11.</strong> <a href="../tag/852C.html" class="stacks-tag-link">(852C)</a></div>
-  <div class="stacks-env-body"><p>$I_{k}\left( m_{1}, \dots, m_{k} \right)$ is irreducible for all $k$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3D2F.html" class="stacks-tag-link">(3D2F)</a></div>
-  <div class="stacks-env-body"><p>Consider the correspondence $I_{k}'\left( m_{1}, \dots, m_{k} \right)$.  The projection to the data $(\ell, p_{1}, \dots, p_{k})$ makes $I_{k}'$ into a projective space bundle over the parameter space of tuples $\left( \ell, p_{1}, \dots, p_{k} \right)$, and hence is irreducible.
- $I_{k}'\left( m_{1}, \dots, m_{k} \right)$ dominates $I_{k}\left( m_{1}, \dots, m_{k} \right)$ by forgetting the data of the marked points $(p_{1}, \dots, p_{k})$. The lemma follows.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-2irreducible">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.12.</strong> <a href="../tag/408C.html" class="stacks-tag-link">(408C)</a></div>
-  <div class="stacks-env-body"><p>The varieties $I_{k,j}''\left( m_{1}, \dots, m_{k} \mid n_{1},\dots,n_{j} \right)$ are irreducible for all $k, j$, and all multiplicities $(m_{1}, \dots, m_{k}), ( n_{1}, \dots, n_{j} )$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7C8A.html" class="stacks-tag-link">(7C8A)</a></div>
-  <div class="stacks-env-body"><p>The general fiber of the projection
-  $$\begin{aligned}(X ,\ell,  p_{1}, \dots, p_{k}, \ell', q_{1}, \dots, q_{j}) \mapsto (\ell, p_{1}, \dots p_{k}, \ell', q_{1}, \dots, q_{j})\end{aligned}$$
-  is a linear space in $\P^{N}$ with dimension independent of the pair of non-intersecting lines $\ell, \ell'$. This follows because the restriction map
-  $$\begin{aligned}\Gamma (O_{\P^{r}}(d)) \to \Gamma (O_{\ell \cup \ell'}(d))\end{aligned}$$
-  is surjective. The lemma follows at once.</p></div>
-</div>
-<div class="stacks-definition" id="definition-k-incident">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.13.</strong> <a href="../tag/9023.html" class="stacks-tag-link">(9023)</a></div>
-  <div class="stacks-env-body"><p>Let $X \subset \P^{r}$ be a hypersuface.  A line $\ell$ is <em>$k$-incident</em> to $X$  if the set-theoretic intersection $X\cap \ell$ consists of $k$  points.</p></div>
-</div>
-<div class="stacks-lemma" id="proposition-finitek-incident">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;2.14.</strong> <a href="../tag/370D.html" class="stacks-tag-link">(370D)</a></div>
-  <div class="stacks-env-body"><p>Assume $k =d -  (2r-2)$ is positive. Then a general hypersurface $X \subset \P^{r}$ of degree $d$  has finitely many $k$-incident lines, and has no $k'$-incident lines for $k' < k$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/45AA.html" class="stacks-tag-link">(45AA)</a></div>
-  <div class="stacks-env-body"><p>This is standard, and left to the reader.</p></div>
-</div>
-<h3 class="stacks-subsections-heading">First-order analysis near a $k$-incident line</h3>
-<p class="stacks-para">Let $(X,\ell) \in I_{k}(m_{1},\dots,m_{k})$ be a general point. We will study the first order deformations of $X \cap \ell$, as we vary $\ell$.</p>
-<p class="stacks-para">Fix homogeneous coordinates $\left[ x_{0}, \dots , x_{r} \right]$ for $\P^{r}$ such that $\ell$ is given by $x_{0} = \dots = x_{r-2} = 0$. Let $X$ be given by the degree $d$ equation
-$$\begin{aligned}F = P(x_{r-1}, x_{r}) + \sum_{j=0}^{d-2}x_{j}G_{j}\end{aligned}$$
-where
-$$\begin{aligned}P = \prod_{i=1}^{k}\left( x_{r-1} - \alpha_{i}x_{r} \right)^{m_{i}}.\end{aligned}$$</p>
-<div class="stacks-definition" id="definition-groupG">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.15.</strong> <a href="../tag/73DA.html" class="stacks-tag-link">(73DA)</a></div>
-  <div class="stacks-env-body"><p>Let $G \subset \PGL_{r+1}$ be the group of matrices of the form:
-  $$\begin{aligned}G = \begin{bmatrix}
-		1 & 0 & \dots & 0 & 0 \\
-		0 & 1 & \dots & 0 & 0 \\
-		\hdotsfor{5} \\
-		a_{r-1,0} & a_{r-1,1} & \dots & 1 & 0 \\
-		a_{r,0} & a_{r,1} & \dots & 0 & 1
-    \end{bmatrix}\end{aligned}$$
-  where $a_{i,j}$, $(i = r-1, r), (j = 0 , \dots , r-2)$ are any constants.</p></div>
-</div>
-<div class="stacks-commentary" id="remark-opensetgrassman">
-  <div class="stacks-env-head"><strong>Remark&nbsp;2.16.</strong> <a href="../tag/2127.html" class="stacks-tag-link">(2127)</a></div>
-  <div class="stacks-env-body"><p>The orbit $G \cdot [\ell]$ is an open subset of $\G(1,r)$ isomorphic to $\A^{2r-2}$.</p></div>
-</div>
-<div class="stacks-definition" id="definition-familyG">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.17.</strong> <a href="../tag/4E5F.html" class="stacks-tag-link">(4E5F)</a></div>
-  <div class="stacks-env-body"><p>Let $Z \subset \ell \times G$ be the union
-  $$\begin{aligned}\bigcup_{g \in G}  \left(\left(g \cdot X\right)\cap \ell,g\right).\end{aligned}$$</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-ZisSigma">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.18.</strong> <a href="../tag/E0FD.html" class="stacks-tag-link">(E0FD)</a></div>
-  <div class="stacks-env-body"><p>The variety $Z \subset \ell \times G$ is isomorphic to the the variety $\Sigma \subset \P$ above the open set $G \subset \G\left( 1,r \right)$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9AB2.html" class="stacks-tag-link">(9AB2)</a></div>
-  <div class="stacks-env-body"><p>This is clear.</p></div>
-</div>
-<p class="stacks-para">Our goal here is to understand the first-order infinitesimal neighborhood of the the family $Z \subset \ell \times G \to G$ near the point $\left[ \ell \right] \in G$.</p>
-<div class="stacks-definition" id="definition-gj">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.19.</strong> <a href="../tag/A1F5.html" class="stacks-tag-link">(A1F5)</a></div>
-  <div class="stacks-env-body"><p>We let $g_{j}$ be the polynomial in $x_{r-1},x_{r}$ which is the restriction of $G_{j}$ to $\ell$.</p></div>
-</div>
-<div class="stacks-lemma" id="lemma-firstorderG">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;2.20.</strong> <a href="../tag/78AE.html" class="stacks-tag-link">(78AE)</a></div>
-  <div class="stacks-env-body"><p>Let $\left\{ c_{i,j} \right\}, (i=r-1,r), (j=0,\dots,r-2)$ be the elements $\partial_{a_{i,j}} \in T_{\left[ \ell \right]}G$. </p>
-<p>  The first-order family $Z_{\varepsilon} \subset \ell \times T_{\left[ \ell \right]}G \to T_{\left[ \ell \right]}G$ is isomorphic to the zero locus of:
-  $$\begin{aligned}P\left( x_{r-1},x_{r} \right) + \sum_{j=0}^{r-2}\left( c_{r-1,j}x_{r-1}+c_{r,j}x_{r} \right)g_{j}.\end{aligned}$$</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9ABD.html" class="stacks-tag-link">(9ABD)</a></div>
-  <div class="stacks-env-body"><p>The first-order family parametrized by the Lie algebra of the group $G$ is given by applying the infinitesimal substitutions
-  $$\begin{aligned}x_{0} &\mapsto x_{0} + \varepsilon(c_{r-1,0}x_{r-1}+ c_{r,0}x_{r})\\
-    x_{1} &\mapsto x_{1} + \varepsilon(c_{r-1,1}x_{r-1}+c_{r,1}x_{r})\\
-    &\vdots\\
-    x_{r-1} &\mapsto x_{r-1}\\
-    x_{r} &\mapsto x_{r}\end{aligned}$$
-  to the equation $F$ defining $X$ and then restricting to $\ell$. The constants $\left\{ c_{i,j} \right\}$ vary freely, and represent coordinates on the Lie algebra of $G$.  The end result is the family given in the statement of the lemma.</p></div>
-</div>
-<div class="stacks-commentary" id="remark-affine">
-  <div class="stacks-env-head"><strong>Remark&nbsp;2.21.</strong> <a href="../tag/FF7B.html" class="stacks-tag-link">(FF7B)</a></div>
-  <div class="stacks-env-body"><p>It will usually be more convenient to use the affine notation
-  $$\begin{aligned}p(z) + \sum_{j=0}^{r-2}\left( c_{r-1,j}z+c_{r,j} \right)g_{j}(z).\end{aligned}$$</p></div>
-</div>
-<p class="stacks-para">Using the infinitesimal analysis above, we will now prove some lemmas which will allow us to understand the versality of the point-line correspondence $\Sigma \to \G\left( 1,r \right)$ near a $k$-incident line $\ell$, where $k = d -(2r-2)$.</p>
+<h1 class="stacks-section-title">2.2. The map to moduli $\Phi$</h1>
+<p class="stacks-para">Suppose $X \in \PP^{n}$ is a degree $d$ hypersurface.  After fixing integers $e \geq 1, k \leq n-1$, we get the induced <em>map to moduli</em>
+$$\begin{aligned}\Phi: \operatorname{Mor}_e(\PP^k,\PP^n)&\dashrightarrow \PP H^0(\PP^k,\OO_{\PP^k}(de))\\
+    \iota &\mapsto [\iota^{-1}(X)].\end{aligned}$$
+We say that $\Phi$ has maximal rank  if the dimension of its image is $\max\{\dim(\operatorname{Mor}_e(\PP^k,\PP^n)),\PP H^0(\PP^k,\OO_{\PP^k}(de))\}$. Equivalently, since we are working over $\mathbb{C}$, the derivative of $\Phi$ at a general point has maximum rank.</p>
+<p class="stacks-para">Though our methods give results for all $e,k$, we are primarily interested in the cases where $e=1$ or $k=1$.  Therefore, we have only stated our results in these cases. In the case $e=1$, $\Phi$ having maximal rank is equivalent to the map
+$$\begin{aligned}\mathbb{G}(k,n)&\dashrightarrow \PP H^0(\PP^k,\OO_{\PP^k}(d))\git SL_k\\
+    [\Lambda]&\mapsto [\Lambda\cap X]\end{aligned}$$
+having maximal rank, assuming the general $k$-plane slice of $X$ has no infinitesimal automorphisms. Whenever our results apply, this condition will always be satisfied.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -189,7 +92,7 @@ $$\begin{aligned}P = \prod_{i=1}^{k}\left( x_{r-1} - \alpha_{i}x_{r} \right)^{m_
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 2.2. Lines meeting $X$ infrequently">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — 2.2. The map to moduli $\Phi$">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S2.SS2.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -203,7 +106,7 @@ $$\begin{aligned}P = \prod_{i=1}^{k}\left( x_{r-1} - \alpha_{i}x_{r} \right)^{m_
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

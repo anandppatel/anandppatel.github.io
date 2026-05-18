@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (6290) — Moduli of linear sections of a general hypersurface</title>
+  <title>Proof (6290) — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,21 +67,21 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal monodromy</a> / <a href="../section/S3.SS2.html">3.2. In pursuit of a simple transposition</a> / <span>Proof (6290)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Bounds and computations for $B_k(n)$</a> / <span>Proof (6290)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="1FED.html">&laquo; Lemma 3.4</a><span class="stacks-tag-current">Tag 6290</span><a href="2780.html">Corollary 3.5 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="D37C.html">&laquo; Lemma 6.2</a><span class="stacks-tag-current">Tag 6290</span><a href="794E.html">Lemma 6.3 &raquo;</a></div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6290.html" class="stacks-tag-link">(6290)</a></div>
-  <div class="stacks-env-body"><p>The family of deformations of $z^{m_{1}+m_{2}} = 0$ parametrized by the set $Z_{m_{1},m_{2}}$ is the image of the map
-  $$\begin{aligned}t \mapsto (z-m_{2}t)^{m_{1}}(z+m_{1}t)^{m_{2}}.\end{aligned}$$
-  By expanding this  polynomial in terms of $z$, we obtain an expression
-  $$\begin{aligned}z^{m_{1}+m_{2}} + c_{2}t^{2}z^{m_{1}+m_{2}-2} + c_{3}t^{3}z^{m_{1}+m_{2}-3} + \dots + c_{m_{1}+m_{2}}t^{m_{1}+m_{2}}\end{aligned}$$
-  where, under the assumption that $m_{1} \neq m_{2}$, all coefficients $c_{j}$ are nonzero. The lemma follows.</p></div>
+  <div class="stacks-env-body"><p>Let $\mu^{\max'}_n = \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}$.</p>
+<p>We use induction. The base case $n=1$ is vacuous, so assume $n>1$. First, we show that $\mu^{\max\prime}_n\leq \mu^{\max}_n$. Given any $0<i<n$, $\frac{\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor}{n-i}$ is a slope achieved by taking an admissible sequence $(d_1,r_1),\ldots,(d_a,r_a)$ in $A_i$ and appending $(\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor,n-i)$. So by definition $\mu^{\max\prime}_n\leq \mu^{\max}_n$. </p>
+<p>Now we show $\mu^{\max\prime}_n\geq \mu^{\max}_n$. Let $(d_1,r_1),\ldots(d_a,r_a)$ be an admissible sequence in $A_n$ achieving $\frac{d_a}{r_a}= \mu^{\max}_n$. If $a=1$, then $d_a=0$ so $\mu^{\max}_n=0$ while $\mu^{\max\prime}_n$ is by definition nonnegative. Otherwise, let $i=r_1+\cdots+r_{a-1}$, so $\frac{d_{a-1}}{r_{a-1}}\leq \mu^{\max}_i=\mu^{\max\prime}_i$ by definition and the assumption hypothesis. Then, $r_a = n-i$
+$$\begin{aligned}\frac{d_a}{r_a}\leq \mu^{\max\prime}_i+\frac{1}{k},\end{aligned}$$
+so $d_a\leq \lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor$. Then, by definition $\mu^{\max\prime}_n\geq \mu^{\max}_n$. Therefore, we are done and $\mu^{\max\prime}_n=\mu^{\max}_n$ for all $n$.</p></div>
 </div>
 
 <hr>
@@ -89,7 +92,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag 6290 (Proof)">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Tag 6290 (Proof)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/6290.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -103,7 +106,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

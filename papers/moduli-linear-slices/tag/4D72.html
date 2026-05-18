@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (4D72) — Moduli of linear sections of a general hypersurface</title>
+  <title>Proof (4D72) — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,19 +67,28 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <a href="../section/S2.SS1.html">2.1. Local models</a> / <span>Proof (4D72)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Grauert-Mulich</a> / <span>Proof (4D72)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="B813.html">&laquo; Proposition 2.6</a><span class="stacks-tag-current">Tag 4D72</span><a href="110D.html">Proposition 2.7 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="6E5A.html">&laquo; Lemma 3.6</a><span class="stacks-tag-current">Tag 4D72</span><a href="1E5A.html">Definition 3.7 &raquo;</a></div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4D72.html" class="stacks-tag-link">(4D72)</a></div>
-  <div class="stacks-env-body"><p>Since $B$ is smooth, it is &eacute;tale locally isomorphic to $\A^{m}.$ So we may reduce to the case $\left( B,b \right) = \left( \A^{m},0 \right)$.</p>
-<p>  After passing to an open set, the set $Z$ is defined by a single equation $$s^{n} + u_{n-1}s^{n-1}t + \dots + u_{0}t^{n}=0$$ where $u_{i} \in \fm_{0} \subset \Gamma (O_{\A^{m}})$. (Here $\fm_{0}$ is the maximal ideal of the origin.) We may ``complete the $n$-th power'' and find an isomorphic $Z' \subset \P^{1} \times \A^{m}$ defined by a similar equation, but with vanishing $u_{n-1}$ term. </p>
-<p>  The $n-1$ functions $u_{i} \in \fm_{0} \subset \Gamma \left( O_{\A^{m}} \right), i = 0, \dots n-2$ define a map $\left( \A^{m}, 0 \right) \to \left( \A^{n-1},0 \right)$ with the desired property.</p></div>
+  <div class="stacks-env-body"><p>By [Sha77, Lemmas 5 and 7], we can replace $\cM$ by a dense open subset so that the members of the Harder-Narasimham filtration of $\pi^{*}E|_{\cU_p}$ extend to a family over $\cU$.
+Namely, there exists a sequence of subsheaves $0=S_0\subset S_1\subset \cdots S_a= \pi^{*}E$ that restricts to the Harder-Narasimham filtration of $E|_{\cU_p}$ for all $p\in \cM$, so in particular $S=S_i|_{\cU_p}$ for some $i$. </p>
+<p>We have an open subset $\cU^0\subset \cU$ whose complement has codimension at least 2 and consists of the points over which $S_i$ and $\pi^{*}E/S_i$ are both vector bundles. The image of $\cU^0$ in $Z$ is an open subset $Z^0$ (by flatness of $\pi$) whose complement must also have  codimension at least 2. </p>
+<p>Now, we can apply <a href="/papers/moduli-linear-slices/tag/F582.html" class="stacks-ref-link">Lemma&nbsp;3.4 <span class="stacks-ref-tag">[F582]</span></a> in the case $Y=\cU^0$ and $Z=Z^0$. In order to do so, we must show that
+$$\begin{aligned}\Hom(T_{\cU^0/Z^0},\Hom(S_i|_{\cU^0},(\pi^{*}E/S_i)|_{\cU^0}))=0.\end{aligned}$$
+For this, let $C \subset \cU_{p}$ be a general complete intersection curve of sufficiently high degree. Restricting the Harder-Narasimhan filtration of $\pi^{*}E|_{\cU_p}$ to $C$ will result in a sequence of vector sub-bundles. This is because each semistable subquotient on $\cU_{p}$ is in particular torsion-free, so the Harder-Narasimhan filtration is a sequence of vector subbundles away from a set of codimension at least 2. Since $C$ can be chosen to avoid this set of codimension 2, restricting a sequence of sub-bundles yields a sequence of sub-bundles. By [MR82], this sequence of sub vector bundles on $C$ is the Harder-Narasimhan filtration of $\pi^{*}E|_{C}$.  $\Hom(T_{\cU/Z}|_{\cU_p}\otimes S,\pi^{*}E|_{\cU_p}/S)=0$.   In order to show (3.1), it now suffices to show
+$$\begin{aligned}\Hom(T_{\cU/Z}|_{C},\Hom(S|_C,\pi^{*}E|_{\cU_p}/S)|_C))=\Hom(T_{\cU/Z}|_{C}\otimes S|_C,\pi^{*}E|_{\cU_p}/S)|_C)=0.\end{aligned}$$</p>
+<p>We conclude by applying <a href="/papers/moduli-linear-slices/tag/3430.html" class="stacks-ref-link">Lemma&nbsp;3.5 <span class="stacks-ref-tag">[3430]</span></a> as
+$$\begin{aligned}\mu^{\max}(\pi^{*}E|_{\cU_p}/S)|_C) &= \deg(C) \mu^{\max}(\pi^{*}E|_{\cU_p}/S))\\
+    \mu^{\min}(S|_C) &= \deg(C) \mu^{\min}(C)\\
+    \mu^{\min}(T_{\cU/Z}|_{C}) &= \deg(C) \mu^{\min}(T_{\cU/Z})\\
+    \mu^{\min}(T_{\cU/Z}|_{C}\otimes S|_{C}) &= \mu^{\min}(S|_C) + \mu^{\min}(T_{\cU/Z}|_{C}).\end{aligned}$$</p></div>
 </div>
 
 <hr>
@@ -87,7 +99,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag 4D72 (Proof)">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Tag 4D72 (Proof)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/4D72.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -101,7 +113,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

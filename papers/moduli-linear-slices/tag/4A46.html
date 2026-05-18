@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (4A46) — Moduli of linear sections of a general hypersurface</title>
+  <title>Proof (4A46) — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,17 +67,23 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal monodromy</a> / <a href="../section/S3.SS2.html">3.2. In pursuit of a simple transposition</a> / <span>Proof (4A46)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Bounds and computations for $B_k(n)$</a> / <span>Proof (4A46)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="8751.html">&laquo; Proposition 3.6</a><span class="stacks-tag-current">Tag 4A46</span><a href="3BF7.html">Lemma 3.7 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="260A.html">&laquo; Proposition 6.4</a><span class="stacks-tag-current">Tag 4A46</span><a href="0A59.html">Lemma 6.5 &raquo;</a></div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4A46.html" class="stacks-tag-link">(4A46)</a></div>
-  <div class="stacks-env-body"><p>The two statements are proved at the level of tangent spaces.  They follow, respectively, by applying points $1$ and $2$ in <a href="/papers/moduli-linear-slices/tag/D46C.html" class="stacks-ref-link">Lemma&nbsp;2.23 <span class="stacks-ref-tag">[D46C]</span></a>.</p></div>
+  <div class="stacks-env-body"><p>First, we show $B_k(n)=0$ if $n\geq k$ by induction. The case $n=1$ is vacuous. For $1<n\leq k$,
+$$\begin{aligned}\mu^{\max}(n) &= \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}\qquad\text{by <a href="/papers/moduli-linear-slices/tag/D37C.html" class="stacks-ref-link">Lemma&nbsp;6.2 <span class="stacks-ref-tag">[D37C]</span></a>}\\
+    &= \max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}=0.\end{aligned}$$
+By definition then $B_k^{\low}(n)=0$ and $B_k^{\up}(n)=0$. Now, assume $k<n\leq \frac{3}{2}k$. We will prove $B_k(n)$ by induction. First,
+$$\begin{aligned}\mu^{\max}(n) &= \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}\qquad\text{by <a href="/papers/moduli-linear-slices/tag/D37C.html" class="stacks-ref-link">Lemma&nbsp;6.2 <span class="stacks-ref-tag">[D37C]</span></a>}\\
+    &= \max\{\max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i\leq k\},\max\{\frac{\lfloor(\frac{1}{k}+\frac{1}{k})(n-i)\rfloor}{n-i}\mid k<i< n\}\}\end{aligned}$$
+The first maximum $\max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i\leq k\}$ is $\frac{1}{k}$ and achieves its maximum when $n-i=k$. The second maximum $\max\{\frac{\lfloor(\frac{2}{k})(n-i)\rfloor}{n-i}\mid k<i< n\}$ is zero since $n-i<\frac{k}{2}$ meaning $\frac{2}{k})(n-i)<1$.</p></div>
 </div>
 
 <hr>
@@ -85,7 +94,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag 4A46 (Proof)">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Tag 4A46 (Proof)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/4A46.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -99,7 +108,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

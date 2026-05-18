@@ -963,6 +963,8 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
 \usepackage{xparse}
 \usepackage{tikz}
 \usepackage{tikz-cd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
 \usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes,decorations.markings,decorations.pathmorphing,plotmarks,calc,patterns,fit,backgrounds}
 """ + TEX_RENDER_CONTEXT["preamble"] + r"""
 """ + TEX_RENDER_CONTEXT["tikzset"] + r"""

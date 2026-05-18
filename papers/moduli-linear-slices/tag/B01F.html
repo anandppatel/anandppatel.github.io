@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (B01F) — Moduli of linear sections of a general hypersurface</title>
+  <title>Proof (B01F) — Moduli of linear slices of high degree hypersurfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -16,44 +16,47 @@
         displayMath: [['$$', '$$']],
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
-          addperiod: ["#1.", 1],
-          nc: "\\newcommand",
-          se: "\\section",
-          ssec: "\\subsection",
-          sssec: "\\subsubsection",
-          N: "{\\mathbf N}",
-          C: "{\\mathbf C}",
-          R: "{\\mathbf R}",
-          Q: "{\\mathbf Q}",
-          G: "{\\mathbf G}",
-          P: "{\\mathbf P}",
-          cF: "{\\mathcal F}",
-          Z: "{\\mathbf Z}",
-          A: "{\\mathbf A}",
-          fa: "{\\mathfrak a}",
-          fp: "{\\mathfrak p}",
-          fq: "{\\mathfrak q}",
-          fm: "{\\mathfrak m}",
-          so: "{\\mathscr O}",
-          sg: "{\\mathscr G}",
-          m: "{\\mathcal M}",
-          barm: "\\overline{{\\mathcal M}}",
-          to: "\\longrightarrow",
-          Hyp: "\\operatorname{Hyp}",
-          im: "\\operatorname{im}",
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
           id: "\\operatorname{id}",
-          coker: "\\operatorname{coker}",
-          Spec: "\\operatorname{Spec}",
-          proj: "\\operatorname{Proj}",
-          rk: "\\operatorname{rk}",
-          Hom: "\\operatorname{Hom}",
-          pic: "\\operatorname{Pic}",
-          length: "\\operatorname{length}",
-          rank: "\\operatorname{rank}",
-          Span: "\\operatorname{Span}",
-          Ext: "\\operatorname{Ext}",
-          PGL: "\\operatorname{PGL}",
-          dm: "\\operatorname{dim}"
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}"
         }
       },
       svg: { fontCache: 'global' }
@@ -64,17 +67,17 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <a href="../section/S2.SS3.html">2.3. Some lemmas on multiplication of polynomials</a> / <span>Proof (B01F)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Hyperplane sections</a> / <span>Proof (B01F)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="D46C.html">&laquo; Lemma 2.23</a><span class="stacks-tag-current">Tag B01F</span><a href="7AE4.html">Remark 2.24 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="B288.html">&laquo; Lemma 5.5</a><span class="stacks-tag-current">Tag B01F</span><a href="E0FE.html">Theorem 5.6 &raquo;</a></div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B01F.html" class="stacks-tag-link">(B01F)</a></div>
-  <div class="stacks-env-body"><p>The spaces $V_{r-1}$ constructed in the proof of <a href="/papers/moduli-linear-slices/tag/8F91.html" class="stacks-ref-link">Lemma&nbsp;2.22 <span class="stacks-ref-tag">[8F91]</span></a> satisfy these two properties.  We leave the verification to the reader.</p></div>
+  <div class="stacks-env-body"><p>Let $\Lambda$ be a general $k$-plane and $0 = E_0 \subset E_1 \subset \cdots \subset E_a = E|_{\Lambda}$ be the Harder-Narasimhan filtration of $E|_{\Lambda}$. Let $-d_i$ be the degree of $E_i/E_{i-1}$ and $r_i$ be the rank of $E_i/E_{i-1}$. Since $E|_{\Lambda}$ has a section, we see that $d_1 \leq 0$. Since $E$ is semistable, by Lemma <a href="/papers/moduli-linear-slices/tag/5EF1.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[5EF1]</span></a> it follows that the sequence $(-d_1,r_1), \cdots, (-d_a,r_a)$ will be $k$-admissible. The result follows.</p></div>
 </div>
 
 <hr>
@@ -85,7 +88,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag B01F (Proof)">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Tag B01F (Proof)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/B01F.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
@@ -99,7 +102,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>
