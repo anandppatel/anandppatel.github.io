@@ -1667,6 +1667,58 @@ def convert_latex_lists(text):
     return ''.join(out)
 
 
+def protect_latex_math_fragments(text):
+    """Temporarily replace TeX math spans with placeholders."""
+    fragments = []
+    out = []
+    i = 0
+
+    def is_escaped(pos):
+        backslashes = 0
+        j = pos - 1
+        while j >= 0 and text[j] == "\\":
+            backslashes += 1
+            j -= 1
+        return backslashes % 2 == 1
+
+    delimiters = (("$$", "$$"), ("\\[", "\\]"), ("\\(", "\\)"), ("$", "$"))
+
+    while i < len(text):
+        matched = None
+        if not is_escaped(i):
+            for opener, closer in delimiters:
+                if text.startswith(opener, i):
+                    matched = (opener, closer)
+                    break
+        if not matched:
+            out.append(text[i])
+            i += 1
+            continue
+
+        opener, closer = matched
+        start = i
+        i += len(opener)
+        while i < len(text):
+            if text.startswith(closer, i) and not is_escaped(i):
+                i += len(closer)
+                token = f"@@LATEXMATH{len(fragments)}@@"
+                fragments.append(text[start:i])
+                out.append(token)
+                break
+            i += 1
+        else:
+            out.append(text[start:])
+            break
+
+    return ''.join(out), fragments
+
+
+def restore_latex_math_fragments(text, fragments):
+    for idx, fragment in enumerate(fragments):
+        text = text.replace(f"@@LATEXMATH{idx}@@", fragment)
+    return text
+
+
 def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
     s = normalize_geometric_alphabets(tex)
@@ -1866,6 +1918,11 @@ def tex_to_html(tex):
     )
 
     # --- Inline formatting ---
+    #
+    # Protect math first: declaration-style text commands may wrap formulas,
+    # and commands such as \text{\sl ...} may occur inside formulas.  HTML tags
+    # inside a MathJax delimiter break rendering and expose literal "$$".
+    s, math_fragments = protect_latex_math_fragments(s)
 
     s = replace_latex_text_command(s, "emph", "em")
     s = replace_latex_text_command(s, "textit", "em")
@@ -1882,6 +1939,7 @@ def tex_to_html(tex):
     s = replace_latex_declaration_group(s, "bf", "strong")
     s = replace_latex_declaration_group(s, "tt", "code")
     s = replace_latex_declaration_group(s, "sc", "span", ' class="stacks-small-caps"')
+    s = restore_latex_math_fragments(s, math_fragments)
 
     # ~ -> non-breaking space
     s = s.replace('~', '&nbsp;')
@@ -2136,6 +2194,8 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
         return ", ".join(parts[:-1]) + ", and " + parts[-1]
 
     def resolve_refs(text, refs_include_type=False):
+        text, math_fragments = protect_latex_math_fragments(text)
+
         def ref_replacer(m):
             return resolve_ref_list(m.group(1), include_type=False)
 
@@ -2156,7 +2216,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
         text = re.sub(r'\\autoref\{([^}]+)\}', cref_replacer, text)
         text = re.sub(r'\\eqref\{([^}]+)\}', eqref_replacer, text)
         text = re.sub(r'\\ref\{([^}]+)\}', ref_replacer, text)
-        return text
+        return restore_latex_math_fragments(text, math_fragments)
 
     def resolve_blocks(blocks):
         for block in blocks:
