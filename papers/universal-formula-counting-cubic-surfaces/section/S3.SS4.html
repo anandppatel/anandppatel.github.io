@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4. The fourth test family — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.4. The fourth test family</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.4. The fourth test family</h1>
+<p class="stacks-para">\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \draw (0,0) ellipse (2 and 1.5);
+  \begin{scope}[xshift=-1cm, yshift=-0.5cm]
+  \draw[blue,fill]
+  (0,1) circle (0.05)
+  (2,0) circle (0.05)
+  (2,1) circle (0.05)
+  (0,0) circle (0.05)
+  ;
+\end{scope}
+  \draw[red,fill]
+  (0.5,0) circle (0.05)
+  (-0.5,0) circle (0.05)
+  ;
+\end{tikzpicture}</p>
+<p class="stacks-para">\caption{In the fourth test family, we blow up the plane at 4 fixed points (blue) and 2 variable points (red).}
+    \label{fig:family4}
+  \end{figure}
+Our fourth family is perhaps the most obvious one.
+We blow up 6 points on $\P^2$, four of which remain fixed, and the remaining two vary freely (see Figure&nbsp;4).
+A complication arises, however, while formalizing this construction.
+When the two varying points lie on the line joining two of the fixed points, the resulting configuration is no longer admissible.
+It takes some effort to resolve this issue.</p>
+<p class="stacks-para">Let $S$ be the blow up of $\P^2$ at 4 general points.
+Then $S$ is a quintic del Pezzo.
+Let $S^{[2]}$ denote the Hilbert scheme of 2 points on $S$.
+We have 10 exceptional curves $L_1, \dots, L_{10}$ on $S$.
+Consider the planes $L^{[2]}_i \subset S^{[2]}$.
+Observe that a length 2 subscheme $Z \subset S$ is not admissible precisely when $Z$ is contained in $L_i$ for some $i$.
+For $i \neq j$, the lines $L_i$ and $L_j$ are either disjoint or intersect in a single (reduced) point.
+Therefore, $L^{[2]}_i$ and  $L^{[2]}_j$ are disjoint subsets of $S^{[2]}$.
+Let $\Lambda$ be the union of all $L^{[2]}_i$.
+The crux of this
+section is to show that the blow up $\Bl_{\Lambda}S^{[2]}$ hosts a
+good family of cubic surfaces.</p>
+<p class="stacks-para">Set
+$$\widetilde {S^{[2]}} := \Bl_{\Lambda}S^{[2]},$$
+with $\beta \colon \widetilde {S^{[2]}} \to S^{[2]}$ being the blow-down map.
+For $i=1, \dots, 10$, let $E_{i} = \beta^{-1}(L^{[2]}_{i})$ denote the
+components of the of the exceptional divisor of the blow-up.
+Consider
+$$ F_i: = E_i \times L_i \subset \widetilde {S^{[2]}} \times S,$$
+and let $F$ be the (disjoint) union $F = \bigcup_i F_i$.
+Set
+$$\mathcal{Y} := \Bl_{F}\left( \widetilde{S^{[2]}} \times S \right),$$
+with $\eta \colon \mathcal Y \to  \widetilde{S^{[2]}} \times S$ being the blow-down map.
+Consider the map
+$$ \widetilde \pi \colon \mathcal Y \to \widetilde {S^{[2]}}$$
+obtained by composing $\eta$ with the projection on to the first factor.
+It is easy to check that $\widetilde \pi$ is a flat family of surfaces, isomorphic to the constant family with fiber $S$ over the complement of $E$ in $\widetilde{S^{[2]}}$.</p>
+<p class="stacks-para">Let $\mathcal Z \subset S^{[2]} \times S$ be the universal closed subscheme of length 2.
+Let $\widetilde {\mathcal Z} \subset \widetilde{S^{[2]}} \times S$ be the fiber product
+$$ \widetilde {\mathcal Z} = \mathcal Z \times_{S^{[2]}} \widetilde {S^{[2]}}.$$
+The next lemma is critical to our construction.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.12.</strong> <a href="../tag/3751.html" class="stacks-tag-link">(3751)</a></div>
+  <div class="stacks-env-body"><p>The closed embedding
+  $i: \widetilde{\mathcal{Z}} \hookrightarrow \widetilde{S^{[2]}}
+  \times S$ lifts to a closed embedding
+  $j: \widetilde{\mathcal{Z}} \hookrightarrow  \mathcal{Y}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8B66.html" class="stacks-tag-link">(8B66)</a></div>
+  <div class="stacks-env-body"><p>The subscheme $(L^{[2]}_i \times S) \cap \mathcal Z$ is contained in $(L^{[2]}_i \times L_i)$.
+  Hence, we have an equality of schemes
+  $$
+    (L^{[2]}_i \times L_i) \cap \mathcal Z = (L^{[2]}_i \times S) \cap \mathcal Z.
+  $$
+  By pulling back both sides to $\widetilde{S^{[2]}} \times S$, we get
+  $$F_i \cap \widetilde{\mathcal{Z}} = (E_i \times S) \cap \widetilde{\mathcal{Z}}.$$
+  In particular, $F_i \cap \widetilde {\mathcal Z}$ is a Cartier divisor.
+  By the universal property of the blow up, we get a lift $j \colon \widetilde{\mathcal Z} \to \mathcal Y$.
+  Since $i = \beta \circ j$ is a closed embedding, so is $j$.</p></div>
+</div>
+<p class="stacks-para">The following diagram summarizes the situation so far:</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p class="stacks-para">We let $\mathcal{F} \subset \mathcal{Y}$ denote the exceptional
+divisor of $\eta$. It has $10$ disjoint components, corresponding to
+each $F_{i}$, which in turn correspond to the ten lines $L_{i}$.
+To ease notation, we suppress the map $j \colon \widetilde{\mathcal Z} \to \mathcal Y$, and write $\widetilde{\mathcal Z} \subset \mathcal Y$.</p>
+<p class="stacks-para">Let us study the family $\widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}}$.
+Its fiber over a point in the complement of $E$ is just $S$.
+The following proposition describes the fiber of $\mathcal Y$ over $e \in E_i$, along with the fiber of $\widetilde{\mathcal Z}$ in it; see Figure&nbsp;5 for a picture.
+\begin{figure}
+  \centering
+    \begin{tikzpicture}[very thick]
+  \draw (-4,0) &ndash; (4,0);
+  \draw (5.5, 3) node (Y) {$\mathcal Y$};
+  \draw (5.5,0) node (S){$\widetilde {S^{[2]}}$};
+  \draw (Y) edge[->] (S);
+  \draw (0,0) circle (0.05) node [below] {$\qquad e \in E$};</p>
+<p class="stacks-para">\begin{scope}[xshift=-3cm, yshift=3cm, yscale=1.25]
+    \draw (60:1) &ndash; (120:1) &ndash; (170:1) &ndash; (230:1) &ndash; (280:1) &ndash; (330:1) &ndash; (10:1) &ndash; (60:1);
+    \draw[fill, red]
+    (10:0.5) node (a1) {} circle (0.05)
+    (40:0.5) node (a2) {} circle (0.05);
+    \draw (250:1.25) node {$S$};
+  \end{scope}</p>
+<p class="stacks-para">\begin{scope}[xshift=3cm, yshift=3cm, yscale=1.25]
+    \draw (60:1) &ndash; (120:1) &ndash; (170:1) &ndash; (230:1) &ndash; (280:1) &ndash; (330:1) &ndash; (10:1) &ndash; (60:1);
+    \draw[fill, red]
+    (160:0.5) node (b1) {} circle (0.05)
+    (120:0.5) node (b2) {} circle (0.05);
+    \draw (310:1.25) node {$S$};
+  \end{scope}</p>
+<p class="stacks-para">\begin{scope}[yshift=2cm, scale=1.25]
+    \draw (60:1) &ndash; (120:1) &ndash; (170:1) &ndash; (230:1) &ndash; (280:1) &ndash; (330:1) &ndash; (10:1) &ndash; (60:1);
+    \draw (60:1) &ndash; (120:1) &ndash; ++(0,1.25) &ndash; ++(1,0) &ndash; cycle;
+    \draw[fill, red]
+    (85:1.25) node (z1) {} circle (0.05)
+    (95:1.50) node (z2) {} circle (0.05);
+    \draw[blue,fill] (230:1) edge [dashed, bend right=10] (-0.3,0.86)
+    (-0.3,0.86) circle (0.05);
+    \draw[blue,fill] (280:1) edge [dashed] (0,0.86)
+    (0,0.86) circle (0.05);
+    \draw[blue,fill] (330:1) edge [dashed, bend left=10] (0.3,0.86)
+    (0.3,0.86) circle (0.05);
+    \draw (310:1.25) node {$S$};
+    \draw (80:2.4) node {$\F_1$};
+  \end{scope}
+  \draw[thin, draw=red, bend left=10] (a1) edge (z1) (z1) edge (b1);
+  \draw[thin, draw=red, bend left=10] (a2) edge node[above] {$\widetilde{\mathcal Z}$} (z2)
+  (z2) edge (b2);
+\end{tikzpicture}</p>
+<p class="stacks-para">\caption{The family of surfaces $\mathcal Y \to \widetilde {S^{[2]}}$ and the subscheme $\widetilde {\mathcal Z} \subset \mathcal Y$.
+      The dashed lines on the central fiber represent the three exceptional curves of $S$ intersecting the double curve.
+    }
+    \label{fig:familyY}
+\end{figure}</p>
+<div class="stacks-lemma" id="prop-geometry">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.13.</strong> <a href="../tag/445B.html" class="stacks-tag-link">(445B)</a></div>
+  <div class="stacks-env-body"><p>Let $e \in E_{i}$ be any point, and let
+  $\mathcal{Y}_{e} = \widetilde \pi^{-1}(e)$.
+  <ol><li>$\mathcal{Y}_{e}$ is the union of two surfaces $S$ and $\mathcal F_e$, where $\mathcal F_e$ is a copy of the Hirzebruch surface $\F_1$.
+    They meet transversely along $L_{i} \subset S$ and a smooth curve of self-intersection $1$ in $\F_1$.</li>
+<li>The subscheme $\widetilde{\mathcal Z}_e \subset \mathcal Y_e$ lies in $\mathcal F_e$ and is disjoint from $S$.
+    It maps isomorphically onto its image in $L_{i}$ under $\eta$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8A68.html" class="stacks-tag-link">(8A68)</a></div>
+  <div class="stacks-env-body"><p>We study the blowup $\mathcal{Y} = \Bl_{F} \left( \td{S^{[2]}} \times S
+  \right)$, beginning with the normal bundle $N_{F/ \td{S^{[2]}} \times S }$.
+  We focus on the component $F_{i} = E_{i} \times L_{i}$.
+  Denoting by ${\pi}_1 \colon F_i \to E_i$ and ${\pi}_2 \colon F_i \to L_i$ the two projections, we have
+  $$N_{F_{i}/ \td{S^{[2]}} \times S } = {\pi}_{1}^{*}
+    N_{E_{i}/\td{S^{[2]}}} \oplus {\pi}_{2}^{*}N_{L_{i}/S}.$$
+  The component of $\mathcal{F}$ lying above $F_{i}$ is the
+  projectivization $\P N_{F_{i}/ \td{S^{[2]}} \times S }$.
+  Restricting the projectivization to $\{e\} \times L_{i} \simeq L_i$ yields
+  $\P (\O_{L_{i}} \oplus \O_{L_{i}}(-1))$.
+  Thus we get  $\mathcal{F}_{e} \simeq \F_{1}$.
+  Since $(\{e\} \times S) \cap F_{i} = \{e\} \times L_{i}$ is a Cartier
+  divisor on $\{e\} \times S$, the proper transform of $\{e\} \times S$ in
+  $\mathcal{Y}$ is again a copy of $S$.
+  It meets
+  $\mathcal{F}_{e} = \P (\O_{L_{i}} \oplus \O_{L_{i}}(-1)) \simeq
+  \F_{1}$ along the section corresponding to the summand
+  $N_{L_{i}/S} = \O_{L_{i}}(-1)$.
+  Altogether, we get the description of $\mathcal{Y}_{e}$ provided in (1).</p>
+<p>  Since the embedding $i \colon \widetilde {\mathcal Z} \to \widetilde{S^{[2]}} \times S$ is the composite
+  $$\widetilde {\mathcal Z} \xrightarrow{j} \mathcal Y \xrightarrow{\eta} \widetilde{S^{[2]}} \times S,$$
+  and $\mathcal F = \eta^{-1}(F)$, we have
+  $$ \widetilde {\mathcal Z} \cap j^{-1}\left(\mathcal F\right) = \widetilde {\mathcal Z} \cap i^{-1}(F).$$
+  We have already seen in (3.17) that
+  $$F \cap \td{\mathcal{Z}} = (E \times S)\cap \td{\mathcal{Z}}.$$
+  Restricting the first coordinate of $E \times S$ to $e$ implies
+  $\td{\mathcal{Z}_{e}} \subset \mathcal{F}_{e}$.</p>
+<p>  To see that $\widetilde Z_e$ is disjoint from $S$, consider
+the intersection product
+$[\td{\mathcal{Z}}] \cdot [\mathcal{Y}_{e}]$.  On the one hand, since
+$\td{\mathcal{Z}} \to \td{S^{[2]}} \times S$ is finite,
+flat, and has degree $2$, this intersection product is $2$.  On the
+other hand, by part (1), it is equal to
+$[\td{\mathcal{Z}}] \cdot ([\mathcal{F}_{e}]+ [S])$.
+Since we have
+$\td{\mathcal{Z}}_{e} \subset \mathcal{F}_{e}$, we get
+$[\td{\mathcal{Z}}] \cdot [S] = 0$, and hence $\td{\mathcal Z}$ must be disjoint from $S$.</p>
+<p>The last assertion follows immediately from the fact that $\widetilde Z \subset \mathcal Y$ maps isomorphically to its image in $\widetilde{S^{[2]}} \times S$.</p></div>
+</div>
+<p class="stacks-para">The following proposition provides one more necessary detail about the position of $\widetilde {\mathcal Z}_e$ in the $\F_1$ component of $\mathcal Y_e$.</p>
+<div class="stacks-lemma" id="prop-nodirectrix">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.14.</strong> <a href="../tag/1DCC.html" class="stacks-tag-link">(1DCC)</a></div>
+  <div class="stacks-env-body"><p>Maintain the notation of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/445B.html" class="stacks-ref-link">Proposition&nbsp;3.13 <span class="stacks-ref-tag">[445B]</span></a>.
+  <ol><li>The length two
+    subscheme $\td{\mathcal{Z}}_{e} \subset \F_{1}$ is not contained in the directrix of $\F_{1}$.</li>
+<li>Set $\tau_i = T_i \cap \F_1$.
+    The subscheme $\td{\mathcal Z}_e \cup \tau_i$ is an admissible subscheme of $\F_1$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0CAF.html" class="stacks-tag-link">(0CAF)</a></div>
+  <div class="stacks-env-body"><p>The proof follows easily from unravelling the map
+  $$ j \colon \widetilde {\mathcal Z}_e \to \F_1,$$
+  which we now do.
+  Set $Z = \widetilde{\mathcal Z}_e$ and let $N_e$ be the 1-dimensional vector space
+  $$ N_e = N_{E_i/\widetilde{S^{[2]}}} \big|_e. $$
+  From the proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/445B.html" class="stacks-ref-link">Proposition&nbsp;3.13 <span class="stacks-ref-tag">[445B]</span></a>, we write the $\F_1$ component more canonically as
+  $$
+    \F_1 = \P\left(N_e \otimes \O_{L_i} \oplus N_{L_i/S}\right).
+  $$
+  The point $e \in E_i$ gives a (non-zero) map
+  $$
+    d \beta \colon N_e \to N_{L^{[2]}_i / S^{[2]}}|_{\beta(e)}.
+  $$
+  The point $\beta(e) \in L^{[2]}_i \subset S^{[2]}$ corresponds to the length 2 subscheme $Z \subset L_i \subset S$.
+  It is easy to see that we have a canonical identification
+  $$
+    N_{L^{[2]}_i / S^{[2]}}\big |_{\beta(e)} = H^0\left(Z, N_{L_i/S}|_Z\right).
+  $$
+  We thus get a map
+  $$
+    d \beta \colon N_e \to H^0\left(Z, N_{L_i/S}|_Z\right).
+  $$
+  We leave it to the reader to verify that the map $j \colon Z \to \F_1$ is induced by the map
+  $$N_e \otimes \O_Z \to N_e \otimes \O_Z \oplus N_{L_i/S}|_Z$$
+  given by $(\id, \epsilon \circ d\beta)$, where
+  $$
+    \epsilon \colon H^0\left(Z, N_{L_i/S}|_Z\right) \otimes \O_Z \to N_{L_i/S}|_Z
+  $$
+  is the evaluation map.
+  Since $\epsilon$ is an isomorphism and $d \beta$ is non-zero, the second coordinate of (3.18) is non-zero.
+  This non-vanishing equivalent to the proposition.
+  (Incidentally, note that the first coordinate of (3.18) is invertible.
+  This is equivalent to the fact that $Z \subset \F_1$ is disjoint from the curve where $\F_1$ meets the other component $S$.
+  In the proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/445B.html" class="stacks-ref-link">Proposition&nbsp;3.13 <span class="stacks-ref-tag">[445B]</span></a>, we concluded this fact using intersection numbers.)</p>
+<p>  The assertion about admissibility is straightforward.</p></div>
+</div>
+<p class="stacks-para">We are now in a position to describe the family of cubic surfaces.
+Consider the family
+$$ \widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}},$$
+along with $\widetilde {\mathcal Z} \subset \mathcal Y$.
+Set $U = \widetilde{S^{[2]}} \setminus E$.
+Over $U$, the $\widetilde{\mathcal Z}$ is an admissible subscheme of $\mathcal Y$, and here our family will be the associated cubic surface as in <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E785.html" class="stacks-ref-link">Definition&nbsp;2.11 <span class="stacks-ref-tag">[E785]</span></a>.
+We now describe our cubic surface over a point $e \in E_i$.
+In the $S$ component of $\mathcal Y_e$, we have three exceptional curves that meet the double curve $L_i \subset S$.
+They intersect $L_i$ in three distinct points.
+Let $T_i$ be the union of these three exceptional curves (in Figure&nbsp;5, these are indicated by the dashed lines).
+On the $\F_1$ component, we have a distinguished length 5 subscheme: the union of the length two subscheme $\widetilde{\mathcal Z}_e$ and the 3 points $\tau_i := T_i \cap L_i$.
+This subscheme of length 5 is admissible, and our cubic surface over $e$ will be its associated cubic surface.</p>
+<p class="stacks-para">We construct the family that we described fiber-wise above using the linear series associated to the line bundle
+$$\mathcal L = \omega_{\widetilde \pi}^{-1} \otimes \O_{\mathcal Y}(-\mathcal F).$$
+Since $\mathcal Y$ is the blow up of $\widetilde{S^{[2]}} \times S$ with exceptional divisor $\mathcal F$, we can also write this line bundle as
+$$\mathcal L = \omega_{S}^{-1} \otimes \O_{\mathcal Y}(-2\mathcal F).$$
+The following proposition describes $\mathcal L$ on the degenerate fibers of $\widetilde \pi$.</p>
+<div class="stacks-lemma" id="prop-LYe">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.15.</strong> <a href="../tag/5A8D.html" class="stacks-tag-link">(5A8D)</a></div>
+  <div class="stacks-env-body"><p>Let $e \in E_{i}$ and $\mathcal{Y}_{e} = S \cup_{L_{i}} \F_{1}$ as in <a href="/papers/universal-formula-counting-cubic-surfaces/tag/445B.html" class="stacks-ref-link">Proposition&nbsp;3.13 <span class="stacks-ref-tag">[445B]</span></a>.
+  Let $T_i \subset S$ be the union of the three exceptional curves meeting $L_i$ and set $\tau_i = L_i \cap T_i$.
+  Then
+  <ol><li>$\mathcal{L}|_{S} \simeq \O_{S}(T_{i})$.</li>
+<li>$\mathcal{L}|_{\F_{1}} \simeq \omega_{\F_1}^{-1}$.</li>
+<li>The restriction map
+  $$\begin{aligned}H^{0}(\mathcal{Y}_{e}, \mathcal{L}|_{\mathcal{Y}_{e}}) \to H^{0}(\F_{1}, \omega_{\F_1}^{-1})\end{aligned}$$
+  is an isomorphism onto the $6$ dimensional vector space
+  $H^{0}\left(\F_{1}, \omega_{\F_1}^{-1}\otimes \mathcal{I}_{\tau_{i}}\right).$</li>
+<li>The base locus of the complete linear system $|\mathcal L|$ on $\mathcal Y_e$ is $T_i$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F675.html" class="stacks-tag-link">(F675)</a></div>
+  <div class="stacks-env-body"><p>We have $\omega_S^{-1} = \O(T_i + 2L_i)$.
+  This and (3.20) gives $\mathcal L|_S = \O_S(T_i)$.</p>
+<p>  Let $\mathcal S \subset \mathcal Y$ be the proper transform of $E \times S \subset \widetilde{S^{[2]}} \times S$, so that the preimage in $\mathcal Y$ of $E \times S$ is the sum $\mathcal F + \mathcal S$  .
+  Then we have
+  $$\O(\mathcal F)|_{\F_1} = \O(-\mathcal S)|_{\F_1}.$$
+  Since $\omega_S^{-1} \cdot L_i = 1$, the pull-back of $\omega_S^{-1}$ to $\F_1$ is the class of a fiber.
+  Since $\omega^{-1}_{\F_1}$ is the sum of a fiber class and 2 times the class of a section of self-intersection 1, we get $\mathcal L|_{\F_1} = \omega_{\F_1}^{-1}$.</p>
+<p>  The statements about the dimension and the base locus of $|\mathcal L|$ on $\mathcal Y_e$ are straightforward.
+  The only key point is that $\O_S(T_i)$ is one-dimensional, and the vanishing locus of its non-zero sections is $T_i$.</p></div>
+</div>
+<p class="stacks-para">Let
+$$
+\mathcal W := \widetilde \pi_* \left( \mathcal L \otimes \mathcal I_{\widetilde{\mathcal Z}} \right).
+$$
+It follows from Grauert's theorem that $\mathcal W$ is a vector bundle of rank 4.
+Consider the rational map
+$$ \kappa \colon \mathcal Y \dashrightarrow \P \mathcal W^\vee$$
+induced by the evaluation
+$$ \widetilde \pi^* \mathcal W \to \mathcal L.$$
+It is easy to check that for every $e \in \widetilde{S^{[2]}}$, the image of $\kappa(\mathcal Y_e)$ is contained in a unique cubic surface in $\P \mathcal W^\vee_e$.
+Let $\mathcal X \subset \P \mathcal W^\vee$ be the resulting family of cubic surfaces.
+More precisely, consider the map
+$$ \Sym^3 \mathcal W \to \pi_*(\mathcal L^3)$$
+and verify (by looking at the fibers) that both sides are vector bundles and the map is surjective with kernel of rank 1.
+The rank 1 kernel defines the cubic $\mathcal X \subset \P \mathcal W^\vee$.
+Let $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$ be the obvious map.</p>
+<p class="stacks-para">The next proposition identifies the anti-canonical bundle of $\pi$.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.16.</strong> <a href="../tag/3C02.html" class="stacks-tag-link">(3C02)</a></div>
+  <div class="stacks-env-body"><p>We have $\omega_\pi^{-1} = \O(1) \otimes \pi^*\O(E)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2F9A.html" class="stacks-tag-link">(2F9A)</a></div>
+  <div class="stacks-env-body"><p>Let $\widehat {\mathcal Y}$ be the blow-up of $\mathcal Y$ along $\widetilde{\mathcal Z}$ and $\widehat \pi \colon \widehat{\mathcal Y} \to \widetilde{S^{[2]}}$ the resulting map.
+  Then it is easy to check that the rational map $\widehat\kappa \colon \widehat {\mathcal Y} \dashrightarrow \mathcal X$ (induced by $\kappa$) extends to a regular map away from the union of the curves $T_i$ over the points of $E_i$.
+  Recall that $\mathcal S \subset \mathcal Y$ is the proper transform of $E \times S$, so that $\widetilde \pi^* \O(E) = \mathcal F + \mathcal S$.
+  The map
+  $$
+    \widehat \kappa \colon \widehat {\mathcal Y} \setminus \mathcal S \dashrightarrow \mathcal X
+  $$
+  is an isomorphism away from a locus of codimension at least 2 on both sides.
+  If $\widehat D \subset \widehat {\mathcal Y}$ is the exceptional divisor of the blow-up, then we have
+  $$\begin{aligned}\widehat \kappa ^* \O(1) &= \mathcal L(-\widehat D) \\
+                             &= \omega^{-1}_{\widetilde \pi} \otimes \O(-\mathcal F) \otimes \O_{\widehat Y}(-\widehat D) \\
+                             &= \omega_{\widehat \pi}^{-1} \otimes \O(-\mathcal F).\end{aligned}$$
+  We see that the line bundles $\widehat \kappa^* \O(1) \otimes \widehat \pi^* \O(E)$ and $\omega_{\widetilde \pi}^{-1}$ are isomorphic on $\widehat {\mathcal Y} \setminus \mathcal S$.
+  Hence, they are isomorphic away from a locus of codimension at least 2 on $\mathcal X$.
+  Since $\mathcal X$ is a hypersurface in a smooth variety, and it is smooth in codimension 1, it is normal.
+  It follows that $\O(1) \otimes \pi^* \O(E)$ and $\omega_\pi^{-1}$ are isomorphic on $\mathcal X$.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-good4">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.17.</strong> <a href="../tag/88CA.html" class="stacks-tag-link">(88CA)</a></div>
+  <div class="stacks-env-body"><p>The family $\pi: \mathcal{X} \to \td{S^{[2]}}$ is
+  good.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/53DE.html" class="stacks-tag-link">(53DE)</a></div>
+  <div class="stacks-env-body"><p>Over $e \not \in E$, the cubic $\mathcal X_e$ is the one associated to $\mathcal Z_e \subset S$, and over $e \in E$, say $e \in E_i$, the cubic $\mathcal X_e$ is the one associated to $\widetilde {\mathcal Z}_e \cup \tau_i \subset \F_1$.
+  In both cases, it is easy to verify using <a href="/papers/universal-formula-counting-cubic-surfaces/tag/96E0.html" class="stacks-ref-link">Proposition&nbsp;2.13 <span class="stacks-ref-tag">[96E0]</span></a> that $\mathcal X_e$ has a finite automorphism group.</p></div>
+</div>
+<p class="stacks-para">Having constructed the family $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$, we take up the task of calculating the Chern classes of
+$$ \mathcal V = \pi_* \left(\omega_\pi^{-1}\right) = \mathcal W \otimes \O_{\widetilde{S^{[2]}}}(E).$$
+Let $\mathcal U = \left(\omega_S^{-1}\right)^{[2]}$ be the rank 2 tautological bundle on $S^{[2]}$, defined by
+$$ \mathcal U = {\pi_1}_*\pi_2^* \left(\omega_S^{-1}\right),$$
+where $\pi_i$ are the two projections on $S^{[2]} \times S$.</p>
+<div class="stacks-lemma" id="prop-v4groth">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.18.</strong> <a href="../tag/9140.html" class="stacks-tag-link">(9140)</a></div>
+  <div class="stacks-env-body"><p>In the Grothendieck group of $\widetilde {S^{[2]}}$, we have
+  $$
+    \mathcal V =  \O(E) + \O^3 + \O(-E)^2 - \mathcal U \otimes \O(-E),
+  $$
+  where $\O$ denotes $\O_{\widetilde{S^[2]}}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BB86.html" class="stacks-tag-link">(BB86)</a></div>
+  <div class="stacks-env-body"><p>We compute the class of $\mathcal W$ and obtain the class of $\mathcal V$ by tensoring by $\O(E)$.
+  Recall the family $\widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}}$ and the line bundle $\mathcal L$ on it defined in (3.19).
+  Set
+  $$ \mathcal A := \widetilde{\pi}_* \mathcal L \text{ and } \mathcal B := \widetilde{\pi}_* \left( \mathcal L|_{\widetilde{\mathcal Z}} \right).$$
+  Then $\mathcal A$ and $\mathcal B$ are vector bundles of rank 6 and 2, respectively.
+  By the definition of $\mathcal W$, we have the exact sequence
+  $$ 0 \to \mathcal B \to \mathcal A \to \mathcal W \to 0,$$
+  and hence $\mathcal W = \mathcal A - \mathcal B$ in the Grothendieck group.</p>
+<p>  We first compute $\mathcal B$.
+  By the push-pull formula and the description (3.20) of $\mathcal L$, we get
+  $$\mathcal B = \mathcal U \otimes \O_{\widetilde{S^{[2]}}}(-2E).$$</p>
+<p>  We now compute $\mathcal A$.
+  Recall that $\eta \colon \mathcal Y \to \widetilde{S^{[2]}} \times S$ is the blow-up at $F = \bigsqcup_i E_i \times L_i$.
+  Using (3.20) again, we get
+  $$
+    \eta_* \mathcal L = \omega_S^{-1} \otimes \mathcal I^2_{F}.
+  $$
+  Using the pair of sequences
+  $$\begin{split}
+      &0 \to \mathcal{I}^2_{F} \to \O_{\td{S^{[2]}} \times S} \to \O_{2F} \to 0, \text{ and}\\
+      &0 \to \mathcal{I}_{F}/\mathcal{I}_{F}^{2} \to \O_{2F} \to \O_{F} \to 0,
+    \end{split}$$
+  and tensoring by $\omega_S^{-1}$ gives (in the Grothendieck group)
+  $$\eta_* \mathcal L = \omega_S^{-1} \otimes \left(\O_{\widetilde{S^{[2]}} \times S} - \O_F - \mathcal{I}_F / \mathcal{I}^2_F\right).$$
+  On the component $F_i$ of $F$, the conormal bundle $\mathcal{I}_F / \mathcal{I}^2_F$ splits as a direct sum
+  $$ \pi_1^*\O_{E_i}(-E_i) \oplus \pi_2^*\O_{L_i}(1),$$
+  where $\pi_i \colon F_i \to E_i \times L_i$ are the two projections.
+  After substituting in (3.24) and pushing forward to $\widetilde{S^{[2]}}$, we get
+  $$\begin{split}
+      \mathcal A &= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
+      &= \O + \O(-E)^3 + \O(-2E)^2.
+    \end{split}$$
+  Subtracting $(3.22)$ from $(3.25)$ and tensoring by $\O(E)$ gives the result.</p></div>
+</div>
+<p class="stacks-para">Having computed the class of $\mathcal V$, what remains is a computation in the Chow ring of $\widetilde{S^{[2]}}$.
+In the computation, we suppress pull-back symbols to ease notation.
+We have the following simplification.</p>
+<div class="stacks-lemma" id="lemma-uE">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.19.</strong> <a href="../tag/C5DB.html" class="stacks-tag-link">(C5DB)</a></div>
+  <div class="stacks-env-body"><p>Let $u_i = c_i(\mathcal U)$ for $i = 1, 2$.
+  Then  $u_{1}\cdot E = u_{2} \cdot E = 0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7D68.html" class="stacks-tag-link">(7D68)</a></div>
+  <div class="stacks-env-body"><p>We show that $u_i \in A^i(S^{[2]})$ is supported on cycles disjoint from $\Lambda = \bigsqcup_i L^{[2]}_i$.</p>
+<p>  For $u_2$, fix a general $C \in |\omega_S^{-1}|$.
+  Then $C$ intersects each exceptional curve $L_i$ transversely in a single point.
+  Then $u_2$ is the class of $C^{[2]} \subset S^{[2]}$, which is clearly disjoint from $\Lambda$.</p>
+<p>  For $u_1$, fix a general pencil of curves $\{C_t \mid t \in \P^1\} \subset |\omega_S^{-1}|$.
+  Then for every $t \in \P^1$, the curve $C_t$ intersects each exceptional curve $L_i$ transversely in a single point.
+  Then $u_{1}$ is the class of
+  $$\{[Z] \in S^{[2]} \mid Z \subset C_{t} \text{ for some $t\in \P^{1}$}\},$$
+  which is clearly disjoint from $\Lambda$.</p></div>
+</div>
+<p class="stacks-para">We now compute the non-trivial degree 4 intersection numbers.</p>
+<div class="stacks-lemma" id="prop-monomialsU">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.20.</strong> <a href="../tag/A966.html" class="stacks-tag-link">(A966)</a></div>
+  <div class="stacks-env-body"><p>On $\widetilde{S^{[2]}}$, we have
+  $$
+    \begin{split}
+      \int u_{1}^{4} = 36, \qquad   \int u_{1}^{2}u_{2} = 15, \qquad
+      \int  u_{2}^{2} = 10, \qquad    \int  E^{4} = -30.
+    \end{split}
+$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9372.html" class="stacks-tag-link">(9372)</a></div>
+  <div class="stacks-env-body"><p>We know explicit cycles on $S^{[2]}$ that represent $u_1$ and $u_2$ (see the proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/C5DB.html" class="stacks-ref-link">Proposition&nbsp;3.19 <span class="stacks-ref-tag">[C5DB]</span></a>).
+  Using these, we convert the intersection numbers into enumerative problems, which we solve.</p>
+<p>  The number $\int u_1^4$ is the answer to the following problem.
+  Choose $4$ general anti-canonical pencils on $S$, and let $f \colon S \dashrightarrow (\P^1)^4$ be the rational map induced by them.
+  Then $u_1^4$ is the number of double points of the map $f$ (pairs of points in $S$ that have the same image under $f$).
+  We find that the number is 36 by applying the double point formula [17, Theorem&nbsp;2] to a resolution of $f$.</p>
+<p>  The number $\int u_{1}^{2}u_{2}$ is the answer to the following problem.
+  Fix a general anti-canonical $C \subset S$ and two general anti-canonical pencils.
+  Then $\int u_1^2u_2$ is the number of double points of the map $C \to \P^1 \times \P^1$ induced by the two pencils.
+  Using the genus of $C$, which is 1, and the arithmetic genus of $f(C)$, which is 16, we see that the number is 15.</p>
+<p>  The number $\int u_2^2$ is the number of pairs of points common to two general anti-canonical curves $C_1$ and $C_2$.
+  Since there are $5$ points in $C_1 \cap C_2$, the number of pairs is ${5 \choose 2} = 10$.</p>
+<p>  Finally, to compute $\int E^4$, observe that $E$ is the disjoint union of $E_i$ for $i = 1, \dots, 10$.
+  Each $E_i$ is the $\P^1$-bundle over $L_i$ defined by
+  $$ E_i = \P N_{L_i^{[2]}/S^{[2]}},$$
+  and the restriction of $E_i$ to $E_i$ is $\O(-1)$.
+  We have $L_i^{[2]} \cong \P^2$ and
+  $$ N_{L_i^{[2]}/S^{[2]}} = N_{L_i/S}^{[2]} \cong \O_{\P^2}(-1) \oplus \O_{\P^2}(-1).$$
+  Now it is a straightforward to check that $E_i^4 = -3$, and hence $E^2 = -30$.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-4deg4">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.21.</strong> <a href="../tag/80DD.html" class="stacks-tag-link">(80DD)</a></div>
+  <div class="stacks-env-body"><p>Let $\mathcal V = \pi_*\left(  \omega_{\pi}^{-1} \right)$ be the anti-canonical section bundle of $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$,
+  and let $v_i = c_i(\mathcal V)$.
+  Then we have
+  $$
+    \int_{B_{4}} v_{1}^{4} = 6, \qquad
+    \int_{B_{4}} v_{1}^{2}v_{2} = 21, \qquad
+      \int_{B_{4}} v_{1}v_{3} = 6, \qquad
+      \int_{B_{4}} v_{2}^{2} = 16, \qquad
+      \int_{B_{4}} v_{4} = 1.
+  $$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/635C.html" class="stacks-tag-link">(635C)</a></div>
+  <div class="stacks-env-body"><p>Follows from the expression for $\mathcal V$ in the Grothendieck group we found in <a href="/papers/universal-formula-counting-cubic-surfaces/tag/9140.html" class="stacks-ref-link">Proposition&nbsp;3.18 <span class="stacks-ref-tag">[9140]</span></a> and the Chern class computations we did in <a href="/papers/universal-formula-counting-cubic-surfaces/tag/A966.html" class="stacks-ref-link">Proposition&nbsp;3.20 <span class="stacks-ref-tag">[A966]</span></a> and <a href="/papers/universal-formula-counting-cubic-surfaces/tag/80DD.html" class="stacks-ref-link">Proposition&nbsp;3.21 <span class="stacks-ref-tag">[80DD]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Let $\mu \colon \widetilde{S^{[2]}} \dashrightarrow \M$ be the map to the moduli space of cubic surfaces induced by the family $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.22.</strong> <a href="../tag/8262.html" class="stacks-tag-link">(8262)</a></div>
+  <div class="stacks-env-body"><p>The degree of $\mu \colon \widetilde{S^{[2]}} \dashrightarrow \M$ is $36 \times 6!$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B320.html" class="stacks-tag-link">(B320)</a></div>
+  <div class="stacks-env-body"><p>Recall that the moduli space of marked cubic surfaces $\M^\dagger$ is the configuration space of 6 ordered points in $\P^2$.
+  The map $\mu$ clearly lifts to a birational map
+  $$ \widetilde S^{[2]} \dashrightarrow \M^\dagger / S_2,$$
+  where the $S_2$ permutes the last 2 points of the configuration.
+  Since the degree of $\M^\dagger \to \M$ is  $72 \times 6!$, the degree of $\mu$ is half of that.</p></div>
+</div>
+<p class="stacks-para">Using <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E2B1.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E2B1]</span></a> and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
+(2.3) for a general cubic surface $X$:
+$$\begin{aligned}6 a_{1^{4}} + 21 a_{1^{2}2} + 6a_{13} + 16a_{2^2}+  a_{4} = 36 \times 6!.\end{aligned}$$</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — 3.4. The fourth test family">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/section/S3.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

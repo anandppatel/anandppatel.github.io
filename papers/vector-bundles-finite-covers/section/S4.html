@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: Higher dimensions</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Higher dimensions</h1>
+<p class="stacks-para">In this section, we discuss the possibility of having an analogue of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> for higher dimensional $Y$.
+For simplicity, take $\k = \C$.</p>
+<p class="stacks-para">Let us begin with the following question.</p>
+<div class="stacks-env" id="question-analogue">
+  <div class="stacks-env-head"><strong>Question&nbsp;4.1.</strong> <a href="../tag/2FE5.html" class="stacks-tag-link">(2FE5)</a></div>
+  <div class="stacks-env-body"><p>Let $Y$ be a smooth projective variety, $L$ an ample line bundle on $Y$, and $E$ a vector bundle of rank $(d-1)$ on $Y$.
+  Is $E \otimes L^{n}$ a Tschirnhausen bundle for all sufficiently large $n$?</p></div>
+</div>
+<p class="stacks-para">The answer to <a href="/papers/vector-bundles-finite-covers/tag/2FE5.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[2FE5]</span></a> is ``No'', at least without additional hypotheses.</p>
+<div class="stacks-env" id="ex-fail1">
+  <div class="stacks-env-head"><strong>Example&nbsp;4.2.</strong> <a href="../tag/0496.html" class="stacks-tag-link">(0496)</a></div>
+  <div class="stacks-env-body"><p>Take $Y = \P^{4}$, and $E = \O(a) \oplus \O(b)$.
+  Then a sufficiently positive twist $E'$ of $E$ cannot be the Tschirnhausen bundle of a smooth branched cover $X$.</p>
+<p>  To see this, recall that the data of a Gorenstein triple cover $X \to Y$ with Tschirnhausen bundle $E'$ is equivalent to the data of a nowhere vanishing global section of $\Sym^{3}E' \otimes (\det E')^{\vee}$ (\cite{mir:85} or \cite{cas.eke:96}).
+  For $E' = E \otimes L^n$ with large $n$, the rank $4$ vector bundle $\Sym^{3}E' \otimes (\det E')^{\vee}$ is very ample.
+  Thus, its fourth Chern class is nonzero.
+  Therefore, a general global section must vanish at some points.</p>
+<p>  In fact, it is easy to see by direct calculation that the fourth Chern class of $\Sym^{3}E \otimes (\det E)^{\vee}$ can vanish if and only if $E = \O(a) \oplus \O(b)$ where $b = 2a$.
+  Conversely, $E = \O(a) \oplus \O(2a)$ is the Tschirnhausen bundle of a cyclic triple cover of $\P^4$.
+  Thus, $E = \O(a) \oplus \O(b)$ can be a Tschirnhausen bundle of a smooth triple cover of $\P^4$ if and only if $b=2a$.</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/0496.html" class="stacks-ref-link">Example&nbsp;4.2 <span class="stacks-ref-tag">[0496]</span></a> illustrating the failure of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> can be generalized to all degrees $\geq 3$, provided the base $Y$ is allowed to be high dimensional.</p>
+<div class="stacks-lemma" id="prop-threshold">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.3.</strong> <a href="../tag/F4F7.html" class="stacks-tag-link">(F4F7)</a></div>
+  <div class="stacks-env-body"><p>Let $d \geq 3$.
+  The answer to <a href="/papers/vector-bundles-finite-covers/tag/2FE5.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[2FE5]</span></a> is ``No'' for all $Y$ of dimension at least $d {d \choose 2}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D50D.html" class="stacks-tag-link">(D50D)</a></div>
+  <div class="stacks-env-body"><p>Let $\phi \from X \to Y$ be a finite, flat, degree $d$ map.
+  Then the sheaf $\phi_{*}\O_{X}$ is a sheaf of $\O_{Y}$-algebras, and it splits as $\phi_{*} = \O_{Y}\oplus E^{\vee}$.  </p>
+<p>  Suppose over some point $y \in Y$, the multiplication map
+  $$m : \Sym^{2}E^{\vee} \to \phi_{*}\O_{X}$$
+  is identically zero.
+  Then, we have a $k$-algebra isomorphism
+  $$(\phi_{*}\O_{X})|_y \cong \k[x_{1}, \dots, x_{d-1}]/(x_{1}, \dots, x_{d-1})^{2}.$$
+  That is, $\phi^{-1}(y)$ is isomorphic to the length $d$ ``fat point'', defined by the square of the maximal ideal of the origin in an affine space.
+  When $d \geq 3$, these fat points are not Gorenstein.
+  Since $Y$ is smooth, this implies $X$ can not even be Gorenstein, let alone smooth.</p>
+<p>  Now, if $E$ is a vector bundle on $Y$ and $L$ is a sufficiently positive line bundle, then the bundle
+  $$M := \Hom(\Sym^{2}(E \otimes L)^{\vee}, \O_{Y} \oplus (E \otimes L)^{\vee})$$
+  is very ample.
+  A general global section $m \in H^{0}(Y, M)$ will vanish identically at some points $y \in Y$ provided
+  $$ \dim Y \geq \rk M = d {d \choose 2}.$$
+  We conclude that if $\dim Y \geq d {d \choose 2}$, then <a href="/papers/vector-bundles-finite-covers/tag/2FE5.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[2FE5]</span></a> has a negative answer.</p></div>
+</div>
+<p class="stacks-para">Observe that <a href="/papers/vector-bundles-finite-covers/tag/F4F7.html" class="stacks-ref-link">Proposition&nbsp;4.3 <span class="stacks-ref-tag">[F4F7]</span></a> remains true even if we relax the requirement that $X$ be smooth to $X$ be Gorenstein.</p>
+<p class="stacks-para">The following result due to Lazarsfeld suggests the possibility that <a href="/papers/vector-bundles-finite-covers/tag/F4F7.html" class="stacks-ref-link">Proposition&nbsp;4.3 <span class="stacks-ref-tag">[F4F7]</span></a> may be true with a much better lower bound than $d { d \choose 2}$.</p>
+<div class="stacks-lemma" id="prop-laz">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.4.</strong> <a href="../tag/9111.html" class="stacks-tag-link">(9111)</a></div>
+  <div class="stacks-env-body"><p>Let $E$ be a vector bundle of rank $(d-1)$ on $\P^{r}$, where $r \geq d+1$.
+  Then $E(n)$ is not a Tschirnhausen bundle of a smooth, connected cover for sufficiently large $n$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A767.html" class="stacks-tag-link">(A767)</a></div>
+  <div class="stacks-env-body"><p>The proof relies on \cite[Proposition&nbsp;3.1]{laz:80} which states that for a branched cover $\phi \from X \to \P^{r}$ of degree $d \leq r-1$ with $X$ smooth and connected, the pullback map
+  $$\phi^{*} \from \Pic(\P^{r}) \to \Pic X$$
+  is an isomorphism.
+  In particular, the dualizing sheaf $\omega_\phi$ is isomorphic to $\phi^* \O(l)$ for some $l$.
+  Note that $\omega_\phi$ is represented by an effective divisor (the ramification divisor), so $ l > 0$.
+  Therefore, we get
+  $$ \O_{\P^r} \oplus E = \phi_* \omega_\phi = \phi_* \O(l) = \O_{\P^r}(l) \oplus E^\vee(l).$$
+  Since $X$ is connected, $E^\vee$ has no global sections.
+  Using this, it is easy to conclude from the above sequence that $\O_{\P^r}(l)$ is a summand of $E$.</p>
+<p>  Suppose $E(n)$ is a Tschirnhausen bundle of a smooth connected cover for infinitely many $n$.
+  Applying the reasoning above with $E$ replaced by $E(n)$ shows that $E$ must have line bundle summands of infinitely many degrees.
+  Since this is impossible, the proposition follows.</p></div>
+</div>
+<p class="stacks-para">The reasoning in <a href="/papers/vector-bundles-finite-covers/tag/0496.html" class="stacks-ref-link">Example&nbsp;4.2 <span class="stacks-ref-tag">[0496]</span></a> implies the following.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.5.</strong> <a href="../tag/D704.html" class="stacks-tag-link">(D704)</a></div>
+  <div class="stacks-env-body"><p>For degree 3, <a href="/papers/vector-bundles-finite-covers/tag/2FE5.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[2FE5]</span></a> has an affirmative answer if and only if $\dim Y < 4$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6D4D.html" class="stacks-tag-link">(6D4D)</a></div>
+  <div class="stacks-env-body"><p>Let $\phi \from X \to Y$ be a Gorenstein finite covering of degree 3 with Tschirnhausen bundle $E$.
+  Then by the structure theorem of triple covers in \cite{mir:85} or \cite{cas.eke:96}, we get an embedding $X \subset \P E$ as a divisor of class $\O_{\P E}(3)$.
+  Thus, $X$ is given by a global section on $\P E$ of $\O_{\P E}(3)$, or equivalently a global section on $Y$ of $\Sym^3 E \otimes \det E^\vee$.
+  Note that since $X \to Y$ is flat, the global section of $\Sym^3 E \otimes \det E^\vee$ is nowhere vanishing.</p>
+<p>  Suppose we are given an arbitrary rank $2$ vector bundle $E$ on $Y$.
+  Set $D = \O_{\P E}(3)$ and $V = \Sym^3 E \otimes \det E^\vee$.
+  If we twist $E$ by $L^n$, then  $\P E$ is unchanged but $D$ changes to $D + 3nL$ and $V$ changes to $V \otimes L^n$.
+  For sufficiently large $n$, the bundle $V \otimes L^n$ is ample.
+  If $\dim Y < 4$, then a general section of $V \otimes L^n$ is nowhere zero on $Y$.
+  Furthermore, the divisor $X \subset \P E$ cut out by the corresponding section of $\O(D+3nL)$ is smooth by Bertini's theorem.
+  By construction, the resulting $X \to Y$ has Tschirnhausen bundle $E \otimes L^n$.</p>
+<p>  On the other hand, if $\dim Y \geq 4$, then every global section of $V \otimes L^n$ must vanish at some point in $Y$.
+  Thus, $E \otimes L^n$ cannot arise as a Tschirnhausen bundle.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S4.SS1.html">4.1. Modifications of the original question</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Section 4: Higher dimensions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

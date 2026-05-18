@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 2 — Lines highly tangent to a hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb K",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          T: "\\mathbf T",
+          I: "\\mathcal{I}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          PP: "\\mathbb P",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          eric: ["{\\color{red} \\sf $\\clubsuit\\clubsuit\\clubsuit$ Eric: [#1]}", 1],
+          geoff: ["{\\color{blue} \\sf $\\diamond$ Geoff:[#1]}", 1],
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          ram: "\\operatorname{ram}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          II: "\\operatorname{II}",
+          Tot: "\\operatorname{Tot}",
+          oTot: "\\operatorname{\\overline{\\Tot}}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Geoffrey Smith, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Lines highly tangent to a hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 2: Deformations of lines with fixed contact order</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 2. Deformations of lines with fixed contact order</h1>
+<p class="stacks-para">The goal of this section is to prove <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A8C8]</span></a> using an analysis of the deformation theory of the space of lines meeting $X$ to high contact order. We begin by reviewing the deformation theory of these lines and its relation to the log tangent sheaf. Let $X$ be defined by the homogeneous polynomial
+$F(x_0, \ldots, x_n)$, and suppose that $X$ contains the point
+$p=\left[1:0 \ldots: 0 \right]$.  We let
+$$T_{\P^{n}}(- \log X) \subset T_{\P^{n}}$$ denote the logarithmic
+tangent sheaf, i.e. the sheaf of derivations
+$\O_{\P^{n}} \to \O_{\P^{n}}$ mapping the ideal sheaf $\I_{X}$ into
+itself.  In general, the logarithmic tangent sheaf is reflexive if $X$
+is reduced, and when $X$ is smooth (or more generally, simple normal crossing) the logarithmic tangent sheaf is a
+vector bundle.  We fix homogeneous coordinates $[s:t]$ on
+$\P^{1}$.</p>
+<p class="stacks-para">Let $\iota: \P^{1} \to \P^{n}$ be a linear embedding of $\P^{1}$.</p>
+<div class="stacks-definition" id="def-deformation">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/87ED.html" class="stacks-tag-link">(87ED)</a></div>
+  <div class="stacks-env-body"><p>A <em>first order deformation</em> of $\iota$ is a map
+$$\begin{aligned}\iota_{\epsilon}: \P^{1} \times \Spec \k[\epsilon]/(\epsilon^{2}) \to
+  \P^{n}\end{aligned}$$
+which restricts to $\iota$ modulo $(\epsilon)$. We say a first order
+deformation $\iota_{\epsilon}$ <em>preserves $\iota^{-1</em>(X)$} if the
+scheme $\iota_{\epsilon}^{-1}(X)$ is the preimage of $\iota^{-1}(X)$
+under the projection to the first factor
+$$\P^{1} \times \Spec \k[\epsilon]/(\epsilon^{2}) \to \P^{1}.$$</p></div>
+</div>
+<p class="stacks-para">The significance of logarithmic tangent sheaves in the present setting
+is captured by the following lemma.</p>
+<div class="stacks-lemma" id="lemma-preserveset">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.2.</strong> <a href="../tag/CB7D.html" class="stacks-tag-link">(CB7D)</a></div>
+  <div class="stacks-env-body"><p>{PRT20}}]
+   Global sections of
+  $\iota^{*}T_{\P^{n}}(- \log X)$ are in one-to-one correspondence
+  with first order deformations of $\iota$ preserving $\iota^{-1}(X)$.</p></div>
+</div>
+<p class="stacks-para">We take a moment to concretely describe the correspondence in
+<a href="/papers/lines-highly-tangent/tag/CB7D.html" class="stacks-ref-link">Lemma&nbsp;2.2 <span class="stacks-ref-tag">[CB7D]</span></a> using coordinates.  Suppose $[s:t]$ are
+homogeneous coordinates on $\P^1$ and that the map $\iota$ is defined
+by $[a_0: \hdots : a_n]$, where each $a_i$ is a linear form in $s,t$.
+Then, by the Euler exact sequence, the global sections of
+$\iota^{*}T_{\P^{n}}$ are identified with tuples $(b_0, \dots, b_n)$
+of linear forms in $s,t$, considered modulo the tuple
+$(a_0, \dots, a_n)$.</p>
+<p class="stacks-para">A global section of $\iota^{*}T_{\P^{n}}$ represented by such a tuple
+$(b_0, \dots, b_n)$ corresponds to the first-order deformation
+$\iota_{\epsilon}$ defined by
+$[s:t] \mapsto [a_0 + \epsilon b_0 : \hdots : a_n + \epsilon b_n]$.</p>
+<p class="stacks-para">Within the space of all deformations
+$H^{0}(\P^{1},\iota^{*}T_{\P^{n}})$, the subspace
+$H^{0}(\P^{1},\iota^{*}T_{\P^{n}}(- \log X))$ is represented by tuples
+$(b_0, \dots, b_n)$ obeying the condition
+$$\begin{aligned}\sum \limits_{i=0}^{n} b_i \cdot \frac{\partial F}{\partial x_{i}}(a_0, \dots, a_{n}) \equiv 0 \mod F(a_0, \dots, a_n).\end{aligned}$$</p>
+<p class="stacks-para">The next construction will effectively allow us
+to replace the degree $d$ hypersurface $X$ with a degree $k<d$
+hypersurface. Let $y_j = x_j/x_0$, $j=1, \ldots, n$ be affine
+coordinates on the corresponding affine chart $x_0 \neq 0$ around $p$,
+and let $f(y_1, \ldots, y_n)$ denote the dehomogenization of $F$ on
+this chart.  We expand
+$$f= f_1 + \ldots + f_d,$$ where $f_i$ is the degree $i$ part of $f$,
+and we let $F_k$ be the homogenization of $f_1 + \ldots + f_k$.
+Explicitly,
+$$\begin{aligned}F_k(x_0, \ldots, x_n) = \sum_{j=1}^{k}x_{0}^{k-j}\cdot f_{j}(x_1, \ldots, x_n).\end{aligned}$$
+We let $X_k$ denote the hypersurface defined by
+$F_k(x_0, \ldots, x_n)=0$, and we note that $p \in X_{k}$ is a smooth
+point.  Hence, $X_k$ is generically smooth.</p>
+<div class="stacks-definition" id="definition-preservecontact">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.3.</strong> <a href="../tag/2967.html" class="stacks-tag-link">(2967)</a></div>
+  <div class="stacks-env-body"><p>Suppose $\iota: \P^{1} \to \P^{n}$ is a linear map such that
+  $\iota^{*}F \in \k[s,t]$ is non-zero and divisible by $s^{k}$. A
+  first order deformation $\iota_{\epsilon}$ of $\iota$
+  <em>preserves order $k$ contact at $[0:1]$</em> if
+  $\iota_{\epsilon}^{*}F$ is divisible by $s^{k}$ in the ring
+  $\k[\epsilon,s,t]/(\epsilon^{2})$.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-ktangent">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;2.4.</strong> <a href="../tag/92B0.html" class="stacks-tag-link">(92B0)</a></div>
+  <div class="stacks-env-body"><p>Let $\iota: \P^{1} \to \P^{n}$
+  parametrize a line such that $\iota^{*}F$ is non-zero and divisible
+  by $s^{k}$, and such that $\iota([0:1])=p$. Then the global sections
+  of $\iota^{*}T_{\P^{n}}(- \log X_k)$ are in one-to-one
+  correspondence with first order deformations $\iota_{\epsilon}$
+  preserving order $k$ contact at $[0:1]$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FCFD.html" class="stacks-tag-link">(FCFD)</a></div>
+  <div class="stacks-env-body"><p>Let $[s:t] \mapsto [a_0: \hdots : a_n]$ define $\iota$, and choose coordinates on $\PP^n$ so that
+  $a_0$ is not a scalar multiple of $s$, but $a_{i}$, $i \geq 1$ are
+  multiples of $s$. By assumption, $F(a_0, \dots, a_n)$ is a non-zero
+  form divisible by $s^k$. This, in turn, implies that
+  $F_k(a_0, \dots, a_n)$ is a non-zero multiple of $s^k$.</p>
+<p>  Suppose now that $(b_0, \dots, b_n)$ is a tuple of linear forms
+  representing a deformation $\iota_\epsilon$ preserving order $k$
+  contact at $[0:1]$. This condition is equivalent to the condition
+  that the form
+  $$\begin{aligned}\sum \limits_{i=0}^{n}b_{i} \cdot \frac{\partial F}{\partial x_i}(a_0, \dots, a_n)\end{aligned}$$
+  is also divisible by $s^{k}$.  Next, a direct computation shows that
+  $$\begin{aligned}\frac{\partial F}{\partial x_i}(a_0, \dots, a_n) \equiv a_0^{d-k} \frac{\partial F_{k}}{\partial x_{i}} \mod s^k\end{aligned}$$</p>
+<p>  Therefore, since $a_0$ is not divisible by $s$, (2.4) is
+  divisible by $s^k$ if and only if
+  $$\begin{aligned}\sum \limits_{i=0}^{n}b_{i}\cdot \frac{\partial F_{k}}{\partial x_{i}}(a_0, \dots, a_n)\end{aligned}$$
+  is also divisible by $s^{k}$. In other words
+  $$\begin{aligned}\sum \limits_{i=0}^{n}b_{i}\cdot \frac{\partial F_{k}}{\partial x_{i}}(a_0, \dots, a_n) \equiv 0 \mod F_k(a_0, \dots, a_n)\end{aligned}$$
+  meaning that $(b_0, \dots, b_n)$ represents a global section of
+  $\iota^{*}T_{\P^{n}}(- \log X_k)$, which is what we needed to prove.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S2.SS1.html">2.1. Some incidence varieties</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Lines highly tangent to a hypersurface — Section 2: Deformations of lines with fixed contact order">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/lines-highly-tangent/section/S2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2208.04393">arXiv:2208.04393</a>
+  </div>
+</footer>
+</body>
+</html>

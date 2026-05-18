@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 5 — Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          MM: "\\mathcal M",
+          BM: "\\overline{\\mathcal M}",
+          TMM: "\\widetilde{\\mathcal M}",
+          BMg: "\\overline{\\mathcal M}_{g}",
+          Mg: "\\mathcal M_g",
+          PP: "\\mathbb P",
+          QQ: "\\mathcal Q",
+          BH: "\\overline{H}",
+          CC: "\\mathcal C",
+          EE: "\\mathcal E",
+          kk: "{\\boldsymbol\\kappa}",
+          OO: "\\mathcal O",
+          ch: "\\mbox{ch}",
+          td: "\\mbox{td}",
+          RR: "\\mathbb R",
+          HH: "\\mathcal H",
+          II: "\\mathcal I",
+          LL: "\\mathcal L",
+          JJ: "\\mathcal J",
+          TM: "\\widetilde{M}",
+          Hg: "\\overline{H}_g",
+          BS: "\\overline{S}",
+          divisor: "\\operatorname{div}",
+          eff: "\\operatorname{eff}",
+          Eff: "\\operatorname{Eff}",
+          BEff: "\\overline{\\operatorname{Eff}}",
+          XX: "\\mathcal X",
+          hyp: "\\operatorname{hyp}",
+          topo: "\\operatorname{top}",
+          even: "\\operatorname{even}",
+          odd: "\\operatorname{odd}",
+          other: "\\operatorname{other}",
+          nh: "\\operatorname{non-hyp}",
+          ws: "\\operatorname{ws}",
+          wt: "\\widetilde",
+          nonws: "\\operatorname{non-ws}",
+          nonhyp: "\\operatorname{non-hyp}",
+          PGL: "\\operatorname{PGL}",
+          irr: "\\operatorname{irr}",
+          Jac: "\\operatorname{Jac}",
+          reg: "\\operatorname{reg}",
+          red: "\\operatorname{red}",
+          Pic: "\\operatorname{Pic}",
+          Bl: "\\operatorname{Bl}",
+          bbC: "\\mathbb C",
+          bbE: "\\mathbb E",
+          bbF: "\\mathbb F",
+          rank: "\\operatorname{rank}",
+          chern: "\\operatorname{ch}",
+          bbP: "\\mathbb P",
+          bbS: "\\mathbb S",
+          bbQ: "\\mathbb Q",
+          bbR: "\\mathbb R",
+          bbZ: "\\mathbb Z",
+          sm: "\\operatorname{sm}",
+          SL: "\\operatorname{SL}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Dawei Chen, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 5: Pulling back the Gieseker-Petri divisor</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 5. Pulling back the Gieseker-Petri divisor</h1>
+<p class="stacks-para">Consider the gluing map $\pi: \BM_{1,6}\to \BM_4$. Let $GP$ denote the Gieseker-Petri divisor in $\BM_{4}$. The divisor $GP$ has several geometric interpretations. Here we view it as the closure of the locus in $\BM_4$
+ parameterizing genus four curves whose canonical images are contained in a quadric cone in $\bbP^3$. By \cite[Theorem 2]{EisenbudHarrisKodaira}, it has class
+$$\begin{aligned}GP & = & 34\lambda - 4\delta_{\irr} - 14\delta_{1} - 18 \delta_2 \\
+      & = & 34\lambda - 4\delta - 10\delta_1 - 14\delta_2.\end{aligned}$$
+By Proposition&nbsp;<a href="/papers/extremal-effective-divisors/tag/1537.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[1537]</span></a>, we obtain:
+$$\begin{aligned}\pi^{*}GP = 10\lambda + 4\sum_{S\not\in \cup \Lambda_i} (|S| - 1)\delta_{0;S} + 10 \delta_{0;\{1,2,3,4,5,6\}} \\
+- 6 \big(\delta_{0;\{1,2\}} +  \delta_{0;\{3,4\}} +  \delta_{0;\{5,6\}}\big) - 2 \big(\delta_{0;\{1,2,3,4\}} + \delta_{0;\{1,2,5,6\}}  + \delta_{0;\{3,4,5,6\}}\big).\end{aligned}$$</p>
+<p class="stacks-para">In principle, $\pi^{-1}GP$ may contain some boundary components of $\BM_{1,6}$, as we saw in Remark&nbsp;<a href="/papers/extremal-effective-divisors/tag/704B.html" class="stacks-ref-link">3.4 <span class="stacks-ref-tag">[704B]</span></a>. Denote by $\wt{GP}$ the main component of $\pi^{-1}GP$, i.e.
+$\wt{GP}$ is the closure of $(\pi^{-1}GP)\cap \MM_{1,6}$.</p>
+<p class="stacks-para">The main result of this section is that $\wt{GP}$ spans an extremal ray of $\BEff(\BM_{1,6})$.
+We prove it by constructing a moving curve $B \subset \wt{GP}$ such that $B \cdot \wt{GP} < 0$.</p>
+<p class="stacks-para">We begin by observing that the general element $(E; p_{1}, ... ,p_{6}) \in \wt{GP}$ is obtained as the (marked) normalization of a $3$-nodal elliptic curve $C \subset \bbF_{2}$ where $\bbF_{2}$ is the second Hirzebruch surface.  Let $\sigma$ be the directrix class on $\bbF_{2}$ and let $\tau$ be the section class satisfying $\tau \cdot \sigma = 0$. The class of $C$ is $3\tau$.  We will essentially vary the $3$-nodal curve $C$.  However, it will also turn out to be necessary to ``vary" the ambient surface $\bbF_{2}$.  Let us first construct the variation of the ambient surface.</p>
+<p class="stacks-para">Let $Q = \bbP^1 \times \bbP^1$, with projections $\pi_{1}$ and $\pi_{2}$.  Let $f_{1}$ and $f_{2}$ denote the classes
+of the fibers of $\pi_{1}$ and $\pi_{2}$, respectively. Let $\OO_{Q}(m,n)$ denote the line bundle associated to the divisor class $mf_{1} + nf_{2}$. Let
+$V =\OO_{Q} \oplus \OO_{Q}(1,2)$
+be a rank two vector bundle on $Q$. Consider the $\bbP^1$-bundle
+$$Y = {\rm Proj}(V),$$
+with its projection $p : Y \to Q.$ Let $\phi: Y \to \bbP^1$ be the composite $\pi_{1} \circ p$. Then $\phi$ is a non-trivial family of $\bbF_{2}$'s.  The threefold $Y$ will essentially serve as the ambient space of the varying family of $3$-nodal elliptic curves.</p>
+<p class="stacks-para">Let us understand the geometry of $Y$. The Picard group of $Y$ is $\bbZ[\zeta,f_{1},f_{2}]$, where here, and in everything that follows, we suppress pullbacks $p^{*}$'s from notation. The projection $p$ has a distinguished section  $\Sigma \subset Y$, which can be described as the union of the $(-2)$-curves in the $\bbF_{2}$'s.  The class of $\Sigma$ is
+$$\Sigma = \zeta - f_{1} - 2f_{2}.$$
+We also select a disjoint section $\Pi \subset Y$ having divisor class
+$$\Pi = \zeta.$$
+In terms of the family $\phi : Y \to \bbP^1$, the section $\Pi$ provides a family of sections complementary to the directrices of the varying $\bbF_{2}$ fibers. The projection $p$ obviously restricts to an isomorphism on the section $\Pi$, so it makes sense to refer to the rulings of $\Pi$ by $f_{1}$ and $f_{2}$ as well.</p>
+<p class="stacks-para">We will now blow up $Y$ along the union of three disjoint curves. Restricted to each fiber $\bbF_2$, this amounts to blowing up three points corresponding to the nodes of the desired $3$-nodal curve $C$.</p>
+<p class="stacks-para">Let $Z_{1}, Z_{2}$ and $Z_{3}$ be three disjoint curves of the ruling class $f_{2}$ on $\Pi$. Let $Z = Z_{1} \cup Z_{2} \cup Z_{3}$ and let $X = \Bl_{Z}Y$ with the blow down map $\beta : X \to Y$.  Denote by $\varphi: X \to \bbP^1$ the composite $\phi\circ\beta$. Then $\varphi$ is a family of surfaces $S_{t}$, each being the blow up of $\bbF_{2}$ at three points $z_{1}(t), z_{2}(t)$ and $z_{3}(t)$ for $t \in \bbP^1$.  The Picard group of $X$ is
+$ \bbZ[\zeta, f_{1}, f_{2}, e_{1}, e_{2}, e_{3}]$ where the $e_{i}$ are the classes of the respective exceptional divisors $E_{i}$.  Let
+$e = e_{1} + e_{2} + e_{3}$ and $E = E_{1} \cup E_{2} \cup E_{3}$. Since
+$N_{Z_i/Y}$ is isomorphic to $\OO \oplus \OO(1)$, each exceptional divisor $E_{i}$ is isomorphic to the first Hirzebruch surface $\bbF_{1}$.</p>
+<p class="stacks-para">Now we consider the divisor class $3\zeta + (a-2)f_{1} - 2e$
+on $X$, where $a \gg 0$.
+Let $l$ be the class of a line and let $r$ be  the class of a ruling on $E_i\cong \bbF_{1}$. Note that
+$\zeta|_{E_i} = f_1|_{E_i} = r$ and $e_{i}|_{E_i} = r-l$. Therefore,
+$$ \big(3\zeta + (a-2)f_{1} - 2e\big) |_{E_i} =  2l + (a-1)r. $$</p>
+<div class="stacks-lemma" id="gen_D">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.1.</strong> <a href="../tag/A701.html" class="stacks-tag-link">(A701)</a></div>
+  <div class="stacks-env-body"><p>Let $D$ be a general divisor with divisor class $3\zeta + (a-2)f_{1} -2e$ on  $X$, where $a\gg 0$.
+<ol><li>$D$ is a smooth surface in $X$. Under the map $\varphi : D \to \bbP^1$, the fibers have genus one and the singular fibers are at worst nodal.</li>
+<li>The curves $C_{i} = D \cap E_{i}$ provide smooth $2$-sections to the family $\varphi : D \to \bbP^1$ for $i=1,2,3$. Moreover, the induced double cover $\varphi: C_{i} \to \bbP^1$ has $2a$ ramification points.</li>
+<li>There are exactly $(a+1)$ singular fibers in the family $\varphi : D \to \bbP^1$ having rational tails. Every rational tail meets $C_{i}$ once for each $i$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7A32.html" class="stacks-tag-link">(7A32)</a></div>
+  <div class="stacks-env-body"><p>Let $S$ be a fiber of $\varphi: X \to \bbP^1$.  So $S = \Bl_{3}\bbF_{2}$.  We first show that the restriction map $$r : H^{0}(X, \OO_{X}(D)) \to H^{0}(S, \OO_{S}(D))$$ is surjective.  By the long exact sequence, it is enough to show that $$h^{1}(X, \OO_{X}(D-S) = 0.$$  </p>
+<p>By the Leray spectral sequence for $\varphi$, $h^{1}(X, \OO_{X}(D-S)) = 0$ if
+$$h^{0}(R^{1}\varphi_{*}(\OO_{X}(D-S)) = h^{1}(\varphi_{*}\OO_{X}(D-S))=0. $$
+The sheaf $R^{1}\varphi_{*}\OO_{X}(D-S)$ vanishes, because the line bundle class $3\tau - 2e$ on $S = \Bl_{3}\bbF_{2}$ has no higher cohomology.  Furthermore, by push-pull, we have
+$$\varphi_{*}\OO_{X}(D-S)\cong \varphi_{*}(\OO_{X}(3\zeta - 2e))\otimes \OO_{\bbP^{1}}(a-3),$$
+which has vanishing higher cohomology for $a \gg 0$.
+Therefore, $r$ is surjective. The divisor class $3\tau - 2e$ on $\Bl_{3}\bbF_{2}$ is base point free. By adjunction, curves parameterized by the linear system $|3\tau - 2e|$ have genus one. Furthermore, the locus of curves with worse than nodal singularities is of codimension $2$ in $|3\tau - 2e|$.  Therefore, (i) follows from Bertini's theorem.  </p>
+<p>In exactly the same way, one can show that the restriction map $H^{0}(\OO_{X}(D)) \to H^{0}(\OO_{E_{i}}(D))$ is surjective when $a\gg 0$. The adjunction formula applied to the curve class $2l + (a-1)r$ implies that $C_i$
+has genus $a-1$, thus proving (ii).</p>
+<p>The proper transform $\Pi'$ of $\Pi$ in $X$ is isomorphic to $\Pi$ under the blow down map $\beta: X\to Y$.  The intersection $D \cdot \Pi'$ has divisor class $(a+1)\wt{f}_{1}$ in $\Pi'$, where $\wt{f}_{1}$ is the ruling class
+corresponding to $f_1$ under the isomorphism $\Pi' \cong \Pi$. It gives rise to $(a+1)$ disjoint curves that are precisely the rational tails in the family $\varphi: D \to \bbP^1$. Hence (iii) follows right away.</p></div>
+</div>
+<p class="stacks-para">Our next goal is to compute the degree of $\delta_{\irr}$ restricted to $\varphi: D\to \bbP^1$, i.e. the number of nodal fibers in this family which do not have a rational tail.  It is equal to $12 \lambda$ by (2.1).  Before doing so, we gather some relevant intersection products in the Chow ring of $X$.</p>
+<div class="stacks-lemma" id="intersections">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.2.</strong> <a href="../tag/6CFF.html" class="stacks-tag-link">(6CFF)</a></div>
+  <div class="stacks-env-body"><p>The following intersection numbers hold in the Chow ring of $X$:
+ $$\begin{aligned}& f_{i}^{2} = f_{2} \cdot e_{i} = \Sigma \cdot \Pi = \Sigma \cdot e_{i} =  0,  \\
+ & \Pi^{3} = \Sigma^{3} = 4,  \\
+ &  e_{i}^{3} = -1,  \\
+ & e_{i}^2 \cdot f_{1} = e_{i}^2 \cdot \Pi = -1, \\
+ &  \Sigma^2 \cdot f_{1} = -\Pi^2 \cdot f_{1} = -2,  \\
+ &  \Sigma^2 \cdot f_{2} = -\Pi^2 \cdot f_{2} = -1,  \\
+ &   \Sigma \cdot f_{1} \cdot f_{2} = \Pi \cdot f_{1} \cdot f_{2} = 1.\end{aligned}$$</p>
+<p> Furthermore, let $l_{i}$ and $r_{i}$ be the line and ruling classes of $E_{i} \cong \bbF_{1}$.  Then $E_{i}\cdot {E_{i}} = r_{i} - l_{i}$ and $\Pi \cdot E_{i} = f_{1} \cdot E_{i} = r_{i}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0513.html" class="stacks-tag-link">(0513)</a></div>
+  <div class="stacks-env-body"><p>We will prove only those which are not immediately clear.  First, we see that $$\Pi^2 = (f_{1} + 2f_{2})\cdot \Pi$$ which follows from the general fact that $$\zeta^{r} = \sum_{i = 1}^{r} (-1)^{i+1}c_{i}(V) \cdot \zeta^{r-i}$$ for any projective bundle ${\rm Proj\,} V$, where $V$ is a rank $r$ vector bundle and $\zeta$ is the universal line bundle class of ${\rm Proj\,} V$. Here in our case $\Pi$ has class $\zeta$. From this, one easily derives the formulas $\Pi^{3} = \Sigma^{3} = 4,$ and all other formulas involving only $\Pi, \Sigma, f_{1}$ and $f_{2}$.</p>
+<p>We now deal with the intersections involving the exceptional divisors $E_{i}$. If $W\subset G$ is a smooth subscheme of a variety $G$ and if ${\wt G} = \Bl_{W}G$, then the exceptional divisor $E \subset {\wt G}$ is isomorphic to ${\rm Proj \,} (I_{W}/I^{2}_{W})$, and $\OO_{E}(E) = \OO_{E}(-1)$ has class $r-l$.  In our setting, the conormal bundle of $Z_{i}$ in $Y$ is $\OO_{Z_{i}} \oplus \OO_{Z_{i}}(-1)$.  Therefore, $E_{i}$ is abstractly isomorphic to $\bbF_{1}$, and $\OO_{E_{i}}(1)$ is the line bundle associated to the directrix $\sigma \subset \bbF_{1}$. The class of the directrix is also given by $l_{i} - r_{i}$, and therefore $E_{i} \cdot E_{i} = r_{i} - l_{i}$.  Furthermore, since $\Pi \cdot Z_{i} = f_{1} \cdot Z_{i} =  1$ in $Y$, we conclude that $\Pi \cdot E_{i} = f_{1} \cdot E_{i} = r_{i}$.   </p>
+<p>The remaining intersection products follow from those explained above.</p></div>
+</div>
+<div class="stacks-lemma" id="lambda">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.3.</strong> <a href="../tag/930D.html" class="stacks-tag-link">(930D)</a></div>
+  <div class="stacks-env-body"><p>For the family $\varphi : D \to \bbP^1$, $\delta_{\irr} = 12\lambda = 12(a-1)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/54D7.html" class="stacks-tag-link">(54D7)</a></div>
+  <div class="stacks-env-body"><p>First observe that $\lambda = \chi(\OO_{D})$. Secondly, by Noether's formula we know that
+$$12\chi(\OO_{D}) = K_{D}^2 + c_{2}(T_{D}).$$
+Since the fibers of $\varphi$ have genus one, the intersection number $K_{D}^2$ is $-(a+1)$, where each rational tail contributes $-1$. </p>
+<p>So we need only compute $c_{2}(T_{D})$. Using the exact sequence
+$$0 \to T_{D} \to T_{ X}|_{D} \to N_{D/{X}} \to 0, $$
+we see that
+$$\begin{aligned}c_{2}(T_{D}) & = & c_{2}(T_{X}|_{D}) - c_{1}(T_{D}) \cdot c_{1}(N_{D/X})  \\
+& = & c_{2}(T_{X}|_{D}) + K_{D}\cdot c_{1}(N_{D/X})  \\
+& = & c_{2}(T_{X})\cdot D + (D + K_{X})\cdot D^2.\end{aligned}$$
+Equality (5.3) indicates that we need only compute $c_{2}(T_{X})$, and then we can proceed by using the intersection formulas provided in
+Lemma&nbsp;<a href="/papers/extremal-effective-divisors/tag/6CFF.html" class="stacks-ref-link">5.2 <span class="stacks-ref-tag">[6CFF]</span></a>. Consider the sequence
+$$0 \to T_{X} \to \beta^{*}T_{Y} \to T_{E/Z}(E) \to 0,$$
+from which we conclude
+$$c_{2}(T_{X}) = i_{*}[-\omega_{E/Z}] + E \cdot K_{X} + \beta^{*}c_{2}(T_{Y})$$
+where $i: E \to X$ is the inclusion map. For (5.5), we can use the Grothendieck-Riemann-Roch formula for the inclusion $i$ to deduce
+$$c_{1}(T_{E/Z}(E)) = E, $$
+$$c_{2}(T_{E/Z}(E)) = i_{*}[c_{1}(\omega_{E/Z})] = r-2l.$$
+Using the exact sequence
+$$ 0 \to \OO_{Y}(\Sigma+\Pi) \to T_{Y} \to p^{*}(T_{Q}) \to 0, $$ we obtain
+$$c_{2}(T_{Y}) = -K_{Y}\cdot (\Sigma + \Pi) + 4f_{1} \cdot f_{2}.$$
+   Finally, we can compute the quantity $c_{2}(T_{D})$ using the equality (5.3) and the intersection numbers given in Lemma&nbsp;<a href="/papers/extremal-effective-divisors/tag/6CFF.html" class="stacks-ref-link">5.2 <span class="stacks-ref-tag">[6CFF]</span></a>.   The end result is
+$$c_{2}(T_{D}) = 13a-11.$$
+Therefore, $12\lambda = -(a+1) + 13a-11 = 12a-12$ as claimed.</p></div>
+</div>
+<p class="stacks-para">There are three types of singular fibers in the genus one family $\varphi: D \to \bbP^1$:
+\begin{enumerate}[label={\upshape(\roman*)}]</p>
+<p class="stacks-para">\item Irreducible nodal fibers.</p>
+<p class="stacks-para">\item Fibers having a rational tail. The rational tail meets each $2$-section $C_{i}$ once.</p>
+<p class="stacks-para">\item Two $\bbP^1$'s joined at two nodes. One component will be the directrix $\sigma \subset \Bl_{3}\bbF_{2}$. The other component will intersect each $C_{i}$ twice.
+\end{enumerate}</p>
+<p class="stacks-para">In order to obtain a family of genus one curves with six ordered marked points, we need to perform a base change $T \to \bbP^1$ of degree $2^3 = 8$ to distinguish $p_{2k-1}$ and $p_{2k}$ that are glued as a node for $k=1,2,3$.
+We name the sections so that the marked points $\{p_{2k-1},p_{2k}\}$ correspond to the $2$-section $C_{k}$.
+Then the curve $T$ carries over it a family of genus one curves with six ordered marked points.</p>
+<p class="stacks-para">Using Lemmas&nbsp;<a href="/papers/extremal-effective-divisors/tag/A701.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[A701]</span></a>, <a href="/papers/extremal-effective-divisors/tag/930D.html" class="stacks-ref-link">5.3 <span class="stacks-ref-tag">[930D]</span></a> and the above analysis of singular fibers of $\varphi$, we obtain the following intersection numbers:
+<ol><li>$T \cdot \lambda = 8(a-1)$.</li>
+<li>$T \cdot \delta_{0;\{i,j,k\}} = a+1$ for each triple $(i,j,k) \in \{1,2\} \times \{3,4\} \times \{5,6\}$.</li>
+<li>$T \cdot \delta_{0;\{2k-1,2k\}} = 4 \cdot (2a) = 8a$ for $k = 1, 2, 3$.</li></ol></p>
+<p class="stacks-para">All intersections of $T$ with other boundary divisors of $\BM_{1,6}$ are trivial. Plugging these numbers into the expression of $\pi^{*}(GP)$ in (5.1) yields:
+$$T\cdot (\pi^{*}GP) = -16.$$</p>
+<div class="stacks-theorem" id="thm-GP">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.4.</strong> <a href="../tag/1822.html" class="stacks-tag-link">(1822)</a></div>
+  <div class="stacks-env-body"><p>The divisor $\wt{GP}$ is extremal in $\BEff(\BM_{1,6})$. For $n\geq 6$, the pullback of
+$\wt{GP}$ to $\BM_{1,n}$ spans an extremal ray of $\BEff(\BM_{1,n})$, which is different from
+the rays spanned by $D_<strong>a</strong>$'s.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/34FD.html" class="stacks-tag-link">(34FD)</a></div>
+  <div class="stacks-env-body"><p>Since $T$ parameterizes curves in the main component ${\wt{GP}}$, we conclude that
+$$T \cdot {\wt{GP}} \leq T\cdot (\pi^{*}GP) < 0.$$
+Furthermore, the family $T$ is evidently moving in $\wt{GP}$, hence $\wt{GP}$ is an extremal divisor. Using the symmetry between the three pairs of marked points $\{p_{2k-1}, p_{2k}\}$ for $k=1,2,3$, the same argument as in the proof of Theorem&nbsp;<a href="/papers/extremal-effective-divisors/tag/ED28.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[ED28]</span></a> shows the second part of the claim.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$ — Section 5: Pulling back the Gieseker-Petri divisor">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/extremal-effective-divisors/section/S5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1407.4877">arXiv:1407.4877</a>
+  </div>
+</footer>
+</body>
+</html>

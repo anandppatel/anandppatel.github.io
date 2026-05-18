@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 — Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          MM: "\\mathcal M",
+          BM: "\\overline{\\mathcal M}",
+          TMM: "\\widetilde{\\mathcal M}",
+          BMg: "\\overline{\\mathcal M}_{g}",
+          Mg: "\\mathcal M_g",
+          PP: "\\mathbb P",
+          QQ: "\\mathcal Q",
+          BH: "\\overline{H}",
+          CC: "\\mathcal C",
+          EE: "\\mathcal E",
+          kk: "{\\boldsymbol\\kappa}",
+          OO: "\\mathcal O",
+          ch: "\\mbox{ch}",
+          td: "\\mbox{td}",
+          RR: "\\mathbb R",
+          HH: "\\mathcal H",
+          II: "\\mathcal I",
+          LL: "\\mathcal L",
+          JJ: "\\mathcal J",
+          TM: "\\widetilde{M}",
+          Hg: "\\overline{H}_g",
+          BS: "\\overline{S}",
+          divisor: "\\operatorname{div}",
+          eff: "\\operatorname{eff}",
+          Eff: "\\operatorname{Eff}",
+          BEff: "\\overline{\\operatorname{Eff}}",
+          XX: "\\mathcal X",
+          hyp: "\\operatorname{hyp}",
+          topo: "\\operatorname{top}",
+          even: "\\operatorname{even}",
+          odd: "\\operatorname{odd}",
+          other: "\\operatorname{other}",
+          nh: "\\operatorname{non-hyp}",
+          ws: "\\operatorname{ws}",
+          wt: "\\widetilde",
+          nonws: "\\operatorname{non-ws}",
+          nonhyp: "\\operatorname{non-hyp}",
+          PGL: "\\operatorname{PGL}",
+          irr: "\\operatorname{irr}",
+          Jac: "\\operatorname{Jac}",
+          reg: "\\operatorname{reg}",
+          red: "\\operatorname{red}",
+          Pic: "\\operatorname{Pic}",
+          Bl: "\\operatorname{Bl}",
+          bbC: "\\mathbb C",
+          bbE: "\\mathbb E",
+          bbF: "\\mathbb F",
+          rank: "\\operatorname{rank}",
+          chern: "\\operatorname{ch}",
+          bbP: "\\mathbb P",
+          bbS: "\\mathbb S",
+          bbQ: "\\mathbb Q",
+          bbR: "\\mathbb R",
+          bbZ: "\\mathbb Z",
+          sm: "\\operatorname{sm}",
+          SL: "\\operatorname{SL}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Dawei Chen, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: Pulling back the $d$-gonal divisor</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Pulling back the $d$-gonal divisor</h1>
+<p class="stacks-para">Consider $\pi: \BM_{1,4d-4} \to \BM_{g}$, where $g = 2d-1$. Let $BN^1_d\subset \BM_g$ be the Brill-Noether divisor parameterizing $d$-gonal curves.
+By \cite{HarrisMumfordKodaira}, it has class
+$$\begin{aligned}BN^1_d & = & c \left((2d+2)\lambda - \frac{d}{3}\delta_0 - \sum_{i=1}^{d-1}i (2d-1-i)\delta_i\right) \\
+                & = & c \left((2d+2)\lambda - \frac{d}{3}\delta - \sum_{i=1}^{d-1}  \Big(i (2d-1-i) - \frac{d}{3}\Big)\delta_i \right),\end{aligned}$$
+where $c = \frac{3(2d-4)!}{d!(d-2)!}$.  In this section we will show that the main component of $\pi^{*}BN^{1}_{d}$ is extremal.</p>
+<p class="stacks-para">Consider the surface $S = E\times \bbP^1$, where $E$ is a smooth genus one curve. Let $\pi_0$ and $\pi_1$ be the projections to $\bbP^1$ and $E$, respectively.
+We have
+$$ \Pic(S) \cong \bbZ[e] \oplus \pi_1^{*}\Pic(E), $$
+where $e = \pi_0^{*} \OO_{\bbP^1}(1)$ represents the genus one fiber class. Let $D$ be a divisor of degree $d$ on $E$.
+Projecting a curve in the linear system $|e + \pi_1^{*}D|$ via $\pi_0$ admits a degree $d$ cover of $\bbP^1$. Take $2d-2$ general genus one fibers $E_1, \ldots, E_{2d-2}$ and fix a general point $p_{2k-1}\in E_k$ for $k=1,\ldots, 2d-2$.
+Since $\dim |e + \pi_1^{*}D| = 2d-1$, we obtain a pencil $B$ of curves $C_b$ in $S$ that pass through all the fixed $p_{2k-1}$.
+Denote by $p_{2k}$ an intersection point of $C_b$ with $E_i$ other than $p_{2k-1}$. Then $(C_b; p_1, \ldots, p_{4d-4})$
+is a genus one curve with $4d-4$ marked points, hence $B$ can be viewed as a curve in $\BM_{1,4d-4}$. Since $p_{2k-1}$ and $p_{2k}$ are
+both contained in $E_k$, projecting to $\bbP^1$ realizes $\pi(E, p_1,\ldots, p_{4d-4})$ as a $d$-gonal curve.</p>
+<p class="stacks-para">Note that $C_b$ has the same $j$-invariant
+as that of $E$, because it admits a one-to-one map to $E$ via $\pi_1$. It implies that
+$$ B\cdot \lambda = B\cdot \delta_{\irr} = 0. $$</p>
+<p class="stacks-para">Since $(e + \pi_1^{*}D)^2 = 2d$, besides $p_1, p_3, \ldots, p_{4d-5}$ there are two other base points $q_1$ and $q_2$ in the pencil $B$. Hence there are
+$2d$ singular curves in $B$, each of which consists of a genus zero fiber passing through $s = p_{2k-1}$ or $s = q_i$ union a (unique) genus one curve
+in $|e + \pi_1^{*}(D-s)|$ passing through the remaining base points.</p>
+<div class="stacks-env" id="ex-d=3">
+  <div class="stacks-env-head"><strong>Example&nbsp;4.1.</strong> <a href="../tag/91CA.html" class="stacks-tag-link">(91CA)</a></div>
+  <div class="stacks-env-body"><p>Consider $d = 3$ and $\pi: \BM_{1,8} \to \BM_{5}$. Make a base change of degree $2^4$, still denoted by $B$, so that we can distinguish
+the two remaining intersection points of $E_{k}$ and $C_b$ besides $p_{2k-1}$ for $k=1,2,3,4$. See Figure&nbsp;2 for the configuration. </p>
+<p>\begin{figure}[htb]
+    \centering
+    \def\svgwidth{200pt}
+     \begingroup \makeatletter \providecommand\color[2][]{\errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}\renewcommand\color[2][]{}}\providecommand\transparent[1]{\errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}\renewcommand\transparent[1]{}}\providecommand\rotatebox[2]{#2}\ifx\svgwidth\undefined \setlength{\unitlength}{548.88510742bp}\ifx\svgscale\undefined \relax \else \setlength{\unitlength}{\unitlength * \real{\svgscale}}\fi \else \setlength{\unitlength}{\svgwidth}\fi \global\let\svgwidth\undefined \global\let\svgscale\undefined \makeatother \begin{picture}(1,1.03742361)\put(0,0){\includegraphics[width=\unitlength]{trigonal.pdf}}\put(0.08836953,0.72517119){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_1$}}}\put(0.33866003,0.71044821){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_3$}}}\put(0.57422761,0.70161443){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_5$}}}\put(0.80390595,0.67216842){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_7$}}}\put(0.04714521,0.40421035){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_2$}}}\put(0.31215872,0.11269551){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_4$}}}\put(0.51533573,0.44543471){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_6$}}}\put(0.78034923,0.10975088){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$p_8$}}}\put(0.05303438,0.98429549){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$E_1$}}}\put(0.35338302,0.98724009){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$E_2$}}}\put(0.60072895,0.99018467){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$E_3$}}}\put(0.82746275,0.99312927){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$E_4$}}}\end{picture}\endgroup          \caption{\label{fig:trigonal} A genus one curve marked at $p_1,\ldots, p_8$ }
+    \end{figure}</p>
+<p>If $p_{2k}$ coincides with $p_{2k-1}$, it contributes
+$2\cdot 2^3 = 2^4$ to $B\cdot \delta_{0; \{2k-1, 2k\}}$ (due to the base change). For a singular curve in $B$, if $s = q_i$ for $i=1,2$, it contributes
+$1$ to $\delta_{0; S}$ where $S\subset \{2,4,6,8\}$. If $s = p_{2k-1}$, then it contributes $2$ to $\delta_{0;S\cup \{2k-1\}}$ for $S\subset \{2,4,6,8\}\backslash\{2k\}$, where the number $2$ comes from the choice of $p_{2k}$. </p>
+<p>We thus obtain that the only nonzero intersections of $B$ with boundary divisors are as follows:
+$$ B\cdot \delta_{0;\{p_{2k-1}, p_{2k}\}} = 16, $$
+$$ B\cdot \delta_{0;S} = 2, \quad S\subset \{2,4,6,8\}, $$
+$$ B\cdot \delta_{0;S\cup \{2k-1\}} = 2, \quad S\subset \{2,4,6,8\}\backslash\{2k\}. $$
+It follows that
+$$ B\cdot \pi^{*}BN^1_3 = -128 + 2(1\cdot 6 + 2\cdot 4 + 3\cdot 1) + 2\cdot 4\cdot (1\cdot 3 + 2\cdot 3 + 3\cdot 1)
+= 2 > 0. $$</p></div>
+</div>
+<p class="stacks-para">Nevertheless, for $d\geq 4$ the above intersection number turns out to be negative.</p>
+<div class="stacks-lemma" id="lem-d-gonal">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.2.</strong> <a href="../tag/A447.html" class="stacks-tag-link">(A447)</a></div>
+  <div class="stacks-env-body"><p>In the above setting, $B\cdot \pi^{*}BN^1_d < 0$ for $d\geq 4$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2A23.html" class="stacks-tag-link">(2A23)</a></div>
+  <div class="stacks-env-body"><p>The calculation is similar to Example&nbsp;<a href="/papers/extremal-effective-divisors/tag/91CA.html" class="stacks-ref-link">4.1 <span class="stacks-ref-tag">[91CA]</span></a>. Make a degree $(d-1)^{2d-2}$ base change, so that we can distinguish the marked point $p_{2k}$ out of the remaining $d-1$ intersection points of $E_k$ and $C_b$ for $k=1,\ldots, 2d-2$. If
+$p_{2k}$ coincides with $p_{2k-1}$, it contributes $(d-1)(d-1)^{2d-3} = (d-1)^{2d-2}$
+to $B\cdot \delta_{0; \{2k-1, 2k\}}$. For a singular curve in $B$, if it passes through $s = q_i$ for $i=1$ or $2$, both of them contribute $(d-2)^{2d-2-|S|}$ to $\delta_{0; S}$ for $S\subset \{2,4,\ldots, 4d-4\}$, due to the choice of the marked points in $\{2,4,\ldots, 4d-4\}\backslash S$. If $s = p_{2k-1}$, it contributes
+$(d-1)(d-2)^{2d-3-|S|}$
+to $\delta_{0;S\cup \{2k-1\}}$ for $S\subset \{2,4,\ldots, 4d-4\} \backslash \{ 2k\}$, due to the choice of $p_{2k}$ and the
+ marked points in $\{2,4,\ldots, 4d-4\} \backslash (\{ 2k\}\cup S)$. </p>
+<p>We thus obtain that
+$$ B\cdot \delta_{0;\{p_{2k-1}, p_{2k}\}} = (d-1)^{2d-2}, $$
+$$ B\cdot \delta_{0;S} = 2(d-2)^{2d-2-|S|}, \quad S\subset \{2,4,\ldots,4d-4\}, $$
+$$ B\cdot \delta_{0;S\cup \{2k-1\}} = (d-1)(d-2)^{2d-3-|S|}, \quad S\subset \{2,4,\ldots, 4d-4\}\backslash\{2k\}. $$
+In $\pi^{*}BN^1_d/c$, the coefficients of $\delta_{0;\{2k-1, 2k\}}$, of $\delta_{0;S}$ for
+$S\subset \{2,4,\ldots,4d-4\}$ and of $\delta_{0;S\cup \{2k-1\}}$ for $S\subset \{2,4,\ldots, 4d-4\}\backslash\{2k\}$
+are
+$$ 2 - \frac{4}{3}d,  \quad \frac{d}{3} (|S|-1), \quad \frac{d}{3} |S|, $$
+respectively, by Proposition&nbsp;<a href="/papers/extremal-effective-divisors/tag/1537.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[1537]</span></a> and (4.1). It follows that
+$$\begin{aligned}\frac{1}{c}B\cdot \pi^{*}BN^1_d & = & \Big(2-\frac{4}{3}d\Big) 2(d-1)^{2d-1}  + \frac{d}{3} \sum_{s=1}^{2d-2} 2(d-2)^{2d-2-s}(s-1){2d-2 \choose s} \\
+& &  + \frac{d}{3}(2d-2) \sum_{s=1}^{2d-3} (d-1)(d-2)^{2d-3-s}s{2d-3\choose s} \\
+& = &  \Big(2-\frac{4}{3}d\Big) 2 (d-1)^{2d-1} + \frac{2d}{3}\Big((d-1)^{2d-2} + (d-2)^{2d-2}\Big) \\
+& & + \frac{2d}{3} (2d-3)(d-1)^{2d-2} \\
+& = & \frac{2}{3}\Big( d(d-2)^{2d-2} - 2 (d-3)(d-1)^{2d-1} \Big).\end{aligned}$$
+It is easy to check that $B\cdot \pi^{*}BN^1_d < 0$ for $d \geq 4$.</p></div>
+</div>
+<p class="stacks-para">Taking away possible boundary components, denote by $\wt{BN}^1_d$ the main component of $\pi^{-1}BN^1_d$.</p>
+<div class="stacks-lemma" id="lem-d-gonal-irreducible">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.3.</strong> <a href="../tag/E3D3.html" class="stacks-tag-link">(E3D3)</a></div>
+  <div class="stacks-env-body"><p>The main component $\wt{BN}^1_d$ is irreducible.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A11F.html" class="stacks-tag-link">(A11F)</a></div>
+  <div class="stacks-env-body"><p>Let $U\subset \wt{BN}^1_d$ be the open dense subset parameterizing simply branched degree $d$, genus one covers
+$f: E\to \bbP^1$ with a general choice of $m$ pairs of points $(p_1, p_2), \ldots, (p_{2m-1}, p_{2m})$ in $E$, where $m = 2d-2$ and $f(p_{2j-1}) = f(p_{2j}) = q_j \in \bbP^1$. It suffices to show that $U$ is irreducible. </p>
+<p>Let $b_1, \ldots, b_{2d}\in \bbP^1$ be the set of branch points of $f$. The branch data $\phi_1, \ldots, \phi_{2d}$ associated to the branch points can be arranged as
+$$(1,2), (1,2), (1,2), (1,2), (2, 3), (2, 3), (3, 4), (3, 4), \ldots, (d-1, d), (d-1, d),$$
+see e.g. \cite[page 100]{EEHS}. In other words, the monodromy induced by a closed, suitably oriented loop centering around $b_i$ is the permutation $\phi_i \in S_d$. </p>
+<p>The choice of $p_{2j-1}$ and $p_{2j}$ amounts to choosing two distinct numbers $a_{2j-1}$ and $a_{2j}$ out of
+$\{ 1, \ldots, d \}$, i.e. specifying two of the $d$ sheets of $f$ over $q_j$. Without loss of generality, assume that
+$a_{2j-1} < a_{2j}$. Vary $q_j$ along the loops centering around the $b_i$ with branch data $(a_{2j-1}-1, a_{2j-1}), (a_{2j-1}-2, a_{2j-1}-1),
+\ldots, (1, 2)$ successively. When $q_j$ comes back to the original position, $a_{2j-1}$ is transformed to $1$. Next,
+vary $q_j$ along the loops centering around the $b_i$ with branch data $(a_{2j}-1, a_{2j}), (a_{2j}-2, a_{2j}-1),
+\ldots, (2, 3)$ successively. As a result, $a_{2j}$ is transformed to $2$. Finally, if we vary $q_j$ along the loop around $b_1$ with branch datum $(1,2)$, the ordered pair $(1, 2)$ is transformed to $(2,1)$. Meanwhile, the other pairs
+$(a_{2k-1}, a_{2k})$ are unchanged since we did not vary $q_k$ for $k\neq j$. Carrying out this process for
+$j=1,\ldots, m$ one by one, eventually all the pairs $(a_{2j-1}, a_{2j})$ can be transformed to $(1,2)$. </p>
+<p>Let $W$ be the open dense subset of the Hurwitz space of degree $d$, genus one, simply branched covers of $\bbP^1$. The above process implies that the monodromy
+of $U\to W$ is transitive, where the map is finite of degree $(d(d-1))^{m}$ forgetting the $p_i$.
+Since $W$ is irreducible, see \cite{Hurwitz, EEHS}, it follows that $U$ is irreducible.</p></div>
+</div>
+<div class="stacks-theorem" id="thm-d-gonal">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.4.</strong> <a href="../tag/A036.html" class="stacks-tag-link">(A036)</a></div>
+  <div class="stacks-env-body"><p>For $d\geq 4$, $\wt{BN}^1_d$ spans an extremal ray of $\BEff(\BM_{1,4d-4})$ and it is different from the ray of any $D_<strong>a</strong>$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E0FF.html" class="stacks-tag-link">(E0FF)</a></div>
+  <div class="stacks-env-body"><p>By Lemma&nbsp;<a href="/papers/extremal-effective-divisors/tag/A447.html" class="stacks-ref-link">4.2 <span class="stacks-ref-tag">[A447]</span></a>, $B\cdot \pi^{*}BN^1_d < 0$ and it is not entirely contained in the boundary of $\BM_{1,4d-4}$, hence $B\cdot \wt{BN}^1_d < 0$. Moreover, by the construction of $B$, it is a moving curve in $\wt{BN}^1_d$. It follows that $\wt{BN}^1_d$ spans an extremal ray of $\BEff(\BM_{1,4d-4})$.
+The same argument
+as in the proof of Theorem&nbsp;<a href="/papers/extremal-effective-divisors/tag/ED28.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[ED28]</span></a> shows that $\wt{BN}^1_d$ and $D_<strong>a</strong>$ span different extremal rays of $\BEff(\BM_{1,4d-4})$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$ — Section 4: Pulling back the $d$-gonal divisor">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/extremal-effective-divisors/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1407.4877">arXiv:1407.4877</a>
+  </div>
+</footer>
+</body>
+</html>

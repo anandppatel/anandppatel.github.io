@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 — Complete families of generic covers of elliptic curves</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          Q: "\\mathbb{Q}",
+          O: "\\mathcal{O}",
+          HdgX: "\\mathsf{Hur}_{d,g}(X)",
+          HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
+          from: "\\colon",
+          C: "\\mathsf{C}",
+          Mgbar: "\\overline{\\mathcal{M}}_{g}",
+          Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
+          Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
+          St: "\\mathsf{Hur}_{d,g}^{\\Diamond}(X)",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Hur: ["\\mathsf{Hur}_{#1,#2}", 2],
+          Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
+          Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
+          Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          ch: "\\operatorname{ch}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          Proj: "\\operatorname{Proj}",
+          G: "\\operatorname{\\mathbb{G}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          univ: "\\operatorname{\\mathsf{univ}}",
+          E: "\\operatorname{\\mathsf{E}}",
+          V: "\\operatorname{\\mathsf{Vect}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Bog: "\\operatorname{Bog}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Complete families of generic covers of elliptic curves</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: Final remarks and possible next steps</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Final remarks and possible next steps</h1>
+<p class="stacks-para">In <a href="/papers/complete-families-generic-covers/tag/14AF.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[14AF]</span></a> we computed that the slope of the Hurwitz curve $\Hurfixed{d}{2}(X)$ is $5+6/d$, and the proof used lattice counting arguments.  On the other hand, the unique (up to scaling) linear combination of the divisors $[\Bog(\mathcal{E})]$ and $[\Bog(\mathcal{F})]$ lying in the $\lambda$-$\delta$ plane has slope $5+6/d$, according to <a href="/papers/complete-families-generic-covers/tag/454C.html" class="stacks-ref-link">Proposition&nbsp;2.11 <span class="stacks-ref-tag">[454C]</span></a>.  <em>Why are these two numbers the same?</em></p>
+<p class="stacks-para">We understand half of the answer to this riddle.  When $g=2$, the Tschirnhausen bundle $\mathcal{E}$ has degree $1$, and so poly-stability just means that $\mathcal{E}$ is indecomposable.  In <a href="/papers/complete-families-generic-covers/tag/415B.html" class="stacks-ref-link">Theorem&nbsp;4.4 <span class="stacks-ref-tag">[415B]</span></a> below we will in fact show that $\Bog(\mathcal{E})$ is empty when $g = 2$.  Given <a href="/papers/complete-families-generic-covers/tag/454C.html" class="stacks-ref-link">Proposition&nbsp;2.11 <span class="stacks-ref-tag">[454C]</span></a>, if we knew that $\mathcal{F}_{\alpha}$ is regular polystable for a general $\alpha$ then by <a href="/papers/complete-families-generic-covers/tag/14AF.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[14AF]</span></a> we would conclude that $\Bog(\mathcal{F_{\alpha}})$ must also be empty, and therefore that <a href="/papers/complete-families-generic-covers/tag/2541.html" class="stacks-ref-link">Conjecture&nbsp;2.10 <span class="stacks-ref-tag">[2541]</span></a> holds for $g=2$. But we do not know this. In general, it would be great to know the answer to the following question:</p>
+<div class="stacks-env" id="question-stableF">
+  <div class="stacks-env-head"><strong>Question&nbsp;4.1.</strong> <a href="../tag/F81A.html" class="stacks-tag-link">(F81A)</a></div>
+  <div class="stacks-env-body"><p>Does a general (primitive) branched cover $\alpha: C \to D$ between two curves of genus $\geq 1$ have a stable Casnati-Ekedahl bundle $\mathcal{F}$? What about the other terms of the Casnati-Ekedahl resolution?</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;4.2.</strong> <a href="../tag/3A34.html" class="stacks-tag-link">(3A34)</a></div>
+  <div class="stacks-env-body"><p>The stability of the general Tschirnhausen bundle was demonstrated beautifully in [CLV24]. In another direction, [DP22] proves that the up to twist, all conceivable rank $d-1$ vector bundles eventually arise as Tschirnhausen bundles, as $g$ increases.</p></div>
+</div>
+<p class="stacks-para">Throughout this section, we let $\alpha: C \to X$ be an element of $\Hurfixed{d}{2}(X)$ &ndash; in particular recall that $\alpha$ is primitive.</p>
+<div class="stacks-lemma" id="lemma-degree0twist">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.3.</strong> <a href="../tag/E848.html" class="stacks-tag-link">(E848)</a></div>
+  <div class="stacks-env-body"><p>If $\mathcal{L}$ is any degree $0$ line bundle on $X$ then $$h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = 1.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DA2C.html" class="stacks-tag-link">(DA2C)</a></div>
+  <div class="stacks-env-body"><p>By definition, $$\alpha_{*} \O_{C} \simeq \O_{X} \oplus \mathcal{E}_{\alpha}^{\vee}.$$  Therefore, $$h^{0}(X,\mathcal{L}) + h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = h^{0}(X, (\alpha_{*} \O_{C})\otimes \mathcal{L}) = h^{0}(C, \alpha^{*} \mathcal{L}),$$  using the push-pull formula.  Now, $\alpha^{*} \mathcal{L}$ is a degree $0$ line bundle on $C$, and so $h^{0}(C, \alpha^{*} \mathcal{L}) = 1$ if and only if $\alpha^{*} \mathcal{L} \simeq \O_{C}$, and otherwise $h^{0}(C, \alpha^{*} \mathcal{L}) = 0$.  </p>
+<p>    The pushforward of the divisor $c_{1} \alpha^{*} \mathcal{L}$ is $d \cdot c_{1} \mathcal{L}$, and therefore if $\alpha^{*} \mathcal{L} \simeq \O_{C}$ then $\mathcal{L}$ is $d$-torsion in $\Pic^{0}(X)$. </p>
+<p>    Suppose $e \mid d$ is the smallest positive integer such that $\mathcal{L}$ is $e$-torsion. Then $\mathcal{L}$ defines a a degree $e$ finite et&aacute;le cover $\beta: \tilde{X} \to X$ with the property that: if $\gamma: Z \to X$ is any morphism such that $\gamma^{*} \mathcal{L} \simeq \O_{Z}$ then $\gamma$ factors through $\beta$. In particular, $\alpha$ factors through $\beta$, and therefore by primitivity $e=1$.  To summarize, $\alpha^{*} \mathcal{L} \simeq \O_{C}$ if and only if $\mathcal{L} \simeq \O_{X}$.  The lemma follows.</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-genus2stableE">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.4.</strong> <a href="../tag/415B.html" class="stacks-tag-link">(415B)</a></div>
+  <div class="stacks-env-body"><p>The Tschirnhausen bundle $\mathcal{E_{\alpha}}$ is indecomposable for \underline{any} element $[\alpha: C \to X] \in \Hurfixed{d}{2}(X)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D944.html" class="stacks-tag-link">(D944)</a></div>
+  <div class="stacks-env-body"><p>Write $\mathcal{E}_{\alpha}^{\vee}$ as a direct sum of indecomposable bundles $$\mathcal{E}_{\alpha}^{\vee} = \bigoplus_{i=1}^{r} \mathcal{A}_{i}.$$  Since $h^{0}(X,\mathcal{E}_{\alpha}^{\vee}) = 0$ ($C$ is connected), none of the summands $\mathcal{A}_{i}$ can have positive degree.  </p>
+<p>    Suppose one particular $\mathcal{A}_{j}$ has degree $0$.  By Atiyah's classification, $\mathcal{A}_{j}$ is the tensor product of the bundle $\mathcal{F}$ by some line bundle $\mathcal{M}$ of degree $0$.  Here $\mathcal{F}$ is the unique indecomposable vector bundle of rank $\rk \mathcal{A}_{j}$ and degree $0$ which has a non-trivial global section.  If we set $\mathcal{L} := \mathcal{M}^{-1}$, then $\mathcal{A}_{j} \otimes \mathcal{L} = \mathcal{F}$, and so  $h^{0}(X, \mathcal{A}_{j} \otimes \mathcal{L}) = 1$.  And so <a href="/papers/complete-families-generic-covers/tag/E848.html" class="stacks-ref-link">Lemma&nbsp;4.3 <span class="stacks-ref-tag">[E848]</span></a> is violated.  </p>
+<p>    Therefore, all summands $\mathcal{A}_{i}$ have strictly negative degree, and these degrees sum to $\deg \mathcal{E}_{\alpha}^{\vee} = -1$.  Hence there is only one summand, and the theorem follows.</p></div>
+</div>
+<p class="stacks-para">Like we said earlier, we do not know whether $\mathcal{F}_{\alpha}$ is regular polystable for a general $[\alpha: C \to X] \in \Hurfixed{d}{2}(X)$ &ndash; this is a natural thing to look into.  An affirmative answer to <a href="/papers/complete-families-generic-covers/tag/F81A.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[F81A]</span></a> means that the ability to construct complete families of branched covers of $X$ lying entirely inside $\Hurfixedstable{d}{g}(X)$ has little to do with the existence of nice parametrizations &ndash; the curves $\Hurfixed{d}{2}(X)$ are themselves examples in genus $2$.  This in turn gives us more confidence in <a href="/papers/complete-families-generic-covers/tag/2541.html" class="stacks-ref-link">Conjecture&nbsp;2.10 <span class="stacks-ref-tag">[2541]</span></a>.</p>
+<p class="stacks-para">We leave the reader with some ideas for next steps:</p>
+<p class="stacks-para"><ol><li>Is the general Casnati-Ekedahl bundle $\mathcal{F}$ stable (or regular polystable in the case of a genus $1$ target)? Start with the genus $2$ case.  We'd like to point out the main theorem of [BP21] and [BP21, Proposition 2.4].  One must be cautious, in light of [BP21, Example 2.3]!</li>
+<li>Is the weaker <a href="/papers/complete-families-generic-covers/tag/09ED.html" class="stacks-ref-link">Conjecture&nbsp;2.14 <span class="stacks-ref-tag">[09ED]</span></a> true for the Hurwitz space parametrizing degree $6$ genus $3$ covers, $\Hurfixed{6}{3}(X)$? This is the frontier case, in our eyes.</li>
+<li>Can we leverage the success in genus 2 to serve higher genera? Perhaps by constructing complete families in the boundary, and then attempting to deform?</li>
+<li>Relaxing the requirements of the complete curve conjecture, can one show that there are plenty of complete curves avoiding $\Bog(\mathcal{E})$ or $\Bog(\mathcal{F})$ individually?</li>
+<li>Relaxing the requirements of the complete curve conjecture in another direction: Can we exhibit a single complete curve in every $\Hurfixedstable{d}{g}(X)$, moving or otherwise?</li>
+<li>Prove <a href="/papers/complete-families-generic-covers/tag/09DD.html" class="stacks-ref-link">Theorem&nbsp;3.12 <span class="stacks-ref-tag">[09DD]</span></a> after dropping the convenient assumption that $g$ is sufficiently large.</li></ol></p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Complete families of generic covers of elliptic curves — Section 4: Final remarks and possible next steps">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/complete-families-generic-covers/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+  </div>
+</footer>
+</body>
+</html>

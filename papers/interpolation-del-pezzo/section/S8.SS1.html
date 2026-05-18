@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8.1. Definition and Equivalent Characterizations of Interpolation — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Interpolation in General</a> / <span>8.1. Definition and Equivalent Characterizations of Interpolation</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">8.1. Definition and Equivalent Characterizations of Interpolation</h1>
+<p class="stacks-para">We now lay out the key definitions of interpolation.
+First, we describe a more formal way of expressing interpolation
+in &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>.
+This comes in two flavors: interpolation, and pointed interpolation.
+The latter also keeps track of the points at which the planes
+meet the given variety. Then, we give a cohomological
+definition in &nbsp;<a href="/papers/interpolation-del-pezzo/tag/D6A8.html" class="stacks-ref-link">Definition&nbsp;8.5 <span class="stacks-ref-tag">[D6A8]</span></a>.</p>
+<div class="stacks-definition" id="definition-Hilbert-scheme-component">
+  <div class="stacks-env-head"><strong>Definition&nbsp;8.1.</strong> <a href="../tag/2B81.html" class="stacks-tag-link">(2B81)</a></div>
+  <div class="stacks-env-body"><p>Let $X \subset \bp^n$ be projective scheme with a fixed embedding into projective space which lies on a unique irreducible component
+	of the Hilbert scheme.
+	Define $\hilb X$ to be the irreducible component of the Hilbert scheme on which $[X]$ lies, taken with reduced scheme structure.
+	If $\sch$ is the Hilbert scheme of closed subschemes of $\bp^n$ over $\spec k$ and $\scv$
+	is the universal family over $\sch$, then define
+	define $\uhilb X$ to be the universal family over $\hilb X$, defined as the
+	fiber product
+	$$\text{[Commutative diagram — see PDF]}$$</p></div>
+</div>
+<div class="stacks-definition" id="definition-lambda-constraints">
+  <div class="stacks-env-head"><strong>Definition&nbsp;8.2.</strong> <a href="../tag/C64A.html" class="stacks-tag-link">(C64A)</a></div>
+  <div class="stacks-env-body"><p>Given an integral subscheme of the Hilbert scheme $U$
+	parameterizing subschemes of $\bp^n$ of dimension $k$,
+	call a sequence
+	$$\begin{aligned}\lambda := \left( \lambda_1, \ldots, \lambda_m \right)\end{aligned}$$
+<strong>admissible</strong> if it satisfies the following conditions:
+<ol><li>$\lambda$ is a weakly decreasing sequence.
+		That is, $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m$,</li>
+<li>for all $1 \leq i \leq m$, we have $0 \leq \lambda_i \leq n - k$,</li>
+<li>and
+$$\begin{aligned}\sum_{i=1}^m \lambda_i \leq \dim U.\end{aligned}$$</li></ol></p></div>
+</div>
+<div class="stacks-definition" id="definition-interpolation">
+  <div class="stacks-env-head"><strong>Definition&nbsp;8.3.</strong> <a href="../tag/2885.html" class="stacks-tag-link">(2885)</a></div>
+  <div class="stacks-env-body"><p>Let $U$ be an integral subscheme of the Hilbert scheme
+	parameterizing subschemes of $\bp^n$ of dimension $k$
+	and let $\scv(U)$ denote the universal family over $U$.
+	Let $\lambda$ be admissible and let
+	$\Lambda_i$ be a plane of dimension $n - k - \lambda_i$ for $1 \leq i \leq m$.
+Define
+$$\begin{aligned}\Psi := \left( \uhilb {\Lambda_1} \times_{\bp^n} \scv(U) \right) \times_{U} \cdots \times_{U} \left( \uhilb {\Lambda_m} \times_{\bp^n} \scv(U) \right).\end{aligned}$$
+Then, since $\hilb {\Lambda_i} \cong Gr(n- k - \lambda_i + 1, n+1)$, define $\Phi$ to be the scheme theoretic image of the composition
+$$\text{[Commutative diagram — see PDF]}$$
+We have natural projections
+$$\text{[Commutative diagram — see PDF]}$$
+and
+$$\text{[Commutative diagram — see PDF]}$$</p>
+<p>Define $q$ and $r$ so that $\dim U = q \cdot(n-k) + r$ with $0 \leq r < n - k$. Then,
+$U$ satisfies
+<ol><li><strong>$\lambda$-interpolation</strong>
+if the projection map $\pi_2$ is surjective.</li>
+<li><strong>weak interpolation</strong> if $U$ satisfies $((n - k)^q)$-interpolation</li>
+<li><strong>interpolation</strong> if $U$ satisfies $((n - k)^q, r)$-interpolation</li>
+<li><strong>strong interpolation</strong>
+if $U$ satisfies $\lambda$-interpolation for all admissible $\lambda$.</li></ol></p>
+<p>We define  $\lambda$-pointed interpolation, weak pointed interpolation, pointed interpolation, strong pointed interpolation similarly. More precisely, we say that $U$ satisfies
+<ol><li><strong>$\lambda$-pointed interpolation</strong> if $\eta_2$
+is surjective</li>
+<li><strong>weak pointed interpolation</strong> if $U$ satisfies
+	$\left( (n - k)^q \right)$-pointed interpolation</li>
+<li><strong>pointed interpolation</strong> if $U$ satisfies
+$\left( (n - k)^q, r \right)$-pointed interpolation</li>
+<li><strong>strong pointed interpolation</strong> if $U$ satisfies
+$\lambda$-pointed interpolation for all admissible $\lambda$.</li></ol></p>
+<p>If $X \subset \bp^n$ lies on a unique irreducible
+component of the Hilbert scheme $\hilb X$, we say $X$ satisfies $\lambda$-interpolation (and all variants as
+above) if $\hilb X$ satisfies $\lambda$-interpolation.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-pointed-interpolation-equivalent-to-non-pointed">
+  <div class="stacks-env-head"><strong>Remark&nbsp;8.4.</strong> <a href="../tag/6FAF.html" class="stacks-tag-link">(6FAF)</a></div>
+  <div class="stacks-env-body"><p>Note that $U$ satisfies $\lambda$-interpolation if and only if it satisfies $\lambda$-pointed interpolation:
+	$\eta_2$ factors through $\Phi$,
+	and the restriction map $\Psi \rightarrow \Phi$ is surjective,
+	so $\eta_2$ is surjective if and only if $\pi_2$ is.
+	Nevertheless, it is useful to refer to these two notions separately, which is why we give
+	them two separate names.</p></div>
+</div>
+<div class="stacks-definition" id="definition-vector-bundle-interpolation">
+  <div class="stacks-env-head"><strong>Definition&nbsp;8.5.</strong> <a href="../tag/D6A8.html" class="stacks-tag-link">(D6A8)</a></div>
+  <div class="stacks-env-body"><p>Let $\lambda$ be admissible and let $E$ be a locally free sheaf on a scheme $X$
+	with $H^1(X, E) = 0$.
+	Choose points $p_1, \ldots, p_m$ on $X$ and
+	vector subspaces $V_i \subset E|_{p_i}$ for $1 \leq i \leq m$
+	with $\codim V_i = \lambda_i$.
+	Then, define $E'$ so that we have an exact sequence of coherent sheaves on $X$
+	$$\text{[Commutative diagram — see PDF]}$$
+	We say $E$ satisfies <strong>$\lambda$-interpolation</strong>
+	if there exist points $p_1, \ldots, p_n$ as above
+	and subspaces $V_i \subset E|_{p_i}$ as above
+	so that
+	$$\begin{aligned}h^0(E) - h^0(E') = \sum_{i=1}^m \lambda_i.\end{aligned}$$</p>
+<p>	Write $h^0(E) = q \cdot \rk E + r$ with $0 \leq r < \rk E$.
+	We say $E$ satisfies
+	<ol><li><strong>weak interpolation</strong> if it satisfies
+			$\left( (\rk E)^q \right)$
+			interpolation.</li>
+<li><strong>interpolation</strong> if it satisfies
+			$\left( (\rk E)^q, r \right)$ interpolation.</li>
+<li><strong>strong interpolation</strong> if it satisfies
+			$\lambda$-interpolation for all
+			admissible $\lambda$.</li></ol></p></div>
+</div>
+<div class="stacks-commentary" id="remark-">
+  <div class="stacks-env-head"><strong>Remark&nbsp;8.6.</strong> <a href="../tag/CA04.html" class="stacks-tag-link">(CA04)</a></div>
+  <div class="stacks-env-body"><p>See &nbsp;[ALY19, Section 4] for further useful properties of interpolation.
+	While some of the discussion there is specific
+	to curves, much of it generalizes immediately to higher
+	dimensional varieties.</p></div>
+</div>
+<p class="stacks-para">We now come to the main result of the section.
+Because it has so many moving parts, after stating
+it, we postpone its proof until
+&nbsp;Section&nbsp;8.5,
+after we have developed the tools necessary to prove it.</p>
+<p class="stacks-para">Perhaps the most nontrivial consequence of &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a>
+is that it implies the equivalence of interpolation and strong interpolation
+for $\hilb X$ when $X$ is a smooth projective scheme with $H^1(X, N_{X/\bp^n}) = 0$,
+over an algebraically
+closed field of characteristic $0$.</p>
+<div class="stacks-theorem" id="theorem-equivalent-conditions-of-interpolation">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;8.7.</strong> <a href="../tag/2AF2.html" class="stacks-tag-link">(2AF2)</a></div>
+  <div class="stacks-env-body"><p>Assume $X \subset \bp^n$ is an integral projective scheme
+	lying on a unique irreducible component of the Hilbert scheme.
+	Write $\dim \hilb X = q \cdot \codim X + r$ with $0 \leq r < \codim X$.
+	The following are equivalent:
+	<ol><li><strong>(1)</strong> $\hilb X$ satisfies interpolation.</li>
+<li><strong>(2)</strong> $\hilb X$ satisfies pointed interpolation.</li>
+<li><strong>(3)</strong> The map $\pi_2$ given in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			is dominant.</li>
+<li><strong>(4)</strong> The map $\pi_2$ given in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			is
+			generically finite.</li>
+<li><strong>(5)</strong> The scheme $\Phi$ defined in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			has a closed point $x$ which is isolated in
+			its fiber $\pi_2^{-1}(\pi_2(x))$.</li>
+<li><strong>(6)</strong> The map $\eta_2$ given in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			is dominant.</li>
+<li><strong>(7)</strong> The map $\eta_2$ given in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			is
+			generically finite.</li>
+<li><strong>(8)</strong> The scheme $\Psi$ defined in
+			&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+			for $\lambda = (\left(\codim X \right)^q, r)$
+			has a closed point $x$ which is isolated in
+			its fiber $\eta_2^{-1}(\eta_2(x))$.</li>
+<li><strong>(9)</strong> For any set of $q$ points in $\bp^n$ and an $(\codim X - r)$-dimensional
+			plane $\Lambda \subset \bp^n$, there exists
+			an element $[Y] \in \hilb X$ so that $Y$ contains those points and
+			meets $\Lambda$.</li>
+<li><strong>(10)</strong> For any set of $q$ points in $\bp^n$,
+			the subscheme of $\bp^n$ swept out by varieties
+			of $\hilb X$ containing those points is
+			$\dim X + r$ dimensional.</li></ol>
+	Secondly, the following statements are equivalent:
+	<ol><li><strong>(i)</strong> $\hilb X$ satisfies strong interpolation.</li>
+<li><strong>(ii)</strong> $\hilb X$ satisfies $\lambda$-interpolation for all $\lambda$ with $\sum_{i=1}^m \lambda_i = \dim \hilb X$.</li>
+<li><strong>(iii)</strong> $\hilb X$ satisfies strong pointed interpolation.</li>
+<li><strong>(iv)</strong> $\hilb X$ satisfies $\lambda$-pointed interpolation for all $\lambda$ with $\sum_{i=1}^m \lambda_i = \dim \hilb X$.</li>
+<li><strong>(v)</strong> For any collection of planes $\Lambda_1, \ldots, \Lambda_m$ with $(\dim \Lambda_1, \ldots, \dim \Lambda_n)$ admissible,
+			there is some $[Y] \in \hilb X$ meeting
+			all of $\Lambda_1, \ldots, \Lambda_m$.</li>
+<li><strong>(vi)</strong> For any collection of planes $\Lambda_1, \ldots, \Lambda_m$ with $(\dim \Lambda_1, \ldots, \dim \Lambda_n)$ admissible,
+			with $\sum_{i=1}^m \lambda_i = \dim \hilb X$,
+			there is some $[Y] \in \hilb X$ meeting
+			all of $\Lambda_1, \ldots, \Lambda_m$.</li></ol>
+Also, (i)-(vi)
+imply
+(1)-(10).
+Thirdly,
+further assume $H^1(X, N_X) = 0$ and $X$ is a local complete intersection.
+Then, the following properties are equivalent:
+	<ol><li><strong>(a)</strong> The sheaf $N_{X/\bp^n}$ satisfies interpolation.</li>
+<li><strong>(b)</strong> There is a subsheaf $E' \rightarrow N_{X/\bp^n}$
+whose cokernel is supported at $q+1$ points if $r > 0$ and $q$ points if $r = 0$,
+so that the scheme theoretic support at $q$ of these points has
+dimension equal to $\rk N_{X/\bp^n}$
+and $H^0(X, E') = H^1(X, E') = 0$.</li>
+<li><strong>(c)</strong> The sheaf $N_{X/\bp^n}$ satisfies strong interpolation.</li>
+<li><strong>(d)</strong> For every $d \geq 1$, there exist points
+			$p_1, \ldots, p_d \in X$ so that
+			$$\begin{aligned}\dim H^0(X, N_{X/\bp^n} \otimes \sci_{p_1, \ldots, p_d}) = \max\left\{ 0, h^0(X, N_{X/\bp^n}) - dn \right\}\end{aligned}$$
+			(cf. &nbsp;[ALY19, Definition 4.1]).</li>
+<li><strong>(e)</strong> For every $d \geq 1$, a general collection of points
+			$p_1, \ldots, p_d$ in $X$ satisfies either
+			$$\begin{aligned}h^0(X, N_{X/\bp^n} \otimes \sci_{p_1, \ldots, p_d}) = 0 && \text{ or } && h^1(X, N_{X/\bp^n}\otimes \sci_{p_1, \ldots, p_d}) = 0\end{aligned}$$
+			(cf. &nbsp;[ALY19, Proposition 4.5]).</li>
+<li><strong>(f)</strong> A general set of $q$ points
+			$p_1, \ldots, p_q$
+			satisfy $h^1(X, N_{X/\bp^n} \otimes \sci_{p_1, \ldots, p_q}) = 0$
+			and a general set of $q+1$ points
+			$q_1, \ldots, q_{q+1}$ satisfy
+			$h^0(X, N_{X/\bp^n} \otimes \sci_{p_1, \ldots, p_q}) = 0$
+			(cf. &nbsp;[ALY19, Proposition 4.6]).</li></ol>
+Additionally,
+retaining the assumptions that $H^1(X, N_X) = 0$
+	and $X$ is a local complete intersection,
+	and further assuming $X$ is generically smooth,
+	the equivalent conditions
+(a)-(f) imply the equivalent conditions
+(1)-(10) and the equivalent conditions (a)-(f) imply the equivalent conditions (i)-(vi).</p>
+<p>Finally, still
+retaining the assumptions that $H^1(X, N_X) = 0$
+	and that $X$ is a local complete intersection, in the case that $k$ has characteristic $0$,
+all statements (1)-(10), (i)-(vi), (a)-(f) are equivalent.</p></div>
+</div>
+<p class="stacks-para">We develop the tools to prove
+&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a>
+in subsections 8.2, 8.3, and 8.4,
+and then give a proof
+of &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a>
+in &nbsp;Section&nbsp;8.5.</p>
+<div class="stacks-commentary" id="remark-smoothness-of-Hilbert-scheme-for-vanishing-normal-bundle-cohomology">
+  <div class="stacks-env-head"><strong>Remark&nbsp;8.8.</strong> <a href="../tag/7F48.html" class="stacks-tag-link">(7F48)</a></div>
+  <div class="stacks-env-body"><p>Note that if $H^1(X, N_{X/\bp^n})= 0$
+	and $X$ is a local complete intersection,
+	(the latter condition is satisfied for all smooth $X$,)
+	then
+	$X$ has no local obstructions to deformation
+	by [Har10, Corollary 9.3].
+	So, by &nbsp;[Har10, Corollary 6.3],
+	$[X]$ is a smooth point of the Hilbert scheme.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-">
+  <div class="stacks-env-head"><strong>Remark&nbsp;8.9.</strong> <a href="../tag/04E1.html" class="stacks-tag-link">(04E1)</a></div>
+  <div class="stacks-env-body"><p>We note that the equivalence of all conditions from
+	<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a>
+	requires the characteristic $0$ hypothesis, as it does not hold in characteristic $2$.</p>
+<p>	The $2$-Veronese surface
+	over an algebraically closed field of characteristic $2$ provides
+	an example of a variety which satisfies interpolation but whose normal
+	bundle does not satisfy interpolation, as is shown in [LP16, Corollary 7.2.9].</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 8.1. Definition and Equivalent Characterizations of Interpolation">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S8.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

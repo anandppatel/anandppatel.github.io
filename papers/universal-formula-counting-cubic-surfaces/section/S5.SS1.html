@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.1. Using GIT — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Addressing the orbit closure problem</a> / <span>5.1. Using GIT</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.1. Using GIT</h1>
+<p class="stacks-para">The first technique uses GIT and applies broadly to any orbit closure problem.
+Let $W$ be a quasi-projective variety with a linearized action of a reductive group $G$.
+The basic observation is that if $x \in W$ is semi-stable and $s \in W$ is stable, then $x$ does not lie in the orbit closure of $s$.
+We prove an extension of this idea that turns out to be highly effective.</p>
+<div class="stacks-lemma" id="prop-gitproduct">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.1.</strong> <a href="../tag/D247.html" class="stacks-tag-link">(D247)</a></div>
+  <div class="stacks-env-body"><p>Let $G$ be a reductive group.
+  Let $W$ and $H$ be smooth quasi-projective varieties along with linearized actions of $G$.
+  Let $x, s \in W$ be points satisfying the following conditions:
+  <ol><li>$x$ has a reductive stabilizer $T \subset G$.</li>
+<li>for some $h \in H$ fixed by the identity component of $T$, the point $(x, h) \in W \times H$ is semi-stable.</li>
+<li>for all $h \in H$, the point $(s, h) \in W \times H$ is stable.</li></ol>
+  Then $x$ does not lie in the closure of the $G$-orbit of $s$.</p></div>
+</div>
+<p class="stacks-para">The proof needs the following lemma.
+It is well-known to experts&mdash;it appears as a remark in [2] (see \S&nbsp;1.3, Immediate consequences: 5)&mdash;but we include a proof for completeness.
+Recall that $\k$ is an algebraically closed field of characteristic 0, all schemes considered are of finite type over $\k$, and a point means a $\k$-point.</p>
+<div class="stacks-lemma" id="prop-oneparam">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.2.</strong> <a href="../tag/922B.html" class="stacks-tag-link">(922B)</a></div>
+  <div class="stacks-env-body"><p>Let \(U\) be a smooth scheme over $\k$ with an action of a linear algebraic group $G$.
+  Let $x \in U$ be a point whose stabilizer group $T \subset G$ is reductive.
+  If $x$ lies in the closure of the $G$-orbit of a point $s \in U$, then there exists a one-parameter subgroup $\lambda \colon \G_m \to T$ and a point $s'$ in the $G$-orbit of $s$ such that
+  $$ x = \lim_{t \to 0} \lambda(t) \cdot s'.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/802E.html" class="stacks-tag-link">(802E)</a></div>
+  <div class="stacks-env-body"><p>By [1, Theorem&nbsp;3], there exists a $T$-invariant locally closed affine $W \subset U$ containing the point $x$ such that the map
+  $$ \pi \colon [W/T] \to [U / G]$$
+  is affine and &eacute;tale.
+  (Note that this result is substantially easier than the main theorem of [2].)
+  Define $Z$ as the fiber product
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  Since $\pi$ is representable, &eacute;tale, and of finite type, $Z$ is a finite disjoint of copies of $\spec \k$.
+  Let $z_1, \dots, z_n \in [W/T](\k)$ be the points of $Z$.
+  Since the point $x \in [U/G](\k)$ lies in the closure of $s \in [U/G](\k)$ and the map $\pi$ is &eacute;tale (and hence open), the point $x \in [W/T](\k)$ lies in the closure of the set $\{z_1,\dots, z_n\}$.
+  But then $x$ lies in the closure of $z_i$ for some $i$.
+  In other words, the point $x \in W(\k)$ lies in the closure of the $T$-orbit of a lift $s_i \in W(\k)$ of $z_i \in [W/T](\k)$.
+  By the Hilbert&ndash;Mumford criterion [20, Theorem&nbsp;1.4], there exists a one-parameter subgroup $\lambda \colon \G_m \to T$ such that we have the equation
+  $$x = \lim_{t \to 0} \lambda (t) \cdot s_i.$$
+  Since $s_i \in [W/T](\k)$ maps to $s \in [U/G](\k)$, the point $s_i \in W$ is in the same $G$-orbit as $s \in U$.
+  The proof is now complete.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/D247.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[D247]</span></a>.</em> <a href="../tag/2B10.html" class="stacks-tag-link">(2B10)</a></div>
+  <div class="stacks-env-body"><p>Let $T_0 \subset T$ be the connected  component of the identity.
+  We prove the contrapositive.
+  Assuming that $x$ lies in the closure of the $G$-orbit of $s$, we show that for any $T_0$-fixed $h \in H$, the point $(x, h) \in W \times H$ is unstable.</p>
+<p>  By <a href="/papers/universal-formula-counting-cubic-surfaces/tag/922B.html" class="stacks-ref-link">Lemma&nbsp;5.2 <span class="stacks-ref-tag">[922B]</span></a>, there exists a one parameter subgroup $\lambda \colon \G_m \to T_0$ and a point $s' \in W$ in the same $G$-orbit as $s$ such that
+  $$ x = \lim_{t \to 0} \lambda(t) \cdot s'.$$
+  For any $T_0$-fixed $h \in H$ we have
+  $$
+    (x, h) = \lim_{t \to 0} \lambda(t) \cdot (s', h).
+  $$
+  Since $(s',h)$ is $G$-stable, $(x,h)$ must be $G$-unstable.</p></div>
+</div>
+<p class="stacks-para">We immediately get an application to cubic surfaces.</p>
+<div class="stacks-lemma" id="prop-isogood">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.3.</strong> <a href="../tag/2104.html" class="stacks-tag-link">(2104)</a></div>
+  <div class="stacks-env-body"><p>The following singular cubic surfaces are not in the closure of the $\PGL_4$-orbit of any smooth cubic surface without an Eckardt point (the parenthesis describes the singularities):
+  <ol><li>$x_0x_1x_3 = x_2^3$ \quad $(3A_2)$</li>
+<li>$x_3(x_0x_2-x_1^2) = x_0x_1^2$ \quad $(A_3 + 2A_1)$</li>
+<li>$x_3(x_0x_2-x_1^2) = x_0^2x_1$ \quad $(A_4 + A_1)$</li>
+<li>$x_3x_0^2 = x_1^3 + x_2^3$ \quad $(D_4)$</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/963C.html" class="stacks-tag-link">(963C)</a></div>
+  <div class="stacks-env-body"><p>Let $V$ be a 4-dimensional vector space.
+  Set $W = \P \Sym^3 V^\vee$ and $H = \P V^\vee$; both have natural linearized actions of $\PGL(V)$.
+  The product $W \times H$ parametrizes cubic surfaces along with a hyperplane.
+  We use the GIT analysis for this space carried out by Gallardo and Martinez-Garcia [18].
+  We have a $1$-parameter choice of linearizations on $W \times V$ indexed by a positive rational number $t$.
+  The $G$-linearized line bundle corresponding to $t$ is $\O(a) \boxtimes \O(b)$, where $a$ and $b$ are (sufficiently divisible) positive integers satisfying $a/b = t$.</p>
+<p>  From [25, Theorem&nbsp;3], we see that the listed cubic surfaces have a reductive stabilizer group.
+  In fact, in all cases the connected component of the identity is a torus.</p>
+<p>  Let $S$ be a smooth cubic surface without an Eckardt point corresponding to a point $s \in W$.
+  Suppose we have $0 < t < 5/9$.
+  From [18, Theorem&nbsp;2], we see  that for any $h \in H$, the point $(s,h)$ is $t$-stable.
+  On the other hand, from [18, Table 2], we see that for some $t$ in the range $0 < t < 5/9$, there exists a choice of $h \in H$, fixed by the connected component of the identity of the stabilizer of $s$, such that $(s,h)$ is $t$-semistable.
+  We now apply <a href="/papers/universal-formula-counting-cubic-surfaces/tag/D247.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[D247]</span></a>.</p>
+<p>  In the following table, we list the automorphism groups, the hyperplane $h$, and the value of $t$ for which $(s,h)$ is $t$-semistable.
+  We denote the symmetric group on $n$ letters by $\Sigma_n$.
+  The automorphism groups are from [25] and the GIT semi-stability assertions are from [18].</p>
+<p>  \begin{array}{l l l l l}
+    \toprule
+    $X$ & Singularities of $X$& $\Aut(X)$ & $h$ & $t$\\
+    \midrule
+    $x_0x_1x_3 = x_2^3$& $3A_2$&$\G_m^2 \rtimes \Sigma_3$ & $x_2 = 0$ & All $t \in (0,1)$\\
+    $x_3(x_0x_2-x_1^2) = x_0x_1^2$& $A_3+2A_1$&$\G_m \rtimes \Sigma_2$ & $x_2 = 0$ & $1/5$ \\
+    $x_3(x_0x_2-x_1^2) = x_0^2x_1$&$A_4+A_1$& $\G_m$ & $x_2 = 0$ & $1/3$\\
+    $x_3x_0^2 = x_1^3 + x_2^3$&$D_4$& $\G_m \rtimes \Sigma_3$ & $x_0 = 0$ & $3/7$\\
+    \bottomrule
+  \end{array}</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — 5.1. Using GIT">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/section/S5.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

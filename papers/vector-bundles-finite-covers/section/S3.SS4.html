@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4. Hurwitz spaces and Maroni loci — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <span>3.4. Hurwitz spaces and Maroni loci</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.4. Hurwitz spaces and Maroni loci</h1>
+<p class="stacks-para">We turn to the proof of <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a> stated in the introduction.
+First we establish notation and conventions regarding the various Hurwitz spaces.
+Throughout Section&nbsp;3.4, take $\k = \C$.</p>
+<p class="stacks-para">Let $\mathcal H_{d,g}^{\rm all}(Y)$ be the stack whose objects over $S$ are $S$-morphisms $\phi \from C \to Y \times S$, where $C \to S$ is a smooth, proper, connected curve of genus $g$, and $\phi$ is a finite morphism of degree $d$.
+Observe that $\mathcal H_{d,g}^{\rm all}(Y)$ is an open substack of the Kontsevich stack of stable maps $\overline {\mathcal M}_g(Y, d[Y])$ constructed, for example, in \cite{ful.pan:97} or in \cite{beh.man:96}.
+As a result, $\mathcal H_{d,g}^{\rm all}(Y)$ is a separated Deligne&ndash;Mumford stack of finite type over $\k$.
+Using the deformation theory of maps \cite[Example&nbsp;3.4.14]{ser:06}, it follows that $\mathcal H_{d,g}^{\rm all}(Y)$ is smooth and equidimensional of dimension $2b = (2g-2)-d(2g_Y-2)$.
+Denote by $\mathcal H_{d,g}^{\rm simple}(Y) \subset \mathcal H_{d,g}^{\rm all}(Y)$ the open substack of simply branched maps, namely the substack whose $S$-points correspond to maps $\phi \from C \to Y \times S$ whose branch divisor $\br \phi \subset Y \times S$ is &eacute;tale over $S$ (the branch divisor is defined as the vanishing locus of the discriminant \cite[\href{http://stacks.math.columbia.edu/tag/0BVH}{Tag 0BVH}]{sta:17}).
+The transformation $\phi \mapsto \br\phi$ gives a morphism
+$$ \mathcal H_{d,g}^{\rm all}(Y) \to \Sym^{2b} Y$$
+with finite fibers.
+Since the source is equidimensional of the same dimension as the target and the map is quasi-finite, each component of $\mathcal H_{d,g}^{\rm all}(Y)$ maps dominantly on $\Sym^{2b}(Y)$.
+In particular, $\mathcal H_{d,g}^{\rm simple}(Y)$ is dense in $\mathcal H_{d,g}^{\rm all}(Y)$.
+By a celebrated theorem of Clebsch \cite{cle:73}, if $g_Y = 0$, then $\mathcal H_{d,g}^{\rm simple}(Y)$ is connected (equivalently, irreducible).
+More generally, by \cite[Theorem&nbsp;9.2]{gab.kaz:87}, the connected ($=$ irreducible) components of $\mathcal H_{d,g}^{\rm all}(Y)$ are classified by the subgroup $\phi_* \pi_1(C)$ of $\pi_1(Y)$.
+Recall that $\phi$ is called <em>primitive</em> if $\phi_* \pi_1(C) = \pi_1(Y)$, or equivalently, if $\phi$ does not factor through an &eacute;tale covering $\widetilde Y \to Y$.
+Denote by $\mathcal H_{d,g}^{\rm primitive}(Y) \subset \mathcal H_{d,g}^{\rm all}(Y)$ the connected ($=$ irreducible) component whose points correspond to primitive covers.</p>
+<p class="stacks-para">The connection between primitive and simply branched covers is the following.
+By \cite[Proposition&nbsp;2.5]{ber.edm:84}, if $\phi \from C \to Y$ is a simply branched covering, then $\phi$ is primitive if and only if the monodromy map
+$$ \pi_1(Y \setminus \br \phi) \to S_d $$
+is surjective.
+Therefore, we can view $\mathcal H_{d,g}^{\rm primitive}(Y)$ as a partial compactification of the stack of simply branched covers of $Y$ with full monodromy group $S_d$.
+By convention, $\mathcal H_{d,g}(Y)$ (without any superscript) denotes the component $\mathcal H_{d,g}^{\rm primitive}(Y)$ of $\mathcal H_{d,g}^{\rm all}(Y)$.</p>
+<p class="stacks-para">Being open substacks of the Kontsevich stack, the Hurwitz stacks described above admit quasi-projective coarse moduli spaces, which we denote by the roman equivalent $H_{d,g}$ of $\mathcal H_{d,g}$.
+Denote by $M_{r,k}(Y)$ the moduli space of vector bundles of rank $r$ and degree $k$ on $Y$.
+Let $\mathcal U \subset \mathcal H_{d,g}(Y)$ be the (possibly empty) open substack consisting of points $[\phi] \in \mathcal H_{d,g}(Y)$ such that $E_\phi$ is semi-stable.
+We have a morphism $\mathcal U \to M_{d-1,b}(Y)$ defined functorially as follows.
+An object $\phi \from C \to Y \times S$ of $\mathcal U$ maps to the unique morphism $S \to M_{d-1,b}(Y)$ induced by the bundle $E_\phi$ on $Y \times S$.
+Let $U \subset H_{d,g}(Y)$ be the coarse space of $\mathcal U$.
+By the universal property of coarse spaces, the morphism $\mathcal U \to M_{d-1,b}(Y)$ descends to a morphism $U \to M_{d-1,b}(Y)$.
+If $U$ is non-empty, then we can think of $U \to M_{d-1,b}(Y)$ as a rational map $H_{d,g}(Y) \dashrightarrow M_{d-1,b}(Y)$.</p>
+<p class="stacks-para">Recall that $Y$ is a smooth, projective, connected curve over $\C$.</p>
+<div class="stacks-theorem" id="thm-stability">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.15.</strong> <a href="../tag/F4CC.html" class="stacks-tag-link">(F4CC)</a></div>
+  <div class="stacks-env-body"><p>Let $g_Y \geq 2$.
+  If $g$ is sufficiently large (depending on $Y$ and $d$), then the Tschirnhausen bundle associated to a general point of $H_{d,g}(Y)$ is stable.
+  Moreover, the rational map
+  $$H_{d,g}(Y) \dashrightarrow M_{d-1,b}(Y)$$
+  given by $[\phi] \mapsto E_\phi$ is dominant.</p>
+<p>  The same statement holds for $g_Y = 1$ with ``stable'' replaced by ``regular poly-stable.''</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3498.html" class="stacks-tag-link">(3498)</a></div>
+  <div class="stacks-env-body"><p>Let $g_Y \geq 2$; the proof for $g_Y = 1$ is identical with ``stable'' replaced by ``regular poly-stable.''</p>
+<p>  Let $\phi_0 \from X_0 \to Y$ be an element of the primitive Hurwitz space $H_{d,g_0}(Y)$ with Tschirnhausen bundle $E_0$.
+  For some line bundle $L$ of sufficiently large degree, there exists $\phi \from X \to Y$ with Tschirnhausen bundle $E = E_0 \otimes L$ with $H^1(N_{X/E}) = 0$ by <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>.
+  From the proof of <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>, we know that $X \to Y$ is obtained as a deformation of the singular curve formed by attaching vertical rational curves to $X_0$.
+  Recall that in a deformation, the $\pi_1$ of a general fiber surjects on to the $\pi_1$ of the special fiber.
+  Hence, since $\pi_1(X_0) \to \pi_1(Y)$ is surjective, so is $\pi_1(X) \to \pi_1(Y)$.
+  That is, $X \to Y$ is primitive.</p>
+<p>  We know that the moduli stack of vector bundles on $Y$ is irreducible \cite[Appendix&nbsp;A]{hof:10} and therefore, the locus of stable bundles forms a dense open substack.
+  So, we can find a vector bundle $\mathcal E$ on $Y \times \Delta$ such that $\mathcal E_{Y \times \{0\}} = E$ and $\mathcal E_{Y \times \{t\}}$ is stable for $t \in \Delta \setminus \{0\}$.
+  As $H^1(N_{X/E}) = 0$, the curve $X \subset E$ deforms to the generic fiber of $\mathcal E \to \Delta$, by the same relative Hilbert scheme argument as used in the proof of <a href="/papers/vector-bundles-finite-covers/tag/47FD.html" class="stacks-ref-link">Theorem&nbsp;3.13 <span class="stacks-ref-tag">[47FD]</span></a>.
+  Let $X_t \subset \mathcal \mathcal \mathcal E_t$ be such a deformation.
+  Then $X_t \to Y$ is a primitive cover with a stable Tschirnhausen bundle.
+  We conclude that for sufficiently large $g$, the Tschirnhausen bundle of a general element of $H_{d,g}(Y)$ is stable.</p>
+<p>  Let $\phi \from X \to Y$ be an element of $H_{d,g}(Y)$ with stable Tschirnhausen bundle $E$ such that $H^1(N_{X/E}) = 0$.
+  The above argument shows that such coverings exist if $g$ is sufficiently large.
+  Let $S$ be a versal deformation space for $E$ and $\mathcal E$ a versal vector bundle on $Y \times S$.
+  See \cite[Lemma&nbsp;2.1]{nar.ses:65} for a construction of $S$ in the analytic category.
+  In the algebraic category, we can take $S$ to be a suitable Quot scheme (see, for example, \cite[Proposition&nbsp;A.1]{hof:10}).
+  Let $\mathcal H$ be the component of the relative Hilbert scheme of $\Tot(\mathcal E) / S$ containing the point $[X \subset E]$, and let $\mathcal H^{\rm sm} \subset \mathcal H$ be the open subset parametrizing $[X_t \subset \mathcal E_t]$ with smooth $X_t$.
+  Since $H^1(N_{X/E}) = 0$, the map $\mathcal H^{\rm sm} \to S$ is smooth at $[X \subset E]$ by \cite[Theorem&nbsp;3.2.12]{ser:06}.
+  In particular, it is dominant.
+  By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, we know that for $[X_t \subset \mathcal E_t] \in \mathcal H^{\rm sm}$, the bundle $\mathcal E_t$ is indeed the Tschirnhausen bundle of $X_t \to Y$.
+  We conclude that the map $H_{d,g}(Y) \dashrightarrow M_{d-1,b}(Y)$ is dominant.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.16.</strong> <a href="../tag/6FC4.html" class="stacks-tag-link">(6FC4)</a></div>
+  <div class="stacks-env-body"><p>It is natural to ask for an effective lower bound on $g$ in <a href="/papers/vector-bundles-finite-covers/tag/F4CC.html" class="stacks-ref-link">Theorem&nbsp;3.15 <span class="stacks-ref-tag">[F4CC]</span></a>.
+  The best result is obtained by taking $X_0$ to be the disjoint union of $d$ copies of $Y$; then $g_0 = dg_Y - d + 1$.
+  That $X_0$ is not connected does not pose any obstacle&mdash;the curve $X$ obtained by attaching vertical rational curves and smoothing out is connected and gives a primitive covering of $Y$.</p>
+<p>  How many rational curves do we need to attach?
+  The crucial requirement is the vanishing of $H^1(K)$, where $K$ is defined in (3.10).
+  Note that, in this case, we have $M = \O_{X_0}^{d-1}$.
+  The proof of <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a> and <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a> show that $h^1(M)+1$ many rational curves suffice.
+  Attaching each rational curve raises the genus by $(d-1)$.
+  Since $h^1(M) = d(d-1)g_Y$, we can thus produce an $X$ of genus $g$ where
+  $$g \geq dg_Y + d(d-1)^2g_Y,$$
+  and $g - g_Y \equiv 0 \pmod {d-1}$.
+  By slightly changing the initial curve $X_0$, we get similar bounds of order $d^3g_Y$ for other congruence classes of $g \pmod {d-1}$.
+  By studying the extension (3.12) more closely, it may be possible to sharpen these bounds, but we do not pursue this further.</p></div>
+</div>
+<p class="stacks-para">Recall that the Maroni locus $M(E)$ is the locally closed subset of $H_{d,g}(Y)$ defined by
+$$ M(E) = \left\{[\phi] \in H_{d,g}(Y) \mid E_\phi \cong E\right\}.$$</p>
+<div class="stacks-theorem" id="thm-maroni">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.17.</strong> <a href="../tag/58FD.html" class="stacks-tag-link">(58FD)</a></div>
+  <div class="stacks-env-body"><p>Let $E$ be a vector bundle on $Y$ of rank $(d-1)$ and degree $e$.
+  If $g$ is sufficiently large (depending on $Y$ and $E$),  then for every line bundle $L$ on $Y$ of degree $b-e$, the Maroni locus $M(E \otimes L)$ contains an irreducible component of the expected codimension $h^1(Y, \End E)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5D45.html" class="stacks-tag-link">(5D45)</a></div>
+  <div class="stacks-env-body"><p>Set $E' = E \otimes L$.
+  Let $H^{\rm sm}$ be the open subset of the Hilbert scheme of curves in $\Tot(E')$ parametrizing $[X \subset E']$ with $X$ smooth of genus $g$ embedded so that for all $y \in Y$, the scheme $X_y \subset E'_y$ is in affine general position.
+  By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, the Tschirnhausen bundle map
+  $$ \tau \from H^{\rm sm} \to M(E')$$
+  is a surjection.
+  Furthermore, the fibers of $\tau$ are orbits under the group $A$ of affine linear transformations of $E'$ over $Y$.
+  Plainly, the action of the group is faithful.</p>
+<p>  By <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>, there exists $[X \subset E'] \in H^{\rm sm}$ with $H^1(N_{X/E'}) = 0$.
+  We can now do a dimension count.
+  Note that $N_{X/E'}$ is a vector bundle on $X$ of rank $(d-1)$ and degree $(d+2)b$, where $b = g_X-1 - d(g_Y-1)$.
+  Then the dimension of $H^{\rm sm}$ at $[X \subset E']$ is given by
+  $$\begin{aligned}\dim_{[X]}H^{\rm sm} &= \chi(N_{X/E'}) \\
+                &= (d+2)b - (g_X-1)(d-1) \\
+                &= 3b - d(d-1)(g_Y-1)\end{aligned}$$
+  The dimension of the fiber of $\tau$ is given by
+  $$\begin{aligned}\dim A &= \hom(E'^\vee, \O_Y \oplus E'^\vee) \\
+           &= b - d(d-1)(g_Y-1) + h^1(\End E).\end{aligned}$$
+  As a result, the dimension of $M(E')$ at $[\phi]$ is given by
+  $$\begin{aligned}\dim_{[\phi]} M(E') &= \dim_{[X]}H^{\rm sm} - \dim A \\
+                        &= 2b - h^1(\End E).\end{aligned}$$
+  Since $\dim H_{d,g}(Y) = 2b$, the proof is complete.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 3.4. Hurwitz spaces and Maroni loci">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S3.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

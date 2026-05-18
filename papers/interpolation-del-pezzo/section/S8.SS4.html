@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8.4. Deformation Theory Tools — Interpolation Problems: Del Pezzo Surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          M: "\\overline{\\mathcal M}",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\mathbb F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          fS: "{\\mathfrak S}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          DS: "{\\mathcal{DS}}",
+          DP: "{\\mathcal{DP}}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Bl: "{\\text{\\rm Bl}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          irr: "{\\rm irr}",
+          Pic: "{\\rm Pic}\\,",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          ord: "{\\rm ord}",
+          all: "{\\rm all}",
+          Hess: "{\\rm Hess}",
+          an: ["\\textbf{\\textcolor{purple}{#1}}", 1],
+          aar: ["\\textbf{\\textcolor{adr}{#1}}", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          bn: "{\\mathbb N}",
+          bc: "{\\mathbb C}",
+          br: "{\\mathbb R}",
+          bq: "{\\mathbb Q}",
+          bp: "{\\mathbb P}",
+          CF: "{\\mathcal F}",
+          bz: "{\\mathbb Z}",
+          ba: "{\\mathbb A}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          sca: "\\mathscr A",
+          scb: "\\mathscr B",
+          scc: "\\mathscr C",
+          scd: "\\mathscr D",
+          sce: "\\mathscr E",
+          scf: "\\mathscr F",
+          scg: "\\mathscr G",
+          sch: "\\mathscr H",
+          sci: "\\mathscr I",
+          scj: "\\mathscr J",
+          sck: "\\mathscr K",
+          scl: "\\mathscr L",
+          scm: "\\mathscr M",
+          scn: "\\mathscr N",
+          sco: "\\mathscr O",
+          scp: "\\mathscr P",
+          scq: "\\mathscr Q",
+          sct: "\\mathscr T",
+          scu: "\\mathscr U",
+          scv: "\\mathscr V",
+          scw: "\\mathscr W",
+          scx: "\\mathscr X",
+          scy: "\\mathscr Y",
+          scz: "\\mathscr Z",
+          ra: "\\rightarrow",
+          id: "\\mathrm{id}",
+          im: "\\text{im }",
+          coker: "\\text{coker}",
+          spec: "\\text{Spec }",
+          proj: "\\text{Proj }",
+          rspec: "\\textit{Spec }",
+          rproj: "\\textit{Proj }",
+          mg: "{\\overline{\\mathscr M}_g}",
+          minhilb: ["\\sch^{\\text{minimal degree}}_{#1, #2}", 2],
+          hilb: ["\\sch_{#1}", 1],
+          uhilb: ["\\scv_{#1}", 1],
+          ci: ["\\sch^{ci}_{#1, #2, #3}", 3],
+          broken: ["\\sch^{broken}_{#1, #2}", 2],
+          scroll: ["\\scs^{smooth scroll}_{#1}", 1],
+          minhilbsmooth: ["\\sch^{smooth scroll}_{#1, #2}", 2],
+          minhilbbroken: ["\\sch^{broken scroll}_{#1, #2}", 2],
+          minhilbsing: ["\\sch^{singular scroll}_{#1, #2}", 2],
+          stor: "\\textit{Tor}",
+          shom: "\\textit{Hom}",
+          sext: "\\textit{Ext}",
+          Ram: "\\operatorname{Ram}",
+          Sym: "\\operatorname{Sym}",
+          ch: "\\operatorname{char}",
+          PGL: "\\operatorname{PGL}",
+          pic: "\\operatorname{Pic}",
+          lcm: "\\operatorname{lcm}",
+          rank: "\\operatorname{rank}",
+          vol: "\\operatorname{Vol}",
+          supp: "\\operatorname{Supp}",
+          Hilb: "\\operatorname{Hilb}",
+          codim: "\\operatorname{codim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Aaron Landesman, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Interpolation in General</a> / <span>8.4. Deformation Theory Tools</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">8.4. Deformation Theory Tools</h1>
+<p class="stacks-para">\label{ssec:tools-additional}</p>
+<p class="stacks-para">In this subsection, we prove a result from
+deformation theory crucial to proving
+the equivalence of the distinct groups of conditions in
+&nbsp;<a href="/papers/interpolation-del-pezzo/tag/2AF2.html" class="stacks-ref-link">Theorem&nbsp;8.7 <span class="stacks-ref-tag">[2AF2]</span></a>.</p>
+<p class="stacks-para">The following proposition is important for establishing
+the equivalence between interpolation of
+a locally free sheaf and interpolation of a Hilbert scheme; although it might be obvious for experts, we could not find a reference, so we include it for completeness.</p>
+<div class="stacks-lemma" id="proposition-tangent-space-to-psi">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;8.14.</strong> <a href="../tag/71DA.html" class="stacks-tag-link">(71DA)</a></div>
+  <div class="stacks-env-body"><p>Let $\Psi, \eta_2$ and $[X] \in U$ be as in &nbsp;<a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+	and let
+	$$\begin{aligned}\overline p := (X, \Lambda_1, \ldots, \Lambda_m, p_1, \ldots, p_m) \in \Psi\end{aligned}$$
+	be a closed point of $\Psi$,
+	so that $\Lambda_i$ meets $X$ quasi-transversely
+	and so that the $p_i$ are distinct smooth points of $X$. Choose subspaces $V_i \subset N_{X/\bp^n}|_{p_i}$ where
+$V_i$ is the image of the composition
+$$\text{[Commutative diagram — see PDF]}$$
+For any closed point $\overline q$  of $\Psi$, let $$d\eta_2|_{\overline{q}}: T_{\overline{q}} \Psi \ra T_{\eta_2(\overline q)}\prod_{i=1}^m Gr(\codim X - \lambda_i +1, n+1)$$ be the
+induced map on tangent spaces. Then, $d{\eta_2}|_{\overline p}$ is surjective
+if and only if the map
+$$\text{[Commutative diagram — see PDF]}$$
+is surjective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2EAA.html" class="stacks-tag-link">(2EAA)</a></div>
+  <div class="stacks-env-body"><p>To set things up properly, we will need some definitions.
+Recall that $\uhilb {\Lambda_i}$ is the universal family over the Hilbert scheme of $\dim \Lambda_i$ planes in $\bp^n$.
+That is, it is the universal family over $Gr(\codim X - \lambda_i + 1, n+1)$.
+Next, take $\sch$ to be the Hilbert
+scheme with Hilbert polynomial equal to that of $X$ and let $\scv$ be the universal family over $\sch$.
+Next, define the scheme
+$$\begin{aligned}\scf &:= (\sch \times_{\bp^n} \uhilb {\Lambda_1}) \times_\scv \cdots \times_\scv (\sch \times_{\bp^n} \uhilb {\Lambda_m}) \\
+	& \cong (\scu \times_\sch \cdots \times_\sch \scu) \times_{(\bp^n)^m} (\uhilb {\Lambda_1} \times \cdots \times \uhilb {\Lambda_m}),\end{aligned}$$
+where there are $m$ copies of $\scu$ in the first parenthesized expression on the second line.</p>
+<p>Note that here $\scf$ is not necessarily the same as $\Psi$ because we need not have $\sch = \hilb X$:
+The former is the connected component of the Hilbert scheme containing $X$ while $\hilb X$ is the
+irreducible component of the Hilbert scheme containing $X$.
+However, we will later explain why the tangent spaces of these two schemes are identical, which
+is enough for our purposes.</p>
+<p>Now, under our assumption that $p_1, \ldots, p_n$ are distinct, we have a diagram</p>
+<p>$$\hspace*{-1cm}
+\includegraphics[scale=.9]{cropped-big-commutative-diagram.pdf}$$
+\noindent
+in which every square is a fiber square.</p>
+<p>First, let us justify why the four small squares of (8.11) are fiber squares.
+The lower right hand square of (8.11) is a fiber square by elementary linear algebra and the assumption that
+$\Lambda_i$ meet $X$ quasi-transversely.
+The upper right square of (8.11) is a fiber square for each $i$
+by [Ser06, Remark 4.5.4(ii)],
+as the universal family over the Hilbert scheme is precisely the Hilbert flag scheme of points inside that Hilbert scheme.
+Next, the lower left hand square of (8.11) is a fiber
+square because when the points $p_1, \ldots, p_n$ are distinct, the tangent space to this
+$n$-fold fiber product of universal families over the Hilbert scheme is the same as the tangent space
+to the Hilbert flag scheme of degree $n$ schemes inside schemes with the same Hilbert polynomials as $X$.
+Then, the fiber square follows from [Ser06, Remark 4.5.4(ii)] for this flag Hilbert scheme.
+Finally, the upper left square of (8.11) is a fiber square
+because $\scf$ is defined as a fiber product of
+$(\scu \times_\sch \cdots \times_\sch \scu)$ and $(\uhilb {\Lambda_1} \times \cdots \times \uhilb {\Lambda_m})$,
+and the fiber product of the tangent spaces is the tangent space of the fiber product.</p>
+<p>Now, observe that the composition $f_2 \circ f_1$ is precisely the map on tangent spaces $d\eta_2|_{\overline{p}}$.
+To make this identification, we need to know that we can naturally identify
+$T_{\overline p} \scf \cong T_{\overline p}\Psi$.
+However, the assumptions that $H^1(X, N_{X/\bp^n}) = 0$
+and that $X$ is lci imply that $[X]$ is a smooth point of the Hilbert scheme.
+Because the fiber over $[X]$ of the projection $\Psi \ra \hilb X$ is smooth, it follows that $\Psi$ is smooth at $\overline p$.
+For the same reason, it follows that $\scf$ is smooth at the corresponding point $\overline p$.
+Therefore, both $\scf$ and $\Psi$ are smooth on some open neighborhood $U$ containing
+$\overline p$.
+Now, since both $\Psi$ and $\scf$ are defined in terms of fiber products, which agree on some open neighborhood $V$
+contained in $U$, it follows that on $V$ we have an isomorphism $\scf|_V \cong \Psi|_V$, and in particular their
+tangent spaces are isomorphic. So, we can identify $f_2 \circ f_1$ with $d\eta_2|_{\overline{p}}$.</p>
+<p>Since all four subsquares of (8.11)
+are fiber squares, the full square (8.11) is a fiber square,
+and hence $f_2 \circ f_1$ is an isomorphism if and only if $g_2 \circ g_1$ is an isomorphism.</p>
+<p>To complete the proof, we only need identify the map $g_2 \circ g_1$ with $\tau$.
+But this follows from the identifications
+$$\begin{aligned}T_{[X]} \sch &\cong H^0(X, N_{X/\bp^n}) \\
+	T_{\bp_i} \bp^n/T_{p_i} X &\cong H^0(X, N_{X/\bp^n}|_{p_i}) \\
+	T_{\bp_i} \bp^n/\left(T_{p_i} X \oplus T_{p_i} Y  \right) &\cong H^0(X, N_{X/\bp^n}|_{p_i}/V_i).\end{aligned}$$
+The first isomorphism follows from [Har10, Theorem 1.1(b)].
+The second isomorphism holds because the normal exact sequence
+$$\text{[Commutative diagram — see PDF]}$$
+is exact on global sections, as all sheaves are supported at $p_i$.
+The third isomorphism holds because
+$\left( T_{p_i} \bp^n / \left( T_{p_i} X \oplus T_{p_i} \Lambda_i \right) \right)$ can be viewed as the
+quotient of $T_{p_i} \bp^n$ first by $T_{p_i} X$ and then by the image of $T_{p_i} \Lambda_i$ in that quotient.
+However, $T_{p_i} \bp^n / T_{p_i} X \cong N_{X/\bp^n}|_{p_i}$, and then
+$V_i$ is by definition the image of $T_{p_i} \Lambda_i$ in $N_{X/\bp^n}|_{p_i}$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Interpolation Problems: Del Pezzo Surfaces — 8.4. Deformation Theory Tools">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/interpolation-del-pezzo/section/S8.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+  </div>
+</footer>
+</body>
+</html>

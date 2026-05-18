@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2. Nodal curves and inflations of the normal bundle — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.2. Nodal curves and inflations of the normal bundle</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.2. Nodal curves and inflations of the normal bundle</h1>
+<p class="stacks-para">A common setting for inflations in the paper is the following.
+Let $V$ be a  smooth variety.
+Let $X$ and $R$ be curves in $V$ that intersect at a point $p$ so that their union $Z$ has a node at $p$.
+In particular, $X$ and $R$ are smooth at $p$.
+Also assume that $X$ and $R$ are local complete intersections elsewhere.</p>
+<p class="stacks-para">In local coordinates, the setup looks as follows.
+Let $t_1, \dots, t_d$ be formal local coordinates around $p$ in $V$.
+Let the curve $Z$ be cut out by $t_1t_2 = t_3 = \dots = t_d = 0$, the curve $X$ by $t_2 = t_3 = \dots = t_d = 0$, and the curve $R$ by $t_1 = t_3 = \dots = t_d = 0$.</p>
+<p class="stacks-para">In this situation, we get the exact sequence
+$$ 0 \to I_{Z/V} \big|_X \to I_{X/V}\big|_X \to \Omega_R \big|_p \to 0,$$
+where the map $I_{X/V}|_X \to \Omega_R|_p$ is induced by the composite of $d \from I_{X/V} \to \Omega_V|_X$ and the restriction $\Omega_V|_X \to \Omega_V|_p \to \Omega_R|_p$.
+The dual sequence
+$$0 \to N_{X/V} \to N_{Z/V}\big|_X \to \shExt^1_{\O_X}\left(\Omega_R\big|_p, \O_X\right) \to 0,$$
+exhibits $N_{Z/V}|_X$ as a degree 1 inflation of $N_{X/V}$ at $p$.
+The defining quotient of this degree 1 inflation
+$$q \from I_{X/V}\big|_p \to \Omega_{R}\big|_p$$
+is given by the composite of $d \from I_{X/V} \to \Omega_V$ and the restriction $\Omega_V|_p \to \Omega_R|_p$.
+In terms of the local coordinates above, $q$ sends $t_2$  to $dt_2$ and $t_3, \dots, t_d$ to $0$.
+If the image of $T_p R$ in $N_{X/V}|_p$ is a general one-dimensional subspace, then $N_{Z/V}|_X$ is a general degree 1 inflation of $N_{X/V}$ at $p$.</p>
+<p class="stacks-para">Observe that we have natural identifications
+$$\begin{aligned}\shExt_{\O_X}^1\left(\Omega_R\big|_p, \O_X\right) &= \shExt_{\O_X}^1\left(\k_p, \O_X\right) \otimes N_{p/R} \\
+  &= N_{p/X} \otimes N_{p/R}.\end{aligned}$$
+Using this identification, we can write the sequence (2.3) and its analogue on $R$ together as
+$$\text{[Commutative diagram — see PDF]}$$
+The two maps $a$ and $b$ are compatible in the sense that they both factor through a common map
+$$N_{Z/V}|_p \to N_{p/X} \otimes N_{p/R}.$$</p>
+<p class="stacks-para">In local coordinates, the map above can be described as follows.
+We have the $k$-vector spaces
+$$\begin{aligned}N^\vee_{Z/V}|_p &= I_{Z/V}/I_{Z/V}^2|_p = \langle  t_1t_2, t_3, \dots, t_d \rangle\\
+  N^\vee_{p/R}|_p &= I_{p/R}/I_{p/R}^2|_p = \langle  t_1 \rangle, \text{ and }\\
+  N^\vee_{p/X}|_p &= I_{p/X}/I_{p/X}^2|_p = \langle  t_2 \rangle.\end{aligned}$$
+The map in (2.6) is dual to the map
+$$ t_1 \otimes t_2 \mapsto t_1t_2. $$</p>
+<p class="stacks-para">Finally, note that the discussion above extends naturally to the case of two smooth curves attached nodally at a finite set of points instead of a single point.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 2.2. Nodal curves and inflations of the normal bundle">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S2.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

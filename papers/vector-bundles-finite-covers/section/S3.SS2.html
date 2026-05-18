@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2. Smoothing out — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <span>3.2. Smoothing out</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.2. Smoothing out</h1>
+<p class="stacks-para">In this section, we pass from singular covers to smooth covers and from particular vector bundles to their deformations.</p>
+<div class="stacks-lemma" id="prop-key">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.3.</strong> <a href="../tag/51A7.html" class="stacks-tag-link">(51A7)</a></div>
+  <div class="stacks-env-body"><p>Let $X$ be a nodal curve and $X \to Y$ a finite flat morphism with Tschirnhausen bundle $E$.
+  For some line bundle $L$ on $Y$, the following holds.
+  There exists a smooth curve $X'$ and a finite morphism $X' \to Y$ such that
+  <ol><li>The Tschirnhausen bundle of $X' \to Y$ is $E' = E \otimes L$.</li>
+<li>We have $H^1(X', N_{X'/ E'}) = 0$, where $X' \subset E'$ is the canonical affine embedding.</li></ol>
+  Furthermore, there exists an $n$ (depending on $X \to Y$), such that the above holds for any $L$ of degree at least $n$.</p></div>
+</div>
+<p class="stacks-para">The rest of Section&nbsp;3.2 is devoted to the proof of <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>.</p>
+<p class="stacks-para">Set $P = \P(E^\vee \oplus \O_Y)$, the space of one-dimensional quotients of $E^\vee \oplus \O_Y$.
+Let $H \cong \P E^\vee \subset P$ be the hyperplane at infinity, where the embedding $ H \subset P$ is defined by the projection $$E^\vee \oplus \O_Y \to E^\vee.$$
+The complement of $H \subset P$ is the total space $\Tot(E)$ of $E$.</p>
+<p class="stacks-para">Let $S \subset Y$ be a finite set over which $X \to Y$ is &eacute;tale.
+For $y \in S$, the set $X_y \subset P_y \cong \P^{d-1}$ consists of $d$ points in linear general position, and $H_y \subset P_y$ is a hyperplane not passing through any of these points.</p>
+<p class="stacks-para">There exists a smooth rational normal curve $R_y \subset P_y$ which contains $X_y$ and which is transverse to $H_y$.
+We can explicitly write down such curves as follows.
+Pick homogeneous coordinates $[Y_1: \cdots :Y_{d}]$ on $P_y \cong \P^{d-1}$ such that the points of $X_y$ are the coordinate points and $H_y$ is the hyperplane $\sum Y_i = 0$.
+Let $b_1, \dots, b_d \in \k^\times$ and $a_1, \dots ,a_d \in \k$ be arbitrary constants with $a_i \neq a_j$ for $i \neq j$.
+Let $x$ be a variable and set $F = \prod (x-a_i)$.
+We can take $R_y$ to be the rational normal curve given parametrically by
+$$ x \mapsto \left[\frac{b_1 F} {x-a_1}: \dots : \frac{b_d F}{x-a_d}\right].$$
+Note that the parametrization maps the points $a_i$ to the coordinate points.
+Also, if the $b_i$ are general, then $R_y$ intersects $H_y$ transversely.</p>
+<p class="stacks-para">Fix $p \in X_y$.
+Each $R_y$ gives a line $T_{R_y}|_p \subset T_{P_y}|_p$, which we interpret as a point of the corresponding projective space.
+Using the parametrization, we can check that the set of these points for various $R_y$ is Zariski dense.
+In other words, a general choice of $R_y$ gives a general tangent line $T_{R_y}|_p \subset T_{P_y}|_p$.</p>
+<p class="stacks-para">Let $\widetilde{P} \to P$ be the blow up at $\bigsqcup_{y \in S} H_y$.
+Denote also by $R_y$ the proper transform of $R_y$ in $\widetilde{P}$.
+Denote by $\widetilde H$ the proper transform of $H$ in $\widetilde{P}$ (see Figure&nbsp;2).</p>
+<p class="stacks-para">The fiber of $\widetilde{P} \to Y$ over $y \in S$ consists of two components.
+One is the exceptional divisor $E_y$ of the blow-up.
+The second is the proper transform of $P_y$, which is a copy of $P_y$; we denote it also by $P_y$.
+The two components intersect transversely along a $\P^{d-2}$.
+Note that $\widetilde H$ is disjoint from $P_y$, and hence also from $R_y \subset P_y$.</p>
+<p class="stacks-para">\begin{figure}
+  \begin{tikzpicture}
+    \draw
+    node at (0,0) {\includegraphics{drawing.png}}
+    node at (-3,-1.5) {$X$}
+    node at (-3.5, 0.5) {$\widetilde H$}
+    node at (2.5, -1) {$R_y$}
+    node at (3.5, -0.5) {$P_y$}
+    node at (3.2, 1.0) {$E_y$};
+  \end{tikzpicture}
+  \caption{Attaching rational normal curves to $X$ to make the normal bundle positive}
+  \label{fig:bl}
+\end{figure}</p>
+<p class="stacks-para">Set $$Z = X \cup_{y \in S} R_y.$$
+Our goal is to establish the positivity of $N_{Z/\widetilde{P}}$.
+First, we set some notation.
+$$\begin{aligned}\nu \from Z^\nu \to Z &:= \text{The normalization of $Z$},\\
+  \phi \from Z^\nu \to Y &:= \text{The composite of $Z^\nu \to Z$ and $Z \to Y$},\\
+  X^\nu &= \text{The normalization of $X$},\\
+  \gamma &:= \text{The set of nodes of $X$},\\
+  \Gamma &:= \text{The preimage of $\gamma$ in $Z^\nu$},\\
+  \delta_y &:= R_y \cap X,\\
+  \delta_S &:= \text{The disjoint union of $\delta_y$ for $y \in S$}\\
+  P_S &:= \text{The disjoint union of $P_y$ for $y \in S$},\\
+  R_S &:= \text{The disjoint union of $R_y$ for $y \in S$}.\\\end{aligned}$$
+Note that $Z^\nu$ is the disjoint union of $X^\nu$ and $R_S$.
+Every point of $\gamma$ has two preimages in $\Gamma$.
+The singular set of $Z$ is $\gamma \cup \delta_S$.</p>
+<p class="stacks-para">Let $y$ be a point in $S$.
+Denote by $\O(1)$ the line bundle of degree 1 on $R_y \cong \P^1$.</p>
+<div class="stacks-lemma" id="lem-NR">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.4.</strong> <a href="../tag/EC54.html" class="stacks-tag-link">(EC54)</a></div>
+  <div class="stacks-env-body"><p>The restriction of $N_{Z/\widetilde{P}}$ to $R_y$ is isomorphic to $\O(d+1)^{d-2} \oplus \O(1)$, where the sub-bundle $\O(d+1)^{d-2}$ is the image of the natural map
+  $$ N_{R_y/P_y} \to N_{Z/\widetilde{P}}\big|_{R_y},$$
+  and the quotient $\O(1)$ is an inflation of $N_{P_y/\widetilde{P}}\big |_{R_y}$ at the points of $\delta_y$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/54DB.html" class="stacks-tag-link">(54DB)</a></div>
+  <div class="stacks-env-body"><p>First, note that $N_{Z/\widetilde{P}}\big|_R$ is a vector bundle of rank $(d-1)$ and degree $(d-2)(d+1)+1$.
+  The map $N_{R_y/P_y} \to N_{Z/\widetilde{P}}\big|_{R_y}$ is the composite
+  $$ N_{R_y/P_y} \to N_{R_y/\widetilde{P}} \to N_{Z/\widetilde{P}}\big|_{R_y}$$
+  Using that $X$ is transverse to $P_y$, a local computation shows that the injection $N_{R_y/P_y} \to N_{Z/\widetilde{P}}\big|_{R_y}$ remains an injection when restricted to any point of $R_y$.
+  Since $R_y \subset P_y \cong \P^{d-1}$ is a rational normal curve, we know that $N_{R_y/P_y} \cong \O(d+1)^{d-2}$ (see, for example, \cite[II]{sac:80} or \cite[Example&nbsp;4.6.6]{ser:06}).
+  We thus get an exact sequence
+  $$0 \to \O(d+1)^{d-2} \to N_{Z/\widetilde{P}}\big|_{R_y} \to \O(1) \to 0.$$
+  Since $\Ext^1(\O(1), \O(d+1)) = 0$, this sequence splits, and we get the desired isomorphism.
+  The description of the sub and the quotient follows from the following diagram
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$</p></div>
+</div>
+<p class="stacks-para">Denote by $F$ the quotient line bundle in the statement of <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, namely
+$$F = \coker \left(N_{R_S/P_S} \to N_{Z/\widetilde{P}} \big|_{R_S} \right) = N_{P_S/\widetilde{P}}\big|_{R_S} \otimes \O_{R_S}\left(\delta_S\right) .$$
+Set $D_S = R_S \cap E$, where $E$ is the exceptional divisor of the blow up $\widetilde{P} \to P$.
+Then we have
+$$\begin{aligned}F &= N_{P_S/\widetilde{P}}\big|_{R_S} \otimes \O_{R_S}\left(\delta_S\right) \\
+  &= \phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S - D_S\right).\end{aligned}$$</p>
+<p class="stacks-para">Combining the diagram in (2.5) and the conclusions of <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a> gives the following diagram with exact rows and exact middle column
+$$\text{[Commutative diagram — see PDF]}$$
+In (3.3), the first row is standard, the second row is the definition of $F$, and the bottom row and the middle column are from (2.5).
+Let
+$$e \from F  \to N_{\delta_S/X} \otimes N_{\delta_S/R_S}$$
+be the map induced in (3.3).</p>
+<p class="stacks-para">We describe the maps in (3.3) in local coordinates.
+Let $y \in S \subset Y$, and let $t$ be a local coordinate of $Y$ around $y$.
+Let $p \in \delta_y$.
+Extend $t$ to a (formal) local coordinate system $t_1 = t, t_2, \dots, t_d$ of $\widetilde P$ around $p$.
+Assume that the curve $Z$ is defined locally by $t_1t_2 = t_3 = \dots = t_d = 0$, the curve $R_y$ by $t_1 = t_3 = \dots = t_d = 0$, and the curve $X$ by $t_2 = \dots = t_d = 0$.
+Around $p$, the diagram (3.3) is the following:
+$$\text{[Commutative diagram — see PDF]}$$
+Above, $\epsilon$ is the dual of the generator $t_1t_2$ of $I_{Z/\widetilde P}/I_{Z/\widetilde P}^2$.
+We emphasize that although $t_1, \dots, t_d$ is a local coordinate frame around $p \in \delta_y$, the first coordinate $t_1 = t$ is common to all the points of $\delta_y$.</p>
+<p class="stacks-para">For a coordinate free description, recall the isomorphism
+$$F = \phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S - D_S\right).$$
+Over $y \in S \subset Y$ around which $t$ is a local coordinate, this isomorphism sends the rational section $\frac{\partial}{\partial t} = \frac{\partial}{\partial t_1}$ of $N_{P_y/\widetilde P} \subset F$ to the rational section $\frac{\partial}{\partial t} \otimes 1$ of $\phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S - D_S\right)$.
+By combining this isomorphism with the natural identifications
+$$\begin{aligned}N_{\delta_S/X} &= \phi^*N_{S/Y} \big|_{\delta_S}, \text{ and }\\
+  N_{\delta_S/R_S} &= \O_{R_S}\left(\delta_S\right) \big | _{\delta_S},\end{aligned}$$
+we see that the map
+$$e \from F \to N_{\delta_S/X} \otimes N_{\delta_S/R_S}$$
+is simply the composite of the inclusion
+$$ \phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S - D_S\right) \to \phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S\right)$$
+and the restriction
+$$ \phi^* N_{S/Y} \otimes \O_{R_S}\left(\delta_S\right) \to \phi^* N_{S/Y}\big|_{\delta_S} \otimes \O_{R_S}\left(\delta_S\right)\big|_{\delta_S}.$$</p>
+<p class="stacks-para">We have the following immediate consequence of the last row in (3.3).</p>
+<div class="stacks-lemma" id="lem-NXH1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.5.</strong> <a href="../tag/411F.html" class="stacks-tag-link">(411F)</a></div>
+  <div class="stacks-env-body"><p>If the size of $S$ is large, its points are general, and the rational normal curves $R_y$ are general, then we have $H^1(X^\nu, \nu^* N_{Z / \widetilde{P}}|_{X^\nu}) = 0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EE5B.html" class="stacks-tag-link">(EE5B)</a></div>
+  <div class="stacks-env-body"><p>Let $X_i$ be a component of $X^\nu$ and let $\nu_i \from X_i \to Z$ be composite of the inclusion $X_i \subset Z^\nu$ and $\nu \from Z^\nu \to Z$.
+  Then $\nu^* N_{Z/\widetilde{P}}|_{X_i} = \nu_i^* N_{Z/\widetilde{P}}$.
+  We have the exact sequence
+  $$ 0 \to  \nu_i^* N_{X / \widetilde{P}} \xrightarrow{\iota} \nu_i^* N_{Z/\widetilde{P}} \to \nu_i^* (N_{\delta_S/X} \otimes N_{\delta_S/R_S}) \to 0.$$
+  Let $p$ be a point in ${\delta_S} \cap X_i$ lying over $y \in S$.
+  Since $X_i \to Y$ is &eacute;tale over $y$, the natural map
+  $$ T_{P_y} \big|_p \to N_{X / \widetilde{P}} \big|_p$$
+  is an isomorphism; use it to identify $T_{P_y}|_p$ and $N_{X / \widetilde{P}} |_p$ (and their duals).
+  The defining quotient of the inflation $\iota$ at $p$ is the restriction map (see  (2.1)).
+  $$ q \from \Omega_{P_y}\big|_p \to \Omega_{R_y}|_p.$$
+  If $R_y \subset P_y$ is general, then $T_{R_y}|_p \subset T_{P_y}|_p$ is a general line, and hence $\iota$ is a general inflation at $p$.
+  Since the above holds for a point $p$ over every point $y \in S$, we see that $\nu_i^* N_{Z / \widetilde{P}}$ contains a general degree $|S|$ inflation of $\nu_i^* N_{X/\widetilde{P}}$.
+  The proposition now follows from <a href="/papers/vector-bundles-finite-covers/tag/1E0F.html" class="stacks-ref-link">Corollary&nbsp;2.7 <span class="stacks-ref-tag">[1E0F]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Thanks to <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a> and <a href="/papers/vector-bundles-finite-covers/tag/411F.html" class="stacks-ref-link">Proposition&nbsp;3.5 <span class="stacks-ref-tag">[411F]</span></a>, the pullbacks of $N_{Z / \widetilde{P}}$ to all the components of $Z^\nu$ have no higher cohomology.
+That is, we have $H^1(\nu^* N_{Z/\widetilde{P}}) = 0$.
+Our eventual goal is to show that $H^1(N_{Z / \widetilde{P}}) = 0$.
+For that, we must establish the surjectivity of the map
+$$ H^0(\nu^*N_{Z/\widetilde{P}}) \to H^0\left(N_{Z/\widetilde{P}}\big|_{\gamma \cup \delta_S}\right)$$
+induced by the sequence
+$$0 \to N_{Z /\widetilde{P}} \to \nu_*\nu^* N_{Z/\widetilde{P}} \to N_{Z /\widetilde{P}}\big |_{\gamma \cup \delta_S} \to 0.$$
+To motivate further constructions, let us describe the key difficulty in showing such a surjection.
+The nodes $\gamma$ will not be a big issue, so let us focus on $\delta_S$.
+By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>,  we have the splitting of the normal bundle into ``vertical'' and ``horizontal'' components
+$$N_{Z/\widetilde{P}}\big|_{R_S} = \O_{R_S}(d+1)^{d-2} \oplus \O_{R_S}(1).$$
+The vertical summand is positive enough to have a surjection
+$$ H^0\left(R_S, \O_{R_S}(d+1)^{d-2}\right) \to H^0\left(\delta_S, \O_{R_S}(d+1)^{d-2}\big|_{\delta_S}\right).$$
+It remains to show that we have a surjection
+$$ H^0\left(X^\nu, \nu^* N_{Z/\widetilde{P}}\big|_{X^\nu}\right)  \oplus H^0(R_S, \O_{R_S}(1)) \to H^0\left(\delta_S, \O_{R_S}(1) \big|_{\delta_S}\right).$$
+Taking advantage of the first summand (which is clearly necessary) is a global problem.
+We recast it in terms of a local problem by defining a sheaf $K$, whose construction depends locally around $S$.
+The surjectivity problem will reduce to the vanishing of the higher cohomology of $K$.</p>
+<p class="stacks-para">Having explained the motivation, let us construct $K$.
+Let $\chi \from Z^\chi \to Z$ be the normalization of $Z$ at $\gamma$.
+Abusing notation, also let $\phi$ denote the map $Z^\chi \to Y$.
+The bottom part of (3.3) gives the following diagram of sheaves on $Z^\chi$
+$$\text{[Commutative diagram — see PDF]}$$
+Twist by $\O_{Z^\chi}(-\Gamma)$, which is trivial on $F$ and $\delta_S$, and apply $\phi_*$ to get
+$$\text{[Commutative diagram — see PDF]}$$
+The two sheaves $\chi^*N_{X/\widetilde{P}}(-\Gamma)$ and $\chi^* N_{Z/\widetilde{P}}|_X (-\Gamma)$ are supported on $X^\nu \subset Z^\chi$.
+On $X^\nu$, the map $\phi$ restricts to a finite map $X^\nu \to Y$; hence the row remains exact after applying $\phi_*$.
+The sheaf $F$ is supported on $R_S \subset Z^\chi$.
+On $R_S$, the map $\phi$ restricts to a contraction $R_S \to S \subset Y$.
+As a result, although $e$ is surjective, $\phi_*e$ is not.
+Since $F \cong \O_{R_S}(1)$ and $\delta_S$ consists of $d$ points on each rational curve in $R_S$, the map $\phi_* e$ is injective.</p>
+<p class="stacks-para">Let $K$ be the bundle on $Y$ defined by
+$$K = \ker \left(\phi_*\left(\chi^* \left(N_{Z/\widetilde{P}}\big|_X\right)\left(-\Gamma\right)\right) \to \coker \phi_*e\right).$$</p>
+<p class="stacks-para">The definition of $K$ places it in two important exact sequences.
+First, we have
+$$0 \to K \to \phi_* \chi^* \left(N_{Z/\widetilde{P}}\big|_X\right) \to \phi_*\left(\chi^* N_{Z/\widetilde{P}} \big|_\Gamma\right) \bigoplus \coker \phi_*e \to 0.$$
+Second, setting
+$$ M = \chi^* N_{X/\widetilde{P}}\left(-\Gamma\right),$$
+we have
+$$0 \to \phi_*M \to K \to \phi_* F \to 0.$$
+Note that $\phi_* F$ is supported on $S$ with stalks isomorphic to $\k^2$.
+Therefore, $K$ is a degree $2|S|$ inflation of $\phi_*M$.</p>
+<p class="stacks-para">Let us identify the defining quotient of the inflation (3.12) at $y \in S \subset Y$.
+Let $U \subset Y$ be a small open subset around $y$.
+By the definition of $K$, we have the diagram
+$$\text{[Commutative diagram — see PDF]}$$
+From this diagram, we see that the defining quotient
+$$ \phi_* M|_y^\vee \to (\phi^*F)^\vee \otimes T_yY$$
+is the composite of the defining quotient of the bottom row
+$$\phi_* M|_y^\vee \to \phi_*\left(N_{\delta_y/X} \otimes N_{\delta_y/R_y}\right)^\vee \otimes T_yY,$$
+and the map
+$$\phi_*\left(N_{\delta_y/X} \otimes N_{\delta_y/R_y}\right)^\vee \otimes T_yY \to (\phi_*F)^\vee \otimes T_yY$$
+dual to $\phi_*e$.</p>
+<p class="stacks-para">We begin by studying the first map (3.14).
+Using $\phi^*T_yY = N_{\delta_y/X}$ and the push-pull formula, the target of the first map (3.14) simplifies to $\phi_* N_{\delta_y/R_Y}^\vee$.
+With this simplification, the map (3.14) becomes
+$$ \phi_* I_{X/\widetilde P}|_y =  \phi_* N_{X/\widetilde P} |^\vee_y \to \phi_* N_{\delta_y/R_y}^\vee = \phi_*\Omega_{R_y}\big |_{\delta_y}.$$
+This map is $\phi_*$ applied to the defining quotient of the nodal curve sequence
+$$ I_{X/\widetilde P}|_{\delta_y} \to \Omega_{R_y}|_{\delta_y}$$
+as described in (2.4), namely the composite of the map $d \from I_{X/\widetilde P}|_{\delta_y} \to \Omega_{\widetilde P}|_{\delta_y}$ and the restriction map $\Omega_{\widetilde P}|_{\delta_y} \to \Omega_{R_y}|_{\delta_y}$.
+We can break this up as
+$$
+  I_{X/\widetilde P}|_{\delta_y} \xrightarrow{d} \Omega_{\widetilde P} |_{\delta_y} \xrightarrow{r} \Omega_{P_y}|_{\delta_y} \to \Omega_{R_y}|_{\delta_y}.
+$$
+Since $X$ is transverse to $P_y$, the composite $r \circ d$ is an isomorphism.
+Via this isomorphism, the first defining quotient (3.14) becomes $\phi_*$ of the restriction map
+$$ \Omega_{P_y}|_{\delta_y} \to \Omega_{R_y}|_{\delta_y}.$$</p>
+<p class="stacks-para">Having understood the first map (3.14), we look at the second one (3.15).
+Using the push-pull formula as above, the source of (3.15) is
+$$\phi_* N_{\delta_y/R_y}^\vee = \phi_*\Omega_{R_y} \big|_{\delta_y}.$$
+Again, using the push-pull formula and the identification from (3.6), we see that the target is
+$$ (\phi_* F)^\vee \otimes T_y Y = \left(\phi_*\O_{R_y}(\delta_y-D_y)\right)^\vee.$$
+Recall from (3.7) that under these identifications, the map $e$ becomes
+$$ e \from \O_{R_y}(\delta_y - D_y) \to N_{\delta_y/R_y} = \O(\delta_y)|_{\delta_y},$$
+given by the composite of the inclusion map $\O_{R_y}(\delta_y - D_y)  \subset \O_{R_y}(\delta_y)$ and the restriction map
+$\O_{R_y}(\delta_y) \to \O_{R_y}(\delta_y) |_{\delta_y}$.
+Thus, the second map (3.15)
+$$ \phi_* \Omega_{R_y}|_{\delta_y} = \phi_* N_{\delta_y/R_y}^\vee \to H^0(R_y, \O_{R_y}(\delta_y-D_y))^\vee$$
+is the dual of the map on global sections induced by $e$.</p>
+<p class="stacks-para">In summary, the defining quotient of $\phi_*M \to K$ at $y$ is canonically identified with the map
+$$H^0\left(\Omega_{P_y}|_{\delta_y}\right) \to H^0\left(\O_{R_y}(\delta_y - D_y)\right)^\vee$$
+obtained by the natural restrictions, inclusions, and duals.
+We emphasize that the description of the map (3.16) is entirely in terms of objects over $y$.</p>
+<div class="stacks-lemma" id="prop-h1k">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.6.</strong> <a href="../tag/3FA3.html" class="stacks-tag-link">(3FA3)</a></div>
+  <div class="stacks-env-body"><p>If the size of $S$ is large, its points are general, and the rational normal curves $R_y$ are general, then we have $H^1(Y, K) = 0$.</p></div>
+</div>
+<p class="stacks-para">For the proof of <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a>, we need to make sure that the defining quotient in (3.16) is sufficiently general so that we can apply <a href="/papers/vector-bundles-finite-covers/tag/2285.html" class="stacks-ref-link">Proposition&nbsp;2.5 <span class="stacks-ref-tag">[2285]</span></a>.
+This amounts to a purely geometric non-degeneracy lemma about rational normal curves in $\P^{d-1}$, which we now formulate.
+Let $P = \P^{d-1}$.
+Let $\delta \subset P$ be a set of $d$ distinct points whose linear span is $P$, and let $H \subset P$ be a hyperplane disjoint from $\delta$.
+Let $R \subset P$ be a rational normal curve containing $\delta$ and set $D = H \cap R$.
+Note that $P$, $\delta$, $H$, and $R$ correspond to $P_y$, $\delta_y$, $H_y$, and $R_y$ in the original setup.
+Consider the map
+$$a \from H^0\left(\Omega_{P}\big|_\delta\right) \to H^0(\O_R(\delta-D))^\vee$$
+obtained as in (3.16).
+This map defines a line $\Lambda(R) \subset \P H^0(\Omega_P | _\delta)$. (Recall that our projectivizations parametrize quotients.)</p>
+<div class="stacks-lemma" id="lem-lingen">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.7.</strong> <a href="../tag/ACA8.html" class="stacks-tag-link">(ACA8)</a></div>
+  <div class="stacks-env-body"><p>The linear span of the union of the lines $\Lambda(R)$ for all possible choices of $R$ is the entire projective space $\P H^0(\Omega_P |_\delta)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DFAB.html" class="stacks-tag-link">(DFAB)</a></div>
+  <div class="stacks-env-body"><p>The proof is by explicit calculation.
+  As done in the beginning of Section&nbsp;3.2, pick homogeneous coordinates $[Y_1: \dots: Y_{d}]$ on $\P^{d-1}$ such that $\delta = \{\delta_1, \dots, \delta_d\}$ is the set of coordinate points&mdash;that is
+  $$ \delta_i = [0:\dots : 0 : 1 : 0 : \dots : 0] \quad \text{(1 in $i$th place)}$$
+  &mdash;and such that the hyperplane $H$ is defined by
+  $$ H = \{ Y_1 + \dots + Y_{d} = 0 \}.$$
+  Let $b_1, \dots, b_d \in \k^\times$ and $a_1, \dots ,a_d \in \k$ be arbitrary constants with $a_i \neq a_j$ for $i \neq j$.
+  Consider the rational normal curve $R \subset \P^{d-1}$ given parametrically by
+  $$ \gamma \from x \mapsto \left[\frac{b_1 F} {x-a_1}: \dots : \frac{b_d F}{x-a_d}\right],$$
+  where $F = (x-a_1) \cdots (x-a_d)$.</p>
+<p>  Let $i, j \in \{1, \dots, d \}$ with $i \neq j$.
+  Define $\omega(i,j) \in H^0(\Omega_P|_\delta)$ by
+  $$ \omega(i,j)\big|_{\delta_\ell} = \begin{cases} d(Y_i / Y_j) & \text{if $\ell = j$,} \\ 0 &\text{if $\ell \neq j$.}
+    \end{cases}
+  $$
+  See that $\{\omega(i,j)\}$ is a basis of $H^0(\Omega_P|_\delta)$.
+  Set $G = \sum b_i F/(x-a_i)$; note that this is the pullback of the defining equation of $H$ to $R$.
+  Then we have
+  $$ H^0(\O_R(\delta-D)) = \left\{ \frac{(ux+v)G}{F} \mid u, v \in k \right \}.$$
+  The map in (3.17), viewed as
+  $$ H^0\left(\Omega_P|_\delta\right) \otimes H^0(\O_R(\delta-D)) \to \k,$$
+  takes the following explicit form
+  $$ \omega(i,j) \otimes \frac{(ux+v)G}{F} \mapsto \frac{b_i (ua_j+v)}{a_j-a_i}.$$
+  In the $d(d-1)$ homogeneous coordinates on $\P H^0(\Omega_P|_\delta)$ corresponding to the basis $\{\omega(i,j)\}$, the line $\Lambda(R)$ is given by
+  $$ \Lambda(R) = \left\{\left[\frac{b_i (ua_j+v)}{a_j-a_i}\right]_{1 \leq i \neq j \leq d} \mid
+      [u:v] \in \P^1 \right \}.$$
+  It is easy to check that the $d(d-1)$ rational functions $\frac{b_i (ua_j+v)}{a_j-a_i}$ in the $(2d+2)$ variables $a_1, \dots, a_d$, $b_1, \dots, b_d$, $u$, and $v$ are $\k$-linearly independent.
+  Therefore, the linear span of $\bigcup_R \Lambda(R)$ is the entire projective space.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a>.</em> <a href="../tag/2816.html" class="stacks-tag-link">(2816)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/vector-bundles-finite-covers/tag/ACA8.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[ACA8]</span></a> and <a href="/papers/vector-bundles-finite-covers/tag/2285.html" class="stacks-ref-link">Proposition&nbsp;2.5 <span class="stacks-ref-tag">[2285]</span></a>, if $y \in Y$ and $R_y$ are general, then the inflation of $\phi_*M$ at $y$ given by $K$ leads to a non-zero decrease in $h^1$.
+  As a result, if $|S| \geq h^1(M)$, and $S \subset Y$ and $R_y$ are general, then $H^1(K) = 0$.</p></div>
+</div>
+<p class="stacks-para">We now have the tools to prove that $H^1(Z, N_{Z/\widetilde{P}}) = 0$.</p>
+<div class="stacks-lemma" id="prop-h1n">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.8.</strong> <a href="../tag/3AC7.html" class="stacks-tag-link">(3AC7)</a></div>
+  <div class="stacks-env-body"><p>If the size of $S$ is large, its points are general, and the rational normal curves $R_y$ are general, then we have $H^1(Z, N_{Z/\widetilde{P}}) = 0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/1620.html" class="stacks-tag-link">(1620)</a></div>
+  <div class="stacks-env-body"><p>We have the exact sequence
+  $$ 0 \to N_{Z /\widetilde{P}} \to \nu_*\nu^* N_{Z/\widetilde{P}} \to N_{Z /\widetilde{P}}\big |_{\gamma \cup \delta_S} \to 0.$$
+  The long exact sequence on cohomology gives
+  $$ H^0\left(\nu^* N_{Z/\widetilde{P}}\right) \to H^0\left(N_{Z/\widetilde{P}}\big|_{\gamma \cup \delta_S}\right) \to H^1\left(N_{Z/\widetilde{P}}\right) \to H^1\left(\nu^* N_{Z/\widetilde{P}}\right) \to 0.$$
+  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, we have $H^1(\nu^* N_{Z/\widetilde{P}}|_{R_y}) = 0$.
+  By <a href="/papers/vector-bundles-finite-covers/tag/411F.html" class="stacks-ref-link">Proposition&nbsp;3.5 <span class="stacks-ref-tag">[411F]</span></a>, we have $H^1(\nu^* N_{Z/\widetilde{P}}|_{X^\nu}) = 0$.
+  By combining the two, we get $H^1(\nu^* N_{Z/\widetilde{P}}) = 0$.</p>
+<p>  We now show that the map
+  $$\nu_{*} \nu^* N_{Z/\widetilde{P}} \to N_{Z/\widetilde{P}}\big|_{\gamma \cup \delta_S}$$
+  is surjective on global sections.
+  Note that we have a decomposition
+  $$ \nu^* N_{Z/\widetilde{P}} = \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right) \bigoplus \nu^* \left(N_{Z/\widetilde{P}}\big|_{R_S}\right).$$
+  Furthermore, by <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, $\nu^* N_{Z/\widetilde{P}}|_{R_S}$ is decomposed by the split exact sequence
+  $$ 0 \to N_{R_S/P_S} \to \nu^* N_{Z/\widetilde{P}}\big|_{R_S} \to F \to 0.$$
+  Consider the diagram of sheaves on $Z$
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the bundle $N_{R_S/P_S}$ is positive enough for $q$ to be surjective on global sections.
+  Therefore, to prove that $r$ is surjective on global sections, it suffices to prove the same for $s$.
+  Recall our notation $e$ for the map $F \to N_{\delta_S/X} \otimes N_{\delta_S/R_S}$.
+  We have the following diagram of sheaves on $Y$
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  where we have abused notation somewhat to denote both maps $Z^\nu \to Y$ and $Z \to Y$ by the same letter $\phi$.
+  From the diagram, we see that it suffices to prove that
+  $$\phi_* \left(\nu^* \left(N_{Z/\widetilde{P}}\big|_X\right)\right) \to \phi_*\left(N_{Z/\widetilde{P}} \big|_\gamma\right) \oplus \coker \phi_*e$$
+  is surjective on global sections.
+  As a consequence (3.11) of the definition of $K$, we have the exact sequence
+  $$ 0 \to K \to \phi_* \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right) \to \phi_*\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right)\oplus \coker \phi_*e \to 0.$$
+  We have replaced $\chi^*$ in (3.11) by $\nu^*$ above, but this is harmless as the pullbacks are in any case supported on $X^\nu$.
+  By <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a>, we may assume that $H^1(K) = 0$.
+  Therefore, we get that the map
+  $$\phi_* \nu^* \left(N_{Z/\widetilde{P}}\big|_X\right)\to \phi_*\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right) \oplus \coker \phi_*e$$
+  is surjective on global sections.
+  Since
+  $$ H^0\left(\nu^*N_{Z/\widetilde{P}} \big|_\Gamma\right) \to H^0\left(N_{Z/\widetilde{P}} \big|_\gamma\right)$$
+  is clearly surjective, we conclude that (3.19) is surjective on global sections.
+  The proof of <a href="/papers/vector-bundles-finite-covers/tag/3AC7.html" class="stacks-ref-link">Proposition&nbsp;3.8 <span class="stacks-ref-tag">[3AC7]</span></a> is now complete.</p></div>
+</div>
+<div class="stacks-commentary" id="rem-surjgamma">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.9.</strong> <a href="../tag/664D.html" class="stacks-tag-link">(664D)</a></div>
+  <div class="stacks-env-body"><p>From the surjection (3.20), we observe that the map
+  $$\nu_* \nu^* N_{Z/\widetilde{P}} \to \nu_*\left(\nu^* N_{Z/\widetilde{P}}\big|_\Gamma \right)\oplus N_{Z/\widetilde{P}}\big|_{\delta_S},$$
+  is surjective on global sections.
+  This is stronger than what was required for <a href="/papers/vector-bundles-finite-covers/tag/3AC7.html" class="stacks-ref-link">Proposition&nbsp;3.8 <span class="stacks-ref-tag">[3AC7]</span></a>; it will be useful later.</p></div>
+</div>
+<p class="stacks-para">The following proposition considers the effect of enlarging $S$.
+Let $S^+ = S \cup \{y \}$, where $y \in Y \setminus S$ is any point over which $X \to Y$ is &eacute;tale.
+Denote by the superscript $+$ the analogues for $S^+$ of all the constructions done for $S$.</p>
+<div class="stacks-lemma" id="prop-S+">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.10.</strong> <a href="../tag/14AC.html" class="stacks-tag-link">(14AC)</a></div>
+  <div class="stacks-env-body"><p>Suppose we have $H^1(Z, N_{Z/\widetilde{P}}) = 0$.
+  Then we also have $H^1(Z^+, N_{Z^+/ \widetilde{P}^+}) = 0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CDD0.html" class="stacks-tag-link">(CDD0)</a></div>
+  <div class="stacks-env-body"><p>By construction, we have $Z^+ = Z \cup R_y$.
+  Let $\mu \from Z \sqcup R_y \to Z^+$ be the partial normalization.
+  We have the short exact sequence
+  $$ 0 \to N_{Z^+/\widetilde{P}^+} \to \mu_*\mu^* N_{Z^+/\widetilde{P}^+} \to  N_{Z^+/\widetilde{P}^+} |_{\delta_y} \to 0.$$
+  The injection $N_{Z/\widetilde{P}} \to \mu^*N_{Z^+/\widetilde{P}^+}|_Z$ and the hypothesis $H^1(N_{Z/\widetilde{P}}) = 0$ implies that
+  $$H^1\left(\mu^*N_{Z^+/\widetilde{P}^+}\big|_Z\right) = 0.$$
+  <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a> implies that $H^1(N_{Z^+/\widetilde{P}^+}|_{R_y}) = 0$.
+  By combining the two, we get
+  $$ H^1\left(\mu_*\mu^* N_{Z^+/\widetilde{P}^+}\right) = 0.$$
+  To finish the proposition, it remains to prove that
+  $$ H^0\left(\mu^* N_{Z^+/\widetilde{P}^+}\right) \to H^0\left(N_{Z^+/\widetilde{P}^+}\big|_{\delta_y}\right)$$
+  is surjective.
+  Recall that
+  $$\begin{aligned}\mu^* N_{Z^+/\widetilde{P}^+} &= N_{Z^+/\widetilde{P}^+} \big|_{Z} \oplus N_{Z^+/\widetilde{P}^+} \big|_{R_y} \\
+    &= N_{Z^+/\widetilde{P}^+} \big|_{Z} \oplus N_{R_y/P_y} \oplus F\big|_{R_y}.\end{aligned}$$
+  We know that $N_{R_y/P_y} \to N_{R_y/P_y}|_{\delta_y}$ is surjective on global sections.
+  Therefore, it suffices to prove that the map
+  $$N_{Z^+/\widetilde{P}^+} \big|_{Z} \to N_{\delta_y/X} \otimes N_{\delta_y/R_y} = \coker\left(N_{R_y/P_y}\big|_{\delta_y} \to N_{Z/\widetilde{P}}\big|_{\delta_y}\right)$$
+  is surjective on global sections.
+  But the exact sequence
+  $$ 0 \to N_{Z/\widetilde{P}} \to N_{Z^+/\widetilde{P}^+} \big|_{Z} \to N_{\delta_y/X} \otimes N_{\delta_y/R_y} \to 0$$
+  analogous to the bottom row of (3.3) and the vanishing of $H^1(N_{Z/\widetilde{P}})$ imply that (3.21) is indeed surjective on global sections.</p></div>
+</div>
+<div class="stacks-commentary" id="rem-surjhoriz">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.11.</strong> <a href="../tag/FD0B.html" class="stacks-tag-link">(FD0B)</a></div>
+  <div class="stacks-env-body"><p>In the proof of <a href="/papers/vector-bundles-finite-covers/tag/14AC.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[14AC]</span></a>, we showed that
+  $$ N_{Z^+/\widetilde{P}^+} \big|_{Z} \to N_{\delta_y/X} \otimes N_{\delta_y/R_y} $$
+  is surjective on global sections.
+  Again, this is stronger than what was required for <a href="/papers/vector-bundles-finite-covers/tag/14AC.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[14AC]</span></a>; it will be useful later.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-key_singular">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.12.</strong> <a href="../tag/DA66.html" class="stacks-tag-link">(DA66)</a></div>
+  <div class="stacks-env-body"><p>Suppose the size $n$ of $S$ is large, its points are general, and the rational normal curves $R_y$ are general.
+  Then
+  <ol><li>the Hilbert scheme of subschemes of $\widetilde{P}$ is smooth at $[Z]$;</li>
+<li>$Z$ is a flat limit of smooth curves in $\widetilde{P}$.</li></ol>
+  Furthermore, if $n$ is sufficiently large, then the set $S$ can be chosen so that $\O_Y(S)$ is  isomorphic to any prescribed line bundle of degree $n$ on $Y$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2D63.html" class="stacks-tag-link">(2D63)</a></div>
+  <div class="stacks-env-body"><p>Since $H^1(N_{Z/\widetilde{P}}) = 0$, we get that the Hilbert scheme of $\widetilde{P}$ is smooth at $[Z]$, proving (1).
+  As a result, every first order deformation of $Z \subset \widetilde{P}$ extends to a deformation over the germ of a smooth curve.
+  To show that $Z$ is the limit of smooth curves, it suffices to show that for every node $p \in Z$, the natural map $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p$ is surjective on global sections.
+  Recall that $Z$ has two kinds of nodes: the nodes $\gamma$, which are the nodes of $X$; and the nodes $\delta_S$, which are the nodes introduced because we attached the rational normal curves.</p>
+<p>  First we deal with the nodes $\gamma$.
+  Let $\chi \from Z^\chi \to Z$ be the partial normalization at these nodes.
+  Let $I_\gamma \subset \O_Z$ be the ideal sheaf of $\gamma \subset Z$.
+  We have
+  $$ N_{Z/\widetilde{P}} \otimes I_{\gamma} = \chi_* \left( \chi^*N_{Z/\widetilde{P}}(-\Gamma) \right).$$
+  Thus, if $\nu \from Z^\nu \to Z$ is the full normalization, we get the sequence
+  $$ 0 \to N_{Z/\widetilde{P}} \otimes I_\gamma \to \nu_*\nu^* N_{Z/\widetilde{P}} \to \nu_* \left(\nu^*N_{Z/\widetilde{P}}\big|_\Gamma\right) \oplus N_{Z/\widetilde{P}}\big |_{\delta_S} \to 0.$$
+  By the observation in <a href="/papers/vector-bundles-finite-covers/tag/664D.html" class="stacks-ref-link">Remark&nbsp;3.9 <span class="stacks-ref-tag">[664D]</span></a>, we know that
+  $$ \nu_*\nu^* N_{Z/\widetilde{P}} \to \nu_* \left(\nu^*N_{Z/\widetilde{P}}\big|_\Gamma\right) \oplus N_{Z/\widetilde{P}}\big |_{\delta_S}.$$
+  is surjective on global sections.
+  Therefore, we get that $H^1(N_{Z/\widetilde{P}} \otimes I_\gamma) = 0$.
+  This, in turn, implies that
+  $$H^0(N_{Z/\widetilde{P}}) \to H^0(N_{Z/\widetilde{P}}|_\gamma)$$
+  is surjective.
+  By combining with the surjection
+  $$ N_{Z/\widetilde{P}}\big|_\gamma \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\gamma},$$
+  we conclude that $H^0(N_{Z/\widetilde{P}}) \to H^0(\shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p)$ is surjective for all $p \in \gamma$.</p>
+<p>  Next, we consider a node $p \in \delta_S$ lying over $y \in S$.
+  We have the equality
+  $$ \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y} = N_{\delta_y/R_y}\otimes N_{\delta_y/X}.$$
+  Set $S^- = S \setminus \{y\}$.
+  Denote by the superscript $-$ the analogous objects for $S^-$.
+  We may assume that $S$ is big enough to have $H^1(N_{Z^-/\widetilde{P}^-}) = 0$.
+  Let $\mu \from Z^- \sqcup R_y \to Z$ be the partial normalization at the nodes $\delta_y$.
+  We have the sequence
+  $$ 0 \to N_{Z^-/\widetilde{P}^-} \to \mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to  N_{\delta_y/R_y}\otimes N_{\delta_y/X} = \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y} \to 0$$
+  analogous to the bottom row of (3.3).
+  Since $H^1(N_{Z^-/\widetilde{P}^-}) = 0$, the long exact sequence in cohomology implies that
+  $$ \mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y}$$
+  is surjective on global sections.
+  In particular,
+  $$\mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{p}$$
+  is surjective on global sections.</p>
+<p>  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the map
+  $$\mu^* N_{Z/\widetilde{P}}\big|_{R_y} \to N_{Z/\widetilde{P}}\big|_p$$
+  is surjective on global sections.</p>
+<p>  By combining (3.22) and (3.23), we see that $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z,\O_Z)_p$ is surjective on global sections.
+  We have thus taken care of both types of nodes, proving (2).</p>
+<p>  It remains to prove the last statement about $\O_Y(S)$.
+  For that, assume that $n$ is large enough so that the conclusions above hold for a generic $S$ of size $n - 2g_Y$.
+  Then we may enlarge $S$ to a set $S^+$ by adding an appropriate set of $2g_Y$ points so that the same conclusions hold and $\O_Y(S^+)$ is isomorphic to a given line bundle of degree $n$.</p></div>
+</div>
+<p class="stacks-para">We now prove the key proposition.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>.</em> <a href="../tag/6FA2.html" class="stacks-tag-link">(6FA2)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a>, there exists a family of smooth curves in $\widetilde{P}$ whose flat limit is $Z$.
+  Let $X'$ be a general member of such a family.
+  This curve satisfies the following conditions (see Figure&nbsp;3):
+  <ol><li>$\deg (X' \cdot E_y) = d-1$ for all $y \in S$,</li>
+<li>$\deg (X' \cdot P_y) = 1$ for all $y \in S$,</li>
+<li>$X' \cap \widetilde H = \varnothing$,</li>
+<li>$g(X') = g(X) + n(d-1)$,</li>
+<li>$H^1(N_{X' / \widetilde{P}}) = 0$.</li></ol></p>
+<p>  \begin{figure}[ht]
+  \begin{tikzpicture}
+    \draw
+    node at (0,0) {\includegraphics{drawingprime.png}}
+    node at (-3.3,-1.5) {$X'$}
+    node at (-3.3, 1.0) {$\widetilde H$}
+    node at (3.2, -1.0) {$P_y$}
+    node at (2.8, 1.0) {$E_y$};
+  \end{tikzpicture}
+  \caption{A smoothing $X'$ of $X$ after attaching a large number of general rational normal curves}
+  \label{fig:bldown}
+\end{figure}</p>
+<p>  Let $\widetilde{P} \to P'$ be the blowing down of all the $P_y$ for $y \in S$.
+  Then $P' \to Y$ is a $\P^{d-1}$ bundle and the map $X' \to P'$ is an embedding.
+  Similarly, $\widetilde H \to P'$ is also an embedding.</p>
+<p>  We claim that the complement of $\widetilde H$ in $P'$ is isomorphic to $\Tot(E')$, where $E' = E \otimes \O_Y(S)$.</p>
+<p>  To see this, let us recall some generalities.
+  Let $V$ be a vector bundle of rank $d$ on $Y$; set $P = \P V$; and let $H \subset P$ be a divisor such that for each $y \in Y$, the fiber $H_y$ is a hyperplane in $P_y$.
+  In general, the complement $P \setminus H$ is an affine space bundle over $Y$.
+  If we have a section $\sigma \from Y \to P \setminus H$, then $P \setminus H \to Y$ is the total space of a vector bundle $E$.
+  The bundle $E$ can be recovered from $\sigma$ as
+  $$ E = N_{\sigma(Y) / P}.$$</p>
+<p>  Coming back to our situation, let $\sigma \from Y \to P = \P(\O_Y \oplus E)$ be a section disjoint from $H$.
+  Denote by $\sigma' \from Y \to P'$ the section obtained from $\sigma$ by composing with the the blow-up and blow-down rational map $\beta \from P \dashrightarrow P'$ (which is regular in a neighborhood of $\sigma(Y)$).
+  Then $\sigma' \subset P'$ is disjoint from $\widetilde H \subset P'$.
+  Therefore, $P' \setminus \widetilde H$ is the total space of a vector bundle.
+  To identify this bundle, consider the map
+  $$N_{\sigma(Y) / P} \xrightarrow{d\beta} N_{\sigma'(Y)/P'},$$
+  which is an isomorphism on $Y \setminus S$ and identically zero when restricted to $S$.
+  A simple local computation shows that, the cokernel is supported scheme-theoretically on $S \subset Y$.
+  Therefore, we have an isomorphism
+  $$ N_{\sigma(Y) / P} \otimes \O_Y(S) \simeq N_{\sigma'(Y)/P'}.$$
+  Therefore, we conclude that the complement of $H'$ in $P'$ the total space of $E' = E \otimes \O_Y(S)$.</p>
+<p>  Note that $X'$ and $\widetilde H$ remain disjoint in $P'$, and hence we get an embedding $X' \subset E'$.
+  <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a> implies that $X' \subset E'$ is the canonical affine embedding.</p>
+<p>  Next, note that we have an injection
+  $$ N_{X'/\widetilde{P}} \to N_{X'/E'} $$
+  with finite quotient, supported on $\bigcup_{y \in S} X' \cap P_y$.
+  Since $H^1(N_{X'/\widetilde{P}}) = 0$, we get $H^1(N_{X'/E'}) = 0$.</p>
+<p>  Finally, by the last assertion of <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a>, we may take $\O_Y(S)$ to be any prescribed line bundle of degree $n$ if $n$ is large enough.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — 3.2. Smoothing out">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/section/S3.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

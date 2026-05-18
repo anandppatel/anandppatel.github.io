@@ -150,6 +150,11 @@ def parse_citations(meta, tex_dir):
             short_label = m.group(1)
             key = m.group(2)
             citations[key] = clean_bib_label(short_label)
+        if citations:
+            return citations
+
+        for idx, m in enumerate(re.finditer(r'\\bibitem\{([^}]*)\}', bbl), start=1):
+            citations[m.group(1)] = str(idx)
         return citations
 
     return {}
@@ -162,40 +167,141 @@ def clean_bib_label(label):
     return label
 
 
+def extract_latex_command_bodies(tex_source, command):
+    """Return braced bodies for \\command{...}, allowing nested braces."""
+    bodies = []
+    needle = "\\" + command
+    pos = 0
+    while True:
+        start = tex_source.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        while i < len(tex_source) and tex_source[i].isspace():
+            i += 1
+        if i >= len(tex_source) or tex_source[i] != "{":
+            pos = i
+            continue
+        body_start = i + 1
+        depth = 1
+        i = body_start
+        while i < len(tex_source) and depth:
+            if tex_source[i] == "{":
+                depth += 1
+            elif tex_source[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            bodies.append(tex_source[body_start:i - 1].strip())
+        pos = i
+    return bodies
+
+
+def clean_latex_metadata(text):
+    """Lightweight cleanup for title/author strings displayed as HTML."""
+    text = re.sub(r'\s+', ' ', text).strip()
+    text = text.replace(r'\&', '&')
+    text = text.replace(r'\and', ', ')
+    text = text.replace(' ,', ',')
+    return text
+
+
+def strip_html(text):
+    """Plain-text version of generated HTML fragments for titles/attributes."""
+    text = re.sub(r'<[^>]+>', '', str(text))
+    text = text.replace('&nbsp;', ' ')
+    return html_mod.unescape(text)
+
+
+def html_attr(text):
+    return html_mod.escape(strip_html(text), quote=True)
+
+
+def normalize_source_aliases(body):
+    """Normalize simple section aliases used in some arXiv sources."""
+    alias_pairs = (
+        (r'\ssec', r'\subsection'),
+        (r'\sssec', r'\subsubsection'),
+    )
+    for alias, target in alias_pairs:
+        if (
+            re.search(r'\\(?:new|renew|provide)command\s*\{?' + re.escape(alias) + r'\}?\s*\{?' + re.escape(target) + r'\}?', body)
+            or alias in body
+        ):
+            body = body.replace(alias + "{", target + "{")
+    return body
+
+
 # ============================================================
 # LATEX PARSER
 # ============================================================
 
 ENV_TYPES = {
     "theorem": "Theorem",
+    "thm": "Theorem",
+    "thm*": "Theorem",
+    "maintheorem": "Theorem",
+    "thm-defn": "Theorem/Definition",
     "lemma": "Lemma",
+    "lem": "Lemma",
     "definition": "Definition",
+    "defn": "Definition",
     "commentary": "Commentary",
     "proof": "Proof",
     "proposition": "Proposition",
+    "prop": "Proposition",
     "corollary": "Corollary",
+    "cor": "Corollary",
     "remark": "Remark",
+    "rmk": "Remark",
     "question": "Question",
     "example": "Example",
+    "eg": "Example",
     "claim": "Claim",
+    "calc": "Calculation",
+    "fact": "Fact",
+    "notn": "Notation",
+    "warn": "Warning",
+    "prob": "Problem",
     "problem": "Problem",
     "assumption": "Assumption",
+    "conjecture": "Conjecture",
+    "conj": "Conjecture",
+    "construction": "Construction",
 }
 
 # Map envName to CSS class
 ENV_CSS = {
     "theorem": "stacks-theorem",
+    "thm": "stacks-theorem",
+    "thm*": "stacks-theorem",
+    "maintheorem": "stacks-theorem",
+    "thm-defn": "stacks-theorem",
     "lemma": "stacks-lemma",
+    "lem": "stacks-lemma",
     "proposition": "stacks-lemma",
+    "prop": "stacks-lemma",
     "corollary": "stacks-lemma",
+    "cor": "stacks-lemma",
     "definition": "stacks-definition",
+    "defn": "stacks-definition",
     "commentary": "stacks-commentary",
     "remark": "stacks-commentary",
+    "rmk": "stacks-commentary",
     "question": "stacks-env",
     "example": "stacks-env",
+    "eg": "stacks-env",
     "claim": "stacks-env",
+    "calc": "stacks-env",
+    "fact": "stacks-env",
+    "notn": "stacks-env",
+    "warn": "stacks-commentary",
+    "prob": "stacks-env",
     "problem": "stacks-env",
     "assumption": "stacks-env",
+    "conjecture": "stacks-env",
+    "conj": "stacks-env",
+    "construction": "stacks-env",
     "proof": "stacks-proof",
 }
 
@@ -203,15 +309,22 @@ ENV_CSS = {
 def parse_tex(tex_source):
     """Parse a skeletal .tex file into a structured document dict."""
 
-    title_m = re.search(r'\\title\{([^}]+)\}', tex_source)
-    author_m = re.search(r'\\author\{([^}]+)\}', tex_source)
-    title = title_m.group(1) if title_m else "Untitled"
-    author = author_m.group(1) if author_m else "Unknown"
+    title_bodies = extract_latex_command_bodies(tex_source, "title")
+    author_bodies = extract_latex_command_bodies(tex_source, "author")
+    title = clean_latex_metadata(title_bodies[0]) if title_bodies else "Untitled"
+    authors = []
+    for author_body in author_bodies:
+        author_text = clean_latex_metadata(author_body)
+        if author_text and author_text not in authors:
+            authors.append(author_text)
+    author = ", ".join(authors) if authors else "Unknown"
 
     body_m = re.search(r'\\begin\{document\}(.*?)\\end\{document\}', tex_source, re.DOTALL)
     if not body_m:
         raise ValueError("Cannot find \\begin{document}...\\end{document}")
     body = body_m.group(1)
+
+    body = normalize_source_aliases(body)
 
     # Strip LaTeX comments (lines starting with %)
     body = re.sub(r'(?m)^\s*%.*$', '', body)
@@ -233,6 +346,8 @@ def parse_tex(tex_source):
     body = re.sub(r'\\begin\{thebibliography\}.*?\\end\{thebibliography\}', '', body, flags=re.DOTALL)
 
     equation_labels = parse_equation_labels(body)
+    auxiliary_labels = parse_auxiliary_labels(body)
+    custom_labels = parse_custom_labels(body)
     sections, section_labels = parse_sections(body)
 
     return {
@@ -241,18 +356,72 @@ def parse_tex(tex_source):
         "sections": sections,
         "section_labels": section_labels,
         "equation_labels": equation_labels,
+        "auxiliary_labels": auxiliary_labels,
+        "custom_labels": custom_labels,
     }
 
 
 def parse_equation_labels(body):
     """Find numbered equation labels before TeX fragments are HTML-converted."""
     labels = {}
-    number = 0
-    for m in re.finditer(r'\\begin\{equation\}(.*?)\\end\{equation\}', body, re.DOTALL):
-        number += 1
-        label_m = re.search(r'\\label\{([^}]+)\}', m.group(1))
-        if label_m:
-            labels[label_m.group(1)] = str(number)
+    sec_pattern = r'\\section\*?\{((?:[^{}]|\{[^{}]*\})*)\}'
+    sec_splits = re.split(sec_pattern, body)
+    equation_pattern = re.compile(
+        r'\\begin\{(equation|align|eqnarray|gather|multline)\}(.*?)\\end\{\1\}',
+        re.DOTALL,
+    )
+    if len(sec_splits) == 1:
+        sec_splits = ["", "", body]
+    for sec_idx in range(1, len(sec_splits), 2):
+        sec_num = (sec_idx + 1) // 2
+        sec_content = sec_splits[sec_idx + 1] if sec_idx + 1 < len(sec_splits) else ""
+        number = 0
+        for m in equation_pattern.finditer(sec_content):
+            number += 1
+            for label_m in re.finditer(r'\\label\{([^}]+)\}', m.group(2)):
+                labels[label_m.group(1)] = f"{sec_num}.{number}"
+    return labels
+
+
+def parse_custom_labels(body):
+    r"""Find labels created with \customlabel{key}{shown-value}."""
+    labels = {}
+    for m in re.finditer(r'\\customlabel\{([^}]+)\}\{([^}]+)\}', body):
+        labels[m.group(1)] = tex_to_html(m.group(2))
+    return labels
+
+
+def parse_auxiliary_labels(body):
+    """Find non-theorem labels for figures, tables, and list items."""
+    labels = {}
+
+    for env_name, env_type in (("figure", "Figure"), ("table", "Table")):
+        pattern = re.compile(
+            r'\\begin\{' + env_name + r'\*?\}(.*?)\\end\{' + env_name + r'\*?\}',
+            re.DOTALL,
+        )
+        number = 0
+        for m in pattern.finditer(body):
+            number += 1
+            for label_m in re.finditer(r'\\label\{([^}]+)\}', m.group(1)):
+                labels[label_m.group(1)] = {"number": str(number), "envType": env_type}
+
+    enum_pattern = re.compile(r'\\begin\{enumerate\}(.*?)\\end\{enumerate\}', re.DOTALL)
+    for enum in enum_pattern.finditer(body):
+        pieces = re.split(r'\\item(?:\[([^\]]*)\])?', enum.group(1))
+        item_number = 0
+        idx = 1
+        while idx < len(pieces):
+            optional_label = pieces[idx]
+            item_content = pieces[idx + 1] if idx + 1 < len(pieces) else ""
+            item_number += 1
+            custom = re.search(r'\\customlabel\{([^}]+)\}\{([^}]+)\}', optional_label or "")
+            if custom:
+                labels[custom.group(1)] = {"number": tex_to_html(custom.group(2)), "envType": "Item"}
+            for label_m in re.finditer(r'\\label\{([^}]+)\}', item_content):
+                labels[label_m.group(1)] = {"number": str(item_number), "envType": "Item"}
+            idx += 2
+
     return labels
 
 
@@ -264,6 +433,27 @@ def parse_sections(body):
     sec_splits = re.split(sec_pattern, body)
 
     section_labels = {}  # label -> {"number": "2", "title": "..."} etc.
+
+    theorem_label_prefixes = (
+        'theorem:', 'lemma:', 'proposition:', 'corollary:',
+        'definition:', 'remark:', 'example:', 'claim:',
+        'problem:', 'question:', 'proof:', 'assumption:',
+        'commentary:', 'cor:', 'prop:', 'thm:', 'def:',
+        'lem:', 'conj:', 'conjecture:',
+    )
+
+    def collect_heading_labels(text, base_number):
+        subsub_pattern = re.compile(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}')
+        for idx, hm in enumerate(subsub_pattern.finditer(text), start=1):
+            title = hm.group(1).strip()
+            label_region = text[hm.end():hm.end() + 300]
+            label_m = re.search(r'\\label\{([^}]+)\}', label_region)
+            if label_m:
+                section_labels[label_m.group(1)] = {
+                    "number": f"{base_number}.{idx}",
+                    "title": title,
+                }
+
     sections = []
     sec_num = 0
     for i in range(1, len(sec_splits), 2):
@@ -279,12 +469,9 @@ def parse_sections(body):
         pre_raw = sub_splits[0]
         for lm in re.finditer(r'\\label\{([^}]+)\}', pre_raw[:300]):
             label = lm.group(1)
-            if not any(label.startswith(p) for p in
-                       ['theorem:', 'lemma:', 'proposition:', 'corollary:',
-                        'definition:', 'remark:', 'example:', 'claim:',
-                        'problem:', 'question:', 'proof:', 'assumption:',
-                        'commentary:', 'cor:', 'prop:', 'thm:', 'def:']):
+            if not any(label.startswith(p) for p in theorem_label_prefixes):
                 section_labels[label] = {"number": str(sec_num), "title": sec_title}
+        collect_heading_labels(pre_raw, str(sec_num))
         pre_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', pre_raw)
 
         subsections = []
@@ -297,12 +484,9 @@ def parse_sections(body):
             # Extract subsection labels from the beginning of content
             for lm in re.finditer(r'\\label\{([^}]+)\}', sub_content[:300]):
                 label = lm.group(1)
-                if not any(label.startswith(p) for p in
-                           ['theorem:', 'lemma:', 'proposition:', 'corollary:',
-                            'definition:', 'remark:', 'example:', 'claim:',
-                            'problem:', 'question:', 'proof:', 'assumption:',
-                            'commentary:', 'cor:', 'prop:', 'thm:', 'def:']):
+                if not any(label.startswith(p) for p in theorem_label_prefixes):
                     section_labels[label] = {"number": f"{sec_num}.{sub_num}", "title": sub_title}
+            collect_heading_labels(sub_content, f"{sec_num}.{sub_num}")
             # Remove section/subsection labels from content
             sub_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', sub_content)
 
@@ -426,15 +610,19 @@ def _parse_tex_blocks(content, blocks, sec_num):
         end_tag = '\\end{' + env_name + '}'
         env_body = content[body_start:body_end_after - len(end_tag)].strip()
 
-        # Extract \label{...} from the environment body — only if it
-        # appears before any nested \begin{...} (labels inside nested
-        # environments will be caught during recursive parsing)
+        # Extract the environment's own \label{...}.  It should occur near
+        # the beginning of the environment; labels inside equations,
+        # figures, tables, or list items belong to those objects instead.
         label = None
-        first_begin = begin_pattern.search(env_body)
-        search_region = env_body[:first_begin.start()] if first_begin else env_body
+        first_begin_any = re.search(r'\\begin\{', env_body)
+        search_region = env_body[:first_begin_any.start()] if first_begin_any else env_body[:300]
         label_m = None
+        non_env_label_prefixes = (
+            "eq:", "eqn:", "equation:", "fig:", "figure:",
+            "tab:", "table:", "item", "condition:", "criteria:",
+        )
         for candidate in re.finditer(r'\\label\{([^}]+)\}', search_region):
-            if not candidate.group(1).startswith("eq:"):
+            if not candidate.group(1).startswith(non_env_label_prefixes):
                 label_m = candidate
                 break
         if label_m:
@@ -496,6 +684,7 @@ def tex_to_html(tex):
 
     # Text macros from the source preamble which are not MathJax macros.
     s = s.replace('\\Aletheia', '<em>Aletheia</em>')
+    s = re.sub(r'\\texorpdfstring\{((?:[^{}]|\{[^{}]*\})*)\}\{(?:[^{}]|\{[^{}]*\})*\}', r'\1', s)
 
     # --- Block-level environments (before inline processing) ---
 
@@ -628,8 +817,11 @@ def tex_to_html(tex):
                itemize_replace, s, flags=re.DOTALL)
 
     # \subsubsection{...} → inline heading
-    s = re.sub(r'\\subsubsection\{((?:[^{}]|\{[^{}]*\})*)\}',
+    s = re.sub(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}',
                r'<h3 class="stacks-subsections-heading">\1</h3>', s)
+
+    # \customlabel{key}{shown-value} should display just its shown value.
+    s = re.sub(r'\\customlabel\{[^}]+\}\{([^}]+)\}', r'\1', s)
 
     # \footnote{...} → parenthetical note
     s = re.sub(r'\\footnote\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
@@ -740,6 +932,18 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
             "number": number,
             "envType": "Equation",
         }
+    for label, info in paper.get("auxiliary_labels", {}).items():
+        label_map[label] = {
+            "tag": "",
+            "number": info["number"],
+            "envType": info["envType"],
+        }
+    for label, number in paper.get("custom_labels", {}).items():
+        label_map[label] = {
+            "tag": "",
+            "number": number,
+            "envType": "Item",
+        }
     env_counter = {}  # per-section counters for theorem-like envs
     all_envs = []  # ordered list of all tagged environments
 
@@ -816,6 +1020,20 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
             return f"{env_type}&nbsp;{number}" if number else env_type
         return number if number else env_type
 
+    def format_unresolved_ref(label, include_type=False):
+        """Readable fallback for labels outside the generated tag universe."""
+        prefixes = (
+            (("fig:", "figure:"), "Figure"),
+            (("tab:", "table:"), "Table"),
+            (("sec:", "section:", "subsec:", "subsection:", "ssec:", "sssec:"), "Section"),
+            (("eq:", "eqn:", "equation:"), "Equation"),
+            (("item", "condition:", "criteria:"), "Item"),
+        )
+        for starts, env_type in prefixes:
+            if label.startswith(starts):
+                return f"{env_type}&nbsp;{html_mod.escape(label)}" if include_type else html_mod.escape(label)
+        return html_mod.escape(label)
+
     def resolve_ref_list(labels, include_type=False):
         parts = []
         for raw_label in labels.split(","):
@@ -823,7 +1041,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
             if label in label_map:
                 parts.append(display_ref(label_map[label], include_type=include_type))
             else:
-                parts.append(f"??{label}")
+                parts.append(format_unresolved_ref(label, include_type=include_type))
         if len(parts) <= 1:
             return "".join(parts)
         return ", ".join(parts[:-1]) + ", and " + parts[-1]
@@ -841,7 +1059,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
                 info = label_map[label]
                 number = info["number"]
                 return f"({number})" if number else "(?)"
-            return "(?)"
+            return f"({html_mod.escape(label)})"
 
         # Process \Cref before \ref to avoid partial matches
         text = re.sub(r'\\Cref\{([^}]+)\}', cref_replacer, text)
@@ -861,6 +1079,9 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
                 resolve_blocks(block["children"])
 
     for sec in paper["sections"]:
+        sec["title"] = resolve_refs(tex_to_html(sec["title"]), refs_include_type=True)
+        for sub in sec["subsections"]:
+            sub["title"] = resolve_refs(tex_to_html(sub["title"]), refs_include_type=True)
         resolve_blocks(sec["blocks"])
         for sub in sec["subsections"]:
             resolve_blocks(sub["blocks"])
@@ -932,6 +1153,7 @@ def mathjax_macros_js(macros):
 
 def head(title, paper_title, depth=0, macros=None):
     prefix = "../" * depth
+    document_title = html_attr(f"{title} — {paper_title}")
     macro_block = ""
     if macros:
         macro_js = mathjax_macros_js(macros)
@@ -942,7 +1164,7 @@ def head(title, paper_title, depth=0, macros=None):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} &mdash; {paper_title}</title>
+  <title>{document_title}</title>
   <link rel="stylesheet" href="{prefix}../../style.css">
   <link rel="stylesheet" href="{prefix}stacks.css">
   <script>
@@ -1044,6 +1266,8 @@ def render_block(block, depth=0):
 
 
 def comment_form(page_label, return_url, paper_title):
+    subject = html_attr(f"Comment on {paper_title} — {page_label}")
+    next_url = html_mod.escape(return_url, quote=True)
     return f"""
 <hr>
 <div class="stacks-comments">
@@ -1053,8 +1277,8 @@ def comment_form(page_label, return_url, paper_title):
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/{FORMSUBMIT_EMAIL}" method="POST">
-      <input type="hidden" name="_subject" value="Comment on {paper_title} &mdash; {page_label}">
-      <input type="hidden" name="_next" value="{return_url}">
+      <input type="hidden" name="_subject" value="{subject}">
+      <input type="hidden" name="_next" value="{next_url}">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
@@ -1239,6 +1463,7 @@ def compile_paper(tex_path):
         env_type = env["envType"]
         number = env.get("number", "")
         label_text = f"{env_type}" + (f" {number}" if number else "")
+        plain_label_text = strip_html(label_text)
 
         # Find parent section/subsection
         parent_sec = None
@@ -1262,9 +1487,9 @@ def compile_paper(tex_path):
             bc_items.append((
                 f'{parent_sub["number"]}. {parent_sub["title"]}',
                 f'section/{parent_sub["id"]}.html'))
-        bc_items.append((f'{label_text} ({tag})', None))
+        bc_items.append((f'{plain_label_text} ({tag})', None))
 
-        tag_html = head(f'{label_text} ({tag})', paper["title"], depth=1, macros=macros)
+        tag_html = head(f'{plain_label_text} ({tag})', paper["title"], depth=1, macros=macros)
         tag_html += nav_bar(paper["author"], paper["title"], depth=1)
         tag_html += breadcrumb_html(bc_items, depth=1)
         tag_html += '<main class="stacks-main">\n'
@@ -1274,19 +1499,19 @@ def compile_paper(tex_path):
         if idx > 0:
             pt = all_envs[idx - 1]
             pn = pt.get("number", "")
-            nav_links += f'<a href="{pt["tag"]}.html">&laquo; {pt["envType"]} {pn}</a>'
+            nav_links += f'<a href="{pt["tag"]}.html">&laquo; {strip_html(pt["envType"])} {pn}</a>'
         nav_links += f'<span class="stacks-tag-current">Tag {tag}</span>'
         if idx < len(all_envs) - 1:
             nt = all_envs[idx + 1]
             nn = nt.get("number", "")
-            nav_links += f'<a href="{nt["tag"]}.html">{nt["envType"]} {nn} &raquo;</a>'
+            nav_links += f'<a href="{nt["tag"]}.html">{strip_html(nt["envType"])} {nn} &raquo;</a>'
         nav_links += '</div>\n'
         tag_html += nav_links
 
         tag_html += render_block(env, depth=1)
 
         tag_html += comment_form(
-            f'Tag {tag} ({label_text})',
+            f'Tag {tag} ({plain_label_text})',
             f'{base_url}/tag/{tag}.html',
             paper["title"])
         tag_html += '</main>\n' + footer_html(arxiv_id)

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 1 — Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          MM: "\\mathcal M",
+          BM: "\\overline{\\mathcal M}",
+          TMM: "\\widetilde{\\mathcal M}",
+          BMg: "\\overline{\\mathcal M}_{g}",
+          Mg: "\\mathcal M_g",
+          PP: "\\mathbb P",
+          QQ: "\\mathcal Q",
+          BH: "\\overline{H}",
+          CC: "\\mathcal C",
+          EE: "\\mathcal E",
+          kk: "{\\boldsymbol\\kappa}",
+          OO: "\\mathcal O",
+          ch: "\\mbox{ch}",
+          td: "\\mbox{td}",
+          RR: "\\mathbb R",
+          HH: "\\mathcal H",
+          II: "\\mathcal I",
+          LL: "\\mathcal L",
+          JJ: "\\mathcal J",
+          TM: "\\widetilde{M}",
+          Hg: "\\overline{H}_g",
+          BS: "\\overline{S}",
+          divisor: "\\operatorname{div}",
+          eff: "\\operatorname{eff}",
+          Eff: "\\operatorname{Eff}",
+          BEff: "\\overline{\\operatorname{Eff}}",
+          XX: "\\mathcal X",
+          hyp: "\\operatorname{hyp}",
+          topo: "\\operatorname{top}",
+          even: "\\operatorname{even}",
+          odd: "\\operatorname{odd}",
+          other: "\\operatorname{other}",
+          nh: "\\operatorname{non-hyp}",
+          ws: "\\operatorname{ws}",
+          wt: "\\widetilde",
+          nonws: "\\operatorname{non-ws}",
+          nonhyp: "\\operatorname{non-hyp}",
+          PGL: "\\operatorname{PGL}",
+          irr: "\\operatorname{irr}",
+          Jac: "\\operatorname{Jac}",
+          reg: "\\operatorname{reg}",
+          red: "\\operatorname{red}",
+          Pic: "\\operatorname{Pic}",
+          Bl: "\\operatorname{Bl}",
+          bbC: "\\mathbb C",
+          bbE: "\\mathbb E",
+          bbF: "\\mathbb F",
+          rank: "\\operatorname{rank}",
+          chern: "\\operatorname{ch}",
+          bbP: "\\mathbb P",
+          bbS: "\\mathbb S",
+          bbQ: "\\mathbb Q",
+          bbR: "\\mathbb R",
+          bbZ: "\\mathbb Z",
+          sm: "\\operatorname{sm}",
+          SL: "\\operatorname{SL}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Dawei Chen, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 1. Introduction</h1>
+<p class="stacks-para">Let $\BM_{g,n}$ be the Deligne-Mumford moduli space of stable genus $g$ curves with $n$ ordered marked points. Denote by $\BEff(\BM_{g,n})$ the cone
+of pseudoeffective divisors on $\BM_{g,n}$. Understanding the structure of $\BEff(\BM_{g,n})$ plays a central role in the study of the birational geometry
+of $\BM_{g,n}$, see e.g.&nbsp;\cite{HarrisMumfordKodaira, HarrisKodaira, EisenbudHarrisKodaira, FarkasKoszul, LoganKodaira, Vermeire, CastravetTevelev}.</p>
+<p class="stacks-para">In \cite[Theorem 1.1]{ChenCoskun}, it was shown that there exist infinitely many extremal effective divisors in $\BM_{1,n}$ for each $n\geq 3$. It provides the first (and the only) known example of $\BM_{g,n}$ whose pseudoeffective cone is <em>not</em> finitely generated. Recall the definition of those divisors. Let $<strong>a</strong> = (a_1, \ldots, a_n)$ be a collection of $n$ integers satisfying that $\sum_{i=1}^n a_i = 0$, not all equal to zero. Define $D_<strong>a</strong>$ in $\BM_{1,n}$ as the closure of the divisorial locus parameterizing smooth genus one curves with $n$ ordered marked points $(E; p_1, \ldots, p_n)$ such that $\sum_{i=1}^n a_i p_i \sim 0$ in $E$. For $n\geq 3$ and $\gcd (a_1, \ldots, a_n) = 1$, $D_<strong>a</strong>$ spans an extremal ray
+of $\BEff(\BM_{1,n})$.</p>
+<p class="stacks-para">A natural question is <em>whether the $D_<strong>a</strong>$ (and the boundary components) span all (rational) extremal rays of $\BEff(\BM_{1,n})$</em>? This is a meaningful question and one might expect an affirmative answer, as we explain in the following example. Consider the abelian surface
+$E\times E$, where $E$ is a general smooth elliptic curve with $p_0$ as the origin. Take $a_1, a_2 \in \bbZ$ such that they are relatively prime. Consider the locus
+$$C = \{(p_1, p_2)\in E\times E\ | \ a_1 p_1 + a_2 p_2 \sim (a_1+a_2)p_0 \}.$$
+We know that $C$ spans an extremal ray
+of $\BEff(E\times E)$. Moreover, all (rational) extremal rays of $\BEff(E\times E)$ are spanned by such $C$, see \cite[II 4.16]{Kollar}.
+Note that $C$ is an analogue of $D_<strong>a</strong>$ with $<strong>a</strong> = (a_1, a_2, -a_1 - a_2)$ when we fix the moduli of a genus one curve with three marked points.</p>
+<p class="stacks-para">Nevertheless, the main result of this paper shows that the above question has a negative answer.</p>
+<div class="stacks-theorem" id="thm-main">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/2EE8.html" class="stacks-tag-link">(2EE8)</a></div>
+  <div class="stacks-env-body"><p>For every $n\geq 6$, there exist extremal effective divisors in $\BM_{1,n}$ that are different from the $D_<strong>a</strong>$'s.</p></div>
+</div>
+<p class="stacks-para">See Theorems&nbsp;<a href="/papers/extremal-effective-divisors/tag/ED28.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[ED28]</span></a>, <a href="/papers/extremal-effective-divisors/tag/A036.html" class="stacks-ref-link">4.4 <span class="stacks-ref-tag">[A036]</span></a> and <a href="/papers/extremal-effective-divisors/tag/1822.html" class="stacks-ref-link">5.4 <span class="stacks-ref-tag">[1822]</span></a> for a more precise statement.</p>
+<p class="stacks-para">Let us explain our method. For a stable genus one curve with $2m$ marked points $(E; p_1, \ldots, p_{2m})$, identify
+$p_{2i-1}$ and $p_{2i}$ as a node for $i= 1, \ldots, m$. We thus obtain an $m$-nodal curve of
+arithmetic genus $m+1$. It induces a gluing morphism $\pi: \BM_{1, 2m}\to \BM_{m+1}$. We will show that pulling back certain divisors of Brill-Noether and Gieseker-Petri type by $\pi$ gives rise to extremal effective divisors
+different from the $D_<strong>a</strong>$'s. To verify extremality, we exhibit a moving curve in (the main component of) the pullback divisor such that the curve has negative intersection number with the divisor. This idea was also used in \cite{OpieExtremal} to construct extremal effective divisors in $\BM_{0,n}$ that are different from the hypertree divisors in \cite{CastravetTevelev}.</p>
+<p class="stacks-para">The paper is organized as follows. In Section&nbsp;2, we review basic divisor theory of $\BM_{g,n}$ and carry out the calculation of
+pulling back divisor classes under the gluing map $\pi: \BM_{1,2m}\to \BM_{m+1}$. In Section&nbsp;3, we verify the extremality of the main component of the pullback
+of the Brill-Noether trigonal divisor. In Section&nbsp;4, we study the pullback of Brill-Noether $d$-gonal divisors for general $d$ and show that their main components are extremal. Finally, in Section&nbsp;5 we study the pullback of the Gieseker-Petri divisor from $\BM_{4}$ and show that its main component is extremal.</p>
+<p class="stacks-para">\subsection*{Acknowledgements} We would like to thank Gabriel Bujokas, Ana-Maria Castravet,
+Izzet Coskun, Anand Deopurkar, Maksym Fedorchuk, Joe Harris and Jenia Tevelev for valuable discussions related to this paper.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$ — Section 1: Introduction">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/extremal-effective-divisors/section/S1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1407.4877">arXiv:1407.4877</a>
+  </div>
+</footer>
+</body>
+</html>

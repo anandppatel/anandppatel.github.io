@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2. Verification of the conjecture in low degrees — Complete families of generic covers of elliptic curves</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          P: "\\mathbb{P}",
+          k: "\\mathscr{k}",
+          Q: "\\mathbb{Q}",
+          O: "\\mathcal{O}",
+          HdgX: "\\mathsf{Hur}_{d,g}(X)",
+          HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
+          from: "\\colon",
+          C: "\\mathsf{C}",
+          Mgbar: "\\overline{\\mathcal{M}}_{g}",
+          Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
+          Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
+          St: "\\mathsf{Hur}_{d,g}^{\\Diamond}(X)",
+          Vrps: "\\mathsf{Vect}^{\\mathsf{rps}}",
+          Hur: ["\\mathsf{Hur}_{#1,#2}", 2],
+          Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
+          Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
+          Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
+          A: "\\operatorname{\\mathbf{A}}",
+          Spec: "\\operatorname{Spec}",
+          Hom: "\\operatorname{Hom}",
+          PGL: "\\operatorname{PGL}",
+          Hilb: "\\operatorname{Hilb}",
+          I: "\\operatorname{\\mathcal{I}}",
+          Pic: "\\operatorname{Pic}",
+          Aut: "\\operatorname{Aut}",
+          rk: "\\operatorname{rk}",
+          Thin: "\\operatorname{\\mathsf{Thin}}",
+          spec: "\\operatorname{Spec \\,}",
+          Bl: "\\operatorname{Bl}",
+          ch: "\\operatorname{ch}",
+          Sym: "\\operatorname{Sym}",
+          Gm: "\\operatorname{\\mathbb{G}_{m}}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
+          s: "\\operatorname{\\mathsf{sq}}",
+          Proj: "\\operatorname{Proj}",
+          G: "\\operatorname{\\mathbb{G}}",
+          Fin: "\\operatorname{\\mathsf{Fin}}",
+          Lin: "\\operatorname{\\mathsf{Lin}}",
+          Inc: "\\operatorname{\\mathsf{Inc}}",
+          univ: "\\operatorname{\\mathsf{univ}}",
+          E: "\\operatorname{\\mathsf{E}}",
+          V: "\\operatorname{\\mathsf{Vect}}",
+          codim: "\\operatorname{codim}",
+          Supp: "\\operatorname{Supp}",
+          F: "\\operatorname{\\mathbf{F}}",
+          Bog: "\\operatorname{Bog}",
+          m: "\\operatorname{\\mathfrak{m}}",
+          ord: "\\operatorname{ord}",
+          GL: "\\operatorname{GL}",
+          length: "\\operatorname{length}",
+          pt: "\\operatorname{\\mathsf{pt}}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Complete families of generic covers of elliptic curves</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Evidence for the conjectures</a> / <span>3.2. Verification of the conjecture in low degrees</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.2. Verification of the conjecture in low degrees</h1>
+<p class="stacks-para">Our next goal is to verify <a href="/papers/complete-families-generic-covers/tag/2541.html" class="stacks-ref-link">Conjecture&nbsp;2.10 <span class="stacks-ref-tag">[2541]</span></a> for $d \leq 5$. The main tool we will use is the well-known parametrization of moduli spaces of covers of low degrees. We reference the fundamental papers of Casnati and Ekedahl here: [CE+96], [C+96].</p>
+<div class="stacks-theorem" id="theorem-trigonal">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.12.</strong> <a href="../tag/09DD.html" class="stacks-tag-link">(09DD)</a></div>
+  <div class="stacks-env-body"><p><ol><li>Choose a general polystable bundle $\mathcal{E}$ of rank $2$ and degree $g-1$ on $X$. In the surface scroll $\P \mathcal{E}$, choose a general line $B$ in the projective space $\P (H^{0}(X, \Sym^{3} \mathcal{E} \otimes (\det \mathcal{E})^{\vee}))$.  Then $B$ defines a complete, moving curve in $\Hurfixedstable{3}{g}(X)$.</li>
+<li>Choose a general polystable bundle $E$ of rank $3$ and degree $g-1$ on $(X,x)$ with determinant $(g-1)x$, and then choose a general polystable rank $2$ vector bundle $\mathcal{F}$ on $X$ with $\det \mathcal{F} = \det E$. A general pencil $B$ in the projective space $\P (H^{0}(X, \Sym^{2}\mathcal{E} \otimes \mathcal{F}^{\vee}))$ defines a complete, moving curve in $\Hurfixedstable{4}{g}(X)$.</li>
+<li>Choose a general polystable bundle $\mathcal{E}$ of rank $4$ and degree $g-1$ on $X$ with determinant $(g-1)x$, and then choose a general polystable bundle $\mathcal{F}$ of rank $5$ satisfying $\det \mathcal{F} = (\det \mathcal{E})^{\otimes 2}$. A general pencil $B$ in  $\P (H^{0}(X, \wedge^{2} \mathcal{F} \otimes \mathcal{E} \otimes (\det \mathcal{E})^{\vee}))$ defines a complete, moving curve in $\Hurfixedstable{5}{g}(X)$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5DBA.html" class="stacks-tag-link">(5DBA)</a></div>
+  <div class="stacks-env-body"><p><ol><li>The pencil $B$ can be interpreted as a linear map $$\lambda: \P^{1} \to \P (H^{0}(X, \Sym^{3} \mathcal{E} \otimes (\det \mathcal{E})^{\vee})).$$ We may interpret $\lambda$ as a strict injection $$\O_{\P^{1}}(-1) \hookrightarrow \Sym^{3} \mathcal{E} \otimes (\det \mathcal{E})^{\vee}.$$ But this, in turn, can be interpreted as a single section  $$t \in H^{0}\left( X \times \P^{1}, \Sym^{3} (\mathcal{E'}) \otimes (\det \mathcal{E'})^{\vee} \right)$$ where $\mathcal{E}'$ is short for $\mathcal{E} \boxtimes \O_{\P^{1}}(1)$.  Conversely, a general section $t$ can be interpreted as coming from a pencil $B$, and so we obtain a general section $t$ in this way.  </p>
+<p>        The large $g$ assumption ensures that $\Sym^{3} (\mathcal{E'}) \otimes (\det \mathcal{E'})^{\vee}$ is globally generated, in fact even very ample.  It follows from Casnati and Ekedahl's Bertini-type theorems in [CE+96, C+96] that $t$ defines a smooth surface $S \subset \P \mathcal{E}'$ which is a triple cover of $X \times B$ with Tschirnhausen bundle $\mathcal{E}'$. The numerics of the initial bundle $\mathcal{E}$ ensures that the natural morphism $S \to \P^{1}$ is a family of arithmetic genus $g$ curves, with smooth general fiber.   </p>
+<p>        Furthermore, again as a consequence of the large $g$ condition, the set of elements of $\P (H^{0}(X, \mathcal{E}\otimes (\det \mathcal{E})^{\vee}))$ which define a worse-than-nodal curve in $\P \mathcal{E}$ has codimension at least $2$.  Therefore, a general pencil avoids this locus and so we obtain in this way a map $B \to \Hurstable{3}{g}(X)$ which is clearly moving.</li>
+<li>We proceed in much the same way as in the previous case. A general pencil $B \subset \P (\Sym^{2}\mathcal{E} \otimes \mathcal{F}^{\vee})$ can instead be interpreted as a single general global section $t$ of $\left( \Sym^{2} \mathcal{E} \otimes \mathcal{F}^{\vee} \right) \boxtimes \O_{\P^{1}}(1)$ on $X \times \P^{1}$.  Let $\mathcal{E}'$ and $\mathcal{F}'$ denote the bundles $\mathcal{E} \boxtimes \O_{\P^{1}}(2)$ and $\mathcal{F} \boxtimes \O_{\P^{1}}(3)$, respectively, on $X \times \P^{1}$.  Then $t$ is a general global section of $\Sym^{2} \mathcal{E}' \otimes (\mathcal{F}')^{\vee}$, and $\det \mathcal{E}' = \det \mathcal{F}'$. </p>
+<p>        The large $g$ condition ensures $\Sym^{2} \mathcal{E}' \otimes (\mathcal{F}')^{\vee}$ is globally generated. By Casnati and Ekedahl's Bertini-type theorems [CE+96, C+96], $t$ defines a smooth surface $S \subset \P \mathcal{E}'$, which is a degree $4$ branched cover of $X \times B$ with Tschirnhausen bundle $\mathcal{E}'$. The morphism $S \to B$ gives a family of arithmetic genus $g$ curves with smooth general fiber.</p>
+<p>        The positivity of $\Sym^{2}\mathcal{E} \otimes \mathcal{F}^{\vee}$ implies that the locus of elements in its projectivization defining worse-than-nodal curves has codimension at least $2$. So $B$ can be made to avoid this locus, and therefore $B$ defines a moving curve in $\Hurfixedstable{4}{g}(X)$.</li>
+<li>Proceed in parallel to the previous two cases, with the relevant bundles on $X \times \P^{1}$ being $\mathcal{E}' = \mathcal{E} \boxtimes \O_{\P^{1}}(5)$ and $\mathcal{F}' = \mathcal{F} \boxtimes \O_{\P^{1}}(8)$. We omit the repetitive details.</li></ol></p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Complete families of generic covers of elliptic curves — 3.2. Verification of the conjecture in low degrees">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/complete-families-generic-covers/section/S3.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+  </div>
+</footer>
+</body>
+</html>

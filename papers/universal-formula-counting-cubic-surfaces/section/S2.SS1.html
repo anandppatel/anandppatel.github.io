@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1. Notation and conventions — A universal formula for counting cubic surfaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          F: "\\mathbf F",
+          td: "\\widetilde",
+          V: "\\mathcal V",
+          cP: "\\mathcal P",
+          cC: "\\mathcal{C}",
+          cX: "\\mathcal{X}",
+          hL: "\\widehat{\\mathcal{L}}",
+          hpsi: "\\widehat{\\psi}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          hM: "\\widehat{\\M}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Orb: "\\operatorname{\\overline{Orb}}",
+          Polar: "\\operatorname{Polar}",
+          res: "\\operatorname{Res}",
+          Pole: "\\operatorname{Pole}",
+          Hilb: "\\operatorname{Hilb}",
+          Sing: "\\operatorname{Sing}",
+          M: "\\operatorname{\\mathcal{M}}",
+          mult: "\\operatorname{mult}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel & Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.1. Notation and conventions</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.1. Notation and conventions</h1>
+<p class="stacks-para">Fix an algebraically closed field $\k$ of characteristic zero.  In
+this paper, a `scheme' means `a scheme of finite type over $\k$' and a
+`point' means a `$\k$-point', unless explicitly stated otherwise.  We
+do not distinguish between a vector bundle and the associated locally
+free sheaf of its sections.</p>
+<p class="stacks-para">Given a map of schemes $\pi \colon X \to Y$ and a point $y \in Y$, we
+let $X_y$ denote the fiber scheme $\pi^{-1}(y)$.  If $\pi$ is proper
+and Gorenstein, we write $\omega_{X/Y}$ or $\omega_\pi$ for the
+dualizing line bundle.  If $X$ and $Y$ are themselves Gorenstein and
+$\pi$ is flat, then we have
+$\omega_{X/Y} = \omega_X \otimes \pi^*\omega_Y^{-1}$.</p>
+<p class="stacks-para">For a closed subscheme $Y \subset X$, the notation $\mathcal I_Y \subset \O_X$ denotes the ideal sheaf of $Y \subset X$ and if $Y$ and $X$ are smooth, then $N_{Y/X}$ denotes the normal bundle of $Y \subset X$.</p>
+<p class="stacks-para">Given a vector bundle $\mathcal W$, we let $\P \mathcal W$ be its
+projectivization.  Contrary to Grothendieck's convention,
+$\P \mathcal W$ parametrizes $1$-dimensional subspaces in the fibers
+of $\mathcal W$.  In other words, we set
+$$ \P \mathcal W = \Proj \Sym(\mathcal W^\vee).$$ As a result,
+$\P \mathcal W$ comes equipped with a line bundle $\O(1)$ whose
+push-forward to the base is $\mathcal W^\vee$.</p>
+<p class="stacks-para">Let $Q \subset \P V$ be a non-degenerate quadric.  The bilinear form
+associated to $Q$ gives an isomorphism of $\P V$ with the dual
+projective space $\P V^\vee$.  Given a point $p \in \P V$, we denote
+by $\Polar_Q(p) \subset \P V$ the hyperplane dual to $p$ with respect to
+$Q$. Similarly, given a hyperplane $H \subset \P V$, we denote by
+$\Pole_Q(H) \in \P V$ the point dual to $H$ with respect to $Q$.  In
+almost all cases, we use these constructions when $\P V$ is $\P^2$.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — 2.1. Notation and conventions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/section/S2.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+  </div>
+</footer>
+</body>
+</html>

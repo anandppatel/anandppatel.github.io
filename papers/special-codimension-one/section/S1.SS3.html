@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.  — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Invariants of a branched cover.</a> / <span>1.3. </span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.3. </h1>
+<p class="stacks-para">The bundles $\cE$ and $\cF$ are two bundles among a whole host of bundles naturally associated to a branched cover, as explained by a theorem of Casnati and Ekedahl.  We review this fundamental theorem here.</p>
+<p class="stacks-para">Let $X$ and $Y$ be integral schemes and $\alpha \from X \to Y$ a finite flat Gorenstein morphism of degree $d \geq 3$. The map $\alpha$ gives an exact sequence
+$$0 \to \cO_Y \to \alpha_* \cO_X \to {\cE_\alpha}^\vee \to 0,$$
+where $\cE = \cE_\alpha$ is a vector bundle of rank $(d-1)$ on $Y$, called the <em>Tschirnhausen bundle</em> of $\alpha$. Denote by $\omega_\alpha$ the dualizing sheaf of $\alpha$. Applying $Hom_Y(-,\cO_Y)$ to (1.3), we get
+$$0 \to \cE \to \alpha_* \omega_\alpha \to \cO_Y \to 0.$$
+The map $\cE \to \alpha_* \omega_\alpha$ induces a map $\alpha^* \cE \to \omega_\alpha$.</p>
+<div class="stacks-theorem" id="thm-CE">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.6.</strong> <a href="../tag/6A2D.html" class="stacks-tag-link">(6A2D)</a></div>
+  <div class="stacks-env-body"><p>[CE96, Theorem&nbsp;2.1]
+  In the setting above, $\alpha^* \cE \to \omega_\alpha$ gives an embedding $\iota \from X \to \P \cE$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P \cE \to Y$ is the projection. Moreover, the subscheme $X \subset \P \cE$ can be described as follows.
+<ol><li>The resolution of $\cO_X$ as an $\cO_{\P \cE}$-module has the form
+$$\begin{split}
+    0 \to \pi^* \cN_{d-2} (-d) \to \pi^* \cN_{d-3}(-d+2) \to \pi^*\cN_{d-4}(-d+3) \to \dots \\
+    \dots \to \pi^*\cN_2(-3) \to \pi^*\cN_1(-2) \to \cO_{\P \cE} \to \cO_X \to 0,
+  \end{split}$$
+where $\cN_i$ are vector bundles on $Y$. Restricted to a point $y \in Y$, this sequence is the minimal free resolution of length $d$, zero dimensional scheme $X_y \subset \P \cE_y\cong \P^{d-2}$.</li>
+<li>The ranks of the $\cN_i$ are given by
+  $$ \rk \cN_i = \frac{i(d-2-i)}{d-1} {d \choose {i+1}},$$</li>
+<li>We have $\cN_{d-2} \cong \pi^* \det \cE$. Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying $Hom_{\cO_{\P \cE}}(-, \cN_{d-2}(-d))$.</li></ol></p></div>
+</div>
+<p class="stacks-para">The branch divisor of $\alpha \from X \to Y$ is given by a section of $(\det \cE)^{\otimes 2}$. In particular, if $X$ is a curve of (arithmetic) genus $g$, $\alpha$ has degree $d$, and $Y = \P^1$, then
+$$\rk \cE = d-1 \,\, \text{and } \deg \cE = g+d-1.$$</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 1.3. ">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S1.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

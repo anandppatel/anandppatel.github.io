@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 5 — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 5: The maximal rank problem for maximally connected chains</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 5. The maximal rank problem for maximally connected chains</h1>
+<p class="stacks-para">The previous section demonstrated that <a href="/papers/invariants-branched-cover/tag/1415.html" class="stacks-ref-link">Claim&nbsp;4.15 <span class="stacks-ref-tag">[1415]</span></a>, and <a href="/papers/invariants-branched-cover/tag/C417.html" class="stacks-ref-link">Claim&nbsp;4.16 <span class="stacks-ref-tag">[C417]</span></a> were exactly what was necessary to conclude <a href="/papers/invariants-branched-cover/tag/C3C0.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[C3C0]</span></a> (and the Main Theorem as a corollary).
+In this section, we provide these necessary facts. The key result is the following.</p>
+<div class="stacks-theorem" id="theorem-maximal-rank">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.1.</strong> <a href="../tag/02FC.html" class="stacks-tag-link">(02FC)</a></div>
+  <div class="stacks-env-body"><p>For a general maximally connected chain $X \in \MC_{r,n}$, the restriction map
+$$
+	\rho: H^0(\P^r, \sh{O}_{\P^r}(2)) \to H^0(X, \sh{O}_X(2))
+$$
+has maximal rank.</p></div>
+</div>
+<p class="stacks-para">Note that <a href="/papers/invariants-branched-cover/tag/1415.html" class="stacks-ref-link">Claim&nbsp;4.15 <span class="stacks-ref-tag">[1415]</span></a> follows from <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a>
+and the fact that the forgetful map</p>
+<p class="stacks-para">$$
+	\operatorname{subchain}_{n_1,n_2}:\MC_{r,n} \to \MC_{r, n_2-n_1+1}
+$$
+sending $R_1 \cup \ldots \cup R_n$ to the subchain $R_{n_1} \cup R_{n_1+1} \cup \ldots \cup R_{n_2}$ is dominant.</p>
+<p class="stacks-para">We will defer the proof of <a href="/papers/invariants-branched-cover/tag/C417.html" class="stacks-ref-link">Claim&nbsp;4.16 <span class="stacks-ref-tag">[C417]</span></a> to Section&nbsp;5.1, since the argument will seem more natural after studying the proof of <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a>.</p>
+<p class="stacks-para">We can rephrase <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a> as a way to determine how many quadrics contain a general maximally connected chain.</p>
+<div class="stacks-lemma" id="lemma-euler-char">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.2.</strong> <a href="../tag/08A4.html" class="stacks-tag-link">(08A4)</a></div>
+  <div class="stacks-env-body"><p>For any maximally connected chain $X \subset \P^r$ with $r \geq 3$, we have
+$$
+	h^0(\sh{I}_X(2))-h^1(\sh{I}_X(2)) = \frac{(r-1)(r+2-2n)}{2}.
+$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5A4E.html" class="stacks-tag-link">(5A4E)</a></div>
+  <div class="stacks-env-body"><p>Consider the standard short exact sequence
+$$
+	0 \to \sh{I}_X(2) \to \sh{O}_{\P^r}(2) \to \sh{O}_{X}(2) \to 0.
+$$
+Since $H^1(\sh{O}_{\P^r}(2))=0$, the long exact sequence gives
+$$\begin{aligned}h^0(\sh{I}_X(2))-h^1(\sh{I}_X(2)) &= h^0(\sh{O}_{\P^r}(2)) - h^0(\sh{O}_{X}(2)) \\
+	&= \binom{r+2}{2} - (2nr-(n-1)(r+1)+1) +h^1(\sh{O}_X(2)) \\
+	&= \frac{(r-1)(r+2-2n)}{2} +h^1(\sh{O}_X(2)).\end{aligned}$$
+We are left with showing that $h^1(\sh{O}_X(2))=0$. </p>
+<p>By Serre duality,
+$h^1(\sh{O}_X(2)) = h^0(\omega_X(-2))$. The line bundle $\omega_X(-2)$
+has degree $-r$ on $R_1$ and $R_n$, and degree $2$ on the other components.
+Let $\sigma$ be a global section of $\omega_X(-2)$.
+Since $-r<0$, it vanishes on $R_1$, and hence also on $R_1 \cap R_2$. So
+the section restricted to $R_2$ has at least $r+2$ zeros, but degree $2$. Hence it
+vanishes identically on $R_2$ as well, and so on for each component. Therefore, $\sigma=0$,
+as we wanted to show.</p></div>
+</div>
+<p class="stacks-para">Taking <a href="/papers/invariants-branched-cover/tag/08A4.html" class="stacks-ref-link">Lemma&nbsp;5.2 <span class="stacks-ref-tag">[08A4]</span></a> into account, <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a> says that
+$$h^0(\sh{I}_X(2))= \begin{cases}
+	0, \text{ if }  n \geq \frac{r+2}{2},\\
+	\frac{(r-1)(r+2-2n)}{2}, \text{ else.}
+	\end{cases}$$</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a>.</em> <a href="../tag/B730.html" class="stacks-tag-link">(B730)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">We will use induction on the ambient dimension $r$. The base case $r=3$ translates into the following three simple facts:
+<ul><li>A twisted cubic is contained in a three dimensional linear system of quadrics.</li>
+<li>There is a unique quadric containing a pair of twisted cubics meeting at five points.</li>
+<li>By picking the third link $R_{3}$ generically,  the resulting length 3 maximally connected chain $X$ of twisted cubics is not contained in any quadric.</li></ul></p>
+<p class="stacks-para">\begin{figure}</p>
+<p>\begingroup \makeatletter \providecommand\color[2][]{\errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}\renewcommand\color[2][]{}}\providecommand\transparent[1]{\errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}\renewcommand\transparent[1]{}}\providecommand\rotatebox[2]{#2}\ifx\svgwidth\undefined \setlength{\unitlength}{295.19999313bp}\ifx\svgscale\undefined \relax \else \setlength{\unitlength}{\unitlength * \real{\svgscale}}\fi \else \setlength{\unitlength}{\svgwidth}\fi \global\let\svgwidth\undefined \global\let\svgscale\undefined \makeatother \begin{picture}(1,1.17073178)\put(0,0){\includegraphics[width=\unitlength,page=1]{erics-curve.pdf}}\put(0,1.1){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\begin{minipage}{.5\unitlength}\raggedright \footnotesize The first two links $R_0$ and $R_1=L_1\cup \bar{R}_1$.\end{minipage}}}\put(0,0.71){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\begin{minipage}{.5\unitlength}\raggedright \footnotesize The next pair of links $R_1=L_1\cup \bar{R}_1$ and $R_2=L_1\cup \bar{R}_1$.\end{minipage}}}\put(0,0.315){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\begin{minipage}{.5\unitlength}\raggedright \footnotesize The last pair of links $R_2=L_2\cup \bar{R}_2$ and $R_3=L_3\cup \bar{R}_3$.\end{minipage}}}\put(.51,.94){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\begin{minipage}{.5\unitlength}\raggedright \footnotesize The subcurve $C=R_0\cup L_1 \cup L_2 \cup L_3$.\end{minipage}}}\put(.51,.54){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\begin{minipage}{.5\unitlength}\raggedright \footnotesize The subcurve $\bar{X}=\bar{R}_1 \cup \bar{R}_2 \cup \bar{R}_3 \subset H$.\end{minipage}}}\put(0,0){\includegraphics[width=\unitlength,page=2]{erics-curve.pdf}}\end{picture}\endgroup  \caption{The maximally connected chain $X$ used in the induction argument.}
+\label{figure:erics-curve}</p>
+<p>\end{figure}</p>
+<p class="stacks-para">For the induction step, we use the following key construction suggested to us by Eric Larson:</p>
+<div class="stacks-env" id="construction-eric">
+  <div class="stacks-env-head"><strong>Construction&nbsp;5.3.</strong> <a href="../tag/8F7E.html" class="stacks-tag-link">(8F7E)</a></div>
+  <div class="stacks-env-body"><p>$X = C \cup \overline{X} = R_0 \cup R_1 \cup \ldots \cup R_{n-1}$ is a maximally connected chain, constructed as follows.
+<ul><li>Take $R_0 \subset \P^r$ a smooth rational normal curve.</li>
+<li>Choose a general hyperplane $H \subset \P^r$.</li>
+<li>Let $L_1$ be a general 2-secant line to $R_0$.</li>
+<li>Let $\overline{R}_1 \subset H$ be a rational normal curve (of degree $r-1$) containing the $r$ points $R_0 \cap H$ and the point $p : = L_1 \cap H$. Set $R_1=L_1\cup_p \overline{R}_1$.</li>
+<li>Inductively, choose $\overline{R}_{i+1} \subset H$ a general rational normal curve meeting $\overline{R}_i$ in
+	$r+1$ general points. That is, the curve $\overline{X} := \overline{R}_1 \cup \overline{R}_2 \cup \ldots \cup \overline{R}_{n-1}$ is a maximally connected chain of length $n-1$ in $H= \P^{r-1}$.</li>
+<li>Inductively choose $L_i$ to be a general line joining $L_{i-1}$ and $\overline{R}_i$. Set
+	$R_i= L_{i} \cup \overline{R}_i$.</li>
+<li>Let $C = R_0 \cup L_1 \cup L_2 \cup \ldots \cup L_{n-1}$.</li></ul>
+See Figure&nbsp;5 for a diagrammatic representation of this construction.</p></div>
+</div>
+<p class="stacks-para">We will show that $X$ as above satisfies the maximal rank condition for quadrics. That is, we will show:
+<ul><li>If $n> \frac{r+2}{2}$, then there are no quadrics containing $X$.</li>
+<li>Otherwise there is a $\frac{(r-1)(r+2-2n)}{2}$ dimensional space of quadrics containing $X$.</li></ul>
+We do this by looking at the sequence
+$$
+	0 \to \sh{O}_{\P^r}(1)= \sh{I}_H(2) \to \sh{O}_{\P^r}(2) \to \sh{O}_H(2) \to 0
+$$
+and tensoring it with $\sh{I}_X$ to get
+$$0 \to \sh{I}_{C \subset \P^r}(1) \to \sh{I}_{X \subset \P^r}(2) \to \sh{I}_{\overline{X} \subset H}(2) \to 0.$$
+ By induction we know that $\overline{X} \subset H$ satisfies the maximal rank condition, and
+ the sequence (5.2) will let us understand the quadrics containing $X$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">The case $n > \frac{r+2}{2}$</h3> \label{ssub:large-n}
+Then $n-1 \geq \frac{(r-1)+2}{2}$ and by induction and (5.1), we can assume that
+$h^0(\sh{I}_{\overline{X} \subset H}(2) )=0$. Hence,
+$$
+	h^0(\sh{I}_{X \subset \P^r}(2) ) = h^0(\sh{I}_{C\subset \P^r}(1))
+$$
+and the latter is zero, since $C$ is not contained in any hyperplane (the component $R_0$ is non-degenerate). Hence, $h^0(\sh{I}_{X \subset \P^r}(2) )=0$, as we wanted to show.
+<h3 class="stacks-subsections-heading">The case $n \leq \frac{r+2}{2}$</h3>
+We have $n-1 < \frac{(r-1)+2}{2}$, and by induction
+we can assume
+$$
+	h^0(\sh{I}_{\overline{X} \subset H}(2)) = \frac{(r-2)(r+3-2n)}{2} = \frac{(r-1)(r+2-2n)}{2} +n-2.
+$$
+Hence, we want to show that the inclusion
+$$H^0(\sh{I}_{X \subset \P^r}(2)) \subset H^0(\sh{I}_{\overline{X} \subset H}(2))$$
+has codimension $n-2$. The inclusion (5.3) factors as
+$$H^0(\sh{I}_{X \subset \P^r}(2)) \subset H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1}(2)) \subset H^0(\sh{I}_{\overline{X} \subset H}(2))$$
+and the latter inclusion is actually an isomorphism, since it fits in the sequence
+$$
+	H^0(\sh{I}_{R_0\cup L_1}(1)) \to H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1}(2)) \to H^0(\sh{I}_{\overline{X} \subset H}(2))	\to H^1(\sh{I}_{R_0\cup L_1}(1))
+$$
+where the first and last groups vanish, as deduced from the sequence
+$$
+\xymatrix{
+	0\ar[r] & H^0(\sh{I}_{R_0\cup L_1}(1)) \ar[r]&  H^0(\sh{O}_{\P^r}(1)) \ar[r]&
+	 H^0(\sh{O}_{R_0 \cup L_1}(1))\ar[dll]	&\\ & H^1(\sh{I}_{R_0\cup L_1}(1)) \ar[r]&
+	H^1(\sh{O}_{\P^r}(1))=0	}
+$$
+and the fact that the map $H^0(\sh{O}_{\P^r}(1)) \to
+H^0(\sh{O}_{R_0 \cup L_1}(1))$ is an isomorphism (in other words, $R_0 \cup L_1$ is linearly
+normal, i.e., it is embedded with the full linear series).</p>
+<p class="stacks-para">So we have translated our problem into showing that the first inclusion in (5.4),
+that is	$H^0(\sh{I}_{X \subset \P^r}(2)) \subset H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1}(2))$,
+has codimension $n-2$. But this factors naturally in a sequence of $n-2$ inclusions:
+$$\begin{split}
+	H^0(\sh{I}_{X}(2))=H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1 \cup L_2 \cup \ldots L_{n-1}}(2))
+	&\subset H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1 \cup L_2 \cup \ldots \cup L_{n-2}}(2)) \\
+	&\subset \ldots\\
+	&\subset H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1 \cup L_2}(2))  \\
+	&\subset H^0(\sh{I}_{\overline{X} \cup R_0 \cup L_1}(2))
+\end{split}$$</p>
+<p class="stacks-para">So it is enough to show the following.</p>
+<div class="stacks-lemma" id="claim-strict-inclusion">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.4.</strong> <a href="../tag/A6E6.html" class="stacks-tag-link">(A6E6)</a></div>
+  <div class="stacks-env-body"><p>Each inclusion in (5.5) is strict.
+In other words,
+for each $i=2, \ldots, n-1$, there exists a quadric containing
+$\overline{X} \cup R_0 \cup L_1 \cup \ldots \cup L_{i-1}$,
+which does not contain the line $L_i$.</p></div>
+</div>
+<p class="stacks-para">We establish <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> below, completing the proof of
+ <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a>.</p>
+</div>
+</div>
+<p class="stacks-para">The key lemma needed for the proof of <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a>  is the following:</p>
+<div class="stacks-lemma" id="lemma-induction-step-join">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.5.</strong> <a href="../tag/C6FD.html" class="stacks-tag-link">(C6FD)</a></div>
+  <div class="stacks-env-body"><p>Let $L \subset \P^r$ be a line, and $H\subset \P^r$ a
+hyperplane transverse to $L$, and $R \subset H$ a rational normal curve.
+Let $V \subset H^0(\sh{I}_{L \cup R}(2))$ be a non-empty linear
+series. Assume:
+<ol><li>\label{condition:irreducible-quadric} no element of $V$ is a reducible quadric containing $H$,</li>
+<li>the general element $Q_\text{gen} \subset \P^r$ of $V$ is such that
+	$L \not\subset \Sing Q_\text{gen}$.</li></ol>
+Then for general choices of $p\in L$ and $q \in R$:
+<ul><li>The line $L_\text{gen} = \overline{pq}$
+is not contained in $Q_\text{gen}$.</li>
+<li>Among the quadrics $Q \in V$ containing
+$L_\text{gen}$, a general one does not contain $L_\text{gen}$ in its singular locus.</li></ul></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> assuming <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</em> <a href="../tag/41B2.html" class="stacks-tag-link">(41B2)</a></div>
+  <div class="stacks-env-body"><p>We want to show that each inclusion in (5.5) is strict.
+Let us start with the last one. We set $V= H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1}(2))$, $L=L_1$, and
+$R=\overline{R}_2$. None of the elements of $V$ are reducible quadrics, because they contain the non-degenerate curve $R_0$. Thus, condition 1 is met.</p>
+<p>Let us check that the general quadric in $V$ is not singular all along
+$L_1$. It is enough to show that the restriction
+of the quadric to $H$ is smooth at $L_1 \cap H$. The restriction of the linear system
+$H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1 \subset \P^r}(2))$ to $H$ is
+$H^0(\sh{I}_{\overline{X} \subset H}(2))$, which only depends on $\overline{X}$. The general quadric in $H$ containing $\overline{X}$ cannot be singular all along $\overline{R}_1$, because
+$\overline{R}_1$ is a non-degenerate curve in $H$, and the singular locus of a quadric is always a linear space. Hence, as long as we pick $L_1 \cap H$ to be a general point in $\overline{R}_1$, we will be fine. We can do this, as a matter of fact in <a href="/papers/invariants-branched-cover/tag/8F7E.html" class="stacks-ref-link">Construction&nbsp;5.3 <span class="stacks-ref-tag">[8F7E]</span></a> we may first choose $\overline{X}$ and any $r+1$ distinct points in $\overline{R}_1$, and then we can find an $L_1 \cup R_0 \subset \P^r$
+meeting $H$ exactly at these points.</p>
+<p>The hypotheses of <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a> are satisfied, so its conclusion says that
+for a general choice of $L_2$, the inclusion (5.5) will be strict.</p>
+<p>Moreover, <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a> also says that a general quadric in
+$H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1 \cup L_2}(2))$ is not singular all along $L_2$. Thus we conclude <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> by iteratively applying <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Hence, we will be done with the proof of <a href="/papers/invariants-branched-cover/tag/02FC.html" class="stacks-ref-link">Theorem&nbsp;5.1 <span class="stacks-ref-tag">[02FC]</span></a> as soon as
+we establish <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</em> <a href="../tag/41EA.html" class="stacks-tag-link">(41EA)</a></div>
+  <div class="stacks-env-body"><p>For the first part, assume that $L_\text{gen}\subset Q_\text{gen}$. Then $Q_\text{gen}$ contains
+the join $J(L,R)$. But the tangent space to $J(L,R)$ at $p \in L$
+is $r$-dimensional, because the cone $C_{p}R$ with vertex $p$ over $R$ is contained in
+$J(L,R)$. Hence, $Q_\text{gen}$ is singular along $L$ as well, but we assumed this was not the case &ndash; contradiction.</p>
+<p>Now let us show that among the quadrics in $V$ containing $L_\text{gen}=\overline{pq}$, a general
+one does not contain $L_\text{gen}$ in its singular locus. Pick $p \in L$ such that
+the general element of $V$ is not singular at $p$ (this can be done by our assumption). Now there are two cases.
+\begin{description}
+\item[Case 1] One possibility is that as we vary $q\in R$, we get a non-trivial family of
+hyperplanes consisting of quadrics in $V$ containing $\overline{pq}$. But then the union of these hyperplanes
+is the whole vector space $V$, and we know that the general quadric in $V$ is smooth at $p$. Hence, it is smooth
+at the general point of the line $\overline{pq}$ as well.</p>
+<p>\item[Case 2] Otherwise, every quadric in $V$ containing $\overline{pq}$ also contains the cone $C_pR$.
+Pick any of these quadrics, $Q$. Then $Q$ cannot be singular all along $R$, because the
+singular locus of $Q$ is a linear space, and $R$ spans the hyperplane $H$. Hence, for some
+$q \in R$, the quadric $Q$ is smooth at $q$. Take the line $\overline{pq}$  which is contained in $C_{p}R$, and hence in $Q$. As $Q$ is smooth at $q$, it is smooth at the general point of
+$\overline{pq}$.
+\end{description}
+In any case, we still conclude <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S5.SS1.html">5.1. Transverse residues</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — Section 5: The maximal rank problem for maximally connected chains">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/section/S5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

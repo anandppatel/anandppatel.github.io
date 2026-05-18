@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (CDD0) — Vector bundles and finite covers</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          O: "{\\mathcal O}",
+          charac: "\\operatorname{char}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          Def: "\\operatorname{Def}",
+          Res: "\\operatorname{Res}",
+          Hilb: "\\operatorname{Hilb}",
+          Quot: "\\operatorname{Quot}",
+          Tot: "\\operatorname{Tot}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          Cl: "\\operatorname{Cl}",
+          shExt: "\\operatorname{\\mathscr{E}xt}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS2.html">3.2. Smoothing out</a> / <span>Proof (CDD0)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="14AC.html">&laquo; Proposition 3.10</a><span class="stacks-tag-current">Tag CDD0</span><a href="FD0B.html">Remark 3.11 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CDD0.html" class="stacks-tag-link">(CDD0)</a></div>
+  <div class="stacks-env-body"><p>By construction, we have $Z^+ = Z \cup R_y$.
+  Let $\mu \from Z \sqcup R_y \to Z^+$ be the partial normalization.
+  We have the short exact sequence
+  $$ 0 \to N_{Z^+/\widetilde{P}^+} \to \mu_*\mu^* N_{Z^+/\widetilde{P}^+} \to  N_{Z^+/\widetilde{P}^+} |_{\delta_y} \to 0.$$
+  The injection $N_{Z/\widetilde{P}} \to \mu^*N_{Z^+/\widetilde{P}^+}|_Z$ and the hypothesis $H^1(N_{Z/\widetilde{P}}) = 0$ implies that
+  $$H^1\left(\mu^*N_{Z^+/\widetilde{P}^+}\big|_Z\right) = 0.$$
+  <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a> implies that $H^1(N_{Z^+/\widetilde{P}^+}|_{R_y}) = 0$.
+  By combining the two, we get
+  $$ H^1\left(\mu_*\mu^* N_{Z^+/\widetilde{P}^+}\right) = 0.$$
+  To finish the proposition, it remains to prove that
+  $$ H^0\left(\mu^* N_{Z^+/\widetilde{P}^+}\right) \to H^0\left(N_{Z^+/\widetilde{P}^+}\big|_{\delta_y}\right)$$
+  is surjective.
+  Recall that
+  $$\begin{aligned}\mu^* N_{Z^+/\widetilde{P}^+} &= N_{Z^+/\widetilde{P}^+} \big|_{Z} \oplus N_{Z^+/\widetilde{P}^+} \big|_{R_y} \\
+    &= N_{Z^+/\widetilde{P}^+} \big|_{Z} \oplus N_{R_y/P_y} \oplus F\big|_{R_y}.\end{aligned}$$
+  We know that $N_{R_y/P_y} \to N_{R_y/P_y}|_{\delta_y}$ is surjective on global sections.
+  Therefore, it suffices to prove that the map
+  $$N_{Z^+/\widetilde{P}^+} \big|_{Z} \to N_{\delta_y/X} \otimes N_{\delta_y/R_y} = \coker\left(N_{R_y/P_y}\big|_{\delta_y} \to N_{Z/\widetilde{P}}\big|_{\delta_y}\right)$$
+  is surjective on global sections.
+  But the exact sequence
+  $$ 0 \to N_{Z/\widetilde{P}} \to N_{Z^+/\widetilde{P}^+} \big|_{Z} \to N_{\delta_y/X} \otimes N_{\delta_y/R_y} \to 0$$
+  analogous to the bottom row of (3.3) and the vanishing of $H^1(N_{Z/\widetilde{P}})$ imply that (3.21) is indeed surjective on global sections.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Vector bundles and finite covers — Tag CDD0 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/vector-bundles-finite-covers/tag/CDD0.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+  </div>
+</footer>
+</body>
+</html>

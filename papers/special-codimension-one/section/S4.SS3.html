@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.3. Degree four analysis. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: The slope problem.</a> / <span>4.3. Degree four analysis.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.3. Degree four analysis.</h1>
+<p class="stacks-para">We will use the pencils occurring in <a href="/papers/special-codimension-one/tag/2CF9.html" class="stacks-ref-link">Proposition&nbsp;3.18 <span class="stacks-ref-tag">[2CF9]</span></a>.  In order to create partial pencils from these, we will impose a $4$-tuple of points in a general (conic) fiber of $\pi \colon \F \longrightarrow <strong>P</strong>^1$ to lie in the base locus of our pencil $p$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Unramified, $2$-vertex $\Delta$.</h3>
+Let $\Delta$ be an unramified, $2$-vertex divisor with dual graph $\Gamma_\Delta$:$$  \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v_L}!{(-.3,-.2)}{\scriptstyle g_L}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle v_R}!{(2.3,-.2)}{\scriptstyle g_R}
+ "l"-@/^.6cm/"r"
+"l"-@/^/"r"
+"l"-@/_/"r"
+"l"-@/_.6cm/"r"
+}  $$Assume that $g_L \geq g_R$.</p>
+<p class="stacks-para">By imposing $4$ distinct points $\{p_{1}, p_{2}, p_{3}, p_{4}\}$ in a fiber $F \subset \F$, and then attaching a constant left side cover $\alpha_{L} \from C_{L} \to P_{L}$, we construct a partial pencil $p$ lying entirely inside a boundary divisor $\Delta$.</p>
+<p class="stacks-para">The split fiber $\Delta_{\spl}$ has dual graph $\Gamma_{\Delta_{\spl}}$: $$  \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v'_L}!{(-.3,-.3)}{\scriptstyle g_L+3}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle v'_R}!{(2.3,-.3)}{\scriptstyle g_R-3}
+ "l"-@/^.6cm/"r"
+"l"-@/^/"r"
+"l"-@/_/"r"
+"l"-@/_.6cm/"r"
+}  $$</p>
+<p class="stacks-para">The interactions of $p$ are given in the next proposition:</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.22.</strong> <a href="../tag/623D.html" class="stacks-tag-link">(623D)</a></div>
+  <div class="stacks-env-body"><p>The pencil $p$ has the following intersection numbers:
+$$\begin{aligned}\lambda \cdot p &= g_{R}\\
+\delta \cdot p &= v + 6g_{R} + 2\\
+\Delta \cdot p &= -1\\
+\Delta_{\spl} \cdot p &= 1\\
+\sfX \cdot p &\geq 0.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CC4C.html" class="stacks-tag-link">(CC4C)</a></div>
+  <div class="stacks-env-body"><p>This follows easily from the calculations in <a href="/papers/special-codimension-one/tag/2CF9.html" class="stacks-ref-link">Proposition&nbsp;3.18 <span class="stacks-ref-tag">[2CF9]</span></a>. The last inequality follows from the fact that such partial pencils $p$ pass through the general point of $\Delta$.</p></div>
+</div>
+<div class="stacks-lemma" id="induct-tetra-1">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.23.</strong> <a href="../tag/0CEF.html" class="stacks-tag-link">(0CEF)</a></div>
+  <div class="stacks-env-body"><p>In the setting of the previous proposition, we have the following inequality:
+$$c(\Delta, \sfY) \geq c(\Delta_{\spl}, {\sfY}) + b(v+6g_R +2) - a(g_R).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6DE6.html" class="stacks-tag-link">(6DE6)</a></div>
+  <div class="stacks-env-body"><p>We intersect $p$ with $\sfX = a\lambda - b\delta - \sfY$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">A hitch in the induction.</h3>
+Recall that $\frac{a}{b} = \frac{13g+15}{2g}$.   Unfortunately, we may not run the induction procedure directly from <a href="/papers/special-codimension-one/tag/0CEF.html" class="stacks-ref-link">Lemma&nbsp;4.23 <span class="stacks-ref-tag">[0CEF]</span></a> as we did in the degree three analysis: the quantity $$b(v+6g_R +2) - a(g_R)$$ is not positive for all $g_R$ in the assumed range $g_{R} \leq (g-3)/2$.  Luckily, the fraction of $g_R$'s making this quantity negative is quite small, so we can use <a href="/papers/special-codimension-one/tag/0CEF.html" class="stacks-ref-link">Lemma&nbsp;4.23 <span class="stacks-ref-tag">[0CEF]</span></a> multiple times, reducing genera of the vertex $v_{R}$ by three each time, and add all the resulting inequalities. This strategy ends up working, as we explain next.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3></p>
+<div class="stacks-lemma" id="tetr-ineq1">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.24.</strong> <a href="../tag/55DE.html" class="stacks-tag-link">(55DE)</a></div>
+  <div class="stacks-env-body"><p>In the setting above, we have: $$c(\Delta, \sfY) \geq 0.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0B92.html" class="stacks-tag-link">(0B92)</a></div>
+  <div class="stacks-env-body"><p>Write $g_R = 3i+k$, with $k=0,1,2$ depending on $g_R\mod 3$.  Let $\Delta_l$ denote the unramified, $2$-vertex boundary divisor having dual graph $\Gamma_{\Delta_{l}}$:$$  \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v}!{(-.3,-.3)}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle w}!{(2.3,-.3)}{\scriptstyle 3l+k}
+ "l"-@/^.6cm/"r"
+"l"-@/^/"r"
+"l"-@/_/"r"
+"l"-@/_.6cm/"r"
+}  $$  (So our original boundary divisor $\Delta$ is $\Delta_i$.) <a href="/papers/special-codimension-one/tag/0CEF.html" class="stacks-ref-link">Lemma&nbsp;4.23 <span class="stacks-ref-tag">[0CEF]</span></a> gives: $$c(\Delta_l, {\sfY}) \geq c(\Delta_{l-1}, {\sfY}) + b(v_l + 6(3l+k) +2)-a(3l+k)$$ for all $l$.  We may add these relations together for $0 \leq l \leq i$ to obtain the following expression </p>
+<p>$$c(\Delta_{i}, {\sfY}) \geq c(\Delta_{0}, {\sfY}) +  \displaystyle{\sum_{l=1}^{i}(18b-3a)l} +bv_{l} + (6bk+2b-ka)i$$</p>
+<p>In the above expression,  $v_l := \lceil{\frac{3l+k+3}{2}\rceil}$.  Therefore, if we replace $v_l$ by $\frac{3l+k+3}{2}$ and if the sum in the right hand side of (4.6) remains positive, we will be able to deduce the inequality $c(\Delta, \sfY) \geq 0$ from the inequality $c(\Delta_{0}, {\sfY}) \geq 0$.  Indeed, substituting $v_l$ with $\frac{3l+k+3}{2}$  gives</p>
+<p>$$c(\Delta_{i}, {\sfY}) \geq c(\Delta_{0}, {\sfY}) + 3\left(\frac{13}{2}b-a\right)\cdot {i+1 \choose 2} +  \left(\left(\frac{13}{2}k+\frac{7}{2}\right)b-ka\right)\cdot i$$ </p>
+<p>From here, it is straightforward to check that $$ 3\left(\frac{13}{2}b-a\right) {i+1 \choose 2} +  \left(\left(\frac{13}{2}k+\frac{7}{2}\right)b-ka\right)i  \geq 0$$ for $i$ in the required range, i.e. $3i+k \leq \frac{g-3}{2}$.</p>
+<p>Therefore, we must only show that $c(\Delta_{0}, {\sfY}) \geq 0$.  These remaining cases are easily dealt with if we simply interpret the divisor $\Delta_{-1}$ as having more than $2$ vertices. </p>
+<p> In other words, the split fibers appearing in the partial pencils in the analysis of $c(\Delta_{0},\sfY)$ have disconnected residual curves. However, as we explained earlier, we know $c(\Delta_{-1},0) \geq 0$.  The relation $$c(\Delta_0, {\sfY}) \geq c(\Delta_{-1}, {\sfY}) + b(v_0 + 6k +2)-ak$$ then allows us to conclude $c(\Delta_0, {\sfY})\geq 0$, since the quantity $b(v_{0} + 6k +2) - ak$ is positive for these small values for $v_{0}$, as the reader can check.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Ramified, $2$-vertex divisors.</h3> The rest of the degree four analysis goes through without any hitches.</p>
+<p class="stacks-para">We modify the basic pencil $p$ above by imposing nonreduced base points as we did in the degree three case.  We will demonstrate the analysis in one case, and leave the remaining cases to the reader.</p>
+<p class="stacks-para">Let $p'$ be the partial pencil obtained by imposing a $4$-tuple of basepoints of the form $\{2p_1, p_2, p_3\}$ in a general conic fiber of $\pi \colon \F \longrightarrow <strong>P</strong>^1$.  Suppose $\Gamma_{\Delta}$ is:$$   \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v_L}!{(-.3,-.2)}{\scriptstyle g_L}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle v_R}!{(2.3,-.2)}{\scriptstyle g_R}
+ "l"-@/^.5cm/"r"
+"l"-@/^/"r"
+"l"-@/_.3cm/"r" _{\scriptstyle 2}
+}  $$</p>
+<div class="stacks-lemma" id="tetra2">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.25.</strong> <a href="../tag/50A6.html" class="stacks-tag-link">(50A6)</a></div>
+  <div class="stacks-env-body"><p>Then the intersection numbers for the resulting family $p'$ are:
+$$\begin{aligned}\lambda \cdot p' &= g_R\\
+\delta \cdot p' &= v+6g_R+3\\
+\Delta \cdot p' &= -1\\
+\Delta_{\spl} \cdot p' &= 1\\
+\Delta_{\ram} \cdot p' &= 1\\
+{\sfX} \cdot p' &\geq 0\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6EE8.html" class="stacks-tag-link">(6EE8)</a></div>
+  <div class="stacks-env-body"><p>Clear.</p></div>
+</div>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.26.</strong> <a href="../tag/146B.html" class="stacks-tag-link">(146B)</a></div>
+  <div class="stacks-env-body"><p>In the setting above, $$c(\Delta, \sfY) \geq 0.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5C7B.html" class="stacks-tag-link">(5C7B)</a></div>
+  <div class="stacks-env-body"><p>The divisor $\Delta_{\spl}$, originating from the split fiber of $p'$, has dual graph $\Gamma_{\Delta_{\spl}}$: $$  \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v'_L}!{(-.3,-.3)}{\scriptstyle g_L+2}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle v'_R}!{(2.3,-.3)}{\scriptstyle g_R-3}
+ "l"-@/^.6cm/"r"
+"l"-@/^/"r"
+"l"-@/_/"r"
+"l"-@/_.6cm/"r"
+}  $$and $\Delta_{\ram}$, coming from the reduced tamification fiber, has an <em>unramified</em> dual graph $\Gamma_{\Delta_{\ram}}$: $$  \xygraph{
+!{<0cm,0cm>;<1cm,0cm>:<0cm,1cm>::}
+!{(0,0) }*{\bullet}="l"!{(-.3,.2)}{\scriptstyle v''_L}!{(-.3,-.3)}{\scriptstyle g_L}
+!{(2,0) }*{\bullet}="r"!{(2.3,.2)}{\scriptstyle v''_R}!{(2.3,-.3)}{\scriptstyle g_R-1}
+ "l"-@/^.6cm/"r"
+"l"-@/^/"r"
+"l"-@/_/"r"
+"l"-@/_.6cm/"r"
+}  $$
+<a href="/papers/special-codimension-one/tag/55DE.html" class="stacks-ref-link">Proposition&nbsp;4.24 <span class="stacks-ref-tag">[55DE]</span></a> says $c(\Delta_{\spl}, {\sfY}) \geq 0$ and $c(\Delta_{\ram}, {\sfY}) \geq 0$.</p>
+<p>By intersecting $p'$ with $\sfX = a\lambda - b\delta - \sfY$, we get: </p>
+<p>$$c(\Delta, \sfY) \geq c(\Delta_{\spl}, {\sfY}) + c(\Delta_{\ram}, {\sfY}) + 9g -15g_R$$</p>
+<p>Since we assume $g_R \leq \frac{g-3}{2}$, we easily conclude  that $c(\Delta, \sfY) \geq 0$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Higher ramification.</h3>
+For higher ramification, we simply impose more nonreduced points in the base loci of our partial pencils.  The resulting partial pencil family will relate the current ramified divisor $\Delta$ with a divisor $\Delta_{\ram}$ having less ramification.  We omit the details to avoid repetitiveness.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 4.3. Degree four analysis.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S4.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3. Cones in scrolls — Lines highly tangent to a hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb K",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          T: "\\mathbf T",
+          I: "\\mathcal{I}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          PP: "\\mathbb P",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          eric: ["{\\color{red} \\sf $\\clubsuit\\clubsuit\\clubsuit$ Eric: [#1]}", 1],
+          geoff: ["{\\color{blue} \\sf $\\diamond$ Geoff:[#1]}", 1],
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          ram: "\\operatorname{ram}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          II: "\\operatorname{II}",
+          Tot: "\\operatorname{Tot}",
+          oTot: "\\operatorname{\\overline{\\Tot}}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Geoffrey Smith, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Lines highly tangent to a hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Fifth order tangent lines</a> / <span>3.3. Cones in scrolls</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.3. Cones in scrolls</h1>
+<p class="stacks-para">In this section, we record a basic result on cones contained in
+scrolls, which we were unable to find a reference for.</p>
+<div class="stacks-definition" id="definition-scroll">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.5.</strong> <a href="../tag/A40A.html" class="stacks-tag-link">(A40A)</a></div>
+  <div class="stacks-env-body"><p>An $n$-dimensional variety $P \subset \P^{N}$ is a <em>scroll</em> if
+  there exists a smooth, irreducible, projective curve $B$, a
+  $\P^{n-1}$-bundle $\pi: \Lambda \to B$ and a morphism
+  $\varphi: \Lambda \to \P^{N}$ satisfying:
+  <ol><li>$\varphi$ restricts to a linear embedding on each fiber of
+    $\pi$, and</li>
+<li>$\varphi(\Lambda) = P$, and $\varphi$ is birational onto its
+    image.</li></ol></p></div>
+</div>
+<p class="stacks-para">If $P$ is a scroll, and if $\pi: \Lambda \to B$ is understood, we call
+the linear spaces $\varphi(\Lambda_{b}) \subset \P^{N}$ the <em>rulings</em> of $P$. To ease notation, we will denote
+$\varphi(\Lambda_{b})$ by just $\Lambda_{b}$ as long as no confusion
+arises.</p>
+<div class="stacks-definition" id="definition-cone">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.6.</strong> <a href="../tag/3736.html" class="stacks-tag-link">(3736)</a></div>
+  <div class="stacks-env-body"><p>A <em>cone</em> in $\P^N$ is a pair $(C,c)$
+  where $C \subset \P^N$ is a projective variety and $c \in C$
+  satisfying: For any $q \in C \setminus \{c \}$, the line joining $q$
+  and $c$ is entirely contained in $C$.  If $(C,c)$ is a cone, we say
+  a line $\ell \subset C$ is a <em>cone line</em> if $c \in \ell$.</p></div>
+</div>
+<p class="stacks-para">Note that if $(C,c)$ is a cone, and if $H \subset \P^N$ is any
+hyperplane containing $c$, then $(C \cap H, c)$ is again a cone.
+Furtheremore, if a cone $(C,c)$ is irreducible and if $\dim C \geq 3$,
+then for a general hyperplane $H$ containing $c$, the cone
+$(C \cap H, c)$ is again irreducible.</p>
+<p class="stacks-para">The next proposition constrains large cones in scrolls.</p>
+<div class="stacks-lemma" id="proposition-scrolls">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.7.</strong> <a href="../tag/B044.html" class="stacks-tag-link">(B044)</a></div>
+  <div class="stacks-env-body"><p>Suppose $P \subset \P^{N}$ is an $n$-dimensional scroll which is not
+  a linear space, with rulings $\Lambda_{b}, b \in B$. Let $p \in P$,
+  and suppose $(C,p)$ is a $(n-1)$-dimensional irreducible cone
+  contained in $P$.  Assume only finitely many of the rulings contain
+  $p$.</p>
+<p>  Then $C$ is a linear space.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4FAE.html" class="stacks-tag-link">(4FAE)</a></div>
+  <div class="stacks-env-body"><p>Assume, for sake of contradiction, that $\deg C >1$.  Then, as
+  $\dim C = n-1$, it follows that $C$ is not contained in any ruling
+  $\Lambda_{b}$.  Therefore, a general cone line $\ell \subset C$
+  meets a general $\Lambda_{b}$ at a single point. Since this is true
+  for a general $\ell$, it follows that <em>every</em> $\ell$ meets a
+  general $\Lambda_{b}$ &ndash; furthermore, this meeting is a single
+  point, because $p$ is only contained in finitely many rulings.</p>
+<p>  Now pick any hyperplane $H$ avoiding $p$, and consider projection
+  from $p$
+  $$\pi_{p} : P \setminus \{p\} \to H.$$
+  The image $W := \pi_{p}(C \setminus \{p\})$ is the $n-2$-dimensional
+  variety $C \cap H$, which has degree $>1$ by
+  assumption. Furthermore, the image $\pi_{p}(\Lambda_{b})$ for
+  $b \in B$ general, is a $(n-1)$-dimensional linear space in $H$,
+  and $$W \subset \pi_{p}(\Lambda_{b}).$$ However, as $\deg W >1$,
+  this implies that $\pi_{p}(\Lambda_{b})$ is independent of $b$.
+  Thus, the image of $\pi_{p}:P \setminus \{p\}$ is the
+  $(n-1)$-dimensional linear space $\pi_{p}(\Lambda_{b})$, forcing $P$
+  itself to be a linear space, contrary to assumption.  The
+  argument by contradiction is complete.</p></div>
+</div>
+<p class="stacks-para">We can now prove the main theorem of this section.</p>
+<div class="stacks-theorem" id="theorem-generalV5">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.8.</strong> <a href="../tag/81FA.html" class="stacks-tag-link">(81FA)</a></div>
+  <div class="stacks-env-body"><p>If $X \subset \P^{n}$ is a smooth
+  hypersurface of degree $d \geq n \geq 4$, then $V_5(X)$ has the expected
+  dimension $2n-6$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F56F.html" class="stacks-tag-link">(F56F)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">We proceed by contradiction, and suppose here onward that
+$$W \subset V_{5}$$ is an irreducible subvariety satisfying
+$$\dim W = 2n-5.$$
+We let $\pi: W \to X$ denote the map sending a pair $(\ell,x)$ to the
+point $x \in X$.  Observe that for every $x \in X$, the preimage
+$$\pi^{-1}(x) \subset W$$ is naturally a subvariety of the $(n-2)$-dimensional projective space
+parametrizing lines in $\P^{n}$ which are tangent to $X$ at $x$.
+Thus, if we set
+$$Y := \pi(W) \subset X,$$ there are three possibilities:
+<ol><li>$Y = X$, or</li>
+<li>$Y \subset X$ has codimension $2$, or</li>
+<li>$Y \subset X$ has codimension $1$.</li></ol></p>
+<p class="stacks-para">The proof proceeds by eliminating each of these possibilities.</p>
+<div class="stacks-lemma" id="lemma-YneqX">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.9.</strong> <a href="../tag/4C26.html" class="stacks-tag-link">(4C26)</a></div>
+  <div class="stacks-env-body"><p>$Y \neq X$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F61B.html" class="stacks-tag-link">(F61B)</a></div>
+  <div class="stacks-env-body"><p>Direct application of <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A8C8]</span></a>.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-Ycodim2">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.10.</strong> <a href="../tag/3BAB.html" class="stacks-tag-link">(3BAB)</a></div>
+  <div class="stacks-env-body"><p>$Y \subset X$ cannot have codimension $2$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/84D8.html" class="stacks-tag-link">(84D8)</a></div>
+  <div class="stacks-env-body"><p>By contradiction. Assume $\codim Y = 2$. In this case, for a general
+  (and hence every) point $y \in Y$, the fiber $\pi^{-1}(y) \subset W$
+  has dimension $(n-2)$.  Since, for every $(\ell,x) \in W$, the line
+  $\ell$ meets $X$ at $x$ with contact order $>2$, it follows that the
+  second fundamental form $\II_{x}(X)$ vanishes identically (has rank
+  $0$) for all points $y \in Y$. This violates
+  <a href="/papers/lines-highly-tangent/tag/B72D.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[B72D]</span></a>, providing the desired
+  contradiction.</p></div>
+</div>
+<p class="stacks-para">Thus, we may and shall assume $Y \subset X$ has codimension $1$ from
+here onward.  First, we determine the dimension of
+$\oTot(W)$. <a href="/papers/lines-highly-tangent/tag/C703.html" class="stacks-ref-link">Theorem&nbsp;2.8 <span class="stacks-ref-tag">[C703]</span></a> implies that
+$\oTot(W) \neq \P^{n}$.  Secondly, $\oTot(W) \neq Y$: Otherwise, $Y$
+would be a $(n-2)$-dimensional variety which contains at least a
+$(2n-6)$-dimensional family of lines. Thus, $Y$ would be a linear
+space.  As $n \geq 4$, $X$ could not contain such a space.</p>
+<p class="stacks-para">We conclude that $\oTot(W) \subset \P^{n}$ is a hypersurface.  Since
+$d \geq n$, <a href="/papers/lines-highly-tangent/tag/2769.html" class="stacks-ref-link">Corollary&nbsp;3.3 <span class="stacks-ref-tag">[2769]</span></a> implies that $\oTot(W) \neq X$.
+Observe that, by Segre's classification theorem, $\oTot(W)$ is either
+a linear space, a quadric hypersurface, or a scroll.</p>
+<p class="stacks-para">Now pick a general point $y \in Y$.  Let $(C,y) \subset \P^{n}$ denote
+the $(n-2)$-dimensional cone swept out by the family of lines
+$\pi^{-1}(y)$.  Observe, by construction, that $C \subset \oTot(W)$.
+Furthermore, if $\T_{y}X$ denotes the projective tangent space (an
+$(n-1)$-dimensional linear space) of $X$ at $y$, then
+$C \subset \T_{x}X$.</p>
+<p class="stacks-para">By <a href="/papers/lines-highly-tangent/tag/B72D.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[B72D]</span></a>, $\II_{y}$ defines an irreducible
+quadric, and therefore for dimension reasons, $(C,y)$ must be the cone
+over this quadric.  This in turn implies that $C$ spans the hyperplane
+$\T_{y}X$.  Furthermore, this also eliminates the possibility that
+$\oTot(W)$ is a scroll: the hypotheses of
+<a href="/papers/lines-highly-tangent/tag/B044.html" class="stacks-ref-link">Proposition&nbsp;3.7 <span class="stacks-ref-tag">[B044]</span></a> would be met, so $C$ could not be a quadric.</p>
+<p class="stacks-para">Thus, $\oTot(W)$ is either a linear space or a quadric. Assume
+$\oTot(W)$ is a linear space.  At a general point $y \in Y$, the
+quadric cone $(C,y)$ is simultaneously contained in the linear space
+$\oTot(W)$ and also spans $\T_{y}X$. Thus all $\T_yX$ are equal for
+$y \in Y$.  This violates the finiteness of the Gauss map
+$$\Gamma: X \to \P^{n*},$$ which sends $x \in X$ to the hyperplane
+$\T_{x}X$.</p>
+<p class="stacks-para">Finally, assume $\oTot(W)$ is a quadric hypersurface. Then, this
+quadric hypersurface cannot be singular at the general point
+$y \in Y$, because $\oTot(W)$ is irreducible. As the cone $(C,y)$ is contained in $\oTot(W)$, it follows that
+$$\T_{y}\oTot(W) = \T_y X$$ for $y \in Y$ general. Now, pick a general
+complete curve $D \subset Y$. On the one hand, the Gauss map $\Gamma$
+induces a regular map of degree $\deg(D)(d-1)$. On the other hand,
+this same map agrees with the (rational) Gauss map for $\oTot(W)$,
+which is a map defined by linear forms on $\P^{n}$.  Thus,
+$\deg(D)(d-1) \leq \deg(D)$, which is absurd given $d \geq n$.</p>
+<p class="stacks-para">Thus, $Y \subset X$ cannot be a divisor, and we have exhausted all
+possibilities. The theorem follows.</p>
+</div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Lines highly tangent to a hypersurface — 3.3. Cones in scrolls">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/lines-highly-tangent/section/S3.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2208.04393">arXiv:2208.04393</a>
+  </div>
+</footer>
+</body>
+</html>

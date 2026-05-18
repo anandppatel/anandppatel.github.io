@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.10. Admissible reduction. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "{\\bf F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "{\\bf G}",
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          E: "{\\bf E}",
+          C: "{\\bf C}",
+          A: "{\\bf A}",
+          P: "{\\bf P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Compactifications.</a> / <span>2.10. Admissible reduction.</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.10. Admissible reduction.</h1>
+<p class="stacks-para">\label{admissiblereduction}
+  At this point, it will be convenient to indicate how to perform ``admissible reduction'' in some commonly encountered situations.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Setup.</h3>
+    Suppose we have a family of degree $d$  simply-branched covers $\alpha_{t} \from \cC_{t} \to \P^{1}$, with smooth total space $\cC_{t}$, parametrized by $\Delta_{t} := \Spec k[[t]]$, and $m$ disjoint multi-sections $\sigma_{1}, ... \sigma_{m}$ of degrees $d_{1}, ... , d_{m}$, each of which in some local coordinates $(z,t)$ on $\cC_{t}$ is given by an equation of the form $z^{d_{i}} - t = 0$.  Furthermore, suppose $\cup_{i} \sigma_{i} = \alpha_{t}^{-1}(0)$. In particular, note that $d_{1} + ... + d_{m} = d$.</p>
+<p class="stacks-para">Our task is to attach a constant cover $\alpha_{L} \from C_{L} \to \P^{1}$ to the family $\alpha_{t}$ at the $d$ points of the multi-section $\cup_{i}\sigma_{i}$.  In other words, we would like $\alpha_{t}$ to be the right side of a partial pencil.</p>
+<p class="stacks-para">There are two obstacles currently preventing us from accomplishing this: 1) The points of attachment for $t \neq 0$ are experiencing nontrivial monodromy, and 2) the points of attachment are not remaining distinct when $t=0$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Base change.</h3>
+    In order to kill monodromy, we first make an order $l := {\rm lcm}(d_{1}, ... ,d_{m})$ base change $t = s^{l}$, and let $\alpha_{s} \from \cC_{s} \to \P^{1} \times \Delta_{s}$ denote the base change family.  Letting $l_{i} := l/d_{i}$, we immediately see that we now have $d$ sections $\tau_{1}, ... ,\tau_{d}$ of the family $\cC_{s}$.  Moreover, these sections are naturally grouped according to which multi-section $\sigma_{i}$ they originally arose from. The first $d_{1}$ sections intersect at a point $x_{1} \in C_{0}$, the next $d_{2}$ intersect at a point $x_{2} \in C_{0}$, and so on.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Separating the sections $\tau_{i}$.</h3>\label{separatingsections}
+    Now we must separate the sections $\tau_{i}$ &ndash; this requires some care, since we still need to produce an admissible cover.  We examine the local situation around each point $x_{i}$.</p>
+<p class="stacks-para">For this, let $X := \Spec k[[z,s]]$, $Y := \Spec k[[w,s]]$, $\Delta_{s} := \Spec k[[s]]$, and let $$\alpha_{\text{local}}: X \to Y$$ be the degree $d_{i}$ $\Delta_{s}$-morphism defined by $w = z^{d_{i}} - s^{l}$. This is a local model for the map $\alpha_{s}$ near the points $x_{i}$.</p>
+<p class="stacks-para">We now blow up $X$ along the ideal $I := (z,s^{l_{i}})$ and $Y$ along the ideal $J := (w, s^{l})$. In other words, we set $$X' := \Proj k[[z,s]][U,V]/Uz-Vs^{l_{i}}$$ and $$Y' := \Proj k[[w,s]][A,B]/Aw-Bs^{l}.$$ Then the following map of graded rings provides the ``local admissible replacement'' $\alpha'_{\text{local}}$:
+    $$\begin{aligned}&s \mapsto s\\
+    &w \mapsto z^{d_{i}}-s^{l}\\
+    &A \mapsto U^{d_{i}}\\
+    &B \mapsto V^{d_{i}} - U^{d_{i}}\end{aligned}$$</p>
+<p class="stacks-para">The reader may easily check that the local ``kissing'' condition is met for $\alpha'_{\text{local}}$.  Furthermore, the local sections defined by $z - \zeta_{j}s^{l_{i}}$, where $\zeta_{j}$ are the ${l_{i}}$-th roots of unity, are separated in the blow up $X'$.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.8.</strong> <a href="../tag/9D83.html" class="stacks-tag-link">(9D83)</a></div>
+  <div class="stacks-env-body"><p>Notice that the ideal $I$ is not the inverse image of the ideal $J$.  In fact, an admissible cover with ramification occurring above a node is never a flat map.  Therefore, the ideal $I$ could not have been the inverse image of $J$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Triple ramification.</h3>
+    Now suppose $\alpha_{t}$ is a family of covers aquiring a triple ramification point $x \in C_{0} \subset \cC$. Then the reader may check that the admissible reduction of this family requires at least an order two base change.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.9.</strong> <a href="../tag/3E9F.html" class="stacks-tag-link">(3E9F)</a></div>
+  <div class="stacks-env-body"><p>Triple ramification is a divisorial phenomenon. Since we will be using many one parameter families, it will be a nuisance to have to perform admissible reduction each time it occurs.  This is why we eventually pass to the space $\Hdgnt$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 2.10. Admissible reduction.">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S2.SS10.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+  </div>
+</footer>
+</body>
+</html>

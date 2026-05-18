@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 3 — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 3: Vector bundles on rational chains</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 3. Vector bundles on rational chains</h1>
+<p class="stacks-para">In this section we find necessary and sufficient conditions for determining when a vector bundle on a chain of rational curves is balanced.  We will eventually use these criteria to prove <a href="/papers/invariants-branched-cover/tag/C3C0.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[C3C0]</span></a>.</p>
+<p class="stacks-para">Let $\chain{} = P_{1} \cup P_{2} \cup \ldots \cup P_{k}$ be a chain of $k$ rational curves $P_{i}$, and let $V$ be a vector bundle on $\chain{}$ of rank $r$.  We let $V_{i} = V|_{P_{i}}$ be the restriction to the $i$-th component, and we denote by $p_{i}$ the node $P_{i} \cap P_{i+1}$, for $i=1,\ldots,k-1$.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.1.</strong> <a href="../tag/C7DF.html" class="stacks-tag-link">(C7DF)</a></div>
+  <div class="stacks-env-body"><p>A vector bundle $V$ on a reduced curve $C$ is <em>balanced</em> if $$h^{1}(\End V) = 0.$$</p></div>
+</div>
+<p class="stacks-para">Since the first order deformations of a vector bundle $V$ are parametrized by $\Ext^1(V,V) = H^{1}(\End V)$, we see that a balanced vector bundle does not deform.  Our goal is to determine necessary and sufficient criteria for a vector bundle $V$ on the chain $\chain{}$ to be balanced in terms of the ``relative position'' of the vector bundles $V_{i}$.</p>
+<p class="stacks-para">Our first easy observation is the following.</p>
+<div class="stacks-lemma" id="lemma-balanced-components">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.2.</strong> <a href="../tag/28FF.html" class="stacks-tag-link">(28FF)</a></div>
+  <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{}$ of rank $r$. If $V$ is balanced, then every component $V_{i}$ is a balanced vector bundle on $P_{i}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/421F.html" class="stacks-tag-link">(421F)</a></div>
+  <div class="stacks-env-body"><p>Let $\nu \from \coprod_{i} P_{i} \to \chain{}$ be the total normalization map. Consider the exact sequence of $\sh{O}_{\chain{}}$-sheaves
+$$0 \to \End V \to \nu_{*}\nu^{*}(\End V) \to \oplus_{i} \End (k(p_{i})^{r}) \to 0.$$
+ The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.</p></div>
+</div>
+<p class="stacks-para">We now assume that each component $V_{i}$ is balanced.  Consider the long exact sequence of cohomology groups associated to (3.1):
+$$\ldots \to \oplus_{i}H^{0}(P_{i}, \End V_{i}) \to \oplus_{i} \End (k(p_{i})^{r}) \to H^{1}(P, \End V) \to 0$$
+This sequence shows that $h^{1}(P, \End V) = 0$ if and only if the map $$D \from \oplus_{i}H^{0}(P_{i}, \End V_{i}) \to \oplus_{i} \End (k(p_{i})^{r})$$ is surjective.  The map $D$ is described as follows.  Let $\infty_i \in P_{i}$, $0_{i+1} \in P_{i+1}$ denote the two pre images of the node $p_{i}$ in the normalization $\coprod P_{i}$. For any $(M_{1}, \ldots ,M_{k}) \in \oplus_{i}H^{0}(P_{i}, \End V_{i})$,
+$$
+D(M_{1}, \ldots ,M_{k}) = (M_{1}|_{\infty_{1}} - M_{2}|_{0_{2}}, \ldots , M_{k-1}|_{\infty_{k-1}} - M_{k}|_{0_{k}}).
+$$
+In other words, since the structure sheaves $k(\infty_i)$ and $k(0_{i+1})$ are naturally identified with $k(p_{i})$ via the normalization map $\nu$, we may compare the restriction of any section $M_{i} \in H^{0}(P_{i}, \End V_{i})$ at $\infty_i$ with the restriction of any section $M_{i+1} \in H^{0}(P_{i+1}, \End V_{i+1})$ at $0_{i+1}$.  For this reason, we call $D$ the <em>difference</em> map.  (We are using the letter $M$ to emphasize that we are thinking of these sections as $r \times r$ matrices.)</p>
+<p class="stacks-para">Recall that the first order deformation space of a vector bundle $V$ is naturally identified with the vector space $H^{1}(\End V)$.  Consider the connecting homomorphism  $$\oplus_{i} \End (k(p_{i})^{r}) \to H^{1}(P, \End V).$$  There is a very simple way of interpreting this map in terms of the deformations of $V$. A vector bundle $V$ on $\chain{}$ is equivalent to the data of the $k$ vector bundles $(V_{1},\ldots, V_{k})$ and gluing maps $(g_{1}, \ldots ,g_{k-1})$, where $g_{i} \from V_{i}|_{\infty_i} \to V_{i+1}|_{0_{i+1}}$ are invertible linear maps.  We can deform this data by simply varying the gluing maps, viewed as invertible $r \times r$ matrices.  The tangent space to $\GL_{r}(k)$ is the space $M_{r \times r}(k)$ of $r \times r$ matrices, and the resulting $k-1$-tuple of of elements in $M_{r \times r}$ correspond to components in the direct sum $\oplus_{i} \End (k(p_{i})^{r})$.  Therefore, by considering different gluing data, we think of the condition of being balanced as a condition about the ``relative position'' of the $V_{i}$ being general.  We will make this more precise in the next subsection.</p>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S3.SS1.html">3.1. Directrices and Filtrations</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — Section 3: Vector bundles on rational chains">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/section/S3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>

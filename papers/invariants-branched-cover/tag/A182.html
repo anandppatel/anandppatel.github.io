@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof of Lemma 3.14 [044A] (A182) — Invariants of a general branched cover of $\P^1$</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: [" {\\color{red} TODO #1}", 1],
+          comment: ["", 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          D: "{\\bf D}",
+          P: "{\\bf P}",
+          from: "\\colon",
+          into: "{\\hookrightarrow}",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbf K}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          isom: "\\stackrel\\sim\\longrightarrow",
+          f: ["\\llbracket #1 \\rrbracket", 1],
+          hens: ["{#1}^{\\rm sh}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          orbi: "{\\rm orb}",
+          sub: "{\\rm sub}",
+          Br: "{\\rm Br}",
+          s: "\\mathbf S",
+          sm: "{\\rm sm}",
+          gen: "{\\rm gen}",
+          sing: "{\\rm sing}",
+          DM: "{\\rm DM}",
+          H: "{\\mathcal{H}}",
+          cO: "\\mathcal{O}",
+          cE: "E",
+          cN: "N",
+          Adm: "\\overline{\\mathcal{H}}_{d,g}",
+          emptyset: "\\varnothing",
+          phi: "\\varphi",
+          epsilon: "\\varepsilon",
+          MC: "MC",
+          chain: ["\\P_{#1}", 1],
+          Crimp: "\\operatorname{Crimp}",
+          Mor: "\\operatorname{Mor}",
+          Def: "\\operatorname{Def}",
+          GL: "\\operatorname{GL}",
+          PGl: "\\operatorname{PGl}",
+          lcm: "\\operatorname{lcm}",
+          supp: "\\operatorname{supp}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          br: "\\operatorname{br}",
+          Sym: "\\operatorname{Sym}",
+          id: "\\operatorname{id}",
+          tr: "\\operatorname{tr}",
+          length: "\\operatorname{length}",
+          G: "\\operatorname{{\\mathbf G}}",
+          A: "\\operatorname{{\\mathbf A}}",
+          Bl: "\\operatorname{Bl}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          cok: "\\operatorname{cok}",
+          Isom: "\\operatorname{Isom}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          F: "\\operatorname{\\mathbf F}",
+          Exc: "\\operatorname{Exc}",
+          rk: "\\operatorname{rk}",
+          Pic: "\\operatorname{Pic}",
+          Proj: "\\operatorname{Proj}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Hom: "\\operatorname{Hom}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          Disc: "\\operatorname{Disc}",
+          disc: "\\operatorname{disc}",
+          val: "\\operatorname{val}",
+          im: "\\operatorname{im}",
+          three: "\\operatorname{[3]}",
+          End: "\\operatorname{End}",
+          Sing: "\\operatorname{Sing}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Gabriel Bujokas & Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Proof of Lemma 3.14 [044A] (A182)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="59F6.html">&laquo; Proof of Lemma 3.15 [8893] </a><span class="stacks-tag-current">Tag A182</span><a href="2870.html">Definition 3.16 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>.</em> <a href="../tag/A182.html" class="stacks-tag-link">(A182)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">We proceed by induction on the length of the chain $\chain{}$. If there is only one component, the claim states that for
+any endomorphism $\overline{M}:V_1|_\infty \to V_1|_\infty$ which sends the restriction of the directrix $W|_{\infty}$  to itself,
+we can find $M \in H^0(\End(V_1))$ such that $M|_\infty = \overline{M}$.</p>
+<p class="stacks-para">Fix a splitting $V_1 = \sh{O}(m)^a \oplus \sh{O}(m+1)^b$. Then $\End(V_1)= \sh{O}^{a^2} \oplus \sh{O}(1)^{ab} \oplus
+\sh{O}(-1)^{ab} \oplus \sh{O}^{b^2}$, and we can realize this splitting more naturally by realizing an element of $\End V_1$ as an $(a+b) \times (a+b)$ matrix block matrix. For
+example, for $a=2, b=3$, we have
+$$
+\End V_1 =
+\left[
+\begin{array}{cc|ccc}
+\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\
+\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\ \hline
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
+\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}
+\end{array}
+\right]
+$$
+The global sections of $\End(V_1)$ restrict to an arbitrary block upper triangular matrix at $\infty$. And being
+block upper triangular exactly means that the directrix is preserved. This proves the case for one component.</p>
+<p class="stacks-para">For the induction step, we are given an endomorphism $\overline{M}$ of $V_{j-1}|_{\infty}$ preserving $L^\bullet_j$,
+and we want to find $M \in H^0(\End(V_{j-1})$ such that
+<ul><li>$M|_{\infty}=\overline{M}$, and</li>
+<li>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</li></ul></p>
+<p class="stacks-para">This is enough for our purposes, because by induction we can choose global sections of $\End(V_i)$ for $i<j-1$ such that
+all differences $D_i$ are zero, for $i<j-1$, and produce $M|_0$ over the $(j-1)$-th node.</p>
+<p class="stacks-para">We will choose an appropriate splitting of $V_{j-1}$ so that endomorphisms preserving the flags $L^\bullet_{j-1}$
+and $L^\bullet_j$ become block matrices.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.16.</strong> <a href="../tag/2870.html" class="stacks-tag-link">(2870)</a></div>
+  <div class="stacks-env-body"><p>An ordered basis $v_1,\ldots, v_n$ <em>generates the flag</em> $F^\bullet$ if each $F^i$ is the span of
+$v_1,v_2,\ldots, v_{n_i}$ for some $n_i$.</p></div>
+</div>
+<div class="stacks-env" id="basis">
+  <div class="stacks-env-head"><strong>Claim&nbsp;3.17.</strong> <a href="../tag/BD5C.html" class="stacks-tag-link">(BD5C)</a></div>
+  <div class="stacks-env-body"><p>We may choose an ordered basis $v_1,\ldots, v_n$ of $V_{j-1}|_0$ generating $L^\bullet_{j-1}$ and
+such that $W_{j-1}|_{0}=\langle v_k,v_{k+1}, \ldots, v_n \rangle$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/BD5C.html" class="stacks-ref-link">Claim&nbsp;3.17 <span class="stacks-ref-tag">[BD5C]</span></a>.</em> <a href="../tag/2D76.html" class="stacks-tag-link">(2D76)</a></div>
+  <div class="stacks-env-body"><p>We use the same idea as in the proof of <a href="/papers/invariants-branched-cover/tag/8893.html" class="stacks-ref-link">Lemma&nbsp;3.15 <span class="stacks-ref-tag">[8893]</span></a>. Complete $L^\bullet_{j-1}$
+and $G^\bullet=(0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ to generic complete flags $\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
+Since $G^\bullet$ is transverse to $L^\bullet_{j-1}$ by assumption, so is
+$\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
+Choose $v_i$ such that $\langle v_i \rangle = \widehat{L}^i_{j-1} \cap \widehat{G}^{n-i-1}$.</p></div>
+</div>
+<p class="stacks-para">Note that the modification $L^\bullet_{j-1} \wedge (0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ is generated by the
+ordered basis $(v_k,v_{k+1},\ldots, v_n, v_1, v_2, \ldots, v_{k-1})$.</p>
+<p class="stacks-para">Now pick a splitting of $V_{j-1}$ that restricts to the basis $v_1,\ldots, v_n$ over zero. Let us write the matrix $M \in H^0(\End(V_{j-1}))$ in this basis.
+For convenience, we will use block notation, separating the vectors generating $W$ (that is, $v_k,\ldots, v_n$), from the remaining $v_1,\ldots, v_{k-1}$.</p>
+<p class="stacks-para">$$
+M =
+\left[
+\begin{array}{c|c}
+M(V/W,V/W) & M(W,V/W) \\ \hline
+M(V/W,W) & M(W,W)
+\end{array}
+\right]
+$$
+We want $M|_0$ to respect the flag $L^\bullet_{j-1}$, and $M|_\infty$ to be the given matrix $\overline{M}$ respecting the $L_j$ flag. In this block notation this
+translates into the following conditions:
+<ol><li>The matrix $M(V/W,V/W)$ is upper block triangular when restricted to both zero and infinity (for the same block shapes). The entries of
+	$M(V/W,V/W)$ are valued in $\sh{O}_{\P^1}$, so we must take the constant matrix specified by $\overline{M}$.</li>
+<li>The same applies for the block $M(W,W)$: we want it to be upper block triangular at zero, with the restriction at infinity specified by $\overline{M}$.  Since the matrix $M(W,W)$ is valued in $\sh{O}_{\P^1}$, we must use a constant matrix.</li>
+<li>The entries of $M(W,V/W)$ are valued in $\sh{O}_{\P^1}(-1)$, so it has to be the zero matrix. This poses no problems, because at infinity the
+	corresponding block of $\overline{M}$ is automatically zero to begin with.</li>
+<li>Finally, the block $M(V/W,W)$ must restrict to a specified matrix  over infinity (given by $\overline{M}$), but has to vanish over zero. This can be
+	achieved, because all the entries are valued in $\sh{O}_{\P^1}(1)$, so we may take linear functions interpolating between arbitrary values
+	at zero and infinity.</li></ol></p>
+<p class="stacks-para">This completes the proof <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>, and hence by induction the proof of <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>.</p>
+</div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Invariants of a general branched cover of $\P^1$ — Tag A182 (Proof of Lemma 3.14 [044A])">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/invariants-branched-cover/tag/A182.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+  </div>
+</footer>
+</body>
+</html>
