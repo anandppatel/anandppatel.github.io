@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.5. Connecting the Kontsevich mapping space with $\mu_M$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>3.5. Connecting the Kontsevich mapping space with $\mu_M$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.5. Connecting the Kontsevich mapping space with $\mu_M$</h1>
+<p class="stacks-para">The operation $\conv_X$ is Kronecker dual (in the first $n-1$ factors of $\mb{P}^r$) to the class  $$[\ev_*X] \in A^\bullet_{GL_{r+1}}((\mb{P}^r)^{n}) = A^\bullet_{GL_{r+1}}((\mb{P}^r)^{n-1}) \otimes A^\bullet_{GL_{r+1}}(\mb{P}^r).$$</p>
+<p class="stacks-para">We now make a fundamental observation, apparently new in this level of generality. If $X$ is an irreducible component of a fiber $\pi^{-1}(\mc{C})$ of $\pi$, then $\ev_*X$ can be expressed as $\op{M}$ for an explicit $d \times n$ matrix $M$, which we show in KGO.
+In the case $d=r+1$, this is reflected in the fact that $\ol{\MM_{0,n}}$ embeds into the Chow quotient $(\mb{P}^r)^n//_{Ch}SL_{r+1}$ [Gia13, Section 3.2].</p>
+<p class="stacks-para">\begin{Lem}
+\label{KGO}
+Let $Z\subset \ol{\MM_{0,n}}(\mb{P}^r,d)$ be a component of a fiber $\pi^{-1}(\mathcal{C})$. Then $\ev_*Z=\op{M}$ for some $(d+1)\times n$ matrix $M$.
+\end{Lem}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/55BB.html" class="stacks-tag-link">(55BB)</a></div>
+  <div class="stacks-env-body"><p>Suppose that $\mathcal{C}=[(C,p_1,\ldots,p_n)]$ and let $C_1, \ldots, C_k$ be the components of $C$. As one might expect [Gia13, Section 4.1], there is an open locus $Z^\circ \subset Z$ and integers $d_1, \ldots, d_k$ such that $Z^\circ$ parameterizes maps $C \to \mb{P}^r$ that restrict to degree $d_i$ on each $C_i$.</p>
+<p>Let $L$ be the line bundle on $C$ that restricts to $\ms{O}_{\mb{P}^1}(d_v)$ on each component $C_v\cong \mb{P}^1$ and let $V = H^0(C, L)$. Then $\dim(V) = d+1$ and we have a map $f: C\to \mb{P}(V^{\vee})$. </p>
+<p>Let $W = K^{r+1}$. Each rational map $C\to \mb{P}^r = \mb{P}(W^\vee)$ that restricts to degree $d_v$ on each component $C_v$ can be written uniquely as a composition $C \xrightarrow{f} \mb{P}(V^{\vee})\dashrightarrow \mb{P}(W^\vee)$, where the map $\mb{P}(V^{\vee})\dashrightarrow \mb{P}(W^\vee)$ is induced by a linear map $W \to V$. This is a regular map if and only if the linear system $W\to V = H^0(C, L)$ is basepoint-free.</p>
+<p>Let $U\subset \mb{P}({\rm Hom}(W,V))$ be the open locus of basepoint-free linear systems $W\to V\cong H^0(C,L)$. Then $U$ is nonempty and by the above it embeds into $Z^\circ$. We have a diagram</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>So $\mb{P}({\rm Hom}(W, V))$ and $Z$ share the open set $U$, and the bottom map is $\mu_M$ where $M$ is any matrix with projectivized columns $f(p_1), \ldots, f(p_n) \in \mb{P}(V^\vee)$. The result now follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 3.5. Connecting the Kontsevich mapping space with $\mu_M$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S3.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

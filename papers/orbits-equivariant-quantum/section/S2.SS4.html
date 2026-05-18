@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4. Class of an arbitrary orbit closure — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <span>2.4. Class of an arbitrary orbit closure</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.4. Class of an arbitrary orbit closure</h1>
+<p class="stacks-para">\label{allorbits}
+Observe that since we defined $\op{M}$ to be an $((r+1)d-1)$-dimensional algebraic cycle, it does not contain the data of $\ol{\im(\mu_M)}$ if $\dim (\ol{\im(\mu_M)}) < (r+1)d-1$. This in particular occurs if $M$ is not a ``connected'' matrix. Nevertheless, for $d \leq r+1$ we can still write $\ol{\im(\mu_M)}$ as the product of generalized matrix orbits as follows. First, by replacing $M$ with a subset of rows we may assume $\rk(M)=d$.</p>
+<p class="stacks-para">\begin{Def}
+We say that a $d \times n$ matrix $M$ is <em>connected</em> if $\rk(M) = d$ and there does not exist $\varnothing \subsetneq A \subsetneq \{1, \ldots, n\}$ such that $\rk_M(A) + \rk_M(\{1, \ldots, n\} \setminus A) = d$.
+\end{Def}
+\begin{Exam}
+Any direct sum $M_1\oplus M_2$ is not connected. If $M$ is a general $d\times n$ matrix, then $M$ is connected if and only if $d<n$.
+\end{Exam}</p>
+<p class="stacks-para">Observe that any $d \times n$ matrix $M$ of rank $d$ with no zero columns can be written as $$g (M_1 \oplus \ldots \oplus M_k) P$$ where each $M_i$ is connected, $P$ is a permutation matrix, and $g \in GL_d$.
+\begin{Prop}
+\label{connectedfact}
+Let $\wt{x}_1, \ldots, \wt{x}_n \in \mb{P}^{d-1}$ be points not all contained in any hyperplane and let $M$ be the matrix with columns $x_1, \ldots, x_n$. Suppose that $M = M_1 \oplus \cdots \oplus M_k$ where each $M_i$ is connected.</p>
+<p class="stacks-para">Then if $d \leq r+1$, the $GL_{r+1}$-orbit closure $\ol{\im(\mu_M)}$ of $(\wt{x}_1, \ldots, \wt{x}_n) \in (\mb{P}^r)^n$ is equal to $\op{M_1} \times \ldots \times \op{M_k}$ and has the expected dimension $(r+1)d - k$. Hence $[\ol{\im(\mu_M)}]=\prod_{i=1}^k \opc{M_i}$.
+\end{Prop}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/41A4.html" class="stacks-tag-link">(41A4)</a></div>
+  <div class="stacks-env-body"><p>We will first prove the proposition for $k=1$. Viewing $\mb{P}^{d-1}$ as linearly embedded in $\mb{P}^r$, it suffices to show that any element stabilizing $(\wt{x}_1, \ldots, \wt{x}_n)$ stabilizes every point of $\mb{P}^{d-1}$. Indeed, given such a $g$, each $x_i$ is an eigenvector of $g$, so $K^{d} = \operatorname{Span} \{x_1, \ldots, x_n\}$ is a direct sum of eigenspaces of $g$. Since $M$ is connected, each $x_i$ has the same eigenvalue, so $g$ acts by a scalar on $K^d$, as desired.</p>
+<p>For any $k$, let $d_i$ be the number of columns of $M_i$. Then, if $A_i$  is a $(r+1)\times d_i$ matrix for $1 \leq i \leq n$, we have the equality of block matrices
+$$
+\begin{pmatrix}
+\vert &  & \vert \\
+A_1 & \cdots & A_k \\
+\vert &  & \vert
+\end{pmatrix}
+\begin{pmatrix}M_1 & & \\
+ & \ddots & \\
+&  &  M_k
+\end{pmatrix}
+= \begin{pmatrix}
+\vert &  & \vert \\
+A_1 M_1 & \cdots & A_k M_k \\
+\vert &  & \vert
+\end{pmatrix}.
+$$
+Hence $\ol{\im(\mu_M)} = \ol{\im(\mu_{M_1})} \times \ldots \times \ol{\im(\mu_{M_k})}$ and the result follows from the previous paragraph.</p></div>
+</div>
+<p class="stacks-para">By the above, to compute the equivariant class of any $GL_{r+1}$-orbit in $(\mb{P}^r)^n$ it suffices to compute the classes $\opc{M}$. From now on we work exclusively with $\op{M}$ instead of $\ol{\im(\mu_M)}$.</p>
+<p class="stacks-para">All of our theorems can be trivially extended to all matrices by defining $\op{M}$, $(\mu_M)_*$, $\mu_M^*$, and $\ol{\Gamma_M}$ to all be zero if $M$ has a zero column. However, we will not treat matrices with a zero column in our proofs.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 2.4. Class of an arbitrary orbit closure">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S2.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

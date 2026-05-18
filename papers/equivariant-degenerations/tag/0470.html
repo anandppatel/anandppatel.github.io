@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (0470) — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S7.SS3.html">7.3. When a quartic acquires hyperflexes</a> / <span>Proof (0470)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="FD02.html">&laquo; Lemma 7.16</a><span class="stacks-tag-current">Tag 0470</span><a href="08DE.html">Theorem 7.17 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0470.html" class="stacks-tag-link">(0470)</a></div>
+  <div class="stacks-env-body"><p>We will use ideas from limit linear series (see [EH86] for a reference), but it is not necessary to know the theory to understand the argument.</p>
+<p>After base change, we can assume we have two sections $\sigma_1,\sigma_2: \Delta\to \mc{C}$, where $\sigma_1$ and $\sigma_2$ trace out two flexes in the family limiting to the hyperflex $p_1:=p\in C_0$. </p>
+<p>We blow up $C_0$ at $p_1$ in order to try to separate $\sigma_1$ and $\sigma_2$. Since $\mc{C}$ is smooth, the exceptional divisor is a rational curve $D_1$ attached to $C_0$ at $p_1$. </p>
+<p>The family of curves $\mc{C}$ carries a line bundle $\mc{L}$ giving the map $\mc{C}\to \mb{P}^2$. Shrinking $\Delta$ to an open neighborhood around $0$ if necessary, pick sections $s_0,s_1,s_2$ of $\mc{L}$ such that, when restricted to $C_0$, we have $s_0$, $s_1$, $s_2$ vanish to orders 4, 1, and 0 respectively.</p>
+<p>Let $\pi_1: \on{Bl}_{p_1}\mc{C}\to \mc{C}$ be the blowup
+map. Considered as meromorphic sections of the line bundle
+$\mc{L}(-4D_1)$, $\pi_1^{*}s_0$, $\pi_1^{*}s_1$, $\pi_1^{*}s_2$ have
+poles of orders 0, 3, 4 respectively. Therefore, to make them regular
+sections, we have to multiply them by $t^0$, $t^3$, and $t^4$,
+respectively. Then, $\pi_1^{*}s_0, t^3\pi_1^{*}s_1, t^4\pi_1^{*}s_2$
+vanish to orders $0$, $3$ and $4$ respectively on $C_0$, so they also
+vanish to orders 0, 3, and 4 respectively at $C_0\cap D_1$ when
+restricted to $D_1$.</p>
+<p>To summarize, $\pi_1^{*}s_0, t^3\pi_1^{*}s_1, t^4\pi_1^{*}s_2$ are regular sections of $\pi_1^{*}\mc{L}(-4D_1)$. When restricted to $C_0$ the sections correspond to a constant map $C_0\to \mb{P}^2$. When restricted to $D_1$, the sections map $D_1\cong \mb{P}^1$ into $\mb{P}^2$ such that the image is an irreducible quartic plane curve. It cannot map multiple to 1 onto its image because $t^3\pi_1^{*}s_1$ vanishes to order 3 at $p_1$, which is relatively prime to $4$. Furthermore, $p_1\in D_1$ maps to a unibranch triple point singularity. No other point in $D_1$ cannot map to the image of $p_1$ since $t^4\pi_1^{*}s_2$ already vanishes to order 4 and $p$. Therefore the image of $D_1$ in $\mb{P}^2$ is a rational quartic with an $E_6$ singularity.</p>
+<p>Consider the proper transforms $\wt{\sigma_1}$ and $\wt{\sigma_2}$ of $\sigma_1$ and $\sigma_2$. They cannot pass through $C_0\cap D_1$ because $\sigma_1$ and $\sigma_2$ intersect $C_0$ with multiplicity 1 at $p$. If $\wt{\sigma_1}$ and $\wt{\sigma_2}$ intersect $D_1$ at two distinct points, then the image of $D_1$ in $\mb{P}^2$ also has two simple flexes. Applying <a href="/papers/equivariant-degenerations/tag/7A93.html" class="stacks-ref-link">Lemma&nbsp;7.11 <span class="stacks-ref-tag">[7A93]</span></a> shows that this is projectively equivalent to $C_{E_6}$, and so has an 8-dimensional orbit under $PGL_3$. To find the family of matrices $\gamma: \Delta\backslash\{0\}\to PGL_3$, we note that the construction above yields a family of matrices parameterized by $\Delta$ that sends $\pi_1^{*}s_0, t^3\pi_1^{*}s_1, t^4\pi_1^{*}s_2$ to $\pi_1^{*}s_0, t^{-3}\pi_1^{*}s_1, t^{-4}\pi_1^{*}s_2$ respectively, which is equivalent to $t^4\pi_1^{*}s_0, t\pi_1^{*}s_1, \pi_1^{*}s_2$ in $PGL_3$. This is our $\gamma: \Delta\backslash\{0\}\to PGL_3$. We see $\gamma(0)$ is precisely the point $p$. </p>
+<p>If $\wt{\sigma_1}$ and $\wt{\sigma_2}$ intersect $D_1$ at the same point $p_2$, then the image of $D_1$ in $\mb{P}^2$ has a hyperflex and its orbit under $PGL_3$ is smaller than 8-dimensional. Let them intersect $D_1$ at $p_2$. Let $\pi_2$ be the blowup map at $p_2$ and $D_2$ be the exceptional divisor. Then, we pullback $\pi_1^{*}\mc{L}(-4D_1)$ and $\pi_1^{*}s_0, t^3\pi_1^{*}s_1, t^4\pi_1^{*}s_2$ under $\pi_2$. </p>
+<p>As before, pick a basis $s_0^1$, $s_1^1$, $s_2^1$ for the vector space spanned by $\pi_1^{*}s_0, t^3\pi_1^{*}s_1, t^4\pi_1^{*}s_2$ such that $s_0^1$, $s_1^1$, $s_2^1$ vanish to orders $4$, $1$, and $0$ at $p_2$ when restricted to $D_1$. Then, as above, we twist $\pi_2^{*}\pi_1^{*}\mc{L}(-4D_1)$ down by $-D_2$ and replace $s_0^1$, $s_1^1$, $s_2^1$ with $s_0^1$, $t^3s_1^1$, $t^4s_2^1$. If the proper transforms of $\wt{\sigma_1}$ and $\wt{\sigma_2}$ intersect $D_2$ at distinct points, we are done by the same argument as above. The image of the family of matrices $\gamma(t)$ will now be the point $p_2$, but $p_2$ maps to the same point as $p_1$ in $\mb{P}^2$. </p>
+<p>If the proper transforms of $\wt{\sigma_1}$ and $\wt{\sigma_2}$ intersect $D_2$ at the same point, we let $p_3\in D_2$ be the common point of intersection, blow up at $p_3$ and repeat. </p>
+<p>In summary, we found a family of matrices $\gamma: \Delta\backslash\{0\}\to PGL_3$ that takes the original map $\mc{C}\to \mb{P}^2$ and creates a rational map $\mc{C}\dashrightarrow \mb{P}^2$ under $<em>pullback</em>$ under family of linear maps $\mb{P}^2\times \Delta \dashrightarrow \mb{P}^2$ given by $\gamma$. Furthermore $\lim_{t\to 0}{\gamma(t)}$ in the $\mb{P}^8$ of $3\times 3$ matrices up to scalar has image precisely the point $p$. To resolve $\mc{C}\dashrightarrow \mb{P}^2$ , we blow up the special fiber of $\mc{C}\to \Delta$ repeatedly to get a chain of rational curve $D_m\cup D_{m-1}\cup\cdots\cup D_1\cup C_0$ in the special fiber. Here, $D_{i}$ is attached to $D_{i-1}$ and $D_1$ is attached to $C_0$ at $p$. The resolved map collapses $D_{m-1}\cup\cdots\cup D_1\cup C_0$ to the same point as $p$ and maps $D_{m}$ onto a curve that is projectively equivalent to $C_{E_6}$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Tag 0470 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/tag/0470.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

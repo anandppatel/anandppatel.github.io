@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.4. Projection-ramification for linked linear series — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\operatorname{\\mathbf F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <span>5.4. Projection-ramification for linked linear series</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.4. Projection-ramification for linked linear series</h1>
+<p class="stacks-para">Recall the setup from Section&nbsp;5.2: $C = C_1 \cup C_2$ is a nodal union of two smooth projective curves of genus $g_1$ and $g_2$, and $\pi \from X \to B$ be a smoothing of $C$.
+Let $\mathcal E$ be a vector bundle of rank $r$ on $X$ whose restriction $E$ to $C$ has multi-degree $(w_1, w_2)$.
+The integers $n_2 \geq n_1$ are such that we have vanishing $H^0(C_2, E_n|_{C_2}) = 0$ for all $n \leq n_1$ and $H^0(C_1, E_n|_{C_1}) = 0$ for $n \geq n_2$.
+For convenience, we decrease $n_1$ and increase $n_2$ so that the vanishing on $C_2$ holds for all $n \leq n_1 - (w_1-2g_1)$ and on $C_1$ for all $n \geq n_2 + (w_2-2g_2)$.
+Define
+$$ d_1 = w_1 - n_1r, \quad d_2 = w_2 + n_2r,\text{ and } b = n_2 - n_1,$$
+as before.</p>
+<p class="stacks-para">Set $\mathcal E' = \mathcal E \otimes \det \mathcal E \otimes \omega_{X/B}$.
+Then $\mathcal E'$ is a vector bundle of rank $r$ on $X$ whose restriction $E'$ to $C$ has multi-degree $(w_1', w_2')$ where
+$$ w_1' = w_1 + r(w_1-2g_1+1) \text{ and } w'_2 = w_2 + r(w_2-2g_2+1).$$
+We set
+$$ n_1' = n_1(1+r) \text{ and } n_2' = n_2(1+r),$$
+and observe that we have vanishings $H^0(C_2, E'_{n}|_{C_2}) = 0$ for $n \leq n_1'$ and $H^0(C_1, E'_{n}|_{C_1}) = 0$ for $n \geq n_2'$.
+We also set
+$$ b' = n_2' - n_1' = b(1+r).$$</p>
+<p class="stacks-para">Our next goal is to define a rational map
+$$\rho \from {\mathcal G}(r+1, \mathcal E) \dashrightarrow {\mathcal G}(1, \mathcal E')$$
+that extends the projection-ramification map
+$$
+  \rho \from \Gr(r+1, H^0(X_\eta, \mathcal E_\eta)) \dashrightarrow \Gr(1, H^0(X_\eta, \mathcal E'_\eta))
+$$
+on $X_\eta$.
+For technical reasons, we define the map in (5.13) only on the reduced scheme underlying ${\mathcal G}(r+1, \mathcal E)$.</p>
+<p class="stacks-para">Before defining the map, we identify three conditions on linked linear series on the central fiber that are required for the map to be defined.
+To do this, consider a linked linear series $(V_n \mid n \in \Z)$ on $C$, and let $(W_1, W_2)$ be the associated EHT limit linear series namely $W_1 = V_{n_1}$ and $W_2 = V_{n_2}$ (see <a href="/papers/ramification-divisors/tag/EC6E.html" class="stacks-ref-link">Proposition&nbsp;5.10 <span class="stacks-ref-tag">[EC6E]</span></a>).
+The first condition we want to impose is that $(W_1, W_2)$ be a refined EHT limit linear series; this is an open condition (see [15, Proposition&nbsp;4.1.5]).
+The second condition we want to impose is that the vanishing sequence of $W_1 \subset H^0(C_1, E_{n_1}|_{C_1})$ at $p$ is of the form
+$$(\underbrace{a, \dots, a}_i, \underbrace{a+1, \dots, a+1}_{r+1-i})$$
+as in (5.9); imposing a particular vanishing sequence is again an open condition (see [15, Proposition&nbsp;4.2.5]).
+Since $(W_1, W_2)$ is refined, it follows that the vanishing sequence of $W_2 \subset H^0(C_2, E_{n_2}|_{C_2})$ at $p$ is
+$$ (\underbrace{b-a-1, \dots, b-a-1}_{r+1-i}, \underbrace{b-a, \dots, b-a}_{i}).$$
+Recall from Section&nbsp;5.3 that $W_1$ yields two vector spaces $V^0$ and $V^1$ in the fiber $E_{n_1}|_p$, which we may identify canonically (up to scaling) with the fiber $E|_p$.
+Likewise, $W_2$ yields two analogous vector spaces, call them $\Lambda^0$ and $\Lambda^1$, in $E|_p$.
+The gluing condition in the definition of EHT limit linear series (<a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>) and the definition of these vector spaces immediately shows that
+$$V^0 = \Lambda^1 \text{ and } V^1 = \Lambda^0.$$
+The third condition we want to impose is that these two vector spaces be transverse, namely $\dim (V^0 \cap V^1) = 1$.</p>
+<p class="stacks-para">Let $\mathcal U \subset {\mathcal G}(r+1, \mathcal E)$ be the complement of the union of the following closed sets:
+<ol><li>the closure of the subset of $\Gr(r+1, H^0(X_\eta, \mathcal E_\eta))$ corresponding to $V \subset H^0(X_\eta, \mathcal E_\eta)$ for which the evaluation map $V\otimes\O_{X_\eta} \to \mathcal E_\eta$ has generic rank less than $r$.</li>
+<li>the set of linked linear series $(V_n \mid n \in \Z)$ on $C$ such that the associated EHT limit linear series $(W_1, W_2)$ is not refined, or does not have the vanishing sequence as in (5.14), or does not satisfy the transversality condition $\dim (V^0 \cap V^1) = 1$.</li></ol>
+Give $\mathcal U$ the reduced scheme structure.</p>
+<p class="stacks-para">Let $S$ be a reduced $B$-scheme with a map to $\mathcal U$ given by the linked linear series $(V_n \mid n \in \Z)$.
+On $X_S$, we have a diagram analogous to (4.8), namely
+$$\text{[Commutative diagram — see PDF]}$$
+Here $P(\mathcal E_n)$ is the sheaf of principal parts of $\mathcal E_n$ relative to $X_S \to S$, and the bottom row is the natural exact sequence coming from its definition.
+The top row is a complex, but it may not be exact.
+The maps labeled $e$ are the evaluation maps.
+The map $j$ is defined by the maximal minors of $e \from V_n \otimes \O_{X_S} \to \mathcal E_n$.
+The map $d$ is the unique map induced by the other maps in the diagram.
+By composing $d$ through the inclusion $\Omega_{X_S/S} \to \omega_{X_S/S}$, and doing some rearrangement, we obtain a map
+$$r_n \from \det V_n \to \mathcal \pi_*(\mathcal E_n \otimes \det \mathcal E_n \otimes \omega^*_{X_S/S}) = \pi_*(\mathcal E'_{(r+1)n}).$$
+Consider the two extremal sections, namely those corresponding to $n = n_1$ and $n = n_2$.</p>
+<div class="stacks-lemma" id="lem-rameht">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.14.</strong> <a href="../tag/F96E.html" class="stacks-tag-link">(F96E)</a></div>
+  <div class="stacks-env-body"><p>Over every $s \in S$ over $0 \in \Delta$, the restrictions $r_{n_1}|_s$ and $r_{n_2}|_s$ define a one-dimensional refined EHT limit linear series for $E'$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/68A1.html" class="stacks-tag-link">(68A1)</a></div>
+  <div class="stacks-env-body"><p>Without further comment, we identify $r_{n_1}|_s \in H^0(C, E'_{(r+1)n_1})$ with its image in $H^0(C_1, E'_{(r+1)n_1}|_{C_1})$.
+  We have
+  $$E'_{(r+1)n_1}|_{C_1} = E_{n_1} \otimes \det E_{n_1} \otimes \omega_C|_{C_1} = E_{n_1} \otimes \det E_{n_1} \otimes \Omega_C|_{C_1} \otimes \O_{C_1}(p),$$
+  and by construction $r_{n_1}|_s$ is the image of the ramification section of $V_{n_1} \subset H^0(C_1, E_{n_1}|_{C_1})$ under the inclusion map
+  $$ E_{n_1} \otimes \det E_{n_1} \otimes \Omega_C|_{C_1} \to E_{n_1} \otimes \det E_{n_1} \otimes \omega_C|_{C_1} = E'_{(r+1)n_1}|_{C_1}.$$
+  By <a href="/papers/ramification-divisors/tag/18F8.html" class="stacks-ref-link">Proposition&nbsp;5.11 <span class="stacks-ref-tag">[18F8]</span></a>, the ramification section of $V_{n_1}$ has order of vanishing $(r+1)a+(r-i)$ at $p$, and hence $r_{n_1}|_s$ on $C_1$ has order of vanishing $(r+1)a+(r-i+1)$ at $p$.
+  Likewise, $r_{n_2}|_s$ on $C_2$ has order of vanishing $(r+1)(b-a-1)+i$ at $p$.
+  Since
+  $$ (r+1)a+(r-i+1) + (r+1)(b-a-1) + i = (r+1)b = b',$$
+  we see that $r_{n_1}|_s$ and $r_{n_2}|_s$ have complementary orders of vanishing, leading to an equality in condition&nbsp;(1) of <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>.</p>
+<p>  We must next ensure that condition&nbsp;(2) of <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a> holds, that is, the images of $r_{n_i}|_s$ in the appropriate twists of $E_{n_i}|_p$ are equal, at least up to scaling.
+  By <a href="/papers/ramification-divisors/tag/18F8.html" class="stacks-ref-link">Proposition&nbsp;5.11 <span class="stacks-ref-tag">[18F8]</span></a>, the image of $r_{n_1}|_s$ in the appropriate twist of $E_{n_1}|_p$ spans the line $(V^0 \cap V^1)$, and the image of $r_{n_2}|_s$ spans the line $\Lambda^0 \cap \Lambda^1$.
+  But by (5.15), we have $V^1 = \Lambda^0$ and $V^0 = \Lambda^1$, so the two lines are equal.</p></div>
+</div>
+<p class="stacks-para">Thanks to <a href="/papers/ramification-divisors/tag/F96E.html" class="stacks-ref-link">Lemma&nbsp;5.14 <span class="stacks-ref-tag">[F96E]</span></a>, we apply <a href="/papers/ramification-divisors/tag/EC6E.html" class="stacks-ref-link">Proposition&nbsp;5.10 <span class="stacks-ref-tag">[EC6E]</span></a>, and conclude that there exists a unique (1-dimensional) linked linear series $(R_n \mid n \in \Z)$ of $\mathcal E'$ on $X_S$ for which $R_{n_1'} = \det V_{n_1}$ and $R_{n_2'} = \det V_{n_2}$, at least if $S$ is reduced.
+The transformation
+$$ (V_n \mid n \in Z) \mapsto (R_n \mid n \in \Z)$$
+defines a morphism
+$$\rho \from \mathcal U \to \mathcal G(1, \mathcal E'),$$
+as desired in (5.13).
+Note that $\mathcal U$ has the reduced scheme structure.</p>
+<p class="stacks-para">The fruit of our labor is the following corollary.
+Let $\mathcal U_0$ be the fiber over $0$ of $\mathcal U \to B$.</p>
+<div class="stacks-lemma" id="prop-degeneration">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;5.15.</strong> <a href="../tag/4A54.html" class="stacks-tag-link">(4A54)</a></div>
+  <div class="stacks-env-body"><p>Suppose $v \in \mathcal U_0$ is such that $\dim_v \mathcal U_0 = (r+1)(d-rg-1)$ and $v$ is isolated in the fiber of $\rho$, then the projection-ramification map $\Gr(r+1, H^0(X_\eta, \mathcal E_\eta)) \dashrightarrow \P H^0(X_\eta, \mathcal E_\eta \otimes \det E_\eta \otimes K_{X_\eta})$ is generically finite.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D0BF.html" class="stacks-tag-link">(D0BF)</a></div>
+  <div class="stacks-env-body"><p>If $\dim_v \mathcal U_0 = (r+1)(d-rg-1)$, then $v$ is in the closure of $\Gr(r+1, H^0(X_\eta, \mathcal E_\eta))$ by <a href="/papers/ramification-divisors/tag/9955.html" class="stacks-ref-link">Theorem&nbsp;5.7 <span class="stacks-ref-tag">[9955]</span></a>.
+  The statement now follows from the upper semi-continuity of fiber dimension.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — 5.4. Projection-ramification for linked linear series">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/section/S5.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

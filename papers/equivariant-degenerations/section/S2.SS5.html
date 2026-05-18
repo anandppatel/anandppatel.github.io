@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.5. Families of orbits — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminary Definitions, Conventions, and Notation</a> / <span>2.5. Families of orbits</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.5. Families of orbits</h1>
+<p class="stacks-para">\label{degenerationsection}
+Our intention here is to gather the basic degeneration tools specific
+to orbit closures, tools we will repeatedly use throughout the
+paper. Every degeneration in the paper will implicitly use the
+framework described below.</p>
+<p class="stacks-para">Let $(U,0)$ denote an open neighborhood of $0$ in $\mathbb{A}^{1}$ ,
+and suppose
+$$\begin{aligned}\alpha: U \to \P \on{Sym}^{d}V^{\vee}\end{aligned}$$
+is a map, inducing a corresponding family of degree $d$ hypersurfaces
+$$\pi: \mathcal{X} \to U.$$</p>
+<p class="stacks-para">Next, let
+$$\mathring{\mathcal{Y}} \subset U \times PGL(V) \times \P
+  \on{Sym}^{d}V^{\vee}$$ denote the closed subset consisting of
+triples $(u,g,X)$ satisfying $X = g \cdot \alpha(u)$.  In other words,
+$\mathring{\mathcal{Y}}$ is the graph of the action map
+$(u,g) \mapsto g \cdot \alpha(u)$.</p>
+<div class="stacks-definition" id="def-Y">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.8.</strong> <a href="../tag/3959.html" class="stacks-tag-link">(3959)</a></div>
+  <div class="stacks-env-body"><p>Define
+$$\begin{aligned}\mathcal{Y} \subset U \times \P \on{End}(V) \times \P \on{Sym}^{d}V^{\vee}\end{aligned}$$
+to be the closure of $\mathring{\mathcal{Y}}$ (using the natural open
+inclusion $PGL(V) \subset \P \on{End}(V)$).</p></div>
+</div>
+<p class="stacks-para">Since $PGL(V) \subset \P \on{End}(V)$ is open, and since graphs are
+closed, it follows that $\mathring{\mathcal{Y}} \subset \mathcal{Y}$
+is an open set.  The map sending $(u,g) \in U \times PGL(V)$ to
+$(u,g,g \cdot \alpha(u)) \in \mathring{\mathcal{Y}}$ clearly induces
+an isomorphism which we denote by
+$$\iota: U \times PGL(V) \to \mathring{\mathcal{Y}}$$</p>
+<p class="stacks-para">We let $\pi_{1}, \pi_{2}, \pi_{3}$ denote projections of $\mathcal{Y}$
+to the respective factors
+$U, \P \on{End}(V), \P \on{Sym}^{d}V^{\vee}$. For each $u \in U$, we
+let $\mathcal{Y}_{u}$ denote the scheme-theoretic fiber
+$\pi_{1}^{-1}(u)$. Observe that, for a general point $u \in U$,
+$\mathcal{Y}_{u} := \pi_{1}^{-1}(u) \subset \mathcal{Y}$ is
+irreducible, and therefore $\pi_{3}(\pi_{1}^{-1}(u))$ is the orbit
+closure $\P\Orb(\mathcal{X}_{u})$.</p>
+<p class="stacks-para">Since $\pi_{1}: \mathcal{Y} \to U$ is flat ($\mathcal{Y}$ is
+irreducible and $U$ is a smooth curve), every fiber of $\pi_{1}$ has
+pure dimension equal to $\dim PGL(V)$.  The geometry of the special
+fiber $\mathcal{Y}_{0}$ will be of utmost importance to us.</p>
+<p class="stacks-para">We let
+$$\mathcal{A}_{0} \subset \mathcal{Y}_{0}$$ denote the irreducible
+component $\overline{\iota(\{0\} \times PGL(V))}$.  Then, by
+construction, the map
+$\pi_{3}: \mathcal{A}_{0} \to \P\on{Sym}^{d}V^{\vee}$ restricts on
+$\{0\} \times PGL(V)$ to the action map $g \mapsto g \cdot \alpha(0)$,
+and hence $$\pi_{3}(\mathcal{A}_{0}) = \P \Orb(\mathcal{X}_{0}).$$
+Furthermore, in terms of cycles,
+$$\pi_{3*}[\mathcal{A}_{0}] = \# \on{Aut}(\mathcal{X}_{0}) \cdot [\P \Orb(\mathcal{X}_{0})].$$
+Along with $\mathcal{A}_{0}$, there may be several other components of
+the fiber $\mathcal{Y}_{0} := \pi_{1}^{-1}(0)$, and our aim is to gain
+a better understanding of these.</p>
+<p class="stacks-para">\begin{comment}
+The subvariety
+$$\overline{\mathcal{Y}} := (\pi_{1},\pi_{3})(\mathcal{Y}) \subset U
+  \times \P\on{Sym}^{d}V^{\vee}$$ is a $PGL(V)$-equivariant family of
+orbit closures (parametrized by an open subset of $U$) specializing at
+$0 \in U$ to some finite union of $PGL(V)$-preserved subvarieties.  A
+commonly occurring objective will be to identify these subvarieties.
+To do so, we will frequently employ principle, and principle2 below.
+\end{comment}</p>
+<p class="stacks-para">To that end, we must introduce the idea of <em>twisting by
+  $1$-parameter families.</em>  Let $U^{\times} = U \setminus \{0\}$, and
+suppose we have a morphism
+$$\begin{aligned}\gamma: U^{\times} \to PGL(V);\end{aligned}$$
+any such $\gamma$ will be called a <em>$1$-parameter family.</em>  We
+will abuse notation and let $\gamma$ also denote its canonical
+extension $U \to \P \on{End}(V)$ across $0 \in U$.  In the presence of
+a $1$-parameter family $\gamma$, we obtain a new family of
+hypersurfaces,
+$$\begin{aligned}\alpha^{\gamma}: U^{\times} \to \P \on{Sym}^{d}V^{\vee}\end{aligned}$$
+defined by $\alpha^{\gamma}(u) := \gamma(u) \cdot \alpha(u)$. We call
+$\alpha^{\gamma}$ the <em>twist</em> of $\alpha$ by $\gamma$.  Again, we
+will abuse notation and use $\alpha^{\gamma}$ to also denote the
+natural extension to $U$. Then, $\alpha^{\gamma}$ induces a new family
+of hypersurfaces which we denote by
+$\pi^{\gamma}: \mathcal{X}^{\gamma} \to U$.</p>
+<p class="stacks-para">Now consider the map
+$$\iota^{\gamma}: U \times PGL(V) \to \mathcal{Y}$$ defined by the formula
+$$\iota^{\gamma}(u,g) = (u, g \circ \gamma(u), g \cdot
+  \alpha^{\gamma}(u)).$$</p>
+<p class="stacks-para">Note that the appropriate restriction of $\iota^{\gamma}$ induces an
+isomorphism between $U^{\times} \times PGL(V)$ and
+$\mathring{\mathcal{Y}}^{\times}$, the latter being the open set
+$\pi^{-1}(U^{\times}) \cap \mathring{\mathcal{Y}}$.  Denote by
+$\iota^{\gamma}_{0}: PGL(V) \to \mathcal{Y}_{0}$ for the restriction
+of $\iota^{\gamma}$ to the subset $\{0 \} \times PGL(V)$; simply put,
+$$\iota^{\gamma}_{0}(g) = (0, g \circ \gamma(0), g \cdot
+  \alpha^{\gamma}(0)).$$</p>
+<p class="stacks-para">Under the action of $PGL(V)$ (post-composition on middle factor) on
+$\mathcal{Y}$, $\iota^{\gamma}_0$ is the action map for the point
+$(0, \gamma(0), \alpha^{\gamma}(0))$.</p>
+<div class="stacks-definition" id="def-fullgamma">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.9.</strong> <a href="../tag/5C8E.html" class="stacks-tag-link">(5C8E)</a></div>
+  <div class="stacks-env-body"><p>We say the $1$-parameter family $\gamma$ is <em>full for $\alpha$</em>
+  if the $PGL(V)$ orbit of the point
+  $$(0, \gamma(0), \alpha^{\gamma}(0)) \in \mathcal{Y}$$ is full
+  dimensional. Equivalently, $\gamma$ is full for $\alpha$ if
+  $\iota^{\gamma}_{0}$ is quasi-finite onto its image.</p></div>
+</div>
+<div class="stacks-definition" id="def-Agamma">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.10.</strong> <a href="../tag/67EE.html" class="stacks-tag-link">(67EE)</a></div>
+  <div class="stacks-env-body"><p>Suppose $\gamma$ is full for $\alpha$. Define
+  $$\mathcal{A}_{\gamma} \subset \mathcal{Y}_{0} $$ to be the closure
+  of the orbit of $(0, \gamma(0), \alpha^{\gamma}(0))$.</p></div>
+</div>
+<p class="stacks-para">\begin{comment}</p>
+<p class="stacks-para">Projection onto the first factor
+$$\pi_{1} : \mathcal{Y} \to U$$ now possesses two sections.  First,
+there is the section $s: U \to \mathcal{Y}$ given by
+$$s(u) = (u, id, \alpha(u)).$$ Secondly, there is the
+section $$s^{\gamma}: U \to \mathcal{Y}$$ defined by
+$s^{\gamma}(u) = (u, \gamma(u), \alpha^{\gamma}(u))$.</p>
+<div class="stacks-lemma" id="gammacomponent">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.11.</strong> <a href="../tag/2C3C.html" class="stacks-tag-link">(2C3C)</a></div>
+  <div class="stacks-env-body"><p>Maintain the setting above, and suppose
+  $\mathcal{X}^{\gamma}_{0} = \alpha^{\gamma}(0)$ is a hypersurface
+  with full dimensional orbit.  Then there is a unique irreducible
+  component of $\mathcal{Y}_{0}$ containing the point $s^{\gamma}(0)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F3B1.html" class="stacks-tag-link">(F3B1)</a></div>
+  <div class="stacks-env-body"><p>By definition, the point $s^{\gamma}(0)$ is
+  $(0, \gamma(0), \alpha^{\gamma}(0))$. Since
+  $\pi_{3}: \mathcal{Y}_{0} \to \P \on{Sym}^{d}V^{\vee} $ is
+  $PGL(V)$-equivariant it follows by the full-dimensionality
+  assumption and the fact that $\dim \mathcal{Y}_{0} = \dim PGL(V)$
+  ($\mathcal{Y} \to U$ is flat) that the closure of the $PGL(V)$-orbit
+  of the point $s^{\gamma}(0)$ must be an irreducible component of
+  $\mathcal{Y}_{0}$.  Uniqueness follows from connectedness of
+  $PGL(V)$.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<p class="stacks-para">\begin{comment}</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Two actions on $\mathcal{Y}$</h3></p>
+<p class="stacks-para">The variety $\mathcal{Y}$ is host to <em>two</em> actions by $PGL(V)$.
+The first action, by <em>post-composition</em> is as follows. If
+$h \in PGL(V)$ is any element, and if
+$(u, g, g \cdot \alpha(u)) \in \mathring{\mathcal{Y}}$ is any element,
+then $h$ sends this element to
+$(u, h \circ g, (h \circ g) \cdot \alpha(u))$.</p>
+<p class="stacks-para">The second action, by <em>pre-composition</em> sends the same element to
+$(u, g \circ h^{-1}, (g \circ h^{-1}) \cdot \alpha(u))$.</p>
+<p class="stacks-para">The open embedding $\iota$ (or $\iota^{\gamma}$) is equivariant with
+respect to both actions, when we use the corresponding action on the
+domain $U \times PGL(V)$.  Thus $\mathcal{A}_{0}$ and
+$\mathcal{A}_{\gamma}$ are preserved by both actions, and contain
+dense $PGL(V)$-orbits under both actions.</p>
+<p class="stacks-para">Finally, observe that the projection
+$$p_{2}: \mathcal{Y} \to \P \on{End}(V)$$ is equivariant with respect
+to both actions, as long as we choose the corresponding
+(post/pre-composition) action of $PGL(V)$ on $\P \on{End}(V)$.
+\end{comment}</p>
+<p class="stacks-para">By fullness of $\gamma$, $\mathcal{A}_{\gamma}$ is an irreducible
+component of $\mathcal{Y}_{0}$ which contains a dense
+$PGL(V)$-orbit. The next lemma will be used to help us distinguish
+among irreducible components of $\mathcal{Y}_{0}$.</p>
+<div class="stacks-lemma" id="gamma12">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.12.</strong> <a href="../tag/4DEC.html" class="stacks-tag-link">(4DEC)</a></div>
+  <div class="stacks-env-body"><p>Suppose that $\gamma_{1,2}: U^{\times} \to PGL(V)$ are two
+  $1$-parameter families which are full for $\alpha$, and let
+  $\mathcal{A}_{\gamma_{1}}$ (resp. $\mathcal{A}_{\gamma_{2}}$) denote
+  the corresponding irreducible component of $\mathcal{Y}_{0}$ as in
+  <a href="/papers/equivariant-degenerations/tag/67EE.html" class="stacks-ref-link">Definition&nbsp;2.10 <span class="stacks-ref-tag">[67EE]</span></a>.  Further suppose that
+  $\gamma_{i}(0) \in \P \on{End}(V)$ and
+  $\gamma_{2}(0) \in \P \on{End(V)}$ are not translates under the
+  action of $PGL(V)$ on $\P \on{End}(V)$ via post-composition.</p>
+<p>  Then
+  $$\mathcal{A}_{\gamma_{1}} \neq \mathcal{A}_{\gamma_{2}}.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/66F2.html" class="stacks-tag-link">(66F2)</a></div>
+  <div class="stacks-env-body"><p>We will argue the contrapositive.</p>
+<p>  Suppose
+  $\mathcal{A}_{\gamma_{1}} = \mathcal{A}_{\gamma_{2}} = \mathcal{A}$.
+  Then both points $(0,\gamma_{i}(0), \alpha^{\gamma_{i}}(0))$ are in
+  $\mathcal{A}$, and both have full orbits.  As $\mathcal{A}$ is
+  irreducible and has a dense orbit, it follows that both of the above
+  points are in the same $PGL(V)$ orbit.</p>
+<p>  Since $\pi_{2}: \mathcal{Y}_{0} \to \P \on{End}(V)$ is
+  $PGL(V)$-equivariant, it follows that
+  $ \gamma_{1}(0) = \gamma_{2}(0)$ are also in the same $PGL(V)$-orbit
+  in $\P \on{End}(V)$, which is what we needed to show.</p></div>
+</div>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D08D.html" class="stacks-tag-link">(D08D)</a></div>
+  <div class="stacks-env-body"><p>We prove the contrapositive. The projection map
+  $\pi_{2}: \mathcal{Y} \to \P \on{End}(V)$ is
+  $PGL(V)$-equivariant. If $\mathcal{A}_{1} = \mathcal{A}_{2}$, then
+  as both are the closures of $PGL \cdot s^{\gamma_{i}}(0)$, $i=1,2$,
+  it follows that there is an element $g \in PGL(V)$ such that
+  $g \cdot s^{\gamma_{1}}(0) = s^{\gamma_{2}}(0).$ By equivariance of
+  $\pi_{2}$ we conclude that $g \cdot \gamma_{1}(0) = \gamma_{2}(0)$.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<div class="stacks-commentary" id="imageskernels">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.13.</strong> <a href="../tag/CA2E.html" class="stacks-tag-link">(CA2E)</a></div>
+  <div class="stacks-env-body"><p>Observe that the condition ``$\gamma_{1}(0)$ and $\gamma_{2}(0)$ are
+  not $PGL(V)$ translates'' is equivalent to the condition that the
+  projective endomorphisms $\gamma_{i}(0)$ do not have the same <em>kernel</em> subspaces in $\P V$ in the case of the action by <em>post</em>-composition.  We will use this observation repeatedly.</p></div>
+</div>
+<p class="stacks-para">\begin{prin}
+  \label{principle}
+  Suppose $\gamma_{i}$, $1\leq i\leq n$ are $1$-parameter families,
+  full for $\alpha$, and suppose each pair $\gamma_{i},\gamma_{j}$
+  satisfy the hypothesis in <a href="/papers/equivariant-degenerations/tag/4DEC.html" class="stacks-ref-link">Lemma&nbsp;2.12 <span class="stacks-ref-tag">[4DEC]</span></a>.  Then, the equivariant
+  class
+  $$\p_{\mathcal{X}_{u}}-\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$$
+  can be represented by a nonnegative sum of equivariant fundamental
+  classes of effective cycles.</p>
+<p class="stacks-para">If, in addition, the predegrees of the hypersurfaces
+  $\mathcal{X}^{\gamma_{1}}_{0},\ldots,\mathcal{X}^{\gamma_{n}}_0$ add
+  up to the predegree of $\mathcal{X}_{u}$, then,</p>
+<p class="stacks-para">$$\p_{\mathcal{X}_u}=\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}.$$
+\end{prin}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/17AF.html" class="stacks-tag-link">(17AF)</a></div>
+  <div class="stacks-env-body"><p>Recall the variety $\mathcal{Y}$ from <a href="/papers/equivariant-degenerations/tag/3959.html" class="stacks-ref-link">Definition&nbsp;2.8 <span class="stacks-ref-tag">[3959]</span></a>, and
+  $\overline{\mathcal{Y}} \subset U \times \P \on{Sym}^{d}V^{\vee}$
+  its image under projection onto first and third factors
+  $(\pi_{1},\pi_{3})$. In light of the hypotheses in <a href="/papers/equivariant-degenerations/tag/4DEC.html" class="stacks-ref-link">Lemma&nbsp;2.12 <span class="stacks-ref-tag">[4DEC]</span></a>,
+  we obtain pairwise distinct irreducible components
+  $\mathcal{A}_{i} \subset \mathcal{Y}_{0}$ of $\mathcal{Y}_{0}$,
+  $i=1, \dots, n$. By their constructions, the composite
+  $$\pi_{3}\circ \iota^{\gamma}_{0}: PGL(V) \to \P \on{Sym}^{d}V^{\vee}$$ the action map
+  corresponding to each hypersurface $\mathcal{X}^{\gamma_{i}}_{0}$.</p>
+<p>  Therefore, in the cycle $\pi_{3*}[\mathcal{Y}_{0}]$, the coefficient
+  of $[\P \Orb(\mathcal{X}^{\gamma_{i}}_{0})]$ is
+  $\deg(PGL(V) \to\P \Orb(\mathcal{X}^{\gamma_{i}}_{0}))$, i.e.
+  $\# \on{Aut}(\mathcal{X}_{0}^{\gamma_{i}})$.  Since
+  $\pi_{3*}[\mathcal{Y}_{u}] = \# \on{Aut}(\mathcal{X}_{u})[\P
+  \Orb(\mathcal{X}_{u})]$, we deduce that the cycle
+  $$\# \on{Aut}(\mathcal{X}_{u})[\P \Orb(\mathcal{X}_{u})] -
+    \sum_{i=1}^{n} \# \on{Aut}(\mathcal{X}^{\gamma_{i}}_{0})[\P
+    \Orb(\mathcal{X}^{\gamma_{i}}_{0})]$$ has an effective
+  representative supported on the irreducible components of
+  $\pi_{3}(\overline{\mathcal{Y}}_{0})$ not accounted for by the
+  orbits of the hypersurfaces $\mathcal{X}^{\gamma_{i}}$. The
+  effectivity statement of
+  $$\p_{\mathcal{X}_{u}}-\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$$
+  now follows.</p>
+<p>  Finally, assume that the predegrees of
+  $\mathcal{X}^{\gamma_{i}}_{0}$ add to the predegree of
+  $\mathcal{X}_{u}$. Let $\Lambda \subset \P \on{Sym}^{d}V^{\vee}$ be
+  a general linear space of codimension $\dim PGL(V)$ intersecting
+  $\P \Orb(\mathcal{X}_{u})$ and
+  $\P \Orb(\mathcal{X}^{\gamma_{i}}_{0})$ transversely for all $i$.
+  Then, since $\deg \pi_{3}^{-1}(\Lambda)$ is the sum of predegrees of
+  the $\mathcal{X}^{\gamma_{i}}_{0}$, and since this degree is
+  constant over $U$, it follows that there are no irreducible
+  components $\mathcal{B} \subset \mathcal{Y}_{0}$ other than the
+  $\mathcal{A}_{i}$ having the property that $\pi_{3}(\mathcal{B})$ is
+  an irreducible component of
+  $\pi_{3}(\mathcal{Y})$. Thus,
+  $$(\pi_{1},\pi_{3})(\mathcal{Y}) \subset U \times \P
+    \on{Sym}^{d}V^{\vee}$$ induces
+  $$\# \on{Aut}(\mathcal{X}_{u})[\P \Orb(\mathcal{X}_{u})] \leadsto
+    \sum_{i}\# \on{Aut}(\mathcal{X}^{\gamma_{i}}_{0})[\P
+    \Orb(\mathcal{X}^{\gamma_{i}}_{0})],$$ and the equality
+  $$\p_{\mathcal{X}_u}=\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$$
+  follows.</p></div>
+</div>
+<p class="stacks-para">For many of our applications, principle will suffice. But in
+Section&nbsp;6.2, we will find ourselves in a situation that
+doesn't quite obey the hypotheses of principle, yet the
+conclusion will still follow. Our adjustment is to replace the
+compactification $PGL(V) \subset \P \on{End}(V)$ by another variety.</p>
+<div class="stacks-definition" id="def-Inv">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.14.</strong> <a href="../tag/A3F9.html" class="stacks-tag-link">(A3F9)</a></div>
+  <div class="stacks-env-body"><p>Define
+$$\begin{aligned}\mathsf{Inv}(V) \subset \P \on{End}(V) \times \P \on{End}(V)\end{aligned}$$  to be
+the closure of the graph of the inversion morphism
+$i: PGL(V) \to PGL(V)$.  In other words, $\mathsf{Inv}(V)$ is the
+closure of the set of pairs $(g,g^{-1})$, where $g \in PGL(V)$.</p></div>
+</div>
+<p class="stacks-para">The group $PGL(V)$ acts on $\mathsf{Inv}(V)$ by <em>post</em>-composition
+on the first factor and <em>pre</em>-composition on the second factor,
+i.e. $h \in PGL(V)$ acts on a pair $(e_1, e_2) \in \mathsf{Inv}(V)$ to
+give $(h \circ e_{1}, e_{2} \circ h^{-1})$.</p>
+<p class="stacks-para">The varieties $\mathcal{Y}$, $\mathcal{A}_{\gamma}$, and
+<a href="/papers/equivariant-degenerations/tag/4DEC.html" class="stacks-ref-link">Lemma&nbsp;2.12 <span class="stacks-ref-tag">[4DEC]</span></a> have their immediate generalizations to the
+$\mathsf{Inv}(V)$ setting, and we will abuse notation and use the same
+letters whenever we are in this analogous setting.</p>
+<p class="stacks-para">\begin{prin}
+\label{principle2}
+Let $\gamma_1,\ldots,\gamma_n$ be $1$-parameter families
+$\gamma_i: U^{\times}\to PGL(V)$ which are full for $\alpha$ and
+continue to let $\gamma_{i}: U \to \mathsf{Inv}(V)$ denote the unique
+extension over $U$.  Suppose furthermore that:
+<ul><li>The points $\gamma_i(0) \in \mathsf{Inv}(V)$ are in distinct
+  $PGL(V)$-orbits of $\mathsf{Inv}(V)$.</li></ul>
+Then, the equivariant class
+$\p_{\mathcal{X}_{u}}-\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$
+can be represented by a nonnegative sum of effective cycles. If
+additionally the predegrees of $\mathcal{X}^{\gamma_{i}}_{0}$,
+$i=1, \ldots, n$ sum up to the predegree of $\mathcal{X}_{u}$, then
+$$\p_{\mathcal{X}_{u}}=\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}.$$
+\end{prin}</p>
+<p class="stacks-para">We omit the proof, as it is similar to the proof of principle.</p>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-env" id="">
+  <div class="stacks-env-head"><strong>Notation&nbsp;2.15.</strong> <a href="../tag/764F.html" class="stacks-tag-link">(764F)</a></div>
+  <div class="stacks-env-body"><p>Consider the abelian group $\mathcal{A}$ generated $\mb{Z}$-linearly
+  by $e_Z$ where $Z$ varies over all $GL(V)$-invariant subvarieties of
+  $\on{Sym}^dV^{\vee}$ and with relations generated by all
+  $e_{Z} -\sum_{i}m_i e_{Z^i}$ whenever $Z \leadsto \sum_{i}m_i
+  Z^i$. Then, we write
+  $$\sum_{i}m_i Z_i\sim \sum_{j}n_j Z'_j$$ if
+  $\sum_{i}m_i e_{Z_i}= \sum_{j}n_j e_{Z'_j}$ in $\mathcal{A}$.</p></div>
+</div>
+<p class="stacks-para">Note that
+$$\begin{aligned}\sum_{i}m_i Z_i\sim \sum_{j}n_j Z'_j\Rightarrow &\sum_{i}m_i [Z_i]_{GL(V)}= \sum_{j}n_j [Z'_j]_{GL(V)}\\
+                                                  &\sum_{i}m_i [\mb{P}Z_i]_{GL(V)}= \sum_{j}n_j [\mb{P}Z'_j]_{GL(V)}.\end{aligned}$$
+\end{comment}</p>
+<p class="stacks-para">\begin{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 2.5. Families of orbits">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S2.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

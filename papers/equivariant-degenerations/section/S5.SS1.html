@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.1. Framework — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Degeneration I: Splitting off a line</a> / <span>5.1. Framework</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.1. Framework</h1>
+<p class="stacks-para">Let $F(X,Y,Z)$ and $G(X,Y,Z)$ be forms of degrees $d-1$ and $d$
+respectively, and assume $G$ does not vanish identically on the line
+$\{X=0\}$. Let $$\alpha: U \to \P \on{Sym}^{d}V^{\vee}$$ be given by
+the formula $t \mapsto XF + tG$. Finally, let
+$$\gamma: U^{\times} \to PGL(V)$$ be the $1$-parameter family of
+matrices
+$$\begin{pmatrix}
+    t^{-1} & 0 & 0 \\
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+  \end{pmatrix}.$$</p>
+<p class="stacks-para">We maintain this framework throughout the rest of the section.</p>
+<div class="stacks-lemma" id="line">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.1.</strong> <a href="../tag/3B9D.html" class="stacks-tag-link">(3B9D)</a></div>
+  <div class="stacks-env-body"><p>In the setting of Section&nbsp;5.1, the curve
+$\alpha^{\gamma}(0) \in \P \on{Sym}^{d}V^{\vee}$ has equation
+$X \cdot F(0,Y,Z)+G(0,Y,Z) = 0$.</p>
+<p>\begin{comment}
+  Suppose $\{L=0\}$ intersects both $\{G=0\}$ and $\{F=0\}$ at general
+  points. Consider the family of degree $d+m$ curves parameterized by
+  $\mb{A}^1$ given by the equation
+$$\begin{aligned}tF(X,Y,Z)+L(X,Y,Z)G(X,Y,Z).\end{aligned}$$
+Then, there is a 1-parameter family of matrices
+$\gamma: \mb{A}^1\backslash\{0\}\to PGL_3$ such that the limiting
+matrix $\lim_{t\to 0}{\gamma(t)}$ in the $\mb{P}^8$ of $3\times 3$
+matrices modulo scalars has image precisely the line cut out by
+$L$. Furthermore, the limit
+$$\begin{aligned}\lim_{t\to 0}tF(\gamma(t)\cdot (X,Y,Z))+L(\gamma(t)\cdot (X,Y,Z))G(\gamma(t)\cdot (X,Y,Z))\end{aligned}$$
+in the $\mb{P}^{\binom{d+2}{2}-1}$ of degree $d$ plane curves a
+general degree $d$ plane curve with a $d-1$-fold multiplicity point.
+\end{comment}</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6077.html" class="stacks-tag-link">(6077)</a></div>
+  <div class="stacks-env-body"><p>\begin{comment}
+    Clearly the coefficient of each monomial of $G(tX,Y,Z)$ is
+    divisible by $t$ if and only if the monomial is divisible by $X$,
+    and similarly each monomial of $XF(tX,Y,Z)$ is divisible by $t$ if
+    and only if the monomial is divisible by $X^2$.
+ \end{comment}
+ Unraveling the definition of the family of curves
+ $\alpha^{\gamma}: U \to \P \on{Sym}^{d}V^{\vee}$, it suffices to
+ prove
+ $$\begin{aligned}\lim_{t\to 0}t^{-1}((tX)F(tX,Y,Z)+tG(tX,Y,Z))&=X \cdot F(0,Y,Z)+G(0,Y,Z),\end{aligned}$$
+which is immediate.
+ \begin{comment}
+   Since $\{F=0\}$ or $\{G=0\}$ does not contain $\{X=0\}$, there is
+   at least one such monomial not divisible by $X$ and the limit is
+   achieved by setting $X$ to be zero in $F(X,Y,Z)$ and $G(X,Y,Z)$.
+ \end{comment}
+\begin{comment}
+  Without loss of generality, we can assume $L(X,Y,Z)=X$. Let
+  $\gamma(t)$ be the diagonal matrix sending $X\to tX$, $Y\to Y$,
+  $Z\to Z$. Then, $$\begin{aligned}\lim_{t\to 0}tF(\gamma(t)\cdot
+    (X,Y,Z))+L(\gamma(t)\cdot (X,Y,Z))G(\gamma(t)\cdot (X,Y,Z))\end{aligned}$$
+is $F(0,Y,Z)+XG(0,Y,Z)$. Since $\{F=0\}$ and $\{G=0\}$ intersect
+$\{L=0\}$ at general points, $F(0,Y,Z)+XG(0,Y,Z)$ cuts out a general
+curve with a point of multiplicity of $d-1$ at $[1:0:0]$.
+\end{comment}</p></div>
+</div>
+<p class="stacks-para">Let us interpret <a href="/papers/equivariant-degenerations/tag/3B9D.html" class="stacks-ref-link">Lemma&nbsp;5.1 <span class="stacks-ref-tag">[3B9D]</span></a> in geometric terms, under the further
+condition that $F$ and $G$ are suitably general.  The original family
+$\alpha$ represents a general degree $d$ curve $G = 0$ specializing to
+a reducible curve containing a line, $X \cdot F = 0$.  Upon twisting
+by $\gamma$, the new family $\alpha^{\gamma}$ now specializes the same
+general curve to the curve $X \cdot F(0,Y,Z) + G(0,Y,Z)$, which is a
+<em>general</em> curve among those possessing a multiplicity $(d-1)$
+singular point.</p>
+<div class="stacks-commentary" id="rmk-split">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.2.</strong> <a href="../tag/7670.html" class="stacks-tag-link">(7670)</a></div>
+  <div class="stacks-env-body"><p>Notice that the limiting endomorphism $\gamma(0) \in \P \on{End}(V)$
+  is given by the matrix
+$$\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & 0\\
+    0 & 0 & 0\\
+  \end{pmatrix}$$ and therefore the kernel space of $\gamma(0)$ is the
+line $X=0$ which was a component of the curve $\alpha(0)$.</p></div>
+</div>
+<p class="stacks-para">We can slightly generalize the analysis in <a href="/papers/equivariant-degenerations/tag/3B9D.html" class="stacks-ref-link">Lemma&nbsp;5.1 <span class="stacks-ref-tag">[3B9D]</span></a> to the
+situation where a general degree $d$ curve $C$ specializes to a curve
+$D$ (via a map $\beta: U \to \P \on{Sym}^{d}V^{\vee}$), where $D$ is
+the union of a general degree $e \geq 1$ curve along with $d-e$
+generally chosen lines $L_1, \dots, L_{d-e}$.  By adapting the family
+of matrices $\gamma$ to this more general situation, we obtain
+$\gamma_{i}: U^{\times} \to PGL(V)$, one per each line $L_{i}$,
+satisfying:
+<ol><li>$\beta^{\gamma_{i}}(0)$ is a degree $d$ curve general among
+  those with a multiplicity $d-1$ point, and</li>
+<li>the kernel of the endomorphism $\gamma_{i}$ is the line
+  $L_{i} \subset \P V$. (see <a href="/papers/equivariant-degenerations/tag/7670.html" class="stacks-ref-link">Remark&nbsp;5.2 <span class="stacks-ref-tag">[7670]</span></a>.)</li></ol></p>
+<div class="stacks-lemma" id="linespecialization">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.3.</strong> <a href="../tag/A0C6.html" class="stacks-tag-link">(A0C6)</a></div>
+  <div class="stacks-env-body"><p>Assume $d\geq 4$ and let $C$ be a general degree $d$ curve, $C_{d-1}$
+a general degree $d$ curve possessing a point of multiplicity $d-1$,
+and $D$ the union of a general degree $e \geq 0$ curve together with
+$d-e$ general lines. Then,
+$$\begin{aligned}\p_{C} =  (d-e)\p_{C_{d-1}}+ \p_{D}.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/73AA.html" class="stacks-tag-link">(73AA)</a></div>
+  <div class="stacks-env-body"><p>This will be a direct application of principle.  Let
+  $\beta: U \to \P \on{Sym}^{d}V^{\vee}$ and $\gamma_{i}$
+  $i=1, \dots, d-e$ be as in the generalized setup immediately prior
+  to the statement of the proposition.</p>
+<p>  The hypotheses of principle are met:</p>
+<p><ol><li>$C_{d-1}$ has full dimensional orbit, as does $D$, (thanks to
+  the assumption $d \geq 4$).</li>
+<li>The kernels of $\gamma_{i}(0)$ are
+  distinct, namely the lines $L_{i}$.</li>
+<li>It remains to check the compatibility of predegrees.  For this,
+  (by further specializing $D$ to a union of $d$ general lines) it
+  suffices to consider the case $e=0$, where now the task remaining is
+  to check that the predegree of a general degree $d$ curve $C$ is $d$
+  times the predegree of $C_{d-1}$, a general degree $d$ curve with a
+  point of multiplicity $d-1$ plus the predegree of the union of $d$
+  general lines. Finally, this last check is accomplished by plugging
+  into the formulas in [AF00b, Examples 3.1, 4.2] and [AF93b].</li></ol>
+The proposition follows from principle.</p></div>
+</div>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.4.</strong> <a href="../tag/378F.html" class="stacks-tag-link">(378F)</a></div>
+  <div class="stacks-env-body"><p>For each $C$ a smooth quartic plane curve with no hyperflexes
+  (respectively a general quartic plane curve with an $A_n$
+  singularity for $3\leq n\leq 7$), the degree of its orbit closure is
+  $14280=1785\cdot 8$ (respectively $14280-1785(n+1)$).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A902.html" class="stacks-tag-link">(A902)</a></div>
+  <div class="stacks-env-body"><p>For a smooth quartic plane curve with no hyperflexes, see [AF93b]. See [AF00b, Example 5.4] for the case of a quartic curve with an $A_n$ singularity.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 5.1. Framework">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S5.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

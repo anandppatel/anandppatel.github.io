@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (B891) — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <a href="../section/S2.SS3.html">2.3. Some lemmas on multiplication of polynomials</a> / <span>Proof (B891)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="8F91.html">&laquo; Lemma 2.22</a><span class="stacks-tag-current">Tag B891</span><a href="D46C.html">Lemma 2.23 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B891.html" class="stacks-tag-link">(B891)</a></div>
+  <div class="stacks-env-body"><p>We will explicitly construct a vector space $V_{r-1}$ with the desired property.  </p>
+<p>  Our construction is slightly different depending on the parities of the numbers $n_{i}$.  So, for the convenience of the reader, let us first assume all $n_{i}$ are odd. </p>
+<p>  Then for each $i$, we define the polynomial
+  $$\begin{aligned}p_{i} := \prod_{j \neq i}(z-\alpha_{j})^{n_{j}-1}.\end{aligned}$$</p>
+<p>  Next, for each $i$  consider the vector space
+  $$\begin{aligned}A_{i} := \Span\left\{p_{i} \cdot 1,p_{i} \cdot (z-\alpha_{i})^{2}, p_{i}\cdot (z-\alpha_{i})^{4}, \dots,p_{i} \cdot (z-\alpha_{i})^{n_{i}-3} \right\}.\end{aligned}$$</p>
+<p>  Then it is immediately verified that
+  $$\begin{aligned}\rho(P_{1} \otimes A_{i}) = (0, \dots, k[z]/(z-\alpha_{i})^{n_{i}-1}, 0 ,\dots).\end{aligned}$$
+  Note that $\dim A_{i} = (n_{i}-1)/2$.  By letting $V_{r-1} = A_{1}+ \dots+ A_{k}$, the lemma follows in this case.  </p>
+<p>  Now suppose $n_{1}$ is even. Since $\sum_{}^{}(n_{i}-1)$ is even, we may assume without loss of generality that $n_{2}$ is also even.
+   Then we define the polynomials
+   $$\begin{aligned}q_{1} = (z-\alpha_{2})^{n_{2}-2}\prod_{j \neq 1,2}(z-\alpha_{j})^{n_{j}-1}\\
+     q_{2} = (z-\alpha_{1})^{n_{1}-2}\prod_{j \neq 1,2}(z-\alpha_{j})^{n_{j}-1}.\end{aligned}$$
+   Next set
+   $$\begin{aligned}B_{1,2}:= \Span\left\{ q_{1}, q_{1}(z-\alpha_{1})^{2}, q_{1}(z-\alpha_{1})^{4}  \dots q_{1}(z-\alpha_{1})^{n_{1}-2} = q_{2}(z-\alpha_{2})^{n_{2}-2}, \dots, q_{2}(z-\alpha_{2})^{2}, q_{2} \right\}.\end{aligned}$$
+   Then it is straightforward to verify that
+   $$\begin{aligned}\rho(P_{1} \otimes B_{1,2}) = (k[z]/(z-\alpha_{1})^{n_{1}-1},k[z]/(z-\alpha_{2})^{n_{2}-1},0,0, \dots ).\end{aligned}$$
+   Note that $\dim B_{1,2} = (n_{1}+ n_{2}-2)/2$. By pairing up the remaining even $n_{i}$ and creating the analogous vector spaces $B_{i,j}$, and then for odd $n_{i}$ using the spaces $A_{i}$, one can check that
+   $$\begin{aligned}V_{r-1}:= \sum_{n_{i}\text{\,\,odd}} A_{i} + B_{1,2} + \dots\end{aligned}$$
+   has the desired property, i.e. that $\rho$ is an isomorphism.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag B891 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/B891.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

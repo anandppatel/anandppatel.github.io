@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (9E6D) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Parallel and Series Connection, Existence of Rational Functions</a> / <a href="../section/S7.SS1.html">7.1. Parallel Connection and Series Connection</a> / <span>Proof (9E6D)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="29FF.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 9E6D</span><a href="718C.html">Proof  &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9E6D.html" class="stacks-tag-link">(9E6D)</a></div>
+  <div class="stacks-env-body"><p>Let $W_1 = K^{n_1}$ and $W_2 = K^{n_2}$. Let $x_{1, 1}, \ldots, x_{1, n_1} \in W_1$ be the columns of $M_1$ and let $x_{2, 1}, \ldots, x_{2, n_2} \in W_2$ be the columns of $M_2$. Define $W = (W_1 \oplus W_2) / \langle x_{1, n_1} - x_{2, 1}\rangle = K^{n_1 + n_2-1}$. The columns of $P(M_1, M_2)$ are the vectors $x_{1, 1}, \ldots, x_{1, n_1} = x_{2, 1}, \ldots, x_{2, n_2}$ considered as elements of $W$.</p>
+<p>Let $V = K^{r+1}$. For $i \in \{1,2\}$, we can think of the orbit map of $M_i$ as the map $\mu_{M_i} : \mb{P}(V \otimes W_i^\vee) \dashrightarrow \mb{P}(V)^n$ defined by the formula $\mu_{M_i}(\wt A) = (\wt{Ax_{i,1}}, \ldots, \wt{Ax_{i,n_i}})$ whenever $A \in \Hom(W, V) = V \otimes W_i^\vee$ is a matrix such that $A x_{i,j} \neq 0$ for $1 \leq j \leq n_i$.</p>
+<p>For $i \in \{1, 2\}$, let $\wt \mu_{M_i} : B_i \to \mb{P}(V)^{n_i}$ be a regular map resolving the orbit map $\mu_{M_i}$.</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>Let $\pi_1: \mb{P}(V)^{n_1}\to \mb{P}(V)$ be the projection to the last factor and let $\pi_2: \mb{P}(V)^{n_2}\to \mb{P}(V)$ be the projection to the first factor. Define $B = B_1 \times_{\mb{P}(V)} B_2$, where the fiber product is taken over the maps $\phi_i : \pi_i \circ \wt{\mu}_{M_i} : B_i \to \mb{P}(V)$. Then the fiber product of the morphisms $\wt{\mu}_{M_1}$ and $\wt{\mu}_{M_2}$ is a morphism $\wt \mu: B \to \mb{P}(V)^{n_1} \times_{\mb{P}(V)} \mb{P}(V)^{n_2} = \mb{P}(V)^{n_1 + n_2 - 1}$. We claim that $\wt{\mu}$ resolves the orbit map $\mu_{P(M_1, M_2)}$ up to birationality on the domain; that is, there exists a birational map $\psi$ that makes the below diagram commute.
+$$\text{[Commutative diagram — see PDF]}$$
+For $i \in \{1, 2\}$, let $$U_i = \{\wt{A} \mid A \in V \otimes W_i^\vee, \text{$A x_{i,j}\neq 0$ for $1 \leq j \leq n_i$} \} \subset \mb{P}(V\otimes W_i^{\vee})$$ be the locus of definition of $\mu_{M_i}$ and let $$U = \{\wt{A} \mid A \in V \otimes W^\vee, \text{$A x_{i,j}\neq 0$ for $i \in \{1, 2\}$ and $1 \leq j \leq n_i$} \} \subset \mb{P}(V\otimes W^{\vee})$$ be the locus of definition of $\mu_{P(M_1, M_2)}$. To prove the existence of $\psi$, we will define $\psi^{-1}$ on $U$ and show that it maps $U$ birationally to $B$.</p>
+<p>Observe that the inclusion $W_i \to W$ induces a projection $\mb{P}(V\otimes W^\vee) \dashrightarrow \mb{P}(V \otimes W_i^\vee)$ that restricts to a regular map $q_i : U \to U_i$. These fit into a fiber diagram</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>where the maps $\pi_i \circ \mu_{M_i} : U_i \to \mb{P}(V)$ are given by $(\pi_i\circ \mu_{M_i})(\wt{A}) = \wt{A x_{1, n_1}} = \wt{A x_{2, 1}}$ for $A \in V \otimes W_i^\vee$. (Here we consider $x_{1, n_1} = x_{2, 1}$ as an element of the intersection $W_1 \cap W_2 \subset W$.)</p>
+<p>Hence we can define $\psi^{-1}:U \to B$ as the fiber product of the maps $\pi_{M_i}^{-1}|_{U_i} : U_i \to B_i$. This maps $U$ birationally to $B$ because each $\pi_{M_i}^{-1}|_{U_i}$ maps $U_i$ birationally to $B_i$. The fact that the birational inverse $\psi$ of $\psi^{-1}$ makes the diagram (7.1) commute follows from the definitions.</p>
+<p>By further resolving $\psi$, we immediately see that $\wt \mu_*[B] = \opc[r][n_1+n_2-1]{P(M_1, M_2)}$.</p>
+<p>\begin{comment}</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>To produce the factorization, it suffices to show that over the locally closed subset
+$$\begin{aligned}Z=\{(\wt{A_1},\wt{A_2})\mid A_ix_{j,k}\neq 0, \wt{A_1x_{1,n_1}}=\wt{A_2x_{2,1}}]\} \subset \mb{P}(V \otimes W_1^{*})\times \mb{P}(V \otimes W_2^{*})\end{aligned}$$
+both $\iota_1$ and $\iota_2$ are isomorphisms.</p>
+<p>First, $bl$ is an isomorphism over $Z$, since we removed the loci where $A_i$ send any $x_{j,k}$ to zero. Therefore, $\iota_2$ is an isomorphism over $Z$ since $bl$ is an isomorphism over $Z$ and $bl^{-1}(Z)$ is contained in $\mb{P}(V \otimes W_1^{*})_{\mc{G}_1}\times_{\mb{P}(V)} \mb{P}(V \otimes W_2^{*})_{\mc{G}_2}$. </p>
+<p>Next, we claim that $Z$ is isomorphic to
+$$\begin{aligned}Z'=\{\wt{(A_1,A_2)}]\mid A_ix_{j,k}\neq 0, A_1x_{1,n_1}=A_2x_{2,1}\}\subset \mb{P}(V \otimes (W_1\oplus W_2)^{*})\end{aligned}$$
+under $s$. First, $s$ is defined on $Z'$ since $A_1,A_2\neq 0$ for all $[(A_1,A_2)]\in Z'$. Also the map $s|_{Z'}: Z'\to Z$ is easily checked to be bijective, so as $Z,Z'$ are normal varieties, $s|_{Z'}$ is an isomorphism. Finally, since $Z'$ is in the image of the closed immersion $\iota$, $\iota$ is an isomorphism over $Z'$. Hence, $\iota_1$ is an isomorphism over $Z$.</p>
+<p>Therefore, $$\opc[r][n_1+n_2-1]{P(M_1,M_2)}=[\psi_*\mb{P}(V \otimes W_1^{*})_{\mc{G}_1}\times_{\mb{P}(V)} \mb{P}(V \otimes W_2^{*})_{\mc{G}_2}].$$
+\end{comment}</p>
+<p>To finish, consider the diagram below where each square is a fiber diagram. By RMM, we may assume that $B_1$ and $B_2$ are smooth and carry actions of $GL(V)$.</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>The map $\phi_1\times \phi_2$ is flat because its fibers are isomorphic, so in particular equidimensional, and the source and target are smooth [Sta18, Tag 00R4]. The map $\wt{\Delta}$ is the pullback of the regular embedding $\Delta$ along $\phi_1 \times \phi_2$, so it is also a regular embedding.
+\begin{comment} Therefore, we have the equality of cycles [Sta18, Tag 02RG]
+$$\begin{aligned}\Delta^{*}(\phi_1\times \phi_2)_{*}(\alpha_1\alpha_2)=\psi_{*}\wt{\Delta}^{*}(\alpha_1\alpha_2).\end{aligned}$$
+The right side of the equation is precisely
+$$\begin{aligned}\int_{\mb{P}(V)^{n_1+n_2-1}\xrightarrow{\pi}\mb{P}(V)}\left(\opc[r][n_1+n_2-1]{P(M_1,M_2)}\alpha_1\alpha_2\right)\end{aligned}$$
+and the left side of the equation is
+$$\begin{aligned}\Delta^{*}\left(\int_{\mb{P}(V)^{n_1}\xrightarrow{\pi_1}\mb{P}(V)}{\opc[r][n_1]{M_1}\alpha_1},\int_{\mb{P}(V)^{n_2}\xrightarrow{\pi_2}\mb{P}(V)}{\opc[r][n_2]{M_2}\alpha_2}\right)\end{aligned}$$
+which is exactly the product
+$$\begin{aligned}\left(\int_{\mb{P}(V)^{n_1}\xrightarrow{\pi_1}\mb{P}(V)}{\opc[r][n_1]{M_1}\alpha_1}\right)\left(\int_{\mb{P}(V)^{n_2}\xrightarrow{\pi_2}\mb{P}(V)}{\opc[r][n_2]{M_2}\alpha_2}\right)\end{aligned}$$
+by the definition of the intersection product [Ful98, Section 8.1].
+\end{comment}
+By [Ful98, Theorem&nbsp;6.2], the pushforward of the fundamental class of $B$ along $\wt\mu$, i.e. $\opc[r][n_1+n_2-1]{P(M_1,M_2)}$, is equal to the pullback along $\Delta$ of the pushforward of the fundamental class of $B_1 \times B_2$ to $\mb{P}(V)^{n_1+n_2}$, which is the exterior product $\opc[r][n_1]{M_1}\times \opc[r][n_2]{M_2}$ restricted to $\mb{P}(V)^{n_1+n_2-1}$ and is equal to $p_1^*\opc[r][n_1]{M_1} \cap p_2^*\opc[r][n_2]{M_2}$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 9E6D (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/9E6D.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

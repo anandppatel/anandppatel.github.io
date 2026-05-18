@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3. Generalized matrix orbit closures — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <span>2.3. Generalized matrix orbit closures</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.3. Generalized matrix orbit closures</h1>
+<p class="stacks-para">\label{Setup}
+Fix an integer $r$. For each $d \times n$ matrix $M$ with no zero columns, we consider the map $\mu_M:\mb{P}^{(r+1)\times d-1}\dashrightarrow (\mb{P}^r)^n$ induced by multiplication $A \mapsto AM$ of $(r+1)\times d$ matrices with $M$. More precisely, let $x_1, \ldots, x_n$ be the columns of $M$. Then $\mu_M(\wt A) = (\wt {Ax_1}, \ldots, \wt {Ax_n}) \in (\mb{P}^r)^d$ whenever $A \in \mb{A}^{(r+1) \times d}$ is a matrix such that $Ax_i \neq 0$ for all $i$. The map $\mu_M$ is clearly $GL_{r+1}$-equivariant. If $d \leq r+1$, then $\ol{\im(\mu_M)}$ is equal to the closure of the $GL_{r+1}$-orbit of $(\wt{x}_1, \ldots, \wt{x}_n) \in (\mb{P}^r)^n$, where $\wt{x_i}$ is considered in $\mb{P}^r$ via any linear inclusion $\mb{P}^{d-1} \subset \mb{P}^r$.
+Let</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>be any resolution of the indeterminacy of $\mu_M$. In proofs, we will always use the $GL_{r+1}$-equivariant resolution given by the wonderful compactification of [Li09] detailed in Section&nbsp;14, which has the advantage of being given by a sequence of blowups along smooth centers.</p>
+<p class="stacks-para">We define the <em>generalized matrix orbit of $M$</em> to be the algebraic cycle
+$$\op{M}=(\wt{\mu}_M)_*[B] = (\wt{\mu}_M)_*\pi_M^*[\mb{P}^{(r+1)\times d-1}] \in Z_{(r+1)d-1}((\mb{P}^r)^n).$$ This cycle is independent of the choice of resolution $\wt{\mu}_M$, and is equal to $\overline{\im(\mu_M)}$ or $0$ because if $\mu_M$ is generically finite then it is generically injective (if $\mu_M(A_1)=\mu_M(A_2)$, then this further equals $\mu_M(A_1+tA_2)$ for every $t$). We remark that this cycle is automatically $0$ if $d\ge n$, however the graph closure $\overline{\Gamma_M}$, which we will shortly define will be nontrivial even if $d\ge n$. As the morphisms $\wt{\mu}_M, \pi_M$ are $GL_{r+1}$-equivariant we may further define the <em>equivariant generalized matrix orbit pushforward and pullback maps</em> $$(\mu_M)_*:A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1}) \rightleftarrows A^\bullet_{GL_{r+1}}((\mb{P}^r)^n):\mu_M^*$$ on equivariant Chow groups by $(\mu_M)_* =(\wt{\mu}_M)_* \circ \pi_M^*$ and $\mu_M^*=(\pi_M)_*\circ \wt{\mu}_M^*$. These are $A^\bullet_{GL_{r+1}}(\pt)$-linear maps, independent of the choice of resolution. The graph closure $\ol{\Gamma_M}$ of $\mu_M$ is the $GL_{r+1}$-equivariant cycle given by $$\ol{\Gamma_M}=\ol{\operatorname{im}(\operatorname{id} \times \mu_M)}\in Z_{(r+1)d-1}(\mb{P}^{(r+1)\times d-1}\times (\mb{P}^r)^n),$$ and resolves the indeterminacy locus of $\mu_M$ via its two projections. We have $$\int_{\mb{P}^{(r+1)\times d-1}}\alpha\cap\mu_M^*\beta=\int_{B}\pi_M^*\alpha\cap\wt{\mu}_M^*\beta=\int_{(\mb{P}^r)^n}\beta\cap(\mu_M)_*\alpha,$$ and $\int_{\ol{\Gamma_M}}\pi^*\alpha\cap\tilde{\mu}_M^*\beta=\int_{\mb{P}^{(r+1)\times d-1}\times (\mb{P}^r)^n}\alpha\cap\beta\cap[\ol{\Gamma_M}]$, so the equivariant formulas for $(\mu_M)_*$, $\mu^*_M$, and $[\ol{\Gamma_M}]$ all determine each other.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 2.3. Generalized matrix orbit closures">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S2.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

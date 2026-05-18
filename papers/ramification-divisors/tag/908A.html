@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (908A) — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\operatorname{\\mathbf F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <a href="../section/S5.SS5.html">5.5. Maximal variation for generic scrolls of high degree</a> / <span>Proof (908A)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="09E6.html">&laquo; Theorem 5.16</a><span class="stacks-tag-current">Tag 908A</span><a href="D230.html">Proposition 6.1 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/908A.html" class="stacks-tag-link">(908A)</a></div>
+  <div class="stacks-env-body"><p>We say that generic dominance holds for rank $r$ and degree $d$ if the projection-ramification map is dominant (equivalently, generically finite) for the generic vector bundle of rank $r$ and degree $d$.
+  The rank will be fixed throughout, so let us drop it from the discussion.
+  Let us prove that if generic dominance holds for degrees $d_1$ and $d_2$, then it also holds for degree $d = d_1 + d_2 - 1 $.
+  With the base cases $d_1 = r$ (<a href="/papers/ramification-divisors/tag/C5C8.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[C5C8]</span></a>) and $d_2 = 2r$ (<a href="/papers/ramification-divisors/tag/39EC.html" class="stacks-ref-link">Proposition&nbsp;5.2 <span class="stacks-ref-tag">[39EC]</span></a>), this proves the theorem.</p>
+<p>  Take $C_1 = C_2 = \P^1$, and let $C = C_1 \cup C_2$ be their nodal union at one point, which we take to be the point labeled $0$ on both $\P^1$s.
+  Let $X \to B$ be a smoothing of $C$.
+  Note that any vector bundle on $C$ is the restriction of a vector bundle on $X$.
+  Therefore, by <a href="/papers/ramification-divisors/tag/4A54.html" class="stacks-ref-link">Corollary&nbsp;5.15 <span class="stacks-ref-tag">[4A54]</span></a>, it suffices to construct a vector bundle $E$ of degree $d$ on $C$ and a linked linear series $(V_n \mid n \in \Z)$ on $E$ such that the following conditions hold for the point $v$ of $\mathcal G (r+1, E')$ represented by $(V_n \mid n \in \Z)$:
+  <ol><li>$\dim_v \mathcal G(r+1, E) = (r+1)(d-1)$,</li>
+<li>$\rho$ is defined at $v$, and</li>
+<li>$v$ is an isolated point in the fiber of $\rho$.</li></ol></p>
+<p>  We construct $E$ as follows.
+  Let $E_1$ be a generic vector bundle of degree $d_1$ on $C_1$, and $E_2'$ a generic vector bundle of degree $d_2 - 1$ on $C_2$.
+  Choose a generic isomorphism $E_1|_0 \cong E_2'|_0$, and construct the vector bundle $E$ on $C$ by gluing $E_1$ and $E_2'$ along this isomorphism.
+  Choose $n_1 = a$ and $n_2 = b+a$ for sufficiently negative $a$ and sufficiently positive $b$.
+  The isomorphism $E_1 |_0 \cong E_2'|_0$ yields isomorphisms, canonical up to scaling, of $E_1(m)|_0$ and $E_2'(n)|_0$ for any $m, n \in \Z$.</p>
+<p>  Having constructed $E$, we must now construct $(V_n \mid n \in \Z)$.
+  By <a href="/papers/ramification-divisors/tag/EC6E.html" class="stacks-ref-link">Proposition&nbsp;5.10 <span class="stacks-ref-tag">[EC6E]</span></a>, it is enough to construct $V_{n_1} \subset H^0(C_1, E_1 \otimes \O(a))$ and $V_{n_2} \subset H^0(C_2, E_2'(b-a))$, provided they define a refined EHT limit linear series.
+  Let $V \subset H^0(C_1, E_1)$ be a generic $(r+1)$-dimensional vector space.
+  Then it will have the vanishing sequence $(0, \dots, 0, 1)$.
+  Hence, we have $V^0 = E|_0$ and $V^1 \subset E|_0$ is $1$-dimensional (see Section&nbsp;5.3 for the definition of these two subspaces).
+  Furthermore, the genericity of $V$ implies that $V^1$ is a general $1$-dimensional subspace.
+  Define $E_2$ by the sequence
+  $$ 0 \to E_2 \to E_2'(1) \to E'_2(1)|_0 / V^1 \to 0.$$
+  Let $\Lambda \subset H^0(C_2, E_2'(1))$ be the image of a general $(r+1)$ dimensional subspace of $H^0(C_2, E_2)$.
+  Then $\Lambda \subset H^0(C_2, E_2'(1))$ has the vanishing sequence $(0, 1, \dots, 1)$, with $\Lambda^0 = V^1$ and $\Lambda^1 = V^0$.
+  Let $V_{n_1} \subset H^0(C_1, E_1 \otimes \O(a))$ be the image of $V$ and $V_{n_2} \subset H^0(C_2,E'_2(b-a))$ the image of $\Lambda$.
+  Then $V_{n_1}$ has the vanishing sequence $(a, \dots, a, a+1)$, and $\Lambda$ the complementary vanishing sequence $(b-a-1, b-a, \dots, b-a)$.
+  By the construction of $\Lambda$, there exist bases of $V_{n_1}$ and $V_{n_2}$ that satisfy the gluing condition at $0$.
+  In conclusion, $V_{n_1}$ and $V_{n_2}$ form a refined EHT limit linear series, and hence define a linked linear series $v = (V_n \mid n \in \Z)$.</p>
+<p>  It is easy to check that $\dim_v \mathcal G(r+1, E) = (r+1)(d-1)$.
+  Indeed, for every linked linear series $w = (W_n \mid n \in \Z)$ in an open subset around $v$, the EHT limit linear series associated to $w$ determines $w$ and has the same vanishing sequence as $v$.
+  In particular, $W_{n_1} \subset H^0(C_1, E_1(a))$ is the image of an $(r+1)$-dimensional subspace $V(w) \subset H^0(C_1, E_1)$ with vanishing sequence $(0, \dots, 0, 1)$, and $W_{n_2} \subset H^0(C_2, E_2'(b-a))$ is the image of an $(r+1)$-dimensional subspace $\Lambda(w)$ of $H^0(C_2, E'_2(1))$ with vanishing sequence $(0,1,\dots,1)$.
+  The gluing condition, in turn, implies that $\Lambda(w)$ is the image of an $(r+1)$-dimensional subspace of the kernel of the map
+  $$ E_2'(1) \to E_2'(1)/V(w)^1.$$
+  By the genericity of $V$, the isomorphism type of the kernel of this map is constant around $v$; that is, the kernel is isomorphic to $E_2$.
+  So, a dimension count for $\mathcal G(r+1, E)$ around $v$ gives
+  $$\begin{aligned}\dim_v \mathcal G(r+1, E) &= \dim \Gr(r+1, H^0(C_1, E_1)) + \dim \Gr(r+1, H^0(C_2, E_2))\\
+                              &= (r+1)(d_1-1) + (r+1)(d_2-1)\\
+                              &= (r+1)(d_1+d_2-2)\\
+                              &= (r+1)(d-1).\\\end{aligned}$$</p>
+<p>  Finally, we must check that $v$ is an isolated point in the fiber of
+  $$ \rho \from \mathcal G(r+1, E) \dashrightarrow \mathcal G(1, E \otimes \det E \otimes \omega_C).$$
+  For any $w \in \mathcal G(r+1, E)$ in an open set around $v$ with $w \neq v$, either $V(w) \neq V$ or $\Lambda(w) \neq \Lambda$, where $V, \Lambda, V(w), \Lambda(w)$ are as above.
+  By construction, $V \subset H^0(r+1, H^0(C_1, E_1))$ and $\Lambda \subset H^0(r+1, H^0(C_2, E'_2(1)))$ are isolated in their respective projection-ramification maps.
+  Therefore, either $\rho_{C_1} (V(w)) \neq \rho_{C_1}(V)$ or $\rho_{C_2}(\Lambda(w)) \neq \rho_{C_2}(\Lambda)$.
+  In either case, we obtain that $\rho(v) \neq \rho(w)$, and hence conclude that $v$ is an isolated point in the fiber of $\rho$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — Tag 908A (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/tag/908A.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

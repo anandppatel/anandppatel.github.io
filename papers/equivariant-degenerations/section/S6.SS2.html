@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6.2. Degeneration to a node — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degeneration II: Acquiring nodes and cusps</a> / <span>6.2. Degeneration to a node</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.2. Degeneration to a node</h1>
+<p class="stacks-para">\label{nodedegeneration}</p>
+<p class="stacks-para">In this subsection, we assume
+$$\alpha_{\on{node}}: U \to \P \on{Sym}^{d}V^{\vee}$$ is a family of
+curves cut out by a degree $d$ form $F(X,Y,Z)$ with coefficients in
+$R$ the coordinate ring of $U$, with the properties:</p>
+<p class="stacks-para"><ol><li>The curve $C_{0} := \alpha_{\on{node}}(0)$ has an ordinary node
+  at $[0:0:1] \in \P V$ with branch lines $X=0$ and $Y=0$, and</li>
+<li>The total space $\mathcal{C}$ of the family of curves is smooth
+  at the node of $C_{0}$.</li></ol></p>
+<p class="stacks-para">In what follows, to ease exposition, rather than making a base changes
+$s^n = t$, we will abuse notation and work with the fractional powers
+$t^{1/n}$. We also extend the valuation $v$ to such fractional
+expressions in the obvious way.</p>
+<div class="stacks-lemma" id="nodematrix">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.4.</strong> <a href="../tag/AEE2.html" class="stacks-tag-link">(AEE2)</a></div>
+  <div class="stacks-env-body"><p>Maintain the setup immediately prior, and let $\gamma_{1}(t)$ denote
+the family of matrices
+$$ \begin{pmatrix}
+    t^{-1/3} & 0 & 0\\
+    0 & t^{-2/3} & 0\\
+    0 & 0 & 1\\
+  \end{pmatrix}.$$</p>
+<p>Then, the limiting plane curve
+$\alpha_{\on{node}}^{\gamma_{1}}(0) \in \P \on{Sym}^{d}V^{\vee}$ has
+equation
+$$\begin{aligned}\lim_{t\to 0}{t^{-1}(F(t^{\frac{1}{3}}X,t^{\frac{2}{3}}Y,Z))}.\end{aligned}$$
+This curve is projectively equivalent to $C_{BN}$.</p>
+<p>Similarly, if $\gamma_{2}(t)$ is the family of matrices
+$$ \begin{pmatrix}
+    t^{-2/3} & 0 & 0\\
+    0 & t^{-1/3} & 0\\
+    0 & 0 & 1\\
+  \end{pmatrix}$$ then $\alpha_{\on{node}}^{\gamma_{2}}(0)$ is the
+curve defined by
+$$\begin{aligned}\lim_{t\to 0}{t^{-1}(F(t^{\frac{2}{3}}X,t^{\frac{1}{3}}Y,Z))}\end{aligned}$$
+and is also projectively equivalent to $C_{BN}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B06A.html" class="stacks-tag-link">(B06A)</a></div>
+  <div class="stacks-env-body"><p>It suffices to just do one of the two cases &ndash; we will prove the
+  $\gamma_{2}$ case. We know the following:
+  <ol><li>The coefficient $a_{ij}$ of each monomial $X^iY^jZ^{d-i-j}$
+    occurring in $F(X,Y,Z)$ is an element of $R$, and therefore have
+    non-negative integer valuations.</li>
+<li>The assumptions on $C_0$ in the description of
+    $\alpha_{\on{node}}$ imply:
+    $$v(a_{0,0}),v(a_{1,0}),v(a_{0,1}),v(a_{2,0}),v(a_{0,2})\geq 1.$$</li>
+<li>Since the node singularity of $C_0$ is assumed to be ordinary,
+    $v(a_{3,0})=v(a_{0,3})=0$.</li>
+<li>Since $\mathscr{C}$ is smooth at the node, it follows that
+    $v(a_{0,0})=1$.</li></ol></p>
+<p>  Given these constraints, a direct check now shows that
+  $\frac{2}{3}i+\frac{1}{3}j-1+v(a_{i,j})$ is zero if and only if
+  $(i,j)\in \{(0,3),(1,1),(0,0)\}$ and is strictly positive otherwise.
+  Therefore the result of substituting $t=0$ into the expression in
+  the limit produces a nodal cubic with $(d-3)$-fold branch line, as
+  claimed.</p></div>
+</div>
+<div class="stacks-commentary" id="D6CBN">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.5.</strong> <a href="../tag/C316.html" class="stacks-tag-link">(C316)</a></div>
+  <div class="stacks-env-body"><p>In the case $d=4$, any curve $C_{D_{6}}$ (<a href="/papers/equivariant-degenerations/tag/1D54.html" class="stacks-ref-link">Definition&nbsp;4.3 <span class="stacks-ref-tag">[1D54]</span></a>)
+  is equal to the curve $C_{BN}$.</p></div>
+</div>
+<div class="stacks-commentary" id="rmk-limitendoNode">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.6.</strong> <a href="../tag/63D9.html" class="stacks-tag-link">(63D9)</a></div>
+  <div class="stacks-env-body"><p>In the context of <a href="/papers/equivariant-degenerations/tag/AEE2.html" class="stacks-ref-link">Lemma&nbsp;6.4 <span class="stacks-ref-tag">[AEE2]</span></a>, observe that the limiting
+  endomorphism $\gamma_{1}(0)$ has kernel given by the line $Y=0$,
+  which is one of the branches of the node in $C_0$ while the limiting
+  endomorphism $\gamma_{2}(0)$ has kernel given by the line $X=0$,
+  which is the other branch.  Meanwhile, the $t \to 0$ limit of both
+  $\gamma_{i}^{-1}$ have images equal to the node point $[0:0:1]$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 6.2. Degeneration to a node">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4. Small Equivariant Quantum Cohomology of $\mb{P}^r$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>3.4. Small Equivariant Quantum Cohomology of $\mb{P}^r$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.4. Small Equivariant Quantum Cohomology of $\mb{P}^r$</h1>
+<p class="stacks-para">At this point it makes sense to recall small equivariant quantum cohomology [GK95], specifically in the case of $\mb{P}^r$. We will use the <em>Kontsevich space</em>, the coarse moduli space $\ol{\MM_{0,n}}(\mb{P}^r,d)$ whose points are $(\mc{C}, \psi)$ where $\mc{C}$ is a genus $0$ curve with $n$ marked points $p_1, \ldots, p_n$ and $\psi : \mc{C} \to \mb{P}^r$ is a degree $d$ stable map. There is a map $\pi : \ol{\mc{M}_{0,n}}(\mb{P}^r,d) \to \ol{\mc{M}_{0, n}}$ that forgets the morphism to $\mb{P}^r$ and stabilizes the domain curve and there are evaluation maps $\ev_1, \ldots, \ev_n : \ol{\mc{M}_{0,n}}(\mb{P}^r,d) \to \mb{P}^r$ that send $(\mc{C}, \psi)$ to $\psi(p_1), \ldots, \psi(p_n)$ respectively. We thus have the following diagram.</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>Let $X \subset \overline{\MM_{0,n}}(\mb{P}^r,d)$ be a $GL_{r+1}$-equivariant cycle. The <em>convolution operation</em> $\operatorname{conv}_{X,d}:A^\bullet_{GL_{r+1}}((\mb{P}^r)^{n-1})\to A^\bullet_{GL_{r+1}}(\mb{P}^r)$ is defined by $$\conv_{X,d}(x) = (\ev_n)_*([X] \cap(\ev_{1}, \ldots, \ev_{n-1})^* x).$$
+The $\star$-product of small equivariant quantum cohomology allows one to compute the operation $\conv_{\pi^{-1}(\mc{C}),d}$ for $\mc{C} \in \ol{\MM_{0, n}}$, which can be geometrically interpreted as follows. Given effective cycles $X_1, \ldots, X_{n-1}$ in the projectivization of the universal rank $r+1$ vector bundle, the convolution $\conv_{\pi^{-1}(\mc{C}),d}([X_1] \otimes \ldots \otimes [X_{n-1}])$ should be thought of as the Chow class of the cycle swept out by $\psi(p_n)$ as $\psi: \mc{C} \to \mb{P}^r$ ranges over all degree $d$ rational maps to fibers of the bundle such that $\psi(p_i) \in X_i$ for $1 \leq i \leq n-1$.</p>
+<p class="stacks-para">As $\pi$ is flat [KV07, Remark 2.6.8], $\conv_{\pi^{-1}(\mathcal{C}),d}$ is independent of the choice of $\mathcal{C}$. More generally, the operation $\conv_{X,d}$, where $X$ is an irreducible component of $\pi^{-1}(\mc{C})$, can also be computed using small equivariant quantum cohomology, and if $\pi^{-1}(\mc{C})$ has irreducible components $X_1, \ldots, X_k$, then $\sum_{i=1}^k \conv_{X_i, d}=\conv_{\pi^{-1}(\mc{C}), d}$. The fact that the components of $\pi^{-1}(\mc{C})$ have multiplicity one can be deduced either from the deformation theory techniques of [FP97, Section 5] or from the description in [Gia13, Section 4.1].</p>
+<p class="stacks-para">In Section&nbsp;3.7, we will see how for a fixed $\mathcal{C}$ the data of $\conv_{\pi^{-1}(\mc{C}),d}$ for varying $d$ is encoded in the $\star$-product on $QH^\bullet_{GL_{r+1}}(\mb{P}^r)$.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 3.4. Small Equivariant Quantum Cohomology of $\mb{P}^r$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S3.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

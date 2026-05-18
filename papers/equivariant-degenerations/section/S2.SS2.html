@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2. $GL(V)$-equivariant Chow classes — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminary Definitions, Conventions, and Notation</a> / <span>2.2. $GL(V)$-equivariant Chow classes</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.2. $GL(V)$-equivariant Chow classes</h1>
+<p class="stacks-para">Suppose $Z \subset \on{Sym}^dV^{\vee}$ is a subvariety preserved by
+the action of $GL(V)$, and let
+$\P Z \subset \mb{P}(\on{Sym}^dV^{\vee})$ denote its projectivization.</p>
+<p class="stacks-para">In the presence of a rank $r+1$ vector bundle $\mathcal{V} \to B$ over
+a base variety $B$, $Z$ determines a corresponding <em>relative
+  cycle</em> $Z_{\mathcal{V}} \subset \on{Sym}^d\mathcal{V}^{\vee}$ as
+follows: Let $U \subset B$ denote an open set over which $\mathcal{V}$
+can be trivialized.  After choosing any particular isomorphism of
+$\mathcal{V}|_{U}$ with the product vector bundle $U \times V$ we
+obtain a corresponding identification of
+$\on{Sym}^d\mathcal{V}^{\vee}|_{U}$ with
+$U \times \on{Sym}^dV^{\vee}$. In the latter space, we can take
+$U \times Z$, and consider it, via the chosen isomorphism, as a
+locally closed subset of $\on{Sym}^d\mathcal{V}^{\vee}$.  Its closure
+is denoted $$Z_{\mathcal{V}} \subset \on{Sym}^d\mathcal{V}^{\vee},$$
+and we call it the <em>relative cycle</em> corresponding to $Z$.
+$Z_{\mathcal{V}}$ is well-defined precisely because $Z$ was preserved
+by the action of $GL(V)$. In a similar fashion, we define the
+projectivized relative cycle
+$\P Z_{\mathcal{V}} \subset \P \on{Sym}^d\mathcal{V}^{\vee}$.</p>
+<p class="stacks-para">Although $Z_{\mc{V}}$ obviously depends on $B$ and $\mc{V}$, its class
+in $A^{\bullet}(B)\cong A^{\bullet}(\on{Sym}^d\mc{V}^{\vee})$ is a
+universal expression in chern classes of $\mc{V}$ &ndash; this is the
+fundamental input we need from the equivariant intersection theory of
+Edidin and Graham developed in [EG98a].  In the language of
+equivariant intersection theory, this universal class is the
+equivariant fundamental class $[Z]_{GL(V)}$ in the equivariant Chow
+ring $$A_{GL(V)}^{\bullet}(\on{Sym}^d V^{\vee}).$$ The latter ring is
+the free polynomial ring $\mathbb{Z}[c_1, \dots, c_{r+1}]$, where
+$c_{i}$ are interpreted as the chern classes of the universal vector
+bundle $V$ over the classifying stack $\mathbb{B}GL(V)$. To summarize:</p>
+<div class="stacks-definition" id="affinecohomology">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/EFED.html" class="stacks-tag-link">(EFED)</a></div>
+  <div class="stacks-env-body"><p>Given $Z$ as above, define $[Z]_{GL(V)}$ to be the polynomial in
+$c_1,\ldots,c_{r+1}$ such that the class of $Z_{\mc{V}}$ is
+$[Z]_{GL(V)}$ with the chern classes of $\mc{V}$ substituted for
+$c_1,\ldots,c_{r+1}$. Equivalently, $[Z]_{GL(V)}$ is the
+$GL(V)$-equivariant class of $Z$ in
+$A_{GL(V)}^{\bullet}(\on{Sym}^dV^{\vee})\cong
+\mb{Z}[c_1,\ldots,c_{r+1}]$.</p></div>
+</div>
+<p class="stacks-para">In a similar fashion to <a href="/papers/equivariant-degenerations/tag/EFED.html" class="stacks-ref-link">Definition&nbsp;2.1 <span class="stacks-ref-tag">[EFED]</span></a>, we can define an
+equivariant Chow class of $\P Z$. As before, there is a single formula
+in the chern classes $c_{i}$ of $V$ and the hyperplane class $H$ on
+the universal projective bundle $\P \on{Sym}^dV^{\vee}$ ($H$
+corresponds to the line bundle
+$\mathscr{O}_{\mb{P}(\on{Sym}^d V^\vee)}(1)$) which gives the class of
+$[\mb{P}Z_{\mc{V}}]\in A^{\bullet}(\mb{P}(\on{Sym}^d\mc{V}^\vee))$.</p>
+<div class="stacks-definition" id="projectivecohomology">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.2.</strong> <a href="../tag/C7B4.html" class="stacks-tag-link">(C7B4)</a></div>
+  <div class="stacks-env-body"><p>Given $Z$ as above, define $[\mb{P}Z]_{GL(V)}$ to be the polynomial in
+$c_1,\ldots,c_{r+1}$ and $H$ (of degree $\leq {d+r \choose r}-1$ in
+$H$) such that the class of $\mb{P}Z_{\mc{V}}$ is $[\mb{P}Z]_{GL(V)}$
+with the chern classes of $\mc{V}$ substituted for
+$c_1,\ldots,c_{r+1}$ and
+$c_{1}\mathscr{O}_{\mb{P}(\on{Sym}^d\mc{V}^\vee)}(1)$ substituted for
+$H$. In equivariant language, $[\mb{P}Z]_{GL(V)}$ is the
+$GL(V)$-equivariant class of $\P Z$ in
+$$A_{GL(V)}^{\bullet}(\mb{P}(\on{Sym}^dV^{\vee}))\cong
+\mb{Z}[c_1,\ldots,c_{r+1}][H]/(H^{d+r \choose r}+s_1H^{{d+r \choose
+    r}-1}\cdots+s_{{d+r \choose r}}).$$ Here $s_{i}$ is the $i$-th
+chern class of $\on{Sym}^d\mc{V}^\vee$, expressed in terms of the
+chern classes $c_{i}$.</p></div>
+</div>
+<p class="stacks-para">It may seem like $[\mb{P}Z]_{GL(V)}$ contains more information than
+$[Z]_{GL(V)}$, but the two are related by a simple algebraic
+manipulation.  Let $u_1, \dots, u_{r+1}$ denote the formal chern roots
+of the universal vector bundle $V$ over $\mathbb{B}GL(V)$ &ndash; in other
+words, $c_{i}$ is the $i$-th elementary symmetric expression in
+$u_{1}, u_{2}, \dots$. Using the inclusion
+$\mb{Z}[c_1,\ldots,c_{r+1}]\hookrightarrow \mb{Z}[u_1,\ldots,u_{r+1}]$
+where $c_i$ maps to the $i$-th elementary symmetric function, we can
+express $[Z]_{GL(V)}$ as a symmetric polynomial in
+$u_1,\ldots,u_{r+1}$ and similarly $[\mb{P}Z]_{GL(V)}$ as a polynomial
+in $u_1,\ldots,u_{r+1}$ and $H$ symmetric in the $u_i$'s.  With this
+understood, we have:</p>
+<div class="stacks-lemma" id="projectivethom">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/CCE8.html" class="stacks-tag-link">(CCE8)</a></div>
+  <div class="stacks-env-body"><p>{FNR05}}]</p>
+<p>  We have:
+  $$\begin{aligned}[Z]_{GL(V)}(u_1,\dots,u_{r+1})&=[\mb{P}Z]_{GL(V)}(u_1,\dots, u_{r+1},0)\\
+    [\mb{P}Z]_{GL(V)}(u_1,\dots,u_{r+1},H)&= [Z]_{GL(V)}(u_{1}-\frac{H}{d},\dots,u_{r+1}-\frac{H}{d}).\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">When $r=1$ and $2$, we will use letters $(u,v)$ for $(u_1,u_2)$ and
+$(u,v,w)$ for $(u_1,u_2,u_3)$, respectively.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 2.2. $GL(V)$-equivariant Chow classes">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S2.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

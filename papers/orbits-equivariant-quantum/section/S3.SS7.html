@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.7. Expanding out a small quantum product — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>3.7. Expanding out a small quantum product</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.7. Expanding out a small quantum product</h1>
+<p class="stacks-para">\label{expandquantum}
+To make use of the observations in Section&nbsp;3.6, we recall the standard geometric definition of the small quantum cohomology ring of projective space. The following is the usual derivation of the WDVV relations for $\mathbb{P}^r$, but we connect the computation to the $\opc{M_d}$ classes explicitly. Recall that we defined $QH^\bullet_{GL_{r+1}}(\mb{P}^r)$ to be $A^\bullet_{GL_{r+1}}(\mb{P}^r)[\hbar]$ with a multiplication $\star$ deforming the usual multiplication on $A^\bullet_{GL_{r+1}}(\mb{P}^r)$. In the remainder of this subsection, we will be working with the following equivalent geometric definition of $\star$.</p>
+<p class="stacks-para">\begin{Def}
+\label{QCD}
+Given $f,g\in A^\bullet_{GL_{r+1}}(\mb{P}^r)$, define $f\star g$ in $QH^\bullet_{GL_{r+1}}(\mb{P}^r)$ by
+$$\begin{aligned}f\star g&=
+\left(\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{$\boxed 0$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}\right) +
+\left(\tikz[baseline=15pt]{\draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 1};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}\right) \hbar\end{aligned}$$
+where $\tikz[baseline=15pt]{\draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed i};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}$ denotes $\conv_{\pi^{-1}(\pt),i}(f,g)$ for $\pt=\ol{\MM_{0,3}}$. In characteristic zero this agrees with the definition from QCRD which is the definition used exclusively outside this section.
+\end{Def}</p>
+<p class="stacks-para">We now show geometrically that $\star$ is commutative and associative, and interpret $[\hbar^k](f_1\star \cdots \star f_n)$. Note that $[\hbar^0](f \star g)=fg$ since $\ol{\MM_{0,3}}(\mb{P}^r,0)=\mb{P}^r$, so $\star$ will thus yield a commutative associative deformation of the multiplication on $A^\bullet_{GL_{r+1}}(\mb{P}^r)$.</p>
+<p class="stacks-para">\begin{Rem}
+Naively, if $f$ and $g$ are effective cycles, then $\tikz[baseline=15pt]{\draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed i};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}$ is the locus in $\mb{P}^r$ swept out by all degree $i$ curves passing through the two cycles. This expression vanishes for $i>1$ for dimension reasons.
+\end{Rem}</p>
+<p class="stacks-para">We can expand products under $\star$ by applying QCD repeatedly. For example,
+$$\begin{aligned}(f\star g)\star h &=
+\left(\left(\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 0};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}\right) +
+\left(\tikz[baseline=15pt]{\draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 1};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}\right) \hbar\right)\star h \\
+&=
+\left(\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 0};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed 0}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}}\right) +
+\left(
+\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 1};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed 0}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}}
++
+\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 0};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed 1}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}}
+\right)\hbar
++
+\left(
+\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed 1};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed 1}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}}
+\right)\hbar^2.\end{aligned}$$
+Here $\tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed i};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed j}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}}$ denotes the convolution $\conv_{Z_{i,j},i+j}(f,g,h)$, where $Z_{i, j}\subset \ol{\MM_{0,4}}(\mb{P}^r,i+j)$ is defined as follows. Let $\mathcal{C} = [(C, p_1, p_2, p_3, p_4)]$, where $C = C_1 \cup C_2$ be the reducible curve in $\ol{\MM_{0,4}}$ with $p_1, p_2 \in C_1$ and $p_3, p_4 \in C_2$. Then $Z_{i, j}$ is the component of the fiber of $\pi^{-1}(\mathcal{C})$ generically parameterizing maps $C \to \mb{P}^r$ that restrict to degree $i$ on $C_1$ and degree $j$ on $C_2$.</p>
+<p class="stacks-para">Here, we are using the fact that the composition of convolution operations corresponds to the gluing morphism between Kontsevich spaces, so that
+$$\begin{aligned}\conv_{Z_{i, j}, i+j}(f,g,h)=\conv_{\pi^{-1}(\pt),j}(\conv_{\pi^{-1}(\pt),i}(f,g),h).\end{aligned}$$
+There are no issues with multiplicities because the gluing morphism will always be an isomorphism
+in our case [FP97, Lemma 12 (i)].</p>
+<p class="stacks-para">Observe that, for any $d$, the coefficient of $\hbar^d$ in the expansion of $(f \star g) \star h$ is equal to $$\sum_{i+j=d} \tikz[baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed i};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$h$} node[anchor=north west]{\boxed j}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}} = \sum_{i+j=d} \conv_{Z_{i, j}, d}(f,g,h)=\conv_{\pi^{-1}(\mathcal{C}), d}(f,g,h).$$ as the $Z_{i,j}$ for $i + j = d$ are exactly the components of the fiber $\pi^{-1}(\mathcal{C})$. By the flatness of $\pi$, the class of $\pi^{-1}(\mathcal{C})$ is unchanged if we redistribute the points $p_1,\ldots,p_4$, implying $(f \star g) \star h$ does not depend on the ordering of $f$, $g$, and $h$, so $\star$ is commutative and associative.</p>
+<p class="stacks-para">In turn, the discussion in Section&nbsp;3.6 shows that (taking $(\mb{P}^r)^4\to \mb{P}^r$ the last projection) $$\conv_{\pi^{-1}(\mathcal{C}), d}(f,g,h)=\int_{(\mb{P}^r)^4 \to \mb{P}^r}\opc{M_{d+1}} f(H_1) g(H_2) h(H_3),$$ where $M_{d+1}$ is a general $(d+1) \times 4$ matrix. In general, the same reasoning shows $$f_1 \star \cdots \star f_{n-1}=\sum_{d=0}^n\hbar^d\conv_{\pi^{-1}(\mc{C}),d}(f_1,\ldots,f_{n-1})$$ thus deducing the following theorem, which we will use to find $\opc{M_{d+1}}$.
+\begin{comment}For example, with the bracketing $((f_1\star f_2)\star f_3)\cdots$ we get a chain of $n-1$ rational curves. In particular, by the flatness of the forgetful map we know that this convolution operation doesn't depend on which fiber over $\ol{M_{0,n+1}}$ we use, so we may take for example the fiber over a rational normal curve with $n+1$ general points. This in particular shows that the bracketing didn't matter, nor the order of the $f_i$, so $\star$ is commutative and associative.</p>
+<p class="stacks-para">The explicit formula for $\star$ is given in Section&nbsp;2, and is manifestly a commutative, associative deformation of $A^\bullet_{GL_{r+1}}(\mb{P}^r)$.</p>
+<p class="stacks-para">Applying $\int_{\mb{P}^r}$ to the convolution operation $(\mb{P}^r)^n \to \mb{P}^r$ associated to $n+1$ general points on a rational normal curve of degree $d$ yields the operation $(\mb{P}^r)^n \to \pt$ given by $$(f_1,\ldots,f_n) \mapsto \int_{(\mb{P}^r)^n}\opc{M}f_1(H_1)\cdots f_n(H_n).$$
+\end{comment}
+\begin{Thm}
+\label{GOSP}
+We have
+$$\begin{aligned}f_1\star \cdots\star f_{n-1} &= \sum_{d=0}^{n-1} \left(\hbar^d\int_{(\mb{P}^r)^{n}\to \mb{P}^r}{\opc{M_{d+1}}f_1(H_1)\cdots f_{n-1}(H_{n-1})}\right).\end{aligned}$$
+\end{Thm}</p>
+<p class="stacks-para">\begin{Rem}
+This holds by Mhbarintro as follows. The equation is equivalently written as $$[\ast]_{\hbar}(f_1)\star [\ast]_{\hbar}(f_2) \star \ldots \star [\ast]_{\hbar}(f_{n-1})=[I_{n-1}]_{\hbar}(f_1,\ldots,f_{n-1}),$$ and the two sides are equal again by repeatedly applying Mhbarintro. By the simple presentation of $QH^\bullet_{GL_{r+1}}(\mb{P}^r)$ described in Section QCRD, computing $f_1\star \cdots\star f_n$ reduces to polynomial multiplication and expansion in terms of powers of the polynomial $F(H)$.
+\end{Rem}</p>
+<p class="stacks-para">\begin{comment}
+Similarly,
+$$\begin{aligned}f_1\star f_2\star f_3\star f_4&=\\
+\left(\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$0$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$0$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$0$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}\right) +
+\left(
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$1$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$0$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$0$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}+
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$0$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$1$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$0$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}+
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$0$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$0$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$1$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}
+\right)\hbar+\\
+\left(
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$1$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$1$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$0$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}+
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$0$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$1$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$1$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}+
+\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$1$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$0$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$1$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}
+\right)\hbar^2+
+\left(\tikz[scale=1.3, baseline=15pt]{ \draw(1,0)&ndash;(0,1); \draw(1/2,0)&ndash;(3/2,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f_1$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$f_2$} node[anchor=east]{$1$};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}; \filldraw[black] (1,1/2) circle (1pt) node[anchor=south]{$f_3$} node[anchor=north]{$1$}; \filldraw[black] (1+1/4,3/4) circle (1pt) node[anchor=south]{$$}; \draw(2,0)&ndash;(1,1); \filldraw[black] (3/2,1/2) circle (1pt) node[anchor=north]{$f_4$} node[anchor=south]{$1$};\filldraw[black] (7/4,1/4) circle (1pt) node[anchor=south]{$$};}\right)\hbar^3.\end{aligned}$$
+\end{comment}</p>
+<p class="stacks-para">\begin{comment}
+First, we have a presentation
+$$\begin{aligned}A_{GL_{r+1}}^{\bullet}(\mb{P}^r)\cong \mb{Z}[t_0,\ldots,t_r]^{S_{r+1}}[H]/(F(H)),
+\ed{align*}
+where $F(H):=\prod_{i=0}^{r}(H+t_i)$. If $f,g\in \mb{Z}[t_0,\ldots,t_r]^{S_{r+1}}[H]$, writing $fg$ uniquely as
+\begin{align*}
+fg=\ol{f}\ol{g}+a F,\end{aligned}$$
+\end{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 3.7. Expanding out a small quantum product">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S3.SS7.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

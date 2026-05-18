@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 2 — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 2: Equivariant orbit classes</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 2. Equivariant orbit classes</h1>
+<p class="stacks-para">Let \(G\) be an algebraic group and \(M\) a variety with a \(G\) action.
+A <em>complete parametrisation</em> of the \(G\) orbit of \(m \in M\) is a \(G\)-variety \(X\) together with a proper \(G\)-equivariant map \(\phi \colon X \to M\) such that
+<ol><li>there exists an \(x \in X\) such that \(\phi (x) = m\),</li>
+<li>the  \(G\)-orbit of \(x\) is dense in \(X\), and</li>
+<li>the stabiliser of \(x \in X\) is trivial.</li></ol></p>
+<p class="stacks-para">Let \(\Gamma \subset G\) be the stabiliser of \(m \in M\) and let \(\phi \colon X \to M\) be a complete parametrisation of the \(G\) orbit of \(m\).
+Then we have
+$$\phi_*[X] = \begin{cases}
+    |\Gamma| \Orb(m) & \text{ if \(\Gamma\) is finite} \\
+    0 & \text{otherwise}.
+    \end{cases}$$</p>
+<p class="stacks-para">We now specialise to two particular settings.</p>
+<p class="stacks-para">In the first setting, we take \(M = W\), where \(W\) is a non-zero \(G\)-representation and the closely related setting of \(M = \P W\).
+Assume that the image of \(G \to \GL(W)\) contains the scalar matrices.
+Suppose the map \(G \to \PGL(W)\) factors through \(G \to \overline G\).
+(In applications, \(G\) will be a general linear group and \(\overline G\) will be the corresponding projective general linear group.)</p>
+<p class="stacks-para">Let
+$$ 0 \to O(-1) \to \underline W \to Q \to 0$$
+be the universal sequence on \(\P W\).</p>
+<div class="stacks-lemma" id="prop-intzeta">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.1.</strong> <a href="../tag/AFBB.html" class="stacks-tag-link">(AFBB)</a></div>
+  <div class="stacks-env-body"><p>Let \(w \in W\) be non-zero.
+  Let \(\Gamma \subset \overline G\) be the stabiliser of \([w] \in \P W\) and assume that it is finite.
+  Let \(\phi \colon X \to \P W\) be a complete parametrisation of the \(\overline G\) orbit of \([w] \in \P W\).
+  Then, in \(A^*_G(W) = A^*_G(\bullet)\), we have
+  $$ |\Gamma| [\Orb(w)] = \int_X c_{\rm top}(\phi^* Q).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F006.html" class="stacks-tag-link">(F006)</a></div>
+  <div class="stacks-env-body"><p>Let \(\pi \colon W^* \to \P W\) be the projection.
+  Since the image of \(G\) contains the scalars, we have
+  $$ \Orb(w) = \pi^* \Orb([w]),$$
+  and hence
+  $$|\Gamma| \cdot \Orb(w) = |\Gamma| \cdot \pi^* \Orb([w]).$$
+  Since \(\phi\) is a complete parametrisation of the \(\overline G\) orbit of \([w]\), we have
+  $$ |\Gamma| \cdot \Orb([w]) = \phi_*[X].$$
+  We now compute the right hand side.</p>
+<p>  On \(X \times \P W\), let \(\pi_i\) for \(i = 1,2\) be the two projections.
+  Consider the composite
+  $$ \pi_2^*O(-1) \to \underline W \to \pi_1^*\phi^*Q.$$
+  Its vanishing locus is precisely the graph of \(\phi \colon X \to \P W\).
+  Therefore, we have
+  $$\phi_*[X] = {\pi_2}_* c_{\rm top} \Hom(\pi_2^*O(-1), \pi_1^* \phi^*Q).$$</p>
+<p>  In (2.2), we substitute \(\phi_*[X]\) from (2.3) and use the push-pull formula on the fiber square
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  Let \(\widetilde \pi_i\) for \(i = 1,2\) be the two projections on \(X \times W^*\).
+  Noting that the pull-back of \(O(-1)\) to \(W^*\) is trivial, in \(A^*_G(W^*)\) we have
+  $$\begin{split}
+      |\Gamma|[\Orb(w)] &= {\widetilde {\pi_2}}_* c_{\rm top} \Hom(O, \widetilde \pi_1^* \phi^*Q)\\
+      &= \int_X c_{\rm top}(\phi^*Q).
+    \end{split}$$
+  Since \(A^*_G(W^*) = A^*_G(W)\) in co-dimension less than \(\dim W\), equation (2.4) also holds in \(A^*_G(W)\).</p></div>
+</div>
+<p class="stacks-para">In the next setting, we assume that \(G = \GL(V) \times H\) and \(M = \Hom(V, W)\), where \(W\) is an \(H\)-representation.
+Let \(\dim V = r+1\).
+A closely related setting is that of \(M = \Gr(r+1, W)\) with the induced action of \(H\).
+Suppose the map \(H \to \PGL(W)\) factors through \(H \to \overline H\).
+(In applications, \(H\) will be a general linear group and \(\overline H\) will be the corresponding projective general linear group.)</p>
+<p class="stacks-para">Let
+$$ 0 \to E \to \underline W \to Q \to 0$$
+be the universal sequence on the Grassmannian.</p>
+<div class="stacks-lemma" id="prop-intgr">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.2.</strong> <a href="../tag/EF94.html" class="stacks-tag-link">(EF94)</a></div>
+  <div class="stacks-env-body"><p>Let \(s \in \Hom(V, W)\) be an injective homomorphism with image \(S\).
+  Let \(\Gamma \subset \overline H\) be the stabiliser of \([S] \in \Gr(r+1, W)\) and assume that it is finite.
+  Let \(\phi \colon X \to \Gr(r+1, W)\) be a complete parametrisation of the \(\overline H\)-orbit of \([S]\).
+  Then, in \(A^*_G(\Hom(V,W)) = A^*_G(\bullet)\), we have
+  $$ |\Gamma|[\Orb(s)] = \int_X c_{\rm top} \Hom(\underline V, \phi^*Q).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3E99.html" class="stacks-tag-link">(3E99)</a></div>
+  <div class="stacks-env-body"><p>Consider the \(H\)-equivariant bundle \(\phi^* E\) on \(X\).
+  Set
+  $$F = \Hom(\underline V, \phi^*E).$$
+  Then \(F\) admits an action of \(G = \GL V \times H\).
+  Set \(Y = \P F\); let \(\pi \colon Y \to X\) be the projection; and let \(\psi = \pi \circ \phi\).
+  The composite
+  $$O_Y(-1) \xrightarrow{i} \Hom(\underline V , \psi^*E) \xrightarrow{j} \Hom(\underline V , \underline W)$$
+  yields a \(G\)-equivariant map
+  $$ Y \to \P \Hom(V, W).$$
+  This map is a complete parametrisation of the \(\PGL V \times \overline H\)-orbit of \([s]\).
+  It is easy to check that the stabiliser of \([s]\) in \(\PGL V \times \overline H\) maps isomorphically to \(\Gamma \subset \overline H\) under the second projection.
+  By <a href="/papers/orbits-linear-series/tag/AFBB.html" class="stacks-ref-link">Proposition&nbsp;2.1 <span class="stacks-ref-tag">[AFBB]</span></a>, in \(A^*_G(\Hom(V,W))\) we have
+  $$ |\Gamma|[\Orb(s)] = \int_Y c_{\rm top}(\coker(j \circ i)).$$
+  From the sequence in (2.5), we have an exact sequence
+  $$ 0 \to \coker i \to \coker(j \circ i) \to \coker j \to 0.$$
+  and hence the equality of top Chern classes
+  $$ c_{\rm top}(\coker j \circ i) = c_{\rm top}(\coker i) \cdot c_{\rm top}(\coker j).$$
+  Observe that
+  $$ \coker j = \pi^* \Hom(\underline V, \phi^* Q). $$
+  Since \(Y \to X\) is a projective space bundle and \(i\) is its universal sub-bundle, we have
+  $$ \int_{Y/X} c_{\rm top}(\coker i) = [X].$$
+  Now, the push-pull formula gives
+  $$
+    \int_{Y/X} c_{\rm top}(\coker i) \cdot c_{\rm top}(\coker j) = c_{\rm top}(\Hom(\underline V, \phi^* Q)).
+  $$
+  Integrating the two sides along \(X\) gives the result.</p></div>
+</div>
+<p class="stacks-para">We now study specialisations of orbits in families.
+The results are essentially from [13, \S&nbsp;2.5], but we state and prove them more generally.</p>
+<p class="stacks-para">Fix an action of an algebraic group \(G\) on a variety \(M\).
+For simplicity, assume that \(G\) is irreducible.
+Given \(m \in M\), define the \(G\)-equivariant cycle
+$$
+  \WOrb(m) = \begin{cases}
+    |\Stab(m)| \cdot \Orb(m) & \text{ if \(\Stab(m)\) is finite,} \\
+    0 & \text{otherwise}.
+  \end{cases}
+$$
+Let \(\Delta\) be the spectrum of a DVR with general point \(\eta\) and special point \(0\).
+Fix a section \(m_\eta \from \eta \to M_\eta\).
+Let \(\Sigma\) be the cycle on \(M\) obtained as the limit of the cycle \(\WOrb(m_\eta)\) on \(M_\eta\).
+Our goal is to understand \(\Sigma\).
+We begin with an easy observation.</p>
+<div class="stacks-lemma" id="prop-onelimit">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/605C.html" class="stacks-tag-link">(605C)</a></div>
+  <div class="stacks-env-body"><p>Suppose \(m_\eta\) has a limit \(\overline m \in M\).
+  Then the cycle \(\Sigma - \WOrb(\overline m)\) is effective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A84C.html" class="stacks-tag-link">(A84C)</a></div>
+  <div class="stacks-env-body"><p>Let \(X \supset G\) be an equivariant compactification.
+  Consider the map \(\alpha \colon G_\eta \to M_\eta\) defined by \(g \mapsto g m_\eta\), and let \(Y \subset X \times M \times \Delta\) be the closure of the graph of \(\alpha\).
+  Then \(Y\) is irreducible of dimension \(\dim G + 1\).
+  Let \(\pi \colon Y \to M\) be the projection.
+  Observe that we have
+  $$ {\pi}_* Y_\eta = \WOrb(m_\eta) \text{ and } {\pi}_* Y_0 = \Sigma.$$
+  By construction, \(Y\) is invariant under the \(G\)-action on \(X \times M \times \Delta\).
+  Since \(y = (1,\overline m, 0) \in Y_0\), we have a copy of \(G \subset Y_0\) given by \(G \cdot y\).
+  Let \(Z \subset Y_0\) be its closure.
+  Note that \({\pi}_* Z = \WOrb(\overline m)\).
+  Furthermore, since \(\dim Z = \dim Y_0\), we see that \(Z \subset Y_0\) is an irreducible component.
+  Then \(\Sigma - \WOrb(\overline m)\) is the push-forward of the effective cycle \([Y_0] - [Z]\).</p></div>
+</div>
+<p class="stacks-para">We have the following strengthening of <a href="/papers/orbits-linear-series/tag/605C.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[605C]</span></a> (see [13, Proposition&nbsp;2.13]).</p>
+<div class="stacks-lemma" id="prop-manylimits">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.4.</strong> <a href="../tag/9951.html" class="stacks-tag-link">(9951)</a></div>
+  <div class="stacks-env-body"><p>Consider sections \(g_1, \dots, g_n \from \eta \to G_\eta\) such that for all \(i \neq j\), the section \(g_ig_j^{-1}\) does not extend to a section \(\Delta \to G_\Delta\).
+  Suppose \(\overline m_1, \dots, \overline m_n \in M\) are limits of \(g_1 m_\eta, \dots, g_n m_\eta\).
+  Then the cycle \(\Sigma - \WOrb(\overline m_1) - \dots - \WOrb(\overline m_n)\) is effective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6381.html" class="stacks-tag-link">(6381)</a></div>
+  <div class="stacks-env-body"><p>Let \(X \supset G\) be an equivariant compactification.
+  Consider the map \(\alpha \colon G_\eta \to G_\eta^n \times M_\eta\) given by
+  $$ \alpha \colon g \mapsto (gg_1^{-1}, \dots, gg_n^{-1}, gm_\eta)$$
+  and let \(Y \subset X^n \times M \times \Delta\) be the closure of its image.
+  Denoting by \(\pi\) the projection onto the \(M\) factor, we have
+  $$ {\pi}_* Y_\eta = \WOrb(m_\eta) \text{ and } {\pi}_* Y_0 = \Sigma.$$
+  Let \(\overline g_{i,j} \in X\) be the limit of \(g_ig_j^{-1}\).
+  Then \(\overline g_{i,j} \not \in G\) for \(i \neq j\).
+  Then the limit of \(\alpha(g_i)\) is the point
+  $$ y_i = (\overline g_{i,1}, \dots, \overline g_{i,i-1}, 1, \overline g_{i,i+1}, \overline g_{i,n}, \overline m_i) \in Y_0.$$
+  Each \(y_i\) gives a copy of \(G \subset Y_0\), say \(G_i\), defined by \(G_i = G \cdot y_i\).
+  Since \(\overline g_{i,j} \not \in G\) for \(i \neq j\), the \(j\)-th components of the points of \(G_i\) do not lie in \(G\) for \(i \neq j\) and lie in \(G\) for \(i = j\).
+  In particular, for \(i \neq j\), the \(G_i\) and \(G_j\) are disjoint.
+  Let \(Z_i\) be the closure of \(G_i\).
+  Then the \(Z_i\) are distinct irreducible components of \(Y_0\).
+  The cycle \(\Sigma - \WOrb(\overline m_1) - \dots - \WOrb(\overline m_n)\) is the \(\pi\)-pushforward of the effective cycle \(Y_0 - Z_1 - \dots - Z_n\).</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Section 2: Equivariant orbit classes">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

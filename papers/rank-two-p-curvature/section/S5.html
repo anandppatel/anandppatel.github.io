@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 5 — The rank two $p$-curvature conjecture\\on generic curves</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          theinnercustomthm: "#1",
+          N: "\\mathbb{N}",
+          Q: "\\mathbb{Q}",
+          Z: "\\mathbb{Z}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          bP: "\\mathbb{P}",
+          fp: "\\mathfrak{p}",
+          be: "\\bf{e}",
+          Id: "\\bf{I}",
+          Oo: "\\mathcal{O}",
+          Mgd: "\\mathcal{M}_{g,d}",
+          Mgn: "\\mathcal{M}_{g,n}",
+          Mge: "\\mathcal{M}_{g,e}",
+          P: "\\mathbb{P}",
+          Hb: "\\mathbb{H}",
+          A: "\\mathbb{A}",
+          Der: "\\operatorname{Der}",
+          Spec: "\\operatorname{Spec}",
+          GL: "\\operatorname{GL}",
+          hol: "\\operatorname{hol}",
+          tr: "\\operatorname{tr}",
+          SL: "\\operatorname{SL}",
+          Rep: "\\operatorname{Rep}",
+          Hom: "\\operatorname{Hom}",
+          Aut: "\\operatorname{Aut}",
+          Out: "\\operatorname{Out}",
+          Sp: "\\operatorname{Sp}",
+          PGL: "\\operatorname{PGL}",
+          SU: "\\operatorname{SU}",
+          SO: "\\operatorname{SO}",
+          Gal: "\\operatorname{Gal}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Ananth N. Shankar, and Junho Peter Whang</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture\\on generic curves</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 5: Proof of Theorem Section&nbsp;1.3</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 5. Proof of Theorem Section&nbsp;1.3</h1>
+<p class="stacks-para">To aid the reader, we first give a sketch of the argument. There are three main inputs to our proof. We first use the genericity of the punctures to specialize to a nodal curve containing $\mathbb{P}^1 \setminus\{0,1,\infty\}$ as an irreducible component, and use Theorem goodredcurve to prove that $(V,\nabla)$ extends to a vector bundle with connection on this irreducible component. By work of Katz [16], the $p$-curvature conjecture is known for rank two bundles <span style="font-size:0.9em;color:#555;">(We thank H&eacute;l\`ene Esnault for pointing out to us that every rank 2 vector bundle with connection on $\mathbb{P}^1 \setminus{0,1,\infty}$ is Hypergeometric.)</span> on $\mathbb{P}^1 \setminus{0,1,\infty}$, and this is our second input. Finally, we use (a slight generalization of) the isomonodromy Theorem oneall to deduce our result.</p>
+<p class="stacks-para">We work over a number field $k$. Let $f: C \to B$ be a flat family of genus $0$, $n$-punctured (marked) curves over a pointed affine curve $(B,0)$ with smooth
+generic fiber and with special fiber $C_0 = f^{-1}(0)$ reduced and
+nodal, corresponding to a map $B \to \overline{\mathcal{M}}_{0,n}$, the moduli space of stable $n$-pointed genus $0$ curves. Let $B^\circ$ denote the open set $B \setminus \{0\}$, assume that $C$ is smooth over $B^{\circ}$, and suppose that there exists
+ an irreducible component $E$ of the special fiber $C_0$ which contains exactly three special points (either punctures/marked points or nodes). We let $C^\circ \subset C$ denote the preimage of $B^{\circ}$ under $f$.</p>
+<p class="stacks-para">Upon blowing down the remaining components $C_{0} \setminus E$, and after appropriately choosing three of the $n$-marked points/punctures to be at $0$, $1$, and $\infty$, we get an affine curve $A \subset (\mathbb{P}^{1} \setminus\{0,1,\infty\}) \times B$ which is the complement of $n$ sections $\sigma_{i}: B \to \mathbb{P}^{1}$ satisfying $\sigma_{i}(0) \in \{0,1,\infty\} \subset \mathbb{P}^1$ for all $i$.  (The first three sections are taken to be the constant sections $0,1,\infty$).  By construction, the affine curve $A$ is isomorphic to an open subset of $C$ under the blowdown map.</p>
+<p class="stacks-para">This general setup will be referred to consistently throughout the
+  remainder of the section.</p>
+<div class="stacks-lemma" id="lem-derivationexistence">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.1.</strong> <a href="../tag/711B.html" class="stacks-tag-link">(711B)</a></div>
+  <div class="stacks-env-body"><p>Let $A$ be as above. Then there exists an everywhere non-zero $B$-derivation $D$ on $A$ such that $D^{p} \equiv D \mod p$
+  for all primes $p$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5A72.html" class="stacks-tag-link">(5A72)</a></div>
+  <div class="stacks-env-body"><p>The derivation $D = x \frac{d}{dx}$ on $A \subset \A^{1} \times B$ works, where $x$ denotes the coordinate on $\A^{1}$.</p></div>
+</div>
+<p class="stacks-para">Suppose $Y \to B$ is a smooth map of complex varieties, and suppose $b \in B$ is a point sufficiently close to $0 \in B$.  Then there is a map $\tau: \pi_{1}(Y_{0}) \to \pi_{1}(Y_{b})$, well-defined up to choosing base-points, obtained by parallel transport of loops.</p>
+<p class="stacks-para">In the context of the family $A \to B$, if we bound the three punctures in $E$ with small loops, the resulting pair of pants $U_{0} \subset E$ can be extended (by Ehresmann's theorem) to a smooth family of pairs of pants $U \to N$ over a small analytic disk $N$ around $0$.  We denote by $U_b \subset A_b$ the fiber of $U$ over $b \in B$. We let $P \subset U$ denote the interior. For each $b \in N$, the fiber $P_b \subset U_b$ is the interior of the pair of pants $U_{b}$.</p>
+<div class="stacks-theorem" id="thm-bootstrap">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.2.</strong> <a href="../tag/F578.html" class="stacks-tag-link">(F578)</a></div>
+  <div class="stacks-env-body"><p>Suppose $(V,\nabla)$ is a vector bundle with flat connection on $A$ relative to $B$ whose $p$-curvatures vanish for almost all $p$.
+  If the restriction $(V,\nabla)|_{E}$ has finite monodromy, then
+  $\tau(\pi_{1}(E)) = \pi_{1}(P_{b}) \subset \pi_{1}(A_{b})$ has finite image in $\GL_{r}\C$
+  under the monodromy representation of $(V,\nabla)|_{A_{b}}$ for $b \in B$ sufficiently close to $0$. Here, $P_b$ is as in Figure 2.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FB1C.html" class="stacks-tag-link">(FB1C)</a></div>
+  <div class="stacks-env-body"><p>\begin{figure}[ht]
+    \centering
+    \includegraphics{genus.pdf}
+    \caption{Degeneration of smooth genus zero curves to a nodal curve}
+    \label{fig6}
+\end{figure}</p>
+<p>Let $q$ denote a local coordinate on $B = \Spec R$ cutting out $0$, and let $N \subset B(\C)$ denote a small analytic open neighbourhood of $0$ as in the discussion immediately prior to the theorem. Furthermore, let $P \rightarrow N$ denote the holomorphic family of (interiors of) pairs of pants and let $P_b$ be the fiber of $P$ over $b \in N$, as depicted in Figure 2. </p>
+<p>It suffices to prove that the monodromy of $(V,\nabla)$ restricted to any fiber of $P \to N$ is finite. The  argument used in the proof of Proposition <a href="/papers/rank-two-p-curvature/tag/A7A2.html" class="stacks-ref-link">4.4 <span class="stacks-ref-tag">[A7A2]</span></a> (and also the fact that $A \times_{\Spec R} \Spec R/q^m$ is the trivial infinitesimal deformation of $A \times_{\Spec R} \Spec R/q$) yields that $(V,\nabla)|_{A/q^m}$ is isomorphic to the trivial family $(V,\nabla)_0 \times \Spec R/q^m$. Note that $P$ is an open subset of $A^{\hol}$. Therefore,  there exists a basis for $V^{\hol}|_P$ with respect to which the connection is constant (in $q$) modulo $q^m$. Now, consider the holomorphic family of monodromy representations: $\rho: \pi_1(E) \rightarrow \GL_r(\mathcal{O}^{\hol}(N))$ corresponding to $(V,\nabla)|_{P}$. As the connection is isomorphic to a constant connection mod $q^m$, it follows that the kernel of $\rho$ mod $q^m$ is independent of $m$. We now claim that the kernel of $\rho$ is the same as the kernel of $\rho$ mod $q$. Let $\alpha \in \pi_1(E)$ be in the kernel of $\rho $ mod $q$. Then, $\alpha$ is in the kernel mod $q^m$ for all $m$, and so $\rho(\alpha)$ is the identity element, as required. The result follows, as we have assumed that the kernel of $\rho$ mod $q$ is finite index in $\pi_1(E)$.</p></div>
+</div>
+<p class="stacks-para">We are now ready to put the above results together to prove Theorem 1.3.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of Theorem Section&nbsp;1.3.</em> <a href="../tag/575F.html" class="stacks-tag-link">(575F)</a></div>
+  <div class="stacks-env-body"><p>Let $\mathcal{M}_{0,n}$ denote the (fine) moduli space of genus zero curves with $n$ marked points, with $n \geq 4$. We will prove our result for <em>the</em> generic family of curves over $\mathcal{M}_{0,n}$. The same arguments in [20] go through to reduce the case of <em>a</em> generic curve to the case of <em>the</em> generic curve. Let $\overline{\mathcal{M}_{0,n}}$ denote the Deligne-Mumford compactification of $\mathcal{M}_{0,n}$, which is a projective variety. There are three different families of ``pairs of pants'' inside $C(\C)$, where $C$ is a genus 0 curve with $n$ punctures:
+<ol><li>Pick any simple closed loop $\gamma \subset C(\C)$ as in Figure 2, such that the complement of $\gamma$ consists of 2 disks, the first containing two of the marked points and the second, containing the remaining $n-2$ marked points. The disc containing two of the marked points is a pair of pants contained inside $C(\C)$, and can be realised by approaching a divisorial boundary component of $\mathcal{M}_{0,n}$. We say this type of pair of pants is of type $P$. <span style="font-size:0.9em;color:#555;">(We thank Joe Harris and Ian Morrison for allowing us to use Figure 2, which can be found in their book <em>Moduli of Curves</em>.)</span></li>
+<li>Fix one of the marked points, and partition the remaining $n-1$ points into two non-empty sets containing $a$ and $b = n-1-a$ points respectively. Let $\gamma_a \subset C(\C)$ denote a simple closed loop bounding the set of $a$ marked points, and let $\gamma_b$ denote the analogous simple closed loop. The complement of $\gamma_a$ and $\gamma_b$ consists of two discs (containing $a$ and $b$ marked points respectively), and a pair of pants. The pair of pants can be realised by approaching a suitable codimension-2 locus in the boundary of $\overline{\mathcal{M}}_{0,n}$. We say such a pair of pants is of type $P_{a,b}$.</li>
+<li>Partition the $n$ points into three nonempty sets containing $a$, $b$ and $c = n -a-b$ points respectively. Let $\gamma_a \subset C(\C)$ denote a simple closed loop which bounds the first $a$ points, and let $\gamma_b,\gamma_c$ denote the analogous simple closed loops. The complement of these three loops equals the union of a pair of pants and three discs (with $a$,$b$ and $c$) punctures respectively. The pair of pants can be realised by approaching a suitable codimension-3 locus in the boundary of $\overline{\mathcal{M}}_{0,n}$. We say such a pair of pants is of type $P_{a,b,c}$.</li></ol>
+For more details about $\overline{\mathcal{M}}_{0,n}$, see [12, Chapter 3, Section G]. We now blow $\overline{\mathcal{M}}_{0,n}$ up at all the codimension 2 and codimension 3 boundary points considered just above. Let $\overline{\mathcal{M}}$ denote this blown-up scheme; $\overline{\mathcal{M}}$ is still projective, and we fix a projective embedding. </p>
+<p>Let $B$ denote a general one-dimensional curvi-linear section of $\overline{\mathcal{M}}$. We may assume that $B$ is irreducible, is defined over a number field, and also that the map $\pi_1(B \cap \mathcal{M}_{0,n} (\C)) \rightarrow \pi_1(\mathcal{M}_{0,n}(\C)) $ is surjective (by the quasi-projective Lefschetz theorem). We also have that $B$ intersects every divisorial boundary component of $\overline{\mathcal{M}}$. </p>
+<p>Fix any type of pairs of pants $T$, where $T$ either equals $P$,  $P_{a,b}$ (for a fixed pair of integers $a,b$ with $a +b = n-1$), or $P_{a,b,c}$ (with $a+b+c=n$). By [9, Page 37], the action of $\pi_1(M(\C))$ (by parallel transport) on a fiber over $M$ is transitive (up to isotopy) on pairs of pants of type $T$, and thus the same is true about the action of $\pi_1(B \cap M(\C))$. In sum, given any pair of pants $P$ contained in a smooth fiber $C_b$, there exists a path contained in $B(\C)$ connecting $b$ to an appropriate boundary point $0 \in B$ such that the pair of pants deforms to $\mathbb{P}^1 \setminus\{0,1,\infty\} \subset C_0$. We now apply Theorem <a href="/papers/rank-two-p-curvature/tag/F578.html" class="stacks-ref-link">5.2 <span class="stacks-ref-tag">[F578]</span></a>, noting that the $p$-curvature conjecture is known (by work of Katz) for rank 2 vector bundles on $\mathbb{P}^1 \setminus\{0,1,\infty\}$. The theorem follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture\\on generic curves — Section 5: Proof of Theorem Section 1.3">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/rank-two-p-curvature/section/S5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1811.04538">arXiv:1811.04538</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

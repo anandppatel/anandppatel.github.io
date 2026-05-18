@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11.3. Degeneration of the general orbit — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S11.html">Section 11: Application: line sections of a hypersurface</a> / <span>11.3. Degeneration of the general orbit</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">11.3. Degeneration of the general orbit</h1>
+<p class="stacks-para">\label{APFS}
+We now answer Patel2, generalizing the relation in the case $r=2$ to arbitrary $r$, via a relation between generalized matrix orbit classes. The following definition will be used in Section&nbsp;11.3 only.</p>
+<p class="stacks-para">\begin{Def}
+Given a partition $A_1\sqcup\ldots\sqcup A_k$ of $\{1,\ldots,n\}$, let $M_{A_1\sqcup\cdots\sqcup A_k}$ denote a choice of a $2\times n$ matrix such that two columns are linearly dependent if and only if their indices lie in the same $A_i$. Equivalently, we may define $$M_{A_1 \sqcup \ldots \sqcup A_k}= \tau^{\le 2}(\tau^{\le 1}(\oplus_{j \in A_1} \ast)\oplus\ldots\oplus\tau^{\le 1}(\oplus_{j \in A_k} \ast)).$$
+\end{Def}</p>
+<p class="stacks-para">By realval, the class $\opc[1]{M_{A_1\sqcup\cdots \sqcup A_k}}$ depends only on the partition $A_1\sqcup\cdots \sqcup A_k$ and not on the specific choice of $M_{A_1\sqcup\cdots\sqcup A_k}$.</p>
+<p class="stacks-para">\begin{Prop}
+\label{P1S}
+We have
+$$\begin{aligned}\opc[1]{M_{\{1\}\sqcup\cdots\sqcup \{n\}}} = \sum_{i=1}^{n-2}{\opc[1]{M_{\{1,\ldots,i\}\sqcup \{i+1\}\sqcup \{i+2, \ldots,n\}}}}\end{aligned}$$
+\end{Prop}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A1C6.html" class="stacks-tag-link">(A1C6)</a></div>
+  <div class="stacks-env-body"><p>This follows by realval and the subdivision of Schubert rank polytopes in the proof of formulaexists. This also follows from an application of [Kap93, Theorem 1.3.6] in the case where interior vertices of our tree form a chain. Not coincidentially, in characteristic zero, this also follows from Section&nbsp;3.6.</p></div>
+</div>
+<p class="stacks-para">As a corollary of P1S, we have
+\begin{Thm}
+\label{APD}
+With the setup of section, if $d=2r+1$, then the degree of $\phi_X$ is
+$$\begin{aligned}\sum_{a\ge b>1,a+b+1=d}{2n_{a,b,1}}+4n_{d-2,1,1},\end{aligned}$$
+where $$n_{a,b,c} = \int_{\mb{G}(1, r)}s^*[\ol{Z_{a,b,c}}]$$ and $Z_{a,b,c} \subset {\rm Sym}^d(\mb{P}(\mc{S}^\vee)) = \mb{P}({\rm Sym}^d\mc{S}^\vee)$ is the closure of the locus of $n$-tuples of points in each fiber supported at $3$ points with multiplicities $a,b,c$.
+\end{Thm}</p>
+<p class="stacks-para">\begin{Rem}
+The inverse image $s^{-1}(Z_{a, b, c})$ consists exactly of lines that intersect $X$ at three points with multiplicities exactly $a,b,c$. Hence, we may think of $n_{a, b, c}$ as the number of such lines, counted with multiplicity. In characteristic zero, it is possible to give a transversality argument to show that, for a general $X$, we can take $n_{a,b,c}$ to be the honest number of lines, as all lines appear with multiplicity one.
+\end{Rem}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CE21.html" class="stacks-tag-link">(CE21)</a></div>
+  <div class="stacks-env-body"><p>By IN, the degree of $\phi_X$ is equal to the degree of $s^{*}\Phi_*\opc[1]{M_{\{1\}\sqcup\cdots\sqcup \{d\}}}$, where
+$$\begin{aligned}\Phi:\mb{P}(\mc{S}^{\vee})^d\to \mb{P}({\rm Sym}^d \mc{S}^{\vee})\end{aligned}$$ is the multiplication map.
+By P1S, we have
+$$\begin{aligned}s^{*}\Phi_*\opc[1]{M_{\{1\}\sqcup\cdots\sqcup \{d\}}} = \sum_{i=1}^{d-2} s^{*}\Phi_*\opc[1]{M_{\{1,\ldots,i\}\sqcup \{i+1\}\sqcup \{i+2, \ldots,d\}}}.\end{aligned}$$
+Now, observe that $\Phi$ maps $\op[1]{M_{\{1,\ldots,i\}\sqcup \{i+1\}\sqcup \{i+2,\ldots,d\}}}$ generically two-to-one onto $\ol{Z_{i,d-i-1, 1}}$ if $i\in\{1,\frac{d-1}{2},d-2\}$ and birationally onto it otherwise. Therefore $ s^{*}\Phi_*\opc[1]{M_{\{1,\ldots,i\}\sqcup \{i+1\}\sqcup \{i+2, \ldots,d\}}}$ is the class of $2n_{i,d-i-1,1}$ points if $i\in\{1,\frac{d-1}{2},d-2\}$ and $n_{i,d-i-1,1}$ points otherwise. Taking the sum from $i=1$ to $d-2$ yields the desired answer.</p></div>
+</div>
+<p class="stacks-para">\begin{Rem}
+Using the properties of $[M]_\hbar$ in Section&nbsp;9 and the description of $M_{A_1 \sqcup \ldots \sqcup A_k}$ in terms of truncations and direct sums with $\ast$, one can compute the $n_{a,b,1}$ directly.
+\end{Rem}
+\begin{comment}
+From our point of view, this relation is obtained by taking the orbit $\op[1][n]{M_{gen}}$ of $n$ general points on $\mb{P}^1$ and expressing it in terms of orbits of $n$ points supported on three points with multiplicities $a$,$b$ and 1. By pushing forward these classes under the multiplication map
+$$\begin{aligned}\mb{P}(\mc{S}^{\vee})^d\to \mb{P}({\rm Sym}^d \mc{S}^{\vee})\end{aligned}$$
+this naturally expresses the degree in terms of the $n_{a,b,1}$'s, if we interpret the $n_{a,b,1}$'s as counting lines with multiplicities. Finally, in characteristic zero, it is possible to give a tranversality argument to show that the lines intersecting $X$ with multiplities $a,b,1$ actually all appear in multiplicity 1. Since the underlying ideas for the relation between the degree and the numbers $n_{a,b,1}$'s are clear and proving everything in detail will carry us too far afield, we will not pursue it further here.
+\end{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 11.3. Degeneration of the general orbit">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S11.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

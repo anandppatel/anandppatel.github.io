@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof using \cite{FML} (5319) — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Points on $\mb{P}^{1}$</a> / <span>Proof using \cite{FML} (5319)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="3F96.html">&laquo; Theorem 8.1</a><span class="stacks-tag-current">Tag 5319</span><a href="1AFB.html">Corollary 8.2 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof using \cite{FML}.</em> <a href="../tag/5319.html" class="stacks-tag-link">(5319)</a></div>
+  <div class="stacks-env-body"><p>We use the same argument in [LPST20, Theorem 12.5], so we only describe the computation, and refer the motivation and proof of correctness to [LPST20]. Because our sign convention is opposite that of [LPST20], we will actually compute $\p_X(-u,-v)$. Let $d=\sum_{i=1}^{n}{m_i}$ and $G(z)=\prod_{i=0}^{d}{(H+iu+(d-i)v)}\in \mathbb{Z}[u,v][z]$. Let $L(z)=\frac{G(z)-G(0)}{z}$. Let $\overline{L}(H_1,\ldots,H_n)$ be the result of reducing $L(m_1H_1+\cdots+m_nH_n)$ modulo $(H_i+u)(H_i+v)$ for each $i$. Now, we carry out the three steps in the proof of [LPST20, Theorem 12.5].\\
+  <strong>Step 1</strong> By Lagrange interpolation,
+$$\begin{aligned}L(m_1H_1+\cdots+m_nH_n)&=\frac{G(m_1H_1+\cdots+m_nH_n)-L(0)}{m_1H_1+\cdots+m_nH_n}\\
+    \overline{L}(H_1,\ldots,H_n)&=\sum_{T\subset \{1,\ldots,n\}}\frac{-G(0)}{-\sum_{i\in T}{m_iv}-\sum_{i\notin T}{m_i u}}\left(\prod_{i\in T}\frac{H_i+u}{-v+u}\right)\left(\prod_{i\notin T}\frac{H_i+v}{-u+v}\right).\end{aligned}$$\\
+<strong>Step 2</strong> Substituting $z$ for each $H_i$ yields
+$$\begin{aligned}\overline{L}(z,\ldots,z) &= G(0)\sum_{T\subset \{1,\ldots,n\}}\frac{1}{\sum_{i\in T}{m_iv}+\sum_{i\notin T}{m_i u}}\frac{(z+u)^{\# T}(z+v)^{d-\#T}}{\prod_{i\in T}{(-v+u)}\prod_{i\notin T}{(-u+v)}}.\end{aligned}$$
+<strong>Step 3</strong> Let $F(z)=(z+u)(z+v)$. All terms of (8.1) are
+divisible by $F(z)^2$ unless $\# T\in \{0,1,n-1,n\}$. Thus,
+$[z^1][F(z)^1]\overline{L}(z,\ldots,z)$ is
+$$\begin{aligned}\frac{G(0)}{(u-v)^n}[z^1][F(z)^1]\left(\frac{(-1)^n(z+v)^n}{du}+\frac{(z+u)^n}{dv}+\sum_{i=1}^{n}{\frac{(-1)^{n-1}F(z)(z+v)^{n-2}}{m_iv+(d-m_i)u}}+\sum_{i=1}^{n}{\frac{(-1)F(z)(z+u)^{n-2}}{m_iu+(d-m_i)v}}\right).\end{aligned}$$
+As in the proof of [LPST20, Theorem 12.5],
+$$\begin{aligned}[z^1][F(z)^1]F(z)(z+u)^k &= (u-v)^{k-1} \qquad [z^1][F(z)^1](z+u)^k=(k-2)(u-v)^{k-3}\\
+  [z^1][F(z)^1]F(z)(z+v)^k &= (v-u)^{k-1} \qquad [z^1][F(z)^1](z+v)^k=(k-2)(v-u)^{k-3},\end{aligned}$$
+so $[z^1][F(z)^1]\overline{L}(z,\ldots,z)$ simplifies to
+$$\begin{aligned}&\frac{G(0)}{(u-v)^n}\left(\frac{(-1)^n(n-2)(v-u)^{n-3}}{du}+\frac{(n-2)(u-v)^{n-3}}{dv}+\sum_{i=1}^{n}\frac{(-1)^{n-1}(v-u)^{n-3}}{m_iv+(d-m_i)u}+\sum_{i=1}^{n}\frac{(-1)(u-v)^{n-3}}{m_iu+(d-m_i)v}\right)\\
+  &\frac{G(0)}{(u-v)^n}\left(\frac{(-1)(n-2)(u-v)^{n-3}}{du}+\frac{(n-2)(u-v)^{n-3}}{dv}+\sum_{i=1}^{n}{\frac{(u-v)^{n-3}}{m_iv+(d-m_i)u}+\frac{(-1)(u-v)^{n-3}}{m_iu+(d-m_i)v}}\right)\\
+  &\frac{G(0)}{(u-v)^n}\left(\frac{(n-2)(u-v)^{n-2}}{duv}+\sum_{i=1}^{n}{\frac{(2m_i-d)(u-v)^{n-2}}{(m_iv+(d-m_i)u)(m_iu+(d-m_i)v)}}\right)\\
+  &\frac{G(0)}{(u-v)^2}\left(\frac{n-2}{duv}+\sum_{i=1}^{n}{\frac{2m_i-d}{(m_iv+(d-m_i)u)(m_iu+(d-m_i)v)}}\right)\end{aligned}$$</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Tag 5319 (Proof using \cite{FML})">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/tag/5319.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

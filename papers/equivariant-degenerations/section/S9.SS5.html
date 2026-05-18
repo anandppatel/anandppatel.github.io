@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.5. Application of Atiyah-Bott — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S9.html">Section 9: Points on $\mathbb{P}^1$ via Atiyah-Bott</a> / <span>9.5. Application of Atiyah-Bott</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">9.5. Application of Atiyah-Bott</h1>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-lemma" id="LineOrbit">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;9.2.</strong> <a href="../tag/B3A3.html" class="stacks-tag-link">(B3A3)</a></div>
+  <div class="stacks-env-body"><p>The constant term of the equivariant class of the $GL_2$-orbit of $d$ points on $\mb{P}^1$ with multiplicities $m_1,\ldots,m_n$ so $\sum_{i=1}^{n}{m_i}=d$ is
+$$\begin{aligned}\frac{1}{(v-u)^2}\prod_{i=0}^{d}{(iu+(n-i)v)}\left(\frac{n-2}{duv}-\sum_{i=1}^{n}{\frac{-2m_i+d}{((d-m_i)u+m_iv)((d-m_i)v+m_iu)}}\right).\end{aligned}$$
+To get the entire class, one substitutes $t_i+\frac{H}{n}$ for each $t_i$.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a>.</em> <a href="../tag/B67C.html" class="stacks-tag-link">(B67C)</a></div>
+  <div class="stacks-env-body"><p>As before, we compute $\p_X(-u,-v)$ due to our sign conventions. Let
+$$\begin{aligned}\phi(H) = \frac{(H+du)(H+(d-1)u+v)\cdots (H+dv)-(du)\cdots (dv)}{H}.\end{aligned}$$</p>
+<p>We want to pull $\phi(H)$ back to $X$ and integrate using
+Atiyah-Bott. We first integrate over $\wt{C_1}$. Since $H$ pulls back
+to
+$$dH-\sum_{i=1}^{n}{m_iE_i}=d(z-u)-dz=-du,$$
+ this is
+$$\begin{aligned}[z]\frac{1}{(z+v-u)((1-n)z+v-u)}\phi(-du)&=\\
+[z]\frac{\frac{1}{(v-u)^2}}{(1+\frac{z}{v-u})(1+\frac{(1-n)z}{v-u})}\frac{-\prod_{i=0}^{d}{(iu+(d-i)v)}}{-du}&=\\
+\frac{(n-2)\prod_{i=1}^{d}{(iu+(d-i)v)}}{(v-u)^3}&.\end{aligned}$$
+Adding this to the contribution of $\wt{C_2}$ yields
+$$\begin{aligned}(n-2)\prod_{i=0}^{d}{(iu+(d-i)v)}\frac{1}{(v-u)^3}\left(\frac{1}{du}-\frac{1}{dv}\right)&=\\
+(n-2)\prod_{i=0}^{d}{(iu+(d-i)v)}\frac{1}{(v-u)^2}\frac{1}{duv}\end{aligned}$$
+For each $1\leq i\leq n$, we have a point in the configuration of
+multiplicity $m_i$. We have two isolated fixed points corresponding to
+$i$ lying above $R_i\cap C_1$ and $R_i\cap C_2$. For the point lying
+above $R_i\cap C_1$, $H$ pulls back to $dH-m_iE$, where $E$ is the
+exceptional divisor lying above $R_i$. This restricts to
+$$\begin{aligned}-du-n(v-u)=(-d+m_i)u-m_iv\end{aligned}$$
+at the fixed point. The contribution to Atiyah Bott is
+$$\begin{aligned}\frac{1}{(u-v)^3}\phi((-d+m_i)u-m_iv)&=\\
+\frac{1}{(u-v)^3}\frac{-\prod_{j=0}^{d}{(ju+(d-j)v)}}{(-d+m_i)u-m_iv}&.\end{aligned}$$
+Adding this to the contribution of the fixed point lying above
+$R_i\cap C_2$, we get
+$$\begin{aligned}\frac{1}{(u-v)^3}\prod_{j=0}^{d}{(ju+(d-j)v)}\left(\frac{1}{(d-m_i)u+m_iv}-\frac{1}{(d-m_i)v+m_iu}\right)&=\\
+-\frac{1}{(u-v)^2}\prod_{j=0}^{d}{(ju+(d-j)v)}\frac{d-2m_i}{((d-m_i)u+m_iv)((d-m_i)v+m_iu)}&.\end{aligned}$$
+Adding the contributions up yields the desired result.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 9.5. Application of Atiyah-Bott">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S9.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

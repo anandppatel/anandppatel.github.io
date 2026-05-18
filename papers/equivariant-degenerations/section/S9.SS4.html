@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.4. Fixed point loci — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S9.html">Section 9: Points on $\mathbb{P}^1$ via Atiyah-Bott</a> / <span>9.4. Fixed point loci</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">9.4. Fixed point loci</h1>
+<p class="stacks-para">First, we note that the fixed-point loci of $\mb{P}^3$ under the
+action of $T$ consists of two disjoint $\mb{P}^1$'s which we will call
+$C_1,C_2$.
+$$\begin{aligned}\begin{pmatrix}
+\ast & 0\\
+\ast & 0
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
+0 & \ast \\
+0 & \ast
+\end{pmatrix}\end{aligned}$$
+The fixed-point loci of $X$ under the action of $T$ must lie over the
+fixed-point loci of $\mb{P}^3$ under $T$. Therefore, we conclude that the fixed loci consist of the following 2n+2 components:
+\begin{enumerate}
+\item 2 fixed point loci corresponding to $\mb{P}^1$'s that are the
+  proper transforms $\wt{C_1}$ and $\wt{C_2}$ of $C_1$ and $C_2$. If we suppose $R_1$ is the $\mathbb{P}^1$ consisting of the matrices
+  $\begin{pmatrix} \ast & \ast \\ 0 & 0\end{pmatrix}$, then the point
+  of the proper transform lying above $C_1\cap R_1$ is given by the
+  limiting point of
+$$\begin{aligned}\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix}
++ t
+\begin{pmatrix}
+0 & 0\\
+1 & 0
+\end{pmatrix}\end{aligned}$$
+as $t\to 0$.</p>
+<p class="stacks-para">\item $2n$ isolated points that lie over the $2n$ pairwise
+  intersections of $C_1,C_2$ with $R_1,\ldots,R_n$. If we suppose
+  $R_1$ is the $\mathbb{P}^1$ consisting of the matrices
+  $\begin{pmatrix} \ast & \ast \\ 0 & 0\end{pmatrix}$, then the
+  isolated torus-fixed point lying above $C_1\cap R_1$ is given by the
+  limiting point of
+$$\begin{aligned}\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix}
++ t
+\begin{pmatrix}
+0 & 0\\
+0 & 1
+\end{pmatrix}\end{aligned}$$
+as $t\to 0$.
+\end{enumerate}</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Normal bundles and restriction of proper transforms</h3>
+Let $H$ be the $c_1(\ms{O}_{\mb{P}^3}(1))$ on $\mb{P}^3$ pulled back
+to $X$ and $E$ an exceptional divisor of $X\to \mb{P}^3$. We have
+$\wt{C}_1$ is $\mb{P}^1$ with a trivial T-action. Therefore,
+$A^{\bullet}(\wt{C}_1)\cong \mb{Z}[z][u,v]/(z^2)$. We have the
+following restrictions:
+$$\begin{aligned}H \mapsto H=z-u\\
+E\mapsto z = H+u.\end{aligned}$$
+Here, $E$ is any of the $n$ exceptional divisors.  (We are thinking of
+$\wt{C}_1$ as the $\mb{P}^1$ embedded as the first column of 2 by 2
+matrices $\mb{P}^3$ up scaling. Therefore, it's actually natural to
+think of it as the projectivization of a vector bundle with a
+nontrivial $T$-action, so it is a projective bundle over a point that
+is trivial, but $\ms{O}(1)=H$ is twisted. The Leray relation in this
+case is $(H+u)^2=z^2$.)</p>
+<p class="stacks-para">We need to compute the normal bundle to the proper transform of
+$C_1$. The normal bundle of $C_1$ in $\mb{P}^3$ is
+$$\begin{aligned}\frac{c(\mb{P}^3)}{c(C_1)}=\frac{(1+u+H)^2(1+v+H)^2}{(1+u+H)^2}=(1+v+H)^2.\end{aligned}$$
+Note that this also makes sense as $C_1$ is a complete intersection
+cut out by $(v+H)^2$.
+\begin{comment}
+To compute the normal bundle of $\wt{C_1}$ in $X$, it suffices to compute the tangent bundle of $X$. We will use the formula for the chern class of the tangent bundle (see bottom of the first page of [A10]).</p>
+<p class="stacks-para">Copying the formula here, if $Z\subset Y$ are nonsingular varieties and $\wt{Y}$ is the blowup of $Y$ along $Z$ with exceptional divisor $\wt{Z}$. </p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>Then,
+$$\begin{aligned}c(\wt{Y})-f^{*}c(Y) &= j_{*}(g^{*}c(X)\cdot \alpha),\end{aligned}$$
+where
+$$\begin{aligned}\alpha &= \frac{1}{\zeta}\left(\sum_{i=0}^d{g^{*}c_{d-i}(N)}-(1-\zeta)\sum_{i=0}^d{(1+\zeta)^ig^{*}c_{d-i}(N)}\right)\end{aligned}$$
+and $N$ is the normal bundle of $Z$ in $Y$ and $\zeta$ is $\ms{O}_{\mb{P}(N)}(1)$ on the exceptional divisor. We will compute $\alpha$ in the case $N$ is rank 2. For shorthand, suppose $c(N)=1+c_1+c_2$. Then,
+$$\begin{aligned}\alpha &= \frac{1+c_1+c_2+(\zeta-1)((\zeta+1)^2+(\zeta+1)c_1+c_2}{\zeta}\\
+&=\frac{(1+c_1+c_2)+(\zeta-1)(\zeta^2+\zeta(c_1+2)+(1+c_1+c_2))}{\zeta}\\
+&=\frac{(1+c_1+c_2)+\zeta^3+\zeta^2(c_1+1)+\zeta(-1+c_2)+(1+c_1+c_2))}{\zeta}\\
+&=\zeta^2+\zeta(c_1+1)+(-1+c_2)\\
+&= (\zeta^2+c_1\zeta +c_2)+\zeta-1.\end{aligned}$$
+\end{comment}
+Applying Lemma <a href="/papers/equivariant-degenerations/tag/C4F5.html" class="stacks-ref-link">9.1 <span class="stacks-ref-tag">[C4F5]</span></a> yields
+$$\begin{aligned}0\to \pi^{*}N_{C_1/\mb{P}^3}^\vee\to N_{\wt{C}_1/X}^\vee\to \Omega_{X/\mb{P}^3}|_{\wt{C}_1}\to 0.\end{aligned}$$
+The term on the right is a skyscraper sheaf supported on the
+intersection of $\wt{C}_1\cong \mb{P}^1$ with the exceptional
+locus. We need to find the torus action on the bundle
+$T_{X/\mb{P}^3}|_{\wt{C}_1}$ supported on $E$ at the intersection
+$E\cap \wt{C}_1$. There is an affine neighborhood of $E\cap \wt{C}_1$
+in $X$ of the form
+$$\begin{aligned}\begin{pmatrix}
+1 & \frac{a_{01}}{a_{00}}\\
+\frac{a_{10}}{a_{00}} & \frac{a_{11}}{a_{00}}
+\end{pmatrix}
++ t
+\begin{pmatrix}
+0 & 0 \\
+1 & \frac{A_{11}}{A_{10}}
+\end{pmatrix}\end{aligned}$$
+with coordinates given by $\frac{a_{01}}{a_{00}}$,
+$\frac{a_{10}}{a_{00}} $, $\frac{A_{11}}{A_{10}}$ as
+$\frac{A_{11}}{A_{10}}a_{10}=a_{11}$. We have the short exact sequence
+$$\begin{aligned}0\to \wt{C}_1(-z)\otimes \mb{C}_{v-u}\to \wt{C}_1\otimes \mb{C}_{v-u}\to \mb{C}_{v-u}|_{\wt{C}}\cap \pi^{-1}(R_i)\to 0,\end{aligned}$$
+where $\mb{C}_{v-u}$ is the nonequivariantly trivial line bundle with
+an action of $T$ by the character $v-u$. The torus action has
+character $v-u$ on the coordinate $\frac{A_{11}}{A_{10}}$, so the term
+on the right has chern class $\frac{1+v-u}{1-z+v-u}$. We apply this
+for each $i$ to find
+$$\begin{aligned}c(N_{\wt{C}_1/X}) &= (1+H+v)^2\frac{(1-z+v-u)^n}{(1+v-u)^n}\\
+&=(1+v-u)^2(1+\frac{z}{1+v-u})^2(1-\frac{z}{1+v-u})^n\\
+&=(1+v-u)^2(1+\frac{(2-n)z}{1+v-u})\\
+&=(1+z+v-u)(1+(1-n)z+v-u).\end{aligned}$$</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Restriction to isolated points</h3>
+Suppose one of our exceptional divisors is the blow up of the locus
+$R$ consisting of matrices
+$\begin{pmatrix} \ast & \ast \\ 0 & 0 \end{pmatrix}$ with image
+contained in $[1:0]\in \mathbb{P}^1$. Then, as described in Section
+B.4, there is an isolated torus-fixed point in the exceptional $E$
+lying over the locus $R$ given as the limit as $t\rightarrow 0$ of the
+one-parameter family
+$$\begin{aligned}\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix}
++ t
+\begin{pmatrix}
+0 & 0\\
+0 & 1
+\end{pmatrix}.\end{aligned}$$
+Then, we have the restrictions
+$$\begin{aligned}H&\mapsto -u\\
+E&\mapsto v-u.\end{aligned}$$
+Here, $E$ is the exceptional divisor containing $p$. The first one is
+by restricting the tautological line bundle and considering the torus
+action. To see the restriction of $E$, we note that the restriction of
+$E$ to itself is $\ms{O}_{\mb{P}(N_{R_1/\mb{P}^3})}(-1)$. Then, we
+take the local chart around $\pi(p)$ consisting of
+$$\begin{aligned}\begin{pmatrix}
+1 & \frac{a_{01}}{a_{00}}\\
+\frac{a_{10}}{a_{00}} & \frac{a_{11}}{a_{00}}
+\end{pmatrix}\end{aligned}$$
+and find the action on the coordinate $\frac{a_{11}}{a_{00}}$ is
+$v-u$. Also the normal bundle to $p$ in $X$ has chern class
+$$\begin{aligned}(1+v-u)^2(1+u-v).\end{aligned}$$
+To see this, consider the local chart around $p$
+$$\begin{aligned}\begin{pmatrix}
+1 & \frac{a_{01}}{a_{00}}\\
+0 & \frac{a_{11}}{a_{00}}
+\end{pmatrix}
++ t
+\begin{pmatrix}
+0 & 0 \\
+\frac{A_{10}}{A_{11}} & 1
+\end{pmatrix}\end{aligned}$$
+which has local coordinates $ \frac{a_{01}}{a_{00}}$,
+$\frac{a_{11}}{a_{00}}$, $\frac{A_{10}}{A_{11}}$ on which $T$ acts by
+characters $v-u$, $v-u$ and $u-v$ respectively.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 9.4. Fixed point loci">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S9.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.2. Blowup description of $\barm_{0,d}$ — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Extending $\mu_{1}$ across a $k$-incident line</a> / <span>4.2. Blowup description of $\barm_{0,d}$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.2. Blowup description of $\barm_{0,d}$</h1>
+<p class="stacks-para">Recall that the moduli space $\barm_{0,d}$ can be obtained as a blow up
+$$\kappa: \barm_{0,d} \to (\P^{1})^{d-3}$$ which, to a general point $(\P^{1}, s_{1}, \dots, s_{d}) \in \barm_{0,d}$ assigns the coordinates of $(s_{4}, \dots, s_{d})$ once we use the $\PGL_{2}$-action to send $s_{1}$ to $0$, $s_{2}$ to $1$ and $s_{3}$ to $\infty$.</p>
+<p class="stacks-para">\begin{notation}
+  \label{notation:simplex} Moving forward, we will use the following objects and notation:
+  \begin{enumerate}
+    \item  Let $n \geq 1$ be any integer. We let $\Delta_{n}$ denote the scheme $$\Spec k\left[ r_{1}, \dots, r_{n} \right] / (r_{1}+ \dots +r_{n} = 0).$$</p>
+<p class="stacks-para">\item We fix $\alpha_{1}, \dots, \alpha_{k} \in \A^{1}$, and corresponding multiplicities $m_{1}, \dots, m_{k}$ such that $\sum_{i=1}^{k}m_{i} = d$.
+    \item We assume $k \geq 3$.</p>
+<p class="stacks-para">\item  We define the <em>tautological family</em> $F_{n}$  over $\Delta_{n}$ anchored at the point $\alpha_{i}$ to be the scheme
+      $$\begin{aligned}\prod_{j=1}^{n}\left( z - \alpha_{i} - r_{j} \right) = 0.\end{aligned}$$
+      Note: $F_{n}$ is a closed subscheme of $\Delta_{n} \times \A^{1}$.
+    \item Let $\varphi_{n}(\alpha_{i}): \Delta_{n} \to (\A^{1})^{n}$ be defined by the formula:
+      $$\begin{aligned}(r_{1}, \dots, r_{n}) \mapsto (\alpha_{i}+r_{1}, \dots, \alpha_{i}+r_{n}).\end{aligned}$$
+    \item We let
+      $$\begin{aligned}\varphi_{m_{1}, \dots, m_{k}}\left( \alpha_{1}, \dots, \alpha_{k} \right): \Delta_{m_{1}} \times \dots \times \Delta_{m_{k}} \to (\A^{1})^{d} \subset (\P^{1})^{d}\end{aligned}$$
+      denote the map $\varphi_{m_{1}}(\alpha_{1}) \times \dots \times \varphi_{m_{k}}(\alpha_{k})$.
+    \item Let $x \in (\P^{1})^{m}$ be any point. We let $D_{x}$ denote the vector space of first order deformations of $x$ induced by the diagonal $\PGL_{2}$-action on $(\P^{1})^{m}$.</p>
+<p class="stacks-para">\end{enumerate}
+\end{notation}</p>
+<div class="stacks-commentary" id="remark-ofcourse">
+  <div class="stacks-env-head"><strong>Remark&nbsp;4.7.</strong> <a href="../tag/A3E4.html" class="stacks-tag-link">(A3E4)</a></div>
+  <div class="stacks-env-body"><p>Of course, $\Delta_{n} \simeq \A^{n-1}$, but we want to emphasize the particular presentation of the coordinate ring.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-localisomorphism">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.8.</strong> <a href="../tag/17D0.html" class="stacks-tag-link">(17D0)</a></div>
+  <div class="stacks-env-body"><p>Under the assumptions above,  the map
+  $$\begin{aligned}\varphi_{m_{1}, \dots, m_{k}}\left( \alpha_{1}, \dots, \alpha_{k} \right): \Delta_{m_{1}} \times \dots \Delta_{m_{k}} \to (\P^{1})^{d}\end{aligned}$$
+ has the following properties
+ <ol><li>The induced map on tangent spaces is injective at $0 \in \Delta_{m_{1}} \times \dots \times \Delta_{m_{k}}$.</li>
+<li>The tangent space $T_{0}\Delta_{m_{1}} \times \dots \Delta_{m_{k}}$ and the space $D_{\varphi_{m_{1}, \dots, m_{k}}(\alpha_{1}, \dots, \alpha_{k})(0)}$ are linearly independent vector subspaces of the tangent space of $(\P^{1})^{d}$ at  $\varphi_{m_{1}, \dots, m_{k}}(\alpha_{1}, \dots, \alpha_{k})(0)$.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A921.html" class="stacks-tag-link">(A921)</a></div>
+  <div class="stacks-env-body"><p>The first point is basically by definitions. </p>
+<p>  An element $v \in D_{\varphi_{m_{1}, \dots, m_{k}}(\alpha_{1}, \dots, \alpha_{k})(0)} $ is determined by its effect at the three distinct points $\alpha_{1}, \alpha_{2}$ and $\alpha_{3}$ in $\P^{1}$.  Assume the first order deformation $v$ has the following effect:
+  $$\begin{aligned}\alpha_{1} \mapsto \alpha_{1} + \varepsilon v_{1}\\
+    \alpha_{2} \mapsto \alpha_{2} + \varepsilon v_{2}\\
+    \alpha_{3} \mapsto \alpha_{3} + \varepsilon v_{3}.\end{aligned}$$</p>
+<p>  Due to the defining equation $(r_{1}+ \dots + r_{n} = 0)$ for $\Delta_{n}$, In order for $v$ to be in $T_{0}\Delta_{m_{1}} \times \dots \times \Delta_{m_{k}}$, we must have:
+  $$\begin{aligned}m_{1}v_{1} = 0\\
+    m_{2}v_{2} = 0\\
+    m_{3}v_{3} = 0.\end{aligned}$$
+  But then all $v_{i}$ are zero, and hence $v$ is.  This is what we wanted to show.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-localisomorphismontoimage">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;4.9.</strong> <a href="../tag/4F92.html" class="stacks-tag-link">(4F92)</a></div>
+  <div class="stacks-env-body"><p>The induced map
+  $$\begin{aligned}\bar{\varphi}: \Delta_{m_{1}} \times \dots \times \Delta_{m_{k}} \to (\P^{1})^{d} / \PGL_{2} \simeq (\P^{1})^{d-3}\end{aligned}$$
+  is a local immersion near the point $0 \in \Delta_{m_{1}} \times \dots \times \Delta_{m_{k}}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/39FB.html" class="stacks-tag-link">(39FB)</a></div>
+  <div class="stacks-env-body"><p>This follows from <a href="/papers/moduli-linear-slices/tag/17D0.html" class="stacks-ref-link">Proposition&nbsp;4.8 <span class="stacks-ref-tag">[17D0]</span></a>.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-mainresolutioncorollary">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;4.10.</strong> <a href="../tag/2352.html" class="stacks-tag-link">(2352)</a></div>
+  <div class="stacks-env-body"><p>There exists an &eacute;tale neighborhood $V \subset \Sigma^{[d]}$ containing $\hat{[\ell]}$ such that
+  $$\begin{aligned}\alpha: \beta^{-1}(V) \to \barm_{0,d}\end{aligned}$$
+  is an isomorphism onto its image. In particular, $\alpha$ is unramified at all points of $\beta^{-1}(\hat{[\ell]})$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/701A.html" class="stacks-tag-link">(701A)</a></div>
+  <div class="stacks-env-body"><p>This follows from <a href="/papers/moduli-linear-slices/tag/4F92.html" class="stacks-ref-link">Corollary&nbsp;4.9 <span class="stacks-ref-tag">[4F92]</span></a>, from the fact that $\Sigma^{[d]}$ is &eacute;tale locally isomorphic to $\Delta_{m_{1}} \times \dots \times \Delta_{m_{k}}$ near $\hat{[\ell]}$, and the description of $\barm_{0,d}$ as a blowup $\kappa: \barm_{0,d} \to (\P^{1})^{d-3}$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 4.2. Blowup description of $\barm_{0,d}$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S4.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

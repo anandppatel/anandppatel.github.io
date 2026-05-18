@@ -134,30 +134,65 @@ def parse_preamble_macros(tex_source):
     return macros
 
 
-def parse_citations(meta, tex_dir):
-    """Build a citation map from source.json or .bbl file."""
-    # Check source.json for explicit citations
-    if "citations" in meta:
-        return meta["citations"]
+def parse_bibliography(meta, tex_dir, tex_source):
+    """Build citation labels and bibliography entries."""
+    bib_text = ""
 
-    # Try to find .bbl file alongside source.tex
+    # Prefer the compiled bibliography if arXiv supplied one.
     bbl_path = os.path.join(tex_dir, "source.bbl")
     if os.path.exists(bbl_path):
-        citations = {}
         with open(bbl_path) as f:
-            bbl = f.read()
-        for m in re.finditer(r'\\bibitem\[([^\]]*)\]\{([^}]*)\}', bbl):
-            short_label = m.group(1)
-            key = m.group(2)
-            citations[key] = clean_bib_label(short_label)
-        if citations:
-            return citations
+            bib_text = f.read()
+    else:
+        bib_m = re.search(
+            r'\\begin\{thebibliography\}(?:\{[^}]*\})?(.*?)\\end\{thebibliography\}',
+            tex_source,
+            re.DOTALL,
+        )
+        if bib_m:
+            bib_text = bib_m.group(1)
 
-        for idx, m in enumerate(re.finditer(r'\\bibitem\{([^}]*)\}', bbl), start=1):
-            citations[m.group(1)] = str(idx)
-        return citations
+    citations, entries = parse_bibitems(bib_text)
 
-    return {}
+    # source.json can provide lightweight labels for papers whose sources do
+    # not include a bibliography file.
+    if "citations" in meta:
+        citations.update(meta["citations"])
+
+    return {"citations": citations, "entries": entries}
+
+
+def parse_bibitems(bib_text):
+    citations = {}
+    entries = []
+    if not bib_text:
+        return citations, entries
+
+    bibitem_pattern = re.compile(r'\\bibitem(?:\[([^\]]*)\])?\{([^}]*)\}')
+    matches = list(bibitem_pattern.finditer(bib_text))
+    for idx, match in enumerate(matches, start=1):
+        raw_label = match.group(1)
+        key = match.group(2)
+        label = clean_bib_label(raw_label) if raw_label else str(idx)
+        body_start = match.end()
+        body_end = matches[idx].start() if idx < len(matches) else len(bib_text)
+        body = bib_text[body_start:body_end].strip()
+        citations[key] = label
+        entries.append({
+            "key": key,
+            "label": label,
+            "html": bibliography_entry_to_html(body),
+        })
+    return citations, entries
+
+
+def bibliography_entry_to_html(entry):
+    """Lightweight LaTeX-to-HTML cleanup for bibliography entries."""
+    entry = entry.replace('\n', ' ')
+    entry = re.sub(r'\s+', ' ', entry).strip()
+    entry = re.sub(r'\\url\{([^}]*)\}', r'<a href="\1">\1</a>', entry)
+    entry = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'<a href="\1">\2</a>', entry)
+    return tex_to_html(entry)
 
 
 def clean_bib_label(label):
@@ -179,6 +214,17 @@ def extract_latex_command_bodies(tex_source, command):
         i = start + len(needle)
         while i < len(tex_source) and tex_source[i].isspace():
             i += 1
+        if i < len(tex_source) and tex_source[i] == "[":
+            depth = 1
+            i += 1
+            while i < len(tex_source) and depth:
+                if tex_source[i] == "[":
+                    depth += 1
+                elif tex_source[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(tex_source) and tex_source[i].isspace():
+                i += 1
         if i >= len(tex_source) or tex_source[i] != "{":
             pos = i
             continue
@@ -1208,10 +1254,15 @@ def breadcrumb_html(items, depth=0):
     return '<div class="stacks-breadcrumb">' + ' / '.join(parts) + '</div>\n'
 
 
-def footer_html(arxiv_id):
+def footer_html(arxiv_id, depth=0, has_bibliography=False):
+    prefix = "../" * depth
+    bibliography_link = (
+        f' &middot; <a href="{prefix}bibliography.html">Bibliography</a>'
+        if has_bibliography else ''
+    )
     return f"""<footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>{bibliography_link}
   </div>
 </footer>
 </body>
@@ -1320,16 +1371,20 @@ def compile_paper(tex_path):
     base_url = f"https://anandpatel.github.io/papers/{slug}"
 
     # Read .tex source
-    with open(tex_path) as f:
+    with open(tex_path, errors="replace") as f:
         tex_source = f.read()
 
     # Extract MathJax macros from preamble
     macros = parse_preamble_macros(tex_source)
     print(f"  Extracted {len(macros)} MathJax macros from preamble")
 
-    # Parse citations
-    citations = parse_citations(meta, out_dir)
+    # Parse citations and bibliography
+    bibliography = parse_bibliography(meta, out_dir, tex_source)
+    citations = bibliography["citations"]
+    bibliography_entries = bibliography["entries"]
+    has_bibliography = bool(bibliography_entries)
     print(f"  Loaded {len(citations)} citation entries")
+    print(f"  Loaded {len(bibliography_entries)} bibliography entries")
 
     # Parse document
     paper = parse_tex(tex_source)
@@ -1393,6 +1448,8 @@ def compile_paper(tex_path):
                 toc += f'      <li><a href="section/{sub["id"]}.html">{sub["number"]}. {sub["title"]}</a></li>\n'
             toc += '    </ul>\n'
         toc += '  </li>\n'
+    if has_bibliography:
+        toc += '  <li><a href="bibliography.html">Bibliography</a></li>\n'
     toc += '</ul>\n'
 
     # Tag table
@@ -1403,10 +1460,31 @@ def compile_paper(tex_path):
         toc += f'<tr><td><a href="tag/{env["tag"]}.html">{env["tag"]}</a></td>'
         toc += f'<td>{env["envType"]}</td><td>{env.get("number","")}</td></tr>\n'
     toc += '</table>\n</main>\n'
-    toc += footer_html(arxiv_id)
+    toc += footer_html(arxiv_id, has_bibliography=has_bibliography)
 
     write_html(os.path.join(out_dir, "index.html"), toc)
     print("Generated: index.html")
+
+    # --- 1b. Bibliography page ---
+    if has_bibliography:
+        bib_html = head("Bibliography", paper["title"], macros=macros)
+        bib_html += nav_bar(paper["author"], paper["title"])
+        bib_html += breadcrumb_html([("Bibliography", None)])
+        bib_html += '<main class="stacks-main">\n'
+        bib_html += '<h1 class="stacks-section-title">Bibliography</h1>\n'
+        bib_html += '<ol class="stacks-bibliography">\n'
+        for entry in bibliography_entries:
+            label = html_mod.escape(entry["label"])
+            bib_html += (
+                f'  <li id="bib-{html_attr(entry["key"])}">'
+                f'<span class="stacks-bib-label">[{label}]</span> '
+                f'{entry["html"]}</li>\n'
+            )
+        bib_html += '</ol>\n'
+        bib_html += '</main>\n' + footer_html(
+            arxiv_id, has_bibliography=has_bibliography)
+        write_html(os.path.join(out_dir, "bibliography.html"), bib_html)
+        print("Generated: bibliography.html")
 
     # --- 2. Section pages ---
     for sec in paper["sections"]:
@@ -1430,7 +1508,8 @@ def compile_paper(tex_path):
             f'Section {sec["number"]}: {sec["title"]}',
             f'{base_url}/section/{sec["id"]}.html',
             paper["title"])
-        sec_html += '</main>\n' + footer_html(arxiv_id)
+        sec_html += '</main>\n' + footer_html(
+            arxiv_id, depth=1, has_bibliography=has_bibliography)
 
         write_html(os.path.join(out_dir, "section", f'{sec["id"]}.html'), sec_html)
         print(f"Generated: section/{sec['id']}.html")
@@ -1452,7 +1531,8 @@ def compile_paper(tex_path):
                 f'{sub["number"]}. {sub["title"]}',
                 f'{base_url}/section/{sub["id"]}.html',
                 paper["title"])
-            sub_html += '</main>\n' + footer_html(arxiv_id)
+            sub_html += '</main>\n' + footer_html(
+                arxiv_id, depth=1, has_bibliography=has_bibliography)
 
             write_html(os.path.join(out_dir, "section", f'{sub["id"]}.html'), sub_html)
             print(f"Generated: section/{sub['id']}.html")
@@ -1514,7 +1594,8 @@ def compile_paper(tex_path):
             f'Tag {tag} ({plain_label_text})',
             f'{base_url}/tag/{tag}.html',
             paper["title"])
-        tag_html += '</main>\n' + footer_html(arxiv_id)
+        tag_html += '</main>\n' + footer_html(
+            arxiv_id, depth=1, has_bibliography=has_bibliography)
 
         write_html(os.path.join(out_dir, "tag", f'{tag}.html'), tag_html)
         print(f"Generated: tag/{tag}.html")

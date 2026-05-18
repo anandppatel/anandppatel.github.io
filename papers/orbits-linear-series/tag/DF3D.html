@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (DF3D) — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vanishing sequences and the Wronskian</a> / <span>Proof (DF3D)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="8691.html">&laquo; Proposition 3.1</a><span class="stacks-tag-current">Tag DF3D</span><a href="05E3.html">Corollary 3.2 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DF3D.html" class="stacks-tag-link">(DF3D)</a></div>
+  <div class="stacks-env-body"><p>The proof is a part of [9, Proposition&nbsp;1.1].
+  We give it for completeness.</p>
+<p>  Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
+  Denote by \(\widehat M\) the completion of an \(O_C\)-module \(M\) at \(p\).
+  Choose an isomorphism of \(\k\llbracket t \rrbracket\)-modules \(\widehat L \cong \k\llbracket t \rrbracket\).
+  Then we have an isomorphism
+  $$
+    \widehat{j_{r+1}L} \cong \k\llbracket t,u \rrbracket/(u-t)^{r+1}.
+  $$
+  If the section \(s \in \widehat L \cong \k\llbracket t\rrbracket\) is given by the power series \(s(t)\), then the induced section \(j_{r+1}(s)\) of \(\widehat{j_{r+1} L}\) is given by
+  $$ j_{r+1}(s) = s(t) + s'(t)(u-t) + \dots + s^{(r)}(t)\frac{1}{r!} (u-t)^r.$$
+  Let \(s_i\) correspond to the power series \(s_i(t) = t^{a_i}z_i \in \k\llbracket t \rrbracket\), where \(z_i \in \k\llbracket t \rrbracket\) is a unit.
+  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (3.1) is given by
+  $$
+    \begin{pmatrix}
+      t^{a_0} z_0 & t^{a_1}z_1 & \dots & t^{a_r}z_r \\
+      (t^{a_0} z_0)' & (t^{a_1}z_1)' & \dots & (t^{a_r}z_r)' \\
+      \vdots & \vdots & \ddots & \vdots \\
+      (t^{a_0} z_0)^{(r)} & (t^{a_1}z_1)^{(r)} & \dots & (t^{a_r}z_r)^{(r)}.
+    \end{pmatrix}
+  $$
+  The lowest degree term in its determinant is \(t^{\sum a_i - i}\) and its coefficient is the determinant of the \((r+1) \times (r+1)\) matrix \(C\) with \(C_{ij} = a_i(a_i-1)\cdots(a_i-j+1)\).
+  It remains to show that the coefficient is non-zero.
+  By a sequence of invertible row transformations, the matrix \(C\) reduces to the Vandermonde matrix \(V\) with \(V_{ij} = a_i^j\).
+  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(> d\).
+  Hence the determinant of \(V\), and hence of \(C\), is non-zero.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Tag DF3D (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/tag/DF3D.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

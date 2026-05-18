@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.4. Dandelions and the proof of Theorem 1.1 [5CA0] — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Extending $\mu_{1}$ across a $k$-incident line</a> / <span>4.4. Dandelions and the proof of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a></span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.4. Dandelions and the proof of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a></h1>
+<div class="stacks-definition" id="definition-k-dandelion">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.15.</strong> <a href="../tag/6FD9.html" class="stacks-tag-link">(6FD9)</a></div>
+  <div class="stacks-env-body"><p>Any point $[(P,s_{1},\dots,s_{d})] \in \barm_{0,d}$ having dual graph
+  \tikzset{main node/.style={thick,circle,draw},}</p>
+<p>  \begin{tikzpicture}
+    \node[main node, label={[xshift=-.1cm]\small $k-1$}] (1) {f};
+    \node[main node, label={\small $1$}] (2) [right = .7cm of 1] {s};
+    \node[main node, label={\small $1$}] (3) [right = .7cm of 2] {s};
+    \node[main node, label={\small $2$}] (4) [right = .7cm of 3] {s};</p>
+<p>    \path (1) edge (2);
+    \path (2) &ndash; node[auto=false]{\ldots} (3);
+    \path (3) edge (4);
+  \end{tikzpicture}</p>
+<p>  is called a <em>$k$-dandelion</em>. There are a total of $d-k$ vertices labelled ``s''.
+(Here, the numbers above a vertex indicate the number of marked points on the corresponding component of the stable curve.)
+  The <em>stem</em> of the dandelion is the curve which is the union of components labelled ``s''. The <em>flower</em> of the $k$-dandelion is the component corresponding to the vertex labelled ``f''.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-wheredandelions">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.16.</strong> <a href="../tag/3B4C.html" class="stacks-tag-link">(3B4C)</a></div>
+  <div class="stacks-env-body"><p>Let $\left[P  \right] \in \alpha(Z)$ be a $k$-dandelion with $k = d-(2r-2)\geq 4$. Then the the map $\alpha$ is unramified at every preimage of $\left[ P \right]$. Furthermore, every preimage of $\left[ P \right]$ projects, under $\beta$ to a point in $\Sigma^{[d]}$ lying over a $k$-incident line $[\ell] \in \G\left( 1,r \right)$ with multiplicity $(d-k+1,1, \dots, 1)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7068.html" class="stacks-tag-link">(7068)</a></div>
+  <div class="stacks-env-body"><p>The hypersurface $X$ does not have any $k'$-incident lines with $k' < k$.  Therefore, the proposition follows from point $2$ of <a href="/papers/moduli-linear-slices/tag/B98F.html" class="stacks-ref-link">Proposition&nbsp;4.14 <span class="stacks-ref-tag">[B98F]</span></a>.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-imagedandelion">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.17.</strong> <a href="../tag/F7E5.html" class="stacks-tag-link">(F7E5)</a></div>
+  <div class="stacks-env-body"><p>Suppose $k = d-(2r-2) \geq 3$. Then there exists a $k$-dandelion in the image of $\alpha$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4B7E.html" class="stacks-tag-link">(4B7E)</a></div>
+  <div class="stacks-env-body"><p>Consider the one-parameter family of polynomials $(z-t)(z-t^{2})\dots(z-t^{d-k})(z+t+t^{2}+\dots+t^{d-k})$ viewed as a map $\A^{1} \to \Delta_{d-k+1}$ given by $(r_{1}, \dots ,r_{d-k+1}) = (t,t^{2}, \dots, t^{d-k}, -t-t^{2}- \dots- t^{d-k})$.  If $\ell$ is a $k$-incident line of $X$ with multiplicities $(d-k+1,1,\dots,1)$ then $\Delta_{d-k+1}$ is a local chart  for any point $\hat{[\ell]} \in \Sigma^{[d]}$ lying above $\ell$, and therefore the one-parameter family above is realized, &eacute;tale locally, as a curve on $\Sigma^{[d]}$.  Applying stable reduction to this one parameter family yields a $k$-dandelion, as the reader can easily verify.</p></div>
+</div>
+<p class="stacks-para">We have all ingredients to prove the $m=1$ case of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a>.</p>
+<div class="stacks-theorem" id="theorem-genericinjectivity">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.18.</strong> <a href="../tag/7E41.html" class="stacks-tag-link">(7E41)</a></div>
+  <div class="stacks-env-body"><p>Suppose $d \geq 2r+2$, and $X \subset \P^{r}$ is a general degree $d$ hypersurface. Then the moduli map
+  $$\begin{aligned}\mu_{1} : \G\left( 1,r \right) \dashrightarrow \Hyp(d,1)\end{aligned}$$
+  is generically injective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8F43.html" class="stacks-tag-link">(8F43)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/moduli-linear-slices/tag/F7E5.html" class="stacks-ref-link">Proposition&nbsp;4.17 <span class="stacks-ref-tag">[F7E5]</span></a>, we know that there exists at least one $k$-dandelion $[P] \in \alpha(Z)$.</p>
+<p>  If $\left[ P \right] \in \alpha(Z)$ is a $k$-dandelion, we have shown: The preimage $\alpha^{-1}([P])$ originates from  a unique $k$-incident line $\ell$, read off from the cross-ratios of the flower (<a href="/papers/moduli-linear-slices/tag/B486.html" class="stacks-ref-link">Corollary&nbsp;3.12 <span class="stacks-ref-tag">[B486]</span></a>), and the marking on the flower and stem of $[P]$ determines a point $\hat{[\ell]}$ and a point $z \in \beta^{-1}(\hat{[\ell]})$, respectively, showing that $\alpha^{-1}([P]) = z$. </p>
+<p>  We conclude from <a href="/papers/moduli-linear-slices/tag/3B4C.html" class="stacks-ref-link">Proposition&nbsp;4.16 <span class="stacks-ref-tag">[3B4C]</span></a> that the preimage of $[P]$ is the reduced point $z$, and from this the theorem follows.</p></div>
+</div>
+<p class="stacks-para">We now give the proof of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a>.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a>.</em> <a href="../tag/ACFB.html" class="stacks-tag-link">(ACFB)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/moduli-linear-slices/tag/7E41.html" class="stacks-ref-link">Theorem&nbsp;4.18 <span class="stacks-ref-tag">[7E41]</span></a>, we know that the map $\mu_{1} : \G\left( 1,r \right) \dashrightarrow \Hyp(d,1)$ is generically injective. </p>
+<p>  Let $\Lambda \subset \P^{r}$ be a general $m$-plane.  The injectivity of $\mu_{1}$ implies that a general line $\ell \subset \Lambda$ will be general in the sense that there will be no other line $\ell'$ with $[X \cap \ell \subset \ell] \simeq [X \cap \ell' \subset \ell']$. </p>
+<p>  Therefore, if $\Lambda'$ is another $m$-plane with $[X \cap \Lambda \subset \Lambda] \simeq [X \cap \Lambda' \subset \Lambda']$, it must be that $\ell \subset \Lambda \cap \Lambda'$. Since this is true for a general $\ell \subset \Lambda$, we conclude that $\Lambda = \Lambda'$, which proves the theorem.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 4.4. Dandelions and the proof of Theorem 1.1 [5CA0]">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S4.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

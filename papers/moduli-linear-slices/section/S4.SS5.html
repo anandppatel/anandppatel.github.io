@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.5. Straight trees and the proof of Theorem 1.3 [5763] — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Extending $\mu_{1}$ across a $k$-incident line</a> / <span>4.5. Straight trees and the proof of <a href="/papers/moduli-linear-slices/tag/5763.html" class="stacks-ref-link">Theorem&nbsp;1.3 <span class="stacks-ref-tag">[5763]</span></a></span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.5. Straight trees and the proof of <a href="/papers/moduli-linear-slices/tag/5763.html" class="stacks-ref-link">Theorem&nbsp;1.3 <span class="stacks-ref-tag">[5763]</span></a></h1>
+<p class="stacks-para">\begin{notation}
+  During this section, we assume $d = 2r+1$ and $X \subset \P^{r}$ a general hypersurface of degree $d$.
+\end{notation}</p>
+<div class="stacks-definition" id="definition-straighttree">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.19.</strong> <a href="../tag/52F9.html" class="stacks-tag-link">(52F9)</a></div>
+  <div class="stacks-env-body"><p>A <em>straight tree</em> is any stable curve $(P,s_{1}, \dots, s_{d})$ having dual graph of the form
+  \tikzset{main node/.style={thick,circle,draw},}</p>
+<p>  \begin{tikzpicture}
+    \node[main node, label={\small $2$}] (1) {};
+    \node[main node, label={\small $1$}] (2) [right = .7cm of 1] {};
+	\node[main node, label={\small $1$}] (3) [right = .7cm of 2] {};</p>
+<p>    \node[main node, label={\small $1$}] (4) [right = .7cm of 3] {};
+    \node[main node, label={\small $2$}] (5) [right = .7cm of 4] {};</p>
+<p>    \path (1) edge (2);
+    \path (2) edge (3);
+    \path (3)  &ndash; node[auto=false]{\ldots} (4);
+    \path (4) edge (5);
+  \end{tikzpicture}</p>
+<p>(There are a total of $d-2$ vertices.)</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-numberstraighttrees">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.20.</strong> <a href="../tag/0E74.html" class="stacks-tag-link">(0E74)</a></div>
+  <div class="stacks-env-body"><p>Assume $d \geq 4$. There are $d!/8$ distinct straight trees.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6DD2.html" class="stacks-tag-link">(6DD2)</a></div>
+  <div class="stacks-env-body"><p>Indeed, we may exchange the two points on each extremal component of a straght tree, or we may flip the entire tree over, without altering the moduli of the straight tree. Therefore, we must divide $d!$ by $2 \times 2 \times 2$.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-wherestraighttrees">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.21.</strong> <a href="../tag/FD94.html" class="stacks-tag-link">(FD94)</a></div>
+  <div class="stacks-env-body"><p>Suppose $z \in Z$ is such that $\alpha(z) \in \barm_{0,d}$ is a straight tree. Then $\hat{[\ell]} := \beta(z) \in \Sigma^{[d]}$ lies over a $3$-incident line $\ell$. Furthermore, the multiplicity of $\ell$ is $(1,a,b)$, where $a+b = d-1$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B843.html" class="stacks-tag-link">(B843)</a></div>
+  <div class="stacks-env-body"><p>$X$ possesses no $2$-incident lines.  The lemma follows from <a href="/papers/moduli-linear-slices/tag/B98F.html" class="stacks-ref-link">Proposition&nbsp;4.14 <span class="stacks-ref-tag">[B98F]</span></a>, and from the observation in <a href="/papers/moduli-linear-slices/tag/CE30.html" class="stacks-ref-link">Remark&nbsp;4.12 <span class="stacks-ref-tag">[CE30]</span></a>.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-existsstraighttrees">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.22.</strong> <a href="../tag/D611.html" class="stacks-tag-link">(D611)</a></div>
+  <div class="stacks-env-body"><p>Let $a,b$ be positive integers such that $a+b=d-1$. Then for every $3$-incident line $\ell$ of multiplicity $(1,a,b)$, and every point $\hat{[\ell]} \in \Sigma^{[d]}$ lying over $\ell$, there are precisely $a!b!/4$ points $z \in \beta^{-1}(\hat{[\ell]})$ such that $\alpha(z)$ is a straight tree.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BA25.html" class="stacks-tag-link">(BA25)</a></div>
+  <div class="stacks-env-body"><p>Let $p, q$ be the points of multiplicity $a$ and $b$ on $\ell$. Then the variety $\beta^{-1}(\hat{[\ell]})$ is the collection of stable curves obtained by attaching all rational tails with $a$ marked points to the point $p$, and similarly with $q$. The lemma follows, after recalling that the two extremal points in a straight tree may be exchanged without changing the moduli of the tree &ndash; this explains the division by $4$.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-11d-2">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.23.</strong> <a href="../tag/28EA.html" class="stacks-tag-link">(28EA)</a></div>
+  <div class="stacks-env-body"><p>For every $3$-incident line $\ell$ of multiplicity $(1,1,d-2)$, and every point $\hat{[\ell]} \in \Sigma^{[d]}$ lying over $\ell$, there are precisely $(d-2)!/2$ points $z \in \beta^{-1}(\hat{[\ell]})$ such that $\alpha(z)$ is a straight tree.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B7CA.html" class="stacks-tag-link">(B7CA)</a></div>
+  <div class="stacks-env-body"><p>The proof is completely analogous to the proof of the previous lemma. The only difference is that we are only attaching rational tails to <em>one</em> point on $\ell$, hence we must divide by two only once.</p></div>
+</div>
+<div class="stacks-theorem" id="theorem-enumerativtheoremmain">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.24.</strong> <a href="../tag/73C2.html" class="stacks-tag-link">(73C2)</a></div>
+  <div class="stacks-env-body"><p>For any multiplicity $(a,b,c)$, let $n_{a,b,c}$ denote the number of $3$-incident lines to $X$ having the given multiplicity.
+    Then the degree of the map $\alpha: Z \to \barm_{0,d}$ is
+    $$\begin{aligned}\deg \alpha = 2 \sum_{a \geq b > 1}^{}n_{(a,b,1)} + 4n_{d-2,1,1}.\end{aligned}$$</p>
+<p>    Furthermore, $\deg \alpha = \deg \mu_{1}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F22F.html" class="stacks-tag-link">(F22F)</a></div>
+  <div class="stacks-env-body"><p>The last statement is clear. </p>
+<p>    By symmetry considerations, every straight tree $[P] \in \barm_{0,d}$ has the same number of preimages in $Z$, all preimages arise from $3$-incident lines, by <a href="/papers/moduli-linear-slices/tag/FD94.html" class="stacks-ref-link">Lemma&nbsp;4.21 <span class="stacks-ref-tag">[FD94]</span></a>, and all preimages are unramified points of $\alpha$, by <a href="/papers/moduli-linear-slices/tag/4F92.html" class="stacks-ref-link">Corollary&nbsp;4.9 <span class="stacks-ref-tag">[4F92]</span></a>.
+    Above a $3$-incident line $\ell$ with multiplicity $(a,b,1)$, where $a,b>1$, there are $\frac{d!}{a!b!}$ points in $s^{-1}([\ell])$, by <a href="/papers/moduli-linear-slices/tag/ADE2.html" class="stacks-ref-link">Lemma&nbsp;4.4 <span class="stacks-ref-tag">[ADE2]</span></a>. Each contributes $a!b!/4$ straight trees by <a href="/papers/moduli-linear-slices/tag/D611.html" class="stacks-ref-link">Lemma&nbsp;4.22 <span class="stacks-ref-tag">[D611]</span></a>. Therefore, we obtain $\frac{d!}{a!b!}\frac{a!b!}{4} = \frac{d!}{4}$ total straight trees arising from $3$-incident lines with multiplicities $(a,b,1)$, where $a,b > 1$.  Since there are $\frac{d!}{8}$ straight trees total (<a href="/papers/moduli-linear-slices/tag/0E74.html" class="stacks-ref-link">Lemma&nbsp;4.20 <span class="stacks-ref-tag">[0E74]</span></a>), we see that each such line contributes $2$ to the degree of $\alpha$.
+    The same argument, using <a href="/papers/moduli-linear-slices/tag/28EA.html" class="stacks-ref-link">Lemma&nbsp;4.23 <span class="stacks-ref-tag">[28EA]</span></a> explains the coefficient $4$ for lines of type $(d-2,1,1)$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 4.5. Straight trees and the proof of Theorem 1.3 [5763]">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S4.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

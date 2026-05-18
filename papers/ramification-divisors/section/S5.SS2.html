@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.2. Linked linear series — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\operatorname{\\mathbf F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <span>5.2. Linked linear series</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">5.2. Linked linear series</h1>
+<p class="stacks-para">We need linked linear series for the simplest singular curve, namely a (projective, connected) nodal curve $C$ which is the nodal union of two smooth (projective, connected) curves $C_1$ and $C_2$, but we need them for vector bundles of rank higher than $1$.
+Let $B$ be the spectrum of a DVR with special point $0$, general point $\eta$.
+Let $\pi \from X \to B$ be a smoothing of $C$ with non-singular total space $X$.
+That is, $\pi$ is a flat, proper, family of connected curves, smooth over $\eta$, and isomorphic to $C$ over $0$.
+Such a family is a particularly simple example of an almost local smoothing family [15, \S&nbsp;2.1&ndash;2.2].
+Let $g_i$ be the genus of $C_i$ for $i = 1, 2$, and $g = g_1+g_2$ the genus of $X_\eta$.</p>
+<p class="stacks-para">Let $E$ be a vector bundle of rank $r$ on $C$.
+The <em>multi-degree</em> of $E$ is the pair of integers $(\deg E|_{C_1}, \deg E|_{C_2})$.
+The <em>degree</em> or <em>total degree</em> of $E$ is the sum $\deg E = \deg E|_{C_1} + \deg E|_{C_2}$.</p>
+<p class="stacks-para">Once and for all, fix a vector bundle $\mathcal E$ of rank $r$ on $X$, and set $E = \mathcal E|_C$.
+Let $E$ have degree $d$ and multi-degree $(w_1, w_2)$.
+Fix a positive integer $k$.
+Our next task is to recall the definition of the space of linked linear series of dimension $k$.
+It will be a $B$-scheme whose fiber over $\eta$ is the Grassmannian $\Gr(k, H^0(X_\eta, \mathcal E_\eta))$.
+The key idea is to not only consider the sections of $\mathcal E$, but also of its various twists, namely the vector bundles obtained by tensoring with the powers of $\O_X(C_i)$.</p>
+<p class="stacks-para">Fix maps $\theta_1 \from \O_X \to \O_X(C_1)$ and $\theta_2 \from \O_X \to \O_X(C_2)$.
+The choice of these maps is auxiliary, and each one is unique up to multiplication by an element of $\O_B^*$.
+For $n \in \Z$, set
+$$ \mathcal E_n =
+  \begin{cases}
+    \mathcal E \otimes \O_X(C_1)^{\otimes n} & \text{if $n \geq 0$},\\
+    \mathcal E \otimes \O_X(C_2)^{\otimes (-n)}  & \text{if $n < 0$}.
+  \end{cases}
+$$
+The maps $\theta_1$ and $\theta_2$ induces maps
+$$ \theta_n \from \mathcal E_m \to \mathcal E_{m+n}$$
+given by
+$$
+  \theta_n =
+  \begin{cases}
+    \theta_1^n & \text{if $n \geq 0$,} \\
+    \theta_2^{-n} & \text{if $n < 0$.}
+  \end{cases}
+$$
+Note that the multi-degree of $\mathcal E_n$ is $(w_1 - nr, w_2 + nr)$.
+In particular, for sufficiently negative $n$, say for $n \leq n_1$, we have $H^0(C_2, \mathcal E_n|_{C_2}) = 0$, and similarly, for sufficiently positive $n$, say $n \geq n_2$, we have $H^0(C_1, \mathcal E_n|_{C_1}) = 0$.
+Assume, without loss of generality, that $n_2 \geq n_1$.
+Set
+$$ d_1 = w_1 - n_1 r, \text{ and } d_2 = w_2 + n_2 r, \text{ and } b = n_2 - n_1.$$
+Observe that
+$$ d_1 + d_2 - rb = d.$$</p>
+<div class="stacks-definition" id="def-lls">
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.3.</strong> <a href="../tag/B512.html" class="stacks-tag-link">(B512)</a></div>
+  <div class="stacks-env-body"><p>Let $S$ be a $B$-scheme.
+  A <em>$k$-dimensional linked linear series</em> on $\mathcal E_S$ consists of sub-bundles $V_n \to \pi_* (\mathcal E_n)_S$ of rank $k$ for every $n \in \Z$ satisfying the following compatibility condition.
+  For every $m, n \in \Z$, the map
+  $$\pi_* \theta_n \from \pi_* (\mathcal E_m)_S \to \pi_* (\mathcal E_{m+n})_S \text{ maps } V_m \to V_{m+n}.$$</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/ramification-divisors/tag/B512.html" class="stacks-ref-link">Definition&nbsp;5.3 <span class="stacks-ref-tag">[B512]</span></a> is a special case of [15, Definition&nbsp;3.3.2].
+From now on, we will talk about the image of an element in $V_m$ in $V_{m+n}$; this should be understood as the image under the map $\pi_* \theta_n$.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.4.</strong> <a href="../tag/9838.html" class="stacks-tag-link">(9838)</a></div>
+  <div class="stacks-env-body"><p>The notion of a sub-bundle of a push-forward is a bit subtle; it is treated in depth in [15, Definition&nbsp;B.2.1].
+We recall the main points.
+For a flat proper morphism $X \to S$ and a vector bundle $\mathcal E$ on $S$, a <em>sub-bundle</em> of $\pi_* \mathcal E$ is a vector bundle $V$ on $S$ along with a map $i \from V \to \pi_* \mathcal E$ such that for every $T \to S$, the pull-back $i_T \from V_T \to \pi_* (\mathcal E_T)$ is injective.
+Note that this is a local condition on $S$.
+For Noetherian schemes such as ours, it is enough to check this condition for the $T \to S$ that are inclusions of closed points.
+Alternatively, if $F_0 \to F_1 \to \cdots $ is a complex of vector bundles on $S$ quasi-isomorphic to $R\pi_* \mathcal E$, then a sub-bundle of $\pi_* \mathcal E$ is a vector bundle $V$ along with a map $i \from V \to \pi_* \mathcal E$ such that the composite $V \to F_0$ is an injection of vector bundles (that is, the dual map is surjective).</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.5.</strong> <a href="../tag/6286.html" class="stacks-tag-link">(6286)</a></div>
+  <div class="stacks-env-body"><p><a href="/papers/ramification-divisors/tag/B512.html" class="stacks-ref-link">Definition&nbsp;5.3 <span class="stacks-ref-tag">[B512]</span></a> defines linked linear series on a particular vector bundle $\mathcal E$.
+We can also vary the choice of the vector bundle, as is done in [15]; in that case, one imposes an additional vanishing condition on the vector bundles to ensure boundedness of the moduli space of linked linear series.</p></div>
+</div>
+<div class="stacks-definition" id="def-simple_lls">
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.6.</strong> <a href="../tag/9200.html" class="stacks-tag-link">(9200)</a></div>
+  <div class="stacks-env-body"><p>Let $S = \spec K$, where $K$ is a field, and let $V = (V_n \mid n \in \Z)$ be a linked linear series on $S$.
+We say  $V$ is <em>simple</em> if there exist integers $w_1, \dots, w_k$, not necessarily distinct, and elements $v_i \in V_{w_i}$ such that for every $w \in \Z$, the images of $v_1, \dots, v_k$ in $V_w$ form a basis of $V_w$.</p></div>
+</div>
+<p class="stacks-para">Note that if $S \to B$ maps to the generic point $\eta$, then the data of a linked linear series $V = (V_n)$ is equivalent to the data of an individual $V_n$ for any $n \in \Z$, and in particular, for $n = 0$.
+As a result, the functor that associates to $S \to \eta$ the set of $k$-dimensional linked linear series of $\mathcal E_S$ is represented by the Grassmannian $\Gr(k, H^0(X_\eta, \mathcal E_\eta))$.
+The main theorem of [15] is the following representability theorem.</p>
+<div class="stacks-theorem" id="thm-lls">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.7.</strong> <a href="../tag/9955.html" class="stacks-tag-link">(9955)</a></div>
+  <div class="stacks-env-body"><p>{oss:14}}]</p>
+<p>  The functor that associates to a $B$-scheme $S \to B$ the set of linked linear series on $\mathcal E_S$ is representable by a projective $B$-scheme $\mathcal G(k, \mathcal E)$ isomorphic to the Grassmannian $\Gr(k, H^0(X_\eta, \mathcal E_\eta))$ over $\eta$.
+  The locus of simple linear series ${\mathcal G}^{\rm simple}(k, \mathcal E) \subset {\mathcal G}(k, \mathcal E)$ is an open subscheme, and the map ${\mathcal G}^{\rm simple}(k, \mathcal E) \to B$ has universal relative dimension at least $k(d-k-r(g-1))$.</p></div>
+</div>
+<p class="stacks-para">The last statement implies that if $v \in {\mathcal G}^{\rm simple}$ is such that ${\mathcal G}^{\rm simple}$ has relative dimension at most $k(d-k-r(g-1))$ at $v$, then it has relative dimension exactly $k(d-k-r(g-1))$ at $v$ and, furthermore, it is an open map near $v$.
+In particular, $v$ is in the closure of $\Gr(k, H^0(X_\eta, \mathcal E_\eta))$.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;5.8.</strong> <a href="../tag/8149.html" class="stacks-tag-link">(8149)</a></div>
+  <div class="stacks-env-body"><p>Osserman proves a stronger theorem, namely a relative version of the statement above, over the stack of vector bundles on $X$.
+  But the statement above is enough for our purposes.</p></div>
+</div>
+<p class="stacks-para">Although the definition of a linked linear series demands that we specify infinitely many vector bundles $V_n$, one for each $n \in \Z$, this is neither practical nor necessary.
+In the best case, only specifying the extremal ones, namely $V_{n_1}$ and $V_{n_2}$, suffices, provided that they satisfy some compatibility conditions.
+The original definition of limit linear series due to Eisenbud&ndash;Harris [5, 4] in the rank 1 case and Teixidor i Bigas [17] in the general case, took this minimalist approach.</p>
+<p class="stacks-para">Let $E_n$ be the restriction of $\mathcal E_n$ to the central fiber $C = X_0$, and set $p = C_1 \cap C_2$.</p>
+<div class="stacks-definition" id="def-eht">
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.9.</strong> <a href="../tag/D9C0.html" class="stacks-tag-link">(D9C0)</a></div>
+  <div class="stacks-env-body"><p>A <em>$k$-dimensional EHT limit linear series</em> on $E$ consists of $k$-dimensional subspaces $W_i \subset H^0(C_i, E_{n_i}|_{C_i})$ for $i = 1, 2$ that satisfy the following two conditions.
+  <ol><li>\label{ieq:eht}
+    If $a^i_1 \leq \cdots \leq a^i_k$ is the vanishing sequence for $(\mathcal E_{n_i}|_{C_i}, W_i)$ at $p$ for $i = 1, 2$, then for every $v = 1, \dots, k$ we have
+    $$ a^1_v + a^2_{k+1-v} \geq b.$$</li>
+<li>\label{gluing:eht}
+    There exist bases $s^i_1, \dots, s^i_k$ for $W_i$ for $i = 1, 2$, such that $s^i_v$ has order of vanishing $a^i_v$ at $p$, and if we have $a^1_v + a^2_{k+1-v} = b$ for some $v$, then
+    $$ \widetilde \phi (s^1_v) = s^2_{k+1-v},$$
+    where $\widetilde \phi \from E_{n_1}(-a^1_{v}\cdot p)|_p \to E_{n_2}(-a^2_{k+1-v} \cdot p) |_p$ is the isomorphism obtained by taking the appropriate twist of the identity map.</li></ol>
+  We say that $(W_1, W_2)$ is a <em>refined EHT limit linear series</em> if equality holds in (1) for all $v = 1, \dots, k$.</p></div>
+</div>
+<p class="stacks-para">This definition is adapted from [15, Definition&nbsp;4.1.2].
+Note that, due to the vanishing condition on the twists of $E$, the restriction map
+$$ H^0(C, E_{n_i}) \to H^0(C_i, E_{n_i}|_{C_i})$$
+is an injection.
+Via this injection, we sometimes treat $W_i$ as a subspace of $H^0(C_i, E_{n_i}|_{C_i})$.</p>
+<p class="stacks-para">Although the notions of a linked linear series and an EHT limit linear series differ in general, they essentially agree when we restrict to the simple linked linear series and the refined EHT limit linear series.
+More precisely, we have the following statement.</p>
+<div class="stacks-lemma" id="prop-llseht">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.10.</strong> <a href="../tag/EC6E.html" class="stacks-tag-link">(EC6E)</a></div>
+  <div class="stacks-env-body"><p>Let $S$ be a $B$-scheme, and $V = (V_n \mid n \in \Z)$ a linked linear series on $\mathcal E_S$.
+  For every $s \in S$ over $0 \in B$, taking $W_i = V_{n_i}|_s$ for $i = 1, 2$ gives an EHT limit linear series.
+  Conversely, assume that $S$ reduced, and let $\mathcal W_i \subset \pi_*(\mathcal E_{n_i})_S$ for $i = 1,2$ be sub-bundles whose restrictions to every $s \in S$ over $\eta \in B$ agree under the isomorphism $(\mathcal E_{n_1})_\eta \cong (\mathcal E_{n_2})_\eta$, and to every $s \in S$ over $0 \in B$ define a refined EHT limit linear series.
+  Then there exists a unique linked linear series $V = (V_n \mid n \in \Z)$ on $\mathcal E_S$ such that $\mathcal W_i = V_{n_i}$.
+  Furthermore, for every $s \in S$ over $0$, the series $V|_s$ is simple.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EFE0.html" class="stacks-tag-link">(EFE0)</a></div>
+  <div class="stacks-env-body"><p>Proving that $(W_1, W_2)$ is an EHT limit linear series is straightforward, and left to the reader.
+  It is a special case of [15, Theorem&nbsp;4.3.4] and the equivalence of type I and type II series in the two component case ([15, Remark&nbsp;3.4.15].</p>
+<p>  The converse also follows from the proof of [15, Theorem&nbsp;4.3.4], but it is not explicitly stated there.
+  So we offer a proof.</p>
+<p>  First, suppose that $S$ lies over $\eta \in B$.
+  Then $V_n \subset \pi_* (\mathcal E_n)_S$ is determined uniquely as the image of $V_{n_i} = \mathcal W_{n_i} \subset \pi_* (\mathcal E_{n_i})_S$ for either $i = 1$ or $i = 2$.</p>
+<p>  Next, suppose that $S = \spec K$, and it lies over $0 \in B$.
+  Denoting $(\mathcal E_n)_S$ by $E_n$, we must construct $V_n \subset H^0(C, E_n)$.
+  By composing $\theta_{n_i-n} \from E_n \to E_{n_i}$ and the restriction $E_{n_i} \to E_{n_i}|_{C_i}$, we get a map
+  $$ \iota \from H^0(C, E_n) \to H^0(C_1, E_{n_1}|_{C_1}) \oplus H^0(C_2, E_{n_2}|_{C_2}). $$
+  The vanishing condition on the twists of $E$ mean that $\iota$ is injective.
+  The compatibility condition in <a href="/papers/ramification-divisors/tag/B512.html" class="stacks-ref-link">Definition&nbsp;5.3 <span class="stacks-ref-tag">[B512]</span></a> implies that we must choose $V_n$ so that $\iota (V_n) \subset W_1 \oplus W_2$.
+  We claim that $\dim \iota^{-1}(W_1 \oplus W_2) = k$, so that there is a unique choice of $V_n$, namely $V_n = \iota^{-1}(W_1 \oplus W_2)$.</p>
+<p>  Suppose $s \in \iota^{-1}(W_1 \oplus W_2)$.
+  Then $\iota(s)$ is a linear combination of $(s^1_1,0), \dots, (s^1_k, 0)$, and $(0, s^2_1), \dots, (0,s^2_k)$.
+  Write $\iota(s) = (s_1, s_2)$.
+  Since $s_i$ is obtained by applying $\theta_{n-n_i}$, and $\theta$ on $C_i$ at $p$ corresponds to multiplication by the uniformizer, we see that
+  $$\ord_p(s_1) \geq n - n_1, \text{ and likewise, } \ord_p(s_2) \geq n_2 - n.$$
+  Let $v_1 \in \{1, \dots, k\}$ be the smallest such that $a^1_{v_1} \geq n-n_1$, and $v_1+c$ the smallest such that $a^1_{v_1+c} > n-n_1$.
+  Since $(W_1, W_2)$ is refined, and $n_2 - n_1 = b$, we see that $v_2 = k+1-v_1$ is the largest such that $a^2_{v_2} \leq n_2 - n$, and $v_2 - c$ the smallest such that $a^2_{v_2 + c} < n_2 - n$.
+  The vanishing conditions (5.8) imply that $\iota(s)$ must be a linear combination of $(s^1_{v_1},0), \dots, (s^1_k,0)$ and $(0, s^2_{v_2-c}), \dots,  (0,s^2_k)$.
+  Suppose
+  $$ \iota(s) = \sum_{\ell = v_1}^k \alpha_{\ell} \cdot (s^1_\ell,0) + \sum_{\ell = v_2-c}^{k} \beta_\ell \cdot (0,s^2_\ell),$$
+  where $\alpha_{\ell}$ and $\beta_{\ell}$ are elements of the field $K$.
+  Since $s$ is a section on the entire nodal curve $C$, its two restrictions to $C_1$ and $C_2$ are equal at $p$.
+  In terms of the two components of $\iota(s)$, and in light of the gluing condition (2) in <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>, this equality is equivalent to $\alpha_{\ell} = \beta_{k+1-\ell}$ for $v_1 \leq \ell < v_1+c$.
+  That is, $\iota(s)$ is a linear combination of the $k$ elements
+  $$ (s^1_{v_1} , s^2_{v_2}), \dots, (s^1_{v_1+c-1} , s^2_{v_2-c+1}), (s^1_{v_1+c},0), \dots, (s^1_k,0), (0,s^2_{v_2+1}), \dots, (s^2_{k},0).$$
+  Conversely, it is easy to see that any such linear combination lies in $W_1 \oplus W_2$.
+  Hence the claim that $\dim \iota^{-1}(W_1 \oplus W_2) = k$.</p>
+<p>  Set $V_n = \iota^{-1}(W_1 \oplus W_2)$.
+  To see that $V$ is simple, we must exhibit appropriate $w_i$ and $v_i \in V_{w_i}$ for $i = 1, \dots, k$.
+  Take $w_i = n-n_1-a^1_i$, and let $v_i \in V_{w_i} \subset H^0(C, E_{w_i})$ be such that $\iota(v_i) = (s^1_i, s^2_{k+1-i})$.
+  Then the images of $v_1, \dots, v_k$ form a basis of $V_n$ for all $n \in \Z$.</p>
+<p>  For more general $S$, consider the map
+  $$ \overline \iota \from \pi_* (\mathcal E_n)_S \to \pi_*(\mathcal E_{n_1})_S / \mathcal W_1 \oplus \pi_*(\mathcal E_{n_2})_S / \mathcal W_2,$$
+  obtained by composing $\iota = \pi_*(\theta_{n_1-n} \oplus \theta_{n_2-n})$ and the projections $\pi_*(\mathcal E_{n_i})_S \to \pi_*(\mathcal E_{n_i})_S / \mathcal W_i$.
+  We proved that, for every $\spec K \to S$, the kernel of $\overline \iota \otimes_{\O_S} K$ is $k$-dimensional.
+  Since $S$ is reduced, it is easy to prove that $V_n = \ker \iota$ is a sub-bundle of $\pi_*(\mathcal E_n)$ (see [15, B.3.4 with reduced $B$]).
+  It is also easy to check that $V = (V_n \mid n \in \Z)$ is a linked linear series, the only one that satisfies $V_{n_i} = \mathcal W_i$.
+  The proof is now complete.</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/ramification-divisors/tag/EC6E.html" class="stacks-ref-link">Proposition&nbsp;5.10 <span class="stacks-ref-tag">[EC6E]</span></a> allows us to combine the economy of specifying an EHT limit linear series with the convenient functorial definition of a linked linear series.
+We use this in the definition of the projection-ramification map in terms of linked linear series.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — 5.2. Linked linear series">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/section/S5.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

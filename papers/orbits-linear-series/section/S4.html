@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: Complete parametrisation of the orbit of a linear series</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Complete parametrisation of the orbit of a linear series</h1>
+<p class="stacks-para">Fix a \(2\)-dimensional vector space \(V\) and an \((r+1)\)-dimensional subspace \(S \subset \Sym^{d}V\).</p>
+<p class="stacks-para">On \(\P V \cong \P^1\), let \(O(-1) \subset \underline V\) be the universal sub-bundle and \(Q\) the quotient \(\underline V / O(-1)\).
+Then we have a canonical identification \(\Sym^d V = H^0(\P V, Q^d)\).
+We regard \(S\) as a linear series associated to the line bundle \(Q^d\).</p>
+<p class="stacks-para">Let \(W\) be another \(2\)-dimensional vector space.
+Consider the
+$$ \P^{3} = \P \Hom(V,W).$$
+We have a rational map
+$$ \phi \colon \mathbf{P}^3 \dashrightarrow \Gr(r+1, \Sym^{d}W)$$
+defined by
+$$m \mapsto [m(S)].$$
+Note that the map is equivariant with respect to the obvious \(\GL W\) action.
+The goal of this section is to understand a \(\GL W\)-equivariant resolution of \(\phi\).</p>
+<p class="stacks-para">Let \(B \subset \mathbf{P} V\) be the ramification divisor of \(S\).
+For every \(b \in B\), let \(L_{b} \subset \mathbf{P}^{3}\) be the linear subspace
+$$L_{b} = \{[m] \mid m(b) = 0\}.$$
+Then \(L_{b}\) is a copy of  \(\P^{1}\) linearly embedded in \(\P^3\), and for \(b_{1} \neq b_{2}\), the lines \(L_{b_1}\) and \(L_{b_2}\) are disjoint.
+Let
+$$ \beta \colon \widetilde {\P}^{3} \to \P^{3}$$
+be the blow-up at \(\bigsqcup_{b \in B} L_{b}\).
+Note that the lines \(L_{b}\) are \(\GL W\)-invariant and hence the blow-up \(\widetilde{\P}^{3}\) inherits an action by \(\GL W\).
+See Figure&nbsp;2 for a sketch of \(\P^3\) and the lines \(L_b\).</p>
+<p class="stacks-para">\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \draw[thick, red]
+    (-1, -1.7) &ndash; (0,1.6)
+    (0, -1.7) &ndash; (1,1.6);
+    \draw[thick, blue, dashed]
+    (0.5,-1.7) &ndash; (-1,1.6);
+    \draw[fill=black!5!white] (0,1.5) ellipse (2cm and 0.25cm);
+    \draw (2,-1.5) arc (0:-180:2cm and 0.25cm);
+    \draw plot [smooth, tension=1] coordinates {(-2,1.5) (-1,0) (-2,-1.5)};
+    \draw plot [smooth, tension=1] coordinates {(2,1.5) (1,0) (2,-1.5)};
+  \end{tikzpicture}
+  \caption{
+    The map \(\phi \colon \P^3 \dashrightarrow \Gr(r+1,\Sym^d W)\) becomes regular after blowing up the lines \(L_b\) (red) on the discriminant quadric \(\Delta\).
+    Along the lines of the opposite ruling (blue, dashed), the map is constant.
+  }\label{fig:blowup}
+\end{figure}</p>
+<p class="stacks-para">The key observation is the  following consequence of a result of Aluffi and Faber [1].</p>
+<div class="stacks-theorem" id="thm-res">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.1.</strong> <a href="../tag/E5FB.html" class="stacks-tag-link">(E5FB)</a></div>
+  <div class="stacks-env-body"><p>The rational map
+  $$\phi \colon \P^{3} \dashrightarrow \Gr(r+1, \Sym^{d}W)$$ extends to a regular map
+  $$\widetilde \phi \colon \widetilde{\P}^{3} \to \Gr(r+1, \Sym^{d}W).$$</p></div>
+</div>
+<p class="stacks-para">For the proof, we need a simple lemma.</p>
+<div class="stacks-lemma" id="lem-zmt">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.2.</strong> <a href="../tag/8A99.html" class="stacks-tag-link">(8A99)</a></div>
+  <div class="stacks-env-body"><p>Let \(\rho \colon X \to Y\) be a finite map between varieties.
+  Let \(P\) be an irreducible normal variety with a rational map \(P \dashrightarrow X\).
+  If the composite \(P \dashrightarrow Y\) extends to a regular map \(P \to Y\), then so does \(P \dashrightarrow X\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/1D41.html" class="stacks-tag-link">(1D41)</a></div>
+  <div class="stacks-env-body"><p>Let \(\Gamma_X \subset P \times X\) and \(\Gamma_Y \subset P \times Y\) be the closures of the graphs of \(P \dashrightarrow X\) and \(P \dashrightarrow Y\), respectively.
+  Then the projections \(\Gamma_X \to P\) and \(\Gamma_Y \to P\) are birational.
+  In fact, by the hypothesis on \(P \dashrightarrow Y\), the projection \(\Gamma_Y \to P\) is an isomorphism.
+  The map \(\Gamma_X \to \Gamma_Y\) induced by \(\rho\) is finite and birational.
+  Since the target \(\Gamma_Y \cong P\) is normal, we conclude that \(\Gamma_X \to \Gamma_Y\) is an isomorphism.
+  Hence the projection \(\Gamma_X \to P\) is also an isomorphism.
+  We deduce that \(P \dashrightarrow X\) extends to a regular map.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/orbits-linear-series/tag/E5FB.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[E5FB]</span></a>.</em> <a href="../tag/B8DD.html" class="stacks-tag-link">(B8DD)</a></div>
+  <div class="stacks-env-body"><p>Set
+  $$ \Gr = \Gr(r+1, \Sym^d W)$$
+  and
+  $$ \P = \P H^0(\P^1, \det j_{r+1} O(d)) = \P \Sym^{(r+1)(d-r)}W.$$
+  Recall that we have the finite map
+  $$ \rho \colon \Gr \to \P$$
+  defined by the Wronskian.
+  By definition, \(\rho\) is \(\GL W\)-equivariant.</p>
+<p>  Let \(R\) be the Wronksian of \(S\).
+  Consider the rational map
+  $$ \P^3 \dashrightarrow \P$$
+  defined by
+  $$ m \mapsto [m(R)].$$
+  Then we have the commutative diagram
+  $$
+    \text{[Commutative diagram — see PDF]}
+  $$
+  By [1, Proposition&nbsp;1.2], the map \(\widetilde \P^3 \dashrightarrow \P\) extends to a regular map \(\widetilde \P^3 \to \P\).
+  By <a href="/papers/orbits-linear-series/tag/8A99.html" class="stacks-ref-link">Lemma&nbsp;4.2 <span class="stacks-ref-tag">[8A99]</span></a>, we conclude the same about \(\widetilde \P^3 \dashrightarrow \Gr.\)
+  (In [1], the base field is assumed to have characteristic 0, but Proposition&nbsp;1.2 and its proof hold in any characteristic.)</p></div>
+</div>
+<p class="stacks-para">Let \(\Delta \subset \P^3 = \P \Hom(V, W)\) be the locus of degenerate maps.
+Then \(\Delta\) is a quadric hypersurface, defined by the vanishing of the determinant.
+We have an isomorphism
+$$\Delta \xrightarrow{\sim} \P V \times \P W$$
+given by
+$$m \mapsto (\ker m, \im m).$$
+Under this isomorphism, the line \(L_b\) defined in (4.2) corresponds to the line \(\{b\} \times \P W\).</p>
+<p class="stacks-para">We now do a simple calculation that allows us to understand the map
+$$\widetilde \phi \colon \widetilde \P \to \Gr(r+1, \Sym^d W).$$
+Choose bases \(\langle  v_1, v_2 \rangle\) for \(V\) and \(\langle w_1, w_2 \rangle\) for \(W\).
+Let us write elements of \(\Hom(V, W)\) as \(2 \times 2\)-matrices with respect to these bases.
+Consider the one-parameter family of homomorphisms given by
+$$m_t = \begin{pmatrix} 1 & 0 \\ 0 & t \end{pmatrix}, \quad t \in \A^1.$$
+For \(t \neq 0\), let
+$$S_t = m_t(S) \subset \Sym^d W,$$
+and
+$$
+  S_0 = \lim_{t \to 0} S_t \subset \Sym^d W.
+$$
+The following proposition describes \(S_0\).</p>
+<div class="stacks-lemma" id="prop-key">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.3.</strong> <a href="../tag/38C5.html" class="stacks-tag-link">(38C5)</a></div>
+  <div class="stacks-env-body"><p>Let \(S_0\) be defined as above.
+  Let \(b \in \P V\) be the point corresponding to \([v_2] \subset V\) and let \(a_0 < \dots <a_r\) be the vanishing sequence of \(S\) at \(b\).
+  Then \(S_0 \subset \Sym^d W\) is given by
+  $$ S_0 = \langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r}\rangle.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/672D.html" class="stacks-tag-link">(672D)</a></div>
+  <div class="stacks-env-body"><p>Let \(s_i \in S\) vanish to order \(a_i\) at \(b\).
+  Then there exists a non-zero \(c_i \in \k\) and a homogeneous polynomial \(F_i(v_1,v_2)\) of degree \(d-a_i-1\) such that
+  $$ s_i = c_i v_1^{d-a_i}v_2^{a_i} + v_2^{a_i+1}F_i(v_1,v_2). $$
+  We see that
+  $$ m_t(s_i) = c_i t^{a_i}w_1^{d-a_i}w_2^{a_i} + t^{a_i+1}w_2^{a_i+1}F_i(w_1,tw_2). $$
+  Therefore, we get
+  $$ \lim_{t \to 0} \langle m_t(s_i) \rangle = \langle  w_1^{d-a_i}w_2^{a_i}\rangle,$$
+  and hence
+  $$ \lim_{t \to 0} m_t(S) = \langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r}\rangle.$$</p></div>
+</div>
+<div class="stacks-lemma" id="cor-gen">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;4.4.</strong> <a href="../tag/22D8.html" class="stacks-tag-link">(22D8)</a></div>
+  <div class="stacks-env-body"><p>If \(b \in \P V\) is not a ramification point of \(S\), then \(S_0\) depends only on the subspace \(\im m_0 \subset W\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/28F8.html" class="stacks-tag-link">(28F8)</a></div>
+  <div class="stacks-env-body"><p>In this case, the vanishing sequence at \(b\) is \(0 < \dots < r\).
+  From <a href="/papers/orbits-linear-series/tag/38C5.html" class="stacks-ref-link">Proposition&nbsp;4.3 <span class="stacks-ref-tag">[38C5]</span></a>, we see that \(S_0 \subset \Sym^d W\) is the subspace of sections that vanish to order at least \(d-r\) at \(\im m_0 = [w_1] \in \P W\).</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/orbits-linear-series/tag/22D8.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[22D8]</span></a> implies that the map \(\widetilde \phi\) is constant on the proper transforms of the lines \(\P V \times \{w\} \subset \Delta\) (see Figure&nbsp;2).</p>
+<div class="stacks-theorem" id="thm-orbitclosure">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.5.</strong> <a href="../tag/C78D.html" class="stacks-tag-link">(C78D)</a></div>
+  <div class="stacks-env-body"><p>Let \(S' \subset \Sym^d W\) be the image of \(S \subset \Sym^d V\) under an isomorphism \(V \to W\).
+  The \(\GL W\)-orbit of \([S'] \in \Gr(r+1, \Sym^d W)\) contains finitely many orbits in its closure.
+  In addition to the orbit of \([S']\), these are the orbits of \(\langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r}\rangle\) where \(a_0< \dots< a_r\) is the vanishing sequence of \(S\) at some \(p \in \P V\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E983.html" class="stacks-tag-link">(E983)</a></div>
+  <div class="stacks-env-body"><p>The closure of the \(\GL W\)-orbit of \([S']\) is precisely the image of the morphism
+  $$ \widetilde \phi \colon \widetilde \P \to \Gr(r+1, \Sym^d W).$$
+  Let \(\widetilde \Delta \subset \widetilde \P\) be the pre-image of \(\Delta \subset \P^3\).
+  Then \(\widetilde \P - \widetilde \Delta\) is a copy of \(\PGL_3\), and its image is the orbit of \([S']\).</p>
+<p>  Consider \(\widetilde m \in \widetilde \Delta\) and let \(m \in \Delta\) be its image.
+  Suppose \(m\) does not lie on any line \(L_b\) and let \(\im m = [w_1] \in \P W\).
+  Then by <a href="/papers/orbits-linear-series/tag/22D8.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[22D8]</span></a>, the image \(\widetilde \phi(\widetilde m) \in \Gr(r+1, \Sym^d W)\) corresponds to
+  $$\langle w_1^d w_2^{0}, \dots, w_1^{d-r}w_2^{r}\rangle,$$
+  where \(w_2 \in W\) is any vector linearly independent from \(w_1\).</p>
+<p>  Suppose \(m\) lies on \(L_b\).
+  Let \(w = \im m \in \P W\), so that \(m \in \Delta\) corresponds to \((b,w)\) in the isomorphism (4.3).
+  Suppose \(v_2 \in V\) is such that \(b = [v_2]\) and \(w_1 \in W\) such that \(w = [w_1]\).
+  The point \(\widetilde m\) corresponds to a direction in the normal bundle \(N_{L_b/\P^3}\) at \(p\).
+  Consider the direction in \(N_{L_b/\P^3}|_p\) corresponding to the line \(\P V \times \{w\} \subset \Delta\) through \(m\).
+  By <a href="/papers/orbits-linear-series/tag/22D8.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[22D8]</span></a>, the map \(\widetilde \phi\) is constant on this line with value given by the subspace (4.5).
+  If \(\widetilde m\) corresponds to this direction, then \(\widetilde \phi(\widetilde m)\) corresponds to the same subspace.
+  All the other directions in \(N_{L_b/\P^3}|_p\) can be realised by tangent directions of families \(m_t\) for suitable choices of \(v_1 \in V\) and \(w_2 \in W\).
+  If \(\widetilde m\) corresponds to the tangent direction given by \(m_t\), then <a href="/papers/orbits-linear-series/tag/38C5.html" class="stacks-ref-link">Proposition&nbsp;4.3 <span class="stacks-ref-tag">[38C5]</span></a> implies that \(\widetilde \phi(\widetilde m)\) corresponds to the subspace
+  $$\langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r}\rangle.$$</p>
+<p>  In conclusion, we see that the image of every point of \(\widetilde \Delta\) is of the form (4.5), which corresponds to the generic vanishing sequence, or (4.6), which corresponds to the vanishing sequence of a ramification point.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Section 4: Complete parametrisation of the orbit of a linear series">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

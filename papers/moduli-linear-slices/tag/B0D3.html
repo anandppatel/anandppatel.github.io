@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (B0D3) — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal monodromy</a> / <a href="../section/S3.SS2.html">3.2. In pursuit of a simple transposition</a> / <span>Proof (B0D3)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="3BF7.html">&laquo; Lemma 3.7</a><span class="stacks-tag-current">Tag B0D3</span><a href="F116.html">Corollary 3.8 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B0D3.html" class="stacks-tag-link">(B0D3)</a></div>
+  <div class="stacks-env-body"><p>After using the $\PGL_{r+1}$-action, we may assume
+   $$\begin{aligned}\ell = [x_{0}:x_{1}]\\
+     \ell' = [x_{2}:x_{3}]\end{aligned}$$
+   and therefore, that the homogeneous ideal of the union $\ell \cup \ell'$ is
+   $$\begin{aligned}I_{\ell \cup \ell'} = (x_{0}x_{2}, x_{1}x_{2}, x_{0}x_{3}, x_{1}x_{3}, x_{4}, x_{5}, \dots x_{r}).\end{aligned}$$</p>
+<p>   Therefore, we may write the defining equation of $X$ in the form
+   $$\begin{aligned}F = p(x_{0},x_{1}) + q(x_{2},x_{3}) + \sum_{i=0,1 ; j=2,3}^{}x_{i}x_{j}A_{i,j} + \sum_{i=4}^{r}x_{i}G_{i}\end{aligned}$$
+   where $A_{i,j} \in \Gamma (O_{\P^{r}}(d-2))$, and $G_{i} \in \Gamma (O_{\P^{r}}(d-1))$. </p>
+<p>   We let $a_{i,j} = A_{i,j}|_{\ell'}$, and $g_{i} = G_{i}|_{\ell'}$.</p>
+<p>   As in the proof of <a href="/papers/moduli-linear-slices/tag/78AE.html" class="stacks-ref-link">Lemma&nbsp;2.20 <span class="stacks-ref-tag">[78AE]</span></a>, we apply the infinitesimal substitutions
+$$\begin{aligned}x_{0}& \mapsto x_{0}+\varepsilon \ell_{0}\\
+  x_{1}& \mapsto x_{1} + \varepsilon \ell_{1}\\
+  x_{2}& \mapsto x_{2}\\
+  x_{3}& \mapsto x_{3}\\
+  x_{4}& \mapsto x_{4} + \varepsilon \ell_{4}\\
+  \vdots& \\
+  x_{r} &\mapsto x_{r} + \varepsilon \ell_{r}\end{aligned}$$
+and then mod out by the ideal $I_{\ell'} = (x_{0}, x_{1}, x_{4}, \dots, x_{r})$. (Here $\ell_{i}$ are linear forms in the variables/$x_{2}$ and $x_{3}$.) </p>
+<p>The result is the infinitesimal family
+$$\begin{aligned}f_{\varepsilon} = q(x_{2},x_{3}) + \varepsilon \ell_{0}(x_{2}a_{0,2} + x_{3}a_{0,3}) + \varepsilon \ell_{1}(x_{2}a_{1,2} + x_{3}a_{1,3}) + \sum_{i = 4}^{r}\varepsilon \ell_{i} g_{i}.\end{aligned}$$</p>
+<p>Set $g_{0} := x_{2}a_{0,2}+x_{3}a_{0,3}$ and $g_{1} := x_{2}a_{1,2} + x_{3}a_{1,3}$. Then, general choices of the four polynomials  $a_{i,j}$ yield general choices of $g_{0}$ and $g_{1}$. </p>
+<p>These observations tell us that the first-order analysis of $\pi: \Sigma \to \G\left( 1,r \right)$ near $[\ell']$ is exactly the same as in the case for a general point $(X,\ell') \in I_{k}(m_{1}, \dots m_{k})$.  In particular, since $g_{0}, g_{1}, g_{4}, \dots, g_{r}$ are taken to be generic, $\pi$ is mini-versal near $[\ell']$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Tag B0D3 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/tag/B0D3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

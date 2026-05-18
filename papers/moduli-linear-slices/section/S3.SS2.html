@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2. In pursuit of a simple transposition — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal monodromy</a> / <span>3.2. In pursuit of a simple transposition</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">3.2. In pursuit of a simple transposition</h1>
+<p class="stacks-para">\begin{notation}\label{notation3}
+Until otherwise specified, we adopt the following notation:</p>
+<p class="stacks-para">\begin{enumerate}
+    \item   $(X, \ell) \in I_{k-1}\left( m_{1}+m_{2}, m_{3}, \dots, m_{k} \right)$ is a general point, with $k = d-(2r-2)\ \geq 2$. Furthermore, we assume $m_{1} \neq m_{2}$.</p>
+<p class="stacks-para">\item We let $\A^{m_{1} + m_{2}- 1}$ denote the base of the mini-versal deformation $W_{m_{1}+m_{2}}$.</p>
+<p class="stacks-para">\item We let $Z_{m_{1},m_{2}} \subset \A^{m_{1}+m_{2}-1}$ be the locus parametrizing divisors of the form $m_{1}p + m_{2}q$.</p>
+<p class="stacks-para">\item $\pi : \Sigma \to \G\left( 1,r \right)$ denotes the point-line correspondence for $X$.
+    \end{enumerate}
+\end{notation}</p>
+<div class="stacks-lemma" id="lemma-Zcurve">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.4.</strong> <a href="../tag/1FED.html" class="stacks-tag-link">(1FED)</a></div>
+  <div class="stacks-env-body"><p>$Z_{m_{1},m_{2}}$ is a uni-branched curve with a multiplicity two singularity at the origin $0 \in \A^{m_{1}+m_{2}-1}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6290.html" class="stacks-tag-link">(6290)</a></div>
+  <div class="stacks-env-body"><p>The family of deformations of $z^{m_{1}+m_{2}} = 0$ parametrized by the set $Z_{m_{1},m_{2}}$ is the image of the map
+  $$\begin{aligned}t \mapsto (z-m_{2}t)^{m_{1}}(z+m_{1}t)^{m_{2}}.\end{aligned}$$
+  By expanding this  polynomial in terms of $z$, we obtain an expression
+  $$\begin{aligned}z^{m_{1}+m_{2}} + c_{2}t^{2}z^{m_{1}+m_{2}-2} + c_{3}t^{3}z^{m_{1}+m_{2}-3} + \dots + c_{m_{1}+m_{2}}t^{m_{1}+m_{2}}\end{aligned}$$
+  where, under the assumption that $m_{1} \neq m_{2}$, all coefficients $c_{j}$ are nonzero. The lemma follows.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-multiplicitytwointersect">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;3.5.</strong> <a href="../tag/2780.html" class="stacks-tag-link">(2780)</a></div>
+  <div class="stacks-env-body"><p>Let $D \subset \A^{m_{1}+m_{2}-1}$ be a divisor given by the vanishing of an equation $f(a_{2}, \dots, a_{m_{1}+m_{2}})=0$, where $f$ is such that $0 \in D$, and such that $\frac{\partial}{\partial a_{2}}f(0) \neq 0$. Further suppose $D$ does not contain $Z_{m_{1},m_{2}}$. </p>
+<p>  Then $$\length (D \cap Z_{m_{1}, m_{2}}) = 2.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DB23.html" class="stacks-tag-link">(DB23)</a></div>
+  <div class="stacks-env-body"><p>This easily follows from the parametrization of $Z_{m_{1},m_{2}}$ found in the  proof of <a href="/papers/moduli-linear-slices/tag/1FED.html" class="stacks-ref-link">Lemma&nbsp;3.4 <span class="stacks-ref-tag">[1FED]</span></a>.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-transversefamily">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.6.</strong> <a href="../tag/8751.html" class="stacks-tag-link">(8751)</a></div>
+  <div class="stacks-env-body"><p>Let $(X,\ell) \in I_{k-1}(m_{1}+m_{2}, m_{3}, \dots, m_{k})$ be a general point, and let $\pi: \Sigma \to \G\left( 1,r \right)$ be the point-line correspondence. </p>
+<p>  Denote by $$\nu: (U, [\ell]) \to (\A^{m_{1}+m_{2}-1} \times \A^{m_{3}-1} \times \dots \A^{m_{k}-1},0)$$ a local map to the mini-versal deformation space where $U \subset \G\left( 1,r \right)$ is a sufficiently small &eacute;tale neighborhood of $\left[ \ell \right]$. Then
+  <ol><li>The map $\nu$ is an immersion near $[\ell]$.</li>
+<li>The image $\nu(U)$ is transverse to $Z_{m_{1},m_{2}} \subset (\A^{m_{1}+m_{2}-1}, 0, \dots, 0)$ in the sense of <a href="/papers/moduli-linear-slices/tag/2780.html" class="stacks-ref-link">Corollary&nbsp;3.5 <span class="stacks-ref-tag">[2780]</span></a>.</li></ol></p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4A46.html" class="stacks-tag-link">(4A46)</a></div>
+  <div class="stacks-env-body"><p>The two statements are proved at the level of tangent spaces.  They follow, respectively, by applying points $1$ and $2$ in <a href="/papers/moduli-linear-slices/tag/D46C.html" class="stacks-ref-link">Lemma&nbsp;2.23 <span class="stacks-ref-tag">[D46C]</span></a>.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">``No unintended consequences'' lemma</h3> Now suppose
+$$\begin{aligned}(X,\ell,\ell') \in I_{k-1,k}(m_{1}+m_{2}, m_{3}, \dots, m_{k} \mid m_{1}, \dots, m_{k})\end{aligned}$$
+ is a general point. The next lemma and corollary show that the condition of possessing the $k-1$-incident line $\ell$ has no effect on the $k$-incident line $\ell'$ of $X$. Hence, there are in general ``no unintended consequences elsewhere'' for having a $k-1$-incident line.</p>
+<div class="stacks-lemma" id="lemma-nocommunication">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.7.</strong> <a href="../tag/3BF7.html" class="stacks-tag-link">(3BF7)</a></div>
+  <div class="stacks-env-body"><p>The point-line correspondence
+   $$\begin{aligned}\pi : \Sigma \to \G\left( 1,r \right)\end{aligned}$$
+   is mini-versal near $[\ell'] \in \G\left( 1,r \right)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B0D3.html" class="stacks-tag-link">(B0D3)</a></div>
+  <div class="stacks-env-body"><p>After using the $\PGL_{r+1}$-action, we may assume
+   $$\begin{aligned}\ell = [x_{0}:x_{1}]\\
+     \ell' = [x_{2}:x_{3}]\end{aligned}$$
+   and therefore, that the homogeneous ideal of the union $\ell \cup \ell'$ is
+   $$\begin{aligned}I_{\ell \cup \ell'} = (x_{0}x_{2}, x_{1}x_{2}, x_{0}x_{3}, x_{1}x_{3}, x_{4}, x_{5}, \dots x_{r}).\end{aligned}$$</p>
+<p>   Therefore, we may write the defining equation of $X$ in the form
+   $$\begin{aligned}F = p(x_{0},x_{1}) + q(x_{2},x_{3}) + \sum_{i=0,1 ; j=2,3}^{}x_{i}x_{j}A_{i,j} + \sum_{i=4}^{r}x_{i}G_{i}\end{aligned}$$
+   where $A_{i,j} \in \Gamma (O_{\P^{r}}(d-2))$, and $G_{i} \in \Gamma (O_{\P^{r}}(d-1))$. </p>
+<p>   We let $a_{i,j} = A_{i,j}|_{\ell'}$, and $g_{i} = G_{i}|_{\ell'}$.</p>
+<p>   As in the proof of <a href="/papers/moduli-linear-slices/tag/78AE.html" class="stacks-ref-link">Lemma&nbsp;2.20 <span class="stacks-ref-tag">[78AE]</span></a>, we apply the infinitesimal substitutions
+$$\begin{aligned}x_{0}& \mapsto x_{0}+\varepsilon \ell_{0}\\
+  x_{1}& \mapsto x_{1} + \varepsilon \ell_{1}\\
+  x_{2}& \mapsto x_{2}\\
+  x_{3}& \mapsto x_{3}\\
+  x_{4}& \mapsto x_{4} + \varepsilon \ell_{4}\\
+  \vdots& \\
+  x_{r} &\mapsto x_{r} + \varepsilon \ell_{r}\end{aligned}$$
+and then mod out by the ideal $I_{\ell'} = (x_{0}, x_{1}, x_{4}, \dots, x_{r})$. (Here $\ell_{i}$ are linear forms in the variables/$x_{2}$ and $x_{3}$.) </p>
+<p>The result is the infinitesimal family
+$$\begin{aligned}f_{\varepsilon} = q(x_{2},x_{3}) + \varepsilon \ell_{0}(x_{2}a_{0,2} + x_{3}a_{0,3}) + \varepsilon \ell_{1}(x_{2}a_{1,2} + x_{3}a_{1,3}) + \sum_{i = 4}^{r}\varepsilon \ell_{i} g_{i}.\end{aligned}$$</p>
+<p>Set $g_{0} := x_{2}a_{0,2}+x_{3}a_{0,3}$ and $g_{1} := x_{2}a_{1,2} + x_{3}a_{1,3}$. Then, general choices of the four polynomials  $a_{i,j}$ yield general choices of $g_{0}$ and $g_{1}$. </p>
+<p>These observations tell us that the first-order analysis of $\pi: \Sigma \to \G\left( 1,r \right)$ near $[\ell']$ is exactly the same as in the case for a general point $(X,\ell') \in I_{k}(m_{1}, \dots m_{k})$.  In particular, since $g_{0}, g_{1}, g_{4}, \dots, g_{r}$ are taken to be generic, $\pi$ is mini-versal near $[\ell']$.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-nostrangecomm">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;3.8.</strong> <a href="../tag/F116.html" class="stacks-tag-link">(F116)</a></div>
+  <div class="stacks-env-body"><p>Let $(X,\ell) \in I_{k-1}(m_{1}+m_{2}, m_{3}, \dots, m_{k})$ be a general point. Then the point-line correspondence
+   $$\begin{aligned}\pi : \Sigma \to \G\left( 1,r \right)\end{aligned}$$
+   is mini-versal at all $k$-incident lines $[\ell'] \in \G\left( 1,r \right)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4274.html" class="stacks-tag-link">(4274)</a></div>
+  <div class="stacks-env-body"><p>Indeed, the variety $I''_{k-1, k}(m_{1}+m_{2}, m_{3}, \dots, m_{k} \mid m_{1}, m_{2}, \dots, m_{k})$ is irreducible, and generically finite over $I_{k-1}(m_{1}+m_{2}, m_{3}, \dots, m_{k})$. The previous lemma shows that there is a Zariski open subset of $I_{k-1,k}$ with $\ell'$ versal. The corollary follows.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-onlyonespecialline">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;3.9.</strong> <a href="../tag/D56F.html" class="stacks-tag-link">(D56F)</a></div>
+  <div class="stacks-env-body"><p>Let $(X,\ell) \in I_{k-1}(n_{1}, \dots, n_{k-1})$ be a general point. Then $X$ does not possess any other $k-1$-incident lines.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FD4B.html" class="stacks-tag-link">(FD4B)</a></div>
+  <div class="stacks-env-body"><p>This follows from a simple dimension count &ndash; we leave it to the reader.</p></div>
+</div>
+<div class="stacks-theorem" id="proposition-simpletransposition">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.10.</strong> <a href="../tag/089B.html" class="stacks-tag-link">(089B)</a></div>
+  <div class="stacks-env-body"><p>The monodromy group $G$ contains a simple transposition.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8535.html" class="stacks-tag-link">(8535)</a></div>
+  <div class="stacks-env-body"><p>Let $(X, \ell) \in I_{k-1}(m_{1}+m_{2}, \dots, m_{k})$ be a general point. </p>
+<p>   All $k$-incident lines of multiplicity $(m_{1}, \dots, m_{k})$ are simple, i.e. occur with multiplicity one, according to <a href="/papers/moduli-linear-slices/tag/F116.html" class="stacks-ref-link">Corollary&nbsp;3.8 <span class="stacks-ref-tag">[F116]</span></a>.  The line $[\ell]$ occurs as a multiplicity $2$ $k$-incident line of type $(m_{1}, \dots, m_{k})$, according to <a href="/papers/moduli-linear-slices/tag/2780.html" class="stacks-ref-link">Corollary&nbsp;3.5 <span class="stacks-ref-tag">[2780]</span></a>.  </p>
+<p>   Therefore, above the point $[X] \in \P^{N}$, the correspondence $I_{k}(m_{1}, \dots, m_{k})$ has exactly one nonreduced point of length $2$, and all other points are reduced.  </p>
+<p>   Since the curve $Z_{m_{1},m_{2}} \subset \A^{m_{1}+m_{2}-1}$ is irreducible, the two nearby $k$-incident lines (for a nearby hypersurface $X'$) limiting to $[\ell]$ experience monodromy.</p>
+<p>   Hence we obtain a simple transposition in the monodromy group $G$.</p></div>
+</div>
+<p class="stacks-para"><h3 class="stacks-subsections-heading">Moduli of lines meeting $X$ infrequently</h3></p>
+<div class="stacks-definition" id="definition-cross-ratios-map">
+  <div class="stacks-env-head"><strong>Definition&nbsp;3.11.</strong> <a href="../tag/19A2.html" class="stacks-tag-link">(19A2)</a></div>
+  <div class="stacks-env-body"><p>Let $k \geq 4$. We define $i_{(m_{1}, \dots, m_{k})}: I_{k}(m_{1}, \dots , m_{k}) \dashrightarrow \m_{0,k}/S_{k}$ to be the  map sending $(X,\ell)$ to $\left[ \ell \cap_{set} X \subset \ell \right]$. Here , subscript ``set'' means ``set theoretic''.</p></div>
+</div>
+<div class="stacks-lemma" id="corollary-distinct-cross-ratios">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;3.12.</strong> <a href="../tag/B486.html" class="stacks-tag-link">(B486)</a></div>
+  <div class="stacks-env-body"><p>Assume $k = d- (2r-2) \geq 4$, and let $X$ be a general degree $d$ hypersurface. Then any two distinct $(X,\ell), (X,\ell') \in I_{k}(m_{1}, \dots, m_{k})$ have distinct images under $i_{(m_{1},\dots,m_{k})}$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F367.html" class="stacks-tag-link">(F367)</a></div>
+  <div class="stacks-env-body"><p>Let $J \subset I_{k}(m_{1}, \dots ,m_{k}) \times_{\P^{N}}I_{k}(m_{1}, \dots ,m_{k}) $ denote the closure of the locus of pairs $\left( (X,\ell), (X,\ell') \right)$ having equal images under $i_{(m_{1},\dots,m_{k})}$, and such that $\ell \cap \ell'$ is empty. </p>
+<p>  By <a href="/papers/moduli-linear-slices/tag/31C3.html" class="stacks-ref-link">Lemma&nbsp;3.2 <span class="stacks-ref-tag">[31C3]</span></a>, The fiber product $I_{k}(m_{1}, \dots ,m_{k}) \times_{\P^{N}}I_{k}(m_{1}, \dots ,m_{k}) \setminus \Delta $ is irreducible, where $\Delta$ denotes the diagonal.</p>
+<p>  It is easy to exhibit two lines $\ell, \ell' \subset \P^{r}$ and a degree $d$ hypersurface $X$ such that $\ell$ and $\ell'$ are $k$-incident with multiplicity $(m_{1}, \dots, m_{k})$ and such that $i_{(m_{1}, \dots, m_{k})}(\ell) \neq i_{(m_{1}, \dots, m_{k})}(\ell')$.   </p>
+<p>  Therefore, $J$, being a closed set, must have dimension strictly smaller than this fiber product's dimension.  But the latter is the dimension of $\P^{N}$, i.e. the locus $J$ projects to a strict subset of $\P^{N}$. This proves the corollary.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 3.2. In pursuit of a simple transposition">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S3.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

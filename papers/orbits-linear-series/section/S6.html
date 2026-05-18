@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 6 — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 6: Orbit specialisation</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 6. Orbit specialisation</h1>
+<p class="stacks-para">The goal of this section is to understand limits of the orbit closure of a linear series under one-parameter specialisations.
+Recall that \(\Orb\) denotes the orbit closure and \(\WOrb\) the weighted orbit closure, namely the cycle obtained by multiplying the orbit closure by the order of the stabiliser group in \(\PGL(2)\).</p>
+<p class="stacks-para">Fix a positive integer \(m\) and for each \(j = 1, \dots, m\), fix an increasing sequence of non-negative integers \(a_0(j)< \dots < a_r(j)\).
+Assume that
+$$\sum_{j,i}(a_i(j) - i) = (r+1)(d-r).$$
+We consider one-parameter degenerations of linear series on \(\P^1\) with ramification profile \(\{(a_0(j), \dots, a_r(j)) \mid j = 1, \dots, m\}\).
+We use limit linear series, for which we refer the reader to [10].
+Although [10] assumes characteristic 0, the theory holds without modification for characteristic \(> d\); see [14].</p>
+<p class="stacks-para">Let \(\Delta\) be the spectrum of a DVR with special point \(0\) and generic point \(\eta\).
+Let \(p_{1,\eta}, \dots, p_{m,\eta}\) be distinct sections \(\eta \to \P^1_\eta\) and let \((S_\eta, O(d))\) be a linear series that has vanishing sequence \(a_0(j)< \dots < a_r(j)\) at \(p_{j,\eta}\).
+Let \((\mathcal X \to \Delta, p_1, \dots, p_m)\) be a semi-stable extension of \((\P^1_\eta \to \eta, p_{1,\eta}, \dots, p_{m,\eta})\) such that \(\mathcal X\) is non-singular.
+Then the central fiber \((X, \overline p_{1}, \dots, \overline p_m)\) is a semi-stable pointed rational curve.
+The linear series \(S_\eta\) yields a refined limit linear series \(\mathcal S\) on \(\mathcal X\) (use the implication \(3 \implies 1\) of [10, Proposition&nbsp;2.5]).
+Let \(S\) be the reduction of \(\mathcal S\) to the central fiber.</p>
+<p class="stacks-para">We record the ramification profile of the limit linear series \(S\) using a decorated graph.
+We begin with the dual graph \(\Gamma\) of the pointed curve \((X, \overline p_1, \dots, \overline p_m)\).
+Recall that \(\Gamma\) is obtained by drawing a vertex \(\nu\) for every irreducible component \(X_\nu\) of \(X\), an edge \(\mu\) to \(\nu\) for every node of \(X\) on \(X_\mu\) and \(X_\nu\), and a half-edge \(i\) on \(\nu\) if the marked point \(\overline p_i\) lies on \(X_\nu\).
+We think of the full-edge from \(\mu\) to \(\nu\) as a combination of two half-edges, one at \(\mu\) and one at \(\nu\).
+We use the term <em>dangling half-edge</em> when we refer to a true half-edge, and not a part of a full-edge.
+On \(\Gamma\) we record the ramification information of \(S\) as follows.
+We label a half-edge \(e\) incident to a vertex \(\nu\) by the vanishing sequence of the \(X_\nu\)-aspect of \(S\) at the point of \(X_\nu\) represented by \(e\).
+If \(e\) is a full edge, joining \(\mu\) and \(\nu\) say, then it gets two labels, one at \(\mu\), say \((a_0, \dots, a_r)\), and one at \(\nu\), say \((b_0, \dots, b_r)\).
+Since \(S\) is a refined series, the two labels are complementary; that is, they satisfy \(a_i + b_{r-i} = d\).
+Figure&nbsp;3 shows an example of a labelled dual graph \(\Gamma\) arising from a limit linear series of rank \(2\) and degree \(4\).</p>
+<p class="stacks-para">\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \node[draw, circle] (A) {};
+    \node[draw, circle] [below left=3cm of A] (B) {};
+    \node[draw, circle] [below=3cm of A] (C) {};
+    \node[draw, circle] [below right=3cm of A] (D) {};
+    \node[below left=0.5cm of B] (B1) {\scriptsize \((0,2)\)};
+    \node[below right=0.5cm of B] (B3) {\scriptsize \((0,2)\)};
+    \node[below left=0.5cm of C] (C1) {\scriptsize \((0,2)\)};
+    \node[below right=0.5cm of C] (C3) {\scriptsize \((0,2)\)};
+    \node[below left=0.5cm of D] (D1) {\scriptsize \((0,2)\)};
+    \node[below right=0.5cm of D] (D3) {\scriptsize \((0,2)\)};</p>
+<p class="stacks-para">\draw (A) edge[bend right=30]
+    node[left=.2cm, pos=0.1] {\scriptsize \((0,3)\)}
+    node[left, pos=0.8] {\scriptsize \((1,4)\)} (B);
+    \draw (A) edge
+    node[left, pos=0.2] {\scriptsize \((0,3)\)}
+    node[left, pos=0.8] {\scriptsize \((1,4)\)} (C);
+    \draw (A) edge[bend left=30]
+    node[right=0.3cm, pos=0.1] {\scriptsize \((1,2)\)}
+    node[right, pos=0.8] {\scriptsize \((2,3)\)} (D);</p>
+<p class="stacks-para">\draw (B) edge (B1) edge (B3);
+    \draw (C) edge (C1) edge (C3);
+    \draw (D) edge (D1) edge (D3);
+  \end{tikzpicture}
+    \caption{
+    We represent the ramification information of a refined limit \(g^r_d\) by a labelled dual graph as above, where \(r = 1\) and \(d = 4\).
+    The labels on the half-edges are vanishing sequences, and the two labels on a full-edge are complementary.
+  }\label{fig:dualgraph}
+\end{figure}</p>
+<p class="stacks-para">For a vertex \(\nu\) of \(\Gamma\), let \(S(\nu)\) be the \(X_\nu\)-aspect of the limit linear series \(S\).</p>
+<div class="stacks-theorem" id="thm-degeneration">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.1.</strong> <a href="../tag/53F9.html" class="stacks-tag-link">(53F9)</a></div>
+  <div class="stacks-env-body"><p>In the notation above, let \(\Sigma\) be the cycle on \(\Gr(r+1, \Sym^d\k^2)\) obtained as the limit of the cycle \(\WOrb(S_\eta)\).
+  Then we have the equality of \(\GL(2)\)-invariant cycles
+  $$
+    \Sigma = \sum_\nu \WOrb(S(\nu)).
+  $$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B805.html" class="stacks-tag-link">(B805)</a></div>
+  <div class="stacks-env-body"><p>We first show that the cycle
+  $$ D = \Sigma - \sum_{\nu \in \Gamma} \WOrb(S(\nu))$$
+  is effective using <a href="/papers/orbits-linear-series/tag/9951.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[9951]</span></a>.</p>
+<p>    For every vertex \(\nu\) of \(\Gamma\), let \(\mathcal X_\nu\) be the surface obtained by blowing down all components of \(X\) except \(X_\nu\).
+  Then we have an isomorphism \(\mathcal X_\nu \cong \P^1 \times \Delta\); fix such an isomorphism and identify the two.
+  Choose an arbitrary vertex of \(\Gamma\) and call it \(0\).
+  For every \(\nu\), let \(g_\nu \in \PGL_2(\eta)\) be the unique element such that
+  $$
+    \mathcal X_{0, \eta} = \P^1 \times \eta \xrightarrow{g_\nu} \P^1 \times \eta = \mathcal X_{\nu, \eta}$$
+  represents the identity map
+  $$\mathcal X_{0,\eta} = \mathcal X_\eta \to \mathcal X_{\nu, \eta} = \mathcal X_\eta.$$
+    For \(\mu \neq \nu\), the identity map on the generic fiber does not extend to an isomorphism \(\mathcal X_\mu \to \mathcal X_\nu\).
+  Therefore, \(g_\mu g_\nu^{-1} \in \PGL_2(\eta)\) does not extend to an element of \(\PGL_2(\Delta)\).
+  On \(\mathcal X_\nu = \P^1 \times \Delta\), the limit of \([S_\eta] \from \eta \to \Gr(r+1,\Sym^d\k^2)\) is \([S(\nu)] \in \Gr(r+1,\Sym^d\k^2).\)
+  Now, <a href="/papers/orbits-linear-series/tag/9951.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[9951]</span></a> applied to \(M = \Gr(r+1, \Sym^d\k^2)\) and \(G = \PGL_2\) implies that
+  $$ D = \Sigma - \sum_\nu \WOrb(S(\nu))$$
+  is effective.</p>
+<p>  Let \(N = (d-r)(r+1)\).
+  We apply the Wronskian map
+  $$\rho \from \Gr(r+1, \Sym^d\k^2) \to \P\Sym^N\k^2$$
+  and see that the cycle
+  $$
+    \rho_* D = \rho_* \Sigma - \sum_\nu \rho_* \WOrb(S(\nu))
+  $$
+  is effective.
+  Let \(R_\eta\) be the ramification divisor of \(S_\eta\) and \(R(\nu)\) the ramification divisor of \(S(\nu)\).
+  Then the cycle \(\rho_*\Sigma\) on \(\P \Sym^N \k^2\) is the limit of the cycle \(\WOrb(R_\eta)\) and \(\rho_*\WOrb(S(\nu))\) is the cycle \(\WOrb(R(\nu))\).
+  Aluffi and Faber compute the degree of the weighted orbit closure for any divisor on \(\P^1\) (see [1, Proposition&nbsp;1.3] and note that in their paper this degree is called the ``pre-degree'').
+  Using their formula, it is straightforward to check that \(\deg \rho_* D = 0\) (see <a href="/papers/orbits-linear-series/tag/B5A8.html" class="stacks-ref-link">Remark&nbsp;6.2 <span class="stacks-ref-tag">[B5A8]</span></a>).
+  Since \(\rho_*D\) is effective, we conclude that \(\rho_*D = 0\) and since \(\rho\) is finite, that \(D = 0\).</p></div>
+</div>
+<div class="stacks-commentary" id="rem-deg">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.2.</strong> <a href="../tag/B5A8.html" class="stacks-tag-link">(B5A8)</a></div>
+  <div class="stacks-env-body"><p>We indicate how to check that the pre-degree of the orbit of \(R_\eta\) is the sum of the pre-degrees of the orbits of \(R(\nu)\) using [1, Proposition&nbsp;1.3].
+  The pre-degree of the orbit closure of a divisor depends only on the multiplicities of the points in the divisor.
+  More precisely, by [1, Proposition&nbsp;1.3], the pre-degree for a divisor of degree \(N\) with multiplicities \(m_1, \dots, m_s\) is given by
+  $$\begin{split}
+      p(m_1, \dots, m_s) &= N^3 - 3N \sum m_i^2 + 2 \sum m_i^3\\
+      &= \sum_{i \neq j \neq k}m_im_jm_k.
+    \end{split}$$
+  To understand the multiplicities in the divisors \(R(\nu)\), consider the labelled dual graph \(\Gamma\) and replace the vanishing sequences by their weights, where the weight of the sequence \((a_0, \dots, a_r)\) is \(\sum_i (a_i-i)\).
+  Then the multiplicities in \(R_\eta\) are the labels of the dangling half-edges and the multiplicities of \(R(\nu)\) are the labels of the half-edges incident to \(\nu\).
+  The sum of the labels of all the half-edges incident to a vertex is \(N = (d-r)(r+1)\), and the sum of the two labels of a full-edge is also \(N\).
+  Consider the operation of contracting an edge of \(\Gamma\) as shown below
+  $$
+    \begin{tikzpicture}
+      \draw (0,0) node[draw, circle] (X) {};
+      \draw (-1,-0.5) node (X1) {\scriptsize \(m_1\)} (0,-0.5) node (X2) {\dots} (1,-0.5) node (X3) {\scriptsize \(m_s\)};
+      \draw (X) edge (X1) edge (X3);</p>
+<p>      \begin{scope}[xshift=-6.5cm]
+        \draw (0,0) node[draw, circle] (A) {} ;
+        \draw (-0.7,-0.5) node (A1) {\scriptsize \(m_1\)} (0,-0.5) node (A2) {\dots} (0.7,-0.5) node (A3) {\scriptsize \(m_\ell\)};
+        \draw (A) edge (A1) edge (A3);
+      \end{scope}
+      \begin{scope}[xshift=-4cm]
+        \draw (0,0) node[draw, circle] (B) {} ;
+        \draw (-0.7,-0.5) node (B1) {\scriptsize \(m_{\ell+1}\)} (0,-0.5) node (B2) {\dots} (0.7,-0.5) node (B3) {\scriptsize \(m_s\)};
+        \draw (B) edge (B1) edge (B3);
+      \end{scope}
+      \draw (A) edge
+      node[above, pos=0.2] {\scriptsize \(v\)}
+      node[above, pos=0.8] {\scriptsize \(w\)}
+      (B);
+      \begin{scope}[xshift=-2cm]
+        \node {\(\leadsto\)};
+      \end{scope}
+    \end{tikzpicture}.
+  $$
+  Since
+  $$N = v+w = m_1 + \dots + m_\ell + v = m_{\ell+1} + \dots + m_s + w, $$
+  we have \(v = m_{\ell+1} + \dots + m_s\) and \(w = m_1 + \dots + m_{\ell}\).
+  From (6.2) it follows that
+  $$ p(m_1, \dots, m_\ell, v) + p(m_{\ell+1}, \dots, m_s, w) = p(m_1,\dots, m_s).$$
+  By contracting the edges one by one, we reduce the sum of the pre-degrees for \(R(\nu)\) to a single sum, which is the pre-degree for \(R_\eta\).</p></div>
+</div>
+<div class="stacks-lemma" id="thm-spec0">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.3.</strong> <a href="../tag/6AC5.html" class="stacks-tag-link">(6AC5)</a></div>
+  <div class="stacks-env-body"><p>In the setup of <a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a>, in \(A^*_{\GL(2)}(\Gr(r+1,\Sym^d\k^2))\) we have
+  $$ [\WOrb(S_\eta)] = \sum_\nu [\WOrb(S(\nu))].$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2F02.html" class="stacks-tag-link">(2F02)</a></div>
+  <div class="stacks-env-body"><p>Since \([\WOrb(S_\eta)] = [\Sigma]\), the statement follows from <a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Recall that the class \(\WOrb(S)\) depends only on the ramification profile of \(S\).
+The ramification profile of \(S_\eta\) is recorded by the labels on the dangling half-edges of \(\Gamma\).
+The ramification profile of \(S(\nu)\) is recorded by the labels on the half-edges incident to \(\nu\).
+Thus, the equality in <a href="/papers/orbits-linear-series/tag/6AC5.html" class="stacks-ref-link">Corollary&nbsp;6.3 <span class="stacks-ref-tag">[6AC5]</span></a> can be read off purely from the labelled graph \(\Gamma\).</p>
+<p class="stacks-para">A natural question is: which labelled graphs \(\Gamma\) arise from degenerations of linear series?
+Here, the obvious necessary conditions are also sufficient.
+Let \(\Gamma\) be a tree with \(m\) dangling half-edges.
+Suppose all the half-edges of \(\Gamma\), including the full-edges considered as two half-edges, are labelled with increasing \((r+1)\)-tuples of integers in \(\{0,\dots,d\}\).
+Assume that the two labels on a full-edge are complementary.</p>
+<div class="stacks-lemma" id="prop-existence">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.4.</strong> <a href="../tag/704D.html" class="stacks-tag-link">(704D)</a></div>
+  <div class="stacks-env-body"><p>Let \(\Gamma\) be a labelled graph as above.
+  Suppose for every vertex \(\nu\) of \(\Gamma\), there is a linear series \(S(\nu)\) of rank \(r\) and degree \(d\) on \(\P^1\) whose ramification profile agrees with the multi-set of labels of half-edges incident to \(\nu\).
+  Then \(\Gamma\) arises from a degeneration.
+  That is, there exists a \(\Delta\), a semi-stable \(m\)-pointed curve \((\mathcal X \to \Delta, p_1, \dots, p_m)\) and a refined linear series \(\mathcal S\) on \(\mathcal X\) such that the labelled dual graph of its central fiber is \(\Gamma\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2C43.html" class="stacks-tag-link">(2C43)</a></div>
+  <div class="stacks-env-body"><p>The proof is a simple application of the smoothing theorem for \(g^r_d\)'s [10, Theorem&nbsp;3.4].</p>
+<p>  Let \((X, \overline p_1, \dots, \overline p_m)\) be a semi-stable curve with dual graph \(\Gamma\).
+  We assemble the linear series \(S(\nu)\) together to get a refined limit linear series \(S\) on \(X\).
+  Note that the expected dimension of the space \(G^r_d\) on a rational curve with a prescribed ramification divisor is \(0\).
+  Since the Wronskian map is finite and the ramification divisors of all aspects of \(S\) are prescribed, \(S\) is an isolated point of \(G^r_d(X, \overline p_1, \dots, \overline p_m)\).
+  By [10, Theorem&nbsp;3.4], there exists a \(\Delta\) and a smoothing \((\mathcal X \to \Delta, p_1, \dots, p_m, \mathcal S)\) of \((X, \overline p_1, \dots, \overline p_m, S)\).</p></div>
+</div>
+<div class="stacks-commentary" id="rem-existence">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.5.</strong> <a href="../tag/83FE.html" class="stacks-tag-link">(83FE)</a></div>
+  <div class="stacks-env-body"><p>The existence of a \(g^r_d\) on \(\P^1\) with prescribed ramification profile is a Schubert theoretic condition on \(\Gr(r+1, \Sym^d\k^2)\).
+  Such a series exists if and only if the product of certain Schubert classes on the Grassmannian is non-zero.
+  See the remark after [9, Theorem&nbsp;2.3] for a precise statement.</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a> asserts an equality of \(\GL(2)\)-invariant cycles on \(\Gr(r+1, \Sym^d\k^2)\).
+It can be easily upgraded to an equality of \(\GL(r+1) \times \GL(2)\)-invariant cycles on \(\Hom(\k^{r+1}, \Sym^d \k^2)\).</p>
+<div class="stacks-lemma" id="prop-degeneration2">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.6.</strong> <a href="../tag/8C9F.html" class="stacks-tag-link">(8C9F)</a></div>
+  <div class="stacks-env-body"><p>In the notation of <a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a>, let \(s_\eta \colon \Hom(\k^{r+1}, \Sym^d \k^2)_\eta\) be a homomorphism with image \(S_\eta\).
+  Let \(s_\nu \in \Hom(\k^{r+1}, \Sym^d\k^2)\) be homomorphisms with images \(S(\nu)\).
+  Let \(\Sigma\) be the flat limit of \(\WOrb(s_\eta)\).
+  Then, on \(\Hom(\k^{r+1}, \Sym^d\k^2)\), we have the equality of \(\GL(r+1) \times \GL(2)\)-invariant cycles
+  $$ \Sigma = \sum_\nu \WOrb(s_\nu).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/653C.html" class="stacks-tag-link">(653C)</a></div>
+  <div class="stacks-env-body"><p>Let \(U \subset \Hom(\k^{r+1}, \Sym^d\k^2)\) be the open subset of injective homomorphisms.
+  The action of \(\GL(r+1)\) on \(U\) is free and the map
+  $$\im \colon U \to \Gr(r+1, \Sym^d\k^2)$$
+  taking a homomorphism to its image is the quotient by \(\GL(r+1)\).
+  On \(U\), the assertions follow from <a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a>.</p>
+<p>  It suffices to prove that \(\Sigma\) does contain any \((r+1)^2+3\)-dimensional components in the complement of \(U\).
+  We claim that \(\Sigma\) is the closure of \(\Sigma \cap U\), from which the statement follows.</p>
+<p>  To see this, take \(x \in \Sigma\).
+  Then, possibly after a base change, we can choose \(x_\eta \in \Hom(\k^{r+1}, \Sym^d\k^2)_\eta\) in the \(\GL(r+1) \times \GL(2)\)-orbit of \(s_\eta\) such that the flat limit of \(x_\eta\) is \(x\).
+  Let \(S \subset \Sym^d\k^2\) be the \((r+1)\)-dimensional subspace corresponding to the flat limit of \(\im(x_\eta)\) in \(\Gr(r+1, \Sym^d\k^2)\).
+  Then it is easy to see that \(S\) contains the image of \(x\).
+  Let \(\ell\) be the dimension of the image of \(x\).
+  By making a change of coordinates on \(\k^{r+1}\) if necessary, assume that \(x\) sends the last \(r+1-\ell\) standard basis vectors to 0.
+  Let \(s' \in \Hom(\k^{r+1}, \Sym^d\k^2)\) be a map that agrees with \(x\) on the first \(\ell\) basis vectors and whose image is \(S\).
+  Then \(s' \in \Sigma \cap U\).
+  Consider the diagonal one parameter subgroup \(\lambda_t \to \GL(r+1)\) with diagonal entries
+  $$ (\underbrace{1, \dots, 1}_{\ell}, \underbrace{t, \dots, t}_{r+1-\ell}).$$
+  Then, by construction, \(\lim_{t \to 0} \lambda_t(s') = x\).
+  Since \(\Sigma \cap U\) is \(\GL(r+1)\)-invariant, and \(s' \in \Sigma \cap U\), we get that \(\lambda_t(s') \in \Sigma \cap U\) for \(t \neq 0\).
+  We conclude that \(x\) lies in the closure of \(\Sigma \cap U\).</p></div>
+</div>
+<div class="stacks-lemma" id="thm-spec">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.7.</strong> <a href="../tag/AFAD.html" class="stacks-tag-link">(AFAD)</a></div>
+  <div class="stacks-env-body"><p>In the setup of <a href="/papers/orbits-linear-series/tag/8C9F.html" class="stacks-ref-link">Proposition&nbsp;6.6 <span class="stacks-ref-tag">[8C9F]</span></a>, in \(A^*_{\GL(r+1) \times \GL(2)}(\Hom(\k^{r+1},\Sym^d\k^2))\), we have
+  $$ [\WOrb(s_\eta)] = \sum_\nu [\WOrb(s_\nu)].$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0815.html" class="stacks-tag-link">(0815)</a></div>
+  <div class="stacks-env-body"><p>Since \([\WOrb(s_\eta)] = [\Sigma]\), the statement follows from <a href="/papers/orbits-linear-series/tag/8C9F.html" class="stacks-ref-link">Proposition&nbsp;6.6 <span class="stacks-ref-tag">[8C9F]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Finally, we discuss the specialisation mentioned in the introduction (<a href="/papers/orbits-linear-series/tag/B3FC.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[B3FC]</span></a>).
+Let \(p_1, \dots, p_m\) be sections \(\Delta \to \P^1 \times \Delta\) that are distinct on the generic fiber but \(p_1 = \dots = p_\ell\) on the central fiber (with no other coincidences).
+Let \(S_\eta\) be a linear series on the generic fiber whose ramification points are \(p_1, \dots, p_m\) and whose vanishing sequence at \(p_i\) is \(a(i) = (a_0(i),\dots,a_r(i))\).
+Let \(S\) be the flat limit of \(S_\eta\).
+It is easy to see that the vanishing sequence of \(S\) at \(p_i\) for \(i > \ell\) is \(a(i)\).
+Let \(c = (c_0, \dots, c_{r+1})\) be the vanishing sequence of \(S\) at \(p = p_1 = \dots = p_\ell\).
+Let \(c' = (d-c_r, \dots, d-c_0)\) be the complementary sequence.</p>
+<div class="stacks-lemma" id="prop-introspec">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.8.</strong> <a href="../tag/7400.html" class="stacks-tag-link">(7400)</a></div>
+  <div class="stacks-env-body"><p>In the setup above, there exists a linear series of rank \(r\) and degree \(d\) on \(\P^1\) with ramification profile \(\{a(1), \dots, a(\ell), c'\}\).
+  Furthermore, on \(\Hom(\k^{r+1}, \Sym^d\k^2)\) we have the equality of \(\GL(r+1) \times \GL(2)\)-equivariant classes
+  $$ [\WOrb(a(1), \dots, a(m))] = [\WOrb(a(1), \dots, a(\ell), c')] + [\WOrb(a(\ell+1), \dots, a(m), c)].$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EF46.html" class="stacks-tag-link">(EF46)</a></div>
+  <div class="stacks-env-body"><p>The existence of the linear series can be deduced using Schubert calculus.
+  We give an alternate geometric proof using the smoothing theorem.</p>
+<p>  Consider the pointed stable limit of \((\P^1_\eta, p_1, \dots, p_m)\).
+  The dual graph of limit, together with the labelling given by the limit linear series, has the form
+  $$
+    \begin{tikzpicture}
+      \node[draw,circle] (A) {\(T\)};
+      \node[draw,circle] (B)[right=3cm of A] {};
+      \node[below left=0.3cm of A] (A1) {\scriptsize \(a(1)\)};
+      \node [below=0.3cm of A] (A2) {\scriptsize \dots};
+      \node [below right=0.3cm of A] (A3) {\scriptsize \(a(\ell)\)};
+      \draw (A) edge (A1) edge (A2) edge (A3);
+      \node[below left=0.3cm of B] (B1) {\scriptsize \(a(\ell+1)\)};
+      \node [below=0.3cm of B] (B2) {\scriptsize \dots};
+      \node [below right=0.3cm of B] (B3) {\scriptsize \(a(m)\)};
+      \draw (B) edge (B1) edge (B2) edge (B3);
+      \draw (A) edge
+      node[above, pos=0.2] {\scriptsize \(c'\)}
+      node[above, pos=0.8] {\scriptsize  \(c\)}
+      (B);
+    \end{tikzpicture}.
+  $$
+  In this diagram, \(T\) is a labelled tree with dangling half-edges labelled \(a(1), \dots, a(\ell)\), and one of its vertices, say \(t\), is connected to the remaining vertex, say \(o\), by an edge that has the label \(c'\) near \(t\) and \(c\) near \(o\).
+  We apply <a href="/papers/orbits-linear-series/tag/704D.html" class="stacks-ref-link">Proposition&nbsp;6.4 <span class="stacks-ref-tag">[704D]</span></a> to \(T\) together with the dangling edges labelled \(a(1), \dots, a(\ell)\) and \(c'\).
+  A geometric general fiber of the asserted degeneration gives a linear series of rank \(r\) and degree \(d\) on \(\P^1\) with ramification profile \(\{a(1), \dots, a(\ell), c'\}\).</p>
+<p>  By applying <a href="/papers/orbits-linear-series/tag/704D.html" class="stacks-ref-link">Proposition&nbsp;6.4 <span class="stacks-ref-tag">[704D]</span></a> to the two vertex graph
+  $$
+    \begin{tikzpicture}
+      \node[draw,circle] (A) {};
+      \node[draw,circle] (B)[right=3cm of A] {};
+      \node[below left=0.3cm of A] (A1) {\scriptsize \(a(1)\)};
+      \node [below=0.3cm of A] (A2) {\scriptsize \dots};
+      \node [below right=0.3cm of A] (A3) {\scriptsize \(a(\ell)\)};
+      \draw (A) edge (A1) edge (A2) edge (A3);
+      \node[below left=0.3cm of B] (B1) {\scriptsize \(a(\ell+1)\)};
+      \node [below=0.3cm of B] (B2) {\scriptsize \dots};
+      \node [below right=0.3cm of B] (B3) {\scriptsize \(a(m)\)};
+      \draw (B) edge (B1) edge (B2) edge (B3);
+      \draw (A) edge
+      node[above, pos=0.2] {\scriptsize \(c'\)}
+      node[above, pos=0.8] {\scriptsize  \(c\)}
+      (B);
+    \end{tikzpicture},
+  $$
+  we see that the graph above arises from a degeneration.
+  We now apply <a href="/papers/orbits-linear-series/tag/AFAD.html" class="stacks-ref-link">Corollary&nbsp;6.7 <span class="stacks-ref-tag">[AFAD]</span></a> to this degeneration.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Section 6: Orbit specialisation">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S6.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

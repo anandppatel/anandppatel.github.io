@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (F6BE) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S11.html">Section 11: Application: line sections of a hypersurface</a> / <a href="../section/S11.SS2.html">11.2. Computation of degree</a> / <span>Proof (F6BE)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="C8CD.html">&laquo; Proof </a><span class="stacks-tag-current">Tag F6BE</span><a href="A1C6.html">Proof  &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F6BE.html" class="stacks-tag-link">(F6BE)</a></div>
+  <div class="stacks-env-body"><p>Let $M$ be a general $2\times d$ matrix. By Lemma IN, the class of a general fiber of $\phi_X$ is $s^{*}\Phi_*\opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d}$.</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>By the projection formula, we have
+$$\begin{aligned}s^{*}\Phi_*\opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d} =(\pi_2)_{*}s_{*}(s^{*}\Phi_*\opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d})
+&=(\pi_2)_{*}(s_{*}[\mb{G}(1,r)]\cap\Phi_*\opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d})\\
+&=(\pi_2)_{*}\Phi_*(\Phi^*s_{*}[\mb{G}(1,r)]\cap\opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d})\\
+&=(\pi_1)_*(\Phi^*[\im(s)] \cap \opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d}).\end{aligned}$$</p>
+<p>To compute $(\pi_1)_*(\Phi^*[\im(s)] \cap \opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d})$, we will use section and Section&nbsp;9.2.</p>
+<p>Let $F(z) = (z+u)(z+v)$ be the Leray relation of $\mb{P}(\mc{S}^\vee)$, let
+$$G(z)=\prod_{k=0}^d (z+ku+(d-k)v) = z^{d+1} + c_{1}({\rm Sym}^d\mc{S}^\vee)z^d + \cdots + c_{d+1}({\rm Sym}^d\mc{S}^\vee)$$ be the Leray relation of $\mb{P}({\rm Sym}^d\mc{S}^\vee)$ and let $H=\ms{O}_{\mb{P}({\rm Sym}^d\mc{S}^\vee)}(1)$. By section, we have $[\im(s)] = L(H)$, where $L$ is the polynomial
+$$L(z)=\frac{G(z)-G(0)}{z}.$$ Hence $\Phi^*[\im(s)] = L(\sum_{i=1}^d H_i)$, where $H_i$ denotes $\ms{O}_{\mb{P}(\mc{S}^{\vee})}(1)$ pulled back from the $i$th factor. </p>
+<p>Let $\ol{L}(H_1, \ldots, H_d)$ be the result of reducing $L(\sum_{i=1}^d H_i)$ modulo $F(H_i)=(H_i+u)(H_i+v)$ for each $i$. Then by Section&nbsp;9.2 we have  $$\pi_*(\Phi^*[\im(s)] \cap \opc[1]{M}_{\mb{P}(\mc{S}^{\vee})^d})=[z^1][F(z)^1] \ol{L}(z, \ldots, z).$$ (As usual, $[F(z)^1] \ol{L}(z, \ldots, z)$ denotes the coefficient $a_1$ when $\ol{L}(z, \ldots, z)$ is expressed as $a_0(z) + a_1(z) F(z) + a_2 F(z)^2 + \cdots$, where each $a_i$ is a polynomial of degree at most $1$ in $z$.)</p>
+<p>We can thus carry out the computation of the class of the general fiber of $\phi_X$ in three steps: first we compute $\ol{L}(H_1, \ldots, H_n)$, second we compute $\ol{L}(z, \ldots, z)$, and third we compute the answer $[z^1][F(z)^1] \ol{L}(z, \ldots, z)$. We will perform these steps completely formally, treating all variables as indeterminates with no relations between them, i.e. in the ring $\mb{Q}(u,v,H_1,\ldots,H_n, z)$. In particular, we will not use any relations between the $H_i$ and $u,v$ in the relevant Chow rings.</p>
+<p><strong>Step 1</strong> Note that $\ol{L}(H_1, \ldots, H_n)$ has degree at most $1$ in each $H_i$ and agrees with $L(\sum_{i=1}^d H_i)$ on $\{-u, -v\}^d$. Hence we may compute $\ol{L}(H_1, \ldots, H_n)$ by evaluating $L(\sum_{i=1}^d H_i)$ on $\{-u, -v\}^d$ and using the Lagrange interpolation formula.  Observe that the term $G(H_1 + \ldots + H_d)$ of $$L(H_1 + \ldots + H_d) = \frac{G(H_1 + \ldots + H_d) - G(0)}{H_1 + \ldots + H_d}$$ vanishes on $\{-u, -v\}^d$, so we get
+$$\ol{L}(H_1, \ldots, H_n) = \sum_{T \subset \{1,\ldots,d\}} \frac{-G(0)}{-|T| v - (d - |T|) u}\left(\prod_{i \in T} \frac{H_i + u}{-v + u}\right) \left(\prod_{i \in \{1, \ldots, d\} \setminus T} \frac{H_i + v}{-u + v}\right).$$</p>
+<p><strong>Step 2</strong>
+Substituting $z$ for each $H_i$ yields
+$$\begin{aligned}\ol{L}(z, \ldots, z) &= G(0)\sum_{k=0}^d \frac{1}{kv+(d-k)u} \binom{d}{k} \frac{(z+u)^k(z+v)^{d-k}}{(u-v)^k(v-u)^{d-k}}  \\
+&= \frac{G(0)}{(u - v)^d}\sum_{k=0}^d \frac{\binom{d}{k}(z+u)^k(-z-v)^{d-k}}{kv+(d-k)u}\end{aligned}$$</p>
+<p><strong>Step 3</strong> All terms of (11.2) except for the $k=0,1,d-1,d$ terms are divisible by $F(z)^2$. Thus </p>
+<p>\begin{comment}
+\begin{alignat}{2}
+&\phantom{=}[z^1][F(z)^1] \ol{L}(z, \ldots, z) && \nonumber \\
+&=\frac{G(0)}{(u - v)^d}[z^1][F(z)^1]&&\left(\frac{(-z-v)^d}{du} + \frac{d(z+u)(-z-v)^{d-1}}{v+(d-1)u} \right. \nonumber \\
+& && \left. + \frac{d(z+u)^{d-1}(-z-v)}{(d-1)v+u}+ \frac{(z+u)^d}{dv} \right)\nonumber \\
+&=\frac{G(0)}{(u - v)^d}[z^1][F(z)^1] && \left(\frac{(-1)^d(z+v)^d}{du} + \frac{(-1)^{d-1}dF(z)(z+v)^{d-2}}{v+(d-1)u} \right. \label{lbarfourterms} \\
+& &&\left. - \frac{dF(z)(z+u)^{d-2}}{(d-1)v+u}+ \frac{(z+u)^d}{dv} \right). \nonumber
+\end{alignat}
+\end{comment}
+\begin{alignat}{2}
+[z^1][F(z)^1] \ol{L}(z, \ldots, z)&=\frac{G(0)}{(u - v)^d}[z^1][F(z)^1]&&\left(\frac{(-z-v)^d}{du} + \frac{d(z+u)(-z-v)^{d-1}}{v+(d-1)u} \right. \nonumber \\
+& && \left. + \frac{d(z+u)^{d-1}(-z-v)}{(d-1)v+u}+ \frac{(z+u)^d}{dv} \right)\nonumber \\
+&=\frac{G(0)}{(u - v)^d}[z^1][F(z)^1] && \left(\frac{(-1)^d(z+v)^d}{du} + \frac{(-1)^{d-1}dF(z)(z+v)^{d-2}}{v+(d-1)u} \right. \label{lbarfourterms} \\
+& &&\left. - \frac{dF(z)(z+u)^{d-2}}{(d-1)v+u}+ \frac{(z+u)^d}{dv} \right). \nonumber
+\end{alignat}</p>
+<p>We note now that
+$$\begin{aligned}(z+u)^k\equiv &(z+u)(u-v)^{k-1}\\
+& +F(z)(-(z+v)(u-v)^{k-3}+(z+u)(k-1)(u-v)^{k-3}) \pmod{F(z)^2}.\end{aligned}$$
+because both sides of the equation and their first derivatives agree on $\{-u, -v\}$. Hence
+\begin{alignat*}{2}
+[z^1][F(z)^1] F(z)(z+u)^k &= (u-v)^{k-1},\qquad
+[z^1][F(z)^1] (z+u)^k &&= (k-2)(u-v)^{k-3}, \\
+[z^1][F(z)^1] F(z)(z+ v)^k &= (v-u)^{k-1},\qquad
+[z^1][F(z)^1](z + v)^k &&= (k-2)(v-u)^{k-3}.
+\end{alignat*} Applying this term by term to (lbarfourterms), we obtain
+\begin{comment}
+$$\begin{aligned}&G(0)\left(\frac{(d-2){du}+\frac{d(v-u)^{d-3}}{(v+(d-1)u)(u-v)(v-u)^{d-1}}\right)+\\
+&G(0)\left(\frac{d(u-v)^{d-3}}{((d-1)v+u)(u-v)^{d-1}(v-u)}+\frac{(d-2)(u-v)^{d-3}}{dv(u-v)^d}\right)\\
+=&G(0)\frac{(d-1)(d-2)}{du(u+(d-1)v)((d-1)v+u)v}\\ =&d(d-1)(d-2)\prod_{k=2}^{d-2} (ku+(d-k)v),\end{aligned}$$
+\end{comment}
+$$\begin{aligned}&\phantom{=} \frac{G(0)}{(u - v)^d} \left(-\frac{(d-2)(u-v)^{d-3}}{du} + \frac{d(u-v)^{d-3}}{v+(d-1)u} - \frac{d(u-v)^{d-3}}{(d-1)v+u}+ \frac{(d-2)(u-v)^{d-3}}{dv} \right) \\
+&=G(0)\frac{(d-1)(d-2)}{du(u+(d-1)v)((d-1)v+u)v}\\ &=d(d-1)(d-2)\prod_{k=2}^{d-2} (ku+(d-k)v),\end{aligned}$$
+which finishes the proof in general. In the case $d = 2r + 1$, the degree of $\phi_X$ is the $u^rv^r$ term when we decompose our expression into Schubert cycles, which are Schur polynomials in the Chern roots $u,v$ of $\mc{S}^{\vee}$ [Ful97, Chapter 10, Proposition 8]. This is the difference between the $u^{r-1}v^{r-1}$ coefficient and the $u^{r-2}v^{r}$ coefficient of $d(d-1)(d-2)\prod_{k=2}^{d-2} (ku+(d-k)v)$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F6BE (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F6BE.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6.3. The Veronese surface — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\operatorname{\\mathbf F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: The Projection-Ramification enumerative problem</a> / <span>6.3. The Veronese surface</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.3. The Veronese surface</h1>
+<p class="stacks-para">Let $\P^{2} \cong X \subset \P^{5}$ be the Veronese surface, the image of $\P^2$ under the complete linear series $\O(2)$.
+In this case, the projection-ramification map
+$$\begin{aligned}\rho \from  \Gr(3,H^0(\P^2, \O(2))) \cong \Gr(3, 6) \dashrightarrow \P H^0(\P^2, \O(3))^* \cong \P^9\end{aligned}$$
+can be described as follows.
+Let $N \subset H^0(\P^2, \O(2))$ be a net of conics.
+Then $\rho(N)$ corresponds to the cubic curve traced out by the nodes of the singular members of $N$, called the <em>Jacobian</em> of $N$.</p>
+<div class="stacks-lemma" id="prop-veronese">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.1.</strong> <a href="../tag/D230.html" class="stacks-tag-link">(D230)</a></div>
+  <div class="stacks-env-body"><p>Let $R \subset \P^2$ be a general cubic.
+  The fiber of $\rho$ over $R$ is in natural bijection with the set of non-trivial $2$-torsion line bundles on $R$.
+  In particular, we have $\deg \rho = 3$.</p></div>
+</div>
+<p class="stacks-para">The rest of Section&nbsp;6.3 is devoted to the proof of this assertion.</p>
+<p class="stacks-para">For the proof, we recall some classical projective geometry of cubics and nets of conics from [3, \S&nbsp;3].
+To distinguish the various copies of $\P^2$ that naturally arise in this story, write $\P^2 = \P V$ for a 3 dimensional vector space $V$.
+Let $N \subset H^0(\P V, \O(2)) = \Sym^2V$ be a general net of conics on $\P V$.
+Given a point $x \in \P N^*$, we denote the associated conic by $Q_x$.</p>
+<p class="stacks-para">Associated to the net $N$ are three important cubic plane curves, namely the Jacobian curve, the discriminant curve, and the Hermite curve.
+We have already seen the Jacobian curve $R \subset \P V$.
+The <em>discriminant curve</em> $D \subset \P N^*$ is the locus of $x \in \P N^*$ such that $Q_x$ is singular.
+Since a pencil of conics contains three singular members, we see that $D$ is a cubic curve.
+Note that if $Q_x$ is singular, then it is the union of two distinct lines in $\P V$.
+A component line of $Q_x$ is called a <em>Reye line</em>.
+The <em>Hermite curve</em> $E \subset \P V^*$ is the locus of Reye lines.
+We leave it to the reader to check that it is a cubic curve.</p>
+<p class="stacks-para">The three cubic curves introduced above are inter-related.
+First, we have an isomorphism $\tau \from D \to R$ defined by
+$$\tau \from x \mapsto \text{The singular point of $Q_x$}.$$
+Second, we have a degree 2 map $E \to D$ defined by
+$$ \ell \mapsto \text{The $x \in D$ such that $Q_x$ contains $\ell$}.$$
+Evidently, the fiber of this map over a given $x \in D$ corresponds to the two components of $Q_x$.
+The (&eacute;tale) degree 2 map $E \to D \cong R$ gives a non-trivial 2-torsion element $\eta \in \Pic(R)[2]$.
+The element $\eta$ is characterized by the property that it is the unique non-trivial 2-torsion element whose pull-back to $E$ is trivial.</p>
+<p class="stacks-para">Denote by $H$ the hyperplane divisor class on $R \subset \P^2$.</p>
+<div class="stacks-lemma" id="lem-reye">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.2.</strong> <a href="../tag/4556.html" class="stacks-tag-link">(4556)</a></div>
+  <div class="stacks-env-body"><p>For every $a \in R$, the line joining $a$ and $a+\eta$ is a Reye line.
+  Furthermore, this Reye line is a component of $Q_d$ where $d = \tau^{-1}(H-2a-\eta)$.
+  Finally, the conjugate Reye line, namely the other component of $Q_d$, passes through the points $b$ and $b+\eta$ where $b \in R$ differs from $a$ by a non-trivial 2-torsion element other than $\eta$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9F3A.html" class="stacks-tag-link">(9F3A)</a></div>
+  <div class="stacks-env-body"><p>Let $\ell$ be a general Reye line, and let $d \in D$ be such that $\ell$ is a component of $Q_d$.
+  Let $x = \tau(d) \in R$ be the singular point of $Q_d$.
+  Note $\ell \cap R$ consists of three points, one of which is $x$.
+  It suffices to show that the other two, say $y$ and $z$, differ by $\eta$.</p>
+<p>  The point $y$ defines a line in $\P V^*$.
+  This line intersects $E \subset \P V^*$ in three points, one of which is $\ell$, and the other two are the two components of $Q_{\tau^{-1}(y)}$, namely the two pre-images of $y \in R$ under the double covering $E \to R$.
+  Call these two points $y_1$ and $y_2$.
+  Define $z_1$ and $z_2$ analogously.
+  By construction, the triplets $y_1, y_2, \ell$ and $z_1, z_2, \ell$ are collinear triplets on $E \subset \P V^*$, and therefore we have the linear equivalence
+  $$ y_1 + y_2 \sim z_1 + z_2$$
+  on $E$.
+  By pushing this forward to $R$, we get
+  $$ 2y \sim 2z.$$
+  Therefore, $y - z$ is a (non-trivial) 2-torsion element in $\Pic(R)$.
+  However, the pull-back of $y-z$ is trivial on $E$, and hence $y - z = \eta$.</p>
+<p>  Finally, let $m$ be the Reye line conjugate to $\ell$.
+  Then it contains $x$, and two other points of $R$, say $y'$ and $z'$.
+  By what we just proved, $y' - z' = \eta$.
+  But we also have $y' + z' \sim y + z$.
+  Hence $y - y'$ is a 2-torsion element, non-trivial, and distinct from $\eta$.
+  The proof is now complete.</p></div>
+</div>
+<p class="stacks-para">We now have all the tools to prove <a href="/papers/ramification-divisors/tag/D230.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[D230]</span></a>.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/ramification-divisors/tag/D230.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[D230]</span></a>.</em> <a href="../tag/1922.html" class="stacks-tag-link">(1922)</a></div>
+  <div class="stacks-env-body"><p>Let $U \subset \P H^0(\P^2, \O(3))^*$ be the locus of smooth cubic curves, $J \to U$ be the universal Picard scheme, $J[2] \subset J$ the closed subscheme of 2-torsion classes, and $J[2]^* \subset J[2]$ the open and closed subscheme of non-trivial 2-torsion classes.
+  The projection-ramification map for the Veronese surface factors as
+  \begin{alignat*}{2}
+    \rho \from \Gr(3, H^0(\P^2, \O(2))) &\dashrightarrow J[2]^* &&\dashrightarrow \P H^0(\P^2, \O(3))^*\\
+    N &\mapsto (R, \eta) &&\mapsto R.
+  \end{alignat*}
+  We construct $J[2]^* \to \Gr(3,H^0(\P^2, \O(2)))$ inverse to the first map, which shows that $\deg \rho = 3$, and identifies the fibers of $\rho$ as non-trivial 2-torsion points.
+  Given $(R, \eta) \in J[2]^*$, we need to construct a net $N$ of conics with Jacobian $R$.
+  We use <a href="/papers/ramification-divisors/tag/4556.html" class="stacks-ref-link">Lemma&nbsp;6.2 <span class="stacks-ref-tag">[4556]</span></a>, which tells us the singular elements of this net in terms of $R$ and $\eta$.
+  Let $\{\eta, \eta', \eta''\}$ be the three non-trivial 2-torsion line bundles on $R$.
+  Define the map $R \to \P H^0(\P^2, \O(2))^*$ by
+  $$ R \ni a \mapsto \left(\langle {a, a+\eta} \rangle\right) \cdot \left(\langle {a+\eta', a+\eta''} \rangle \right),$$
+  where $\langle {p,q} \rangle$ denotes the line joining $p$ and $q$.
+  We leave it to the reader to check that the image of $R$ is a plane cubic curve.
+  The span of the image of $R$ is the desired net $N$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — 6.3. The Veronese surface">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/section/S6.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

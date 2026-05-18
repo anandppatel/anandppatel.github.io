@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof (FA32) — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbf G",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\operatorname{\\mathbf F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal variation for incompressible and non-defective $X$</a> / <a href="../section/S3.SS2.html">3.2. Maximal variation for non-defective pairs</a> / <span>Proof (FA32)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="9AC6.html">&laquo; Lemma 3.13</a><span class="stacks-tag-current">Tag FA32</span><a href="82D0.html">Lemma 3.14 &raquo;</a></div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FA32.html" class="stacks-tag-link">(FA32)</a></div>
+  <div class="stacks-env-body"><p>Using <a href="/papers/ramification-divisors/tag/6573.html" class="stacks-ref-link">Proposition&nbsp;3.8 <span class="stacks-ref-tag">[6573]</span></a> and <a href="/papers/ramification-divisors/tag/FA5E.html" class="stacks-ref-link">Proposition&nbsp;3.9 <span class="stacks-ref-tag">[FA5E]</span></a>, we get a basis $(s_{1}, ..., s_{n}, t)$ of $V$ satisfying the following two conditions:
+  <ol><li>$s_{1}, \dots, s_{n}$ generate $L \otimes ({\mathfrak m}_{x}/{\mathfrak m}^{2}_{x})$, and</li>
+<li>$v(t)$ has an ordinary double point singularity at $x$.</li></ol>  </p>
+<p>    Let $\widehat{\O}_{X,x}$ denote the completion of the local ring at $x \in X$ along its maximal ideal.  Upon trivializing $L$, we may regard $s_{i}$ and $t$ as elements of $\widehat{\O}_{X,x}$, and can also assume  $\widehat{\O}_{X,x} = k\llbracket s_{1}, \dots s_{n}\rrbracket$.
+    In the bases $(s_1, \dots, s_n, t)$ for $V$ and $(1, s_1, \dots, s_n)$ for $P(L)$, the evaluation map
+$$\begin{aligned}e\from V \otimes \widehat{\O}_{X,x} \to P(L) \otimes \widehat{\O}_{X,x}\end{aligned}$$
+has the matrix
+$$\begin{aligned}\begin{pmatrix}
+  s_{1} & s_{2} & \dots & t \\
+  1 & 0 & \dots & \partial_{1}t \\
+  0 & 1 & \dots & \partial_{2}t \\
+  \vdots & \vdots & \vdots & \vdots \\
+  0 & 0 & \dots & \partial_{n}t
+\end{pmatrix},\end{aligned}$$
+where $\partial_{i}$ denotes $\frac{\partial}{\partial s_{i}}$.
+The determinant of the matrix (3.1)
+$$\begin{aligned}t - \sum_{i}s_{i}\partial_{i}t\end{aligned}$$
+is an analytic local equation for the ramification divisor $R(V)$ near $x$.
+By applying the Euler identity to the degree 2 part of $t$ (expressed as a power series in the $s_i$), we see that $R(V)$ shares the same tangent cone as $v(t)$ at $x$.
+The proposition follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — Tag FA32 (Proof)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/tag/FA32.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

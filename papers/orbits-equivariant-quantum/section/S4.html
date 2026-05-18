@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 4 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 4: What is known non-equivariantly</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. What is known non-equivariantly</h1>
+<p class="stacks-para">\label{noneqsection}
+In this section we recall from the literature the results on non-equivariant Chow classes associated to generalized matrix orbit maps that we will be extending equivariantly.</p>
+<p class="stacks-para">Non-equivariantly, there is a good understanding of generalized matrix orbits and more. It has been shown in [Li17] that we can express the non-equivariant Chow class of the image of $\mu:\mb{P}(W) \dashrightarrow \prod \mb{P}(W_i)$ induced by linear maps $\phi_i:W \to W_i$ in terms of the data of the <em>polymatroid</em> of the subspaces $U_i=\phi_i^*(W_i^\vee) \subseteq W^\vee$, i.e. the data of $\dim(\sum_{i \in A} U_i)$ for all subsets $A \subseteq [n]$. To be more precise, consider a resolution of $\mu$ given by the diagram</p>
+<p>\text{[Commutative diagram — see PDF]}</p>
+<p>Then analogously to generalized matrix orbits as in Section&nbsp;2.3, for a non-equivariant class $\alpha\in A^\bullet(\mb{P}(W))$, we define $\mu_*(\alpha):=\wt{\mu}_*\pi^*\alpha$, which is independent of $B$.</p>
+<p class="stacks-para">\begin{Thm}[{[Li17, Theorem 1.1]}]
+Let $\phi_i:W \to W_i$ be nonzero linear maps, and let $U_i = \phi^*(W_i^\vee)\subseteq W_i^\vee $. Consider the rational map $$\mu:\mb{P}(W) \dashrightarrow \prod \mb{P}(W_i).$$ Then we have $$\mu_*(H^j)=\sum \prod_{i=1}^n H_i^{\dim(W_i)-1-e_i}$$ where the sum is over all tuples $(e_1,\ldots,e_n) \in \mb{Z}^n$ such that
+$$\begin{aligned}&\sum_{i \in A}e_i < \dim \sum_{i \in A} U_i\qquad\text{for all nonempty $A\subseteq [n]$ and}\\
+&\sum_{i=1}^n e_i=\dim(W)-1-j.\end{aligned}$$
+\end{Thm}</p>
+<p class="stacks-para">Recall that given a $d \times n$ matrix $M$ with no zero columns, we defined the map $\mu_M:\mb{P}^{(r+1) \times d-1} \dashrightarrow (\mb{P}^r)^n$ by matrix multiplication $A \mapsto AM$ of $(r+1)\times d$ matrices with $M$. Letting $W=K^d$ and $V=K^n$, the columns of $M$ are elements of $W$, and hence induce evaluation functionals $W^\vee \to K$. By tensoring with $V$, we get induced maps $\phi_i:V \otimes W^\vee \to V$. The generalized matrix orbit map $\mu_M$ is then induced as above by the linear maps $\phi_i$.</p>
+<p class="stacks-para">From this description of $\phi_M$, the following follows immediately from section5binglin. Equivariant generalizations are proved in Section&nbsp;8, and Section&nbsp;10.</p>
+<p class="stacks-para">\begin{Thm}
+\label{NE} Let $M$ be a $d\times n$ matrix. Then the non-equivariant class $\opc{M}$ is given by $$\opc{M}=\sum \prod_{i=1}^n H_i^{r-e_i}$$
+where the sum is over all tuples $(e_1, \ldots, e_n)\in \mb{Z}^n$ such that
+$$\begin{aligned}&\sum_{i \in A} e_i < (r+1)\rk(A)\qquad\text{for all nonempty $A\subset [n]$ and} \\&\sum_{i=1}^n e_i = (r+1)d-1. \\\intertext{Equivalently, fix $0<\epsilon_1,\ldots,\epsilon_n$ with $\sum_{i=1}^n \epsilon_i=1$. Then the sum is over all $(e_1, \ldots, e_n)\in \mb{Z}^n$ such that}
+&(e_1+\epsilon_1, \ldots, e_n + \epsilon_n) \in (r+1)P_M.\end{aligned}$$
+\end{Thm}</p>
+<p class="stacks-para">\begin{Thm}\label{NEgraphclosure}
+Let $M$ be a $d \times n$ matrix. Then the non-equivariant class of the graph closure $[\ol{\Gamma_M}]\in A^\bullet(\mb{P}^{(r+1)\times d-1}\times (\mb{P}^r)^n)$ of $\mu_M$ is given by $$[\ol{\Gamma_M}]=\sum H^{\sum e_i} \prod_{i=1}^n H_i^{r-e_i}$$
+where the sum is over all tuples $(e_1, \ldots, e_n)\in \mb{Z}^n$ such that
+$$\begin{aligned}&\sum_{i \in A} e_i < (r+1)\rk(A)\qquad\text{for all nonempty $A\subset [n]$.}\\
+\intertext{Equivalently, fix $0<\epsilon_1,\ldots,\epsilon_n$ with $\sum_{i=1}^n \epsilon_i\leq 1$. Then the sum is over all $(e_1, \ldots, e_n)\in \mb{Z}^n$ such that}
+&(e_1+\epsilon_1, \ldots, e_n + \epsilon_n) \in (r+1)I_M.\end{aligned}$$
+\end{Thm}
+\begin{comment}
+!You need to define the predegree polynomial
+\begin{Cor}
+Aluffi's predegree polynomial is given by $$\mu_M^*\exp(d_1H_1+\ldots+d_nH_n)=\sum\frac{H^{\sum e_i}}{\prod e_i!}$$
+where the sum is taken over all tuples $(e_1, \ldots, e_n)\in \mb{Z}^n$ such that $\sum_{i \in A} e_i < (r+1)\rk(A)$ for all nonempty $A\subset [n]$.
+\end{Cor}
+\end{comment}
+We note the following immediate corollary of NE.
+\begin{Cor}
+The non-equivariant class $\opc{M}$ depends only on the matroid of $M$.
+\end{Cor}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 4: What is known non-equivariantly">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

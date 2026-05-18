@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 8 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 8: Points on $\mb{P}^{1}$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 8. Points on $\mb{P}^{1}$</h1>
+<p class="stacks-para">This appendix will showcase two computations of $\p_X$ in the case $X$
+is a hypersurface in $\mathbb{P}^1$, i.e. a set of points with
+multiplicities.  In the case $X\subset \mathbb{P}^1$ is supported on
+at most three points, these are strata of coincident root loci, which
+were first computed in [FNR06] and generalized to
+$PGL_2$-equivariant cohomology in [ST22]. Therefore, we only have
+to deal with the case where $X$ is supported on at least four points,
+and we give two separate proofs. For formulas with fewer signs, and
+also because our conventions are opposite to the conventions in
+[LPST20], we will actually compute the class $\p_X(-u,-v)$ instead
+of $\p_X(u,v)$.  Here $u,v$ are the chern roots of the universal rank
+$2$ vector bundle $V$ over $\mathbb{B} GL(V)$.</p>
+<div class="stacks-theorem" id="points">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;8.1.</strong> <a href="../tag/3F96.html" class="stacks-tag-link">(3F96)</a></div>
+  <div class="stacks-env-body"><p>Let $X\subset\mathbb{P}^1$ be a subscheme of length
+$d = m_1 + \ldots + m_n$ supported on points $p_1,\ldots,p_n$ with
+multiplicities $m_1,\ldots,m_n$ and with $n\geq 3$. Then,
+$$\begin{aligned}\p_X(-u,-v) = \frac{\prod_{i=0}^{d}{(iu+(d-i)v)}}{(u-v)^2}\left(\frac{n-2}{duv}+\sum_{i=1}^{n}{\frac{2m_i-d}{(m_iv+(d-m_i)u)(m_iu+(d-m_i)v)}}\right)\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">We give a proof of <a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a> using the resolution given by Aluffi
+and Faber [AF93a] together with the Atiyah-Bott formula
+[EG98b] in Section&nbsp;9. This proof is self-contained and
+direct. The second proof we give is from the machinery developed in
+[LPST20] that apply to arbitrary hyperplane arrangements. A
+computation is required to specialize the results from the case of
+ordered points on $\mb{P}^1$ to unordered points on $\mb{P}^1$, we do
+this now.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof using \cite{FML}.</em> <a href="../tag/5319.html" class="stacks-tag-link">(5319)</a></div>
+  <div class="stacks-env-body"><p>We use the same argument in [LPST20, Theorem 12.5], so we only describe the computation, and refer the motivation and proof of correctness to [LPST20]. Because our sign convention is opposite that of [LPST20], we will actually compute $\p_X(-u,-v)$. Let $d=\sum_{i=1}^{n}{m_i}$ and $G(z)=\prod_{i=0}^{d}{(H+iu+(d-i)v)}\in \mathbb{Z}[u,v][z]$. Let $L(z)=\frac{G(z)-G(0)}{z}$. Let $\overline{L}(H_1,\ldots,H_n)$ be the result of reducing $L(m_1H_1+\cdots+m_nH_n)$ modulo $(H_i+u)(H_i+v)$ for each $i$. Now, we carry out the three steps in the proof of [LPST20, Theorem 12.5].\\
+  <strong>Step 1</strong> By Lagrange interpolation,
+$$\begin{aligned}L(m_1H_1+\cdots+m_nH_n)&=\frac{G(m_1H_1+\cdots+m_nH_n)-L(0)}{m_1H_1+\cdots+m_nH_n}\\
+    \overline{L}(H_1,\ldots,H_n)&=\sum_{T\subset \{1,\ldots,n\}}\frac{-G(0)}{-\sum_{i\in T}{m_iv}-\sum_{i\notin T}{m_i u}}\left(\prod_{i\in T}\frac{H_i+u}{-v+u}\right)\left(\prod_{i\notin T}\frac{H_i+v}{-u+v}\right).\end{aligned}$$\\
+<strong>Step 2</strong> Substituting $z$ for each $H_i$ yields
+$$\begin{aligned}\overline{L}(z,\ldots,z) &= G(0)\sum_{T\subset \{1,\ldots,n\}}\frac{1}{\sum_{i\in T}{m_iv}+\sum_{i\notin T}{m_i u}}\frac{(z+u)^{\# T}(z+v)^{d-\#T}}{\prod_{i\in T}{(-v+u)}\prod_{i\notin T}{(-u+v)}}.\end{aligned}$$
+<strong>Step 3</strong> Let $F(z)=(z+u)(z+v)$. All terms of (8.1) are
+divisible by $F(z)^2$ unless $\# T\in \{0,1,n-1,n\}$. Thus,
+$[z^1][F(z)^1]\overline{L}(z,\ldots,z)$ is
+$$\begin{aligned}\frac{G(0)}{(u-v)^n}[z^1][F(z)^1]\left(\frac{(-1)^n(z+v)^n}{du}+\frac{(z+u)^n}{dv}+\sum_{i=1}^{n}{\frac{(-1)^{n-1}F(z)(z+v)^{n-2}}{m_iv+(d-m_i)u}}+\sum_{i=1}^{n}{\frac{(-1)F(z)(z+u)^{n-2}}{m_iu+(d-m_i)v}}\right).\end{aligned}$$
+As in the proof of [LPST20, Theorem 12.5],
+$$\begin{aligned}[z^1][F(z)^1]F(z)(z+u)^k &= (u-v)^{k-1} \qquad [z^1][F(z)^1](z+u)^k=(k-2)(u-v)^{k-3}\\
+  [z^1][F(z)^1]F(z)(z+v)^k &= (v-u)^{k-1} \qquad [z^1][F(z)^1](z+v)^k=(k-2)(v-u)^{k-3},\end{aligned}$$
+so $[z^1][F(z)^1]\overline{L}(z,\ldots,z)$ simplifies to
+$$\begin{aligned}&\frac{G(0)}{(u-v)^n}\left(\frac{(-1)^n(n-2)(v-u)^{n-3}}{du}+\frac{(n-2)(u-v)^{n-3}}{dv}+\sum_{i=1}^{n}\frac{(-1)^{n-1}(v-u)^{n-3}}{m_iv+(d-m_i)u}+\sum_{i=1}^{n}\frac{(-1)(u-v)^{n-3}}{m_iu+(d-m_i)v}\right)\\
+  &\frac{G(0)}{(u-v)^n}\left(\frac{(-1)(n-2)(u-v)^{n-3}}{du}+\frac{(n-2)(u-v)^{n-3}}{dv}+\sum_{i=1}^{n}{\frac{(u-v)^{n-3}}{m_iv+(d-m_i)u}+\frac{(-1)(u-v)^{n-3}}{m_iu+(d-m_i)v}}\right)\\
+  &\frac{G(0)}{(u-v)^n}\left(\frac{(n-2)(u-v)^{n-2}}{duv}+\sum_{i=1}^{n}{\frac{(2m_i-d)(u-v)^{n-2}}{(m_iv+(d-m_i)u)(m_iu+(d-m_i)v)}}\right)\\
+  &\frac{G(0)}{(u-v)^2}\left(\frac{n-2}{duv}+\sum_{i=1}^{n}{\frac{2m_i-d}{(m_iv+(d-m_i)u)(m_iu+(d-m_i)v)}}\right)\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">In the case all the multiplicities are all one, the formula in
+<a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a> simplifies. We will also give a direct proof by slow
+projection immediately after this corollary.</p>
+<div class="stacks-lemma" id="multiplicityone">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;8.2.</strong> <a href="../tag/1AFB.html" class="stacks-tag-link">(1AFB)</a></div>
+  <div class="stacks-env-body"><p>In the setting of <a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a> if each $m_i=1$, then $n=d$, and
+$$\begin{aligned}\mathsf{P}_X(-u,-v) = n(n-1)(n-2)\prod_{j=2}^{n-2}{(H+(ju+(n-j)v))}.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof using <a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a>.</em> <a href="../tag/CBED.html" class="stacks-tag-link">(CBED)</a></div>
+  <div class="stacks-env-body"><p>Applying <a href="/papers/equivariant-degenerations/tag/3F96.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[3F96]</span></a>, we find $\p_X(-u,-v)$ is
+$$\begin{aligned}\frac{1}{(u-v)^2}\prod_{i=0}^{n}{(iu+(n-i)v)}\left(\frac{n-2}{nuv}-\frac{(-2+n)n}{((n-1)u+v)((n-1)v+u)}\right)&=\\
+\frac{n(n-2)}{(u-v)^2}\prod_{i=0}^{n}{(iu+(n-i)v)}\left(\frac{1}{(nu)(nv)}-\frac{1}{((n-1)u+v)((n-1)v+u)}\right)&=\\
+\frac{n(n-2)}{(u-v)^2}\prod_{i=0}^{n}{(iu+(n-i)v)}\left(\frac{n-1}{(nu)((n-1)u+v)((n-1)v+u)(nv)}\right)&.\end{aligned}$$
+Applying [FNR05, Theorem 6.1] yields the result.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof by ``slow projection''.</em> <a href="../tag/7E5B.html" class="stacks-tag-link">(7E5B)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">Let $V$ be a $2$-dimensional vector space, $v_1,\ldots,v_n$ pairwise
+  linearly independent vectors of $V$, $X\subset\mathbb{P}^1$ the
+  corresponding point configuration supported on $p_1,\ldots,p_n$, and
+  $Z\subset \mathbb{P}(\on{Sym}^nV)$ the orbit closure. The key fact
+  we will use is
+\begin{clm}
+\label{22}
+Every point in the boundary of $Z$ corresponds to a point
+configuration in $\mathbb{P}^1$ supported on two points with
+multiplicities $n-1$ and 1 or one point with multiplicity $n$.
+\end{clm}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of 22.</em> <a href="../tag/2BC6.html" class="stacks-tag-link">(2BC6)</a></div>
+  <div class="stacks-env-body"><p>Let $A(t)$ be a 1-parameter family of matrices, or more precisely a
+  map from the spectrum of a discrete valuation ring to $\on{End}(V)$
+  where the generic point maps to an element of $GL(V)$. We want to
+  show that the multiset
+  $S=\{\lim_{t\to 0}A(t)p_i\mid 1\leq i\leq n\}$ does not have two
+  copies each of two distinct points. First, we can assume the rank of
+  $A(0)=1$. If the rank of $A(0)$ is 2, then $S$ consists of distinct
+  points. If $A(0)=0$, we can divide out by a power of the
+  uniformizing parameter so that $A(0)\neq 0$.  Then,
+  $\{\lim_{t\to 0}A(t)p_i\mid 1\leq i\leq n\}$ is the point in
+  $\mb{P}(V)$ corresponding to the $1$-dimensional image of $A(0)$ if
+  $v_i$ is not in the kernel of $A(0)$. Otherwise, there is at most
+  one $v_i$ in the kernel of $A(0)$ and
+  $\{\lim_{t\to 0}A(t)v_i\mid 1\leq i\leq n\}$ is otherwise
+  unrestricted.</p></div>
+</div>
+<p class="stacks-para">Let $x,y$ be a basis for $V$. Then, a basis of $\on{Sym}^nV$ is
+$x^n,x^{n-1}y,\ldots,y^n$. Let $T\subset GL(V)$ be the maximal torus
+corresponding to the basis $x,y$. Since
+$A^{\bullet}_{GL(V)}(\mathbb{P}(\on{Sym}^nV))\to
+A^{\bullet}_T(\mathbb{P}(\on{Sym}^nV))$ is injective, we can use a
+$T$-equivariant degeneration and compute the $T$-equivariant
+class. Our $T$-equivariant degeneration will be to scale the
+coordinates corresponding to $x^{n-2}y^2,\ldots,x^2y^{n-2}$ to zero.</p>
+<p class="stacks-para">By 22, $Z$ is disjoint from the source of this ``slow
+projection,'' so the $T$-equivariant class of $Z$ is a multiple of the
+class of the $3$-plane in $\mathbb{P}(\on{Sym}^nV)$ given by the
+vanishing of the coordinates corresponding to
+$x^{n-2}y^2,\ldots,x^2y^{n-2}$. The class of that $3$-plane is
+$\prod_{i=2}^{n-2}{(iu+(n-i)v)}$. The multiple we need is the degree
+of $Z$ as a projective variety, which is $n(n-1)(n-2)$ by the
+combinatorial argument given in [AF93a, Introduction].</p>
+</div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;8.3.</strong> <a href="../tag/4E0B.html" class="stacks-tag-link">(4E0B)</a></div>
+  <div class="stacks-env-body"><p><a href="/papers/equivariant-degenerations/tag/1AFB.html" class="stacks-ref-link">Corollary&nbsp;8.2 <span class="stacks-ref-tag">[1AFB]</span></a> can be generalized in a different
+  direction. Suppose we fix $d$ general points
+  $p_1,\ldots,p_d\in \mathbb{P}^r$ and consider all configurations of
+  $d$ points given by mapping $p_1,\ldots,p_d$ via a linear rational
+  map $\mathbb{P}^r\to \mathbb{P}^1$. Let the closure of these
+  configurations in $\on{Sym}^d\mathbb{P}^1$ be $Z_{r,d}$. The same
+  proof of 22 using slow projection shows the equivariant class
+  of $Z_{r,d}$ in
+  $A^{\bullet}_{GL(V)}(\on{Sym}^d\mathbb{P}^1)=\mathbb{Z}[u,v][H]/(\prod_{i=0}^{n}{H+iu+(n-i)v})$
+  has constant term
+$$\begin{aligned}\prod_{i=0}^{2r+1}{(d-i)}\prod_{i=r+1}^{d-r-1}{(iu+(d-i)r)},\end{aligned}$$
+and the full class is given by substituting
+$u\to u+\frac{H}{d},v\to v+\frac{H}{d}$ into the constant term
+[FNR05, Theorem 6.1]. These are examples of <em>generalized
+  matrix orbits</em> defined in [LPST20]. Also see [Tse21, Example
+1.3].</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 8: Points on $\mb{P}^{1}$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S8.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

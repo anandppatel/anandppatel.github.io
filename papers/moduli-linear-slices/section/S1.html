@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 1 — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction and main results</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 1. Introduction and main results</h1>
+<p class="stacks-para">One way to create  new projective varieties from a given variety $X \subset \P^{r}$ is to intersect  with  linear spaces. It is only natural to want to understand the collection of varieties obtained in this way.</p>
+<p class="stacks-para">There are different approaches to assigning ``moduli'' to the linear sections of $X$.  Algebraically, we may assign a point in an appropriate Hilbert scheme $H$.  This works locally as we perturb the linear section, but in order to produce a globally defined variation, we must assign the corresponding point in the quotient of the Hilbert scheme  by the action of $\PGL$. The usual technical issues with GIT emerge from this approach, but ultimately one can construct an algebraic moduli map:
+$$\begin{aligned}\mu_{m}: \G\left( m,r \right) \dashrightarrow H / \PGL\end{aligned}$$
+which, to a general $m$-plane $\Lambda$ assigns the variety $[X \cap \Lambda]$.
+Over the complex numbers, the Hodge structure on the middle cohomology of a linear section $X \cap \Lambda$  provides another way of attaching moduli to the section. Again, under ideal conditions, one gets a period map:
+$$\begin{aligned}\pi_{m}: \G\left( m,r \right) \dashrightarrow {\mathcal D}/\Gamma\end{aligned}$$
+In either case, whether algebraic or analytic, we call these maps <em>moduli maps</em>.  Three questions of particular interest are:
+\begin{enumerate}
+  \item What is the dimension of the image of a moduli map?
+  \item When is a moduli map generically injective?
+  \item If a moduli map is generically finite, what is its degree?</p>
+<p class="stacks-para">\end{enumerate}
+These questions, especially the first two, are certainly not new, and have held the attention of many authors. The first question is infinitesimal in nature &ndash; one has to compute the rank of the differential of the moduli map. The second question is global in nature, and the third question is enumerative.</p>
+<p class="stacks-para">Although the local and global analyses of moduli maps  would seem mostly disconnected, the seminal work of Donagi [Don83]  shows that the infinitesimal variation of Hodge structure (IVHS) of a variety can, in many situations, recover the variety itself.  From the perspective of varying linear slices, we may recast Donagi's result as proving the generic injectivity of the moduli map for hyperplane sections of the $d$-uple Veronese varieties $X \subset \P^{r}$. In the complex analytic setting, such generic injectivity results are called <em>weak Torelli</em> or <em>generic Torelli</em> theorems.</p>
+<p class="stacks-para">In this paper, we prove a generic Torelli theorem  for the family of $m$-plane slices of a generic hypersurface $X$. Numerous generic Torelli statements exist in the literature, including results for complete intersections in [Kon91] and [Ter90], but the problem of generic Torelli for linear sections of a fixed hypersurface seems to have fallen through the cracks.</p>
+<p class="stacks-para">Question (1) is easy to answer in our setting &ndash; a simple first-order calculation left to the reader shows that the images of all  moduli maps are as large as possible. We note, however, that this question is easy only because of the nebulous requirement that $X$ be ``generic''.  Once we try to qualify what ``generic'' means, question (1) becomes much more challenging. For example, after considerable effort, in [HMP98] it is shown (among other things) that if we let $X$ be an arbitrary <em>smooth</em> hypersurface of degree $d$, then, provided $r$ is very very large, the moduli maps for linear slices has image as large as possible.</p>
+<p class="stacks-para">On the other extreme, an interesting result of Beauville [Bea90] characterizes the degree $d$ smooth  hypersurfaces $X$ for which the moduli map of hyperplane sections is constant &ndash; this only happens when $d=2$, or when $X$ is a Fermat hypersurface and $d-1$ is a power of the characteristic of the (algebraically closed) ground field.</p>
+<p class="stacks-para">We  let $\Hyp(d,m)$ denote the moduli space of degree $d$ hypersurfaces in $\P^{m}$, modulo projective equivalence.</p>
+<div class="stacks-theorem" id="theorem-main">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/5CA0.html" class="stacks-tag-link">(5CA0)</a></div>
+  <div class="stacks-env-body"><p>Assume $d > 2r + 1$, and let $X \subset \P^{r}$ be a general hypersurface of degree $d$. Then the moduli maps $\mu_{m} : \G\left( m,r \right) \dashrightarrow \Hyp(d,m)$ are generically injective for all $m$.</p></div>
+</div>
+<p class="stacks-para">The generic Torelli theorems mentioned earlier are proven using variants of Donagi's approach. Our technique for proving <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a> is completely different; we deduce the result by a simple reduction to the case $m=1$ of lines.</p>
+<p class="stacks-para">In the case of lines, we study the moduli map $\mu_{1}$  by resolving its indeterminacy (at some special points), and then computing its degree at special points in the blown up domain. The points we consider are deep in the locus of indeterminacy, so the details of the resolution require special attention.  We are able to carry out the resolution of indeterminacy because of an elementary, but fundamental <em>versality</em> result (<a href="/papers/moduli-linear-slices/tag/BC02.html" class="stacks-ref-link">Corollary&nbsp;2.26 <span class="stacks-ref-tag">[BC02]</span></a>) which essentially allows us to write the moduli map explicitly. This versality result is interesting in its own right, and should be true in a much larger context.  Such a generalization will be the subject of future work.</p>
+<p class="stacks-para">Our analysis yields complete solutions to questions (2) and (3) in the case of lines. In order to answer question (2), we study the monodromy on the set of $k$-incident lines to $X$, where $k = d-(2r-2)$.  These are lines which meet $X$ at $k$ points, i.e. <em>as infrequently as possible</em>.</p>
+<p class="stacks-para">The set of $k$-incident lines to $X$ divides itself into groups according to the multiplicity vector $(m_{1}, \dots, m_{k})$,  $\sum_{i=1}^{k}m_{i}=d$, describing the way the lines meet $X$. Clearly, monodromy preserves the multiplicity vector of a $k$-incident line.</p>
+<p class="stacks-para">We prove the following generalization of a monodromy result on flex lines of plane curves found in [Har79]:</p>
+<div class="stacks-theorem" id="theorem-monodromymain">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/370A.html" class="stacks-tag-link">(370A)</a></div>
+  <div class="stacks-env-body"><p>Let $X$ be a general hypersurface of degree $d \geq 2r$, let $k = d - (2r-2)$, and let $(m_{1}, \dots, m_{k})$ be a multiplicity vector with at least two distinct entries. </p>
+<p>  Then the monodromy group of the set of $k$-incident lines to $X$ with multiplicity vector $(m_{1}, \dots, m_{k})$ is the full symmetric group.</p></div>
+</div>
+<p class="stacks-para">The key to answering question (3) for the moduli map $\mu_{1}$ is to analyze the <em>tri-incident</em> lines of $X$ &ndash; these are lines meeting $X$ at exactly three points.</p>
+<div class="stacks-theorem" id="theorem-main2">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.3.</strong> <a href="../tag/5763.html" class="stacks-tag-link">(5763)</a></div>
+  <div class="stacks-env-body"><p>Let $X \subset \P^{r}$ be a general hypersurface of degree $d=2r+1$. Then
+  $$\begin{aligned}\deg \mu_{1} = 2\sum_{a \geq b >1}^{}n_{a,b,1} + 4n_{d-2,1,1}\end{aligned}$$
+  where $n_{i,j,k}$ is the number of tri-incident lines to $X$ with intersection multiplicities $\left( i,j,k \right)$.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-periodmap">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.4.</strong> <a href="../tag/CD6E.html" class="stacks-tag-link">(CD6E)</a></div>
+  <div class="stacks-env-body"><p><a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a>, along with Donagi's theorem on the generic injectivitiy of the period map $\Hyp(d,m) \dashrightarrow {\mathcal D}/\Gamma$, implies that the composite period map $\pi_{m}: \G\left( m,r \right) \dashrightarrow {\mathcal D}/\Gamma$ is injective for a generic degree $d$ hypersurface $X$ with $d > 2r+1$.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-notexhausted">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.5.</strong> <a href="../tag/D482.html" class="stacks-tag-link">(D482)</a></div>
+  <div class="stacks-env-body"><p><a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a> does not exhaust all cases where $\dm \G\left( m,r \right) < \dm \Hyp(d,m)$. We also remark that a similar argument as found in the proof of <a href="/papers/moduli-linear-slices/tag/5CA0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[5CA0]</span></a> shows that knowledge of generic injectivity for $m$-planes implies the same for larger planes.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-genericityassumption">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.6.</strong> <a href="../tag/9F95.html" class="stacks-tag-link">(9F95)</a></div>
+  <div class="stacks-env-body"><p>Clearly, some sort of genericity condition on $X$ is required for an affirmative answer to question (2): Consider $X$ a Fermat hypersurface. </p>
+<p>  Interestingly, the example of the Fermat quintic in $\P^{2}$ shows that a genericity assumption stronger than ``smooth'' is required for a uniform answer to question (3).  In [CL08] , the degree of $\mu_{1}$ for a general quintic is $420$ (in agreement with <a href="/papers/moduli-linear-slices/tag/5763.html" class="stacks-ref-link">Theorem&nbsp;1.3 <span class="stacks-ref-tag">[5763]</span></a>), while for the Fermat quintic the degree drops to $150$.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S1.SS1.html">1.1. Acknowledgements</a></li>
+  <li><a href="S1.SS2.html">1.2. Conventions</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — Section 1: Introduction and main results">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

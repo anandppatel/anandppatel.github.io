@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1. Local models — Moduli of linear sections of a general hypersurface</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          addperiod: ["#1.", 1],
+          nc: "\\newcommand",
+          se: "\\section",
+          ssec: "\\subsection",
+          sssec: "\\subsubsection",
+          N: "{\\mathbf N}",
+          C: "{\\mathbf C}",
+          R: "{\\mathbf R}",
+          Q: "{\\mathbf Q}",
+          G: "{\\mathbf G}",
+          P: "{\\mathbf P}",
+          cF: "{\\mathcal F}",
+          Z: "{\\mathbf Z}",
+          A: "{\\mathbf A}",
+          fa: "{\\mathfrak a}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fm: "{\\mathfrak m}",
+          so: "{\\mathscr O}",
+          sg: "{\\mathscr G}",
+          m: "{\\mathcal M}",
+          barm: "\\overline{{\\mathcal M}}",
+          to: "\\longrightarrow",
+          Hyp: "\\operatorname{Hyp}",
+          im: "\\operatorname{im}",
+          id: "\\operatorname{id}",
+          coker: "\\operatorname{coker}",
+          Spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          rk: "\\operatorname{rk}",
+          Hom: "\\operatorname{Hom}",
+          pic: "\\operatorname{Pic}",
+          length: "\\operatorname{length}",
+          rank: "\\operatorname{rank}",
+          Span: "\\operatorname{Span}",
+          Ext: "\\operatorname{Ext}",
+          PGL: "\\operatorname{PGL}",
+          dm: "\\operatorname{dim}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear sections of a general hypersurface</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Versality</a> / <span>2.1. Local models</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.1. Local models</h1>
+<p class="stacks-para">Throughout this section  $X \subset \P^{r}$ will  be a smooth hypersurface not containing any lines.</p>
+<div class="stacks-definition" id="definition-tautological">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/90B3.html" class="stacks-tag-link">(90B3)</a></div>
+  <div class="stacks-env-body"><p>We let $\pi : \P \to \G\left( 1,r \right)$ denote the tautological $\P^{1}$-bundle.</p></div>
+</div>
+<div class="stacks-definition" id="definition-incidencecorrespondence">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.2.</strong> <a href="../tag/0924.html" class="stacks-tag-link">(0924)</a></div>
+  <div class="stacks-env-body"><p>The <em>point-line incidence correspondence for $X$</em> is the variety $\Sigma \subset \P$ defined by
+  $$\begin{aligned}\Sigma := \left\{ (x, [\ell]) \in X \times \G\left( 1,r \right) \mid x \in \ell \right\}\end{aligned}$$
+  We let $\varphi, \pi$ be the projections of $\Sigma$ to the first and second factors.</p></div>
+</div>
+<div class="stacks-lemma" id="lemma-sigmasmooth">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;2.3.</strong> <a href="../tag/669D.html" class="stacks-tag-link">(669D)</a></div>
+  <div class="stacks-env-body"><p>$\Sigma$ is a smooth variety.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5616.html" class="stacks-tag-link">(5616)</a></div>
+  <div class="stacks-env-body"><p>The projection $\varphi : \Sigma \to X$ is a projective bundle, with fibers isomorphic to $\P^{r-1}$.</p></div>
+</div>
+<p class="stacks-para">Clearly, since $X$ is assumed to contain no lines, the map $\pi : \Sigma \to \G\left( 1,r \right)$ is a finite branched cover of degree $d$.</p>
+<div class="stacks-definition" id="definition-Wn">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.4.</strong> <a href="../tag/BD96.html" class="stacks-tag-link">(BD96)</a></div>
+  <div class="stacks-env-body"><p>We let $W_{n}$, $(n > 1)$, denote the pair $(Y_{n},\P^{1} \times \A^{n-1} \to (\A^{n-1},0))$, with $Y_{n} \subset \P^{1} \times \A^{n-1}$  defined by the equation
+  $$\begin{aligned}s^{n} + a_{n-2}s^{n-2}t^{2} + a_{n-3}s^{n-3}t^{3} + \dots + a_{0}t^{n} = 0,\end{aligned}$$
+  where $a_{i}$ are coordinates on $\A^{n-1}$, and $[s:t]$ are homogeneous coordinates on $\P^{1}$.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-dehomogenize">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.5.</strong> <a href="../tag/FC31.html" class="stacks-tag-link">(FC31)</a></div>
+  <div class="stacks-env-body"><p>To simplify notation, we will often write the affine equation $$z^{n} + a_{n-2}z^{n-2} + \dots a_{0}= 0$$ for the equation defining $W_{n}$. $W_{n}$ is often referred to as the ``mini-versal unfolding'' of the singularity $z^{n} = 0$.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-versality">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.6.</strong> <a href="../tag/B813.html" class="stacks-tag-link">(B813)</a></div>
+  <div class="stacks-env-body"><p>Let $B$ be a smooth variety, $b \in B$ a marked point.  Suppose $Z \subset \P^{1} \times B$ is a divisor such that $Z_{b} \subset \P^{1} \times \left\{ b \right\}$ is a scheme isomorphic to $s^{n} = 0$. Then there is an &eacute;tale neighborhood $U$ of $b$ and a map $\mu : \left( U,b \right) \to \left( \A^{n-1},0 \right)$ such that $Z_{U} \subset \P^{1}\times U$ is isomorphic to the pullback of $W_{n}$ under $\mu$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4D72.html" class="stacks-tag-link">(4D72)</a></div>
+  <div class="stacks-env-body"><p>Since $B$ is smooth, it is &eacute;tale locally isomorphic to $\A^{m}.$ So we may reduce to the case $\left( B,b \right) = \left( \A^{m},0 \right)$.</p>
+<p>  After passing to an open set, the set $Z$ is defined by a single equation $$s^{n} + u_{n-1}s^{n-1}t + \dots + u_{0}t^{n}=0$$ where $u_{i} \in \fm_{0} \subset \Gamma (O_{\A^{m}})$. (Here $\fm_{0}$ is the maximal ideal of the origin.) We may ``complete the $n$-th power'' and find an isomorphic $Z' \subset \P^{1} \times \A^{m}$ defined by a similar equation, but with vanishing $u_{n-1}$ term. </p>
+<p>  The $n-1$ functions $u_{i} \in \fm_{0} \subset \Gamma \left( O_{\A^{m}} \right), i = 0, \dots n-2$ define a map $\left( \A^{m}, 0 \right) \to \left( \A^{n-1},0 \right)$ with the desired property.</p></div>
+</div>
+<div class="stacks-lemma" id="proposition-versalitymultiple">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.7.</strong> <a href="../tag/110D.html" class="stacks-tag-link">(110D)</a></div>
+  <div class="stacks-env-body"><p>Let $(B.b)$ be as in the previous proposition, but now suppose $Z \subset \P^{1} \times B$ is a divisor whose restriction to $Z_{b} \subset \P^{1} \times \left\{ b \right\}$ is of the form $n_{1}p_{1} + \dots + n_{i}p_{i}$ with each $n_{j} \geq 1$.  </p>
+<p>  Then there exists an &eacute;tale open neighborhood $U$ of $b$ such that $Z_{U}$ is a disjoint union $ \coprod_{j}Z_{j} $, and furthermore there exists a map $(U,b) \to \left( \prod_{j}\A^{n_{j}-1},0 \right)$ such that $Z_{j}$ is isomorphic to the pullback of $W_{n_{j}}$ under the composite $(U,b) \to \left(\prod_{j}\A^{n_{j}-1},0 \right) \to \left(\A^{n_{j}-1},0\right)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9F85.html" class="stacks-tag-link">(9F85)</a></div>
+  <div class="stacks-env-body"><p>The argument is completely similar to the proof of <a href="/papers/moduli-linear-slices/tag/B813.html" class="stacks-ref-link">Proposition&nbsp;2.6 <span class="stacks-ref-tag">[B813]</span></a>.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-nonunique">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.8.</strong> <a href="../tag/CCC4.html" class="stacks-tag-link">(CCC4)</a></div>
+  <div class="stacks-env-body"><p>The maps to $W_{n}$ in these propositions are not unique, however it is easy to show that they induce a unique map on the tangent space of $B$ at $b$.</p></div>
+</div>
+<div class="stacks-definition" id="definition-versal">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.9.</strong> <a href="../tag/11DD.html" class="stacks-tag-link">(11DD)</a></div>
+  <div class="stacks-env-body"><p>Let $(B,b)$ be a smooth variety with marked point, and let $Z \subset \P^{1} \times B$ be a closed subset such that $Z_{b}$ is as in <a href="/papers/moduli-linear-slices/tag/110D.html" class="stacks-ref-link">Proposition&nbsp;2.7 <span class="stacks-ref-tag">[110D]</span></a>. Then $Z \subset \P^{1} \times B \to B$ is <em>versal at $b$</em> if any (and hence all) of the maps $(U,b) \to \left(\prod_{j}\A^{n_{j}-1},0 \right)$ is a local submersion, i.e. the map on tangent spaces is surjective.</p></div>
+</div>
+<div class="stacks-definition" id="definition-mini-versal">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.10.</strong> <a href="../tag/8657.html" class="stacks-tag-link">(8657)</a></div>
+  <div class="stacks-env-body"><p>Let $(B,b)$ be a smooth variety with marked point, and let $Z \subset \P^{1} \times B$ be a closed subset such that $Z_{b}$ is as in <a href="/papers/moduli-linear-slices/tag/110D.html" class="stacks-ref-link">Proposition&nbsp;2.7 <span class="stacks-ref-tag">[110D]</span></a>. Then $Z \subset \P^{1} \times B$ is <em>mini-versal at $b$</em> if any (and hence all) of the maps $(U,b) \to \left(\prod_{j}\A^{n_{j}-1},0 \right)$ is a local isomorphism.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear sections of a general hypersurface — 2.1. Local models">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S2.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1605.01788">arXiv:1605.01788</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 5 — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <link rel="stylesheet" href="../stacks.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "{\\bf N}",
+          Z: "{\\bf Z}",
+          Q: "{\\bf Q}",
+          R: "{\\bf R}",
+          C: "{\\bf C}",
+          P: "{\\bf P}",
+          Gr: "{\\bf Gr}",
+          A: "{\\bf A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "{\\bf G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 5: Localisation</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 5. Localisation</h1>
+<p class="stacks-para">The goal of this section is to compute the equivariant orbit class of a linear series using localisation on \(\widetilde{\P}^{3}\).
+The calculation is similar to the one in [13, Appendix&nbsp;B].</p>
+<p class="stacks-para">Choose a basis \(\langle  w_{1}, w_{2} \rangle\) of \(W\) and let \(T \subset \GL(W)\) be the diagonal torus with respect to this basis.
+Choose coordinates \(t_{1}, t_{2}\) on \(T\) so that the action on \(W\) is
+$$ (t_{1},t_{2}) \colon (w_{1}, w_{2}) \mapsto (t_{1}w_{1}, t_{2}w_{2}).$$
+Then the \(T\)-fixed locus of \(\P^{3} = \P \Hom(V,W)\) consists of two skew lines \(\Lambda_{1}\) and \(\Lambda_{2}\) given by
+$$ \Lambda_i = \P \Hom(V, \langle w_{i}\rangle).$$
+Note that the lines \(\Lambda_{i} \subset \P^{3}\) lie in the discriminant quadric \(\Delta\), and are in the opposite ruling as the lines \(L_{b}\) blown up to get \(\widetilde{\P}^{3}\).
+The \(T\)-fixed locus of \(\widetilde{\P}^{3}\) consists of the proper transforms \(\widetilde{\Lambda}_{i}\) of \(\Lambda_{i}\) and points \(p_{i,b}\) for \(i = 1,2\) and \(b \in B\).
+The point \(p_{i,b}\) maps under the blow-down to the point \(\Lambda_{i} \cap L_{b}\).
+We now describe it in local coordinates.</p>
+<p class="stacks-para">Choose a basis \(v_{1}, v_{2}\) of \(V\) such that \([v_{2}] = b \in \P V\).
+In the bases \(v_{1}, v_{2}\) of \(V\) and \(w_{1}, w_{2}\) of \(W\), we represent \(m \in \Hom(V, W)\) by the matrix
+$$
+  m = \begin{pmatrix}
+    X_{11} & X_{12} \\
+    X_{21} & X_{22}
+  \end{pmatrix}.
+$$
+The matrix entries \(X_{ij}\) are functionals on \(\Hom(V, W)\).
+The torus \(T\)-acts by
+$$ (t_{1},t_{2}) \colon X_{ij} \mapsto t_{i}^{-1}X_{ij}.$$
+The line \(\Lambda_{1} \subset \P^{3}\) is defined by \(X_{21} = X_{22} = 0\) and the line \(L_b \subset \P^3\) by \(X_{12} = X_{22} = 0.\)
+Their intersection is the point \(X_{12} = X_{21} = X_{22} = 0\).
+Choose affine coordinates \(x_{ij} = X_{ij}/X_{11}\) around this point.
+Then the blow-up of \(\P^3\) in \(L_{b}\) has the coordinate charts
+$$ (x_{21},x_{12},x_{22},u \mid x_{12}=ux_{22}) \text{ and } (x_{21},x_{12},x_{22}, v \mid x_{22}=vx_{12}).$$
+The point \(p_{1,b}\) is contained in the second chart, and is given by
+$$p_{1,b}: x_{21} = x_{22} = v = 0.$$</p>
+<p class="stacks-para">Given \((m_{1},m_{2}) \in \mathbf{Z}\), let \(\chi(m_1,m_2)\) be the character of \(T\) given by
+$$ \chi(m_1,m_2) \colon (t_1,t_2) \mapsto t_{1}^{m_1} \cdot t_2^{m_2}.$$
+The next two propositions give the normal bundles of the \(T\)-fixed loci.</p>
+<div class="stacks-lemma" id="prop-normalp">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.1.</strong> <a href="../tag/AAFF.html" class="stacks-tag-link">(AAFF)</a></div>
+  <div class="stacks-env-body"><p>Let \(N_{1,b}\) be the tangent space to \(p_{1,b} \in \widetilde{\P}^3\).
+  As a \(T\)-representation, we have
+  $$ N_{1,b} \cong \chi(-1,1) \oplus \chi(-1,1) \oplus \chi(1,-1). $$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/C9CB.html" class="stacks-tag-link">(C9CB)</a></div>
+  <div class="stacks-env-body"><p>From (5.1), we see that the co-tangent space at \(p_{1,b}\) is generated by \(x_{21}, x_{22}, v\), on which \(T\) acts by
+  $$ (t_1,t_2) \colon x_{21} \mapsto t_{1}t_2^{-1} x_{21} \quad x_{22} \mapsto t_1t_{2}^{-1}x_{22} \quad v \mapsto t_1^{-1}t_2v.$$
+We now take the dual.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-normall">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.2.</strong> <a href="../tag/B181.html" class="stacks-tag-link">(B181)</a></div>
+  <div class="stacks-env-body"><p>Let \(\widetilde N_{1}\) be the normal bundle of \(\widetilde \Lambda_1 \subset \widetilde{\P}^3\).
+  In the \(T\)-equivariant Grothendieck group of \(\widetilde{\Lambda}_1 = \P^1\) (with the trivial \(T\)-action), we have
+  $$ [N_1] = \left([O] + [O\left(2-|B|\right)]\right) \otimes \chi(-1,1).  $$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CDA4.html" class="stacks-tag-link">(CDA4)</a></div>
+  <div class="stacks-env-body"><p>Let \(N_{1}\) be the normal bundle of \(\Lambda_1 \subset \P^3\).
+  The defining equations show that \(\Lambda_1\) is the zero locus of sections of \(O_{\P^3}(1) \otimes \chi(0,1)\) and the restriction of \(O_{\P^3}(1)\) to \(\Lambda_1\) is \(O(1) \otimes \chi(-1,0)\).
+  Therefore, we get
+  $$N_1 \cong \left( O(1) \oplus O(1) \right) \otimes \chi(-1,1).$$
+  Recall that \(\beta \colon \widetilde \P^3 \to \P^3\) is the blow-up along \(\bigsqcup_b L_b\).
+  We have the exact sequence
+  $$ 0 \to \widetilde N_1 \to \beta^{*} N_1 \to Q \to 0,$$
+  where \(Q \cong O_{\supp B} \otimes \chi(-1,1)\).
+  The statement follows.</p></div>
+</div>
+<p class="stacks-para">Let \(\widetilde S\) be the pull-back to \(\widetilde \P^3\) of the universal sub-bundle of \(\Gr(r+1, \Sym^d W)\).
+The following two propositions describe \(\widetilde S\) on the \(T\)-fixed locus.</p>
+<div class="stacks-lemma" id="prop-sp">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.3.</strong> <a href="../tag/B49A.html" class="stacks-tag-link">(B49A)</a></div>
+  <div class="stacks-env-body"><p>Let \(p = p_{1,b}\) and let \(a_0 < \dots < a_r\) be the vanishing sequence of \(S\) at \(b\).
+  As a \(T\)-representation, we have
+  $$ \widetilde S|_p \cong \bigoplus_{i=0}^{r} \chi(d-a_i, a_i).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/ACFA.html" class="stacks-tag-link">(ACFA)</a></div>
+  <div class="stacks-env-body"><p>Consider the family \(m_t\) as in (4.4), where \([v_2] = b\).
+  Then, in \(\widetilde \P\) we have
+  $$\lim_{t \to 0} m_t = p.$$
+  Therefore, we have
+  $$ \widetilde S|_p = \lim_{t \to 0} m_t(S).$$
+  <a href="/papers/orbits-linear-series/tag/38C5.html" class="stacks-ref-link">Proposition&nbsp;4.3 <span class="stacks-ref-tag">[38C5]</span></a> gives the limit and yields
+  $$ \widetilde S|_p = \langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r}\rangle.$$
+  The statement follows.</p></div>
+</div>
+<div class="stacks-lemma" id="prop-sl">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.4.</strong> <a href="../tag/698E.html" class="stacks-tag-link">(698E)</a></div>
+  <div class="stacks-env-body"><p>As a \(T\)-equivariant sheaf on \(\widetilde \Lambda_1\), we have
+  $$ [\widetilde S]|_{\widetilde{\Lambda}_{1}} = \bigoplus_{i=0}^{r}\chi(d-i,i).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B5A7.html" class="stacks-tag-link">(B5A7)</a></div>
+  <div class="stacks-env-body"><p>By <a href="/papers/orbits-linear-series/tag/22D8.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[22D8]</span></a>, the map \(\widetilde \phi\) is constant on \(\widetilde \Lambda_1\), and its value corresponds to the subspace
+  $$ \langle  w_1^dw_2^0, \dots, w_1^{d-r}w_2^r \rangle \subset \Sym^d W. $$
+  The statement follows.</p></div>
+</div>
+<p class="stacks-para">We are now ready to prove the main theorem of the paper, which we restate.</p>
+<div class="stacks-theorem" id="thm-realmain">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.5.</strong> <a href="../tag/DE3D.html" class="stacks-tag-link">(DE3D)</a></div>
+  <div class="stacks-env-body"><p>Let \(s \in \Hom(\k^{r+1}, \Sym^d  \k^2)\) be an injective map with image \(S \subset \Sym^d\k^2\).
+  Let \(\{(a_{i}(b)) \mid b \in B\}\) be the ramification profile of \(S\).
+  Let \(\Gamma \subset  \PGL(2)\) be the stabiliser of \(S \subset \Sym^d\k^2\), and assume that it is finite.
+  Let \(\Orb(s)\) be the closure of the \(\GL(r+1) \times \GL(2)\) orbit of \(s\).
+  Then the class
+  $$ |\Gamma| \cdot [\Orb(s)] \in A^{(r+1)(d-r)-3}_{\GL(r+1) \times \GL(2)}(\Hom(\k^{r+1}, \Sym^d \k^2)) $$
+  is given by
+  $$|\Gamma| \cdot [\Orb(s)] = \frac{1}{(\omega_1-\omega_2)^3}\sum_{b \in B}   \psi_{a_0(b), \dots, a_r(b)}(\mu;\omega) + \frac{2-|B|}{(\omega_1-\omega_2)^3} \cdot \psi_{0,\dots,r}(\mu;\omega).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B71E.html" class="stacks-tag-link">(B71E)</a></div>
+  <div class="stacks-env-body"><p>Set \(V = W = \k^2\) and consider the rational map
+  $$ \P^3 = \P\Hom(V,W) \dashrightarrow \Gr(r+1, \Sym^d W)$$
+  given by
+  $$ m \mapsto m(S).$$
+  Let \(\phi \colon \widetilde{\P}^3 \to \Gr(r+1, \Sym^dW)\) be its resolution provided by <a href="/papers/orbits-linear-series/tag/E5FB.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[E5FB]</span></a>.
+  Then \(\phi\) is a complete parametrisation of the \(\PGL W\)-orbit of \([S]\).
+  By <a href="/papers/orbits-linear-series/tag/EF94.html" class="stacks-ref-link">Proposition&nbsp;2.2 <span class="stacks-ref-tag">[EF94]</span></a>, we have
+  $$ |\Gamma| \cdot [\Orb(s)] = \int_{\widetilde{\P}^3}c_{(r+1)(d-r)}\Hom(\underline \k^{r+1}, \phi^*Q),$$
+  where \(Q\) is the universal quotient bundle on the Grassmannian.
+  In our case, we have
+  $$ \phi^* Q = \Sym^d \underline W / \widetilde{S}.$$
+  Let \(T \subset \GL(2)\) be a maximal torus.
+  By the equivariant localisation formula [8, Corollary&nbsp;1], we have
+  $$\int_{\widetilde{\P}^3}c_{(r+1)(d-r)}\Hom(\underline \k^{r+1}, \phi^*Q) = \sum_F \int_F \frac{c_{(r+1)(d-r)}\Hom(\underline \k^{r+1}, \phi^*Q)}{e(N_F)},$$
+  where the sum is over the \(T\)-fixed loci \(F\) and \(e(N_F)\) is the top Chern class of the equivariant normal bundle of \(F \subset \widetilde{\P}^3\).
+  In our case, the fixed loci consist of the lines \(\widetilde \Lambda_i\) for \(i = 1, 2\) and the points \(p_{i,b}\) for \(i = 1,2\) and \(b \in B\).</p>
+<p>  Let us compute the contribution from \(F = \widetilde\Lambda_1\).
+  <a href="/papers/orbits-linear-series/tag/B181.html" class="stacks-ref-link">Proposition&nbsp;5.2 <span class="stacks-ref-tag">[B181]</span></a> give us the numerator of the integrand:
+  $$
+    \prod_{j = 0}^r \prod_{i = r+1}^d ((d-i)\omega_1 + i \omega_2 - \mu_j) = \phi_{0,\dots,r}(\mu;\omega).
+  $$
+  <a href="/papers/orbits-linear-series/tag/698E.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[698E]</span></a> gives us the denominator of the integrand:
+  $$
+    (\omega_2-\omega_1)(\omega_2-\omega_1+ (2-|B|)h),
+  $$
+  where \(h = c_1(O(1))\).
+  The integral is the coefficient of \(h\) in the power series expansion of the quotient.
+  We may compute it by formally differentiating with respect to \(h\) and setting \(h = 0\).
+  The result is
+  $$\int_{\widetilde{\Lambda}_1} \frac{c_{(r+1)(d-r)}\Hom(\k^{r+1},\phi^*Q)}{e(N_{\widetilde{\Lambda}_1})} =  \frac{2-|B|}{(\omega_1-\omega_2)^3} \cdot \phi_{0, \dots, r}(\mu;\omega).$$
+  The contribution from \(F = \widetilde\Lambda_2\) is the same as above with \(\omega_1\) and \(\omega_2\) swapped.</p>
+<p>Let us compute the contribution from \(F = p_{1,b}\).
+<a href="/papers/orbits-linear-series/tag/B49A.html" class="stacks-ref-link">Proposition&nbsp;5.3 <span class="stacks-ref-tag">[B49A]</span></a> gives us the numerator:
+$$ \prod_{j = 0}^{r} \prod_{i}((d-i)\omega_1 + i\omega_2 - \mu_j) = \phi_{a_0(b), \dots, a_r(b)}(\mu;\omega).$$
+On the left hand side above, the index \(i\) ranges in the set \(\{0,\dots, d\} - \{a_0(b), \dots, a_r(b)\}\).
+<a href="/papers/orbits-linear-series/tag/AAFF.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[AAFF]</span></a> gives us the denominator:
+$$ (\omega_1-\omega_2)^3.$$
+Taking the integral is trivial in this case, so the result is
+$$\int_{p_{1,b}} \frac{c_{(r+1)(d-r)}\Hom(\k^{r+1},\phi^*Q)}{e(N_{p_{1,b}})} =  \frac{1}{(\omega_1-\omega_2)^3} \cdot \phi_{a_0(b), \dots, a_r(b)}(\mu;\omega).$$
+The contribution from \(F = p_{2,b}\) is the same as above with \(\omega_1\) and \(\omega_2\) swapped.</p>
+<p>By combining (5.3), (5.4), and their analogues for \(\widetilde \Lambda_2\) and \(p_{2,b}\) we see that the integral in (5.2) is as claimed.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Section 5: Localisation">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>
