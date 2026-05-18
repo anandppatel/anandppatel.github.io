@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>4.3. The computation — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: The divisor class of $\mu_i$</a> / <span>4.3. The computation</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.3. The computation</h1>
+<p class="stacks-para">We now compute $\ch N_i$ using the expression in <a href="/papers/syzygy-divisors/tag/E90D.html" class="stacks-ref-link">Proposition&nbsp;4.2 <span class="stacks-ref-tag">[E90D]</span></a>.
+Since we are ultimately only interested in $\c_1$ and $\ch_2$, we ignore all terms of degree higher than $2$.
+We may assume, for example, that the computation is happening over a general curve $B \to \widetilde {\orb H}_{d,g}$.
+Denote by $\pi \from C \to B$ and $p \from P \to B$ the two projections.</p>
+<p class="stacks-para">From <a href="/papers/syzygy-divisors/tag/E90D.html" class="stacks-ref-link">Proposition&nbsp;4.2 <span class="stacks-ref-tag">[E90D]</span></a>, we have
+$$\begin{split}
+  \ch N_i &=  \sum_{j=0}^{i+1} (-1)^{j-i-1} \ch \left(K_{i+1}(j)\right)\\
+  &= \left(\sum_{j=0}^{i+1}(-1)^{j-1} \ch(\wedge^{i+1-j}E) \ch (\alpha_* \omega_\alpha^j)) \right) - \ch(\wedge^i E) + \ch(\wedge^{i+1}E) \ch(E^\vee).
+\end{split}$$
+The two correction terms at the end are needed because the $j = 0$ and $j = 1$ terms in the summation are differ from the corresponding terms of the Koszul resolution in the following way (the computation is in the K-ring):
+$$\begin{aligned}[\wedge^{i+1}E] \otimes [\alpha_* \omega_\alpha^0] &= [\wedge^{i+1}E] \otimes [ \O + E^\vee] \\
+  &= [K_{i+1}(i+1)] + [\wedge^{i+1}E]\otimes[E^\vee],\ \text{and}\\
+  [\wedge^i E] \otimes [\alpha_* \omega_\alpha ] &= [\wedge^i E]\otimes[\O + E] \\
+  &= K_{i+1}(i) + [\wedge^i E].\end{aligned}$$</p>
+<p class="stacks-para">Next, by Grothendieck&ndash;Riemann&ndash;Roch applied to $\alpha$ we get
+$$\ch \alpha_* \omega_\alpha^\ell = \alpha_* \left(1 + \ell \cdot \c_1(\omega_\alpha) + \frac{\ell^2\c_1(\omega_\alpha)^2}{2}\right) \left(1 - \frac{\c_1(\omega_\alpha)^2}{2} + \frac{\c_1(\omega_\alpha)^2+c_2(\Omega_{C/P})}{12}\right).$$
+Note that $\c_1(\omega_\alpha)$ is the class of the ramification divisor of $\alpha \from C \to P$.
+In particular, $\alpha_* \c_1(\omega_\alpha)$ is the class of the branch divisor, which is cut out by a section of $(\det E)^{\otimes 2}$.
+Therefore, we get
+$$\alpha_* \c_1(\omega_\alpha) = 2\c_1 E.$$
+Specializing (4.3) to the case $\ell = 0$ and comparing the degree two terms yields
+$$\ch_2 E = \alpha_*\left(\frac{\c_1(\omega_\alpha)^2+c_2(\Omega_{C/P})}{12}\right).$$
+After using (4.4) and (4.5) to simplify (4.3), we get
+$$\ch \alpha_* \omega_\alpha^\ell = d + (2\ell-1)\c_1(E) + \left(\ch_2(E) + \frac{\ell^2+\ell}{2}\pi_*\c_1(\omega_\alpha)^2 \right).$$</p>
+<p class="stacks-para">For a vector bundle $E$ of rank $d-1$, we have
+$$\begin{aligned}\ch_0 \wedge^\ell E &= {{d-1} \choose \ell}, \\
+  \c_1(\wedge^\ell E) &= {{d-2} \choose {\ell - 1}} \c_1(E), \text{ and }\\
+  \ch_2(\wedge^\ell E) &= {{d-2} \choose {\ell - 1}} \ch_2(E) + \frac{1}{2}{{d-3} \choose {l-2}} (\c_1(E)^2 - 2\ch_2(E)).\end{aligned}$$
+Using these identities and using (4.6), we expand the terms $\ch(\wedge^{i+1-j}E)\ch(\alpha_*\omega_\alpha^j)$ and carry out the summation.
+To evaluate the summation in a closed form, we use the following combinatorial identities <span style="font-size:0.9em;color:#555;">(along with ample help from the computer algebra system <code>Maple</code> with its <code>sumtools</code> package)</span>:
+$$\begin{aligned}\sum_{l=0}^p (-1)^l {a \choose {p-l}} &= {{a-1} \choose p}\\
+  \sum_{l=0}^p (-1)^l {a \choose {p-l}} l &= - {{a-2} \choose {p-1}}\\
+  \sum_{l=0}^p (-1)^l {a \choose {p-l}} l(l-1) &=  2 {{a-3} \choose {p-2}}.\end{aligned}$$
+The result is the following:
+$$\begin{split}
+    \ch_0 (N_i) &= \frac{i(d-2-i)}{d-1} {d \choose {i+1}} \\
+    \c_1 (N_i) &= (d-2-i) {{d-2} \choose {i-1}} \c_1(E)\\
+    \ch_2 (N_i) &= {{d-4} \choose {i-1}} \left(d \ch_2(E) +
+      \frac{(d-4)i+2}{2(d-i-1)}\c_1^2(E) - \c_1(\omega_\alpha)^2
+    \right)
+  \end{split}$$</p>
+<p class="stacks-para">We use this computation to finish a postponed proof from <a href="/papers/syzygy-divisors/tag/AB0E.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[AB0E]</span></a>.</p>
+<div class="stacks-lemma" id="cor-degNi">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;4.3.</strong> <a href="../tag/BFA5.html" class="stacks-tag-link">(BFA5)</a></div>
+  <div class="stacks-env-body"><p>$\deg N_i = (d-2-i) (g+d-1) {{d-2} \choose i-1}.$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/176C.html" class="stacks-tag-link">(176C)</a></div>
+  <div class="stacks-env-body"><p>Follows from (4.7) and that $\deg \c_1(E) = (g+d-1)$.</p></div>
+</div>
+<div class="stacks-theorem" id="thm-bog">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.4.</strong> <a href="../tag/70C0.html" class="stacks-tag-link">(70C0)</a></div>
+  <div class="stacks-env-body"><p>The push-forward to $\widetilde H_{d,g}$ of the Bogomolov expression for $N_i$ is the following linear combination the standard divisor classes:
+  $$\begin{aligned}p_* \Bog(N_i) &= A_i \left(6(gd-6g+d+6) \cdot \zeta - d(d-12)\cdot \kappa - d^2 \cdot \delta \right),\end{aligned}$$
+  where the coefficient $A_i$ is given by
+  $$A_i = {{d-4} \choose {i-1}}^2 \frac{(d-2)(d-3)}{6(i+1)(d-i-1)}.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F91B.html" class="stacks-tag-link">(F91B)</a></div>
+  <div class="stacks-env-body"><p>This is a direct consequence of the results of the Chern class computation collected in (4.7) and the relations in <a href="/papers/syzygy-divisors/tag/9D29.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[9D29]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Note that $\Bog(N_i)$ is symmetric with respect to the change $i \leftrightarrow d-2-i$, consistent with the fact that $N_i$ and $N_{d-2-i}$ are isomorphic up to twisting and taking duals.</p>
+<p class="stacks-para">The main theorem (<a href="/papers/syzygy-divisors/tag/B6A0.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[B6A0]</span></a>) follows from <a href="/papers/syzygy-divisors/tag/D380.html" class="stacks-ref-link">Proposition&nbsp;2.5 <span class="stacks-ref-tag">[D380]</span></a>, the interpretation of the Bogomolov expression (Section&nbsp;4.1), and <a href="/papers/syzygy-divisors/tag/70C0.html" class="stacks-ref-link">Theorem&nbsp;4.4 <span class="stacks-ref-tag">[70C0]</span></a>.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — 4.3. The computation">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S4.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>4.2. The Koszul resolution — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: The divisor class of $\mu_i$</a> / <span>4.2. The Koszul resolution</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.2. The Koszul resolution</h1>
+<p class="stacks-para">By <a href="/papers/syzygy-divisors/tag/D4E0.html" class="stacks-ref-link">Proposition&nbsp;4.1 <span class="stacks-ref-tag">[D4E0]</span></a>, the problem of finding the divisor class of $\mu_i$ is reduced to finding $\c_1(N_i)$ and $\ch_2(N_i)$.
+To calculate the Chern classes of the bundles $N_i$, we express them as cohomology bundles of a resolution involving more familiar bundles.
+This is the Koszul resolution, which we now recall.</p>
+<p class="stacks-para">Let $R$ be a (Noetherian) ring and $E$ a locally free $R$-module of rank $r$.
+Let $S = \Sym^*(E)$ be the symmetric algebra on $E$ and let $M$ be a graded $S$-module.
+Suppose we have a graded resolution
+$$0 \to F_k \to \dots \to F_1 \to F_0 \to M \to 0,$$
+where
+$$F_i = \bigoplus_{j \geq 0} \ N_{ij} \otimes_R S(-i-j)$$
+and the $N_{ij}$ are locally free $R$-modules.
+Suppose the resolution is minimal in the sense that all the maps $F_{i+1} \to F_i$ have graded components in positive degree.
+Then we have the identification
+$$N_{ij} = \Tor^i_S(M, R)_{i+j},$$
+where the subscript denotes the graded component.
+The right hand side can be computed in another way.
+Instead of using an $S$-resolution of $M$, we use the $S$-resolution of $R$ given by the Koszul complex
+$$0 \to \wedge^r E \otimes_R S(-r) \to \dots \to \wedge^{p}E \otimes_R S(-p) \to \dots \to E \otimes_R S(-1) \to S \to R \to 0.$$
+Tensoring by $M$ and taking the $(i+j)$th graded component yields the complex
+$$K_{i+j}: \wedge^r E \otimes_R M_{i+j-r} \to \cdots \xrightarrow{d_{p-1}} \wedge^{p}E \otimes_R M_{i+j-p} \xrightarrow{d_p} \cdots \to E \otimes_R M_{i+j-1} \to M_{i+j}.$$
+Let $H^p(K_{i+j}) = \ker d_p/\im d_{p-1}$ be the cohomology.
+Then we get the identification
+$$\Tor_S^j(M, R)_{i+j} = H^i(K_{i+j}).$$
+Combining with (4.1), we get
+$$N_{ij} = H^i(K_{i+j}).$$</p>
+<p class="stacks-para">Let us now turn to the Casnati&ndash;Ekedahl resolution of the universal finite cover $\alpha \from \orb C \to \orb P$.
+Let $E = \ker(\omega_\phi \to \O_{\orb P})$ be the Tschirnhausen bundle and $\iota \from \orb C \to \P E$ the relative canonical embedding.
+Let $I \subset S = \Sym^* E$ be the homogeneous ideal of $\orb C$.
+The Koszul complex $K_{i+1}$ for the $S$-module $S/I$ is the following
+$$K_{i+1}:  \wedge^{i+1}E \to \wedge^{i} E \otimes E \to \wedge^{i-1}E \otimes \alpha_*(\omega_\alpha^2) \to \dots \to \alpha_* (\omega_\alpha^{i+1}).$$
+Denote by $K_{i+1}(j)$ the $j$th term in the above complex, starting from $j = 0$ and counting from the right to the left.</p>
+<div class="stacks-lemma" id="prop-ch">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.2.</strong> <a href="../tag/E90D.html" class="stacks-tag-link">(E90D)</a></div>
+  <div class="stacks-env-body"><p>Let $1 \leq i \leq d-3$ and let $N_i$ be the $i$th syzygy bundle of $\alpha$.
+  Then we have
+  $$\ch N_i = \sum_{j=0}^{i+1} (-1)^{j-i-1} \ch \left(K_{i+1}(j)\right).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B313.html" class="stacks-tag-link">(B313)</a></div>
+  <div class="stacks-env-body"><p>From the Casnati&ndash;Ekedahl resolution of $\alpha$ and the identification of the syzygy bundles with the cohomology of the Koszul complex, we know that
+  $$H^p(K_{i+1}) =
+  \begin{cases}
+    N_i & \text{if $p = i$}\\
+    0 & \text{otherwise}
+  \end{cases}.$$
+  Therefore, we have the equality
+  $$N_i = \sum_{j=0}^{i+1} (-1)^{j-i-1} K_{i+1}(j)$$
+  in the K-ring, from which the formula for the Chern character follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — 4.2. The Koszul resolution">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S4.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>
