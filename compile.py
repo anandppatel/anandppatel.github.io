@@ -52,6 +52,7 @@ TAG_REGISTRY_PATH = os.path.join(SITE_ROOT, "papers", "tag-registry.json")
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
 TEX_RENDER_CONTEXT = {
     "preamble": "",
+    "tikzset": "",
     "tex_dir": SITE_ROOT,
     "cache_dir": os.path.join(SITE_ROOT, ".tikz-cache"),
 }
@@ -68,6 +69,38 @@ def save_registry(reg):
     os.makedirs(os.path.dirname(TAG_REGISTRY_PATH), exist_ok=True)
     with open(TAG_REGISTRY_PATH, "w") as f:
         json.dump(reg, f, indent=2)
+
+
+def extract_latex_commands(text, command):
+    """Extract full \\command{...} commands with balanced braces."""
+    needle = "\\" + command + "{"
+    commands = []
+    pos = 0
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            commands.append(text[start:i])
+            pos = i
+        else:
+            pos = start + len(needle)
+    return commands
+
+
+def remove_latex_commands(text, command):
+    """Remove full \\command{...} commands with balanced braces."""
+    for raw in extract_latex_commands(text, command):
+        text = text.replace(raw, "")
+    return text
 
 
 def label_to_tag(label, existing_tags):
@@ -730,9 +763,30 @@ def _parse_tex_blocks(content, blocks, sec_num):
 
 
 def split_paragraphs(text):
-    """Split text on blank lines into paragraphs."""
-    paras = re.split(r'\n\s*\n', text.strip())
-    return [p.strip() for p in paras if p.strip()]
+    """Split text on blank lines without cutting through display environments."""
+    protected_envs = {
+        "figure", "table", "center", "equation", "equation*",
+        "align", "align*", "tikzcd", "tikzpicture", "tabular",
+    }
+    paras = []
+    current = []
+    depth = 0
+    for line in text.strip().splitlines():
+        begins = re.findall(r'\\begin\{([^}]+)\}', line)
+        ends = re.findall(r'\\end\{([^}]+)\}', line)
+        is_blank = not line.strip()
+        if is_blank and depth == 0:
+            if current:
+                paras.append("\n".join(current).strip())
+                current = []
+            continue
+        current.append(line)
+        depth += sum(1 for env in begins if env in protected_envs)
+        depth -= sum(1 for env in ends if env in protected_envs)
+        depth = max(depth, 0)
+    if current:
+        paras.append("\n".join(current).strip())
+    return [p for p in paras if p]
 
 
 def configure_tex_renderer(tex_source, tex_dir):
@@ -749,6 +803,7 @@ def configure_tex_renderer(tex_source, tex_dir):
             declarations.append(f"\\providecommand{{\\{name}}}{{}}")
             declarations.append(f"\\renewcommand{{\\{name}}}{{{definition}}}")
     TEX_RENDER_CONTEXT["preamble"] = "\n".join(declarations)
+    TEX_RENDER_CONTEXT["tikzset"] = "\n".join(extract_latex_commands(tex_source, "tikzset"))
     TEX_RENDER_CONTEXT["tex_dir"] = tex_dir
     TEX_RENDER_CONTEXT["cache_dir"] = os.path.join(tex_dir, ".tikz-cache")
 
@@ -761,12 +816,18 @@ def strip_svg_header(svg):
     return svg.strip()
 
 
-def render_tikzcd_block(tikz_source):
-    """Compile a tikzcd environment to inline SVG, with a readable fallback."""
+def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
+    """Compile a TikZ/tikz-cd environment to inline SVG, with a readable fallback."""
     cache_dir = TEX_RENDER_CONTEXT["cache_dir"]
     os.makedirs(cache_dir, exist_ok=True)
     digest = hashlib.sha256(
-        (TEX_RENDER_CONTEXT["preamble"] + "\n" + tikz_source).encode()
+        (
+            TEX_RENDER_CONTEXT["preamble"]
+            + "\n"
+            + TEX_RENDER_CONTEXT["tikzset"]
+            + "\n"
+            + tikz_source
+        ).encode()
     ).hexdigest()[:16]
     svg_path = os.path.join(cache_dir, f"{digest}.svg")
 
@@ -774,8 +835,24 @@ def render_tikzcd_block(tikz_source):
         document = r"""\documentclass[tikz,border=3pt]{standalone}
 \usepackage{amsmath,amssymb,amsfonts,mathtools}
 \usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{xparse}
+\usepackage{tikz}
 \usepackage{tikz-cd}
+\usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes,decorations.markings,decorations.pathmorphing,plotmarks,calc,patterns,fit,backgrounds}
 """ + TEX_RENDER_CONTEXT["preamble"] + r"""
+""" + TEX_RENDER_CONTEXT["tikzset"] + r"""
+\providecommand{\Cref}[1]{#1}
+\providecommand{\cref}[1]{#1}
+\providecommand{\autoref}[1]{#1}
+\ProvideDocumentCommand{\op}{O{r} O{n} m}{\mathcal{O}_{#3}}
+\ProvideDocumentCommand{\opc}{O{r} O{n} m}{[\mathcal{O}_{#3}]}
+\ProvideDocumentCommand{\og}{O{r+1} O{n} m}{\mathcal{O}(#3)}
+\ProvideDocumentCommand{\ogc}{O{r+1} O{n} m}{[\mathcal{O}(#3)]}
+\ProvideDocumentCommand{\oa}{O{(r+1)} O{n} m}{\mathcal{O}(#3)}
+\ProvideDocumentCommand{\oac}{O{(r+1)} O{n} m}{[\mathcal{O}(#3)]}
+\graphicspath{{""" + TEX_RENDER_CONTEXT["tex_dir"].replace("\\", "/") + r"""/}}
 \begin{document}
 """ + tikz_source + r"""
 \end{document}
@@ -784,10 +861,18 @@ def render_tikzcd_block(tikz_source):
             tex_file = os.path.join(tmpdir, "diagram.tex")
             with open(tex_file, "w", encoding="utf-8") as f:
                 f.write(document)
+            env = os.environ.copy()
+            tex_dir = TEX_RENDER_CONTEXT["tex_dir"]
+            env["TEXINPUTS"] = (
+                tex_dir + os.pathsep
+                + tex_dir + "//" + os.pathsep
+                + env.get("TEXINPUTS", "")
+            )
             try:
                 subprocess.run(
                     ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "diagram.tex"],
                     cwd=tmpdir,
+                    env=env,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     text=True,
@@ -797,6 +882,7 @@ def render_tikzcd_block(tikz_source):
                 subprocess.run(
                     ["pdftocairo", "-svg", "diagram.pdf", svg_path],
                     cwd=tmpdir,
+                    env=env,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     text=True,
@@ -821,9 +907,19 @@ def render_tikzcd_block(tikz_source):
     svg = re.sub(r'<svg\b', '<svg class="stacks-tikzcd-svg"', svg, count=1)
     return (
         '<div class="stacks-tikzcd" role="img" '
-        'aria-label="Commutative diagram">'
+        f'aria-label="{html_attr(aria_label)}">'
         f'{svg}</div>'
     )
+
+
+def render_tikzcd_block(tikz_source):
+    """Compile a tikzcd environment to inline SVG, with a readable fallback."""
+    return render_tikz_block(tikz_source, "Commutative diagram")
+
+
+def render_tikzpicture_block(tikz_source):
+    """Compile a tikzpicture environment to inline SVG, with a readable fallback."""
+    return render_tikz_block(tikz_source, "TikZ diagram")
 
 
 def split_latex_top_level(text, delimiter):
@@ -950,6 +1046,25 @@ def tex_to_html(tex):
         lambda m: render_tikzcd_block(m.group(0)),
         s, flags=re.DOTALL
     )
+    s = re.sub(
+        r'\\begin\{tikzpicture\}(?:\[[^\]]*\])?.*?\\end\{tikzpicture\}',
+        lambda m: render_tikzpicture_block(m.group(0)),
+        s, flags=re.DOTALL
+    )
+    s = remove_latex_commands(s, "tikzset")
+
+    # figure/table wrappers are layout hints in LaTeX; keep captions and labels
+    # as plain HTML around any rendered diagrams or tables.
+    s = re.sub(r'\\begin\{(?:figure|table)\}(?:\[[^\]]*\])?', '', s)
+    s = re.sub(r'\\end\{(?:figure|table)\}', '', s)
+    s = re.sub(r'\\centering\b', '', s)
+    s = re.sub(
+        r'\\caption(?:\[[^\]]*\])?\{((?:[^{}]|\{[^{}]*\})*)\}',
+        lambda m: f'<div class="stacks-caption">{tex_to_html(m.group(1).strip())}</div>',
+        s,
+        flags=re.DOTALL,
+    )
+    s = re.sub(r'\\label\{[^}]*\}', '', s)
 
     # center → strip
     s = re.sub(r'\\begin\{center\}', '', s)
@@ -1500,7 +1615,7 @@ def wrap_content_html(content, paragraph_class=None):
     class_attr = f' class="{paragraph_class}"' if paragraph_class else ''
     block_re = re.compile(
         r'(<(?:div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-latex-fallback)'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback)'
         r'[^"]*"[\s\S]*?</(?:div|pre)>)'
     )
     if not block_re.search(content):
