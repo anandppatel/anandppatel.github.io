@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Proof (A246) — Special Codimension One Loci in Hurwitz Spaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "{\\bf F}",
+          F: "\\mathbb{F}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -64,16 +69,16 @@
           cY: "{\\mathcal Y}",
           cZ: "{\\mathcal Z}",
           cp: "{\\mathcal p}",
-          bG: "{\\bf G}",
+          bG: "\\mathbb{G}",
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
           E: "{\\bf E}",
-          C: "{\\bf C}",
-          A: "{\\bf A}",
-          P: "{\\bf P}",
+          C: "\\mathbb{C}",
+          A: "\\mathbb{A}",
+          P: "\\mathbb{P}",
           from: "{\\colon}",
           into: "\\,{\\hookrightarrow}\\,",
           onto: "\\twoheadrightarrow",
@@ -84,7 +89,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           compl: ["\\widehat{#1}", 1],
@@ -108,13 +113,45 @@
           PGL: "{\\rm PGL}",
           length: "{\\rm length}",
           res: "{\\rm res}",
-          Ram: "\\operatorname{Ram}"
+          Ram: "\\operatorname{Ram}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -137,7 +174,7 @@ For this, let $(B, 0)$ denote a versal deformation space of $[\beta] \in \Hdgnt$
 <p>Now we twist $\cE_{\rm versal}$ down by the line bundle $\cO_{\cP_{B}}(a\sigma_{L} + b\sigma_{R})$ to get a bundle $\cE'_{{\rm versal}}$ such that $\cE'_{{\rm versal}}|_{0} := \cE'_{{\rm versal}}|_{P_{L}\cup P_{R}}$ restricts to $\cA_{L} := \cO^{\oplus r} \oplus \cO(-1)^{\oplus 4-r}$  and $\cA_{R} := \cO^{\oplus 4-r} \oplus \cO(-1)^{\oplus r}$ on $P_{L}$ and $P_{R}$ respectively.</p>
 <p>Take the exact sequence on $\cP_{B}$ $$0 \to \cE'_{{\rm versal}} \to \cE'_{{\rm versal}}(+\sigma_{L}) \to \cE'_{{\rm versal}}(+\sigma_{L})|_{\sigma_{L}} \to 0$$ and push it down via $\pi$.  Since $\cE'_{{\rm versal}}$ restricts on the generic fiber of $\pi$ to $\cO(-1)^{\oplus 4}$, we conclude that $\pi_{*}(\cE'_{{\rm versal}}) = 0$, and that $R^{1}\pi_{*}(\cE'_{{\rm versal}})$ is supported on a codimension one subvariety containing the Maroni divisor $\sfM$. Furthermore, the Bogomolov expression for $\cE'_{\rm versal}$ comes from computing $c_{1}R^{1}\pi_{*}(\cE'_{{\rm versal}})$ over the locus $B \setminus \Delta$, so the Maroni divisor $\sfM$ occurs with multiplicity one as a component of the support of $R^{1}\pi_{*}(\cE'_{{\rm versal}})$.</p>
 <p>This also means that any other component of the support of $R^{1}\pi_{*}(\cE'_{{\rm versal}})$ must be supported on $\Delta$.  However, it is easy to check that for a general point in $\Delta$, the directrices $\Sigma_{L}$ and $\Sigma_{R}$ do not meet, and that this translates into vanishing of $R^{1}\pi_{*}(\cE'_{{\rm versal}})$ at such a point. </p>
-<p>Therefore, <em>the Maroni divisor $\sfM$ is simply the codimension one support of $R^{1</em>\pi_{*}(\cE'_{{\rm versal}})$.}</p>
+<p>Therefore, <em>the Maroni divisor $\sfM$ is simply the codimension one support of $R^{1}\pi_{*}(\cE'_{{\rm versal}})$.</em></p>
 <p>By pushing forward, we end up with a sequence of $\cO_{B}$&ndash;modules:
 $$0 \to \pi_{*}\cE'_{{\rm versal}}(+\sigma_{L}) \to \cE'_{{\rm versal}}(+\sigma_{L})|_{\sigma_{L}} \to R^{1}\pi_{*}(\cE'_{{\rm versal}}) \to 0.$$</p>
 <p>The second sheaf is clearly locally free, and so is the first.  Indeed, it suffices to show that $h^{0}(\cE'_{{\rm versal}}(+\sigma_{L})|_{P_{L}\cup P_{R}}) = d-1$ regardless of whether the directrices meet or not. This is straightforward: it follows from the fact that $\cE'_{{\rm versal}}(+\sigma_{L})|_{P_{L}\cup P_{R}}$ restricts to a globally generated bundle on $P_{L}$ and has trivial $h^{1}$ on either. component.  We conclude that the support of $R^{1}\pi_{*}(\cE'_{{\rm versal}})$ is pure codimension one.</p>
@@ -148,7 +185,7 @@ $$0 \to \pi_{*}\cE'_{{\rm versal}}(+\sigma_{L}) \to \cE'_{{\rm versal}}(+\sigma_
 <p>$$0 \to \cE'_{\beta_{t}} \to \nu_{*}\nu^{*}\cE'_{\beta_{t}} \to \cE'_{\beta_{t}}|_{x(t)} \to 0,$$
 where $x(t)$ is the family of nodes. We therefore seek the length of the cokernel of the restriction map $$\rho \from H^{0}(\nu_{*}\nu^{*}\cE'_{\beta_{t}}) \to H^{0}(\cE'_{\beta_{t}}|_{x(t)}).$$</p>
 <p>The latter is clearly a free $k[[t]]$-module of rank $4$.</p>
-<p> By assumption, the bundle $\cE'_{\beta_{t}}$ restricts to $\cA_{L,t}$ and $\cA_{R,t}$ on $\cP_{L,t}$ and $\cP_{R,t}$ respectively, where $$\cA_{L,t} = \cO_{\cP_{L,t}}^{\oplus r} \oplus \cO_{\cP_{L,t}}(-1)^{\oplus 4-r}$$ and $$\cA_{R,t} = \cO_{\cP_{R,t}}^{\oplus 4-r} \oplus \cO_{\cP_{R,t}}(-1)^{\oplus r}$$ therefore we get $$H^{0}(\nu_{*}\nu^{*}\cE'_{\beta_{t}}) = k[[t]]\langle e_{1}, ... , e_{r} \rangle \oplus k[[t]]\langle f_{1}, ... , f_{4-r} \rangle $$ where $e_{i}$ and $f_{j}$ are bases for the free $k[[t]]$&ndash;modules $H^{0}(\cA_{L,t})$ and $H^{0}(\cA_{R,t})$ respectively. </p>
+<p> By assumption, the bundle $\cE'_{\beta_{t}}$ restricts to $\cA_{L,t}$ and $\cA_{R,t}$ on $\cP_{L,t}$ and $\cP_{R,t}$ respectively, where $$\cA_{L,t} = \cO_{\cP_{L,t}}^{\oplus r} \oplus \cO_{\cP_{L,t}}(-1)^{\oplus 4-r}$$ and $$\cA_{R,t} = \cO_{\cP_{R,t}}^{\oplus 4-r} \oplus \cO_{\cP_{R,t}}(-1)^{\oplus r}$$ therefore we get $$H^{0}(\nu_{*}\nu^{*}\cE'_{\beta_{t}}) = k[[t]]\langle e_{1}, ... , e_{r} \rangle \oplus k[[t]]\langle f_{1}, ... , f_{4-r} \rangle$$ where $e_{i}$ and $f_{j}$ are bases for the free $k[[t]]$&ndash;modules $H^{0}(\cA_{L,t})$ and $H^{0}(\cA_{R,t})$ respectively. </p>
 <p>Hence the length of the cokernel of $\rho$ is given by order of vanishing of the determinant of the matrix $\rho$ at $t=0$. </p>
 <p>Now we simply notice that in the projective bundle $\P \cE'_{\beta_{t}}|_{x(t)}$ over $\Spec k[[t]]$, the equations $\rho(e_{1}) = ... \rho(e_{r}) = 0$ cut out the scheme $\Sigma_{L,t} \cap \P \cE'_{\beta_{t}}|_{x(t)}$ and similarly $\rho(f_{1}) = ... \rho(f_{4-r}) = 0$ cut out the scheme $\Sigma_{R,t} \cap \P \cE'_{\beta_{t}}|_{x(t)}$.  The theorem now follows by the simple observation that the scheme theoretic intersection of these two linear subschemes is given by the vanishing of the determinant of $\rho$.</p></div>
 </div>
@@ -175,7 +212,7 @@ where $x(t)$ is the family of nodes. We therefore seek the length of the cokerne
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

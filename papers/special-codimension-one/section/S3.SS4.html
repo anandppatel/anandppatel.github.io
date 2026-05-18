@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>3.4. The divisor classes of $\sfM$ and $\sfCE$. — Special Codimension One Loci in Hurwitz Spaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "{\\bf F}",
+          F: "\\mathbb{F}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -64,16 +69,16 @@
           cY: "{\\mathcal Y}",
           cZ: "{\\mathcal Z}",
           cp: "{\\mathcal p}",
-          bG: "{\\bf G}",
+          bG: "\\mathbb{G}",
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
           E: "{\\bf E}",
-          C: "{\\bf C}",
-          A: "{\\bf A}",
-          P: "{\\bf P}",
+          C: "\\mathbb{C}",
+          A: "\\mathbb{A}",
+          P: "\\mathbb{P}",
           from: "{\\colon}",
           into: "\\,{\\hookrightarrow}\\,",
           onto: "\\twoheadrightarrow",
@@ -84,7 +89,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           compl: ["\\widehat{#1}", 1],
@@ -108,13 +113,45 @@
           PGL: "{\\rm PGL}",
           length: "{\\rm length}",
           res: "{\\rm res}",
-          Ram: "\\operatorname{Ram}"
+          Ram: "\\operatorname{Ram}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -124,13 +161,13 @@
     <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <span>3.4. The divisor classes of $\sfM$ and $\sfCE$.</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <span>3.4. The divisor classes of $\sfM$ and $\sfCE$.</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS3.html" aria-label="Previous: 3.3." title="Previous: 3.3.">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS5.html" aria-label="Next: 3.5. The effective divisor class $\sfX$." title="Next: 3.5. The effective divisor class $\sfX$.">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.4. The divisor classes of $\sfM$ and $\sfCE$.</h1>
 <p class="stacks-para">We now express the classes of the divisors $\sfM$ and $\sfCE$ in terms of $\lambda, \delta$, and $\sfD$ in the Picard group of the partial compactification $\td \H_{d,g}$.</p>
-<p class="stacks-para">Since $\pi \colon \P \longrightarrow \widetilde{\H}_{d,g}$ is a $<strong>P</strong>^1$-bundle, we can use the Bogomolov expressions for the universal bundles $\cE_{univ}$ and $\cF_{univ}$, respectively.  Given any rank $r$ locally free sheaf $\cG$ on $\P$, the Bogomolov expression for $\cG$ is
+<p class="stacks-para">Since $\pi \colon \P \longrightarrow \widetilde{\H}_{d,g}$ is a $\mathbb{P}^1$-bundle, we can use the Bogomolov expressions for the universal bundles $\cE_{univ}$ and $\cF_{univ}$, respectively.  Given any rank $r$ locally free sheaf $\cG$ on $\P$, the Bogomolov expression for $\cG$ is
 $$\text{Bog}(\cG) :=c_2(\cG) -  \frac{(r-1)}{2r}c_1^2(\cG).$$
- (It is, up to scaling, the unique linear combination of $c_2$ and $c_1^2$ which is invariant under tensoring by line bundles.) When $\cG$ restricts to a perfectly balanced bundle on the general fiber of $\pi$, the Bogomolov expression $\text{Bog}(\cG)$ detects the change in splitting type of $\cG$ on the fibers of the $<strong>P</strong>^1$-bundle $\P$ [Mor98].   Using <a href="/papers/special-codimension-one/tag/0CC5.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[0CC5]</span></a> and <a href="/papers/special-codimension-one/tag/DF3E.html" class="stacks-ref-link">Proposition&nbsp;3.2 <span class="stacks-ref-tag">[DF3E]</span></a>, we conclude:</p>
+ (It is, up to scaling, the unique linear combination of $c_2$ and $c_1^2$ which is invariant under tensoring by line bundles.) When $\cG$ restricts to a perfectly balanced bundle on the general fiber of $\pi$, the Bogomolov expression $\text{Bog}(\cG)$ detects the change in splitting type of $\cG$ on the fibers of the $\mathbb{P}^1$-bundle $\P$ [Mor98].   Using <a href="/papers/special-codimension-one/tag/0CC5.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[0CC5]</span></a> and <a href="/papers/special-codimension-one/tag/DF3E.html" class="stacks-ref-link">Proposition&nbsp;3.2 <span class="stacks-ref-tag">[DF3E]</span></a>, we conclude:</p>
 <div class="stacks-lemma" id="classofMCE">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.5.</strong> <a href="../tag/9908.html" class="stacks-tag-link">(9908)</a></div>
   <div class="stacks-env-body"><p>In ${\rm Pic}_{\Q}\,\widetilde{\H}_{d,g}$, the divisors $\sfM$ and $\sfCE$, when they exist, are expressible in terms of $\lambda, \delta$, and $\sfD$.  These expressions are:
@@ -144,7 +181,7 @@ Here, as usual, $b = 2d + 2g - 2$.</p></div>
 </div>
 <div class="stacks-lemma" id="indepMCE">
   <div class="stacks-env-head"><strong>Corollary&nbsp;3.6.</strong> <a href="../tag/5EAD.html" class="stacks-tag-link">(5EAD)</a></div>
-  <div class="stacks-env-body"><p>Let $d \geq 4.$ Then the divisor classes $\sfM$ and $\sfCE$ and boundary divisors of $&oslash;{\H}_{d,g}$ are linearly independent. The same is true when $d=3$ when we omit $\sfCE$ (which is zero).</p></div>
+  <div class="stacks-env-body"><p>Let $d \geq 4.$ Then the divisor classes $\sfM$ and $\sfCE$ and boundary divisors of $\o{\H}_{d,g}$ are linearly independent. The same is true when $d=3$ when we omit $\sfCE$ (which is zero).</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EB59.html" class="stacks-tag-link">(EB59)</a></div>
@@ -173,7 +210,7 @@ Here, as usual, $b = 2d + 2g - 2$.</p></div>
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

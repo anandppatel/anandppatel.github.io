@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>2.1. The Casnati-Ekedahl Resolution — Invariants of a general branched cover of $\P^1$</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
           D: "{\\bf D}",
-          P: "{\\bf P}",
+          P: "\\mathbb{P}",
           from: "\\colon",
           into: "{\\hookrightarrow}",
           onto: "\\twoheadrightarrow",
@@ -32,7 +37,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           isom: "\\stackrel\\sim\\longrightarrow",
@@ -58,6 +63,14 @@
           epsilon: "\\varepsilon",
           MC: "MC",
           chain: ["\\P_{#1}", 1],
+          rotatebox: ["#2", 2],
+          Xright: "X_{\\text{right}}",
+          Hright: "H_{\\text{right}}",
+          Lambdaright: "\\Lambda_{\\text{right}}",
+          Hleft: "H_{\\text{left}}",
+          Lambdaleft: "\\Lambda_{\\text{left}}",
+          Xleft: "X_{\\text{left}}",
+          Rmiddle: "R_{\\text{middle}}",
           Crimp: "\\operatorname{Crimp}",
           Mor: "\\operatorname{Mor}",
           Def: "\\operatorname{Def}",
@@ -72,8 +85,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\operatorname{{\\mathbf G}}",
-          A: "\\operatorname{{\\mathbf A}}",
+          G: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +94,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\operatorname{\\mathbf F}",
+          F: "\\mathbb{F}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -97,13 +110,43 @@
           im: "\\operatorname{im}",
           three: "\\operatorname{[3]}",
           End: "\\operatorname{End}",
-          Sing: "\\operatorname{Sing}"
+          Sing: "\\operatorname{Sing}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -113,7 +156,7 @@
     <a href="../index.html" class="stacks-paper-link">Invariants of a general branched cover of $\P^1$</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.1. The Casnati-Ekedahl Resolution</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.1. The Casnati-Ekedahl Resolution</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Preliminaries" title="Previous: Section 2: Preliminaries">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 2.2. Evidence" title="Next: 2.2. Evidence">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">2.1. The Casnati-Ekedahl Resolution</h1>
 <p class="stacks-para">Let $X$ and $Y$ be integral schemes and $\alpha \from X \to Y$ a finite flat Gorenstein morphism of degree $d \geq 3$. The map $\alpha$ gives an exact sequence
@@ -124,27 +167,26 @@ The map $\cE \to \alpha_* \omega_\alpha$ induces a map $\alpha^* \cE \to \omega_
 <div class="stacks-theorem" id="thm-CE">
   <div class="stacks-env-head"><strong>Theorem&nbsp;2.1.</strong> <a href="../tag/A279.html" class="stacks-tag-link">(A279)</a></div>
   <div class="stacks-env-body"><p>[CE96, Theorem&nbsp;2.1]
-  In the above setup, $\alpha^* \cE \to \omega_\alpha$ gives an embedding $\iota \from X \to \P \cE$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P \cE \to Y$ is the projection. Moreover, the subscheme $X \subset \P \cE$ can be described as follows.
+  In the above setup, $\alpha^* \cE \to \omega_\alpha$ gives an embedding $\iota \from X \to \P \cE$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P \cE \to Y$ is the projection. Moreover, the subscheme $X \subset \P \cE$ can be described as follows.</p>
 <ol><li>The resolution of $\cO_X$ as an $\cO_{\P \cE}$-module has the form
 $$\begin{split}
     0 \to \pi^* \cN_{d-2} (-d) \to \pi^* \cN_{d-3}(-d+2) \to \pi^*\cN_{d-4}(-d+3) \to \dots \\
     \dots \to \pi^*\cN_2(-3) \to \pi^*\cN_1(-2) \to \cO_{\P \cE} \to \cO_X \to 0,
   \end{split}$$
 where the $\cN_i$ are vector bundles on $Y$. Restricted to a point $y \in Y$, this sequence is the minimal free resolution of length $d$ zero dimensional scheme $X_y \subset \P \cE_y\cong \P^{d-2}$.</li>
-<li>\label{thm:CE item rank} The ranks of the $\cN_i$ are given by
-  $$ \rk \cN_i = \frac{i(d-2-i)}{d-1} \binom{d}{i+1},$$</li>
+<li>The ranks of the $\cN_i$ are given by
+  $$\rk \cN_i = \frac{i(d-2-i)}{d-1} \binom{d}{i+1},$$</li>
 <li>We have $\cN_{d-2} \cong \det \cE$.</li>
 <li>Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying the functor
-$\Hom_{\cO_{\P \cE}}(-, \pi^* \cN_{d-2}(-d))$.</li></ol></p></div>
+$\Hom_{\cO_{\P \cE}}(-, \pi^* \cN_{d-2}(-d))$.</li></ol>
+</div>
 </div>
 <div class="stacks-commentary" id="">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/00FE.html" class="stacks-tag-link">(00FE)</a></div>
   <div class="stacks-env-body"><p>We will only use the case $Y=\P^1$, which was discovered by  Schreyer in [Sch86, Corollary 4.4].</p></div>
 </div>
 <p class="stacks-para">The branch divisor of $\alpha \from X \to Y$ is given by a section of $(\det \cE)^{\otimes 2}$. In particular, if $X$ is a curve of (arithmetic) genus $g$, $\alpha$ has degree $d$, and $Y = \P^1$, then
-$$
- \rk \cE = d-1 \text{ and } \deg \cE = g+d-1.
- $$</p>
+$$\rk \cE = d-1 \text{ and } \deg \cE = g+d-1.$$</p>
 <p class="stacks-para">We will be concerned with the vector bundle $N_{1}$, which from here onwards we denote by $F$, and refer to as the <em>bundle of quadrics</em>.</p>
 <p class="stacks-para">Notice that, by twisting the Casnati-Ekedahl resolution (1) by $\cO_{\P E}(2)$ and then applying $\pi_{*}$, we obtain an exact sequence
 $$0 \to F \to \Sym^{2}E \to \alpha_{*}(\omega_{\alpha}^{\otimes 2}) \to 0.$$
@@ -174,7 +216,7 @@ From this sequence, it is easy to see that $\rk F = d(d-3)/2$ and $\deg F = (d-3
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

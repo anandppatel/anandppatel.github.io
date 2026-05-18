@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>3.3. The general case — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,7 +105,7 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <span>3.3. The general case</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <span>3.3. The general case</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS2.html" aria-label="Previous: 3.2. Smoothing out" title="Previous: 3.2. Smoothing out">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS4.html" aria-label="Next: 3.4. Hurwitz spaces and Maroni loci" title="Next: 3.4. Hurwitz spaces and Maroni loci">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.3. The general case</h1>
 <p class="stacks-para">We now use the results of Section&nbsp;3.1 and Section&nbsp;3.2 to deduce the main theorem.
@@ -84,7 +119,7 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/06E1.html" class="stacks-tag-link">(06E1)</a></div>
   <div class="stacks-env-body"><p>Choose an isotrivial degeneration $E_0$ of $E$ of the form
-  $$ E_0 = L_1 \oplus \dots \oplus L_{d-1},$$
+  $$E_0 = L_1 \oplus \dots \oplus L_{d-1},$$
   where the $L_i$'s are line bundles with $\deg L_i + (2g_Y-1) \leq \deg L_{i+1}$.
   That is, let $(\Delta, 0)$ be a pointed curve and $\mathcal E$ a vector bundle on $Y \times \Delta$ such that $\mathcal E|_0 = E_0$ and $\mathcal E|_t \cong E$ for all $t \in \Delta \setminus \{0\}$.
   Such a degeneration exists by <a href="/papers/vector-bundles-finite-covers/tag/E16D.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E16D]</span></a>.
@@ -93,7 +128,7 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
   By the key proposition (<a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>), there exists an $n$ such that for any line bundle $L$ of degree at least $n$, we can find a smooth curve $X_0$ and a finite map $X_0 \to Y$ with Tschirnhausen bundle $E_0' = E_0 \otimes L$ satisfying $H^1(N_{X_0/E_0'}) = 0$.
   Set $\mathcal E' = \mathcal E \otimes L$.
   Let $\mathcal H$ be the component of the relative Hilbert scheme of $\Tot(\mathcal E') / \Delta$ containing the point $[X_0 \subset E_0']$.
-  Since $H^1(N_{X_0 / E'_0}) = 0$, the map $\mathcal H \to \Delta$ is smooth at $[X_0 \subset E'_0]$ by \cite[Theorem&nbsp;3.2.12]{ser:06}.
+  Since $H^1(N_{X_0 / E'_0}) = 0$, the map $\mathcal H \to \Delta$ is smooth at $[X_0 \subset E'_0]$ by [31, Theorem&nbsp;3.2.12].
   In particular, $\mathcal H \to \Delta$ is dominant.
   As a result, there exists a point $[X \subset \mathcal E'_t] \in \mathcal H$, where $X$ is smooth and $t \in \Delta$ is generic.
   By the choice of $\mathcal E$, we have $\mathcal E'_t = E \otimes L$.
@@ -109,7 +144,7 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
   Let $\Vec_{d-1}(Y)$ be the stack whose $S$ points are vector bundles of rank $(d-1)$ on $Y \times S$.
   Both $\mathcal H_d(Y)$ and $\Vec_{d-1}(Y)$ are algebraic stacks, locally of finite type, and smooth over $\k$.
   The rule
-  $$ \tau \from \phi \mapsto E_\phi$$
+  $$\tau \from \phi \mapsto E_\phi$$
   defines a morphism $\tau \from \mathcal H_d(Y) \to \Vec_{d-1}(Y)$.
   Then <a href="/papers/vector-bundles-finite-covers/tag/47FD.html" class="stacks-ref-link">Theorem&nbsp;3.13 <span class="stacks-ref-tag">[47FD]</span></a> says that given $E \in \Vec_{d-1}(Y)$ and given any line bundle $L$ on $Y$ of large enough degree, there exists a point $[\phi \from X \to Y]$ of $\mathcal H_d(Y)$ such that $\tau(\phi) = E \otimes L$, and furthermore, such that the map $\tau$ is smooth at $[\phi]$.</p></div>
 </div>
@@ -136,7 +171,7 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

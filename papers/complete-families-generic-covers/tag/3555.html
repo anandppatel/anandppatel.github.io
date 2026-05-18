@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Proof of Theorem 3.2 [14AF] (3555) — Complete families of generic covers of elliptic curves</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
@@ -20,7 +25,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathsf{C}",
+          C: "\\mathbb{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -30,7 +35,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -45,12 +50,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
-          N: "\\operatorname{\\mathbb{N}}",
-          Gr: "\\operatorname{Gr}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          Gr: "\\mathbb{G}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\operatorname{\\mathbb{G}}",
+          G: "\\mathbb{G}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -59,19 +64,49 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
-          pt: "\\operatorname{\\mathsf{pt}}"
+          pt: "\\operatorname{\\mathsf{pt}}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -101,10 +136,11 @@ $$\begin{aligned}\frac{1}{2}\left(\sigma_{1}(d/2) + \left(\frac{1}{12}-\frac{d}{
 <p>This further simplifies, and it then suffices to show the equality:
 $$\begin{aligned}\frac{5}{12}\sigma_{3}(d) - \frac{d}{2}\sigma_{1}(d)  = \\
     \frac{5}{12}\left[(\iota \cdot F) * \sigma_{1} \right](d) - \frac{1}{2}\left[ F * \sigma_{1} \right](d).\end{aligned}$$</p>
-<p>Equation&nbsp;3.7 then follows from the following two simple identities, both proven using the fact that the Dirichlet convolution of multiplicative functions is multiplicative, and then by evaluating each expression at prime powers:
+<p>Equation&nbsp;3.7 then follows from the following two simple identities, both proven using the fact that the Dirichlet convolution of multiplicative functions is multiplicative, and then by evaluating each expression at prime powers:</p>
 <ol><li>$\left[(\iota \cdot F) * \sigma_{1} \right](d) = \sigma_{3}(d)$,</li>
 <li>$\left[ F * \sigma_{1} \right](d) = d \cdot \sigma_{1}(d)$</li></ol>
-This finishes the verification that the numbers $\frac{5d-6}{12}|A_{d}(x)|$ satisfy the recursion (3.3) for $|B_{d}(x)|$, and therefore it follows that (3.1) is satisfied, finishing the proof of <a href="/papers/complete-families-generic-covers/tag/14AF.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[14AF]</span></a>.</p></div>
+<p>This finishes the verification that the numbers $\frac{5d-6}{12}|A_{d}(x)|$ satisfy the recursion (3.3) for $|B_{d}(x)|$, and therefore it follows that (3.1) is satisfied, finishing the proof of <a href="/papers/complete-families-generic-covers/tag/14AF.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[14AF]</span></a>.</p>
+</div>
 </div>
 
 <hr>
@@ -129,7 +165,7 @@ This finishes the verification that the numbers $\frac{5d-6}{12}|A_{d}(x)|$ sati
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

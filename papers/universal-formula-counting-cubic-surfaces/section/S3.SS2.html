@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>3.2. The second test family — A universal formula for counting cubic surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
@@ -19,18 +24,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -46,17 +51,17 @@
           Sym: "\\operatorname{Sym}",
           rk: "\\operatorname{rk}",
           themaintheorem: "\\Alph{maintheorem}",
-          O: "\\mathcal O",
-          G: "\\mathbf G",
-          F: "\\mathbf F",
+          O: "\\mathcal{O}",
+          G: "\\mathbb{G}",
+          F: "\\mathbb{F}",
           td: "\\widetilde",
-          V: "\\mathcal V",
-          cP: "\\mathcal P",
+          V: "\\mathcal{V}",
+          cP: "\\mathcal{P}",
           cC: "\\mathcal{C}",
           cX: "\\mathcal{X}",
           hL: "\\widehat{\\mathcal{L}}",
           hpsi: "\\widehat{\\psi}",
-          fm: "\\mathfrak m",
+          fm: "\\mathfrak{m}",
           smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
           hM: "\\widehat{\\M}",
           compl: ["\\widehat{#1}", 1],
@@ -74,13 +79,42 @@
           Hilb: "\\operatorname{Hilb}",
           Sing: "\\operatorname{Sing}",
           M: "\\operatorname{\\mathcal{M}}",
-          mult: "\\operatorname{mult}"
+          mult: "\\operatorname{mult}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -90,73 +124,170 @@
     <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.2. The second test family</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.2. The second test family</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS1.html" aria-label="Previous: 3.1. The first test family" title="Previous: 3.1. The first test family">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS3.html" aria-label="Next: 3.3. The third test family" title="Next: 3.3. The third test family">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.2. The second test family</h1>
-<p class="stacks-para">\begin{figure}
-    \centering
-    \begin{tikzpicture}[very thick]
-  \draw (0,0) ellipse (2 and 1.5) (2,0) node [right] {$C$};
-  \draw[shorten >=-3cm, shorten <=-3cm] (0.8, 1.4) &ndash; (5,0);
-  \draw[shorten >=-3cm, shorten <=-3cm] (0.8, -1.4) &ndash; (5,0);</p>
-<p class="stacks-para">\draw[red, fill] (5,0) circle (0.05) node [black, below] {$t$};
-  \draw[fill] (0.8, 1.4) circle (0.05) node [above right] {$s_0$};
-  \draw[fill] (0.8, -1.4) circle (0.05) node [below right] {$s_\infty$};</p>
-<p class="stacks-para">\draw[red, fill]
-  (-1, 1.3) circle (0.05) node [black, above left] {$s_1$}
-  (-1.7, 0.8) circle (0.05) node [black, above left] {$s_2$}
-  (-2, 0) circle (0.05) node [black, left] {$s_3$}
-  (-1, -1.3) circle (0.05) node [black, below left] {$s_5$}
-  (-1.7, -0.8) circle (0.05) node [black, below left] {$s_4$};
-\end{tikzpicture}</p>
-<p class="stacks-para">\caption{
-      In the second test family, we blow up the plane at the points $\{s_{1}, \dots, s_{5}, t\}$ as the seven points $\{s_1, \dots, s_5, s_0, s_\infty\}$ vary freely on a conic $C$.}
-    \label{fig:FamilyB2}
-  \end{figure}
-Forget the notation introduced in Section&nbsp;3.1.
-We take a smooth conic $C \subset \P^2$ and 7 distinct marked points $s_0, s_1, \dots, s_5, s_\infty$ on $C$.
-Let $t \in \P^2$ be the pole, with respect to $C$, of the line joining $s_0$ and $s_\infty$.
+<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="220pt" height="112pt" viewBox="0 0 220 112">
+<defs>
+<g>
+<g id="glyph-0-0">
+<path d="M 7.578125 -6.921875 C 7.578125 -6.953125 7.5625 -7.03125 7.46875 -7.03125 C 7.4375 -7.03125 7.421875 -7.015625 7.3125 -6.90625 L 6.625 -6.140625 C 6.53125 -6.28125 6.078125 -7.03125 4.96875 -7.03125 C 2.734375 -7.03125 0.5 -4.828125 0.5 -2.515625 C 0.5 -0.875 1.671875 0.21875 3.203125 0.21875 C 4.0625 0.21875 4.828125 -0.171875 5.359375 -0.640625 C 6.28125 -1.453125 6.453125 -2.359375 6.453125 -2.390625 C 6.453125 -2.5 6.34375 -2.5 6.328125 -2.5 C 6.265625 -2.5 6.21875 -2.46875 6.203125 -2.390625 C 6.109375 -2.109375 5.875 -1.390625 5.1875 -0.8125 C 4.5 -0.265625 3.875 -0.09375 3.359375 -0.09375 C 2.46875 -0.09375 1.40625 -0.609375 1.40625 -2.15625 C 1.40625 -2.734375 1.609375 -4.34375 2.609375 -5.515625 C 3.21875 -6.21875 4.15625 -6.71875 5.046875 -6.71875 C 6.0625 -6.71875 6.65625 -5.953125 6.65625 -4.796875 C 6.65625 -4.390625 6.625 -4.390625 6.625 -4.28125 C 6.625 -4.1875 6.734375 -4.1875 6.765625 -4.1875 C 6.890625 -4.1875 6.890625 -4.203125 6.953125 -4.390625 Z M 7.578125 -6.921875 "/>
+</g>
+<g id="glyph-0-1">
+<path d="M 2.046875 -3.984375 L 2.984375 -3.984375 C 3.1875 -3.984375 3.296875 -3.984375 3.296875 -4.1875 C 3.296875 -4.296875 3.1875 -4.296875 3.015625 -4.296875 L 2.140625 -4.296875 C 2.5 -5.71875 2.546875 -5.90625 2.546875 -5.96875 C 2.546875 -6.140625 2.421875 -6.234375 2.25 -6.234375 C 2.21875 -6.234375 1.9375 -6.234375 1.859375 -5.875 L 1.46875 -4.296875 L 0.53125 -4.296875 C 0.328125 -4.296875 0.234375 -4.296875 0.234375 -4.109375 C 0.234375 -3.984375 0.3125 -3.984375 0.515625 -3.984375 L 1.390625 -3.984375 C 0.671875 -1.15625 0.625 -0.984375 0.625 -0.8125 C 0.625 -0.265625 1 0.109375 1.546875 0.109375 C 2.5625 0.109375 3.125 -1.34375 3.125 -1.421875 C 3.125 -1.53125 3.046875 -1.53125 3.015625 -1.53125 C 2.921875 -1.53125 2.90625 -1.5 2.859375 -1.390625 C 2.4375 -0.34375 1.90625 -0.109375 1.5625 -0.109375 C 1.359375 -0.109375 1.25 -0.234375 1.25 -0.5625 C 1.25 -0.8125 1.28125 -0.875 1.3125 -1.046875 Z M 2.046875 -3.984375 "/>
+</g>
+<g id="glyph-0-2">
+<path d="M 3.890625 -3.734375 C 3.625 -3.71875 3.421875 -3.5 3.421875 -3.28125 C 3.421875 -3.140625 3.515625 -2.984375 3.734375 -2.984375 C 3.953125 -2.984375 4.1875 -3.15625 4.1875 -3.546875 C 4.1875 -4 3.765625 -4.40625 3 -4.40625 C 1.6875 -4.40625 1.3125 -3.390625 1.3125 -2.953125 C 1.3125 -2.171875 2.046875 -2.03125 2.34375 -1.96875 C 2.859375 -1.859375 3.375 -1.75 3.375 -1.203125 C 3.375 -0.953125 3.15625 -0.109375 1.953125 -0.109375 C 1.8125 -0.109375 1.046875 -0.109375 0.8125 -0.640625 C 1.203125 -0.59375 1.453125 -0.890625 1.453125 -1.171875 C 1.453125 -1.390625 1.28125 -1.515625 1.078125 -1.515625 C 0.8125 -1.515625 0.515625 -1.3125 0.515625 -0.859375 C 0.515625 -0.296875 1.09375 0.109375 1.9375 0.109375 C 3.5625 0.109375 3.953125 -1.09375 3.953125 -1.546875 C 3.953125 -1.90625 3.765625 -2.15625 3.640625 -2.265625 C 3.375 -2.546875 3.078125 -2.609375 2.640625 -2.6875 C 2.28125 -2.765625 1.890625 -2.84375 1.890625 -3.296875 C 1.890625 -3.578125 2.125 -4.1875 3 -4.1875 C 3.25 -4.1875 3.75 -4.109375 3.890625 -3.734375 Z M 3.890625 -3.734375 "/>
+</g>
+<g id="glyph-1-0">
+<path d="M 3.59375 -2.21875 C 3.59375 -2.984375 3.5 -3.546875 3.1875 -4.03125 C 2.96875 -4.34375 2.53125 -4.625 1.984375 -4.625 C 0.359375 -4.625 0.359375 -2.71875 0.359375 -2.21875 C 0.359375 -1.71875 0.359375 0.140625 1.984375 0.140625 C 3.59375 0.140625 3.59375 -1.71875 3.59375 -2.21875 Z M 1.984375 -0.0625 C 1.65625 -0.0625 1.234375 -0.25 1.09375 -0.8125 C 1 -1.21875 1 -1.796875 1 -2.3125 C 1 -2.828125 1 -3.359375 1.09375 -3.734375 C 1.25 -4.28125 1.6875 -4.4375 1.984375 -4.4375 C 2.359375 -4.4375 2.71875 -4.203125 2.84375 -3.796875 C 2.953125 -3.421875 2.96875 -2.921875 2.96875 -2.3125 C 2.96875 -1.796875 2.96875 -1.28125 2.875 -0.84375 C 2.734375 -0.203125 2.265625 -0.0625 1.984375 -0.0625 Z M 1.984375 -0.0625 "/>
+</g>
+<g id="glyph-1-1">
+<path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
+</g>
+<g id="glyph-1-2">
+<path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
+</g>
+<g id="glyph-1-3">
+<path d="M 1.90625 -2.328125 C 2.453125 -2.328125 2.84375 -1.953125 2.84375 -1.203125 C 2.84375 -0.34375 2.328125 -0.078125 1.9375 -0.078125 C 1.65625 -0.078125 1.03125 -0.15625 0.75 -0.578125 C 1.078125 -0.578125 1.15625 -0.8125 1.15625 -0.96875 C 1.15625 -1.1875 0.984375 -1.34375 0.765625 -1.34375 C 0.578125 -1.34375 0.375 -1.21875 0.375 -0.9375 C 0.375 -0.28125 1.09375 0.140625 1.9375 0.140625 C 2.90625 0.140625 3.578125 -0.515625 3.578125 -1.203125 C 3.578125 -1.75 3.140625 -2.296875 2.375 -2.453125 C 3.09375 -2.71875 3.359375 -3.234375 3.359375 -3.671875 C 3.359375 -4.21875 2.734375 -4.625 1.953125 -4.625 C 1.1875 -4.625 0.59375 -4.25 0.59375 -3.6875 C 0.59375 -3.453125 0.75 -3.328125 0.953125 -3.328125 C 1.171875 -3.328125 1.3125 -3.484375 1.3125 -3.671875 C 1.3125 -3.875 1.171875 -4.03125 0.953125 -4.046875 C 1.203125 -4.34375 1.671875 -4.421875 1.9375 -4.421875 C 2.25 -4.421875 2.6875 -4.265625 2.6875 -3.671875 C 2.6875 -3.375 2.59375 -3.046875 2.40625 -2.84375 C 2.1875 -2.578125 1.984375 -2.5625 1.640625 -2.53125 C 1.46875 -2.515625 1.453125 -2.515625 1.421875 -2.515625 C 1.40625 -2.515625 1.34375 -2.5 1.34375 -2.421875 C 1.34375 -2.328125 1.40625 -2.328125 1.53125 -2.328125 Z M 1.90625 -2.328125 "/>
+</g>
+<g id="glyph-1-4">
+<path d="M 1.078125 -3.890625 C 1.4375 -3.796875 1.640625 -3.796875 1.75 -3.796875 C 2.671875 -3.796875 3.21875 -4.421875 3.21875 -4.53125 C 3.21875 -4.609375 3.171875 -4.625 3.140625 -4.625 C 3.125 -4.625 3.109375 -4.625 3.078125 -4.609375 C 2.90625 -4.546875 2.546875 -4.40625 2.03125 -4.40625 C 1.828125 -4.40625 1.46875 -4.421875 1.015625 -4.59375 C 0.9375 -4.625 0.921875 -4.625 0.921875 -4.625 C 0.828125 -4.625 0.828125 -4.546875 0.828125 -4.4375 L 0.828125 -2.390625 C 0.828125 -2.265625 0.828125 -2.1875 0.9375 -2.1875 C 1 -2.1875 1.015625 -2.1875 1.078125 -2.28125 C 1.375 -2.65625 1.8125 -2.71875 2.046875 -2.71875 C 2.46875 -2.71875 2.65625 -2.390625 2.6875 -2.328125 C 2.8125 -2.09375 2.859375 -1.828125 2.859375 -1.421875 C 2.859375 -1.21875 2.859375 -0.8125 2.640625 -0.5 C 2.46875 -0.25 2.171875 -0.078125 1.828125 -0.078125 C 1.375 -0.078125 0.90625 -0.328125 0.734375 -0.796875 C 1 -0.78125 1.140625 -0.953125 1.140625 -1.140625 C 1.140625 -1.4375 0.875 -1.484375 0.78125 -1.484375 C 0.78125 -1.484375 0.4375 -1.484375 0.4375 -1.109375 C 0.4375 -0.484375 1.015625 0.140625 1.84375 0.140625 C 2.734375 0.140625 3.515625 -0.515625 3.515625 -1.40625 C 3.515625 -2.1875 2.921875 -2.90625 2.0625 -2.90625 C 1.75 -2.90625 1.390625 -2.84375 1.078125 -2.578125 Z M 1.078125 -3.890625 "/>
+</g>
+<g id="glyph-1-5">
+<path d="M 3.6875 -1.140625 L 3.6875 -1.390625 L 2.90625 -1.390625 L 2.90625 -4.5 C 2.90625 -4.640625 2.90625 -4.703125 2.765625 -4.703125 C 2.671875 -4.703125 2.640625 -4.703125 2.578125 -4.59375 L 0.265625 -1.390625 L 0.265625 -1.140625 L 2.328125 -1.140625 L 2.328125 -0.578125 C 2.328125 -0.328125 2.328125 -0.25 1.75 -0.25 L 1.5625 -0.25 L 1.5625 0 C 1.921875 -0.015625 2.359375 -0.03125 2.609375 -0.03125 C 2.875 -0.03125 3.3125 -0.015625 3.671875 0 L 3.671875 -0.25 L 3.484375 -0.25 C 2.90625 -0.25 2.90625 -0.328125 2.90625 -0.578125 L 2.90625 -1.140625 Z M 2.375 -3.9375 L 2.375 -1.390625 L 0.53125 -1.390625 Z M 2.375 -3.9375 "/>
+</g>
+<g id="glyph-2-0">
+<path d="M 4.03125 -1.90625 C 3.65625 -2.34375 3.546875 -2.453125 3.28125 -2.640625 C 2.859375 -2.953125 2.40625 -3.078125 2.03125 -3.078125 C 1.15625 -3.078125 0.53125 -2.328125 0.53125 -1.5 C 0.53125 -0.6875 1.140625 0.0625 2 0.0625 C 2.96875 0.0625 3.65625 -0.71875 3.90625 -1.09375 C 4.265625 -0.65625 4.390625 -0.546875 4.640625 -0.359375 C 5.078125 -0.046875 5.515625 0.0625 5.90625 0.0625 C 6.765625 0.0625 7.390625 -0.671875 7.390625 -1.5 C 7.390625 -2.328125 6.796875 -3.078125 5.921875 -3.078125 C 4.953125 -3.078125 4.28125 -2.28125 4.03125 -1.90625 Z M 4.25 -1.65625 C 4.53125 -2.109375 5.140625 -2.8125 5.984375 -2.8125 C 6.703125 -2.8125 7.203125 -2.171875 7.203125 -1.5 C 7.203125 -0.84375 6.65625 -0.3125 6.015625 -0.3125 C 5.359375 -0.3125 4.921875 -0.84375 4.25 -1.65625 Z M 3.671875 -1.359375 C 3.40625 -0.90625 2.796875 -0.1875 1.9375 -0.1875 C 1.21875 -0.1875 0.734375 -0.828125 0.734375 -1.5 C 0.734375 -2.171875 1.28125 -2.6875 1.921875 -2.6875 C 2.5625 -2.6875 3.015625 -2.15625 3.671875 -1.359375 Z M 3.671875 -1.359375 "/>
+</g>
+</g>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 0 0.605469 L 144 0.605469 L 144 112 L 0 112 Z M 0 0.605469 "/>
+</clipPath>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 0 0.605469 L 219.898438 0.605469 L 219.898438 101 L 0 101 Z M 0 0.605469 "/>
+</clipPath>
+<clipPath id="clip-2">
+<path clip-rule="nonzero" d="M 0 12 L 219.898438 12 L 219.898438 112 L 0 112 Z M 0 12 "/>
+</clipPath>
+<clipPath id="clip-3">
+<path clip-rule="nonzero" d="M 193 37 L 219.898438 37 L 219.898438 75 L 193 75 Z M 193 37 "/>
+</clipPath>
+<clipPath id="clip-4">
+<path clip-rule="nonzero" d="M 74 0.605469 L 112 0.605469 L 112 35 L 74 35 Z M 74 0.605469 "/>
+</clipPath>
+</defs>
+<g clip-path="url(#clip-0)">
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 56.693906 -0.0006875 C 56.693906 23.483687 31.311094 42.518844 -0.00140625 42.518844 C -31.31 42.518844 -56.692813 23.483687 -56.692813 -0.0006875 C -56.692813 -23.485063 -31.31 -42.520219 -0.00140625 -42.520219 C 31.311094 -42.520219 56.693906 -23.485063 56.693906 -0.0006875 Z M 56.693906 -0.0006875 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="130.671" y="59.708"/>
+</g>
+<g clip-path="url(#clip-1)">
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -57.993594 66.577438 L 222.404844 -26.891313 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+</g>
+<g clip-path="url(#clip-2)">
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -57.993594 -66.574906 L 222.404844 26.889937 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 0%, 0%)" fill-opacity="1" d="M 213.210938 56.304688 C 213.210938 55.519531 212.578125 54.886719 211.792969 54.886719 C 211.011719 54.886719 210.375 55.519531 210.375 56.304688 C 210.375 57.085938 211.011719 57.722656 211.792969 57.722656 C 212.578125 57.722656 213.210938 57.085938 213.210938 56.304688 Z M 213.210938 56.304688 "/>
+<g clip-path="url(#clip-3)">
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 143.150937 -0.0006875 C 143.150937 0.784469 142.518125 1.417281 141.732969 1.417281 C 140.951719 1.417281 140.315 0.784469 140.315 -0.0006875 C 140.315 -0.781938 140.951719 -1.418656 141.732969 -1.418656 C 142.518125 -1.418656 143.150937 -0.781938 143.150937 -0.0006875 Z M 143.150937 -0.0006875 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-1" x="209.993" y="66.35"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 94.15625 16.617188 C 94.15625 15.835938 93.519531 15.203125 92.738281 15.203125 C 91.953125 15.203125 91.320312 15.835938 91.320312 16.617188 C 91.320312 17.402344 91.953125 18.035156 92.738281 18.035156 C 93.519531 18.035156 94.15625 17.402344 94.15625 16.617188 Z M 94.15625 16.617188 "/>
+<g clip-path="url(#clip-4)">
+<path fill="none" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 24.09625 39.686812 C 24.09625 40.468062 23.459531 41.100875 22.678281 41.100875 C 21.893125 41.100875 21.260312 40.468062 21.260312 39.686812 C 21.260312 38.901656 21.893125 38.268844 22.678281 38.268844 C 23.459531 38.268844 24.09625 38.901656 24.09625 39.686812 Z M 24.09625 39.686812 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="96.655" y="11.206"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-0" x="101.325" y="12.701"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 24.09625 -39.684281 C 24.09625 -38.903031 23.459531 -38.266313 22.678281 -38.266313 C 21.893125 -38.266313 21.260312 -38.903031 21.260312 -39.684281 C 21.260312 -40.469438 21.893125 -41.10225 22.678281 -41.10225 C 23.459531 -41.10225 24.09625 -40.469438 24.09625 -39.684281 Z M 24.09625 -39.684281 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="96.655" y="104.196"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-2-0" x="101.325" y="105.691"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(100%, 0%, 0%)" fill-opacity="1" stroke-width="1.19553" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -26.931094 36.850875 C -26.931094 37.632125 -27.563906 38.268844 -28.345156 38.268844 C -29.130313 38.268844 -29.763125 37.632125 -29.763125 36.850875 C -29.763125 36.069625 -29.130313 35.432906 -28.345156 35.432906 C -27.563906 35.432906 -26.931094 36.069625 -26.931094 36.850875 Z M -46.770938 22.679 C -46.770938 23.46025 -47.407656 24.093062 -48.188906 24.093062 C -48.974063 24.093062 -49.606875 23.46025 -49.606875 22.679 C -49.606875 21.893844 -48.974063 21.261031 -48.188906 21.261031 C -47.407656 21.261031 -46.770938 21.893844 -46.770938 22.679 Z M -55.274844 -0.0006875 C -55.274844 0.784469 -55.911563 1.417281 -56.692813 1.417281 C -57.477969 1.417281 -58.110781 0.784469 -58.110781 -0.0006875 C -58.110781 -0.781938 -57.477969 -1.418656 -56.692813 -1.418656 C -55.911563 -1.418656 -55.274844 -0.781938 -55.274844 -0.0006875 Z M -26.931094 -36.85225 C -26.931094 -36.067094 -27.563906 -35.434281 -28.345156 -35.434281 C -29.130313 -35.434281 -29.763125 -36.067094 -29.763125 -36.85225 C -29.763125 -37.6335 -29.130313 -38.270219 -28.345156 -38.270219 C -27.563906 -38.270219 -26.931094 -37.6335 -26.931094 -36.85225 Z M -46.770938 -22.676469 C -46.770938 -21.895219 -47.407656 -21.2585 -48.188906 -21.2585 C -48.974063 -21.2585 -49.606875 -21.895219 -49.606875 -22.676469 C -49.606875 -23.461625 -48.974063 -24.094438 -48.188906 -24.094438 C -47.407656 -24.094438 -46.770938 -23.461625 -46.770938 -22.676469 Z M -46.770938 -22.676469 " transform="matrix(1, 0, 0, -1, 70.06, 56.304)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="28.656" y="14.041"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-1" x="33.326" y="15.535"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="8.813" y="28.214"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-2" x="13.483" y="29.708"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="0.309" y="57.701"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-3" x="4.979" y="59.196"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="28.656" y="101.362"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-4" x="33.326" y="102.856"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-2" x="8.813" y="87.189"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-5" x="13.483" y="88.683"/>
+</g>
+</svg></div>
+<div class="stacks-caption">In the second test family, we blow up the plane at the points $\{s_{1}, \dots, s_{5}, t\}$ as the seven points $\{s_1, \dots, s_5, s_0, s_{\infty}\}$ vary freely on a conic $C$.</div>
+<p>Forget the notation introduced in Section&nbsp;3.1.
+We take a smooth conic $C \subset \P^2$ and 7 distinct marked points $s_0, s_1, \dots, s_5, s_{\infty}$ on $C$.
+Let $t \in \P^2$ be the pole, with respect to $C$, of the line joining $s_0$ and $s_{\infty}$.
 We blow up the six points $s_1,\dots, s_5, t$ to get a cubic surface (see Figure&nbsp;2).
 As the 7 points vary on $C$, we get a 4-parameter family of cubic surfaces.</p>
 <p class="stacks-para">We now make the construction more precise, and show how to use it construct a family of cubic surfaces over $\overline {\M}_{0,7}$.
-Let $\phi \colon \mathcal C \to \overline \M_{0,7}$ be the universal curve with the universal sections denoted by $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_\infty$.
-Let $\mathcal L$ be the line bundle $\sigma_\infty^*\left(\omega_\phi\right)$ on $\overline \M_{0,7}$.
-As is customary, we denote its Chern class by $\psi_\infty$.
+Let $\phi \colon \mathcal{C} \to \overline{\M}_{0,7}$ be the universal curve with the universal sections denoted by $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_{\infty}$.
+Let $\mathcal{L}$ be the line bundle $\sigma_{\infty}^*\left(\omega_{\phi}\right)$ on $\overline{\M}_{0,7}$.
+As is customary, we denote its Chern class by $\psi_{\infty}$.
 Consider the rank 2 vector bundle
-$$ \mathcal A = \phi_* \O_{\mathcal C}\left(\sigma_\infty\right).$$
+$$\mathcal{A} = \phi_* \O_{\mathcal{C}}\left(\sigma_{\infty}\right).$$
 It is easy to check that the evaluation maps yield an isomorphism
-$$\begin{aligned}\mathcal A &\xrightarrow{\sim} \sigma_\infty^*\O_{\mathcal C}\left( \sigma_\infty \right) \oplus \sigma_0^*\O_{\mathcal C}\left( \sigma_\infty \right)\\
-  &= \mathcal L^{-1} \oplus \O_{\overline \M_{0,7}}.\end{aligned}$$
-Set $\overline {\mathcal C} = \P \mathcal A^\vee$ with the structure map $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
-The evaluation map $\phi^*\mathcal A \to \O_{\mathcal C}\left(\sigma_\infty\right)$ yields a map $\gamma \colon \mathcal C \to \overline {\mathcal C}$.
-The effect of $\gamma$ on a stable curve $(C, s_0, \dots, s_\infty)$ is to contract all irreducible components of $C$ not containing the marked point $s_\infty$.
-The unique remaining $\P^1$ is identified with the corresponding fiber of $\overline \phi$.
-Set $\overline \sigma_i = \sigma_i \circ \gamma$; these $\overline \sigma_i$ are sections of $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
-They satisfy the following properties
+$$\begin{aligned}\mathcal{A} &\xrightarrow{\sim} \sigma_{\infty}^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right) \oplus \sigma_0^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right)\\
+  &= \mathcal{L}^{-1} \oplus \O_{\overline{\M}_{0,7}}.\end{aligned}$$
+Set $\overline {\mathcal{C}} = \P \mathcal{A}^{\vee}$ with the structure map $\overline{\phi} \colon \overline {\mathcal{C}} \to \overline{\M}_{0,7}$.
+The evaluation map $\phi^*\mathcal{A} \to \O_{\mathcal{C}}\left(\sigma_{\infty}\right)$ yields a map $\gamma \colon \mathcal{C} \to \overline {\mathcal{C}}$.
+The effect of $\gamma$ on a stable curve $(C, s_0, \dots, s_{\infty})$ is to contract all irreducible components of $C$ not containing the marked point $s_{\infty}$.
+The unique remaining $\P^1$ is identified with the corresponding fiber of $\overline{\phi}$.
+Set $\overline{\sigma}_i = \sigma_i \circ \gamma$; these $\overline{\sigma}_i$ are sections of $\overline{\phi} \colon \overline {\mathcal{C}} \to \overline{\M}_{0,7}$.
+They satisfy the following properties</p>
 <ul><li>$\overline{\sigma}_{\infty}$ is disjoint from all the other sections, and</li>
-<li>in each fiber of $\overline \phi$, the union of all seven sections
+<li>in each fiber of $\overline{\phi}$, the union of all seven sections
   is supported on at least three points.</li></ul>
-We now invoke the relative 2-Veronese embedding
-$$
-\iota \colon \overline {\mathcal C} \to \mathcal P := \P \Sym^2 \mathcal A^\vee.
-$$
-Let $\rho \colon \mathcal P \to \overline{\M}_{0,7}$ be the structure morphism.
-Then $\overline {\mathcal C} \subset \mathcal P$ is a family of smooth conics with 7 marked points $\sigma_0, \dots, \sigma_\infty$ satisfying the two properties above.</p>
-<p class="stacks-para">Let $\tau \colon \overline \M_{0,7} \to \mathcal P$ be the section obtained by fiber-wise taking the pole with respect to $\overline {\mathcal C}$ of the line joining the points $\overline \sigma_0$ and $\overline \sigma_\infty$.
+<p class="stacks-para">We now invoke the relative 2-Veronese embedding
+$$\iota \colon \overline {\mathcal{C}} \to \mathcal{P} := \P \Sym^2 \mathcal{A}^{\vee}.$$
+Let $\rho \colon \mathcal{P} \to \overline{\M}_{0,7}$ be the structure morphism.
+Then $\overline {\mathcal{C}} \subset \mathcal{P}$ is a family of smooth conics with 7 marked points $\sigma_0, \dots, \sigma_{\infty}$ satisfying the two properties above.</p>
+<p class="stacks-para">Let $\tau \colon \overline{\M}_{0,7} \to \mathcal{P}$ be the section obtained by fiber-wise taking the pole with respect to $\overline {\mathcal{C}}$ of the line joining the points $\overline{\sigma}_0$ and $\overline{\sigma}_{\infty}$.
 Here is an alternate description of $\tau$.
-The direct sum decomposition $\mathcal A = \O \oplus \mathcal L^{-1}$ gives the decomposition
-$$ \Sym^2 \mathcal A = \O \oplus \mathcal L^{-1} \oplus \mathcal L^{-2}.$$
-In $\P \mathcal A^\vee$, the sections $\overline \sigma_0$ and $\overline \sigma_\infty$ correspond to the projections $\mathcal A \to \O$ and $\mathcal A \to \mathcal L^{-1}$, respectively.
-Hence, in the Veronese embedding, they correspond to the projections $\Sym^2 A \to \O$ and $\Sym^2 A \to \mathcal L^{-2}$, respectively.
-Using the quadratic form on $\Sym^2 \mathcal A$ given by the Veronese conic, it is easy to check that the section $\tau$ is given by the third projection $\Sym^2 A \to \mathcal L^{-1}$.</p>
-<p class="stacks-para">We let $\Sigma \subset \overline{\mathcal C}$ denote the closed subscheme associated to the divisor $\overline \sigma_1 + \dots + \overline \sigma_5$ and $\mathcal Z \subset \mathcal P$ the disjoint union $\Sigma \sqcup \tau$.
-By <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B6DB.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[B6DB]</span></a>, $\mathcal Z \subset \mathcal P$ is a family of admissible subschemes.
+The direct sum decomposition $\mathcal{A} = \O \oplus \mathcal{L}^{-1}$ gives the decomposition
+$$\Sym^2 \mathcal{A} = \O \oplus \mathcal{L}^{-1} \oplus \mathcal{L}^{-2}.$$
+In $\P \mathcal{A}^{\vee}$, the sections $\overline{\sigma}_0$ and $\overline{\sigma}_{\infty}$ correspond to the projections $\mathcal{A} \to \O$ and $\mathcal{A} \to \mathcal{L}^{-1}$, respectively.
+Hence, in the Veronese embedding, they correspond to the projections $\Sym^2 A \to \O$ and $\Sym^2 A \to \mathcal{L}^{-2}$, respectively.
+Using the quadratic form on $\Sym^2 \mathcal{A}$ given by the Veronese conic, it is easy to check that the section $\tau$ is given by the third projection $\Sym^2 A \to \mathcal{L}^{-1}$.</p>
+<p class="stacks-para">We let $\Sigma \subset \overline{\mathcal{C}}$ denote the closed subscheme associated to the divisor $\overline{\sigma}_1 + \dots + \overline{\sigma}_5$ and $\mathcal{Z} \subset \mathcal{P}$ the disjoint union $\Sigma \sqcup \tau$.
+By <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B6DB.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[B6DB]</span></a>, $\mathcal{Z} \subset \mathcal{P}$ is a family of admissible subschemes.
 We let
-$$ \pi \colon \mathcal X \to \overline \M_{0,7}$$
-be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (see <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E785.html" class="stacks-ref-link">Definition&nbsp;2.11 <span class="stacks-ref-tag">[E785]</span></a>).</p>
+$$\pi \colon \mathcal{X} \to \overline{\M}_{0,7}$$
+be the family of cubic surfaces associated to $\mathcal{Z} \subset \mathcal{P}$ (see <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E785.html" class="stacks-ref-link">Definition&nbsp;2.11 <span class="stacks-ref-tag">[E785]</span></a>).</p>
 <div class="stacks-lemma" id="prop-goodnessB2">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.5.</strong> <a href="../tag/F5F3.html" class="stacks-tag-link">(F5F3)</a></div>
-  <div class="stacks-env-body"><p>The family $\pi \colon \mathcal X \to \overline \M_{0,7}$ is good.</p></div>
+  <div class="stacks-env-body"><p>The family $\pi \colon \mathcal{X} \to \overline{\M}_{0,7}$ is good.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6D50.html" class="stacks-tag-link">(6D50)</a></div>
@@ -165,14 +296,12 @@ be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (s
 <p class="stacks-para">We now compute the Chern classes of the anti-canonical section bundle.</p>
 <div class="stacks-lemma" id="lem-v2">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.6.</strong> <a href="../tag/B343.html" class="stacks-tag-link">(B343)</a></div>
-  <div class="stacks-env-body"><p>Let $\mathcal V = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal V)$.
+  <div class="stacks-env-body"><p>Let $\mathcal{V} = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal{V})$.
   Then we have
-  $$
-    \begin{split}
-      \int_{\overline \M_{0,7}}v_{1}^{4} = 625&, \quad \int_{\overline \M_{0,7}}v_{1}^{2}v_{2} = 125,\quad \int_{\overline \M_{0,7}}v_{1}v_{3} = -25,\\
-      &\int_{\overline \M_{0,7}}v_2^{2} = 25,\quad \int_{\overline \M_{0,7}}v_{4} = -6.
-    \end{split}
-  $$</p></div>
+  $$\begin{split}
+      \int_{\overline{\M}_{0,7}}v_{1}^{4} = 625&, \quad \int_{\overline{\M}_{0,7}}v_{1}^{2}v_{2} = 125,\quad \int_{\overline{\M}_{0,7}}v_{1}v_{3} = -25,\\
+      &\int_{\overline{\M}_{0,7}}v_2^{2} = 25,\quad \int_{\overline{\M}_{0,7}}v_{4} = -6.
+    \end{split}$$</p></div>
 </div>
 <p class="stacks-para">For the proof, we use the following.</p>
 <div class="stacks-lemma" id="lem-push">
@@ -180,50 +309,50 @@ be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (s
   <div class="stacks-env-body"><p>Let $\pi \colon P \to B$ be a $\P^1$-bundle with a section $\sigma$.
   Let $D \subset P$ be a divisor of relative degree $d$ with respect to $\pi$ with $d \geq -1$.
   Then, in the Grothendieck group of $B$, we have
-  $$ [\pi_* \O(D)] = [\sigma^*\O(D)] + \dots + [\sigma^*\O(D-(d-1)\sigma)].$$</p></div>
+  $$[\pi_* \O(D)] = [\sigma^*\O(D)] + \dots + [\sigma^*\O(D-(d-1)\sigma)].$$</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/66A6.html" class="stacks-tag-link">(66A6)</a></div>
   <div class="stacks-env-body"><p>We induct on $d$.
   Both sides are 0 for $d = -1$.
   The exact sequence
-  $$ 0 \to \O(D-\sigma) \to \O(D) \to \O(D)|_\sigma \to 0$$
+  $$0 \to \O(D-\sigma) \to \O(D) \to \O(D)|_{\sigma} \to 0$$
   pushed-forward to $B$ provides the induction step.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B343.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[B343]</span></a>.</em> <a href="../tag/2477.html" class="stacks-tag-link">(2477)</a></div>
-  <div class="stacks-env-body"><p>Recall that $\mathcal X \to \overline \M_{0,7}$ is the cubic surface associated to $\mathcal Z \subset \mathcal P$ in the $\P^2$-bundle $\rho \colon \mathcal P \to \overline \M_{0,7}$.
+  <div class="stacks-env-body"><p>Recall that $\mathcal{X} \to \overline{\M}_{0,7}$ is the cubic surface associated to $\mathcal{Z} \subset \mathcal{P}$ in the $\P^2$-bundle $\rho \colon \mathcal{P} \to \overline{\M}_{0,7}$.
   By construction, we have
-  $$ \mathcal V = \rho_*(\mathcal I_{\mathcal Z} \otimes \omega^{-1}_\rho).$$
-  Hence, in the Grothendieck group of $\overline \M_{0,7}$, we have
-  $$[\mathcal V] = \rho_*(\omega_\rho^{-1}) - \rho_*(\omega_\rho^{-1}|_{\mathcal Z}).$$
-  By the relative Euler sequence, we see that $\omega^{-1}_\rho$ is isomorphic to $\O_{\mathcal P}(3) \otimes \rho^* \det (\Sym^2 \mathcal A)^\vee$, and hence the first term in (3.6) is
-  $$\rho_*(\omega_\rho^{-1}) = \Sym^3(\Sym^2 \mathcal A) \otimes \mathcal L^3.$$
-  Since $\mathcal Z$ is the disjoint union $\Sigma \cup \tau$, the second term is a sum
-  $$ \rho_*(\omega_\rho^{-1}|_{\mathcal Z}) = \rho_*(\omega_\rho^{-1}|_{\tau}) + \rho_*(\omega_\rho^{-1}|_{\Sigma}). $$
-  Since $\tau$ is defined by the surjection $\Sym^2 \mathcal A \to \mathcal L^{-1}$, the restriction $\omega_\rho^{-1}|_\tau$ is trivial.
-  To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal C} = \P A^\vee$ and let $D = \omega_\rho^{-1}|_{\overline C} = \O(6) \otimes \overline \phi^* \mathcal L^3$.
+  $$\mathcal{V} = \rho_*(\mathcal{I}_{\mathcal{Z}} \otimes \omega^{-1}_{\rho}).$$
+  Hence, in the Grothendieck group of $\overline{\M}_{0,7}$, we have
+  $$[\mathcal{V}] = \rho_*(\omega_{\rho}^{-1}) - \rho_*(\omega_{\rho}^{-1}|_{\mathcal{Z}}).$$
+  By the relative Euler sequence, we see that $\omega^{-1}_{\rho}$ is isomorphic to $\O_{\mathcal{P}}(3) \otimes \rho^* \det (\Sym^2 \mathcal{A})^{\vee}$, and hence the first term in (3.6) is
+  $$\rho_*(\omega_{\rho}^{-1}) = \Sym^3(\Sym^2 \mathcal{A}) \otimes \mathcal{L}^3.$$
+  Since $\mathcal{Z}$ is the disjoint union $\Sigma \cup \tau$, the second term is a sum
+  $$\rho_*(\omega_{\rho}^{-1}|_{\mathcal{Z}}) = \rho_*(\omega_{\rho}^{-1}|_{\tau}) + \rho_*(\omega_{\rho}^{-1}|_{\Sigma}).$$
+  Since $\tau$ is defined by the surjection $\Sym^2 \mathcal{A} \to \mathcal{L}^{-1}$, the restriction $\omega_{\rho}^{-1}|_{\tau}$ is trivial.
+  To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal{C}} = \P A^{\vee}$ and let $D = \omega_{\rho}^{-1}|_{\overline C} = \O(6) \otimes \overline{\phi}^* \mathcal{L}^3$.
   Thus, in the Grothendieck group, we have
-  $$\rho_*(\omega_\rho^{-1}|_{\Sigma}) = \overline\phi_*\left(D\right) - \overline\phi_* \left( D(-\Sigma)\right).$$
-  We now use <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_\infty$ to compute the terms on the right hand side of (3.8).
+  $$\rho_*(\omega_{\rho}^{-1}|_{\Sigma}) = \overline{\phi}_*\left(D\right) - \overline{\phi}_* \left( D(-\Sigma)\right).$$
+  We now use <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_{\infty}$ to compute the terms on the right hand side of (3.8).
   Putting this together with (3.6) and (3.7), we get
-  $$ [\mathcal V] = \mathcal L^{-3}+ \mathcal L^{1}+ \mathcal L^{-1}+ \mathcal L^{-2}$$
+  $$[\mathcal{V}] = \mathcal{L}^{-3}+ \mathcal{L}^{1}+ \mathcal{L}^{-1}+ \mathcal{L}^{-2}$$
   in the Grothendieck group.
-  The result is now a simple computation using $c_1(\mathcal L) = \psi_\infty$ and $\int_{\overline \M_{0,7}} \psi_\infty^4 = 1$.</p></div>
+  The result is now a simple computation using $c_1(\mathcal{L}) = \psi_{\infty}$ and $\int_{\overline{\M}_{0,7}} \psi_{\infty}^4 = 1$.</p></div>
 </div>
-<p class="stacks-para">Having computed the Chern classes, we find the degree of the map $\overline \M_{0,7} \dashrightarrow \M$.</p>
+<p class="stacks-para">Having computed the Chern classes, we find the degree of the map $\overline{\M}_{0,7} \dashrightarrow \M$.</p>
 <div class="stacks-lemma" id="prop-deg2">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.8.</strong> <a href="../tag/6556.html" class="stacks-tag-link">(6556)</a></div>
-  <div class="stacks-env-body"><p>The degree of the map $\overline \M_{0,7} \dashrightarrow \M$, induced by $\pi \colon \mathcal X \to \overline \M_{0,7}$ is $2 \times 72 \times 6!$.</p></div>
+  <div class="stacks-env-body"><p>The degree of the map $\overline{\M}_{0,7} \dashrightarrow \M$, induced by $\pi \colon \mathcal{X} \to \overline{\M}_{0,7}$ is $2 \times 72 \times 6!$.</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A625.html" class="stacks-tag-link">(A625)</a></div>
-  <div class="stacks-env-body"><p>The map lifts to $\overline \M_{0,7} \dashrightarrow \M^\dagger$.
-  Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, we must prove that the degree of $\overline \M_{0,7} \dashrightarrow \M^\dagger$ is $2$.</p>
-<p>  Recall that $\M^\dagger$ is isomorphic to the configuration space of 6 points in $\P^2$.
+  <div class="stacks-env-body"><p>The map lifts to $\overline{\M}_{0,7} \dashrightarrow \M^{\dagger}$.
+  Since the degree of $\M^{\dagger} \to \M$ is $72 \times 6!$, we must prove that the degree of $\overline{\M}_{0,7} \dashrightarrow \M^{\dagger}$ is $2$.</p>
+<p>  Recall that $\M^{\dagger}$ is isomorphic to the configuration space of 6 points in $\P^2$.
   Given a general 6-tuple of points $(s_1,\dots, s_5, y)$ in $\P^2$, there is a unique conic $C$ passing through $s_1,\dots, s_5$.
   Let $x$ and $y$ be the two points of $\Polar_C(t) \cap C$.
-  Then the two pre-images of $(s_1,\dots, s_5, t)$ in $\overline \M_{0,7}$ are $(C, x, s_1, \dots, s_5, y)$ and $(C,y, s_1, \dots, s_5, x)$.
+  Then the two pre-images of $(s_1,\dots, s_5, t)$ in $\overline{\M}_{0,7}$ are $(C, x, s_1, \dots, s_5, y)$ and $(C,y, s_1, \dots, s_5, x)$.
   The proof is thus complete.</p></div>
 </div>
 <p class="stacks-para">Using <a href="/papers/universal-formula-counting-cubic-surfaces/tag/E2B1.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E2B1]</span></a> and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
@@ -252,7 +381,7 @@ $$\begin{aligned}625 a_{1^{4}} + 125 a_{1^{2}2} - 25a_{13} + 25a_{2^2} - 6 a_{4}
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Proof of Lemma 3.14 [044A] (A182) — Invariants of a general branched cover of $\P^1$</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
           D: "{\\bf D}",
-          P: "{\\bf P}",
+          P: "\\mathbb{P}",
           from: "\\colon",
           into: "{\\hookrightarrow}",
           onto: "\\twoheadrightarrow",
@@ -32,7 +37,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           isom: "\\stackrel\\sim\\longrightarrow",
@@ -58,6 +63,14 @@
           epsilon: "\\varepsilon",
           MC: "MC",
           chain: ["\\P_{#1}", 1],
+          rotatebox: ["#2", 2],
+          Xright: "X_{\\text{right}}",
+          Hright: "H_{\\text{right}}",
+          Lambdaright: "\\Lambda_{\\text{right}}",
+          Hleft: "H_{\\text{left}}",
+          Lambdaleft: "\\Lambda_{\\text{left}}",
+          Xleft: "X_{\\text{left}}",
+          Rmiddle: "R_{\\text{middle}}",
           Crimp: "\\operatorname{Crimp}",
           Mor: "\\operatorname{Mor}",
           Def: "\\operatorname{Def}",
@@ -72,8 +85,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\operatorname{{\\mathbf G}}",
-          A: "\\operatorname{{\\mathbf A}}",
+          G: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +94,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\operatorname{\\mathbf F}",
+          F: "\\mathbb{F}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -97,13 +110,43 @@
           im: "\\operatorname{im}",
           three: "\\operatorname{[3]}",
           End: "\\operatorname{End}",
-          Sing: "\\operatorname{Sing}"
+          Sing: "\\operatorname{Sing}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -124,8 +167,7 @@ we can find $M \in H^0(\End(V_1))$ such that $M|_\infty = \overline{M}$.</p>
 <p class="stacks-para">Fix a splitting $V_1 = \sh{O}(m)^a \oplus \sh{O}(m+1)^b$. Then $\End(V_1)= \sh{O}^{a^2} \oplus \sh{O}(1)^{ab} \oplus
 \sh{O}(-1)^{ab} \oplus \sh{O}^{b^2}$, and we can realize this splitting more naturally by realizing an element of $\End V_1$ as an $(a+b) \times (a+b)$ matrix block matrix. For
 example, for $a=2, b=3$, we have
-$$
-\End V_1 =
+$$\End V_1 =
 \left[
 \begin{array}{cc|ccc}
 \sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\
@@ -134,14 +176,13 @@ $$
 \sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
 \sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}
 \end{array}
-\right]
-$$
+\right]$$
 The global sections of $\End(V_1)$ restrict to an arbitrary block upper triangular matrix at $\infty$. And being
 block upper triangular exactly means that the directrix is preserved. This proves the case for one component.</p>
 <p class="stacks-para">For the induction step, we are given an endomorphism $\overline{M}$ of $V_{j-1}|_{\infty}$ preserving $L^\bullet_j$,
-and we want to find $M \in H^0(\End(V_{j-1})$ such that
+and we want to find $M \in H^0(\End(V_{j-1})$ such that</p>
 <ul><li>$M|_{\infty}=\overline{M}$, and</li>
-<li>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</li></ul></p>
+<li>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</li></ul>
 <p class="stacks-para">This is enough for our purposes, because by induction we can choose global sections of $\End(V_i)$ for $i<j-1$ such that
 all differences $D_i$ are zero, for $i<j-1$, and produce $M|_0$ over the $(j-1)$-th node.</p>
 <p class="stacks-para">We will choose an appropriate splitting of $V_{j-1}$ so that endomorphisms preserving the flags $L^\bullet_{j-1}$
@@ -168,17 +209,15 @@ Choose $v_i$ such that $\langle v_i \rangle = \widehat{L}^i_{j-1} \cap \widehat{
 ordered basis $(v_k,v_{k+1},\ldots, v_n, v_1, v_2, \ldots, v_{k-1})$.</p>
 <p class="stacks-para">Now pick a splitting of $V_{j-1}$ that restricts to the basis $v_1,\ldots, v_n$ over zero. Let us write the matrix $M \in H^0(\End(V_{j-1}))$ in this basis.
 For convenience, we will use block notation, separating the vectors generating $W$ (that is, $v_k,\ldots, v_n$), from the remaining $v_1,\ldots, v_{k-1}$.</p>
-<p class="stacks-para">$$
-M =
+<p class="stacks-para">$$M =
 \left[
 \begin{array}{c|c}
 M(V/W,V/W) & M(W,V/W) \\ \hline
 M(V/W,W) & M(W,W)
 \end{array}
-\right]
-$$
+\right]$$
 We want $M|_0$ to respect the flag $L^\bullet_{j-1}$, and $M|_\infty$ to be the given matrix $\overline{M}$ respecting the $L_j$ flag. In this block notation this
-translates into the following conditions:
+translates into the following conditions:</p>
 <ol><li>The matrix $M(V/W,V/W)$ is upper block triangular when restricted to both zero and infinity (for the same block shapes). The entries of
 	$M(V/W,V/W)$ are valued in $\sh{O}_{\P^1}$, so we must take the constant matrix specified by $\overline{M}$.</li>
 <li>The same applies for the block $M(W,W)$: we want it to be upper block triangular at zero, with the restriction at infinity specified by $\overline{M}$.  Since the matrix $M(W,W)$ is valued in $\sh{O}_{\P^1}$, we must use a constant matrix.</li>
@@ -186,7 +225,7 @@ translates into the following conditions:
 	corresponding block of $\overline{M}$ is automatically zero to begin with.</li>
 <li>Finally, the block $M(V/W,W)$ must restrict to a specified matrix  over infinity (given by $\overline{M}$), but has to vanish over zero. This can be
 	achieved, because all the entries are valued in $\sh{O}_{\P^1}(1)$, so we may take linear functions interpolating between arbitrary values
-	at zero and infinity.</li></ol></p>
+	at zero and infinity.</li></ol>
 <p class="stacks-para">This completes the proof <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>, and hence by induction the proof of <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>.</p>
 </div>
 </div>
@@ -213,7 +252,7 @@ translates into the following conditions:
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

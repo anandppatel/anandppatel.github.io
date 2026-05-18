@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 1 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS1.html" aria-label="Next: 1.1. Relation to Previous Work" title="Next: 1.1. Relation to Previous Work">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 1. Introduction</h1>
+<p class="stacks-para">For any point $X=(x_1,\ldots,x_n)\in(\mb{P}^r)^n,$ we can consider its orbit closure $\overline{GL_{r+1}\cdot X}$ under the diagonal $GL_{r+1}$-action on $(\mb{P}^r)^n$. The Chow class of this subvariety in $A^\bullet((\mb{P}^r)^n)$ was computed by Li [Li17], and previously studied by many others [AF93, AF00, Tzi08, Kap93]. The point $X=(x_1,\ldots,x_n)$ determines a <em>rank function</em> which associates to a subset $S\subset \{1,\ldots,n\}$ one plus the dimension of the linear span of $\{x_s\}_{s \in S}$ in $\mb{P}^r$, known to combinatorialists as a <em>representable matroid</em>. Li's result shows this combinatorial data determines the Chow class of the orbit closure.</p>
+<p class="stacks-para">Given a rank $r+1$ vector bundle $V\to B$, one can form a relative orbit closure $(\ol{GL_{r+1}\cdot X})_V\subset \mb{P}(V)^n$ that restricts to $\overline{GL_{r+1}\cdot X}$ in each fiber of $\mb{P}(V)^n\to B$. One can clearly do this locally on a trivialization, and this patches together as the transition functions preserve the orbit closure. It turns out that the Chow class of the relative orbit closure in $A^{\bullet}(\mb{P}(V)^n)$ is a universal polynomial in the $n$ $\mathscr{O}(1)$-classes $H_1,\ldots,H_n$ and the $r+1$ Chern classes of $V$ pulled back from $B$. This polynomial is the $GL_{r+1}$-<em>equivariant Chow class</em> of $\overline{GL_{r+1}\cdot X}$. That such a universal polynomial exists follows from the foundations of equivariant intersection theory [EG98a].</p>
+<p class="stacks-para">The previous approach to studying $\overline{GL_{r+1}\cdot X}$ in the literature involves viewing $X$ as an $(r+1)\times n$ matrix, and taking the row span $\Lambda\in G(r+1,n)$, provided $X$ has full row rank. The data of the $GL_{r+1}$-equivariant Chow class of $\overline{GL_{r+1}\cdot X}$ is then in principle equivalent to the data of the $T$-equivalent Chow class of $\overline{T\cdot \Lambda}$, where $T$ is the $n$-dimensional torus acting on $G(r+1,n)$ (see [BF17] and Section&nbsp;13). Classes of torus orbits in the Grassmannian have been widely studied [Kap93, Spe09, FS12, BF12], but it is unclear how to translate these formulas to our setting.</p>
+<p class="stacks-para">In this paper, we will take a completely different approach to studying these orbit closures, which has connections to equivariant quantum cohomology. In particular, we compute the $GL_{r+1}$-equivariant classes of all $GL_{r+1}$-orbit closures in $(\mb{P}^r)^n$. There are two main halves to the argument. The first half is to use $GL_{r+1}$-equivariant degenerations to reduce the case of an arbitrary $X$ to the case where the matroid of $X$ is ``series-parallel''. In particular, we show the $GL_{r+1}$-equivariant class depends only on the matroid of $X$. The second half is to show the $GL_{r+1}$-equivariant classes behave well under parallel and series connection of matroids, allowing us to compute the $GL_{r+1}$-equivariant class when the matroid of $X$ is series-parallel.</p>
+<p class="stacks-para">In fact, the $GL_{r+1}$-equivariant Chow classes associated to the series and parallel connections of two matroids are computed from the classes associated to the original matroids via the small equivariant quantum product $\star$ of $\mb{P}^r$ (<a href="/papers/orbits-equivariant-quantum/tag/F221.html" class="stacks-ref-link">Theorem&nbsp;3.4 <span class="stacks-ref-tag">[F221]</span></a>). This is fundamental to the connection we describe between orbit closures and quantum cohomology. This paper is self-contained from the perspective of equivariant quantum cohomology of $\mb{P}^r$ (see Section&nbsp;2.3 and Section&nbsp;4). However we rely heavily on the combinatorics of (matroid) polytopes, the relevant facts of which are collected in Section&nbsp;2.1 and Section&nbsp;14.</p>
+<p class="stacks-para">Our approach has several advantages.
+\begin{enumerate}
+    \item Even though the case of $GL_{r+1}$-orbits is easiest to state, our method naturally extends to the $GL_{r+1}$-invariant subvarieties given as the image of matrix multiplication (more precisely the pushforward of the fundamental cycle of the source after resolution, see <a href="/papers/orbits-equivariant-quantum/tag/C563.html" class="stacks-ref-link">Definition&nbsp;2.6 <span class="stacks-ref-tag">[C563]</span></a>):
+    $$\begin{aligned}\mu_M: \mb{P}^{d\times (r+1)-1}\dashrightarrow (\mb{P}^r)^n,\end{aligned}$$
+    where $M$ is a $d\times n$ matrix, which takes the projectivization of a $d\times (r+1)$ matrix $A$, and outputs the projectivized columns of $AM$. These are $GL_{r+1}$-orbit closures when $d\leq r+1$ and can be studied via torus orbits in the Grassmannian $G(r+1,n)$ when $d=r+1$. See <a href="/papers/orbits-equivariant-quantum/tag/36D1.html" class="stacks-ref-link">Lemma&nbsp;4.4 <span class="stacks-ref-tag">[36D1]</span></a> for a situation where these cycles with $d>r+1$ naturally occur. Our formulas are identical in this more general setting (see <a href="/papers/orbits-equivariant-quantum/tag/2A79.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[2A79]</span></a>).
+    \item Equivalent to the data of the $GL_{r+1}$-equivariant class $[\overline{GL_{r+1}\cdot X}]$ is the Kronecker dual
+    $$\begin{aligned}[\overline{GL_{r+1}\cdot X}]^{\dagger}: A_{GL_{r+1}}^{\bullet}((\mb{P}^r)^n)\to A_{GL_{r+1}}^{\bullet}(\pt)\end{aligned}$$
+   defined by $$\alpha\mapsto \int\alpha\cap [\overline{GL_{r+1}\cdot X}].$$ When $\alpha$ comes from a $GL_{r+1}$-invariant subvariety $Z$ of $(\mb{P}^r)^n$, we can always intersect the relative versions of $Z$ and $\overline{GL_{r+1}\cdot X}$ in $\mb{P}(V)^n$ and pushforward to $B$ for every rank $r+1$ vector bundle $V\to B$. This yields a universal polynomial in the Chern classes of $V$, encoded by the class $\int\alpha\cap \overline{GL_{r+1}\cdot X}\in A^\bullet_{GL_{r+1}}(\pt)$.</p>
+<p class="stacks-para">Our method shows that the map $[\overline{GL_{r+1}\cdot X}]^{\dagger}$ is often more natural to describe than the $GL_{r+1}$-equivariant class itself, and can be computed in terms of certain polynomial expansions and truncations (see Section&nbsp;3.1). This is particularly pleasant in the case where the matroid of $X$ is a Schubert matroid (see Section&nbsp;3.1.4 for a representative example). Our expressions for $[\overline{GL_{r+1}\cdot X}]^{\dagger}$ are motivated by the small quantum cohomology of projective space, and we have a self-contained expository account of this connection in Section&nbsp;4 in the special case of a uniform matroid.
+   \item
+   The nonequivariant Chow class of $\overline{GL_{r+1}\cdot X}$ computed by Li [Li17] is a multiplicity-free sum of monomials in the $n$ hyperplane classes $H_i$, where the monomials correspond to integral points inside a polytope, specifically a rescaling and translation of the rank polytope of the matroid of $X$ (see Section&nbsp;5). Chow classes of torus orbits in the Grassmannian seem to be more complicated when expanded in terms of Schubert varieties, even non-equivariantly.</p>
+<p class="stacks-para">Our method naturally yields the equivariant Chow class of $\overline{GL_{r+1}\cdot X}$ as an equivariant version of a sum of integral points of a polytope. Specifically, an application of Brion's theorem [BHS09] allows us to encode Li's result via a unique $2n$-variable rational function $f_M(x_1,\ldots,x_n,y_1,\ldots,y_n)$ depending only on $M$ and not on $r$ which has the property that $f_M(z_1,\ldots,z_n,z_1^{r+1},\ldots,z_n^{r+1})$ is a polynomial, and this polynomial specialized to $z_i=H_i$ recovers the non-equivariant class. Denoting by $F(z)=z^{r+1}+c_1z^r+\cdots+c_{r+1}$, we show that $f_M(z_1,\ldots,z_n,F(z_1),\ldots,F(z_n))$ is a polynomial, which when specialized to $z_i=H_i$ recovers the equivariant class. See the beginning of Section&nbsp;3 up to <a href="/papers/orbits-equivariant-quantum/tag/2A79.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[2A79]</span></a> for a precise formulation.
+   \item
+   Given a $d\times n$ matrix $M$, we can consider the equivariant Chow class associated to the $k\times n$ matrix we get by applying a generic projection $K^d\to K^k$ to all of the columns of $M$. These classes don't depend on the choices of generic projections, and we will package these classes over all $k\leq d$ into an object we will call $[M]_{\hbar}$, which satisfies a fundamental relation
+   $$[M\oplus N]_{\hbar}=[M]_{\hbar}\star[N]_{\hbar}.$$
+   Here, the matrix direct sum $M\oplus N$ is the block matrix $\begin{pmatrix} M & 0 \\ 0 & N\end{pmatrix}$. The $\star$ operation can be computed cleanly via the small quantum product of projective space, yielding elegant formulas relating Kronecker dual classes associated to column projections of $M$ and $N$ to Kronecker dual classes associated to column projections of $M\oplus N$. For example, we can use the fundamental relation to compute $[I_n]_{\hbar}$ inductively, where $I_n$ is the $n\times n$ identity matrix. This yields all Kronecker dual classes associated to uniform matroids. With only slightly more work, the same argument yields the nice formula for Kronecker dual classes associated to Schubert matroids mentioned in the second item above.</p>
+<p class="stacks-para">The object $[M]_\hbar$ will actually be an operator taking $n$ classes in $A^\bullet_{GL_{r+1}}(\mb{P}^r)$, and outputting a class in the equivariant quantum cohomology ring $QH^\bullet_{GL_{r+1}}(\mb{P}^r)$. This ring is a deformation of $A^\bullet_{GL_{r+1}}(\mb{P}^r)$ by a single parameter $\hbar$, which we describe in detail in Section&nbsp;2. The construction of $[M]_\hbar$ is tightly paralleled by the construction of small equivariant quantum cohomology, and in fact, by construction, $[I_n]_{\hbar}$ is precisely the $n$-ary quantum product
+$$(\alpha_1,\ldots,\alpha_n)\mapsto \alpha_1 \star \ldots \star \alpha_n.$$
+The relation $[M\oplus N]_{\hbar}=[M]_{\hbar}\star [N]_{\hbar}$ can then be seen as a generalization of the associativity relations of small equivariant quantum cohomology. See Section&nbsp;2.6 for a precise definition of $[M]_\hbar$ and <a href="/papers/orbits-equivariant-quantum/tag/48CA.html" class="stacks-ref-link">Theorem&nbsp;3.5 <span class="stacks-ref-tag">[48CA]</span></a> for a precise theorem.
+\end{enumerate}
+As a consequence of our approach, we will compute all $GL_{r+1}$-equivariant classes of $GL_{r+1}$-orbit closures in $(\mb{P}^r)^n$ (see Section&nbsp;2.5). This solves the problem from [BF17] of computing $GL_{r+1}\times T$-equivariant classes of $GL_{r+1}\times T$-orbit closures in $\mb{A}^{(r+1)\times n}$ (see Section&nbsp;13).</p>
+<p class="stacks-para">Finally, we mention that these Chow classes associated to matrices have applications to enumerative geometry. For example, when the image of matrix multiplication $\mu_M$ happens to be a divisor, one can construct (virtual) effective divisors on $\ol{\mathscr{M}_g}$ [Tse19, Example 1.3]. For a second example, fix a hypersurface $Y\subset \mb{P}^r$ and a general hypersurface $Z\subset \mb{P}^{r+a}$.</p>
+<div class="stacks-env" id="slicing">
+  <div class="stacks-env-head"><strong>Problem&nbsp;1.1.</strong> <a href="../tag/AB10.html" class="stacks-tag-link">(AB10)</a></div>
+  <div class="stacks-env-body"><p>As we vary over $r$-planes $\Lambda\subset\mb{P}^{r+a}$, how many times is $\Lambda\cap Z\cong Y$?</p></div>
+</div>
+<p class="stacks-para"><a href="/papers/orbits-equivariant-quantum/tag/AB10.html" class="stacks-ref-link">Problem&nbsp;1.1 <span class="stacks-ref-tag">[AB10]</span></a> has been solved in the context of line slices of a quintic plane curve [CL08] and planar slices of a quartic threefold [LPT19, Corollary 1.3] for many choices of $Y$. To our knowledge, <a href="/papers/orbits-equivariant-quantum/tag/AB10.html" class="stacks-ref-link">Problem&nbsp;1.1 <span class="stacks-ref-tag">[AB10]</span></a> is still open for hyperplane slices of a cubic threefold, even for general $Y$. A further generalization of <a href="/papers/orbits-equivariant-quantum/tag/AB10.html" class="stacks-ref-link">Problem&nbsp;1.1 <span class="stacks-ref-tag">[AB10]</span></a> is to restrict $\Lambda$ to vary inside a subvariety of the Grassmannian, for example in a Schubert variety.</p>
+<p class="stacks-para">The formulas in this paper solve <a href="/papers/orbits-equivariant-quantum/tag/AB10.html" class="stacks-ref-link">Problem&nbsp;1.1 <span class="stacks-ref-tag">[AB10]</span></a> in the case where $Y$ is any union of hyperplanes. We demonstrate this in the case of line slices of a degree $2r+1$ hypersurface in $\mb{P}^r$, deriving an explicit formula and generalizing the example of quintic plane curves in [CL08] (see <a href="/papers/orbits-equivariant-quantum/tag/9EA2.html" class="stacks-ref-link">Theorem&nbsp;3.10 <span class="stacks-ref-tag">[9EA2]</span></a>, and <a href="/papers/orbits-equivariant-quantum/tag/0080.html" class="stacks-ref-link">Theorem&nbsp;3.11 <span class="stacks-ref-tag">[0080]</span></a>).</p>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S1.SS1.html">1.1. Relation to Previous Work</a></li>
+  <li><a href="S1.SS2.html">1.2. Acknowledgements</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 1: Introduction">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

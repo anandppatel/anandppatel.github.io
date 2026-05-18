@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 2 — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbb{G}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\mathbb{F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 2: The projection-ramification map</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS7.html" aria-label="Previous: 1.7. Acknowledgments" title="Previous: 1.7. Acknowledgments">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.html" aria-label="Next: Section 3: Maximal variation for incompressible and non-defective $X$" title="Next: Section 3: Maximal variation for incompressible and non-defective $X$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 2. The projection-ramification map</h1>
+<p class="stacks-para">In this section, we define a projection-ramification map for a linear series on a proper, normal, variety $X$.
+For $X \subset \P^n$, taking the linear series cut out by the hyperplanes recovers the projection-ramification map introduced in Section&nbsp;1.
+Working with abstract linear series, however, offers more flexibility that is helpful in inductive proofs.</p>
+<p class="stacks-para">Let $X$ be a proper variety of dimension $r$ over an algebraically closed field $k$ of characteristic zero.
+A <em>linear series</em> on $X$ is a pair $(L, W)$ consisting of a line bundle $L$ on $X$ and a subspace $W \subset H^0(X, L)$.
+The <em>complete linear series</em> associated to $L$ is $(L, W)$ with $W = H^0(X, L)$.
+A <em>projection</em> is a linear series $(L, V)$ with $\dim V = r+1$.
+A <em>projection of $(L, W)$</em> is a projection $(L, V)$ with $V \subset W$.
+As a convention, we use $V$ for projections and $W$ for more general linear series.</p>
+<div class="stacks-definition" id="def-properlyramified">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/7FC0.html" class="stacks-tag-link">(7FC0)</a></div>
+  <div class="stacks-env-body"><p>We say that a projection $(L,V)$ is <em>properly ramified</em> if the evaluation homomorphism
+$$e \from V \otimes \O_{X} \to P(L)$$
+is an isomorphism over a general point in $X$.  If $(L,V)$ is properly ramified, its <em>ramification divisor</em>
+$$R(L,V) \subset X$$
+is the closure of the scheme defined by the determinant of $e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}}$.</p></div>
+</div>
+<p class="stacks-para">In most cases, $L$ is clear from context, so we drop it from the notation and denote the ramification divisor simply by $R(V)$.</p>
+<div class="stacks-commentary" id="rem-Jacobian">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/9C51.html" class="stacks-tag-link">(9C51)</a></div>
+  <div class="stacks-env-body"><p>Suppose for simplicity that $V$ is a base-point free linear series that yields a surjective map $\phi \from X \to \P V$.
+  Then the ramification divisor may be defined as the degeneracy locus of the map
+  $$d \phi \from T_{X} \to \phi^* T_{\P V}$$
+  on tangent spaces.
+  The degeneracy locus is the zero locus of $\det \phi$, which in local coordinates, is given by the determinant of the Jacobian matrix $\left( \frac{\partial \phi_i}{\partial x_j} \right)$.
+  Therefore, the ramification divisor $R(L, V)$ is also often called the <em>Jacobian</em> of the linear series $(L, V)$ (see, for example, [3, 1.1.7]).</p></div>
+</div>
+<p class="stacks-para">A projection $(L, V)$ gives the evaluation map
+$$e \from V \otimes \O_X \to L.$$
+The evaluation map yields a map $p_{V,L} \from X \dashrightarrow \P V$, regular on the non-empty open set of $X$ where $e$ is surjective.
+The following is an easy observation, whose proof we skip.</p>
+<div class="stacks-lemma" id="prop-proj">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/2E59.html" class="stacks-tag-link">(2E59)</a></div>
+  <div class="stacks-env-body"><p>The projection $(L, V)$ is properly ramified if and only if the map on tangent spaces induced by $p_{V,L}$ is generically an isomorphism.
+  In characteristic zero, this is equivalent to the condition that $p_{V,L}$ is dominant.</p></div>
+</div>
+<p class="stacks-para">For a fixed $(L, W)$, the set of all projections of $(L, W)$ are parametrized by the Grassmannian $\Gr(r+1, W)$.
+The property of being properly ramified is a Zariski open condition on the Grassmannian.</p>
+<p class="stacks-para">We now define a map that assigns to a projection its ramification divisor.
+To do so, we interpret the ramification divisor as an element of a linear series.</p>
+<p class="stacks-para">Assume, furthermore, that $X$ is normal.
+Let $K_X$ be the canonical sheaf of $X$.
+Denoting by $i \from X^{\rm sm} \to X$ the inclusion, $K_X$ is given by the push-forward
+$$K_X = i_* K_{X^{\rm sm}}.$$
+Note that, since $X$ is normal, the complement of $X^{\rm sm} \subset X$ has codimension at least 2.
+The sheaf $K_X$ is coherent, reflexive, and satisfies Serre's S2 condition.</p>
+<p class="stacks-para">Let $L$ be a line bundle on $X$.
+The sheaf $P(L)$ is locally free of rank $(r+1)$ on $X^{\rm sm}$, and we have a canonical isomorphism
+$$\bigwedge^{r+1} P(L) |_{X^{\rm sm}} \cong K_{X^{\rm sm}} \otimes L^{r+1}.$$
+Given a subspace $V \subset H^0(X, L)$, we apply $\bigwedge^{r+1}$ to the evaluation map
+$$e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}},$$
+to get
+$$\det e \from \det V \otimes \O_{X^{\rm sm}} \to K_{X^{\rm sm}} \otimes L^{r+1}.$$
+By applying $i_*$ and taking global sections, we get
+$$r_V \from \det V \to H^0(X, K_X \otimes L^{r+1}).$$
+If $(L, V)$ is properly ramified, then this map is non-zero, and hence gives a point of the projective space $\P H^0(X, K_X \otimes L^{r+1})^*$.
+Doing the same construction universally over the Grassmannian $\Gr = \Gr(r+1, W)$ yields a map
+$$r \from \det \mathcal V \to H^0(X, K_X \otimes L^{r+1}) \otimes \O_{\Gr},$$
+where $\mathcal V \subset W \otimes \O_{\Gr}$ is the universal sub-bundle of rank $(r+1)$.
+Let $U \subset \Gr$ be the open subset of properly ramified projections.
+Then the map in (2.2) is non-zero at every point of $U$, and defines a map $U \to \P H^0(X, K_X \otimes L^{r+1})^*$ given by the surjection
+$$H^0(X, K_X \otimes L^{r+1})^* \otimes \O_{U} \to \det \mathcal V|_U^*.$$
+Note that $U$ is non-empty if and only if $W$ separates tangent vectors at a general point of $X$.</p>
+<div class="stacks-definition" id="def-ProjectionRamification">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.4.</strong> <a href="../tag/BA97.html" class="stacks-tag-link">(BA97)</a></div>
+  <div class="stacks-env-body"><p>Let $(L, W)$ be a linear series that separates tangent vectors at a general point of $X$.
+  The <em>projection-ramification</em> map for $(L,W)$ is the rational map
+  $$\rho_{(X,L,W)} \from \Gr(r+1, W) \dashrightarrow \P H^0(X, K_X \otimes L^{r+1})^*$$
+  defined on the non-empty open subset of properly ramified maps by (2.3).</p></div>
+</div>
+<p class="stacks-para">If any of $X$, $L$, or $W$ are clear from context, we drop them from the notation.
+In particular, for a non-degenerate $X \subset \P^n$, we denote by $\rho_X$ the map $\rho_{X,L,W}$  with $L = \O_X(1)$ and $W$ the image in $H^0(X, L)$ of $H^0(\P^n, \O(1))$.</p>
+<p class="stacks-para">Note that the map (2.3) factors as
+$$\det \mathcal V \xrightarrow{a} \bigwedge^{r+1} W \otimes \O_{\Gr} \xrightarrow{b} H^0(X, K_X \otimes L^{r+1}) \otimes \O_{\Gr},$$
+where $a$ is $\wedge^{r+1}$ applied to the universal inclusion $\mathcal V \subset W \otimes \O_{\Gr}$, and $b$ is induced by $\wedge^{r+1}$ applied to the evaluation map $e \from W \otimes \O_{X} \to P(L)$.
+The map $a$ defines the Pl&uuml;cker embedding
+$$i \from \Gr(r+1, W) \to \P \left(\bigwedge^{r+1}W^*\right),$$
+and the map $b$ defines a linear projection
+$$p \from \P \left(\bigwedge^{r+1}W^*\right) \dashrightarrow \P H^0(X, K_X \otimes L^{r+1}).$$
+Thus, $\rho_{X,L,W}$ factors as the Pl&uuml;cker embedding followed by a linear projection.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — Section 2: The projection-ramification map">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/section/S2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

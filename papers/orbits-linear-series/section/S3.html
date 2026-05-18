@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 3 — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 3: Vanishing sequences and the Wronskian</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Equivariant orbit classes" title="Previous: Section 2: Equivariant orbit classes">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S4.html" aria-label="Next: Section 4: Complete parametrisation of the orbit of a linear series" title="Next: Section 4: Complete parametrisation of the orbit of a linear series">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 3. Vanishing sequences and the Wronskian</h1>
+<p class="stacks-para">Let \(C\) be a smooth curve, \(L\) a line bundle of degree \(d\) on \(C\), and \(S \subset H^0(C,L)\) a subspace of dimension \(r+1\).
+The pair \((S,L)\) is called a <em>linear series of rank \(r\) and degree \(d\)</em> or a \(g^r_d\) on \(C\).
+Given a point \(p \in C\), there exists a unique sequence of integers \(a_0(p) < \dots < a_r(p)\) in \(\{0,\dots,d\}\) such that \(S\) contains a section \(s_i\) that vanishes to order exactly \(a_i(p)\) at \(p\).
+The sequence \(a_i(p)\) is called the <em>vanishing sequence</em> of \(S\) at \(p\).
+The sections \(s_0, \dots, s_r\) form a basis of \(S\).</p>
+<p class="stacks-para">Denote by \(j_{r+1}L\) the bundle of jets of order \(r+1\) of \(L\);
+that is
+$$j_{r+1}L = {\pi_2}_* \left( \pi_1^* L \otimes O_{(r+1) \Delta} \right).$$
+Here \(\Delta \to C \times C\) is the diagonal and the \(\pi_i\) are the two projections.
+The linear series \(S \subset H^0(C, L)\) induces an evaluation map
+$$\underline S \to L,$$
+and also a map
+$$\underline S \to j_{r+1} L.$$
+The <em>Wronskian</em> of \(S\) is the determinant of (3.1).</p>
+<div class="stacks-lemma" id="prop-wronskian">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.1.</strong> <a href="../tag/8691.html" class="stacks-tag-link">(8691)</a></div>
+  <div class="stacks-env-body"><p>The Wronskian is non-zero and vanishes to order \(\sum a_i(p)-i\) at \(p\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DF3D.html" class="stacks-tag-link">(DF3D)</a></div>
+  <div class="stacks-env-body"><p>The proof is a part of [9, Proposition&nbsp;1.1].
+  We give it for completeness.</p>
+<p>  Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
+  Denote by \(\widehat M\) the completion of an \(O_C\)-module \(M\) at \(p\).
+  Choose an isomorphism of \(\k\llbracket t \rrbracket\)-modules \(\widehat L \cong \k\llbracket t \rrbracket\).
+  Then we have an isomorphism
+  $$\widehat{j_{r+1}L} \cong \k\llbracket t,u \rrbracket/(u-t)^{r+1}.$$
+  If the section \(s \in \widehat L \cong \k\llbracket t\rrbracket\) is given by the power series \(s(t)\), then the induced section \(j_{r+1}(s)\) of \(\widehat{j_{r+1} L}\) is given by
+  $$j_{r+1}(s) = s(t) + s'(t)(u-t) + \dots + s^{(r)}(t)\frac{1}{r!} (u-t)^r.$$
+  Let \(s_i\) correspond to the power series \(s_i(t) = t^{a_i}z_i \in \k\llbracket t \rrbracket\), where \(z_i \in \k\llbracket t \rrbracket\) is a unit.
+  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (3.1) is given by
+  $$\begin{pmatrix}
+      t^{a_0} z_0 & t^{a_1}z_1 & \dots & t^{a_r}z_r \\
+      (t^{a_0} z_0)' & (t^{a_1}z_1)' & \dots & (t^{a_r}z_r)' \\
+      \vdots & \vdots & \ddots & \vdots \\
+      (t^{a_0} z_0)^{(r)} & (t^{a_1}z_1)^{(r)} & \dots & (t^{a_r}z_r)^{(r)}.
+    \end{pmatrix}$$
+  The lowest degree term in its determinant is \(t^{\sum a_i - i}\) and its coefficient is the determinant of the \((r+1) \times (r+1)\) matrix \(C\) with \(C_{ij} = a_i(a_i-1)\cdots(a_i-j+1)\).
+  It remains to show that the coefficient is non-zero.
+  By a sequence of invertible row transformations, the matrix \(C\) reduces to the Vandermonde matrix \(V\) with \(V_{ij} = a_i^j\).
+  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(> d\).
+  Hence the determinant of \(V\), and hence of \(C\), is non-zero.</p></div>
+</div>
+<p class="stacks-para">Let \(\rho(S) \subset C\) be the vanishing locus of the Wronskian of \(S\).
+We call \(\rho(S)\) the <em>ramification divisor</em> of \(S\) and its points the <em>ramification points</em>.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;3.2.</strong> <a href="../tag/05E3.html" class="stacks-tag-link">(05E3)</a></div>
+  <div class="stacks-env-body"><p>For all \(p \in C - \rho(S)\), we have \(a_i(p) = i\).
+  In particular, for all but finitely many \(p\), we have \(a_i(p) = i\).</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CF59.html" class="stacks-tag-link">(CF59)</a></div>
+  <div class="stacks-env-body"><p>Follows immediately from <a href="/papers/orbits-linear-series/tag/8691.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[8691]</span></a>.</p></div>
+</div>
+<p class="stacks-para">Note that \(\rho(S)\) is the zero-locus of a section of \(\det j_{r+1} L\).
+Recall that we have a sequence of surjective maps
+$$j_{r+1}L \to j_{r}L \to \dots \to j_2 L \to j_1 L = L \to 0$$
+with
+$$\ker (j_{i+1}L \to j_iL) = L \otimes \Omega_C^{i}.$$
+As a result, we get
+$$\det j_{r+1} L  = L^{r+1} \otimes \Omega_C^{r(r+1)/2}.$$</p>
+<p class="stacks-para">Consider the Grassmannian \(\Gr = \Gr(r+1, H^0(C,L))\) with the universal sub-bundle
+$$S \subset \underline{H^0(C,L)}.$$
+On \(\Gr \times C\), we have the universal evaluation map
+$$\pi_1^* S \to \pi_2^* L,$$
+which induces a map
+$$\pi_1^* S \to \pi_2^* j_{r+1} L.$$
+Taking the determinant of the last map and applying \({\pi_1}_*\) gives the following map on \(\Gr\):
+$$\det S \to \underline {H^0(C, \det j_{r+1} L)}.$$
+By <a href="/papers/orbits-linear-series/tag/8691.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[8691]</span></a>, the map above is non-zero at every point of \(\Gr\), and hence yields a morphism
+$$\rho \colon \Gr(r+1, H^0(C, L)) \to \P H^0(C, \det j_{r+1}L).$$</p>
+<div class="stacks-lemma" id="prop-wronskimap">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.3.</strong> <a href="../tag/C47C.html" class="stacks-tag-link">(C47C)</a></div>
+  <div class="stacks-env-body"><p>The map \(\rho\) in (3.3) is finite.
+  For \(C = \P^1\), it is also surjective.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4E94.html" class="stacks-tag-link">(4E94)</a></div>
+  <div class="stacks-env-body"><p>Assume that \(\dim H^0(C, L) > r+1\); otherwise, the statement is vacuous.</p>
+<p>  Since the Grassmannian has Picard rank one, any morphism from it is either finite or constant.
+  It is easy to see that \(\rho\) is not constant; so it must be finite.</p>
+<p>  For \(C = \P^1\) and \(L = O(d)\), we have by (3.2)
+  $$\det j_{r+1} L \cong O((r+1)d) \otimes O(-r(r+1)) = O((r+1)(d-r)).$$
+  Hence, both the source and target of \(\rho\) have the same dimension, namely \((r+1)(d-r)\).</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — Section 3: Vanishing sequences and the Wronskian">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

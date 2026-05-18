@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>2.1. Matrices, matroids and polytopes — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <span>2.1. Matrices, matroids and polytopes</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Definitions" title="Previous: Section 2: Definitions">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 2.2. $GL_{r+1}$-equivariant Chow rings" title="Next: 2.2. $GL_{r+1}$-equivariant Chow rings">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.1. Matrices, matroids and polytopes</h1>
+<p class="stacks-para">Let $d$ and $n$ be integers. For a polytope $P$, denote by $\Vt(P)$ the vertices of $P$. The <em>hypersimplex</em> $\Delta_{d,n} \subset \mb{R}^n$ is defined by $$\Delta_{d,n}=\left\{(x_1, \ldots, x_n) \in [0, 1]^n\middle|\sum_{i=1}^n x_i = d\right\}.$$ When $d$ and $n$ are clear from context, we sometimes write the hypersimplex as $\Delta$ rather than $\Delta_{d, n}$. The hypersimplex is the convex hull of the vectors $e_A := \sum_{i \in A} e_i$, where $A$ ranges over all $d$-element subsets of $\{1, \ldots, n\}$. We will sometimes abuse notation and use the same symbol to denote both $e_A$ and $A$.</p>
+<p class="stacks-para">Given a $d \times n$ matrix $M$, we define the <em>rank function</em> $\rk_M:2^{\{1,\ldots,n\}} \to \mb{Z}_{\ge 0}$ by $\rk_M(A)=\rk(M^A)$, where $M^A$ is the submatrix of $M$ formed by the columns in $A$. When $M$ is clear from context, we sometimes write the rank function as $\rk$ rather than $\rk_M$. The <em>matroid</em> of $M$ is the data of the rank function $\rk_M$, which is determined by the maximal independent subsets of the columns of $M$. The <em>rank polytope</em> of $M$ is the set
+$$P_M=\left\{(x_1, \ldots, x_n) \in \Delta_{d,n}\middle|\text{$\sum_{i \in A} x_i \leq \rk_M(A)$ for all $A \subset \{1, \ldots, n\}$}\right\}$$ and the <em>independence polytope</em> of $M$ is the set
+$$I_M=\left\{(x_1, \ldots, x_n) \in \mb{R}_{\geq 0}^n\middle|\text{$\sum_{i \in A} x_i \leq \rk_M(A)$ for all $A \subset \{1, \ldots, n\}$}\right\}.$$
+ The rank polytope of $M$ is the convex hull of $e_A$ where $A$ ranges over all $d$-element subsets of $\{1, \ldots, n\}$ such that $\rk_M(A) = d$, and the independence polytope of $M$ is the convex hull of $e_A$ where $A$ ranges over all subsets of $\{1, \ldots, n\}$ such that $\rk_M(A) = |A|$.
+The rank polytope of $M$ is empty if $\rk(M) < d$ and determines the matroid of $M$ if $\rk(M)=d$. The rank polytope of a general $d \times n$ matrix is $\Delta_{d, n}$.</p>
+<p class="stacks-para">As in [DF10], we say that a function $f$ from $d \times n$ matrices to an abelian group $Z$ is <em>valuative</em> (respectively <em>additive</em>) if whenever $\sum a_i1_{P_{M_i}}=0$ (respectively $\sum a_i 1_{P_{M_i}}$ is supported on a positive codimension subset of $\{\sum_{i=1}^n x_i=d\} \subset \mb{R}^n$ ), we have $\sum a_i f(M_i)=0$. These notions have been intensely studied in a variety of contexts [Der09, DF10, Spe09].</p>
+<p class="stacks-para">The following proposition shows we can replace the condition $\sum a_i1_{P_{M_i}}=0$ with the condition $\sum a_i1_{I_{M_i}}=0$, which will be convenient at times.</p>
+<div class="stacks-lemma" id="rankind">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.1.</strong> <a href="../tag/FB10.html" class="stacks-tag-link">(FB10)</a></div>
+  <div class="stacks-env-body"><p>For $d\times n$ matrices $M_i$ of rank $d$, $\sum a_i1_{P_{M_i}}=0$ if and only if $\sum a_i1_{I_{M_i}}=0$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/55BB.html" class="stacks-tag-link">(55BB)</a></div>
+  <div class="stacks-env-body"><p>If $\sum a_i1_{I_{M_i}}=0$, then we can restrict to the hyperplane $\sum_{i=1}^n x_i=d$ to obtain $\sum a_i1_{I_{M_i}}=0$. Conversely, suppose $\sum a_i1_{P_{M_i}}=0$. We recall that if $\{P_i\}$ is a collection of possibly unbounded polytopal regions, and $\sum a_i 1_{P_i}=0$, then $\sum a_i 1_{R+P_i}=0$ for any ray $R$ (this can be checked on each ray parallel to $R$ separately). Applying this successively to $\sum a_i 1_{P_{M_i}}=0$ with each of the negative coordinate rays and then restricting to the positive orthant yields $\sum a_i 1_{I_{M_i}}=0$.</p></div>
+</div>
+<p class="stacks-para">Parallel and series connection of matroids play a crucial role in this paper, and we recall the definition for matrices from [Oxl11, page 262, Figure 7.6(b)]. First, to simplify notation, we define the direct sum of two matrices.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.2.</strong> <a href="../tag/63A0.html" class="stacks-tag-link">(63A0)</a></div>
+  <div class="stacks-env-body"><p>For matrices $M_1,M_2$, define the <em>direct sum</em> matrix $M_1\oplus M_2=\begin{pmatrix} M_1 & 0 \\ 0 & M_2\end{pmatrix}$.</p></div>
+</div>
+<p class="stacks-para">Let $M_1 \in K^{d_1\times n_1}$ and $M_2 \in K^{d_2 \times n_2}$. We now define the ``parallel connection matrix'' $P(M_1, M_2)$ and ``series connection matrix'' $S(M_1, M_2)$ (along the last column of $M_1$ and the first column of $M_2$). <a href="/papers/orbits-equivariant-quantum/tag/98DD.html" class="stacks-ref-link">Definition&nbsp;2.3 <span class="stacks-ref-tag">[98DD]</span></a> depends on certain non-canonical isomorphisms, so it only defines $P(M_1, M_2)$ and $S(M_1, M_2)$ up to left $GL$-action.</p>
+<div class="stacks-definition" id="serpardefn">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.3.</strong> <a href="../tag/98DD.html" class="stacks-tag-link">(98DD)</a></div>
+  <div class="stacks-env-body"><p>Let $W_1 = K^{n_1}$ and $W_2 = K^{n_2}$. Let $x_{1, 1}, \ldots, x_{1, n_1} \in W_1$ be the columns of $M_1$ and let $x_{2, 1}, \ldots, x_{2, n_2} \in W_2$ be the columns of $M_2$. The <em>parallel connection matrix</em> $P(M_1, M_2) \in K^{(d_1 + d_2 - 1) \times (n_1 + n_2 - 1)}$ is the matrix with columns $x_{1, 1}, \ldots, x_{1, n_1} = x_{2, 1}, \ldots, x_{2, n_2}$, considered as elements of $(W_1 \oplus W_2) / \langle x_{1, n_1} - x_{2, 1}\rangle \cong K^{n_1 + n_2 - 1}$. The <em>series connection matrix</em> $S(M_1, M_2) \in K^{(d_1 + d_2) \times (n_1 + n_2 - 1)}$ is the matrix with columns $x_{1, 1}, \ldots, x_{1, n_1 - 1}, x_{1, n_1} + x_{2, 1}, x_{2, 2}, \ldots, x_{2, n_2}$, considered as elements of $W_1 \oplus W_2 \cong K^{n_1 + n_2}$.</p></div>
+</div>
+<p class="stacks-para">If we consider a matrix as a collection of points in projective space, one point for each column, then series and parallel connection have intuitive geometric meanings. </p>
+<div class="stacks-figure"><img src="../images/parallel.png" alt="parallel.png"></div>
+<div class="stacks-figure"><img src="../images/series.png" alt="series.png"></div>
+<p>Parallel connection (pictured on the left) corresponds to identifying two of the points. Series connection (pictured on the right) corresponds to drawing a line through two of the points and replacing them with a third (distinct) point on the connecting line.</p>
+<div class="stacks-definition" id="serpardef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.4.</strong> <a href="../tag/0CD8.html" class="stacks-tag-link">(0CD8)</a></div>
+  <div class="stacks-env-body"><p>A <em>series-parallel</em> matrix is a matrix obtained from a general $1 \times 1$ matrix by permutation of columns and series and parallel connection with general $1 \times 2$ matrices.</p></div>
+</div>
+<div class="stacks-figure"><img src="../images/seriesparallel.png" alt="seriesparallel.png"></div>
+<p class="stacks-para">Considering matrices as projective vector configurations, parallel connection with a general $1 \times 2$ matrix corresponds to duplicating a vector, and series connection with a general $1 \times 2$ matrix corresponds to removing a vector and sprouting off two general points on the line.</p>
+<div class="stacks-definition" id="asttau">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.5.</strong> <a href="../tag/9036.html" class="stacks-tag-link">(9036)</a></div>
+  <div class="stacks-env-body"><p>We denote by $\ast$ a non-zero $1\times 1$ matrix.</p>
+<p>We denote by $\tau^{\le k}$ to be a general matrix with $k$ rows (where the number of columns will always be clear from context), a different general matrix every time it appears.</p></div>
+</div>
+<div class="stacks-definition" id="SchubertDef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.6.</strong> <a href="../tag/C563.html" class="stacks-tag-link">(C563)</a></div>
+  <div class="stacks-env-body"><p>A <em>Schubert matroid</em> $\operatorname{Sch}(r_1,\ldots,r_\ell,X_1,\ldots,X_\ell)$ with $\emptyset \subseteq X_1 \subseteq  \ldots \subseteq X_\ell=\{1,\ldots,n\}$ and $0 \le r_1 \le \ldots \le r_\ell = d$ is the matroid associated to a $d \times n$ matrix $M$ with the first $r_i$ entries of every column in $X_i\setminus X_{i-1}$ being general and the remaining entries being zero. Up to left $GL$-action and column permutation, such a matrix can be written as
+$$\tau^{\le r_\ell}(\tau^{\le r_{\ell-1}}(\ldots\tau^{\le r_2}(\tau^{\le r_1}(\ast \oplus \ldots \oplus \ast)\oplus \ast \oplus \ldots \oplus \ast)\ldots)\oplus \ast \oplus \ldots \oplus \ast),$$
+where the $\ast$'s in the $i$'th block from the left are associated to the indices in $X_i \setminus X_{i-1}$.</p></div>
+</div>
+<p class="stacks-para">In terms of point configurations, a Schubert matroid is given by fixing a flag, and picking general points in each member of the flag.</p>
+<div class="stacks-figure"><img src="../images/schubert.png" alt="schubert.png"></div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 2.1. Matrices, matroids and polytopes">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S2.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

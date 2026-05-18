@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>2.3. Divisors from the algebra of covers — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Divisors on Hurwitz spaces</a> / <span>2.3. Divisors from the algebra of covers</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.SS2.html" aria-label="Previous: 2.2. Divisors from the topology of covers" title="Previous: 2.2. Divisors from the topology of covers">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS4.html" aria-label="Next: 2.4. Relations between various divisor classes" title="Next: 2.4. Relations between various divisor classes">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.3. Divisors from the algebra of covers</h1>
+<p class="stacks-para">Just as we get special loci in $\widetilde H_{d,g}$ from non-generic topological behavior, we get special loci in $\widetilde H_{d,g}$ from non-generic algebraic behavior.
+We make this precise using a structure theorem for finite morphisms due to Casnati and Ekedahl [4], which we first recall.</p>
+<p class="stacks-para">Let $X$ and $Y$ be integral schemes and $\alpha \from X \to Y$ a finite flat Gorenstein morphism of degree $d \geq 3$.
+The map $\alpha$ gives an exact sequence
+$$0 \to \O_Y \to \alpha_* \O_X \to {E_\alpha}^\vee \to 0,$$
+where $E = E_\alpha$ is a vector bundle of rank $(d-1)$ on $Y$, called the <em>Tschirnhausen bundle</em> of $\alpha$.
+Denote by $\omega_\alpha$ the dualizing sheaf of $\alpha$.
+Applying $\Hom_Y(-,\O_Y)$ to (2.1), we get
+$$0 \to E \to \alpha_* \omega_\alpha \to \O_Y \to 0.$$
+The map $E \to \alpha_* \omega_\alpha$ induces a map $\alpha^* E \to \omega_\alpha$.</p>
+<div class="stacks-theorem" id="thm-CE">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;2.3.</strong> <a href="../tag/F1CE.html" class="stacks-tag-link">(F1CE)</a></div>
+  <div class="stacks-env-body"><p>[See {[4, Theorem&nbsp;2.1]}]</p>
+<p>  In the above setup, $\alpha^* E \to \omega_\alpha$ gives an embedding $\iota \from X \to \P E$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P E \to Y$ is the projection.
+  Moreover, the following hold.</p>
+<ol><li>The resolution of $\O_X$ as an $\O_{\P E}$ module has the form
+    $$\begin{split}
+        0 \to \pi^* N_{d-2} (-d) \to \pi^* N_{d-3}(-d+2) \to \pi^*N_{d-4}(-d+3) \to \dots \\
+        \dots \to \pi^*N_2(-3) \to \pi^*N_1(-2) \to \O_{\P E} \to \O_X \to 0,
+      \end{split}$$
+    where the $N_i$ are vector bundles on $Y$.
+    Restricted to a point $y \in Y$, this sequence is the minimal free resolution of $X_y \subset \P E_y$.</li>
+<li>The ranks of the $N_i$ are given by
+    $$\rk N_i = \frac{i(d-2-i)}{d-1} {d \choose {i+1}},$$</li>
+<li>We have $N_{d-2} \cong \pi^* \det E$.
+    Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying $\Hom_{\O_{\P E}}(-, N_{d-2}(-d))$.</li></ol>
+</div>
+</div>
+<p class="stacks-para">We call the resolution in (1) the <em>Casnati&ndash;Ekedahl</em> resolution of $\alpha$.</p>
+<p class="stacks-para">Let us take $Y = \P^1$.
+Every vector bundle on $\P^1$ splits as a direct sum of line bundles.
+The multi-set of degrees of the line bundles appearing in the direct sum decomposition is unique.
+We refer to this multi-set as the <em>splitting type</em> of the bundle.
+We say that a bundle $V$ is <em>balanced</em> if the splitting type is $\{a,\dots, a\}$ for some $a$.</p>
+<div class="stacks-lemma" id="prop-ni">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.4.</strong> <a href="../tag/AB0E.html" class="stacks-tag-link">(AB0E)</a></div>
+  <div class="stacks-env-body"><p>Let $\alpha \from C \to \P^1$ be a point of $\widetilde H_{d,g}$.
+  Denote by $E$ the Tschirnhausen bundle and by $N_i$ the syzygy bundles in the Casnati&ndash;Ekedahl resolution of $\alpha$.
+  Then
+  $$\begin{aligned}\deg E &= (g+d-1), \text{ and }\\
+    \deg N_i &= (d-2-i) (g+d-1) {{d-2} \choose i-1}.\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4698.html" class="stacks-tag-link">(4698)</a></div>
+  <div class="stacks-env-body"><p>The branch divisor of $\alpha$ is cut out by a section of $(\det E)^{\otimes 2}$.
+  Therefore, we get $2 \deg E = 2g+2d-2$, from which the first equation follows.
+  We postpone the proof of the second equation to Section&nbsp;4 (See <a href="/papers/syzygy-divisors/tag/BFA5.html" class="stacks-ref-link">Corollary&nbsp;4.3 <span class="stacks-ref-tag">[BFA5]</span></a>).</p></div>
+</div>
+<p class="stacks-para">Suppose $d$ divides $g-1$.
+Then the rank of $N_i$ divides its degree.</p>
+<div class="stacks-lemma" id="prop-gen_balanced">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;2.5.</strong> <a href="../tag/D380.html" class="stacks-tag-link">(D380)</a></div>
+  <div class="stacks-env-body"><p>If $d$ divides $g-1$, then for a generic $\alpha \from C \to \P^1$ in $\widetilde H_{d,g}$ and $i = 1, \dots, d-2$, the bundle $N_i$ is balanced.</p></div>
+</div>
+<p class="stacks-para">We postpone the proof to Section&nbsp;3.</p>
+<div class="stacks-definition" id="def-main">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.6.</strong> <a href="../tag/C934.html" class="stacks-tag-link">(C934)</a></div>
+  <div class="stacks-env-body"><p>Suppose $d$ divides $g-1$.
+  Define the <em>$i$th syzygy divisor</em> $\mu_i \subset \widetilde H_{d,g}$ as the locus of $\alpha \from C \to \P^1$ for which the bundle $N_i$ is unbalanced.</p></div>
+</div>
+<p class="stacks-para">There is a natural scheme structure on $\mu_i \subset \widetilde {\orb H}_{d,g}$, defined as follows.
+Let $U \to \widetilde{\orb H}_{d,g}$ be an &eacute;tale local chart for the moduli stack over which the conic bundle $\orb P_U \to U$ admits a relative $\O(1)$.
+Consider the bundle $\End(N_i) \otimes \O(-1)$ on $\orb P_U$.
+Note that $\chi \left(\End(N_i) \otimes \O(-1)\right) = 0$ and $h^1(\End(N_i) \otimes \O(-1) \geq 1$ if and only if $N_i$ is unbalanced.
+The divisor $\mu_i$ is the zero locus of the first Fitting ideal of $R^1p_* \left(\End(N_i) \otimes \O(-1) \right)$.
+Henceforth, $\mu_i$ is understood to have this scheme structure.</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.7.</strong> <a href="../tag/2483.html" class="stacks-tag-link">(2483)</a></div>
+  <div class="stacks-env-body"><p>We can use the splitting types of $E$ and $N_i$ to define locally closed subsets of $\widetilde H_{d,g}$ of higher codimensions.
+  Doing so gives a stratification of $\widetilde H_{d,g}$ according to the isomorphism types of the bundles appearing in the Casnati&ndash;Ekedahl resolution.
+  This stratification has a distinctly algebro-geometric favor, and it should be in some sense orthogonal to the topological stratification discussed in <a href="/papers/syzygy-divisors/tag/9145.html" class="stacks-ref-link">Remark&nbsp;2.2 <span class="stacks-ref-tag">[9145]</span></a>.
+  See [17] for more on this stratification.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — 2.3. Divisors from the algebra of covers">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S2.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

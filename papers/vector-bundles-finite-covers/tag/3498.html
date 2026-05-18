@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Proof (3498) — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -82,7 +117,7 @@
   Recall that in a deformation, the $\pi_1$ of a general fiber surjects on to the $\pi_1$ of the special fiber.
   Hence, since $\pi_1(X_0) \to \pi_1(Y)$ is surjective, so is $\pi_1(X) \to \pi_1(Y)$.
   That is, $X \to Y$ is primitive.</p>
-<p>  We know that the moduli stack of vector bundles on $Y$ is irreducible \cite[Appendix&nbsp;A]{hof:10} and therefore, the locus of stable bundles forms a dense open substack.
+<p>  We know that the moduli stack of vector bundles on $Y$ is irreducible [18, Appendix&nbsp;A] and therefore, the locus of stable bundles forms a dense open substack.
   So, we can find a vector bundle $\mathcal E$ on $Y \times \Delta$ such that $\mathcal E_{Y \times \{0\}} = E$ and $\mathcal E_{Y \times \{t\}}$ is stable for $t \in \Delta \setminus \{0\}$.
   As $H^1(N_{X/E}) = 0$, the curve $X \subset E$ deforms to the generic fiber of $\mathcal E \to \Delta$, by the same relative Hilbert scheme argument as used in the proof of <a href="/papers/vector-bundles-finite-covers/tag/47FD.html" class="stacks-ref-link">Theorem&nbsp;3.13 <span class="stacks-ref-tag">[47FD]</span></a>.
   Let $X_t \subset \mathcal \mathcal \mathcal E_t$ be such a deformation.
@@ -91,10 +126,10 @@
 <p>  Let $\phi \from X \to Y$ be an element of $H_{d,g}(Y)$ with stable Tschirnhausen bundle $E$ such that $H^1(N_{X/E}) = 0$.
   The above argument shows that such coverings exist if $g$ is sufficiently large.
   Let $S$ be a versal deformation space for $E$ and $\mathcal E$ a versal vector bundle on $Y \times S$.
-  See \cite[Lemma&nbsp;2.1]{nar.ses:65} for a construction of $S$ in the analytic category.
-  In the algebraic category, we can take $S$ to be a suitable Quot scheme (see, for example, \cite[Proposition&nbsp;A.1]{hof:10}).
+  See [24, Lemma&nbsp;2.1] for a construction of $S$ in the analytic category.
+  In the algebraic category, we can take $S$ to be a suitable Quot scheme (see, for example, [18, Proposition&nbsp;A.1]).
   Let $\mathcal H$ be the component of the relative Hilbert scheme of $\Tot(\mathcal E) / S$ containing the point $[X \subset E]$, and let $\mathcal H^{\rm sm} \subset \mathcal H$ be the open subset parametrizing $[X_t \subset \mathcal E_t]$ with smooth $X_t$.
-  Since $H^1(N_{X/E}) = 0$, the map $\mathcal H^{\rm sm} \to S$ is smooth at $[X \subset E]$ by \cite[Theorem&nbsp;3.2.12]{ser:06}.
+  Since $H^1(N_{X/E}) = 0$, the map $\mathcal H^{\rm sm} \to S$ is smooth at $[X \subset E]$ by [31, Theorem&nbsp;3.2.12].
   In particular, it is dominant.
   By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, we know that for $[X_t \subset \mathcal E_t] \in \mathcal H^{\rm sm}$, the bundle $\mathcal E_t$ is indeed the Tschirnhausen bundle of $X_t \to Y$.
   We conclude that the map $H_{d,g}(Y) \dashrightarrow M_{d-1,b}(Y)$ is dominant.</p></div>
@@ -122,7 +157,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

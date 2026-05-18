@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 3 — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 3: The generic splitting type</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.SS4.html" aria-label="Previous: 2.4. Relations between various divisor classes" title="Previous: 2.4. Relations between various divisor classes">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S4.html" aria-label="Next: Section 4: The divisor class of $\mu_i$" title="Next: Section 4: The divisor class of $\mu_i$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 3. The generic splitting type</h1>
+<p class="stacks-para">The goal of this section is to discuss the splitting type of the syzygy bundle $N_i$ for a generic cover, and to prove that it is balanced when $d$ divides $g-1$.
+Note, however, that the degree of $N_i$ may be divisible by its rank even when $d$ does not divide $g-1$.
+One may expect $N_i$ to be generically balanced even in this setting.
+This is not quite true, as the following example shows for the first bundle $N_1$.</p>
+<div class="stacks-env" id="example-imbalance">
+  <div class="stacks-env-head"><strong>Example&nbsp;3.1.</strong> <a href="../tag/5177.html" class="stacks-tag-link">(5177)</a></div>
+  <div class="stacks-env-body"><p>Consider a general degree $6$, genus $4$ cover $\alpha: C \to \P^{1}$.
+  We will show that the splitting of $N_{1}$ is $\O_{\P^{1}}(2) \oplus \O_{\P^{1}}(3)^{\oplus 7} \oplus \O_{\P^{1}}(4)$.
+  The degree of $N_{1}$ is $27$, and its rank is $9$, so $N_{1}$ is balanced if and only if it has a summand of degree $\geq 4$. </p>
+<p>  Let $h$ denote the divisor class of the relative $\O(1)$ on $\P E$, and let $f$ be the class of a fiber of $\P E \to \P^1$.
+  Then the linear system $|h-2f|$ restricts to the complete canonical system on $C \subset \P E$, and furthermore, every element of the linear system $|2h-4f|$ is obtained as a sum of products of elements in $|h-2f|$. Since the canonical model of $C$ lies on a unique quadric $Q$, we see that there is a unique element of $|2h-4f|$ containing $C$.  This, in turn, translates into an $\O(4)$ summand in $N_{1}$.</p></div>
+</div>
+<p class="stacks-para">The example above can be generalized, provided the genus is small compared to the degree.
+For large $g$, however, we expect that all bundles in the Casnati&ndash;Ekedahl resolution will be balanced.
+Evidence for this is given by the next theorem.</p>
+<div class="stacks-theorem" id="theorem-genericF">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3.2.</strong> <a href="../tag/B45A.html" class="stacks-tag-link">(B45A)</a></div>
+  <div class="stacks-env-body"><p>The bundle $N_{1}$ is balanced for a general branched cover provided $g$ is much larger than $d$.
+  When $d$ divides $g-1$, all syzygy bundles $N_{i}$ are balanced for a general branched cover.</p></div>
+</div>
+<p class="stacks-para">The statement for $N_1$ is the main result of [3]; the statement for $d$ dividing $g-1$ is [3, Proposition&nbsp;2.4].</p>
+<p class="stacks-para">We  now give a brief overview of the proof that the syzygy bundles are generically balanced when this divisibility constraint holds.
+Since the Hurwitz space is irreducible, and the condition of being balanced is open, it suffices to provide one example of a cover where it holds.</p>
+<p class="stacks-para">Consider the surface $S = E \times \P^{^1}$, where $E$ is any elliptic curve. Let $D$ be any smooth curve on $S$ with $D \cdot (\{e\} \times \P^1) = k$ and $D \cdot (E \times \{t\}) = d$.
+We will argue that the projection $D \to \P^{1}$ has the property that every syzygy bundle $N_{i}$ is balanced.</p>
+<p class="stacks-para">The surface $S$ embeds in $\P^{d-1} \times \P^{1}$ so that the projection to $\P^{d-1}$ is the projection $S \to E$ composed with the embedding of $E$ as an elliptic normal curve of degree $d$. The curve $D$ is then the intersection of $S$ with a divisor $H \subset \P^{d-1} \times \P^{1}$which restricts to a hyperplane in every $\P^{d-1}$.</p>
+<p class="stacks-para">The main point is that the minimal free resolution of the elliptic normal curve $E \subset \P^{d-1}$ (embedded by any complete linear system of degree $d$) has the same shape as the Casnati&ndash;Ekedahl resolution of a degree $d$ branched cover.
+This is equivalent to saying that elliptic normal curves are arithmetically Gorenstein.
+The minimal free resolution of $E \subset \P^{d-1}$ pulls back to a relative minimal free resolution of $\O_{S}$ as an $\O_{\P^{d-1} \times \P^{1}}$-module.
+More precisely, we get a resolution
+  $$\begin{split}
+      0 \to &\O_{\P^{d-1} \times \P^{1}}(-d) \to V_{d-3} \otimes \O_{\P^{d-1} \times
+        \P^{1}}(-d+2) \to V_{d-4} \otimes \O_{\P^{d-1} \times
+        \P^{1}}(-d+3) \to \cdots \\
+      \cdots &\to
+      V_2 \otimes \O_{\P^{d-1} \times
+        \P^{1}}(-3) \to
+      V_1 \otimes \O_{\P^{d-1} \times
+        \P^{1}}(-2)^{\oplus r_{1}} \to \O_{\P^{d-1} \times \P^{1}} \to
+      \O_{S} \to 0,
+    \end{split}$$
+  where the $V_{i}$ are vector spaces of the same dimension as the rank of the bundles $N_i$ in the Casnati&ndash;Ekedahl resolution of a degree $d$ branched cover, and the twists refer to twists by the pullback of $\O_{\P^{d-1}}(1)$.
+  The restriction of this resolution to the relative hyperplane $H$ yields the Casnati&ndash;Ekedahl resolution of $D = H \cap S$.
+  Note that the pullback of $\O_{\P^{d-1}}(1)$ to $H$ is $\O_H(1) \otimes \pi^* L$ where $\pi \from H \to \P^1$ is the projection, and $L$ is a line bundle on $\P^1$.
+  Therefore, the terms in the resolution (3.1) restrict to $\pi^* (V_i \otimes L^{-i-1}) \otimes \O_H(-i-1)$.
+  We thus get $N_i = V_i \otimes L^{-i-1}$, which is balanced.</p>
+<p class="stacks-para">Since $D$ is a curve of type $(d,k)$ on $E \times \P^{1}$, its genus $g$ is $d(k-1)+1$.
+  This is where we get the degree-genus restriction $g \equiv 1 \pmod d$.</p>
+<div class="stacks-commentary" id="remark-genusonefibrations">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.3.</strong> <a href="../tag/41FC.html" class="stacks-tag-link">(41FC)</a></div>
+  <div class="stacks-env-body"><p>The strategy above required understanding the relative resolution of the (trivial) genus one fibration $S \to \P^1$.
+  In general, if $f \from X \to \P^{1}$ is a genus one fibration with simple nodes as singularities, then a relative degree $d$ divisor $D \subset X$ yields a relative embedding
+  $$\begin{aligned}X \hookrightarrow \P(f_{*}\O_{X}(D)) \to \P^{1}\end{aligned}$$
+  and $X$ enjoys a relative resolution with exactly the same form as the Casnati&ndash;Ekedahl resolution of a degree $d$  branched cover.
+  The bundles appearing inthe relative resolution of $X$ and the Casnati&ndash;Ekedahl resolution for $D \to \P^{1}$ are determined by each other, and one is balanced if and only if the other is.
+  In this way, the study of Casnati&ndash;Ekedahl resolutions is intimately related to the study of relative resolutions of genus one fibrations.</p></div>
+</div>
+<div class="stacks-commentary" id="remark-normalization">
+  <div class="stacks-env-head"><strong>Remark&nbsp;3.4.</strong> <a href="../tag/47DB.html" class="stacks-tag-link">(47DB)</a></div>
+  <div class="stacks-env-body"><p>One might be able to deduce that $N_{i}$ is as balanced as possible (that is, $h^1(\End E(-1)) = 0$) even when $g \not \equiv 1 \pmod d$ as follows.
+  Notice that for a singular $D \subset E \times \P^{1}$, the argument sketched above still holds without change.
+  If one understands how the syzygy bundles $N_{i}$ are related for $D$ and its normalization $\widetilde{D}$, one might be able to handle the cases where $g \not \equiv 1 \pmod d$.</p></div>
+</div>
+<p class="stacks-para">The strategies outlined in <a href="/papers/syzygy-divisors/tag/41FC.html" class="stacks-ref-link">Remark&nbsp;3.3 <span class="stacks-ref-tag">[41FC]</span></a> and <a href="/papers/syzygy-divisors/tag/47DB.html" class="stacks-ref-link">Remark&nbsp;3.4 <span class="stacks-ref-tag">[47DB]</span></a> have not been fully explored.
+The authors intend to investigate them in the future.
+Notice that the idea of using branched covers on elliptic fibrations parallels the idea of using curves on K3 surfaces apr&eacute;s [15].</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — Section 3: The generic splitting type">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Section 1 — Counting sums of two powers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Q: "\\mathbb{Q}",
-          A: "\\mathbf{A}",
+          A: "\\mathbb{A}",
           Sch: "\\mathsf{Sch}",
           Hilb: "\\operatorname{Hilb}",
           Pic: "\\operatorname{Pic}",
@@ -27,7 +32,7 @@
           PGL: "\\operatorname{PGL}",
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           GL: "\\operatorname{GL}",
           SL: "\\operatorname{SL}",
@@ -43,7 +48,7 @@
           G: "\\mathbb{G}",
           Z: "\\mathbb{Z}",
           N: "\\mathbb{N}",
-          F: "\\mathbf{F}",
+          F: "\\mathbb{F}",
           O: "\\mathscr{O}",
           L: "\\mathscr{L}",
           S: "\\mathscr{S}",
@@ -61,13 +66,43 @@
           red: "\\operatorname{red}",
           from: "\\colon",
           k: "\\mathscr{k}",
-          m: "\\mathfrak{m}"
+          m: "\\mathfrak{m}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -77,12 +112,12 @@
     <a href="../index.html" class="stacks-paper-link">Counting sums of two powers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.html" aria-label="Next: Section 2: Preliminaries" title="Next: Section 2: Preliminaries">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 1. Introduction</h1>
-<p class="stacks-para">This note is about the enumerative geometry of the locus of binary forms expressible as $f^{a} + g^{b}$.  We aim to generalize two previously known enumerative facts:
+<p class="stacks-para">This note is about the enumerative geometry of the locus of binary forms expressible as $f^{a} + g^{b}$.  We aim to generalize two previously known enumerative facts:</p>
 <ol><li><strong>(I)</strong> (Clebsch [Cle70]) A general binary sextic form is expressible as the sum of a cube and a square in $40$ essentially different ways.</li>
-<li><strong>(II)</strong> (Zariski [Zar28], then Vakil [Vak01]) If $p$ and $q$ are general binary forms of degree $12$, then there are exactly $3762$ values of $t$ for which $p + t q$ is the sum of a cube and a square.</li></ol></p>
+<li><strong>(II)</strong> (Zariski [Zar28], then Vakil [Vak01]) If $p$ and $q$ are general binary forms of degree $12$, then there are exactly $3762$ values of $t$ for which $p + t q$ is the sum of a cube and a square.</li></ol>
 <p class="stacks-para">To state the general question precisely, suppose $\P^{d}$ denotes the projective space of degree $d$ binary forms, and suppose $a$ and $b$ are integers dividing $d$. Then the locus $A$ (resp. $B$) representing binary forms which are $a$'th powers (resp. $b$'th powers) is a smooth projective variety in $\P^{d}$ of dimension $m := d/a$ (resp. $n := d/b$).  The <em>problem of  counting sums of two powers</em> is then to determine the degree of the <em>join</em> of $A$ and $B$.  Unfortunately, $A$ and $B$ intersect, and their scheme-theoretic intersection is not friendly (e.g. it is non-reduced with embedded primes), and so the degree of the join cannot be calculated by applying basic formulas.  While we will demonstrate (in characteristic zero) how to count sums of two powers in many more cases beyond those of Clebsch, Zariski, and Vakil, we fall very short of a complete solution.</p>
 <p class="stacks-para">The difficulty in the problem is governed by the dimension of the intersection $A \cap B$.  A key observation we make here is that the rational map $A \times B \dashrightarrow \G(1,d)$ sending a pair of points to the line they span is resolved by a single variety which only depends on the integers $m$ and $n$, and not on $a, b$ or $d$ individually.  This variety is denoted $\transvectant_{m,n}$ in the text (<a href="/papers/counting-powers/tag/DFEA.html" class="stacks-ref-link">3.1 <span class="stacks-ref-tag">[DFEA]</span></a>), and we call it the <em>variety of first transvectants</em> because it is basically the resolution of indeterminacy of the first transvectant $\{p,q\} := p_{x}q_{y} - p_{y}q_{x}$ of two binary forms, this pairing viewed as a rational map $\P^{m} \times \P^{n} \dashrightarrow \P^{m+n-2}$.</p>
 <p class="stacks-para">$\transvectant_{m,n}$ is the main subject of our investigation throughout the paper, with its importance to counting sums of two problems made precise in <a href="/papers/counting-powers/tag/4BD6.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[4BD6]</span></a>.  We try to obtain an understanding of its enumerative geometry by localizing with respect to a natural torus action.  This analysis reveals how the problem of counting sums of two powers ``reduces'' to the computation of an intersection product in the cohomology ring of $\P^{m} \times \P^{n} \times \P^{m+n-2}$ (<a href="/papers/counting-powers/tag/2BB0.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[2BB0]</span></a>).  We successfully follow through with the strategy in the cases where $\gcd(m,n) = 1$ and $\gcd(m,n) = 2$.  (This greatest common divisor is the dimension of $A \cap B$ from above.)  The motivating examples of Clebsch and Zariski-Vakil are in the $\gcd(m,n) = 1$ and $\gcd(m,n) = 2$ categories, respectively.  For another category $1$ example, we find that the locus of binary forms of type $f^{5} + g^{3}$ in $\P^{15}$ has degree $29822$.  And for another category $2$ example, the locus of binary forms of type $f^{5} + g^{2}$ in $\P^{20}$ has degree $626327$.</p>
@@ -110,7 +145,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

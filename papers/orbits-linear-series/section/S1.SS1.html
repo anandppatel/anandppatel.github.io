@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>1.1. Main theorem — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.1. Main theorem</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.html" aria-label="Previous: Section 1: Introduction" title="Previous: Section 1: Introduction">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS2.html" aria-label="Next: 1.2. Orbit closures" title="Next: 1.2. Orbit closures">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.1. Main theorem</h1>
+<p class="stacks-para">To state the main result, we need some notation.
+We have an identification
+$$A^{*}_{\GL(r+1) \times \GL(2)}(\Hom(\k^{r+1}, \Sym^d \k^2))= \mathbb{Z}[\mu_{0},\dots,\mu_{r}, \omega_{1}, \omega_2]^{S_{r+1} \times S_{2}},$$
+where the \(\mu_{i}\)'s and the \(\omega_{j}\)'s are the ``Chern roots'' of the tautological representations of \(\GL(r+1)\) and \(\GL(2)\), respectively.
+Given integers \(a_{0}< \dots < a_{r}\) in \(\{0,\dots,d\}\), set
+$$\phi_{a_0, \dots, a_r}(\mu;\omega) = \prod_{j = 0}^r\prod_{i}((d-i) \omega_1 + i \omega_2-\mu_{j}),$$
+where the index \(i\) ranges over \(\{0,\dots,d\} - \{a_0, \dots, a_r\}\).
+Set
+$$\psi_{a_0,\dots,a_r}(\mu;\omega) = \phi_{a_0, \dots, a_r}(\mu;\omega_1,\omega_2) - \phi_{a_0, \dots, a_r}(\mu;\omega_2,\omega_1).$$
+Note that \(\psi\) is symmetric in the \(\mu\)'s and anti-symmetric in the \(\omega\)'s.</p>
+<p class="stacks-para">Given an injective \(s \in \Hom(\k^{r+1}, \Sym^d \k^2)\), let \(S \subset \Sym^{d}\k^2\) be its image.
+Associated to \(S\) and a point \(p \in \P^{1}\), we have the vanishing sequence
+$$a_{0}(p) < \dots < a_{r}(p)$$
+characterised by the property that for each \(i\), the space \(S\) contains a section vanishing to order exactly \(a_{i}(p)\) at \(p\).
+For all but finitely many points \(p \in \P^{1}\), the vanishing sequence is given by \(a_{i}(p) = i\).
+Let \(B \subset \P^{1}\) be the points where it differs.
+The ramification profile of \(S\) is the multi-set
+$$\{(a_0(b), \dots, a_{r}(b)) \mid b \in B\}.$$</p>
+<div class="stacks-theorem" id="thm-main">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/C88F.html" class="stacks-tag-link">(C88F)</a></div>
+  <div class="stacks-env-body"><p>Let \(\k\) be an algebraically closed field in which \(d! \neq 0\).
+  Let \(s \in \Hom(\k^{r+1}, \Sym^d  \k^2)\) be an injective map with image \(S \subset \Sym^d\k^2\).
+  Let \(\{(a_{i}(b)) \mid b \in B\}\) be the ramification profile of \(S\).
+  Let \(\Gamma \subset  \PGL(2)\) be the stabiliser of \(S \subset \Sym^d\k^2\), and assume that it is finite.
+  Let \(\Orb(s)\) be the closure of the \(\GL(r+1) \times \GL(2)\) orbit of \(s\).
+  Then the class
+  $$|\Gamma| \cdot [\Orb(s)] \in A^{(r+1)(d-r)-3}_{\GL(r+1) \times \GL(2)}(\Hom(\k^{r+1}, \Sym^d \k^2))$$
+  is given by
+  $$|\Gamma| \cdot [\Orb(s)] = \frac{1}{(\omega_1-\omega_2)^3}\sum_{b \in B}   \psi_{a_0(b), \dots, a_r(b)}(\mu;\omega) + \frac{2-|B|}{(\omega_1-\omega_2)^3} \cdot \psi_{0,\dots,r}(\mu;\omega).$$</p></div>
+</div>
+<p class="stacks-para">Despite the apparent denominators, the expression must be a polynomial (although this is not obvious).</p>
+<p class="stacks-para">To get the \(\GL(2)\)-equivariant class of \(\Orb(S) \subset \Gr(r+1, \Sym^d\k^2)\), we apply the homomorphism (1.1), which sends the \(\mu\)'s to the Chern roots of the universal sub-bundle.
+To get the non-equivariant class of \(\Orb(S) \subset \Gr(r+1, \Sym^d\k^2)\), we further substitute \(\omega_1 = \omega_2 = 0\).</p>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.2.</strong> <a href="../tag/0C31.html" class="stacks-tag-link">(0C31)</a></div>
+  <div class="stacks-env-body"><p>Although <a href="/papers/orbits-linear-series/tag/C88F.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[C88F]</span></a> gives the non-equivariant classes by the series of substitutions mentioned above, it does not give a simple expression for it.
+  Indeed, the substitution \(\omega_1 = \omega_2 = 0\) can only be performed after dividing by the denominator in <a href="/papers/orbits-linear-series/tag/C88F.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[C88F]</span></a>, and the result of the division is not obvious.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;1.3.</strong> <a href="../tag/9F0E.html" class="stacks-tag-link">(9F0E)</a></div>
+  <div class="stacks-env-body"><p>Given \([S] \in \Gr(r+1, \Sym^d W)\), we can consider \([S]\) as a point of the projective space \(\P \left(\wedge^{r+1} \Sym^d W\right)\) by applying the Plucker embedding.
+  The class of \(\Orb([S])\) in \(\P \left(\wedge^{r+1} \Sym^d W\right)\) depends only on the multiplicities in the ramification divisor of \(S\).
+  The class of \(\Orb([S])\) in \(\Gr(r+1, \Sym^d W)\) is a richer invariant, sensitive to the full ramification profile.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — 1.1. Main theorem">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S1.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>7.1. Outline of the proof of Theorem 7.1 [4218] — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $\opc{M}$</a> / <span>7.1. Outline of the proof of <a href="/papers/orbits-equivariant-quantum/tag/4218.html" class="stacks-ref-link">Theorem&nbsp;7.1 <span class="stacks-ref-tag">[4218]</span></a></span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S7.html" aria-label="Previous: Section 7: Additivity of $\opc{M}$" title="Previous: Section 7: Additivity of $\opc{M}$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S7.SS2.html" aria-label="Next: 7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$" title="Next: 7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">7.1. Outline of the proof of <a href="/papers/orbits-equivariant-quantum/tag/4218.html" class="stacks-ref-link">Theorem&nbsp;7.1 <span class="stacks-ref-tag">[4218]</span></a></h1>
+<p class="stacks-para">Let $S(d,n)$ be the abelian group generated by indicator functions of all (possibly unbounded) convex polytopal regions in $\{ \sum x_i=d\}$ modulo functions whose support has positive codimension. We will be working exclusively inside $S(d,n)$ from now on, treating in particular $\langle M \rangle \in S(d,n)$ (recall <a href="/papers/orbits-equivariant-quantum/tag/03F4.html" class="stacks-ref-link">Definition&nbsp;6.8 <span class="stacks-ref-tag">[03F4]</span></a>). For any (possibly unbounded) convex polytopal region $P$, we will also write $\langle P \rangle$ for the class of $1_P$ inside $S(d,n)$.</p>
+<p class="stacks-para">In [DF10, Appendix&nbsp;A], Derksen and Fink show using an explicit algorithm that if $\sum_{i=1}^k a_i \langle M_i \rangle=0$ then the expression $\sum_{i=1}^k a_i \langle P_{M_i} \rangle$ can be reduced to $0$ by using replacements $\langle P'\rangle\mapsto 0$ when $P'$ is of positive codimension inside $\{\sum x_i=d\}$, and replacements $\langle P \rangle\mapsto\langle P+\mb{R}_{\ge 0}v \rangle - \sum_{i=1}^\ell \langle P_i \rangle$ with $v=e_i-e_j$ with $i>j$, where $P+\mb{R}_{\ge 0}v = P \cup \bigcup_{i=1}^\ell P_i$  are certain subdivisions which we will call ``shadow facet subdivisions'' (see <a href="/papers/orbits-equivariant-quantum/tag/6FEC.html" class="stacks-ref-link">Lemma&nbsp;7.9 <span class="stacks-ref-tag">[6FEC]</span></a>). We will show that each polytope appearing in the algorithm is of the form $P_M+C$ where $(M,C)$ is an ``admissible pair'', which we define below.</p>
+<p class="stacks-para">As in Section&nbsp;14, we define a <em>matroidal cone</em> to be a cone $C$ generated by rays of the form $\mb{R}_{\ge 0}(e_i-e_j)$.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;7.2.</strong> <a href="../tag/F82F.html" class="stacks-tag-link">(F82F)</a></div>
+  <div class="stacks-env-body"><p>Let $M$ be a $d \times n$ matrix and let $C$ be a matroidal cone. We define the <em>associated polytope</em> of $(M,C)$ to be the polytope $P_M+C \subset \{\sum x_i=d\}$. We say that $(M, C)$ is an <em>admissible pair</em> if $P_{M} + C$ is full-dimensional in $\{\sum x_i = d\}$ and $(P_M + C) \cap \Delta = P_M$.</p></div>
+</div>
+<p class="stacks-para">The criterion for $(M,C)$ to be admissible implies that if $e_i-e_j \in C$, then the $i$th column of $M$ is morally speaking more general than the $j$th column of $M$.</p>
+<p class="stacks-para">We will augment Derksen and Fink's algorithm, replacing each polytope $P$ with an admissible pair $(M,C)$ with associated polytope $P$. This replacement will be done in such a way that if $P+\mb{R}_{\ge 0}v  =  P  \cup \bigcup_{i=1}^\ell  P_i $ is a subdivision used in the algorithm, then $\opc{M'}=\opc{M}+\sum_{i=1}^\ell \opc{M_i}$, where $(M',C')$ is the admissible pair associated to $P+\mb{R}_{\ge 0}v$ and $(M_i,C_i)$ is the admissible pair associated to $P_i$. We will accomplish this using explicit degenerations over $\mb{A}^1_t$ (see <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a>) which are linear in $t$ and add $t$ times general multiples of certain columns of $M$ to other columns.</p>
+<p class="stacks-para">As it turns out, applying the rewriting procedure of Derksen and Fink without combining or cancelling any codimension zero terms allows us to rewrite any $\langle M \rangle$ as a linear combination $\sum \epsilon_i \langle P_i \rangle$, where each $P_i$ is a ``strictly positive matroidal cone'' with apex in $\Delta$ and $\epsilon_i = \pm 1$.</p>
+<div class="stacks-definition" id="positivematroidalconedef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;7.3.</strong> <a href="../tag/3115.html" class="stacks-tag-link">(3115)</a></div>
+  <div class="stacks-env-body"><p>We define a <em>positive matroidal cone</em> $C$ to be a matroidal cone $C$ whose generating vectors $e_i-e_j$ have $i>j$. We define a <em>strictly positive matroidal cone</em> $C$ to be an $(n-1)$-dimensional positive matroidal cone generated by $n-1$ vectors $e_j-e_{\alpha_j}$ with $\alpha_j<j$ and $j \in \{2,\ldots,n\}$.</p></div>
+</div>
+<p class="stacks-para">The key fact about translates of strictly positive matroidal cones is that there are no relations between them in $S(d,n)$, so if we rewrite the expression $\sum a_i\langle M_i \rangle$ as $\sum \epsilon_i \langle P_i \rangle$ where each $P_i$ is a strictly positive matroidal cone with apex in $\Delta$, then the sum of the coefficients in front of a given $\langle P \rangle$ is zero. We then deduce the theorem from the fact for any matroidal cone $P$ with apex in $\Delta$, the space of all matrices $M$ such that $P_M = P \cap \Delta$ is connected, so $\opc{M} = \opc{M'}$ whenever $P_M = P_{M'} = P \cap \Delta$.</p>
+<p class="stacks-para">\begin{comment}
+&mdash;&mdash;-</p>
+<p class="stacks-para">To accomplish this augmentation, we will be applying <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a> to explicit paths of the form $M(t) = A(1+tB)$, where each entry of $B$ is either 0 or a general element of $K$. For each nonzero entry $B_{k,\ell}$ of $B$, this has the effect of adding a general multiple of the $k$th column of $A$ to the $\ell$th column.</p>
+<p class="stacks-para">If $(M, C)$ is an admissible pair and $e_\ell - e_k \in C$, then the $\ell$th column of $M$ is more general than the $k$th column of $M$ in the sense that if $M^{A \cup \{k\}}$ has linearly independent columns for some $A \subset \{1, \ldots, n\} \setminus \{k, \ell\}$, then so does $M^{A \cup \{\ell\}}$.</p>
+<p class="stacks-para">Let $C$ be a matroidal cone, and let $B$ be a general matrix such that $B_{k ,\ell} = 0$ whenever $e_\ell - e_k \not \in C$. Then for general $t$, the pair $(M(1+tB), C)$ is admissible by <a href="/papers/orbits-equivariant-quantum/tag/795C.html" class="stacks-ref-link">Proposition&nbsp;7.8 <span class="stacks-ref-tag">[795C]</span></a> below.
+Crucially, if we use such a cone to define genericity relations, then they are automatically transitive, and $C+\mb{R}_{\ge 0}(e_i-e_j)$ first imposes the further relation that $i$ is more general than $j$ and then takes the transitive closure. We will associate to the pair $(M,C)$ the (possibly unbounded) convex polytope $P_M+C$, which has more data than $P_M$.</p>
+<p class="stacks-para">It will be important to work with these unbounded polytopal regions in the proof. The abelian group $T(d,n)$ encoding additivity relations of rank polytopes is a subgroup of the abelian group $S(d,n)$ generated by indicator functions of all (possibly unbounded) convex polytopal regions in $\{ \sum x_i=d\}$ modulo functions whose support has positive codimension.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;7.4.</strong> <a href="../tag/8DE3.html" class="stacks-tag-link">(8DE3)</a></div>
+  <div class="stacks-env-body"><p>A <em>positive matroidal cone</em> $C$ is a matroidal cone $C$ where the generating vectors $e_i-e_j$ have $i>j$. A <em>strictly positive matroidal cone</em> $C$ is an $(n-1)$-dimensional positive matroidal cone generated by $n-1$ vectors of the form $e_j-e_{\alpha_j}$ with $\alpha_j<j$ and $j \in \{2,\ldots,n\}$</p></div>
+</div>
+<p class="stacks-para">The degenerations we choose will ``mirror'' the algorithm in [DF10, Appendix A] to rewrite $\langle M \rangle \in S(d,n)$ as an element of $S^{+}(d,n) \subset S(d,n)$ generated by strictly positive matroidal cones. We work with unbounded polytopes because $S^{+}(d,n)$ is a free abelian group on these cones, which is not true if we intersect with $\Delta$.</p>
+<p class="stacks-para">More specifically, at each step we choose an unbounded polytopal region $P=P_M+C$ associated to an admissible pair $(P_M,C)$, and using certain unbounded polytope subdivision which we call a ``shadow facet decomposition'' $P'=P \cup \bigcup_{i=1}^k P_i$, we replace $1_P$ with $1_{P'}-\sum 1_{P_i}$, where $P'$ and all $P_i$ are closer to being strictly positive matroidal cones. The decomposition $P' \cap \Delta = (P \cap \Delta)\bigcup_{i=1}^k (P_i \cap \Delta)$ is then given by $P_{M_D}=P_M \cup \bigcup_{i=1}^k P_{M_i}$, which is the subdivision associated to the degeneration after removing all terms of positive codimension. Furthermore, we will find matroidal cones $C'$ and $C_i$ such that $(M(t),C')$ has associated polytope $P'$ and $(M_i,C_i)$ has associated polytope $P_i$. By keeping track of this extra data and degenerating until all associated polytopes of pairs $(M,C)$ are strictly positive matroidal cones, we will be able to conclude by showing the realization space of matrices with rank polytopes given by matroidal cones are connected, and applying the freeness of $S^{+}(d,n)$.
+\end{comment}
+\begin{comment}
+The degenerations we use</p>
+<p class="stacks-para">We will use special degenerations to create for each $M_i$ a list of pairs $(M_{i,j},C_{i,j})$ and integers $a_{i,j}$, where the Minkowski sums $P_{M_{i,j}}+C_{i,j}$ lie in a special class of unbounded polytopes $\mc{S}_{poly}$ such that</p>
+<p class="stacks-para">use degeneration to rewrite each $\opc{M_i}$ as a weighted sum $\sum a_{i,j}\opc{M_{i,j}}$, where the $M_{i,j}$ lie in a special class of matrices $\mc{S}$. Furthermore, we will have a special class of (possibly unbounded) polytopes $\mc{S}_{poly}$ such that there are</p>
+<p class="stacks-para">Specifically, $\mc{S}$ will consist of matrices whose matroid polytope is a <em>cone-like matroid polytope</em> (<a href="/papers/orbits-equivariant-quantum/tag/2AFC.html" class="stacks-ref-link">Definition&nbsp;7.5 <span class="stacks-ref-tag">[2AFC]</span></a>) where the cone is a <em>positive matroidal cone</em>  (positivecone).</p>
+<p class="stacks-para">The set $\mc{S}$ will have the following properties:</p>
+<ul><li>Given $M\in \mc{S}$, the realization space of all matrices with underlying matroid $M$ is connected.</li>
+<li>The set of all $\langle M_{i,j} \rangle$ for all $i,j$ form a free abelian subgroup of $T(d,n)$.</li></ul>
+<p class="stacks-para">We then have $\sum a_i \opc{M_i}=\sum \sum a_{i,j} \opc{M_{i,j}}$ and a corresponding equation $\sum a_i \langle M_i \rangle = \sum \sum a_{i,j} \langle M_{i,j}\rangle $. The first item will allow us to group together all $\opc{M'}$ with the same $\langle M' \rangle$. The second item then asserts that the coefficients after grouping are all zero, proving $\sum a_i \opc{M_i}=0$.
+\end{comment}</p>
+<p class="stacks-para">\begin{comment}
+Suppose want to show a relation $\sum a_i \opc{M_i}=0$ given that $\sum a_i \langle M_i \rangle =0$, where $\langle M_i \rangle$ is the class of $1_{P_M}$ inside the abelian group $T(d,n)$ generated by all such indicator functions modulo functions whose support has codimension at least $1$ in $\Delta$.
+\end{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 7.1. Outline of the proof of Theorem 7.1 [4218]">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

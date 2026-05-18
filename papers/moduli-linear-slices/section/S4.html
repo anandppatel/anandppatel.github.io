@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 4 — Moduli of linear slices of high degree hypersurfaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbb{G}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 4: Plane curves</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.html" aria-label="Previous: Section 3: Grauert-Mulich" title="Previous: Section 3: Grauert-Mulich">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S5.html" aria-label="Next: Section 5: Hyperplane sections" title="Next: Section 5: Hyperplane sections">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Plane curves</h1>
+<p class="stacks-para">We now apply the results from the previous section to analyze the map to moduli $\Phi$ introduced in Section&nbsp;2.2 in the case of plane curves. Throughout this section, $C$ in $\PP^2$ denotes a reduced plane curve. (In the non-reduced case, we simply pass to the reduction and apply the results of this section.) Our main results in this section are stated below.</p>
+<div class="stacks-theorem" id="thmplanecurves">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.1.</strong> <a href="../tag/58D6.html" class="stacks-tag-link">(58D6)</a></div>
+  <div class="stacks-env-body"><p>Let $C$ be a reduced plane curve of degree $d$. Then, the map
+$$\begin{aligned}\Phi: \operatorname{Mor}_e(\mathbb{P}^1,\mathbb{P}^2)&\dashrightarrow \mathbb{P}(H^0(\OO_{\PP^1}(ed)))\\
+    [\iota]&\mapsto [\iota^{-1}(C)]\end{aligned}$$
+has maximal rank if $C$ has finite stabilizer under the action of $PGL_{3}$.</p></div>
+</div>
+<p class="stacks-para">In fact, we can classify all cases in <a href="/papers/moduli-linear-slices/tag/58D6.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[58D6]</span></a> where $\Phi$ does not have maximal rank.</p>
+<div class="stacks-theorem" id="classification">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4.2.</strong> <a href="../tag/A544.html" class="stacks-tag-link">(A544)</a></div>
+  <div class="stacks-env-body"><p>Furthermore we get a complete classification of cases when $\Phi$ in <a href="/papers/moduli-linear-slices/tag/58D6.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[58D6]</span></a> does not have maximal rank:</p>
+<ol><li>$d\geq 5$: $C$ is a union of orbits under an action of $\mathbb{G}_m$ or $\mathbb{G}_a$ on $\PP^2$</li>
+<li>$d=4$:
+    <ol><li>$e=1$ and $C$ is the union of four concurrent lines</li>
+<li>$e\geq 2$ and $C$ is a union of orbits under an action of $\mathbb{G}_m$ or $\mathbb{G}_a$ on $\PP^2$</li></ol></li>
+<li>$d=3$: $e\geq 2$ and $C$ is union of concurrent lines.</li></ol>
+</div>
+</div>
+<p class="stacks-para">\begin{comment}
+We prove <a href="/papers/moduli-linear-slices/tag/58D6.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[58D6]</span></a> by considering the sheaf $T_{\PP^2}(-\log C)$, which is a vector bundle as it is reflexive. We wish to understand when $T_{\PP^2}(-\log C)_{\ell}$ can have a section, for $\ell$ a general line.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;4.3.</strong> <a href="../tag/4ED5.html" class="stacks-tag-link">(4ED5)</a></div>
+  <div class="stacks-env-body"><p>Let $\ell\subset\mathbb{P}^2$ be a general line. Then, $T_{\PP^2}(-\log C)|_{\ell}$ has a section precisely when $T_{\PP^2}(-\log C)$ has a section.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EB58.html" class="stacks-tag-link">(EB58)</a></div>
+  <div class="stacks-env-body"><p>If $T_{\PP^2}(-\log C)|_{\ell}$  has a section, then it must split as $\OO_{\ell}(k) \oplus \OO_{\ell}(3-d-k)$ for some $k \geq 0$. Since $d\geq 5$, we can apply <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">3.1 <span class="stacks-ref-tag">[6C21]</span></a> to see there is a rank 1 subsheaf of $T_{\PP^2}(-\log C)$ of degree $k$. Taking its reflexive hull, we find a line subbundle of $T_{\PP^2}(-\log C)$ of degree $k$, which must be $\OO_{\PP^2}(k)$, which has a section.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<p class="stacks-para">Before giving the proofs of these theorems, we need the following two propositions.</p>
+<div class="stacks-lemma" id="O1vectorfield">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.4.</strong> <a href="../tag/540B.html" class="stacks-tag-link">(540B)</a></div>
+  <div class="stacks-env-body"><p>If $C$ is a reduced plane curve and $T_{\PP^2}(-\log C)$ admits a nontrivial homomorphism from $\OO_{\PP^2}(1)$, then $C$ is a union of concurrent lines.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A0CE.html" class="stacks-tag-link">(A0CE)</a></div>
+  <div class="stacks-env-body"><p>First, a nontrivial map from $\OO_{\PP^2}(1)\to T_{\PP^2}(-\log C)$ induces a nontrivial map $\OO_{\PP^2}(1)\to T_{\PP^2}$. Consider the Euler sequence
+$$\begin{aligned}0\to \OO_{\PP^2}\to \OO_{\PP^2}(1)^3\to T_{\PP^2} \to 0.\end{aligned}$$
+Applying $\Hom(\OO_{\PP^2}(1),\cdot)$ to the Euler sequence, we find $\Hom(\OO_{\PP^2}(1),T_{\PP^2})\cong \Hom(\OO_{\PP^2}(1),\OO_{\PP^2}(1)^3)$ and that the composite map $\OO_{\PP^2}(1)\to T_{\PP^2}(-\log C) \to T_{\PP^2}$ lifts to a map $\OO_{\PP^2}(1)\to \OO_{\PP^2}(1)^3$.</p>
+<p>After a change of coordinates, we can assume the map $\OO_{\PP^2}(1)\to \OO_{\PP^2}(1)^3$ is inclusion into the first factor.
+The map $\OO_{\PP^2}(1)^3\to T_{\PP^2}$ sends a tuple of linear forms $(L_1,L_2,L_3)$ to $(L_1\frac{\partial}{\partial_X},L_2\frac{\partial}{\partial_Y},L_3\frac{\partial}{\partial_Z})$, so we conclude that $L\frac{\partial}{\partial_X}$ is a section of $T_{\PP^2}(-\log C)$ for all linear forms $L$.</p>
+<p>In particular, away from the point $[1:0:0]$, the tangent vector $\frac{\partial}{\partial_X}$ is in the tangent space of $C$ for every point of $C$. Restricting to the affine chart $\{Z\neq 0\}$ with coordinates $(x,y)$ and dehomogenizing, this means $C$ restricts to a union of lines parallel to the $x$-axis. Since these lines and the line at infinity are precisely the lines passing through $[1:0:0]$, we conclude $C$ is a union of concurrent lines.</p></div>
+</div>
+<div class="stacks-lemma" id="integralcurve">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.5.</strong> <a href="../tag/25E7.html" class="stacks-tag-link">(25E7)</a></div>
+  <div class="stacks-env-body"><p>If $C$ is a reduced plane curve and $T_{\PP^2}(-\log C)$ has a section, then $C$ is equivalent to a union of orbits under one of the  two actions by $\mathbb{G}_m$ and $\mathbb{G}_a$ as follows:
+$$\begin{aligned}\mathbb{G}_m &\to GL_3\\
+    t &\mapsto \begin{pmatrix} t^a & 0 & 0\\ 0 & t^b & 0 \\ 0 & 0 & 1\end{pmatrix} \qquad a,b\in\mathbb{N} \\
+       \mathbb{G}_a&\to GL_3\\
+    t&\mapsto \operatorname{exp}\left(t\begin{pmatrix} 0 & 1 & 0\\ 0 & 0 & 1\\ 0 & 0 & 0\end{pmatrix}\right) =\begin{pmatrix} 1 & t & \frac{1}{2}t^2\\ 0 & 1 & t \\ 0 & 0 & 1\end{pmatrix}.\end{aligned}$$
+Explicitly, there are two cases:</p>
+<ol><li>$C$ is projectively equivalent to a union of curves of the form $X^{p} Y^{q}=cZ^{p+q}$, $c\in \mathbb{C}^{\times}$, and possibly a subset of the three coordinate lines.</li>
+<li>$C$ is projectively equivalent to a union of members of the family $\{XZ-Y^2+cZ^2\mid c\in \mathbb{C}\}$ of conics quadritangent to $\{XZ-Y^2=0\}$ at $[0:0:1]$, and possibly the line $\{Z=0\}$.</li></ol>
+</div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9AB2.html" class="stacks-tag-link">(9AB2)</a></div>
+  <div class="stacks-env-body"><p>Let $s$ be a section of $T_{\PP^2}(-\log C)$.  Then, $s$ is also a section of $T_{\PP^2}$ and can be written as $L_X\frac{\partial}{\partial_X}+L_Y\frac{\partial}{\partial_Y}+L_Z\frac{\partial}{\partial_Z}$ where $L_X, L_Y, L_Z$ are homogenous linear forms in $X$, $Y$ and $Z$.</p>
+<p>Let $C_0$ be a component of $C$ and let $p\in C$ be a smooth point of $C_0$.  We lift $p\in \mathbb{P}^2$ to a point $\widetilde{p}\in \mathbb{C}^3 \setminus \{0\}$.</p>
+<p>Then, $C_0$ contains the projection under $\mathbb{C}^3\setminus\{0\}\to \mathbb{P}^2$ of the integral curve $\widetilde{C}$ through $\widetilde{p}$ which is the solution to the matrix differential equation
+$$\begin{aligned}\frac{d}{dt} \begin{pmatrix} X(t) \\ Y(t) \\ Z(t)\end{pmatrix} &= A \begin{pmatrix} X(t) \\ Y(t) \\ Z(t)\end{pmatrix},\quad \begin{pmatrix} X(0) \\ Y(0) \\ Z(0)\end{pmatrix} =\widetilde{p}\end{aligned}$$
+ where $A$ is the 3 by 3 matrix with complex entries such that
+$$\begin{aligned}A\begin{pmatrix} X \\ Y \\ Z\end{pmatrix} &=\begin{pmatrix} L_X(X,Y,Z) \\L_Y(X,Y,Z)\\ L_Z(X,Y,Z)\end{pmatrix}.\end{aligned}$$
+ If the projection of $\widetilde{C}$ to $\mathbb{P}^2$ is not a single point, then the image is dense in $C_0$. Therefore, $C$ must be (the closure of) a finite union of projections of integral curves in $\mathbb{C}^3 \setminus \{0\}$ and 1-dimensional components of the zero locus of $s$.</p>
+<p>After a linear change of coordinates, we can assume that $A$ is in Jordan block form. We keep this choice of coordinates from now on. We let $\widetilde{p}=(c_1,c_2,c_3) \in \mathbb{C}^{3}$ denote a lift of a point on $C_{0}$ (to be determined separately in each case)  and we let $P(X,Y,Z)$ be a homogenous polynomial defining $C_0$.</p>
+<p><strong>Case 1: $A$ is diagonal.</strong> In this case we will show that the first case of (4.1) happens, so we can assume that $c_1,c_2,c_3\neq 0$ or else $\widetilde{p}$ is contained in a coordinate line. Let $\lambda_1,\lambda_2,\lambda_3$ be the eigenvalues of $A$. Then, the solution to (4.1) is $\begin{pmatrix} X(t) \\ Y(t) \\ Z(t)\end{pmatrix}=\begin{pmatrix} e^{\lambda_1 t} c_1 \\ e^{\lambda_2 t} c_2 \\ e^{\lambda_3 t} c_3\end{pmatrix}$.</p>
+<p>The defining equation $P(X,Y,Z)$ of $C_{0}$ is a homogenous polynomial of minimial degree satisfying
+$$\begin{aligned}P(c_1e^{\lambda_1 t},c_2e^{\lambda_2 t},c_3e^{\lambda_3 t})=0.\end{aligned}$$
+We can choose a new grading on  $\mathbb{C}[X,Y,Z]$ by the complex numbers $\mathbb{C}$ where the monomial $X^a Y^b Z^c$ has the grade $a\lambda_1+b\lambda_2+c\lambda_3$. Let $P_\omega$ be the homogenous component of $P$ with grade $\omega\in \mathbb{C}$. By linear independence of characters, the elements in $\{e^{\omega t} \mid \omega \in \mathbb{C}\}$ are linearly independent, and hence $P_{\omega}(c_1e^{\lambda_1 t},c_2e^{\lambda_2 t},c_3e^{\lambda_3 t})=0$. Therefore, $P$ divides $P_{\omega}$ for all $\omega\in \mathbb{C}$ so $P_{\omega}$ can be nonzero for only one value of $\omega$.</p>
+<p>We cannot have $\lambda_1,\lambda_2,\lambda_3$ all equal or else $s$ would be a multiple of $X\frac{\partial}{\partial_X}+Y\frac{\partial}{\partial_Y}+Z\frac{\partial}{\partial_Z}$ which induces the zero vector field on $\PP^2$. The monomials $X^{a}Y^{b}Z^{c}$ that can appear in $P$ with nonzero coefficients must be the solution to the two linear equations
+$$\begin{aligned}a+b+c&=\deg(C_0)\\
+    \lambda_1a + \lambda_2 b+\lambda_3 c &= \omega\end{aligned}$$
+for some fixed $\omega$. The solution set to (4.3) is some 1-dimensional complex line $\ell$ in $\mathbb{C}^3$ and we are are interested in the integer solutions $\ell\cap \mathbb{Z}^3$. If $\ell\cap \mathbb{Z}^3$ is empty or a single point, then $P$ is a monomial, hence degree 1 by irreducibility. So the only remaining case is if $\ell\cap \mathbb{Z}^3$ is a 1-dimensional lattice, which can be written in the form $\{(a_0,b_0,c_0)+m(a_1,b_1,c_1)\mid m\in \mathbb{Z}\}$.</p>
+<p>Thus, we know that the monomials $X^{a}Y^b Z^c$ that can appear with nonnegative coefficients in $P$ must be in $S=\{(a_0,b_0,c_0)+m(a_1,b_1,c_1)\mid m\in \mathbb{Z}\}\cap \mathbb{Z}_{\geq 0}^3$. If $S$ contains exactly one element, then $P$ is degree one by irreducibility. If $S$ contains exactly two elements, then $P$ is a binomial and must then be of the form $X^aY^b+kZ^{a+b}$ for some $k\neq 0$, because $P$ is irreducible. Finally, one can check $S$ cannot contain three or more elements assuming $P$ is irreducible.</p>
+<p><strong>Case 2: $A$ has exactly two Jordan blocks</strong> Let $\lambda_1$ be the eigenvalue of the $2\times 2$ block and $\lambda_2$ be the eigenvalue of the $1\times 1$ block. In this case we will show that the first case of <a href="/papers/moduli-linear-slices/tag/25E7.html" class="stacks-ref-link">Proposition&nbsp;4.5 <span class="stacks-ref-tag">[25E7]</span></a> happens. We can assume $C_0$ is not contained in a coordinate line, and therefore assume $\widetilde{p}$ is such that $c_2,c_3\neq 0$.  Then, a solution to (4.1) is $\begin{pmatrix} X(t) \\ Y(t) \\ Z(t)\end{pmatrix}=\begin{pmatrix} e^{\lambda_1 t} c_1 + c_2 te^{\lambda_1 t} \\ e^{\lambda_1 t} c_2 \\ e^{\lambda_2 t} c_3\end{pmatrix}$ for $\widetilde{p}=(c_1,c_2,c_3)$.</p>
+<p>This means $P(e^{\lambda_1 t} c_1 + c_2 te^{\lambda_1 t} , e^{\lambda_1 t} c_2 , e^{\lambda_2 t} c_3)=0$. Dividing by $e^{\deg(P)\lambda_1t}$ and letting $\lambda = \lambda_2-\lambda_1$, we find
+$$\begin{aligned}P(c_1+c_2 t, c_2, e^{\lambda t} c_3)=0.\end{aligned}$$
+Reparameterizing $t$ by $t-\frac{c_1}{c_2}$, we can assume $c_1=0$. We claim now that the map $\mathbb{C}[X,Y,Z]\to \mathbb{C}[[t]]$ sending $P(X,Y,Z)$ to $P(c_2 t, c_2, e^{\lambda t} c_3)$ is an injection because $c_2 t, c_2, e^{\lambda t} c_3$ are algebraically independent. The latter claim follows from the fact that the  functions $\{t^me^{\omega t}\mid m\in \mathbb{Z}_{\geq 0}, \omega \in \mathbb{C}\}$ are linearly independent. Therefore, $P=0$, i.e. $C_0$ must be contained in either the $\{Y=0\}$ or $\{Z=0\}$ coordinate lines, establishing this case.</p>
+<p><strong>Case 3: $A$ has exactly one Jordan block</strong>
+Let $\lambda$ be the unique eigenvalue of $A$. Subtracting a diagonal matrix from $A$ is equivalent to subtracting the Euler vector field $X\frac{\partial}{\partial_X}+Y\frac{\partial}{\partial_Y}+Z\frac{\partial}{\partial_Z}$ from the vector field $s$, so we can assume $\lambda=0$. Then, a solution to (4.1) is $\begin{pmatrix} X(t) \\ Y(t) \\ Z(t)\end{pmatrix}=\begin{pmatrix}  c_1 + c_2 t + c_3 \frac{1}{2}t^2 \\  c_2+c_3t \\c_3\end{pmatrix}$ for $\widetilde{p}=(c_1,c_2,c_3)$. In this case we will show that the second case of <a href="/papers/moduli-linear-slices/tag/25E7.html" class="stacks-ref-link">Proposition&nbsp;4.5 <span class="stacks-ref-tag">[25E7]</span></a> happens, so we can assume that $c_3\neq 0$ or else $C_{0}$ is contained in $\{Z=0\}$.</p>
+<p>We know that $P( c_1 + c_2 t + c_3 \frac{1}{2}t^2 , c_2+c_3t , c_3)=0$. Now we change coordinates on $t$. Letting $t\mapsto t-\frac{c_2}{c_3}$ yields $P( c_1 +\frac{1}{2}\frac{c_2^2}{c_3} + c_3 \frac{1}{2}t^2, c_3t, c_3)=0$. Dividing out by a power of $c_3$ and replacing $c_1$ with another constant $c_1'$, we find $P( c_1'+ \frac{1}{2}t^2, t, 1)=0$.</p>
+<p>As $t$ varies, the curve $(c_1'+ \frac{1}{2}t^2, t, 1)$ parameterizes the conic $XZ-\frac{1}{2}Y^2-c_1'Z^2$ in $\PP^2$, settling this case.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proofs of <a href="/papers/moduli-linear-slices/tag/58D6.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[58D6]</span></a> and <a href="/papers/moduli-linear-slices/tag/A544.html" class="stacks-ref-link">Theorem&nbsp;4.2 <span class="stacks-ref-tag">[A544]</span></a>.</em> <a href="../tag/676C.html" class="stacks-tag-link">(676C)</a></div>
+  <div class="stacks-env-body"><p>We will prove <a href="/papers/moduli-linear-slices/tag/A544.html" class="stacks-ref-link">Theorem&nbsp;4.2 <span class="stacks-ref-tag">[A544]</span></a> which implies <a href="/papers/moduli-linear-slices/tag/58D6.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[58D6]</span></a>. Let $f: \mathbb{P}^1\to \mathbb{P}^2$ be a general map of degree $e$. The log tangent sheaf $T_{\PP^2}(-\log C)$ is a vector bundle since it is a reflexive sheaf on a surface. Pulling back $T_{\PP^2}(-\log C)$ to $\PP^1$ yields a rank 2 vector bundle $E$ of degree $(3-d)e$. We split our analysis into cases.</p>
+<p><strong>Case: $d\geq 5$ or $d=4$ and $e\geq 2$.</strong> If $\Phi$ is not of maximal rank, then $E\cong \OO(a)\oplus \OO(b)$ where $a\geq 0$. Since the total degree of $E$ is at most $-2$, we get $a-b\geq 2$ and we can apply <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6C21]</span></a> to find a line subbundle of $T_{\PP^2}(-\log C)$ of non-negative degree. This means $T_{\PP^2}(-\log C)$ has a section and we conclude by <a href="/papers/moduli-linear-slices/tag/25E7.html" class="stacks-ref-link">Proposition&nbsp;4.5 <span class="stacks-ref-tag">[25E7]</span></a>.</p>
+<p><strong>Case: $d=4$ and $e=1$.</strong> If $\Phi$ is not of maximal rank, then $h^0(E)\geq 2$ in this case. This means $E\cong \OO(a)\oplus \OO(b)$ where $a\geq 1$. In this case $a-b\geq 3$, so we can apply <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6C21]</span></a> to find a line subbundle $\OO(a)$ of  $T_{\PP^2}(-\log C)$. Applying <a href="/papers/moduli-linear-slices/tag/540B.html" class="stacks-ref-link">Proposition&nbsp;4.4 <span class="stacks-ref-tag">[540B]</span></a>, we are done in this case.</p>
+<p><strong>Case: $d=3$ and $e\geq 2$.</strong> In this case, $\deg(E)=0$ and a dimension count shows that $\Phi$ is not of maximal rank whenever $h^0(E)\geq 3$. Hence, we can apply <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6C21]</span></a> to find a line subbundle of $T_{\PP^2}(-\log C)$ of positive degree, so we again conclude using <a href="/papers/moduli-linear-slices/tag/540B.html" class="stacks-ref-link">Proposition&nbsp;4.4 <span class="stacks-ref-tag">[540B]</span></a>.</p>
+<p><strong>Case: $d=3$ and $e=1$.</strong> We can find a line $\ell$ meeting $C$ in three distinct points. This means $\Phi$ is automatically surjective, so it is of maximal rank.</p>
+<p><strong>Case: $d=2$.</strong> In this case, $\deg(E)=e$ and $\Phi$ is not of maximal rank iff $E\cong O(a)\oplus O(b)$ where $a\geq e+2$ and $b\leq -2$. Applying <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6C21]</span></a>, we find a line subbundle of $T_{\PP^2}(-\log C)$ of degree at least $\lceil\frac{e+2}{e}\rceil=2$. However, there are no nontrivial maps $\OO(2)\to T_{\PP^2}$, showing $\Phi$ must have maximal rank.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Section 4: Plane curves">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>2.1. Inflations — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,7 +105,7 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.1. Inflations</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.1. Inflations</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Vector bundles,  their inflations, and degenerations" title="Previous: Section 2: Vector bundles,  their inflations, and degenerations">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 2.2. Nodal curves and inflations of the normal bundle" title="Next: 2.2. Nodal curves and inflations of the normal bundle">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">2.1. Inflations</h1>
 <p class="stacks-para">Let $E$ be a vector bundle on $Y$.
@@ -106,7 +141,7 @@ say
 $$0 \to E \to \widetilde E \to B \to 0,$$
 where the cokernel is annihilated by the maximal ideal $m_y \subset O_Y$.
 Restricting this sequence to $y$, we get a sequence of vector spaces
-$$ 0 \to A \to E|_y \to \widetilde E|_y \to B \to 0.$$
+$$0 \to A \to E|_y \to \widetilde E|_y \to B \to 0.$$
 In this setting, we have a canonical isomorphism $A = B \otimes m_y/m_y^2$.
 One way to see this is by dualizing the original sequence to obtain
 $$A^\vee = \shExt^1(B, \O_Y) = B^\vee \otimes T_yY.$$
@@ -116,13 +151,13 @@ Given $s \in B$, choose a lift $\widetilde s$ in the stalk $\widetilde E_y$.
 Then $t  \widetilde s$ is an element of the stalk $E_y$, whose evaluation at $y$ is in the kernel $A$ of $E|_y \to \widetilde E|_y$.
 The isomorphism $B \otimes m_y / m_y^2 \to A$ sends $s \otimes t$ to the evaluation of $t \widetilde s \in A$.</p>
 <p class="stacks-para">The dual of (2.1) is the sequence
-$$ 0 \to \widetilde E ^\vee \to E^\vee \to A^\vee \to 0,$$
+$$0 \to \widetilde E ^\vee \to E^\vee \to A^\vee \to 0,$$
 where the cokernel is supported at $y$.
 Thus, the inflation $E \to \widetilde E$ is determined by the surjection
 $$E^\vee_y \to A^\vee = B^\vee \otimes T_yY.$$
 We call (2.2) the <em>defining quotient</em> of the inflation $E \to \widetilde E$.</p>
 <p class="stacks-para">Let $V \subset E^\vee \otimes \Omega_Y|_y$ be the image of the evaluation map
-$$ H^0\left(E^\vee \otimes \Omega_Y\right) \to E^\vee \otimes \Omega_Y|_y.$$
+$$H^0\left(E^\vee \otimes \Omega_Y\right) \to E^\vee \otimes \Omega_Y|_y.$$
 Let $q \from E^\vee_y \to k^d$ be a surjection and denote by $E \to \widetilde E_q$ the degree $d$ inflation of $E$ at $y$ corresponding to $q$.</p>
 <div class="stacks-lemma" id="prop-good_bad_inf">
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/486C.html" class="stacks-tag-link">(486C)</a></div>
@@ -140,7 +175,7 @@ Let $q \from E^\vee_y \to k^d$ be a surjection and denote by $E \to \widetilde E
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.4.</strong> <a href="../tag/AF05.html" class="stacks-tag-link">(AF05)</a></div>
   <div class="stacks-env-body"><p>Suppose $E$ is such that $h^1(Y, E) \neq 0$.
   Then, for a general degree 1 inflation $E \to \widetilde E$, we have
-  $$ h^1(Y, \widetilde E) = h^1(Y, E) - 1 \text{ and } h^0(Y, \widetilde E) = h^0(Y, E).$$</p></div>
+  $$h^1(Y, \widetilde E) = h^1(Y, E) - 1 \text{ and } h^0(Y, \widetilde E) = h^0(Y, E).$$</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4334.html" class="stacks-tag-link">(4334)</a></div>
@@ -158,7 +193,7 @@ A surjection $q \from E^\vee_y \to k^d$ gives a $(d-1)$ dimensional linear subsp
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.5.</strong> <a href="../tag/2285.html" class="stacks-tag-link">(2285)</a></div>
   <div class="stacks-env-body"><p>Suppose the linear span of $\bigcup_{q \in S} \Lambda_q$ is the entire projective space $\P E^\vee_y$.
   Then for some $q \in S$ we have
-  $$ h^1(Y, \widetilde E_q) \leq h^1(Y, E) - 1$$</p></div>
+  $$h^1(Y, \widetilde E_q) \leq h^1(Y, E) - 1$$</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E301.html" class="stacks-tag-link">(E301)</a></div>
@@ -200,7 +235,7 @@ A surjection $q \from E^\vee_y \to k^d$ gives a $(d-1)$ dimensional linear subsp
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

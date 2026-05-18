@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>3.5. Isotrivial families — A universal formula for counting cubic surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
@@ -19,18 +24,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -46,17 +51,17 @@
           Sym: "\\operatorname{Sym}",
           rk: "\\operatorname{rk}",
           themaintheorem: "\\Alph{maintheorem}",
-          O: "\\mathcal O",
-          G: "\\mathbf G",
-          F: "\\mathbf F",
+          O: "\\mathcal{O}",
+          G: "\\mathbb{G}",
+          F: "\\mathbb{F}",
           td: "\\widetilde",
-          V: "\\mathcal V",
-          cP: "\\mathcal P",
+          V: "\\mathcal{V}",
+          cP: "\\mathcal{P}",
           cC: "\\mathcal{C}",
           cX: "\\mathcal{X}",
           hL: "\\widehat{\\mathcal{L}}",
           hpsi: "\\widehat{\\psi}",
-          fm: "\\mathfrak m",
+          fm: "\\mathfrak{m}",
           smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
           hM: "\\widehat{\\M}",
           compl: ["\\widehat{#1}", 1],
@@ -74,13 +79,42 @@
           Hilb: "\\operatorname{Hilb}",
           Sing: "\\operatorname{Sing}",
           M: "\\operatorname{\\mathcal{M}}",
-          mult: "\\operatorname{mult}"
+          mult: "\\operatorname{mult}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -90,90 +124,75 @@
     <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.5. Isotrivial families</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <span>3.5. Isotrivial families</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS4.html" aria-label="Previous: 3.4. The fourth test family" title="Previous: 3.4. The fourth test family">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS6.html" aria-label="Next: 3.6. The family $3A_2$" title="Next: 3.6. The family $3A_2$">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.5. Isotrivial families</h1>
 <p class="stacks-para">In this section, we continue the theme of constructing good families, but with a twist.
 Let $X \subset \P^3$ be a cubic surface with an automorphism group $G$.
 We then get a family of cubic surfaces
-$$ \pi \colon [X/G] \to BG,$$
+$$\pi \colon [X/G] \to BG,$$
 and hence a map from $BG$ to the moduli stack of cubic surfaces
-$$ \mu \colon BG \to \mathscr M.$$
+$$\mu \colon BG \to \mathscr{M}.$$
 Suppose we know that the family $\pi$ is good.
 In this case, this simply means that $X$ is not in the closure of a general cubic surface $S$.
 Then, we get
-$$ \mu^* [\Orb(S)] = 0,$$
+$$\mu^* [\Orb(S)] = 0,$$
 which in turn gives a linear relation among the coefficients of the expression for $[\Orb(S)]$ pulled back to $A^4(BG)$.
 To get a useful relation, the group $A^4(BG)$ must be rich.
 In particular, we must take $G$ to be infinite; otherwise, $A^4(BG)$ is torsion, and we only get a congruence relation.</p>
 <p class="stacks-para">If we wish to obtain a family over a schematic base instead of $BG$, we can easily do so.
 We consider an arbitrary scheme $B$ with the free action of $G$ such that the quotient $B/G$ is a scheme, and take the family to be
-$$ \pi \colon (X \times B)/G \to B/G,$$
+$$\pi \colon (X \times B)/G \to B/G,$$
 where $G$ acts on $X \times B$ diagonally.
 In particular, for $G = \G_m$, the only group we use, we can take $B$ to be an arbitrary $\G_m$-torsor (line bundle minus the zero section) over a scheme.
 See Section&nbsp;3.10 for an example.</p>
 <p class="stacks-para">To implement the strategy outlined above, we need to prove that the cubic surface $X$ does not lie in the closure of the orbit of a general cubic surface.
 Following <a href="/papers/universal-formula-counting-cubic-surfaces/tag/5026.html" class="stacks-ref-link">Definition&nbsp;2.4 <span class="stacks-ref-tag">[5026]</span></a>, say that $X$ is <em>good</em> if it has this property.
-<a href="/papers/universal-formula-counting-cubic-surfaces/tag/2104.html" class="stacks-ref-link">Proposition&nbsp;5.3 <span class="stacks-ref-tag">[2104]</span></a> proves that the following cubic surfaces are good (the parenthesis describes the singularities):
-<ol><li>$x_0x_1x_3 = x_2^3$ \quad $(3A_2)$</li>
-<li>$x_3(x_0x_2-x_1^2) = x_0x_1^2$ \quad $(A_3 + 2A_1)$</li>
-<li>$x_3(x_0x_2-x_1^2) = x_0^2x_1$ \quad $(A_4 + A_1)$</li>
-<li>$x_3x_0^2 = x_1^3 + x_2^3$ \quad $(D_4)$</li></ol>
-For the reader's amusement, we include real pictures of the surfaces above in Figure&nbsp;6.
-\begin{figure}
-  \begin{subfigure}{.24\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cubic3A2}
-    \caption{$3A_2$}
-  \end{subfigure}
-  \begin{subfigure}{.24\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cubicA3_2A1}
-    \caption{$A_3+2A_1$}
-  \end{subfigure}
-  \begin{subfigure}{.24\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cubicA4_A1}
-    \caption{$A_4+A_1$}
-  \end{subfigure}
-  \begin{subfigure}{.24\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cubicD4}
-    \caption{$D_4$}
-  \end{subfigure}
-  \caption{Some cubic surfaces with a $\G_m$-action that are not in
+<a href="/papers/universal-formula-counting-cubic-surfaces/tag/2104.html" class="stacks-ref-link">Proposition&nbsp;5.3 <span class="stacks-ref-tag">[2104]</span></a> proves that the following cubic surfaces are good (the parenthesis describes the singularities):</p>
+<ol><li>$x_0x_1x_3 = x_2^3 \quad (3A_2)$</li>
+<li>$x_3(x_0x_2-x_1^2) = x_0x_1^2 \quad (A_3 + 2A_1)$</li>
+<li>$x_3(x_0x_2-x_1^2) = x_0^2x_1 \quad (A_4 + A_1)$</li>
+<li>$x_3x_0^2 = x_1^3 + x_2^3 \quad (D_4)$</li></ol>
+<p class="stacks-para">For the reader's amusement, we include real pictures of the surfaces above in Figure&nbsp;6.</p>
+<div class="stacks-figure"><img src="../cubic3A2.png" alt="cubic3A2.png"></div>
+<div class="stacks-caption">$3A_2$</div>
+<div class="stacks-figure"><img src="../cubicA3_2A1.png" alt="cubicA3_2A1.png"></div>
+<div class="stacks-caption">$A_3+2A_1$</div>
+<div class="stacks-figure"><img src="../cubicA4_A1.png" alt="cubicA4_A1.png"></div>
+<div class="stacks-caption">$A_4+A_1$</div>
+<div class="stacks-figure"><img src="../cubicD4.png" alt="cubicD4.png"></div>
+<div class="stacks-caption">$D_4$</div>
+<div class="stacks-caption">Some cubic surfaces with a $\G_m$-action that are not in
     the closure of the orbit of a generic cubic surface. We used the
     3D grapher
-    \href{https://singsurf.org/parade/Cubics.php}{SURFER} for these
-    images.}
-  \label{fig:surfaces}
-\end{figure}</p>
+    <a href="https://singsurf.org/parade/Cubics.php">SURFER</a> for these
+    images.</div>
 <p class="stacks-para">Let $X \subset \P^3$ be a good cubic surface.
 Let $G$ be the automorphism group of $X$ and $\G_m \to G$ a one-parameter subgroup.
 The family
-$$ [X/\G_m] \to B\G_m$$
+$$[X/\G_m] \to B\G_m$$
 yields a relation
 $$a_{1^4}v_1^4 + a_{1^2\cdot 2} v_1^2v_2 + a_{1\cdot 3} v_1v_3 + a_{2^2}v_2^2 + a_4 v_4 = 0,$$
 where the $v_i$ are the Chern classes of the push-forward of the anti-canonical bundle.
 Let us explain how to compute the push-forward of the anti-canonical bundle in this setting.
 For an integer $a$, let $\chi(a)$ denote the $1$-dimensional $\G_m$ representation where the $\G_m$ action is given by
-$$ t \colon v \mapsto t^a v.$$
+$$t \colon v \mapsto t^a v.$$
 Suppose $X \subset \P^3$ is the zero-locus of a homogeneous cubic form $F \in k[x_0,x_1,x_2,x_3]$.
 Assume that the $\G_m$ acts on the variables $x_i$ by scaling, say $t \in \G_m$ acts by
-$$ t \colon x_i \mapsto t^{w_i}x_i,$$
+$$t \colon x_i \mapsto t^{w_i}x_i,$$
 where $w_i \in \Z$.
 Since $V(F)$ is $\G_m$-fixed, there exists $w \in \Z$ such that
-$$ F \left(t x_0, t x_1, t x_2, t x_3\right) = t^w F\left(x_0, x_1, x_2,x_3\right).$$
-Write $V^\vee$ for the $k$-vector space $\langle x_0, x_1, x_2,x_3 \rangle$.
+$$F \left(t x_0, t x_1, t x_2, t x_3\right) = t^w F\left(x_0, x_1, x_2,x_3\right).$$
+Write $V^{\vee}$ for the $k$-vector space $\langle x_0, x_1, x_2,x_3 \rangle$.
 As a $\G_m$-representation, we have
-$$ V^\vee = \chi(w_1) \oplus \chi(w_2) \oplus \chi(w_3) \otimes \chi(w_4).$$
-The cubic $F$ defines a $\G_m$-invariant section of $\Sym^3 V^\vee \otimes \chi(-w)$.
+$$V^{\vee} = \chi(w_1) \oplus \chi(w_2) \oplus \chi(w_3) \otimes \chi(w_4).$$
+The cubic $F$ defines a $\G_m$-invariant section of $\Sym^3 V^{\vee} \otimes \chi(-w)$.
 Thus, we can view $X$ as the zero locus of the line bundle $\O(3) \otimes \pi^*\chi(-w)$ in the projective bundle $\pi \colon [\P V/\G_m] \to B\G_m$.
 By the adjunction formula, we get
-$$ \omega_X^{-1} = \O_{\P V}(1) \otimes \det V \otimes \pi^*\chi(w) |_X,$$
+$$\omega_X^{-1} = \O_{\P V}(1) \otimes \det V \otimes \pi^*\chi(w) |_X,$$
 and hence
 $$\begin{split}
-  \pi_*\left( \omega_X^{-1} \right) &= V^\vee \otimes \det V \otimes \chi(w) \\
+  \pi_*\left( \omega_X^{-1} \right) &= V^{\vee} \otimes \det V \otimes \chi(w) \\
   &\cong \left( \bigoplus \chi(w_i)  \right) \otimes \chi\left(-\sum w_i\right) \otimes \chi(w).
 \end{split}$$</p>
 
@@ -199,7 +218,7 @@ $$\begin{split}
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2109.12672">arXiv:2109.12672</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

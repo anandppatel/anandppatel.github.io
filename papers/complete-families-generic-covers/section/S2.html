@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Section 2 — Complete families of generic covers of elliptic curves</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
@@ -20,7 +25,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathsf{C}",
+          C: "\\mathbb{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -30,7 +35,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -45,12 +50,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
-          N: "\\operatorname{\\mathbb{N}}",
-          Gr: "\\operatorname{Gr}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          Gr: "\\mathbb{G}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\operatorname{\\mathbb{G}}",
+          G: "\\mathbb{G}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -59,19 +64,49 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
-          pt: "\\operatorname{\\mathsf{pt}}"
+          pt: "\\operatorname{\\mathsf{pt}}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -81,20 +116,18 @@
     <a href="../index.html" class="stacks-paper-link">Complete families of generic covers of elliptic curves</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 2: The stack of nodal covers of $X$</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 2: The stack of nodal covers of $X$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS3.html" aria-label="Previous: 1.3. Notation and assumptions" title="Previous: 1.3. Notation and assumptions">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS1.html" aria-label="Next: 2.1. Divisor class computations" title="Next: 2.1. Divisor class computations">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 2. The stack of nodal covers of $X$</h1>
 <div class="stacks-definition" id="definition-nodalcovers">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/8FB7.html" class="stacks-tag-link">(8FB7)</a></div>
-  <div class="stacks-env-body"><p class="stacks-para">Let $d \geq 1, g \geq 2$ be a pair of integers.
-    <ol><li>The stack $\HdgX$  parametrizes degree $d$ finite flat morphisms $$\alpha: C \to X$$ where
-        \begin{enumerate}</li>
-<li>$C$ is a connected, at-worst-nodal projective curve of arithmetic genus $g$, and</li>
-<li>$\alpha$ is <em>primitive</em>, i.e. it does not factor through a nontrivial &eacute;tale cover of $X$.</li></ol>
-        \item We denote by $\varphi: \HdgX \to \Mgbar$ the forgetful morphism defined by $$[\alpha: C \to X]  \mapsto [C].$$
-        \item On $\Mgbar$ we let $\lambda \in \Pic (\Mgbar)$ denote the first chern class of the Hodge bundle, and we let $\delta \in \Pic (\Mgbar)$ denote the total boundary divisor &ndash; the sum of each irreducible boundary divisor with multiplicity one.
-        \item We abuse notation and use the symbols $\lambda, \delta$ for the respective $\varphi$-pullbacks in $\Pic (\HdgX)$.
-    \end{enumerate}</p>
+  <div class="stacks-env-body"><p class="stacks-para">Let $d \geq 1, g \geq 2$ be a pair of integers.</p>
+<ol><li>The stack $\HdgX$  parametrizes degree $d$ finite flat morphisms $$\alpha: C \to X$$ where
+        <ol><li>$C$ is a connected, at-worst-nodal projective curve of arithmetic genus $g$, and</li>
+<li>$\alpha$ is <em>primitive</em>, i.e. it does not factor through a nontrivial &eacute;tale cover of $X$.</li></ol></li>
+<li>We denote by $\varphi: \HdgX \to \Mgbar$ the forgetful morphism defined by $$[\alpha: C \to X]  \mapsto [C].$$</li>
+<li>On $\Mgbar$ we let $\lambda \in \Pic (\Mgbar)$ denote the first chern class of the Hodge bundle, and we let $\delta \in \Pic (\Mgbar)$ denote the total boundary divisor &ndash; the sum of each irreducible boundary divisor with multiplicity one.</li>
+<li>We abuse notation and use the symbols $\lambda, \delta$ for the respective $\varphi$-pullbacks in $\Pic (\HdgX)$.</li></ol>
 <div class="stacks-commentary" id="">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/9883.html" class="stacks-tag-link">(9883)</a></div>
   <div class="stacks-env-body"><p>When $g =2$, $\HdgX$ is proper, and when $g > 2$ it is not.  This is  because when $3$ or more branch points collide, the possible domain curves include worse-than-nodal possibilities.  And this is not true for collisions of only two branch points.</p></div>
@@ -103,10 +136,11 @@
 </div>
 <div class="stacks-lemma" id="lemma-basics">
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/F3F4.html" class="stacks-tag-link">(F3F4)</a></div>
-  <div class="stacks-env-body"><p>Let $d,g \geq 2$.
-    <ol><li>$\HdgX$ is irreducible and has dimension $2g-2$.</li>
+  <div class="stacks-env-body"><p>Let $d,g \geq 2$.</p>
+<ol><li>$\HdgX$ is irreducible and has dimension $2g-2$.</li>
 <li>For fixed $g$, as $d$ ranges over all positive integers, the union $$\bigcup_{d > 0} \varphi(\HdgX) \subset \Mgbar$$ is Zariski-dense.</li>
-<li>The group scheme $\Aut(X)$ acts on $\HdgX$ via post-composition, and the morphism $\varphi$ is constant on $\Aut(X)$-orbits.</li></ol></p></div>
+<li>The group scheme $\Aut(X)$ acts on $\HdgX$ via post-composition, and the morphism $\varphi$ is constant on $\Aut(X)$-orbits.</li></ol>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9BE4.html" class="stacks-tag-link">(9BE4)</a></div>
@@ -122,27 +156,30 @@
 </div>
 <div class="stacks-definition" id="definition-regularpolystable">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.5.</strong> <a href="../tag/D883.html" class="stacks-tag-link">(D883)</a></div>
-  <div class="stacks-env-body"><p>A rank $r$ and  degree $k$ vector bundle $V$ on $X$ is <strong>regular polystable</strong> if $V = V_{1} \oplus \dots \oplus V_{h}$ where $h = \gcd(r,k)$, and where for all $i$:
-    <ol><li>$\rk V_{i} = r/h$ for all $i$,</li>
+  <div class="stacks-env-body"><p>A rank $r$ and  degree $k$ vector bundle $V$ on $X$ is <strong>regular polystable</strong> if $V = V_{1} \oplus \dots \oplus V_{h}$ where $h = \gcd(r,k)$, and where for all $i$:</p>
+<ol><li>$\rk V_{i} = r/h$ for all $i$,</li>
 <li>$\deg V_{i} = d/h$ for all $i$,</li>
 <li>$V_{i}$ is indecomposable for all $i$, i.e. not a direct sum of smaller bundles, and</li>
-<li>$\det V_{i} \neq \det V_{j}$ whenever $i \neq j$.</li></ol></p></div>
+<li>$\det V_{i} \neq \det V_{j}$ whenever $i \neq j$.</li></ol>
+</div>
 </div>
 <p class="stacks-para">Recall from Atiyah's classification that if $\gcd(r,k) = 1$ then a rank $r$ and degree $k$ indecomposable bundle is uniquely determined by its determinant.  The condition of being regular polystable is an open condition in families of vector bundles.</p>
 <div class="stacks-definition" id="">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.6.</strong> <a href="../tag/089F.html" class="stacks-tag-link">(089F)</a></div>
-  <div class="stacks-env-body"><p><ol><li>Define $\Bog(\mathcal{E}) \subset \HdgX$ (respectively $\Bog(\mathcal{F})$) to be the closed substack parametrizing $\alpha: C \to X$ such that $\mathcal{E}_{\alpha}$ (resp. $\mathcal{F}_{\alpha}$) is not regular polystable.</li>
+  <div class="stacks-env-body"><ol><li>Define $\Bog(\mathcal{E}) \subset \HdgX$ (respectively $\Bog(\mathcal{F})$) to be the closed substack parametrizing $\alpha: C \to X$ such that $\mathcal{E}_{\alpha}$ (resp. $\mathcal{F}_{\alpha}$) is not regular polystable.</li>
 <li>Define $$\St \subset \HdgX$$ to be the open substack parametrizing covers $\alpha: C \to X$ such that both $\mathcal{E}_{\alpha}$ and $\mathcal{F}_{\alpha}$ are regular polystable vector bundles on $X$. In other words, $$\St = \HdgX \setminus (\Bog(\mathcal{E}) \cup \Bog(\mathcal{F})).$$</li>
 <li>Define $$\Hurfixed{d}{g}(X) \subset \HdgX$$ to be the closed substack given by the requirement $$\det \mathcal{E}_{\alpha} \simeq \O_{X}((g-1)x).$$</li>
 <li>Define $\Hurfixedstable{d}{g}(X)$ to be the intersection $\St \cap \Hurfixed{d}{g}(X)$.</li>
 <li>We will denote by $$\alpha_{\univ}: \mathcal{C} \to \HdgX \times X$$ the universal branched covering and we let $\mathcal{E}_{\univ}, \mathcal{F}_{\univ}$ denote the corresponding universal bundles on $\HdgX \times X$.</li>
-<li>We let $\epsilon_{1,1}, \epsilon_{2} \in \Pic(\HdgX)$ (respectively $\varphi_{1,1}, \varphi_{2}$) denote the pushforwards of the classes $$c_{1}^{2}(\mathcal{E}_{\univ}), c_{2}(\mathcal{E}_{\univ})$$ (resp. for $\mathcal{F}_{\univ}$) to $\HdgX$.</li></ol></p></div>
+<li>We let $\epsilon_{1,1}, \epsilon_{2} \in \Pic(\HdgX)$ (respectively $\varphi_{1,1}, \varphi_{2}$) denote the pushforwards of the classes $$c_{1}^{2}(\mathcal{E}_{\univ}), c_{2}(\mathcal{E}_{\univ})$$ (resp. for $\mathcal{F}_{\univ}$) to $\HdgX$.</li></ol>
+</div>
 </div>
 <div class="stacks-commentary" id="remark-linearlyindependent">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.7.</strong> <a href="../tag/E34D.html" class="stacks-tag-link">(E34D)</a></div>
-  <div class="stacks-env-body"><p><ol><li>The classes $c_{1}(\mathcal{E}_{\univ})$ and $c_{1}(\mathcal{F}_{\univ})$ are proportional, satisfying $$(d-3)c_{1}(\mathcal{E}_{\univ}) = c_{1}(\mathcal{F}_{\univ}),$$ and therefore so are $\epsilon_{1,1}$ and $\varphi_{1,1}$.</li>
+  <div class="stacks-env-body"><ol><li>The classes $c_{1}(\mathcal{E}_{\univ})$ and $c_{1}(\mathcal{F}_{\univ})$ are proportional, satisfying $$(d-3)c_{1}(\mathcal{E}_{\univ}) = c_{1}(\mathcal{F}_{\univ}),$$ and therefore so are $\epsilon_{1,1}$ and $\varphi_{1,1}$.</li>
 <li>It is possible to prove (using ideas similar to those in [DP15, Section 2.2]) that the three classes $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$ are linearly independent.</li>
-<li>The vector bundles $\mathcal{N}_{i}$ arising in the Casnati-Ekedahl-Schreyer resolution of $\alpha_{\univ}$ produce divisor classes which are already in the span of $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$, by the results in [DP+18].</li></ol></p></div>
+<li>The vector bundles $\mathcal{N}_{i}$ arising in the Casnati-Ekedahl-Schreyer resolution of $\alpha_{\univ}$ produce divisor classes which are already in the span of $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$, by the results in [DP+18].</li></ol>
+</div>
 </div>
 <p class="stacks-para">The divisor classes $\lambda$ and $\delta$ are contained in the $3$-dimensional vector space $\Q \langle \epsilon_{1,1}, \epsilon_{2}, \varphi_{2} \rangle$.</p>
 <div class="stacks-lemma" id="proposition-linearsystem">
@@ -192,7 +229,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

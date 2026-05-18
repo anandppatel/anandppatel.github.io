@@ -40,6 +40,8 @@ import json
 import hashlib
 import html as html_mod
 import shutil
+import subprocess
+import tempfile
 
 # ============================================================
 # CONFIGURATION
@@ -48,6 +50,56 @@ import shutil
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 TAG_REGISTRY_PATH = os.path.join(SITE_ROOT, "papers", "tag-registry.json")
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
+TEX_RENDER_CONTEXT = {
+    "preamble": "",
+    "tikzset": "",
+    "tex_dir": SITE_ROOT,
+    "cache_dir": os.path.join(SITE_ROOT, ".tikz-cache"),
+}
+GEOMETRIC_ALPHABET_MACROS = {
+    # Keep the common ambient spaces and number systems visually uniform
+    # across papers whose source preambles use different local conventions.
+    "A": "\\mathbb{A}",
+    "AA": "\\mathbb{A}",
+    "ba": "\\mathbb{A}",
+    "bbA": "\\mathbb{A}",
+    "C": "\\mathbb{C}",
+    "CC": "\\mathbb{C}",
+    "bc": "\\mathbb{C}",
+    "bbC": "\\mathbb{C}",
+    "F": "\\mathbb{F}",
+    "FF": "\\mathbb{F}",
+    "bbF": "\\mathbb{F}",
+    "G": "\\mathbb{G}",
+    "Gr": "\\mathbb{G}",
+    "Grass": "\\mathbb{G}",
+    "Ga": "\\mathbb{G}_{a}",
+    "Gm": "\\mathbb{G}_{m}",
+    "K": "\\mathbb{K}",
+    "KK": "\\mathbb{K}",
+    "bbK": "\\mathbb{K}",
+    "N": "\\mathbb{N}",
+    "NN": "\\mathbb{N}",
+    "bn": "\\mathbb{N}",
+    "bbN": "\\mathbb{N}",
+    "P": "\\mathbb{P}",
+    "PP": "\\mathbb{P}",
+    "bP": "\\mathbb{P}",
+    "bp": "\\mathbb{P}",
+    "bbP": "\\mathbb{P}",
+    "Q": "\\mathbb{Q}",
+    "QQ": "\\mathbb{Q}",
+    "bq": "\\mathbb{Q}",
+    "bbQ": "\\mathbb{Q}",
+    "R": "\\mathbb{R}",
+    "RR": "\\mathbb{R}",
+    "br": "\\mathbb{R}",
+    "bbR": "\\mathbb{R}",
+    "Z": "\\mathbb{Z}",
+    "ZZ": "\\mathbb{Z}",
+    "bz": "\\mathbb{Z}",
+    "bbZ": "\\mathbb{Z}",
+}
 
 
 def load_registry():
@@ -61,6 +113,349 @@ def save_registry(reg):
     os.makedirs(os.path.dirname(TAG_REGISTRY_PATH), exist_ok=True)
     with open(TAG_REGISTRY_PATH, "w") as f:
         json.dump(reg, f, indent=2)
+
+
+def iter_latex_command_spans(text, command, allow_optional=False):
+    """Yield (start, end, argument) for \\command{...} with balanced braces."""
+    needle = "\\" + command
+    pos = 0
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if allow_optional and i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(text) and text[i].isspace():
+                i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = start + len(needle)
+            continue
+        arg_start = i + 1
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            yield start, i, text[arg_start:i - 1]
+            pos = i
+        else:
+            pos = start + len(needle)
+
+
+def extract_latex_commands(text, command):
+    """Extract full \\command{...} commands with balanced braces."""
+    return [text[start:end] for start, end, _ in iter_latex_command_spans(text, command)]
+
+
+def replace_latex_commands(text, command, callback, allow_optional=False):
+    """Replace full \\command{...} commands using a callback on the argument."""
+    pieces = []
+    pos = 0
+    for start, end, argument in iter_latex_command_spans(text, command, allow_optional):
+        pieces.append(text[pos:start])
+        pieces.append(callback(argument))
+        pos = end
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
+def replace_latex_optional_arg_commands(text, command, callback):
+    """Replace \\command[optional]{...} commands with balanced braces."""
+    pieces = []
+    pos = 0
+    needle = "\\" + command
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+
+        optional = None
+        if i < len(text) and text[i] == "[":
+            opt_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            if depth:
+                pos = start + len(needle)
+                continue
+            optional = text[opt_start:i - 1]
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = start + len(needle)
+            continue
+
+        arg_start = i + 1
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            pos = start + len(needle)
+            continue
+
+        pieces.append(text[pos:start])
+        pieces.append(callback(optional, text[arg_start:i - 1]))
+        pos = i
+
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
+def remove_latex_commands(text, command):
+    """Remove full \\command{...} commands with balanced braces."""
+    return replace_latex_commands(text, command, lambda _argument: "")
+
+
+def replace_latex_two_arg_commands(text, command, callback, allow_optional=False):
+    """Replace full \\command{...}{...} commands with balanced braces."""
+    pieces = []
+    pos = 0
+    needle = "\\" + command
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if allow_optional and i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(text) and text[i].isspace():
+                i += 1
+        args = []
+        ok = True
+        for _ in range(2):
+            if i >= len(text) or text[i] != "{":
+                ok = False
+                break
+            arg_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "{":
+                    depth += 1
+                elif text[i] == "}":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                ok = False
+                break
+            args.append(text[arg_start:i - 1])
+            if len(args) < 2:
+                while i < len(text) and text[i].isspace():
+                    i += 1
+        if not ok:
+            pos = start + len(needle)
+            continue
+        pieces.append(text[pos:start])
+        pieces.append(callback(args[0], args[1]))
+        pos = i
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
+def parse_latex_macro_definitions(text):
+    """Yield simple \\newcommand-style macro definitions from LaTeX source."""
+    command_re = re.compile(r'\\(?:new|renew|provide)command\*?(?=\s|\\|\{)')
+    pos = 0
+    while True:
+        match = command_re.search(text, pos)
+        if not match:
+            break
+        i = match.end()
+        while i < len(text) and text[i].isspace():
+            i += 1
+
+        if i < len(text) and text[i] == "{":
+            name_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "{":
+                    depth += 1
+                elif text[i] == "}":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                pos = match.end()
+                continue
+            raw_name = text[name_start:i - 1].strip()
+        elif i < len(text) and text[i] == "\\":
+            name_start = i
+            i += 1
+            while i < len(text) and (text[i].isalpha() or text[i] == "@"):
+                i += 1
+            raw_name = text[name_start:i]
+        else:
+            pos = match.end()
+            continue
+
+        name_m = re.match(r'\\([A-Za-z@]+)$', raw_name)
+        if not name_m:
+            pos = match.end()
+            continue
+        name = name_m.group(1)
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        nargs = None
+        if i < len(text) and text[i] == "[":
+            opt_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                pos = match.end()
+                continue
+            opt = text[opt_start:i - 1].strip()
+            if opt.isdigit():
+                nargs = int(opt)
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = match.end()
+            continue
+        def_start = i + 1
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth != 0:
+            pos = match.end()
+            continue
+
+        yield {
+            "start": match.start(),
+            "end": i,
+            "name": name,
+            "nargs": nargs,
+            "definition": text[def_start:i - 1],
+        }
+        pos = i
+
+
+def remove_latex_macro_definitions(text):
+    """Remove visible macro definitions from body text."""
+    pieces = []
+    pos = 0
+    for macro in parse_latex_macro_definitions(text):
+        pieces.append(text[pos:macro["start"]])
+        pos = macro["end"]
+    pieces.append(text[pos:])
+    text = "".join(pieces)
+    text = re.sub(
+        r'\\DeclareMathOperator\*?\s*\{?\\\w+\}?\s*\{(?:[^{}]|\{[^{}]*\})*\}',
+        '',
+        text,
+    )
+    return text
+
+
+def split_latex_heading_blocks(text, command):
+    """Split text into [(title, content)] blocks for balanced LaTeX headings."""
+    matches = list(iter_latex_heading_spans(text, command))
+    blocks = []
+    for idx, (start, end, title) in enumerate(matches):
+        next_start = matches[idx + 1][0] if idx + 1 < len(matches) else len(text)
+        blocks.append((clean_heading_title(title), text[end:next_start]))
+    return text[:matches[0][0]] if matches else text, blocks
+
+
+def clean_heading_title(title):
+    """Remove invisible LaTeX spacing commands from section-like headings."""
+    title = re.sub(r'\\(?:unskip|ignorespaces)\b', '', title)
+    return title.strip()
+
+
+def iter_latex_heading_spans(text, command):
+    """Yield (start, end, title) for \\section-like headings."""
+    heading_re = re.compile(r'\\' + re.escape(command) + r'\*?\s*\{')
+    pos = 0
+    while True:
+        m = heading_re.search(text, pos)
+        if not m:
+            break
+        i = m.end()
+        arg_start = i
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            yield m.start(), i, text[arg_start:i - 1]
+            pos = i
+        else:
+            pos = m.end()
+
+
+def replace_latex_heading_commands(text, command, callback):
+    """Replace \\section-like headings using a callback on the balanced title."""
+    pieces = []
+    pos = 0
+    for start, end, title in iter_latex_heading_spans(text, command):
+        pieces.append(text[pos:start])
+        pieces.append(callback(title.strip()))
+        pos = end
+    pieces.append(text[pos:])
+    return "".join(pieces)
 
 
 def label_to_tag(label, existing_tags):
@@ -85,12 +480,7 @@ def label_to_tag(label, existing_tags):
 # ============================================================
 
 def parse_preamble_macros(tex_source):
-    """Extract LaTeX macro definitions from the preamble for MathJax."""
-    m = re.search(r'\\begin\{document\}', tex_source)
-    if not m:
-        return {}
-    preamble = tex_source[:m.start()]
-
+    """Extract LaTeX macro definitions from the source for MathJax."""
     macros = {}
     non_math_macros = {
         # Presentation macros used by the PDF source, not MathJax macros.
@@ -99,71 +489,168 @@ def parse_preamble_macros(tex_source):
 
     # \newcommand{\foo}{definition} or \newcommand{\foo}[n]{definition}
     # \renewcommand{\foo}{definition} or \renewcommand{\foo}[n]{definition}
-    # Handle nested braces up to 2 levels deep in the definition
-    for match in re.finditer(
-        r'\\(?:new|renew|provide)command\s*\{?\\(\w+)\}?'
-        r'(?:\[(\d+)\])?'
-        r'\s*\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
-        preamble
-    ):
-        name = match.group(1)
-        nargs = match.group(2)
-        definition = match.group(3)
+    for macro in parse_latex_macro_definitions(tex_source):
+        name = macro["name"]
+        nargs = macro["nargs"]
+        definition = normalize_geometric_alphabets(macro["definition"])
         # Skip non-math macros
         if name in ('labelitemi',) or name in non_math_macros:
             continue
         if any(token in definition for token in (
             "\n", "\\begin", "\\end", "\\noindent", "\\vspace", "\\hspace",
-            "tcolorbox", "minipage", "flushleft", "flushright",
+            "\\errmessage", "\\renewcommand", "tcolorbox", "minipage",
+            "flushleft", "flushright",
         )):
             continue
+        if name == "o" and definition == "\\overline":
+            macros[name] = ["\\overline{#1}", 1]
+            continue
         if nargs:
-            macros[name] = [definition, int(nargs)]
+            macros[name] = [definition, nargs]
         else:
             macros[name] = definition
 
     # \DeclareMathOperator{\foo}{text} — handles nested braces
     for match in re.finditer(
         r'\\DeclareMathOperator\s*\{?\\(\w+)\}?\s*\{((?:[^{}]|\{[^{}]*\})*)\}',
-        preamble
+        tex_source
     ):
         name = match.group(1)
-        text = match.group(2).strip()
+        text = normalize_geometric_alphabets(match.group(2).strip())
         macros[name] = "\\operatorname{" + text + "}"
 
+    for name, definition in GEOMETRIC_ALPHABET_MACROS.items():
+        if name in {"A", "C", "F", "G", "Gr", "Grass", "K", "N", "P", "Q", "R", "Z"}:
+            macros[name] = definition
+        else:
+            macros.setdefault(name, definition)
     return macros
 
 
-def parse_citations(meta, tex_dir):
-    """Build a citation map from source.json or .bbl file."""
-    # Check source.json for explicit citations
-    if "citations" in meta:
-        return meta["citations"]
+def parse_bibliography(meta, tex_dir, tex_source):
+    """Build citation labels and bibliography entries."""
+    bib_text = ""
 
-    # Try to find .bbl file alongside source.tex
+    # Prefer the compiled bibliography if arXiv supplied one.
     bbl_path = os.path.join(tex_dir, "source.bbl")
     if os.path.exists(bbl_path):
-        citations = {}
         with open(bbl_path) as f:
-            bbl = f.read()
-        for m in re.finditer(r'\\bibitem\[([^\]]*)\]\{([^}]*)\}', bbl):
-            short_label = m.group(1)
-            key = m.group(2)
-            citations[key] = clean_bib_label(short_label)
-        if citations:
-            return citations
+            bib_text = f.read()
+    else:
+        bib_m = re.search(
+            r'\\begin\{thebibliography\}(?:\{[^}]*\})?(.*?)\\end\{thebibliography\}',
+            tex_source,
+            re.DOTALL,
+        )
+        if bib_m:
+            bib_text = bib_m.group(1)
 
-        for idx, m in enumerate(re.finditer(r'\\bibitem\{([^}]*)\}', bbl), start=1):
-            citations[m.group(1)] = str(idx)
-        return citations
+    bib_text = cleanup_bibliography_environment(bib_text)
+    citations, entries = parse_bibitems(bib_text)
 
-    return {}
+    # source.json can provide lightweight labels for papers whose sources do
+    # not include a bibliography file.
+    if "citations" in meta:
+        citations.update(meta["citations"])
+
+    return {"citations": citations, "entries": entries}
+
+
+def cleanup_bibliography_environment(bib_text):
+    """Remove wrapper commands from .bbl/thebibliography text."""
+    if not bib_text:
+        return ""
+    bib_text = re.sub(r'\\newcommand\{\\etalchar\}\[1\]\{\$\^\{#1\}\$\}\s*', '', bib_text)
+    bib_text = re.sub(r'\\begin\{thebibliography\}\{[^\n]*\}\s*', '', bib_text)
+    bib_text = re.sub(r'\\end\{thebibliography\}\s*', '', bib_text)
+    return bib_text.strip()
+
+
+def parse_bibitems(bib_text):
+    citations = {}
+    entries = []
+    if not bib_text:
+        return citations, entries
+
+    bibitem_pattern = re.compile(r'\\bibitem(?:\[([^\]]*)\])?\{([^}]*)\}')
+    matches = list(bibitem_pattern.finditer(bib_text))
+    for idx, match in enumerate(matches, start=1):
+        raw_label = match.group(1)
+        key = match.group(2)
+        label = clean_bib_label(raw_label) if raw_label else str(idx)
+        body_start = match.end()
+        body_end = matches[idx].start() if idx < len(matches) else len(bib_text)
+        body = bib_text[body_start:body_end].strip()
+        citations[key] = label
+        entries.append({
+            "key": key,
+            "label": label,
+            "html": bibliography_entry_to_html(body),
+        })
+    return citations, entries
+
+
+def bibliography_entry_to_html(entry):
+    """Lightweight LaTeX-to-HTML cleanup for bibliography entries."""
+    entry = entry.replace('\n', ' ')
+    entry = re.sub(r'\s+', ' ', entry).strip()
+    entry = cleanup_bibliography_environment(entry)
+    # Plain BibTeX styles use a short rule for "same author as above".  In
+    # HTML an em dash carries the same meaning without leaking raw TeX.
+    entry = re.sub(
+        r'\\leavevmode\\vrule\s+height\s+[-.\d]+pt\s+depth\s+[-.\d]+pt\s+width\s+[-.\d]+pt',
+        '&mdash;',
+        entry,
+    )
+    entry = re.sub(r'\\url\{([^}]*)\}', r'<a href="\1">\1</a>', entry)
+    entry = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'<a href="\1">\2</a>', entry)
+    html = tex_to_html(entry)
+    # BibTeX uses braces to preserve capitalization. Once formatting commands
+    # are handled, those braces should not be visible in bibliography prose.
+    html = strip_text_braces_outside_math(html)
+    return html
+
+
+def strip_text_braces_outside_math(text):
+    """Remove BibTeX capitalization braces while leaving MathJax braces alone."""
+    pieces = []
+    current = []
+    in_math = False
+    i = 0
+    while i < len(text):
+        char = text[i]
+        prev = text[i - 1] if i else ""
+        if char == "$" and prev != "\\":
+            if not in_math:
+                segment = "".join(current).replace("{", "").replace("}", "")
+                pieces.append(segment)
+                current = ["$"]
+                in_math = True
+            else:
+                current.append("$")
+                pieces.append("".join(current))
+                current = []
+                in_math = False
+            i += 1
+            continue
+        current.append(char)
+        i += 1
+    segment = "".join(current)
+    if not in_math:
+        segment = segment.replace("{", "").replace("}", "")
+    pieces.append(segment)
+    return "".join(pieces)
 
 
 def clean_bib_label(label):
     """Convert BibTeX's small LaTeX label fragments into plain HTML text."""
     label = re.sub(r'\{\\etalchar\{([^}]*)\}\}', r'\1', label)
     label = label.replace('{', '').replace('}', '')
+    label = label.replace('~', ' ')
+    natbib_match = re.match(r'(.+?\(\d{4}[a-z]?\)).+', label)
+    if natbib_match:
+        label = natbib_match.group(1)
+    label = re.sub(r'(?<!\s)\((\d{4}[a-z]?)\)', r' (\1)', label)
     return label
 
 
@@ -179,6 +666,17 @@ def extract_latex_command_bodies(tex_source, command):
         i = start + len(needle)
         while i < len(tex_source) and tex_source[i].isspace():
             i += 1
+        if i < len(tex_source) and tex_source[i] == "[":
+            depth = 1
+            i += 1
+            while i < len(tex_source) and depth:
+                if tex_source[i] == "[":
+                    depth += 1
+                elif tex_source[i] == "]":
+                    depth -= 1
+                i += 1
+            while i < len(tex_source) and tex_source[i].isspace():
+                i += 1
         if i >= len(tex_source) or tex_source[i] != "{":
             pos = i
             continue
@@ -200,6 +698,7 @@ def extract_latex_command_bodies(tex_source, command):
 def clean_latex_metadata(text):
     """Lightweight cleanup for title/author strings displayed as HTML."""
     text = re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'\\(?:unskip|ignorespaces)\b', '', text)
     text = text.replace(r'\&', '&')
     text = text.replace(r'\and', ', ')
     text = text.replace(' ,', ',')
@@ -238,70 +737,110 @@ def normalize_source_aliases(body):
 
 ENV_TYPES = {
     "theorem": "Theorem",
+    "Theorem": "Theorem",
+    "Thm": "Theorem",
+    "Thm*": "Theorem",
     "thm": "Theorem",
     "thm*": "Theorem",
     "maintheorem": "Theorem",
+    "Main": "Main Theorem",
     "thm-defn": "Theorem/Definition",
     "lemma": "Lemma",
+    "Lem": "Lemma",
     "lem": "Lemma",
     "definition": "Definition",
+    "Def": "Definition",
     "defn": "Definition",
     "commentary": "Commentary",
     "proof": "Proof",
     "proposition": "Proposition",
+    "Prop": "Proposition",
+    "Prop*": "Proposition",
     "prop": "Proposition",
     "corollary": "Corollary",
+    "Corollary": "Corollary",
+    "Cor": "Corollary",
     "cor": "Corollary",
     "remark": "Remark",
+    "Rem": "Remark",
     "rmk": "Remark",
     "question": "Question",
     "example": "Example",
+    "Exam": "Example",
     "eg": "Example",
     "claim": "Claim",
+    "Claim": "Claim",
     "calc": "Calculation",
     "fact": "Fact",
+    "Fact": "Fact",
+    "Fact*": "Fact",
     "notn": "Notation",
     "warn": "Warning",
+    "Pro": "Problem",
+    "Pro*": "Problem",
     "prob": "Problem",
     "problem": "Problem",
     "assumption": "Assumption",
     "conjecture": "Conjecture",
+    "Conj": "Conjecture",
     "conj": "Conjecture",
     "construction": "Construction",
+    "Exer": "Exercise",
+    "ToDo": "To Do",
 }
 
 # Map envName to CSS class
 ENV_CSS = {
     "theorem": "stacks-theorem",
+    "Theorem": "stacks-theorem",
+    "Thm": "stacks-theorem",
+    "Thm*": "stacks-theorem",
     "thm": "stacks-theorem",
     "thm*": "stacks-theorem",
     "maintheorem": "stacks-theorem",
+    "Main": "stacks-theorem",
     "thm-defn": "stacks-theorem",
     "lemma": "stacks-lemma",
+    "Lem": "stacks-lemma",
     "lem": "stacks-lemma",
     "proposition": "stacks-lemma",
+    "Prop": "stacks-lemma",
+    "Prop*": "stacks-lemma",
     "prop": "stacks-lemma",
     "corollary": "stacks-lemma",
+    "Corollary": "stacks-lemma",
+    "Cor": "stacks-lemma",
     "cor": "stacks-lemma",
     "definition": "stacks-definition",
+    "Def": "stacks-definition",
     "defn": "stacks-definition",
     "commentary": "stacks-commentary",
     "remark": "stacks-commentary",
+    "Rem": "stacks-commentary",
     "rmk": "stacks-commentary",
     "question": "stacks-env",
     "example": "stacks-env",
+    "Exam": "stacks-env",
     "eg": "stacks-env",
     "claim": "stacks-env",
+    "Claim": "stacks-env",
     "calc": "stacks-env",
     "fact": "stacks-env",
+    "Fact": "stacks-env",
+    "Fact*": "stacks-env",
     "notn": "stacks-env",
     "warn": "stacks-commentary",
+    "Pro": "stacks-env",
+    "Pro*": "stacks-env",
     "prob": "stacks-env",
     "problem": "stacks-env",
     "assumption": "stacks-env",
     "conjecture": "stacks-env",
+    "Conj": "stacks-env",
     "conj": "stacks-env",
     "construction": "stacks-env",
+    "Exer": "stacks-env",
+    "ToDo": "stacks-env",
     "proof": "stacks-proof",
 }
 
@@ -427,10 +966,7 @@ def parse_auxiliary_labels(body):
 
 def parse_sections(body):
     """Split body into sections and subsections."""
-    # Regex handles one level of nested braces in section titles
-    # e.g. \section{Geometry of $\transvectant_{m,n}$}
-    sec_pattern = r'\\section\{((?:[^{}]|\{[^{}]*\})*)\}'
-    sec_splits = re.split(sec_pattern, body)
+    _, section_blocks = split_latex_heading_blocks(body, "section")
 
     section_labels = {}  # label -> {"number": "2", "title": "..."} etc.
 
@@ -443,10 +979,9 @@ def parse_sections(body):
     )
 
     def collect_heading_labels(text, base_number):
-        subsub_pattern = re.compile(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}')
-        for idx, hm in enumerate(subsub_pattern.finditer(text), start=1):
-            title = hm.group(1).strip()
-            label_region = text[hm.end():hm.end() + 300]
+        _, subsub_blocks = split_latex_heading_blocks(text, "subsubsection")
+        for idx, (title, content) in enumerate(subsub_blocks, start=1):
+            label_region = content[:300]
             label_m = re.search(r'\\label\{([^}]+)\}', label_region)
             if label_m:
                 section_labels[label_m.group(1)] = {
@@ -455,18 +990,12 @@ def parse_sections(body):
                 }
 
     sections = []
-    sec_num = 0
-    for i in range(1, len(sec_splits), 2):
-        sec_num += 1
-        sec_title = sec_splits[i].strip()
-        sec_content = sec_splits[i+1] if i+1 < len(sec_splits) else ""
+    for sec_num, (sec_title, sec_content) in enumerate(section_blocks, start=1):
 
         # Split subsections FIRST, then extract labels per-piece
-        sub_pattern = r'\\subsection\{((?:[^{}]|\{[^{}]*\})*)\}'
-        sub_splits = re.split(sub_pattern, sec_content)
+        pre_raw, subsection_blocks = split_latex_heading_blocks(sec_content, "subsection")
 
         # Extract section labels from pre-subsection content
-        pre_raw = sub_splits[0]
         for lm in re.finditer(r'\\label\{([^}]+)\}', pre_raw[:300]):
             label = lm.group(1)
             if not any(label.startswith(p) for p in theorem_label_prefixes):
@@ -475,12 +1004,7 @@ def parse_sections(body):
         pre_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', pre_raw)
 
         subsections = []
-        sub_num = 0
-        for j in range(1, len(sub_splits), 2):
-            sub_num += 1
-            sub_title = sub_splits[j].strip()
-            sub_content = sub_splits[j+1] if j+1 < len(sub_splits) else ""
-
+        for sub_num, (sub_title, sub_content) in enumerate(subsection_blocks, start=1):
             # Extract subsection labels from the beginning of content
             for lm in re.finditer(r'\\label\{([^}]+)\}', sub_content[:300]):
                 label = lm.group(1)
@@ -673,18 +1197,674 @@ def _parse_tex_blocks(content, blocks, sec_num):
 
 
 def split_paragraphs(text):
-    """Split text on blank lines into paragraphs."""
-    paras = re.split(r'\n\s*\n', text.strip())
-    return [p.strip() for p in paras if p.strip()]
+    """Split text on blank lines without cutting through display environments."""
+    protected_envs = {
+        "figure", "table", "center", "equation", "equation*",
+        "align", "align*", "tikzcd", "tikzpicture", "tabular", "longtable",
+    }
+    paras = []
+    current = []
+    depth = 0
+    for line in text.strip().splitlines():
+        begins = re.findall(r'\\begin\{([^}]+)\}', line)
+        ends = re.findall(r'\\end\{([^}]+)\}', line)
+        is_blank = not line.strip()
+        if is_blank and depth == 0:
+            if current:
+                paras.append("\n".join(current).strip())
+                current = []
+            continue
+        current.append(line)
+        depth += sum(1 for env in begins if env in protected_envs)
+        depth -= sum(1 for env in ends if env in protected_envs)
+        depth = max(depth, 0)
+    if current:
+        paras.append("\n".join(current).strip())
+    return [p for p in paras if p]
+
+
+def configure_tex_renderer(tex_source, tex_dir):
+    """Store enough source context to render embedded LaTeX graphics."""
+    declarations = []
+    for name, definition in parse_preamble_macros(tex_source).items():
+        if isinstance(definition, list):
+            body, nargs = definition
+            arg_spec = f"[{nargs}]"
+            empty_args = "".join("{}" for _ in range(nargs))
+            declarations.append(f"\\providecommand{{\\{name}}}{arg_spec}{empty_args}")
+            declarations.append(f"\\renewcommand{{\\{name}}}{arg_spec}{{{body}}}")
+        else:
+            declarations.append(f"\\providecommand{{\\{name}}}{{}}")
+            declarations.append(f"\\renewcommand{{\\{name}}}{{{definition}}}")
+    TEX_RENDER_CONTEXT["preamble"] = "\n".join(declarations)
+    TEX_RENDER_CONTEXT["tikzset"] = "\n".join(extract_latex_commands(tex_source, "tikzset"))
+    TEX_RENDER_CONTEXT["tex_dir"] = tex_dir
+    TEX_RENDER_CONTEXT["cache_dir"] = os.path.join(tex_dir, ".tikz-cache")
+
+
+def strip_svg_header(svg):
+    """Remove XML/doctype wrappers so the SVG can be embedded inline."""
+    svg = re.sub(r'<\?xml[^>]*>\s*', '', svg, count=1)
+    svg = re.sub(r'<!DOCTYPE[^>]*(?:\[[\s\S]*?\]\s*)?>\s*', '', svg, count=1)
+    svg = re.sub(r'<!--.*?-->\s*', '', svg, flags=re.DOTALL)
+    return svg.strip()
+
+
+def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
+    """Compile a TikZ/tikz-cd environment to inline SVG, with a readable fallback."""
+    cache_dir = TEX_RENDER_CONTEXT["cache_dir"]
+    os.makedirs(cache_dir, exist_ok=True)
+    digest = hashlib.sha256(
+        (
+            TEX_RENDER_CONTEXT["preamble"]
+            + "\n"
+            + TEX_RENDER_CONTEXT["tikzset"]
+            + "\n"
+            + tikz_source
+        ).encode()
+    ).hexdigest()[:16]
+    svg_path = os.path.join(cache_dir, f"{digest}.svg")
+
+    if not os.path.exists(svg_path):
+        document = r"""\documentclass[tikz,border=3pt]{standalone}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{mathrsfs}
+\IfFileExists{mathbbol.sty}{\usepackage{mathbbol}}{}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{calc}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[all]{xy}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes,decorations.markings,decorations.pathmorphing,plotmarks,calc,patterns,fit,backgrounds}
+""" + TEX_RENDER_CONTEXT["preamble"] + r"""
+""" + TEX_RENDER_CONTEXT["tikzset"] + r"""
+\providecommand{\Cref}[1]{#1}
+\providecommand{\cref}[1]{#1}
+\providecommand{\autoref}[1]{#1}
+\ProvideDocumentCommand{\op}{O{r} O{n} m}{\mathcal{O}_{#3}}
+\ProvideDocumentCommand{\opc}{O{r} O{n} m}{[\mathcal{O}_{#3}]}
+\ProvideDocumentCommand{\og}{O{r+1} O{n} m}{\mathcal{O}(#3)}
+\ProvideDocumentCommand{\ogc}{O{r+1} O{n} m}{[\mathcal{O}(#3)]}
+\ProvideDocumentCommand{\oa}{O{(r+1)} O{n} m}{\mathcal{O}(#3)}
+\ProvideDocumentCommand{\oac}{O{(r+1)} O{n} m}{[\mathcal{O}(#3)]}
+\graphicspath{{""" + TEX_RENDER_CONTEXT["tex_dir"].replace("\\", "/") + r"""/}}
+\begin{document}
+""" + tikz_source + r"""
+\end{document}
+"""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tex_file = os.path.join(tmpdir, "diagram.tex")
+            with open(tex_file, "w", encoding="utf-8") as f:
+                f.write(document)
+            env = os.environ.copy()
+            tex_dir = TEX_RENDER_CONTEXT["tex_dir"]
+            env["TEXINPUTS"] = (
+                tex_dir + os.pathsep
+                + tex_dir + "//" + os.pathsep
+                + env.get("TEXINPUTS", "")
+            )
+            try:
+                subprocess.run(
+                    ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "diagram.tex"],
+                    cwd=tmpdir,
+                    env=env,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    timeout=30,
+                    check=True,
+                )
+                pdf_for_svg = "diagram.pdf"
+                if shutil.which("pdfcrop"):
+                    subprocess.run(
+                        ["pdfcrop", "diagram.pdf", "diagram-crop.pdf"],
+                        cwd=tmpdir,
+                        env=env,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.STDOUT,
+                        text=True,
+                        timeout=30,
+                        check=True,
+                    )
+                    pdf_for_svg = "diagram-crop.pdf"
+                subprocess.run(
+                    ["pdftocairo", "-svg", pdf_for_svg, svg_path],
+                    cwd=tmpdir,
+                    env=env,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    timeout=30,
+                    check=True,
+                )
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError) as exc:
+                message = html_mod.escape(str(exc))
+                source = html_mod.escape(tikz_source)
+                return (
+                    '<pre class="stacks-latex-fallback" '
+                    f'title="{message}">{source}</pre>'
+                )
+
+    try:
+        with open(svg_path, encoding="utf-8") as f:
+            svg = strip_svg_header(f.read())
+    except OSError:
+        source = html_mod.escape(tikz_source)
+        return f'<pre class="stacks-latex-fallback">{source}</pre>'
+
+    svg = re.sub(r'<svg\b', '<svg class="stacks-tikzcd-svg"', svg, count=1)
+    return (
+        '<div class="stacks-tikzcd" role="img" '
+        f'aria-label="{html_attr(aria_label)}">'
+        f'{svg}</div>'
+    )
+
+
+def render_tikzcd_block(tikz_source):
+    """Compile a tikzcd environment to inline SVG, with a readable fallback."""
+    return render_tikz_block(tikz_source, "Commutative diagram")
+
+
+def render_tikzpicture_block(tikz_source):
+    """Compile a tikzpicture environment to inline SVG, with a readable fallback."""
+    return render_tikz_block(tikz_source, "TikZ diagram")
+
+
+def render_picture_block(picture_source):
+    """Compile a LaTeX picture environment, including Inkscape overlays, to SVG."""
+    return render_tikz_block(picture_source, "Figure")
+
+
+def render_latex_display_block(display_source):
+    """Compile a display math block to inline SVG when MathJax is too fragile."""
+    return render_tikz_block("\\[\n" + display_source + "\n\\]", "Display equation")
+
+
+def render_xypic_block(xy_source):
+    """Compile an Xy-pic graph to inline SVG, with a readable fallback."""
+    return render_tikz_block("\\[\n" + xy_source + "\n\\]", "Xy-pic diagram")
+
+
+def replace_xypic_commands(text):
+    """Render Xy-pic commands, including xymatrix spacing modifiers, to SVG."""
+    pieces = []
+    pos = 0
+    command_re = re.compile(r'\\(?:xygraph|xymatrix)\b')
+    while True:
+        match = command_re.search(text, pos)
+        if not match:
+            break
+        brace = text.find("{", match.end())
+        if brace == -1:
+            break
+        i = brace + 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth != 0:
+            pos = match.end()
+            continue
+        pieces.append(text[pos:match.start()])
+        pieces.append(render_xypic_block(text[match.start():i]))
+        pos = i
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
+def normalize_geometric_alphabets(tex):
+    """Normalize common geometric alphabet choices before MathJax rendering."""
+    alphabet = "ACFGKNPQRZ"
+
+    def normalize_letter(match):
+        return "\\mathbb{" + match.group(1) + "}"
+
+    tex = re.sub(r'\\operatorname\s*\{Gr\}', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\{\\bf\s+Gr\}', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\\bf\s+Gr\b', r'\\mathbb{G}', tex)
+    tex = re.sub(r'\\mathbf\s*\{([' + alphabet + r'])\}', normalize_letter, tex)
+    tex = re.sub(r'\\mathbf\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    tex = re.sub(r'\{\\bf\s+([' + alphabet + r'])\}', normalize_letter, tex)
+    tex = re.sub(r'\\bf\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    tex = re.sub(r'\\mathbb\s+([' + alphabet + r'])\b', normalize_letter, tex)
+    return tex
+
+
+def resolve_graphics_path(name):
+    """Find a graphics file referenced by \\includegraphics, if it is present."""
+    cleaned = name.strip()
+    if not cleaned:
+        return None
+    tex_dir = TEX_RENDER_CONTEXT["tex_dir"]
+    base = os.path.normpath(os.path.join(tex_dir, cleaned))
+    candidates = [base]
+    root, ext = os.path.splitext(base)
+    if not ext:
+        candidates.extend(root + suffix for suffix in (
+            ".png", ".jpg", ".jpeg", ".svg", ".gif", ".webp", ".pdf",
+        ))
+    for candidate in candidates:
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
+def render_includegraphics(argument):
+    """Render an \\includegraphics command or a clean placeholder."""
+    source_name = argument.strip()
+    graphics_path = resolve_graphics_path(source_name)
+    if not graphics_path:
+        label = html_mod.escape(source_name)
+        return (
+            '<div class="stacks-figure-missing">'
+            f'Figure file not available: <code>{label}</code>'
+            '</div>'
+        )
+
+    rel_path = os.path.relpath(graphics_path, TEX_RENDER_CONTEXT["tex_dir"])
+    rel_href = "../" + rel_path.replace(os.sep, "/")
+    escaped_href = html_mod.escape(rel_href, quote=True)
+    escaped_label = html_mod.escape(os.path.basename(graphics_path))
+    if os.path.splitext(graphics_path)[1].lower() == ".pdf":
+        return (
+            '<div class="stacks-figure-file">'
+            f'<a href="{escaped_href}">{escaped_label}</a>'
+            '</div>'
+        )
+    return (
+        '<div class="stacks-figure">'
+        f'<img src="{escaped_href}" alt="{escaped_label}">'
+        '</div>'
+    )
+
+
+def split_latex_top_level(text, delimiter):
+    """Split on a LaTeX delimiter outside braces and inline math."""
+    parts = []
+    start = 0
+    depth = 0
+    in_math = False
+    i = 0
+    while i < len(text):
+        char = text[i]
+        prev = text[i - 1] if i else ''
+        if char == '$' and prev != '\\':
+            in_math = not in_math
+            i += 1
+            continue
+        if not in_math:
+            if char == '{':
+                depth += 1
+            elif char == '}' and depth:
+                depth -= 1
+            elif depth == 0 and text.startswith(delimiter, i):
+                parts.append(text[start:i])
+                i += len(delimiter)
+                start = i
+                continue
+        i += 1
+    parts.append(text[start:])
+    return parts
+
+
+def flatten_nested_tabulars_for_table_cells(body):
+    """Flatten tabulars that occur inside table cells before row splitting."""
+    out = []
+    pos = 0
+    env_re = re.compile(r'\\begin\{tabular\}')
+    while True:
+        match = env_re.search(body, pos)
+        if not match:
+            out.append(body[pos:])
+            break
+
+        i = match.end()
+        if i < len(body) and body[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(body) and depth:
+                if body[i] == "[":
+                    depth += 1
+                elif body[i] == "]":
+                    depth -= 1
+                i += 1
+        while i < len(body) and body[i].isspace():
+            i += 1
+        if i >= len(body) or body[i] != "{":
+            out.append(body[pos:match.end()])
+            pos = match.end()
+            continue
+
+        i += 1
+        depth = 1
+        while i < len(body) and depth:
+            if body[i] == "{":
+                depth += 1
+            elif body[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(body[pos:])
+            break
+
+        body_start = i
+        end_token = r'\end{tabular}'
+        end = body.find(end_token, body_start)
+        if end == -1:
+            out.append(body[pos:])
+            break
+
+        inner = body[body_start:end]
+        inner = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', inner)
+        inner_rows = []
+        for row in split_latex_top_level(inner, r'\\'):
+            row = row.strip()
+            if not row:
+                continue
+            inner_rows.append(
+                ' '.join(
+                    cell.strip()
+                    for cell in split_latex_top_level(row, '&')
+                    if cell.strip()
+                )
+            )
+
+        out.append(body[pos:match.start()])
+        out.append('<br>'.join(inner_rows))
+        pos = end + len(end_token)
+
+    return ''.join(out)
+
+
+def table_body_to_html(body):
+    """Convert simple LaTeX table bodies to HTML tables."""
+    captions = []
+
+    def capture_caption(caption):
+        captions.append(
+            f'<div class="stacks-caption">{tex_to_html(caption.strip())}</div>'
+        )
+        return ''
+
+    body = replace_latex_commands(body, "caption", capture_caption, allow_optional=True)
+    body = re.sub(r'\\label\{[^}]*\}', '', body)
+    body = re.sub(r'\\(?:endfirsthead|endhead|endfoot|endlastfoot)\b', '', body)
+    body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\b', '', body)
+    body = flatten_nested_tabulars_for_table_cells(body)
+    rows = []
+    for row in split_latex_top_level(body, r'\\'):
+        row = row.strip()
+        if not row:
+            continue
+        cells = [cell.strip() for cell in split_latex_top_level(row, '&')]
+        html_cells = []
+        for cell in cells:
+            cell = re.sub(
+                r'\\multicolumn\{\d+\}\{[^}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}',
+                r'\1',
+                cell,
+            )
+            html_cells.append(f'<td>{tex_to_html(cell)}</td>')
+        rows.append('<tr>' + ''.join(html_cells) + '</tr>')
+
+    if not rows:
+        return ''.join(captions)
+    return (
+        ''.join(captions) +
+        '<div class="stacks-table-wrap">'
+        '<table class="stacks-table"><tbody>'
+        + ''.join(rows)
+        + '</tbody></table></div>'
+    )
+
+
+def tabular_to_html(m):
+    """Convert simple LaTeX tabular blocks to HTML tables."""
+    return table_body_to_html(m.group(2))
+
+
+def replace_table_environments(text):
+    """Replace tabular/longtable environments, allowing nested braces in specs."""
+    out = []
+    pos = 0
+    env_re = re.compile(r'\\begin\{(tabular|longtable)\}')
+    while True:
+        match = env_re.search(text, pos)
+        if not match:
+            out.append(text[pos:])
+            break
+
+        env_name = match.group(1)
+        i = match.end()
+        if i < len(text) and text[i] == "[":
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            out.append(text[pos:match.end()])
+            pos = match.end()
+            continue
+
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(text[pos:])
+            break
+
+        body_start = i
+        end_token = rf'\end{{{env_name}}}'
+        end = text.find(end_token, body_start)
+        if end == -1:
+            out.append(text[pos:])
+            break
+
+        out.append(text[pos:match.start()])
+        out.append(table_body_to_html(text[body_start:end]))
+        pos = end + len(end_token)
+
+    return ''.join(out)
+
+
+def parse_latex_item_label(text, pos):
+    """Return (optional label, content_start) after a LaTeX \\item token."""
+    while pos < len(text) and text[pos].isspace():
+        pos += 1
+    if pos >= len(text) or text[pos] != '[':
+        return None, pos
+
+    start = pos + 1
+    depth = 0
+    pos = start
+    while pos < len(text):
+        ch = text[pos]
+        if ch == '{':
+            depth += 1
+        elif ch == '}':
+            depth = max(0, depth - 1)
+        elif ch == ']' and depth == 0:
+            return text[start:pos].strip(), pos + 1
+        pos += 1
+
+    return None, start - 1
+
+
+LATEX_LIST_ENVS = (
+    "enumerate",
+    "itemize",
+    "asparaenum",
+    "inparaenum",
+    "compactenum",
+    "asparaitem",
+    "inparaitem",
+    "compactitem",
+)
+LATEX_LIST_ENV_PATTERN = "|".join(LATEX_LIST_ENVS)
+
+
+def latex_list_tag(env):
+    return "ul" if env.endswith("item") or env == "itemize" else "ol"
+
+
+def find_matching_latex_list_end(text, begin_match):
+    """Find the end of a possibly nested enumerate/itemize environment."""
+    token_re = re.compile(rf'\\(begin|end)\{{(?:{LATEX_LIST_ENV_PATTERN})\}}')
+    depth = 1
+    for match in token_re.finditer(text, begin_match.end()):
+        if match.group(1) == "begin":
+            depth += 1
+        else:
+            depth -= 1
+            if depth == 0:
+                return match.start(), match.end()
+    return None, None
+
+
+def split_latex_list_items(body):
+    """Split a LaTeX list body at top-level \\item commands."""
+    token_re = re.compile(
+        rf'\\begin\{{(?:{LATEX_LIST_ENV_PATTERN})\}}|'
+        rf'\\end\{{(?:{LATEX_LIST_ENV_PATTERN})\}}|'
+        r'\\item\b'
+    )
+    items = []
+    depth = 0
+    current_label = None
+    current_start = None
+
+    for match in token_re.finditer(body):
+        token = match.group(0)
+        if token.startswith('\\begin'):
+            depth += 1
+            continue
+        if token.startswith('\\end'):
+            depth = max(0, depth - 1)
+            continue
+        if depth != 0:
+            continue
+
+        if current_start is not None:
+            items.append((current_label, body[current_start:match.start()].strip()))
+        current_label, current_start = parse_latex_item_label(body, match.end())
+
+    if current_start is not None:
+        items.append((current_label, body[current_start:].strip()))
+
+    return [(label, content) for label, content in items if content]
+
+
+def convert_latex_lists(text):
+    """Convert nested LaTeX enumerate/itemize environments to HTML lists."""
+    begin_re = re.compile(rf'\\begin\{{({LATEX_LIST_ENV_PATTERN})\}}')
+    out = []
+    pos = 0
+    while True:
+        begin = begin_re.search(text, pos)
+        if not begin:
+            out.append(text[pos:])
+            break
+
+        end_start, end_end = find_matching_latex_list_end(text, begin)
+        if end_start is None:
+            out.append(text[pos:])
+            break
+
+        out.append(text[pos:begin.start()])
+        env = begin.group(1)
+        tag = latex_list_tag(env)
+        body = text[begin.end():end_start]
+        html_items = []
+        for label, item_content in split_latex_list_items(body):
+            item_html = convert_latex_lists(item_content)
+            if label:
+                item_html = f'<strong>{label}</strong> {item_html}'
+            html_items.append(f'<li>{item_html}</li>')
+        out.append(f'<{tag}>' + '\n'.join(html_items) + f'</{tag}>')
+        pos = end_end
+
+    return ''.join(out)
+
+
+def protect_latex_math_fragments(text):
+    """Temporarily replace TeX math spans with placeholders."""
+    fragments = []
+    out = []
+    i = 0
+
+    def is_escaped(pos):
+        backslashes = 0
+        j = pos - 1
+        while j >= 0 and text[j] == "\\":
+            backslashes += 1
+            j -= 1
+        return backslashes % 2 == 1
+
+    delimiters = (("$$", "$$"), ("\\[", "\\]"), ("\\(", "\\)"), ("$", "$"))
+
+    while i < len(text):
+        matched = None
+        if not is_escaped(i):
+            for opener, closer in delimiters:
+                if text.startswith(opener, i):
+                    matched = (opener, closer)
+                    break
+        if not matched:
+            out.append(text[i])
+            i += 1
+            continue
+
+        opener, closer = matched
+        start = i
+        i += len(opener)
+        while i < len(text):
+            if text.startswith(closer, i) and not is_escaped(i):
+                i += len(closer)
+                token = f"@@LATEXMATH{len(fragments)}@@"
+                fragments.append(text[start:i])
+                out.append(token)
+                break
+            i += 1
+        else:
+            out.append(text[start:])
+            break
+
+    return ''.join(out), fragments
+
+
+def restore_latex_math_fragments(text, fragments):
+    for idx, fragment in enumerate(fragments):
+        text = text.replace(f"@@LATEXMATH{idx}@@", fragment)
+    return text
 
 
 def tex_to_html(tex):
     """Convert LaTeX markup to HTML for MathJax rendering."""
-    s = tex
+    s = normalize_geometric_alphabets(tex)
 
     # Text macros from the source preamble which are not MathJax macros.
     s = s.replace('\\Aletheia', '<em>Aletheia</em>')
     s = re.sub(r'\\texorpdfstring\{((?:[^{}]|\{[^{}]*\})*)\}\{(?:[^{}]|\{[^{}]*\})*\}', r'\1', s)
+    s = remove_latex_macro_definitions(s)
 
     # --- Block-level environments (before inline processing) ---
 
@@ -737,24 +1917,82 @@ def tex_to_html(tex):
         flags=re.DOTALL,
     )
 
-    # tikzcd → placeholder
+    # tikzcd → inline SVG rendered by LaTeX when possible.
     s = re.sub(
-        r'\\begin\{tikzcd\}.*?\\end\{tikzcd\}',
-        r'\\text{[Commutative diagram — see PDF]}',
+        r'\\begin\{tikzcd\}(?:\[[^\]]*\])?.*?\\end\{tikzcd\}',
+        lambda m: render_tikzcd_block(m.group(0)),
         s, flags=re.DOTALL
+    )
+    s = re.sub(
+        r'\\begin\{tikzpicture\}(?:\[[^\]]*\])?.*?\\end\{tikzpicture\}',
+        lambda m: render_tikzpicture_block(m.group(0)),
+        s, flags=re.DOTALL
+    )
+    s = remove_latex_commands(s, "tikzset")
+    s = re.sub(
+        r'\\begingroup\b.*?\\begin\{picture\}.*?\\end\{picture\}.*?\\endgroup\b',
+        lambda m: render_picture_block(m.group(0)),
+        s,
+        flags=re.DOTALL,
+    )
+    s = re.sub(
+        r'\\begin\{picture\}.*?\\end\{picture\}',
+        lambda m: render_picture_block(m.group(0)),
+        s,
+        flags=re.DOTALL,
+    )
+    s = replace_xypic_commands(s)
+
+    # figure/table/subfigure wrappers are layout hints in LaTeX; keep captions
+    # and labels as plain HTML around any rendered diagrams or tables.
+    s = re.sub(r'\\begin\{(?:figure|table)\}(?:\[[^\]]*\])?', '', s)
+    s = re.sub(r'\\end\{(?:figure|table)\}', '', s)
+    s = replace_latex_optional_arg_commands(
+        s,
+        "subfigure",
+        lambda caption, body: (
+            body.strip()
+            + (
+                '\n<div class="stacks-caption stacks-subcaption">'
+                f'{tex_to_html(caption.strip())}</div>'
+                if caption and caption.strip() else ''
+            )
+        ),
+    )
+    s = re.sub(r'\\begin\{subfigure\}(?:\[[^\]]*\])?(?:\{[^{}]*\})?', '', s)
+    s = re.sub(r'\\end\{subfigure\}', '', s)
+    s = re.sub(r'\\centering\b', '', s)
+    s = re.sub(r'\\vspace\*?(?:\[[^\]]*\])?\{[^{}]*\}', '', s)
+    s = replace_latex_two_arg_commands(s, "renewcommand", lambda _name, _value: "")
+
+    # tabular/longtable → semantic HTML table instead of fragile MathJax arrays.
+    # Do this before general caption handling so longtable captions stay with
+    # their tables instead of becoming bogus table rows.
+    s = replace_table_environments(s)
+
+    s = replace_latex_commands(
+        s,
+        "caption",
+        lambda caption: f'<div class="stacks-caption">{tex_to_html(caption.strip())}</div>',
+        allow_optional=True,
+    )
+    s = re.sub(r'\\label\{[^}]*\}', '', s)
+    s = replace_latex_commands(
+        s,
+        "includegraphics",
+        render_includegraphics,
+        allow_optional=True,
     )
 
     # center → strip
     s = re.sub(r'\\begin\{center\}', '', s)
     s = re.sub(r'\\end\{center\}', '', s)
 
-    # tabular → array (MathJax compatibility in math mode)
-    s = s.replace('\\begin{tabular}', '\\begin{array}')
-    s = s.replace('\\end{tabular}', '\\end{array}')
-
     # equation environment → display math
     def equation_replace(m):
         body = m.group(1)
+        if 'stacks-tikzcd' in body:
+            return body.strip()
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
         return '$$' + body.strip() + '$$'
@@ -766,7 +2004,9 @@ def tex_to_html(tex):
         body = m.group(1)
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
-        return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
+        return render_latex_display_block(
+            '\\begin{aligned}' + body.strip() + '\\end{aligned}'
+        )
     s = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}',
                align_replace, s, flags=re.DOTALL)
 
@@ -775,50 +2015,32 @@ def tex_to_html(tex):
         body = m.group(1)
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
-        return '$$\\begin{aligned}' + body.strip() + '\\end{aligned}$$'
+        return render_latex_display_block(
+            '\\begin{aligned}' + body.strip() + '\\end{aligned}'
+        )
     s = re.sub(r'\\begin\{eqnarray\*?\}(.*?)\\end\{eqnarray\*?\}',
                eqnarray_replace, s, flags=re.DOTALL)
 
-    # enumerate → ordered list
-    def enumerate_replace(m):
-        body = m.group(1)
-        items = re.split(r'\\item(?:\[([^\]]*)\])?', body)
-        html_items = []
-        i = 1
-        while i < len(items):
-            label = items[i]  # capture group from \item[label]
-            item_content = items[i+1] if i+1 < len(items) else ""
-            item_content = item_content.strip()
-            if item_content:
-                if label:
-                    html_items.append(f'<li><strong>{label}</strong> {item_content}</li>')
-                else:
-                    html_items.append(f'<li>{item_content}</li>')
-            i += 2
-        return '<ol>' + '\n'.join(html_items) + '</ol>'
-    s = re.sub(r'\\begin\{enumerate\}(.*?)\\end\{enumerate\}',
-               enumerate_replace, s, flags=re.DOTALL)
+    # enumerate/itemize → ordered/unordered lists.  This is recursive so
+    # nested lists and optional labels such as \item[$\O^{[3]}$:] survive.
+    s = convert_latex_lists(s)
 
-    # itemize → unordered list
-    def itemize_replace(m):
-        body = m.group(1)
-        items = re.split(r'\\item(?:\[([^\]]*)\])?', body)
-        html_items = []
-        i = 1
-        while i < len(items):
-            label = items[i]
-            item_content = items[i+1] if i+1 < len(items) else ""
-            item_content = item_content.strip()
-            if item_content:
-                html_items.append(f'<li>{item_content}</li>')
-            i += 2
-        return '<ul>' + '\n'.join(html_items) + '</ul>'
-    s = re.sub(r'\\begin\{itemize\}(.*?)\\end\{itemize\}',
-               itemize_replace, s, flags=re.DOTALL)
+    # Authors sometimes write adjacent inline math fragments separated by a
+    # spacing command, e.g. "$f=0$ \quad $(A_1)$".  The spacing command is
+    # text in HTML unless we move it back inside the math span.
+    spacing_pattern = re.compile(r'\$([^$]+)\$\s*\\(quad|qquad)\s*\$([^$]+)\$')
+    while True:
+        s_next = spacing_pattern.sub(r'$\1 \\\2 \3$', s)
+        if s_next == s:
+            break
+        s = s_next
 
     # \subsubsection{...} → inline heading
-    s = re.sub(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}',
-               r'<h3 class="stacks-subsections-heading">\1</h3>', s)
+    s = replace_latex_heading_commands(
+        s,
+        "subsubsection",
+        lambda title: f'<h3 class="stacks-subsections-heading">{tex_to_html(title)}</h3>',
+    )
 
     # \customlabel{key}{shown-value} should display just its shown value.
     s = re.sub(r'\\customlabel\{[^}]+\}\{([^}]+)\}', r'\1', s)
@@ -827,7 +2049,33 @@ def tex_to_html(tex):
     s = re.sub(r'\\footnote\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
                r' <span style="font-size:0.9em;color:#555;">(\1)</span>', s)
 
+    # Hyperlinks inside captions and prose should become ordinary HTML links
+    # before inline formatting/maths are handled.
+    s = replace_latex_two_arg_commands(
+        s,
+        "href",
+        lambda url, label: (
+            f'<a href="{html_mod.escape(url.strip(), quote=True)}">'
+            f'{tex_to_html(label.strip())}</a>'
+        ),
+    )
+    s = replace_latex_commands(
+        s,
+        "url",
+        lambda url: (
+            f'<a href="{html_mod.escape(url.strip(), quote=True)}">'
+            f'{html_mod.escape(url.strip())}</a>'
+        ),
+    )
+
     # --- Inline formatting ---
+    #
+    # Protect math first: declaration-style text commands may wrap formulas,
+    # and commands such as \text{\sl ...} may occur inside formulas.  HTML tags
+    # inside a MathJax delimiter break rendering and expose literal "$$".
+    s, math_fragments = protect_latex_math_fragments(s)
+    s = re.sub(r'\\(?:quad|qquad)\b', ' ', s)
+    s = re.sub(r'\\hspace\*?(?:\[[^\]]*\])?\{[^{}]*\}', ' ', s)
 
     s = replace_latex_text_command(s, "emph", "em")
     s = replace_latex_text_command(s, "textit", "em")
@@ -835,21 +2083,29 @@ def tex_to_html(tex):
     s = replace_latex_text_command(s, "textbf", "strong")
     s = replace_latex_text_command(s, "texttt", "code")
 
-    # {\sl text} -> <em>
-    s = re.sub(r'\{\\sl\s+([^}]*)\}', r'<em>\1</em>', s)
-
-    # {\it text} -> <em>
-    s = re.sub(r'\{\\it\s+([^}]*)\}', r'<em>\1</em>', s)
-
-    # {\bf text} -> <strong>
-    s = re.sub(r'\{\\bf\s+([^}]*)\}', r'<strong>\1</strong>', s)
+    # Declaration-style formatting from BibTeX .bbl output.  These often
+    # contain capitalization braces, so regexes that stop at the first brace
+    # corrupt titles; use balanced scanning instead.
+    s = replace_latex_declaration_group(s, "sl", "em")
+    s = replace_latex_declaration_group(s, "it", "em")
+    s = replace_latex_declaration_group(s, "em", "em")
+    s = replace_latex_declaration_group(s, "bf", "strong")
+    s = replace_latex_declaration_group(s, "tt", "code")
+    s = replace_latex_declaration_group(s, "sc", "span", ' class="stacks-small-caps"')
+    s = restore_latex_math_fragments(s, math_fragments)
 
     # ~ -> non-breaking space
     s = s.replace('~', '&nbsp;')
 
-    # \[ ... \] -> $$ ... $$
-    s = re.sub(r'\\\[', '$$', s)
-    s = re.sub(r'\\\]', '$$', s)
+    # \[ ... \] -> $$ ... $$, except rendered diagram blocks.
+    def bracket_display_replace(m):
+        body = m.group(1).strip()
+        if 'stacks-tikzcd' in body:
+            return body
+        if re.match(r'\\begin\{(?:aligned|alignedat|gathered|split)\}', body):
+            return render_latex_display_block(body)
+        return '$$' + body + '$$'
+    s = re.sub(r'\\\[(.*?)\\\]', bracket_display_replace, s, flags=re.DOTALL)
 
     # --- -> &mdash;   -- -> &ndash;
     s = s.replace('---', '&mdash;')
@@ -860,8 +2116,9 @@ def tex_to_html(tex):
     s = s.replace('\\"o', '&ouml;')
     s = s.replace('\\"a', '&auml;')
     s = s.replace("\\'e", '&eacute;')
+    s = s.replace("\\'{e}", '&eacute;')
     s = s.replace("\\'a", '&aacute;')
-    s = re.sub(r'\\o(?![a-zA-Z])', '&oslash;', s)
+    s = s.replace("\\'{a}", '&aacute;')
 
     # \square, \qedhere — remove
     s = re.sub(r'\s*\\square\s*', '', s)
@@ -872,9 +2129,15 @@ def tex_to_html(tex):
 
     # \newblock — remove (from bibliography)
     s = s.replace('\\newblock', '')
+    s = re.sub(r'\\newline\b', '<br>', s)
 
     # Double newlines → paragraph breaks
     s = re.sub(r'\n\s*\n', '</p>\n<p>', s)
+    s = re.sub(r'</p>\s*<p>\s*(<(?:ol|ul)\b)', r'\1', s)
+    s = re.sub(r'<p>\s*(<(?:ol|ul)\b)', r'\1', s)
+    s = re.sub(r'(</(?:ol|ul)>)\s*</p>\s*<p>', r'\1', s)
+    s = re.sub(r'(</(?:ol|ul)>)\s*</p>', r'\1', s)
+    s = re.sub(r'<p>\s*</p>', '', s)
 
     return s.strip()
 
@@ -904,6 +2167,37 @@ def replace_latex_text_command(text, command, html_tag):
             break
         body = text[body_start:i - 1]
         out.append(f"<{html_tag}>{body}</{html_tag}>")
+        pos = i
+    return "".join(out)
+
+
+def replace_latex_declaration_group(text, command, html_tag, attrs=""):
+    """Replace groups like {\\em ...} or {\\sc ...} using balanced braces."""
+    out = []
+    pos = 0
+    pattern = re.compile(r'\{\\' + re.escape(command) + r'(?![A-Za-z])')
+    while True:
+        match = pattern.search(text, pos)
+        if not match:
+            out.append(text[pos:])
+            break
+        out.append(text[pos:match.start()])
+        i = match.end()
+        if i < len(text) and text[i].isspace():
+            i += 1
+        body_start = i
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(text[match.start():])
+            break
+        body = text[body_start:i - 1]
+        out.append(f"<{html_tag}{attrs}>{body}</{html_tag}>")
         pos = i
     return "".join(out)
 
@@ -959,7 +2253,12 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
             )
             tag_key = registry_key
 
-        tag = previous_tags.get(registry_key)
+        tag = None
+        previous_for_key = previous_tags.get(registry_key)
+        if isinstance(previous_for_key, list) and previous_for_key:
+            tag = previous_for_key.pop(0)
+        elif previous_for_key:
+            tag = previous_for_key
         if not tag or tag in existing_tags:
             tag = label_to_tag(tag_key, existing_tags)
         existing_tags.add(tag)
@@ -1047,8 +2346,10 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
         return ", ".join(parts[:-1]) + ", and " + parts[-1]
 
     def resolve_refs(text, refs_include_type=False):
+        text, math_fragments = protect_latex_math_fragments(text)
+
         def ref_replacer(m):
-            return resolve_ref_list(m.group(1), include_type=refs_include_type)
+            return resolve_ref_list(m.group(1), include_type=False)
 
         def cref_replacer(m):
             return resolve_ref_list(m.group(1), include_type=True)
@@ -1067,7 +2368,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
         text = re.sub(r'\\autoref\{([^}]+)\}', cref_replacer, text)
         text = re.sub(r'\\eqref\{([^}]+)\}', eqref_replacer, text)
         text = re.sub(r'\\ref\{([^}]+)\}', ref_replacer, text)
-        return text
+        return restore_latex_math_fragments(text, math_fragments)
 
     def resolve_blocks(blocks):
         for block in blocks:
@@ -1079,9 +2380,9 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
                 resolve_blocks(block["children"])
 
     for sec in paper["sections"]:
-        sec["title"] = resolve_refs(tex_to_html(sec["title"]), refs_include_type=True)
+        sec["title"] = resolve_refs(tex_to_html(sec["title"]))
         for sub in sec["subsections"]:
-            sub["title"] = resolve_refs(tex_to_html(sub["title"]), refs_include_type=True)
+            sub["title"] = resolve_refs(tex_to_html(sub["title"]))
         resolve_blocks(sec["blocks"])
         for sub in sec["subsections"]:
             resolve_blocks(sub["blocks"])
@@ -1100,9 +2401,16 @@ def resolve_citations(paper, citations):
     if not citations:
         return
 
+    def format_cite_option(opt):
+        opt = opt.replace("~", "&nbsp;")
+        opt = opt.replace(r"\S", "&sect;")
+        return opt
+
     def cite_replacer(m):
-        opt = m.group(1)  # optional argument like \cite[Section 2]{key}
-        keys_str = m.group(2)
+        # Optional arguments like \cite[Section 2]{key} or
+        # natbib's \citep[see][Section 2]{key}.
+        opts = [opt for opt in (m.group(1), m.group(2)) if opt]
+        keys_str = m.group(3)
         # Handle multiple comma-separated keys like \cite{key1, key2}
         keys = [k.strip() for k in keys_str.split(',')]
         labels = []
@@ -1112,12 +2420,16 @@ def resolve_citations(paper, citations):
             else:
                 labels.append(key)
         label_text = ', '.join(labels)
-        if opt:
-            return f'[{label_text}, {opt}]'
+        if opts:
+            return f'[{label_text}, {", ".join(format_cite_option(opt) for opt in opts)}]'
         return f'[{label_text}]'
 
     def process_content(text):
-        return re.sub(r'\\cite(?:\[([^\]]*)\])?\{([^}]+)\}', cite_replacer, text)
+        return re.sub(
+            r'\\cite(?:p|t|alp|alt)?\*?(?:\[([^\]]*)\])?(?:\[([^\]]*)\])?\{([^}]+)\}',
+            cite_replacer,
+            text,
+        )
 
     def process_blocks(blocks):
         for block in blocks:
@@ -1164,14 +2476,19 @@ def head(title, paper_title, depth=0, macros=None):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>{document_title}</title>
-  <link rel="stylesheet" href="{prefix}../../style.css">
-  <link rel="stylesheet" href="{prefix}stacks.css">
+  <link rel="stylesheet" href="{prefix}../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {{
+      loader: {{ load: ['[tex]/bboldx'] }},
       tex: {{
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: {{ '[+]': ['bboldx'] }},
         macros: {{
           operatorname: ['\\\\mathrm{{#1}}', 1]{macro_block}
         }}
@@ -1179,7 +2496,7 @@ def head(title, paper_title, depth=0, macros=None):
       svg: {{ fontCache: 'global' }}
     }};
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 """
@@ -1197,21 +2514,79 @@ def nav_bar(author, paper_title, depth=0):
 """
 
 
-def breadcrumb_html(items, depth=0):
+def page_navigation_map(paper):
+    """Return previous/next page data for section and subsection pages."""
+    pages = []
+    for sec in paper["sections"]:
+        pages.append({
+            "id": sec["id"],
+            "href": f'section/{sec["id"]}.html',
+            "label": f'Section {sec["number"]}: {strip_html(sec["title"])}',
+        })
+        for sub in sec["subsections"]:
+            pages.append({
+                "id": sub["id"],
+                "href": f'section/{sub["id"]}.html',
+                "label": f'{sub["number"]}. {strip_html(sub["title"])}',
+            })
+
+    nav = {}
+    for idx, page in enumerate(pages):
+        nav[page["id"]] = {
+            "prev": pages[idx - 1] if idx > 0 else None,
+            "next": pages[idx + 1] if idx + 1 < len(pages) else None,
+        }
+    return nav
+
+
+def breadcrumb_html(items, depth=0, page_nav=None):
     prefix = "../" * depth
     parts = [f'<a href="{prefix}index.html">Table of contents</a>']
     for label, href in items:
         if href:
-            parts.append(f'<a href="{prefix}{href}">{label}</a>')
+            parts.append(f'<a href="{prefix}{href}">{html_mod.escape(strip_html(label))}</a>')
         else:
             parts.append(f'<span>{label}</span>')
-    return '<div class="stacks-breadcrumb">' + ' / '.join(parts) + '</div>\n'
+    breadcrumb = ' / '.join(parts)
+    if not page_nav:
+        return '<div class="stacks-breadcrumb">' + breadcrumb + '</div>\n'
+
+    nav_links = []
+    if page_nav.get("prev"):
+        prev = page_nav["prev"]
+        nav_links.append(
+            f'<a class="stacks-page-arrow stacks-page-arrow-prev" '
+            f'href="{prefix}{prev["href"]}" '
+            f'aria-label="Previous: {html_attr(prev["label"])}" '
+            f'title="Previous: {html_attr(prev["label"])}">&larr;</a>')
+    if page_nav.get("next"):
+        next_page = page_nav["next"]
+        nav_links.append(
+            f'<a class="stacks-page-arrow stacks-page-arrow-next" '
+            f'href="{prefix}{next_page["href"]}" '
+            f'aria-label="Next: {html_attr(next_page["label"])}" '
+            f'title="Next: {html_attr(next_page["label"])}">&rarr;</a>')
+
+    nav_html = (
+        '<nav class="stacks-page-nav" aria-label="Page navigation">'
+        + ''.join(nav_links)
+        + '</nav>'
+    )
+    return (
+        '<div class="stacks-breadcrumb stacks-breadcrumb-with-nav">'
+        f'<div class="stacks-breadcrumb-path">{breadcrumb}</div>{nav_html}</div>\n'
+    )
 
 
-def footer_html(arxiv_id):
+def footer_html(arxiv_id, depth=0, has_bibliography=False):
+    prefix = "../" * depth
+    bibliography_link = (
+        f' &middot; <a href="{prefix}bibliography.html">Bibliography</a>'
+        if has_bibliography else ''
+    )
     return f"""<footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>{bibliography_link}
   </div>
 </footer>
 </body>
@@ -1224,7 +2599,7 @@ def render_block(block, depth=0):
         stripped = block["content"].strip()
         if stripped.startswith('<div class="interaction-') or stripped == '</div>':
             return stripped + '\n'
-        return f'<p class="stacks-para">{block["content"]}</p>\n'
+        return wrap_content_html(block["content"], "stacks-para")
     elif block["type"] == "code":
         return block["content"] + '\n'
     elif block["type"] == "env":
@@ -1255,7 +2630,7 @@ def render_block(block, depth=0):
                 inner_html += render_block(child, depth)
             body_html = inner_html
         else:
-            body_html = f"<p>{block['content']}</p>"
+            body_html = wrap_content_html(block["content"])
 
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
@@ -1263,6 +2638,97 @@ def render_block(block, depth=0):
 </div>
 """
     return ""
+
+
+def find_matching_html_list_end(content, start):
+    """Find the end of a top-level HTML list, including nested lists."""
+    list_re = re.compile(r'</?(ol|ul)\b[^>]*>')
+    depth = 0
+    for match in list_re.finditer(content, start):
+        if match.group(0).startswith('</'):
+            depth -= 1
+            if depth == 0:
+                return match.end()
+        else:
+            depth += 1
+    return None
+
+
+def split_content_html_blocks(content):
+    """Split converted content into text and block-HTML pieces."""
+    block_start_re = re.compile(
+        r'<(?:ol|ul)\b'
+        r'|<h[2-4]\b[^>]*class="[^"]*stacks-subsections-heading[^"]*"'
+        r'|<(div|pre)\b[^>]*class="[^"]*'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
+        r'[^"]*"'
+    )
+    heading_re = re.compile(
+        r'<(?P<tag>h[2-4])\b[^>]*class="[^"]*stacks-subsections-heading[^"]*"[\s\S]*?</(?P=tag)>'
+    )
+    div_pre_re = re.compile(
+        r'<(?P<tag>div|pre)\b[^>]*class="[^"]*'
+        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
+        r'[^"]*"[\s\S]*?</(?P=tag)>'
+    )
+
+    pieces = []
+    pos = 0
+    while True:
+        start = block_start_re.search(content, pos)
+        if not start:
+            pieces.append(("text", content[pos:]))
+            break
+        if start.start() > pos:
+            pieces.append(("text", content[pos:start.start()]))
+
+        if start.group(0).startswith('<ol') or start.group(0).startswith('<ul'):
+            end = find_matching_html_list_end(content, start.start())
+            if end is None:
+                pieces.append(("text", content[start.start():]))
+                break
+            pieces.append(("block", content[start.start():end]))
+            pos = end
+            continue
+
+        if start.group(0).startswith('<h'):
+            block = heading_re.match(content, start.start())
+            if not block:
+                pieces.append(("text", content[start.start():start.end()]))
+                pos = start.end()
+                continue
+            pieces.append(("block", block.group(0)))
+            pos = block.end()
+            continue
+
+        block = div_pre_re.match(content, start.start())
+        if not block:
+            pieces.append(("text", content[start.start():start.end()]))
+            pos = start.end()
+            continue
+        pieces.append(("block", block.group(0)))
+        pos = block.end()
+
+    return pieces
+
+
+def wrap_content_html(content, paragraph_class=None):
+    """Wrap converted LaTeX in paragraphs while letting block HTML stand alone."""
+    class_attr = f' class="{paragraph_class}"' if paragraph_class else ''
+    pieces = split_content_html_blocks(content.strip())
+    if all(kind == "text" for kind, _ in pieces):
+        newline = '\n' if paragraph_class else ''
+        return f'<p{class_attr}>{content}</p>{newline}'
+
+    html = []
+    for kind, piece in pieces:
+        if not piece or not piece.strip():
+            continue
+        if kind == "block":
+            html.append(piece.strip() + '\n')
+        else:
+            html.append(f'<p{class_attr}>{piece.strip()}</p>\n')
+    return ''.join(html)
 
 
 def comment_form(page_label, return_url, paper_title):
@@ -1293,6 +2759,7 @@ def comment_form(page_label, return_url, paper_title):
 
 def write_html(path, html):
     """Write generated HTML with stable line endings and no trailing spaces."""
+    html = re.sub(r'<p(?:\s+class="[^"]*")?>\s*</p>\n?', '', html)
     cleaned = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
     with open(path, "w") as f:
         f.write(cleaned)
@@ -1317,38 +2784,46 @@ def compile_paper(tex_path):
 
     arxiv_id = meta.get("arxiv", "")
     journal = meta.get("journal", "")
+    artwork = meta.get("artwork", "")
+    artwork_alt_meta = meta.get("artwork_alt", "")
     base_url = f"https://anandpatel.github.io/papers/{slug}"
 
     # Read .tex source
-    with open(tex_path) as f:
+    with open(tex_path, errors="replace") as f:
         tex_source = f.read()
+    configure_tex_renderer(tex_source, out_dir)
 
     # Extract MathJax macros from preamble
     macros = parse_preamble_macros(tex_source)
-    print(f"  Extracted {len(macros)} MathJax macros from preamble")
+    print(f"  Extracted {len(macros)} MathJax macros from source")
 
-    # Parse citations
-    citations = parse_citations(meta, out_dir)
+    # Parse citations and bibliography
+    bibliography = parse_bibliography(meta, out_dir, tex_source)
+    citations = bibliography["citations"]
+    bibliography_entries = bibliography["entries"]
+    has_bibliography = bool(bibliography_entries)
     print(f"  Loaded {len(citations)} citation entries")
+    print(f"  Loaded {len(bibliography_entries)} bibliography entries")
 
     # Parse document
     paper = parse_tex(tex_source)
+    artwork_alt = artwork_alt_meta or f"Pencil sketch artwork for {paper['title']}"
     print(f"Parsed: {paper['title']} by {paper['author']}")
     print(f"  {len(paper['sections'])} sections")
 
     # Assign tags
     registry = load_registry()
-    previous_tags = {
-        info.get("label"): tag
-        for tag, info in registry.items()
-        if info.get("paper") == slug and info.get("label")
-    }
+    previous_tags = {}
+    for tag, info in registry.items():
+        if info.get("paper") == slug and info.get("label"):
+            previous_tags.setdefault(info.get("label"), []).append(tag)
     # Remove old tags for this paper (allows clean rebuild)
     registry = {k: v for k, v in registry.items() if v.get("paper") != slug}
     existing_tags = set(registry.keys())
 
     all_envs, label_map = assign_tags_and_numbers(
         paper, slug, registry, existing_tags, previous_tags)
+    page_nav = page_navigation_map(paper)
 
     # Resolve citations (after ref resolution, so citations in env content are handled)
     resolve_citations(paper, citations)
@@ -1371,6 +2846,9 @@ def compile_paper(tex_path):
     toc = head("Table of Contents", paper["title"], macros=macros)
     toc += nav_bar(paper["author"], paper["title"])
     toc += '<main class="stacks-main">\n'
+    if artwork:
+        toc += '<div class="stacks-paper-hero">\n'
+        toc += '<div class="stacks-paper-hero-text">\n'
     toc += f'<h1 class="stacks-paper-title">{paper["title"]}</h1>\n'
     toc += f'<p class="stacks-paper-author">{paper["author"]}</p>\n'
     if journal or arxiv_id:
@@ -1382,17 +2860,29 @@ def compile_paper(tex_path):
                 toc += '<br>'
             toc += f'<a href="https://arxiv.org/abs/{arxiv_id}">arXiv:{arxiv_id}</a>'
         toc += '</p>\n'
+    if artwork:
+        toc += '</div>\n'
+        toc += (
+            '<img class="stacks-paper-artwork" '
+            f'src="{html_mod.escape(artwork, quote=True)}" '
+            f'alt="{html_attr(artwork_alt)}" loading="lazy">\n'
+        )
+        toc += '</div>\n'
     toc += '<hr>\n<h2 class="stacks-toc-heading">Table of Contents</h2>\n'
     toc += '<ul class="stacks-toc">\n'
 
     for sec in paper["sections"]:
-        toc += f'  <li><a href="section/{sec["id"]}.html">Section {sec["number"]}: {sec["title"]}</a>\n'
+        sec_title_plain = html_mod.escape(strip_html(sec["title"]))
+        toc += f'  <li><a href="section/{sec["id"]}.html">Section {sec["number"]}: {sec_title_plain}</a>\n'
         if sec["subsections"]:
             toc += '    <ul>\n'
             for sub in sec["subsections"]:
-                toc += f'      <li><a href="section/{sub["id"]}.html">{sub["number"]}. {sub["title"]}</a></li>\n'
+                sub_title_plain = html_mod.escape(strip_html(sub["title"]))
+                toc += f'      <li><a href="section/{sub["id"]}.html">{sub["number"]}. {sub_title_plain}</a></li>\n'
             toc += '    </ul>\n'
         toc += '  </li>\n'
+    if has_bibliography:
+        toc += '  <li><a href="bibliography.html">Bibliography</a></li>\n'
     toc += '</ul>\n'
 
     # Tag table
@@ -1403,17 +2893,40 @@ def compile_paper(tex_path):
         toc += f'<tr><td><a href="tag/{env["tag"]}.html">{env["tag"]}</a></td>'
         toc += f'<td>{env["envType"]}</td><td>{env.get("number","")}</td></tr>\n'
     toc += '</table>\n</main>\n'
-    toc += footer_html(arxiv_id)
+    toc += footer_html(arxiv_id, has_bibliography=has_bibliography)
 
     write_html(os.path.join(out_dir, "index.html"), toc)
     print("Generated: index.html")
+
+    # --- 1b. Bibliography page ---
+    if has_bibliography:
+        bib_html = head("Bibliography", paper["title"], macros=macros)
+        bib_html += nav_bar(paper["author"], paper["title"])
+        bib_html += breadcrumb_html([("Bibliography", None)])
+        bib_html += '<main class="stacks-main">\n'
+        bib_html += '<h1 class="stacks-section-title">Bibliography</h1>\n'
+        bib_html += '<ol class="stacks-bibliography">\n'
+        for entry in bibliography_entries:
+            label = html_mod.escape(entry["label"])
+            bib_html += (
+                f'  <li id="bib-{html_attr(entry["key"])}">'
+                f'<span class="stacks-bib-label">[{label}]</span> '
+                f'{entry["html"]}</li>\n'
+            )
+        bib_html += '</ol>\n'
+        bib_html += '</main>\n' + footer_html(
+            arxiv_id, has_bibliography=has_bibliography)
+        write_html(os.path.join(out_dir, "bibliography.html"), bib_html)
+        print("Generated: bibliography.html")
 
     # --- 2. Section pages ---
     for sec in paper["sections"]:
         sec_html = head(f'Section {sec["number"]}', paper["title"], depth=1, macros=macros)
         sec_html += nav_bar(paper["author"], paper["title"], depth=1)
         sec_html += breadcrumb_html(
-            [(f'Section {sec["number"]}: {sec["title"]}', None)], depth=1)
+            [(f'Section {sec["number"]}: {sec["title"]}', None)],
+            depth=1,
+            page_nav=page_nav.get(sec["id"]))
         sec_html += '<main class="stacks-main">\n'
         sec_html += f'<h1 class="stacks-section-title">Section {sec["number"]}. {sec["title"]}</h1>\n'
 
@@ -1423,14 +2936,16 @@ def compile_paper(tex_path):
         if sec["subsections"]:
             sec_html += '<h2 class="stacks-subsections-heading">Subsections</h2>\n<ul>\n'
             for sub in sec["subsections"]:
-                sec_html += f'  <li><a href="{sub["id"]}.html">{sub["number"]}. {sub["title"]}</a></li>\n'
+                sub_title_plain = html_mod.escape(strip_html(sub["title"]))
+                sec_html += f'  <li><a href="{sub["id"]}.html">{sub["number"]}. {sub_title_plain}</a></li>\n'
             sec_html += '</ul>\n'
 
         sec_html += comment_form(
             f'Section {sec["number"]}: {sec["title"]}',
             f'{base_url}/section/{sec["id"]}.html',
             paper["title"])
-        sec_html += '</main>\n' + footer_html(arxiv_id)
+        sec_html += '</main>\n' + footer_html(
+            arxiv_id, depth=1, has_bibliography=has_bibliography)
 
         write_html(os.path.join(out_dir, "section", f'{sec["id"]}.html'), sec_html)
         print(f"Generated: section/{sec['id']}.html")
@@ -1441,7 +2956,7 @@ def compile_paper(tex_path):
             sub_html += breadcrumb_html([
                 (f'Section {sec["number"]}: {sec["title"]}', f'section/{sec["id"]}.html'),
                 (f'{sub["number"]}. {sub["title"]}', None),
-            ], depth=1)
+            ], depth=1, page_nav=page_nav.get(sub["id"]))
             sub_html += '<main class="stacks-main">\n'
             sub_html += f'<h1 class="stacks-section-title">{sub["number"]}. {sub["title"]}</h1>\n'
 
@@ -1452,7 +2967,8 @@ def compile_paper(tex_path):
                 f'{sub["number"]}. {sub["title"]}',
                 f'{base_url}/section/{sub["id"]}.html',
                 paper["title"])
-            sub_html += '</main>\n' + footer_html(arxiv_id)
+            sub_html += '</main>\n' + footer_html(
+                arxiv_id, depth=1, has_bibliography=has_bibliography)
 
             write_html(os.path.join(out_dir, "section", f'{sub["id"]}.html'), sub_html)
             print(f"Generated: section/{sub['id']}.html")
@@ -1514,7 +3030,8 @@ def compile_paper(tex_path):
             f'Tag {tag} ({plain_label_text})',
             f'{base_url}/tag/{tag}.html',
             paper["title"])
-        tag_html += '</main>\n' + footer_html(arxiv_id)
+        tag_html += '</main>\n' + footer_html(
+            arxiv_id, depth=1, has_bibliography=has_bibliography)
 
         write_html(os.path.join(out_dir, "tag", f'{tag}.html'), tag_html)
         print(f"Generated: tag/{tag}.html")
