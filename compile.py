@@ -9,16 +9,17 @@ Usage:
 Reads a skeletal LaTeX file and generates a mini Stacks-project site:
   - index.html        (table of contents + tag table)
   - section/*.html    (one page per section/subsection)
-  - tag/*.html        (one page per labeled environment)
+  - tag/*.html        (one page per environment)
 
-Tags are deterministic 4-hex-char hashes of the label string, stored in
-papers/tag-registry.json to prevent collisions across papers.
+Tags are stored in papers/tag-registry.json so existing tags stay stable.
+New labeled environments get deterministic 4-hex-char hashes of the paper
+slug and label string. Unlabeled environments get deterministic tags from
+their paper, environment type, number, and position.
 
 The .tex file must use:
   - \\title{...}, \\author{...}
   - \\section{...}, \\subsection{...}
   - \\begin{theorem/lemma/definition/commentary/proof/...}...\\end{...}
-  - \\label{...} on each environment
   - Standard math ($...$, \\[...\\], $$...$$)
 
 Metadata is provided via a companion .json file (same name as .tex but
@@ -636,20 +637,11 @@ def tex_to_html(tex):
 
     # --- Inline formatting ---
 
-    # \emph{...} -> <em>
-    s = re.sub(r'\\emph\{([^}]*)\}', r'<em>\1</em>', s)
-
-    # \textbf{...} -> <strong>
-    s = re.sub(r'\\textbf\{((?:[^{}]|\{[^{}]*\})*)\}', r'<strong>\1</strong>', s)
-
-    # \textit{...} -> <em>
-    s = re.sub(r'\\textit\{([^}]*)\}', r'<em>\1</em>', s)
-
-    # \textsl{...} -> <em>
-    s = re.sub(r'\\textsl\{([^}]*)\}', r'<em>\1</em>', s)
-
-    # \texttt{...} -> <code>
-    s = re.sub(r'\\texttt\{([^}]*)\}', r'<code>\1</code>', s)
+    s = replace_latex_text_command(s, "emph", "em")
+    s = replace_latex_text_command(s, "textit", "em")
+    s = replace_latex_text_command(s, "textsl", "em")
+    s = replace_latex_text_command(s, "textbf", "strong")
+    s = replace_latex_text_command(s, "texttt", "code")
 
     # {\sl text} -> <em>
     s = re.sub(r'\{\\sl\s+([^}]*)\}', r'<em>\1</em>', s)
@@ -695,14 +687,44 @@ def tex_to_html(tex):
     return s.strip()
 
 
+def replace_latex_text_command(text, command, html_tag):
+    """Replace simple text commands while respecting nested TeX braces."""
+    needle = "\\" + command + "{"
+    out = []
+    pos = 0
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            out.append(text[pos:])
+            break
+        out.append(text[pos:start])
+        body_start = start + len(needle)
+        depth = 1
+        i = body_start
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            out.append(text[start:])
+            break
+        body = text[body_start:i - 1]
+        out.append(f"<{html_tag}>{body}</{html_tag}>")
+        pos = i
+    return "".join(out)
+
+
 # ============================================================
 # TAG ASSIGNMENT & REF RESOLUTION
 # ============================================================
 
-def assign_tags_and_numbers(paper, slug, registry, existing_tags):
+def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=None):
     """Walk the parsed paper, assign tags and environment numbers,
     and resolve \\ref{}, \\Cref{}, and \\eqref{} cross-references."""
 
+    previous_tags = previous_tags or {}
     label_map = {}  # label -> {tag, number, envType}
 
     # Add section/subsection labels to the label map
@@ -721,6 +743,39 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
     env_counter = {}  # per-section counters for theorem-like envs
     all_envs = []  # ordered list of all tagged environments
 
+    def assign_env_tag(block, label, number):
+        if label:
+            registry_key = label
+            tag_key = f"{slug}:{label}"
+        else:
+            ordinal = len(all_envs) + 1
+            registry_key = (
+                f"auto:{slug}:{block['envName']}:"
+                f"{number or 'unnumbered'}:{ordinal}"
+            )
+            tag_key = registry_key
+
+        tag = previous_tags.get(registry_key)
+        if not tag or tag in existing_tags:
+            tag = label_to_tag(tag_key, existing_tags)
+        existing_tags.add(tag)
+        block["tag"] = tag
+
+        if label:
+            label_map[label] = {
+                "tag": tag,
+                "number": number,
+                "envType": block["envType"],
+            }
+
+        registry[tag] = {
+            "paper": slug,
+            "label": registry_key,
+            "envType": block["envType"],
+            "number": number,
+        }
+        all_envs.append(block)
+
     for sec in paper["sections"]:
         sec_n = int(sec["number"])
         env_counter[sec_n] = 0
@@ -731,45 +786,15 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
                     continue
                 if block["envName"] == "proof":
                     label = block.get("label")
-                    if label:
-                        tag = label_to_tag(label, existing_tags)
-                        existing_tags.add(tag)
-                        block["tag"] = tag
-                        block["number"] = ""
-                        label_map[label] = {
-                            "tag": tag,
-                            "number": "",
-                            "envType": block["envType"],
-                        }
-                        registry[tag] = {
-                            "paper": slug,
-                            "label": label,
-                            "envType": block["envType"],
-                            "number": "",
-                        }
-                        all_envs.append(block)
+                    block["number"] = ""
+                    assign_env_tag(block, label, "")
                 else:
                     env_counter[_sec_n] += 1
                     number = f"{_sec_n}.{env_counter[_sec_n]}"
                     block["number"] = number
 
                     label = block.get("label")
-                    if label:
-                        tag = label_to_tag(label, existing_tags)
-                        existing_tags.add(tag)
-                        block["tag"] = tag
-                        label_map[label] = {
-                            "tag": tag,
-                            "number": number,
-                            "envType": block["envType"],
-                        }
-                        registry[tag] = {
-                            "paper": slug,
-                            "label": label,
-                            "envType": block["envType"],
-                            "number": number,
-                        }
-                        all_envs.append(block)
+                    assign_env_tag(block, label, number)
                 # Recurse into children
                 if block.get("children"):
                     process_blocks(block["children"], _sec_n)
@@ -779,26 +804,36 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             process_blocks(sub["blocks"])
 
     # Second pass: resolve \ref{}, \Cref{}, \eqref{} in all content
-    def resolve_refs(text):
-        def ref_replacer(m):
-            label = m.group(1)
+    def display_ref(info, include_type=False):
+        tag = info.get("tag")
+        env_type = info["envType"]
+        number = info["number"]
+        if tag:
+            label = f"{env_type}&nbsp;{number}" if include_type and number else (number or env_type)
+            href = f"/papers/{slug}/tag/{tag}.html"
+            return f'<a href="{href}" class="stacks-ref-link">{label} <span class="stacks-ref-tag">[{tag}]</span></a>'
+        if include_type:
+            return f"{env_type}&nbsp;{number}" if number else env_type
+        return number if number else env_type
+
+    def resolve_ref_list(labels, include_type=False):
+        parts = []
+        for raw_label in labels.split(","):
+            label = raw_label.strip()
             if label in label_map:
-                info = label_map[label]
-                number = info["number"]
-                return number if number else info["envType"]
-            return f"??{label}"
+                parts.append(display_ref(label_map[label], include_type=include_type))
+            else:
+                parts.append(f"??{label}")
+        if len(parts) <= 1:
+            return "".join(parts)
+        return ", ".join(parts[:-1]) + ", and " + parts[-1]
+
+    def resolve_refs(text, refs_include_type=False):
+        def ref_replacer(m):
+            return resolve_ref_list(m.group(1), include_type=refs_include_type)
 
         def cref_replacer(m):
-            label = m.group(1)
-            if label in label_map:
-                info = label_map[label]
-                env_type = info["envType"]
-                number = info["number"]
-                if number:
-                    return f"{env_type}&nbsp;{number}"
-                else:
-                    return env_type
-            return f"??{label}"
+            return resolve_ref_list(m.group(1), include_type=True)
 
         def eqref_replacer(m):
             label = m.group(1)
@@ -821,7 +856,7 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags):
             if "content" in block:
                 block["content"] = resolve_refs(block["content"])
             if "envType" in block:
-                block["envType"] = resolve_refs(block["envType"])
+                block["envType"] = resolve_refs(block["envType"], refs_include_type=True)
             if block.get("children"):
                 resolve_blocks(block["children"])
 
@@ -1032,6 +1067,13 @@ def comment_form(page_label, return_url, paper_title):
 """
 
 
+def write_html(path, html):
+    """Write generated HTML with stable line endings and no trailing spaces."""
+    cleaned = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
+    with open(path, "w") as f:
+        f.write(cleaned)
+
+
 # ============================================================
 # COMPILE ONE PAPER
 # ============================================================
@@ -1072,11 +1114,17 @@ def compile_paper(tex_path):
 
     # Assign tags
     registry = load_registry()
+    previous_tags = {
+        info.get("label"): tag
+        for tag, info in registry.items()
+        if info.get("paper") == slug and info.get("label")
+    }
     # Remove old tags for this paper (allows clean rebuild)
     registry = {k: v for k, v in registry.items() if v.get("paper") != slug}
     existing_tags = set(registry.keys())
 
-    all_envs, label_map = assign_tags_and_numbers(paper, slug, registry, existing_tags)
+    all_envs, label_map = assign_tags_and_numbers(
+        paper, slug, registry, existing_tags, previous_tags)
 
     # Resolve citations (after ref resolution, so citations in env content are handled)
     resolve_citations(paper, citations)
@@ -1133,8 +1181,7 @@ def compile_paper(tex_path):
     toc += '</table>\n</main>\n'
     toc += footer_html(arxiv_id)
 
-    with open(os.path.join(out_dir, "index.html"), "w") as f:
-        f.write(toc)
+    write_html(os.path.join(out_dir, "index.html"), toc)
     print("Generated: index.html")
 
     # --- 2. Section pages ---
@@ -1161,8 +1208,7 @@ def compile_paper(tex_path):
             paper["title"])
         sec_html += '</main>\n' + footer_html(arxiv_id)
 
-        with open(os.path.join(out_dir, "section", f'{sec["id"]}.html'), "w") as f:
-            f.write(sec_html)
+        write_html(os.path.join(out_dir, "section", f'{sec["id"]}.html'), sec_html)
         print(f"Generated: section/{sec['id']}.html")
 
         for sub in sec["subsections"]:
@@ -1184,8 +1230,7 @@ def compile_paper(tex_path):
                 paper["title"])
             sub_html += '</main>\n' + footer_html(arxiv_id)
 
-            with open(os.path.join(out_dir, "section", f'{sub["id"]}.html'), "w") as f:
-                f.write(sub_html)
+            write_html(os.path.join(out_dir, "section", f'{sub["id"]}.html'), sub_html)
             print(f"Generated: section/{sub['id']}.html")
 
     # --- 3. Tag pages ---
@@ -1246,8 +1291,7 @@ def compile_paper(tex_path):
             paper["title"])
         tag_html += '</main>\n' + footer_html(arxiv_id)
 
-        with open(os.path.join(out_dir, "tag", f'{tag}.html'), "w") as f:
-            f.write(tag_html)
+        write_html(os.path.join(out_dir, "tag", f'{tag}.html'), tag_html)
         print(f"Generated: tag/{tag}.html")
 
     print(f"\nDone! {len(all_envs)} tag pages, "
