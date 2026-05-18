@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>7.2. Proof of formulaexists — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -74,42 +74,71 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Parallel and Series Connection, Existence of Rational Functions</a> / <span>7.2. Proof of formulaexists</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $\opc{M}$</a> / <span>7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">7.2. Proof of formulaexists</h1>
+<h1 class="stacks-section-title">7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$</h1>
+<p class="stacks-para">In this subsection, we prove that if $v \in \Vt(\Delta)$ and $C$ is a matroidal cone, then all matrices $M$ with $P_M=(v+C)\cap \Delta$ have the same $\opc{M}$. We also prove addcone, which serves as one of the key combinatorial interpretations of all future degenerations.</p>
+<p class="stacks-para">\begin{Def}</p>
+<p>We define a polytope $P \subset \Delta$ to be a <em>cone-like matroid polytope</em> if there is a matroidal cone $C$ and vertex $v \in \Delta$ for which $P=(v+C)\cap \Delta$.
+\end{Def}</p>
 <p class="stacks-para">\begin{Lem}
-Let $M$ be a general $1\times 2$ matrix, corresponding to two identical points in $\mb{P}^0$. Then $\op[r][2]{M}$ is the diagonal cycle in $\mb{P}^r \times \mb{P}^r$, and its class is given by $\frac{F(H_1)-F(H_2)}{H_1-H_2}$.
+Let $M, M'$ be $d \times n$ matrices. Assume $\op{M}\neq 0$. Suppose that $P_{M} = P_{M'} = (v + C) \cap \Delta$ is a cone-like matroid polytope. Then
+<ol><li>There exists an open subset $U \subset \mb{A}^1_t$ containing $0$ and $1$, a path $M_U : U \to \mb{A}^{d \times n}$ satisfying $M_U(0) = M$ and $M_U(1) = M'$, and a flat degeneration $\wt{\mc{O}} \subset (\mathbb{P}^{d-1})^n \times U$ such that $\wt{\mc{O}}_{p} = \op{M_D(p)}$ as $((r+1)d-1)$-dimensional cycles for all $p \in U$.</li>
+<li>$\opc{M}=\opc{M'}$.</li></ol>
 \end{Lem}</p>
+<p class="stacks-para">In order to prove matroidconelemma, we will need to understand the structure of cone-like matroid polytopes. We will do this in a much greater generality than will be needed at this moment.</p>
+<p class="stacks-para">\begin{comment}
+\begin{Prop}
+Given a rank polytope $P_M$ and a matroidal cone $C$, $P_M+C$ is a (possibly unbounded) polytope all of whose edges are parallel to vectors of the form $e_i-e_j$, and $$\Vt((P_M+C)\cap \Delta)=\bigcup_{w \in \Vt(P_M)} (w+C)\cap \Vt(\Delta)$$
+\end{Prop}</p>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/197A.html" class="stacks-tag-link">(197A)</a></div>
-  <div class="stacks-env-body"><p>Clearly $\op{M}$ is the image of the diagonal map $\mb{P}^r \to \mb{P}^r \times \mb{P}^r$. The equivariant class of the diagonal is the unique class which satisfies $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)\opc{M}= \int_{\mb{P}^r}f(H)g(H).$$ This is indeed satisfied by $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ since $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_1)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r}f(H_1)g(H_1),$$
-where the first equality came from the fact that the difference of the two expressions is $f(H_1)\frac{g(H_1)-g(H_2)}{H_1-H_2}(F(H_1)-F(H_2))$, and the second from the fact that $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ is of degree $r$ in $H_2$ with leading coefficient $1$.</p></div>
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E2EF.html" class="stacks-tag-link">(E2EF)</a></div>
+  <div class="stacks-env-body"><p>The vertices of $P_M+C$ form a subset of the vertices of $P_M$, so the bounded edges are all still parallel to $e_i-e_j$, and the unbounded edges come from extremal rays of $C$, which are all of the form $e_i-e_j$.</p>
+<p>Clearly $\bigcup_{w \in \Vt(P_M)} (w+C)\cap \Vt(\Delta) \subseteq \Vt((P_M+C)\cap \Delta)$, so we will now show the other inclusion.</p>
+<p>Given $z \in \Vt((P_M+C)\cap \Delta)$, we can write $z=w+\sum a_\alpha (e_{i_\alpha}-e_{j_\alpha})$ with $a_\alpha>0$, $j_\alpha \ne i_\beta$ for any $\alpha,\beta$. Construct the bipartite graph with vertex sets $\{i_\alpha\}_\alpha$ and $\{j_\alpha\}_\alpha$ respectively, with an edge between $j_\alpha$ and $i_\alpha$. Say $i_\alpha$ is $z$-fractional if $z_{i_\alpha} \ne 1$ (note it cannot equal $0$ as then $w_{i_\alpha}<0$), and say $j_\alpha$ is $z$-fractional if $z_{j_\alpha} \ne 0$ (note it cannot equal $1$ as then $w_{j_\alpha}>1$). Similarly, say that $j_\alpha$ is $w$-fractional if $w_{j_\alpha} \ne 1$ (note that it cannot equal zero either as otherwise $z_{j_\alpha}<0$), and $i_\alpha$ is $w$-fractional if $w_{i_\alpha} \ne 0$ (note it cannot equal $1$ as then $z_{i_\alpha}>1$).</p>
+<p>Suppose $z \not \in \Vt(\Delta)$. Then there are at least two $z$-fractional indices. If they are in the same connected component we are done. If not, then we can connect them via $w$-fractional indices (here we actually use a property of matroids), so we're also done.</p>
+<p>Therefore, $z \in \Vt(\Delta)$.</p>
+<p>If there are two $w$-fractional indices in the same connected component, then</p></div>
 </div>
-<p class="stacks-para">\begin{Lem}
-If $M \in K^{d \times (n+1)}$ is a series-parallel matrix with distinguished column $c$, then letting $z$ denote the hyperplane variable associated to $c$ and $H_1,\ldots,H_n$ the remaining hyperplane variables, there are rational functions $Q_{M,i}(x_1,\ldots, x_n,y_1,\ldots, y_n)$ not depending on $r$ or $F$ such that the polynomial expression for $\opc{M}$ of degree at most $r$ in each $H_i$ and $z$ can be written as (formally simplifying to a polynomial before evaluating at $H_i$ and $z$)
-$$\sum Q_{M,i}(H_1,\ldots,H_n,F(H_1),\ldots,F(H_n))\frac{F(z)-F(H_i)}{z-H_i}.$$
-\end{Lem}</p>
+<p class="stacks-para">\end{comment}</p>
+<p class="stacks-para">\begin{Prop}
+Let $M$ be a  $d \times n$ rank $d$ matrix and let $C$ be a matroidal cone. Define the $n \times n$ matrix $B$ by
+$$B_{i,k}= \begin{cases}
+\lambda_{i,k} & \mbox{if $e_k-e_i \in C$ and $k \ne i$}\\
+0 & \mbox{otherwise}
+\end{cases}$$
+where the $\lambda_{i,k}$ are general elements of $K$. Let $N = M(1+tB)$.
+<ol><li>For any $z \in \Vt(\Delta)$, the order $\ord_t \det(N^z)$ is the minimum value of $|z \setminus w|$ over all pairs $(w, \phi)$ such that $w \in \Vt(P_M)$ and $\phi: z \setminus w \to w \setminus z$ is a bijection with $e_k-e_{\phi(k)} \in C$ for all $k \in z \setminus w$. In particular, it is $\infty$ if and only if no such pair exists.</li>
+<li>For general $t$, the rank polytope of $N$ is $(P_A+C)\cap \Delta$.</li></ol>
+\end{Prop}</p>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B656.html" class="stacks-tag-link">(B656)</a></div>
-  <div class="stacks-env-body"><p>By Section&nbsp;7.2, the result is true for $M$ a general $1 \times 2$ matrix. Suppose now $M$ is an arbitrary series-parallel matrix.</p>
-<p>There exist series-parallel matrices $M_1$ and $M_2$ such that (after permutation and scaling of the columns) either $M=P(M_1,M_2)$ or $M=S(M_1,M_2)$ with $c$ the special column for parallel or series connection. Indeed, parallel connection handles the case that the special point is repeated or is on the intersection of two curves, and series connection handles the remaining case. Hence, we suppose by induction that we know the result for $M_1$ and $M_2$. Let $H_{1,1},\ldots,H_{1,n_1}, z_1$ and $z_2, H_{2,1},\ldots,H_{2,n_1}$ be the hyperplane variables associated to the columns of $M_1$ and $M_2$ respectively. For succinctness, we will suppress the inputs of $Q$ in what follows. We have
-$$\begin{aligned}\opc{M_1}\star \opc{M_2}=\sum \sum Q_{M_1,i}Q_{M_2,j}\frac{F(z)-F(H_{1,i})}{z-H_{1,i}}\frac{F(z)-F(H_{2,j})}{z-H_{2,j}},\end{aligned}$$
-and the right hand side is of degree at most $r$ in each of the $H$ variables.
-Using partial fraction decomposition, replace each $$\frac{F(z)-F(H_{1,i})}{z-H_{1,i}}\frac{F(z)-F(H_{2,j})}{z-H_{2,j}}$$ with
-$$\begin{aligned}&\frac{F(z)-F(H_{1,i})}{z-H_{1,i}}\frac{1}{H_{1,i}-H_{2,j}}(F(z)-F(H_{2,j}))+\frac{F(z)-F(H_{2,j})}{z-H_{2,j}}\frac{1}{H_{2,j}-H_{1,i}}(F(z)-F(H_{1,i}))\\
-=&\left(\frac{-F(H_{2,j})}{H_{1,i}-H_{2,j}}\frac{F(z)-F(H_{1,i})}{z-H_{1,i}}+\frac{-F(H_{1,i})}{H_{2,j}-H_{1,i}}\frac{F(z)-F(H_{2,j})}{z-H_{2,j}}\right)\\
-&+F(z)\left(\frac{1}{H_{1,i}-H_{2,j}}\frac{F(z)-F(H_{1,i})}{z-H_{1,i}}+\frac{1}{H_{2,j}-H_{1,i}}\frac{F(z)-F(H_{2,j})}{z-H_{2,j}}\right).\\\end{aligned}$$
-By serpar, the sum of the terms with $F(z)$ in front will be the class of the series connection, and the sum of the remaining terms will be the class of the parallel connection. Furthermore, the obtained expressions for $\opc{P(M_1,M_2)}$ and $\opc{S(M_1,M_2)}$ are clearly reduced (i.e. of degree at most $r$) in the $z$-variable. Because the $\opc{M_1}\star \opc{M_2}$ was reduced in the $H$ variables, $\opc{P(M_1,M_2)}=\opc{M_1}\star \opc{M_2} \mod F(z)$ is clearly still reduced in the $H$ variables, as is $\opc{S(M_1,M_2)}=(\opc{M_1}\star \opc{M_2}-\opc{P(M_1,M_2)})/F(z)$.</p></div>
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/037F.html" class="stacks-tag-link">(037F)</a></div>
+  <div class="stacks-env-body"><p>We first prove (a). For any $w,z \in \Vt(\Delta)$, let $(1+tB)^z_w$ denote the submatrix of $1 + tB$ formed by the columns in $z$ and the rows in $w$. By the Cauchy-Binet formula, $\det(N^z) = \det(M (1+tB)^z)$ is given by
+$$\begin{aligned}\sum_{w \in \Vt(\Delta)} \det(M^w) \det ((1+tB)^z_w) &= \sum_{w \in \Vt(P_A)} \det(M^w) \sum_{\substack{\phi : z \to w \\ \text{bijection}}} \pm \prod_{k \in z} (1+tB)_{\phi(k), k} \\
+&= \sum_{\substack{w \in \Vt(P_M) \\ \phi : z \to w \\ \text{bijection}}} \pm  \det(M^w) \prod_{\substack{k \in z \\ \phi(k) \neq k}} (tB_{\phi(k),k}).\end{aligned}$$
+Because each $\lambda_{i, k}$ is general, all nonzero terms of this sum are linearly independent. Hence $\ord_t \det(N^z)$ is the minimum value of $|\{k \in z \mid \phi(k) \neq k\}|$ over all pairs $(w, \phi)$, where $w\in \Vt(P_A)$ and $\phi:z \to w$ is a bijection such that $e_k-e_{\phi(k)} \in C$ for all $k \in z$. In particular, it is $\infty$ if and only if no such pair exists.</p>
+<p>If $\ord_t \det(N^z) = \infty$, then (a) clearly holds. Otherwise, we claim that there exists a pair $(w,\phi)$ attaining the minimum value of $|\{k \in z \mid \phi(k) \neq k\}|$ such that $\phi$ fixes $z \cap w$. Indeed, suppose $(w, \phi')$ minimizes $|\{k \in z \mid \phi(k) \neq k\}|$. Define $\phi$ by $$\phi(i)=\begin{cases}i & \text{if $i \in z \cap w$, and}\\(\phi')^{k_i}(i) & \text{otherwise}\end{cases}$$ where $k_i$ is the smallest number such that $(\phi')^{k_i}(i) \in w \setminus z$. It is clear that $\phi$ is a bijection fixing $z\cap w$, and $e_i-e_{\phi(i)} \in C$ as $C$ is closed under addition. This shows part (a), and part (b) now follows from horribleequivalence.</p></div>
 </div>
-<p class="stacks-para">Before we prove formulaexists, we will need to appeal to a result of [DF10] on Schubert matroids, so we recall the definition.</p>
-<p class="stacks-para">\begin{Thm}[[DF10]]
-For a matroid $\MM$, we have the following expression for $1_{P_\MM}$ as a combination of indicator functions of Schubert matroid rank polytopes.
-$$\sum_{\ell=1}^n \sum_{\emptyset \subsetneq X_1 \subsetneq \ldots \subsetneq X_\ell=\{1,\ldots,n\}}(-1)^{n-\ell}1_{\operatorname{Sch}(\rk_{\MM}(X_1),\ldots,\rk_{\MM}(X_\ell),X_1,\ldots,X_\ell)}.$$
-\end{Thm}</p>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of formulaexists.</em> <a href="../tag/C81F.html" class="stacks-tag-link">(C81F)</a></div>
-  <div class="stacks-env-body"><p>By serparform, we know the result for series-parallel matrices. The indicator functions of rank polytopes can be written as a combination of Schubert rank polytopes by SchubertFinkThm, so by realval it suffices to show that if the rank polytope of $\operatorname{Sch}(r_1,\ldots,r_\ell,X_1,\ldots,X_\ell)$ has codimension $0$ in $\Delta$, then it has a subdivision into series-parallel rank polytopes. This follows from the following observation. If $|X_\ell\setminus X_{\ell-1}| =1$ then the rank polytope is not of full dimension. Otherwise, let $a, b \in X_\ell\setminus X_{\ell-1}$ be distinct. As $\sum_{X_\ell}x_i=r_\ell$ is constant, there is a subdivision of the rank polytope into the regions where $x_a + x_b \le 1$ and where $\sum_{X_\ell \setminus \{a, b\}}x_i \le r_\ell-1$. The first region is the rank polytope of the parallel connection along $a$ of $\operatorname{Sch}(r_1,\ldots,r_{\ell},X_1,\ldots,X_{\ell-1},X_\ell\setminus\{b\})$ with $\operatorname{Sch}(1,\{a,b\})$ (i.e. $a$ and $b$ merge), and the second region is the rank polytope of the series connection along $a$ of $\operatorname{Sch}(r_1,\ldots,r_{\ell-1},r_\ell-1,X_1,\ldots,X_{\ell-1},X_\ell\setminus \{b\})$ with $\operatorname{Sch}(1,\{a,b\})$ (i.e. all points other than $a,b$ get projected down to rank $r_l-1$), where by abuse of notation we call the newly created points in the series and parallel connection $a$ as well. It is known that series and parallel connection distribute over matroid rank polytope subdivision (from e.g. the explicit description of these operations on polytopes in [FS12, Proof of Theorem 7.3]), so repeatedly applying this we may reduce the polytope down to series-parallel rank polytopes.</p></div>
+  <div class="stacks-env-head"><em>Proof of matroidconelemma.</em> <a href="../tag/C76D.html" class="stacks-tag-link">(C76D)</a></div>
+  <div class="stacks-env-body"><p>As $\op{M}\ne 0$, by positivecodim, all generalized matrix orbits with matroid $(v+C)\cap \Delta$ are nonzero.</p>
+<p>First, we prove (a). Let $C'$ be the nonnegative span of $\{e_j - e_i \in C \mid j \not \in v, i \in v\}$. By horribleequivalence, we have $(v+C) \cap \Delta = (v+C') \cap \Delta$. Hence, by replacing $C$ with $C'$, we may assume that if $e_j - e_i \in C$ for $i \neq j$, then $j \not \in v$ and $i \in v$. We can multiply $M$ and $M'$ on the left by elements of $GL_d$ and assume that $M^v=(M')^v=I$. We can also assume $v=e_1+\cdots+e_{d}$. </p>
+<p>Now, we consider the locus $Z_M\subset \mb{A}^{d\times n}$ of $d\times n$ matrices whose underlying matroid has polytope $P_M$ and whose restriction to the leftmost $d\times d$ submatrix is the identity. We claim that, for all $N\in Z_M$, if $e_j-e_i\not \in C$ then $N_{ij}=0$. Indeed, if $N_{ij}\neq 0$, then as $M^v=I$, replacing $i$ in the set $\{1,\ldots, d\}$ with $j$ preserves linear independence, so
+$$\begin{aligned}v+(e_j-e_i)=(e_1+\cdots+e_d)+(e_j-e_i)\in P_M \subset v+C,\end{aligned}$$
+and hence $e_j-e_i\in C$. Therefore, the affine subspace $L_M\subset \mb{A}^{d\times n}$ consisting of matrices $N$ where $N_{ii}=1$ and $N_{ij}=0$ if $e_j-e_i\notin C$ contains $Z_M$. </p>
+<p>We have that $Z_M$ is a locally closed set in $L_M$ because it can be defined by the vanishing and non-vanishing of minors. The inclusion $Z_M\subset L_M$ is dense by addcone(b) applied to the $d \times n$ matrix $A$ with $A_{ii}=1$ and $A_{ij}=0$ if $i \ne j$, so $Z_M$ is open.</p>
+<p>In degenerationfibers, choose $D = \mb{A}^1_t$ and $M_D(t) = tM + (1-t)M'$. By choosing $U \subset \mb{P}^{(r+1)\times d - 1} \times (M_D^{-1}(Z_M)\setminus \{0, 1\})$, we obtain a family $\wt{\mc{O}}$ that is flat over both $0 \in D$ and $1 \in D$. Part (a) of the lemma follows, and part (b) follows immediately from part (a).</p></div>
 </div>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of matroidconelemma.</em> <a href="../tag/837C.html" class="stacks-tag-link">(837C)</a></div>
+  <div class="stacks-env-body"><p>Let $C'$ be the nonnegative span of $\{e_i - e_j \in C \mid i \not \in v, j \in v\}$. By horribleequivalence, we have $(v+C) \cap \Delta = (v+C') \cap \Delta$. Hence, by replacing $C$ with $C'$, we may assume that if $e_i - e_j \in C$ for $i \neq j$, then $i \not \in v$ and $j \in v$. Also, by multiplying $M$ and $M'$ on the left by elements of $GL_d$, we may assume that $M^v=(M')^v=I$. </p>
+<p>Consider the matrix $M(t) = tM + (1-t)M'$. We claim that for general $t$, we have $P_{M(t)} = P_M = P_{M'}$. By specializing $t \to 1$, we have $P_M \subset P_{M(t)}$. It remains to show that $P_{M(t)} \subset P_{M}$.</p>
+<p>Let $A$ be the matrix such that $A^v = I$ and all other entries of $A$ are zero. Define $B$ as in addcone, and let $N = A(1+tB)$. Then $N^v = I$ and by addcone, we have $P_N = (v+C) \cap \Delta = P_M = P_{M'}$. (Here, we use the assumption that if $e_i - e_j \in C$ for $i \neq j$, then $i \not \in v$ and $j \in v$.) Because $M^v = I$, the linear dependencies between a column of $M$ outside of $M^v$ with columns of $M$ inside $M^v$ determine the locations of the non-zero entries of $M$. Similar considerations apply for $N$ and $M'$. As $M$, $M'$, and $N$ have the same matroid, they have nonzero entries in the same locations. Since the nonzero entries of $N$ outside $N^v$ are general, we conclude that $M(t)$ is formed by specializing the general entries of $N$. Thus $P_{M(t)} \subset P_N = P_M$, as desired. </p>
+<p>In degenerationfibers, choose $D = \mb{A}^1_t$ and $M_D(t) = M(t)$. By choosing $U \subset \mb{P}^{(r+1)\times d - 1} \times (D \setminus \{0, 1\})$, we obtain a family $\wt{\mc{O}} = \overline{\psi(U)}$ that is flat over both $0 \in D$ and $1 \in D$. Part (a) of the lemma follows.</p>
+<p>By siorbit, we have $\opc{M} = \opc{M_D(t)}$ for general $t$. For the same reason $\opc{M'} = \opc{M_D(t)}$, which proves (b).</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
 
 <hr>
 <div class="stacks-comments">
@@ -119,7 +148,7 @@ $$\sum_{\ell=1}^n \sum_{\emptyset \subsetneq X_1 \subsetneq \ldots \subsetneq X_
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 7.2. Proof of formulaexists">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.SS2.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

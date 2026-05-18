@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>2.10. Admissible reduction. — Special Codimension One Loci in Hurwitz Spaces</title>
+  <title>2.10. Intersection multiplicities. — Special Codimension One Loci in Hurwitz Spaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -127,35 +127,27 @@
     <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Compactifications.</a> / <span>2.10. Admissible reduction.</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Compactifications.</a> / <span>2.10. Intersection multiplicities.</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">2.10. Admissible reduction.</h1>
-<p class="stacks-para">At this point, it will be convenient to indicate how to perform ``admissible reduction'' in some commonly encountered situations.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Setup.</h3>
-    Suppose we have a family of degree $d$  simply-branched covers $\alpha_{t} \from \cC_{t} \to \P^{1}$, with smooth total space $\cC_{t}$, parametrized by $\Delta_{t} := \Spec k[[t]]$, and $m$ disjoint multi-sections $\sigma_{1}, ... \sigma_{m}$ of degrees $d_{1}, ... , d_{m}$, each of which in some local coordinates $(z,t)$ on $\cC_{t}$ is given by an equation of the form $z^{d_{i}} - t = 0$.  Furthermore, suppose $\cup_{i} \sigma_{i} = \alpha_{t}^{-1}(0)$. In particular, note that $d_{1} + ... + d_{m} = d$.</p>
-<p class="stacks-para">Our task is to attach a constant cover $\alpha_{L} \from C_{L} \to \P^{1}$ to the family $\alpha_{t}$ at the $d$ points of the multi-section $\cup_{i}\sigma_{i}$.  In other words, we would like $\alpha_{t}$ to be the right side of a partial pencil.</p>
-<p class="stacks-para">There are two obstacles currently preventing us from accomplishing this: 1) The points of attachment for $t \neq 0$ are experiencing nontrivial monodromy, and 2) the points of attachment are not remaining distinct when $t=0$.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Base change.</h3>
-    In order to kill monodromy, we first make an order $l := {\rm lcm}(d_{1}, ... ,d_{m})$ base change $t = s^{l}$, and let $\alpha_{s} \from \cC_{s} \to \P^{1} \times \Delta_{s}$ denote the base change family.  Letting $l_{i} := l/d_{i}$, we immediately see that we now have $d$ sections $\tau_{1}, ... ,\tau_{d}$ of the family $\cC_{s}$.  Moreover, these sections are naturally grouped according to which multi-section $\sigma_{i}$ they originally arose from. The first $d_{1}$ sections intersect at a point $x_{1} \in C_{0}$, the next $d_{2}$ intersect at a point $x_{2} \in C_{0}$, and so on.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Separating the sections $\tau_{i}$.</h3>
-    Now we must separate the sections $\tau_{i}$ &ndash; this requires some care, since we still need to produce an admissible cover.  We examine the local situation around each point $x_{i}$.</p>
-<p class="stacks-para">For this, let $X := \Spec k[[z,s]]$, $Y := \Spec k[[w,s]]$, $\Delta_{s} := \Spec k[[s]]$, and let $$\alpha_{\text{local}}: X \to Y$$ be the degree $d_{i}$ $\Delta_{s}$-morphism defined by $w = z^{d_{i}} - s^{l}$. This is a local model for the map $\alpha_{s}$ near the points $x_{i}$.</p>
-<p class="stacks-para">We now blow up $X$ along the ideal $I := (z,s^{l_{i}})$ and $Y$ along the ideal $J := (w, s^{l})$. In other words, we set $$X' := \Proj k[[z,s]][U,V]/Uz-Vs^{l_{i}}$$ and $$Y' := \Proj k[[w,s]][A,B]/Aw-Bs^{l}.$$ Then the following map of graded rings provides the ``local admissible replacement'' $\alpha'_{\text{local}}$:
-    $$\begin{aligned}&s \mapsto s\\
-    &w \mapsto z^{d_{i}}-s^{l}\\
-    &A \mapsto U^{d_{i}}\\
-    &B \mapsto V^{d_{i}} - U^{d_{i}}\end{aligned}$$</p>
-<p class="stacks-para">The reader may easily check that the local ``kissing'' condition is met for $\alpha'_{\text{local}}$.  Furthermore, the local sections defined by $z - \zeta_{j}s^{l_{i}}$, where $\zeta_{j}$ are the ${l_{i}}$-th roots of unity, are separated in the blow up $X'$.</p>
-<div class="stacks-commentary" id="">
-  <div class="stacks-env-head"><strong>Remark&nbsp;2.8.</strong> <a href="../tag/9D83.html" class="stacks-tag-link">(9D83)</a></div>
-  <div class="stacks-env-body"><p>Notice that the ideal $I$ is not the inverse image of the ideal $J$.  In fact, an admissible cover with ramification occurring above a node is never a flat map.  Therefore, the ideal $I$ could not have been the inverse image of $J$.</p></div>
-</div>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Triple ramification.</h3>
-    Now suppose $\alpha_{t}$ is a family of covers aquiring a triple ramification point $x \in C_{0} \subset \cC$. Then the reader may check that the admissible reduction of this family requires at least an order two base change.</p>
-<div class="stacks-commentary" id="">
-  <div class="stacks-env-head"><strong>Remark&nbsp;2.9.</strong> <a href="../tag/3E9F.html" class="stacks-tag-link">(3E9F)</a></div>
-  <div class="stacks-env-body"><p>Triple ramification is a divisorial phenomenon. Since we will be using many one parameter families, it will be a nuisance to have to perform admissible reduction each time it occurs.  This is why we eventually pass to the space $\Hdgnt$.</p></div>
-</div>
+<h1 class="stacks-section-title">2.10. Intersection multiplicities.</h1>
+<p class="stacks-para"></p>
+<p class="stacks-para">We now indicate how to compute intersection multiplicities of a one parameter family lying entirely in the boundary with boundary divisors.  For this, we review the description of the deformation spaces of admissible covers found in [HM82].</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+    Pick any boundary divisor $\Delta \subset \Hdg^{\rm{adm}}$, and choose a general admissible cover $[\alpha \colon C \longrightarrow P] \in \Delta$.  Let $p \in P$ be the unique node, and let $(r_1,r_2,...,r_k)$ be the local degrees of $\alpha$ occurring at the nodes $(q_1,...,q_k)$ above $p$.  A description of the complete local ring $\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}$ is given by Harris and Mumford in [HM82] as:
+    $$\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha} = \Spec k[[z_{1}, ... , z_{b-4}, t_1,t_2, ... , t_k, s]]/ (t_1^{r_1} = t_2^{r_2} = ... = t_k^{r_k} = s).$$ This presentation is such that  $$\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)} = k[[z_{1}, ... ,z_{b-4}, s]]$$ and the obvious map $\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)} \to \compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}$ gives the complete local description of the branch morphism $$\Br^{\rm{adm}} \from \Hdg^{\rm{adm}} \to [\overline{\M}_{0,b}/\mathfrak{S}_{b}].$$</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+    Above the veresal deformation space $<strong>Def</strong>\, \alpha := \Spf{\compl{\cO}_{\Hdg^{\rm{adm}}, \alpha}}$, there is a versal family:
+     $$\xymatrix @C -1.5pc  {
+    C \subset \mathcal{\cC} \ar[rr]^{\compl{\alpha}} \ar[rd]_\varphi&&
+    {P} \subset \mathcal{\cP} \ar[ld]^\pi \\
+    &<strong>Def</strong>\, \alpha}$$
+     Locally around the node $p \in {P} \subset \cP$, $\cP$ has local equation $uv=s$.  At the nodes $q_{i} \in C \subset \cC$, $i = 1,2,...,k$, the total space $\cC$ has local equation $x_i y_i = t_i$.  In these local coordinates, the admissible cover $\compl{\alpha}$ is locally given by $u \mapsto x_{i}^{r_{i}}$ and $v \mapsto y_{i}^{r_{i}}$. Furthermore, the equations $s = t_{1} =  ... = t_{k} = 0$ cuts out the divisor $\Delta$.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+     This local description of the boundary allows us to understand intersection multiplicities of partial pencil families with boundary components. So let
+     $$\alpha \from \cC \to \cP \to S$$ be a general family contained in $\Delta$. Furthermore, let $R_{i} = L_{i}$, $i=1,...,k$ be the glued sections mapping to a marked section of nodes $<strong>0</strong> \subset \cP$, where, around the section $R_{i} = L_{i}$ the map $\alpha$ has local degree $r_{i}$ over $<strong>0</strong>$.</p>
+<p class="stacks-para">The admissibility condition at the nodes tells us that $$\deg (N_{L_{i}/\cC_{L}}\otimes N_{R_{i}/\cC_{R}})^{\otimes r_i} = \deg (N_{L_{j}/\cC_{L}}\otimes N_{R_{j}/\cC_{R}})^{\otimes r_j} = \deg (N_{<strong>0</strong>/\cP_{L}}\otimes N_{<strong>0</strong>/\cP_{R}}).$$ Here the $N_{\bullet}$ denote normal bundles.</p>
+<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
+    Suppose furthermore that $S \to \Hdg^{\rm{adm}}$ comes from a family $S \to  \Hdgn$, i.e. that $S \to \Hdg^{\rm{adm}}$ is the coarse space of a <em>twisted</em> partial pencil. The family $S \to \Hdgn$ will have intersection number $$S \cdot \Delta' = {\rm deg}\, (N_{<strong>0</strong>/\cP_{L}}\otimes N_{<strong>0</strong>/\cP_{R}})/lcm(r_1,...,r_k)$$ with the boundary divisor $\Delta' \subset \Hdg$ in which it lies.  (We assume that $S \to \Hdgn$ does not have additional isolated intersections with $\Delta'$, in which case we must add these contributions appropriately.) This follows from the observation that the order of ramification of the branch map from the normalization $$\Br^{\nu} \from (<strong>Def</strong>\, \alpha)^{\nu} \to \Spf{\compl{\cO}_{[&oslash;{\M}_{0,b}/\mathfrak{S}_{b}], \Br(\alpha)}}$$ is $lcm(r_{1},...,r_{k})$.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -165,7 +157,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 2.10. Admissible reduction.">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — 2.10. Intersection multiplicities.">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/section/S2.SS10.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

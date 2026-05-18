@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>7.3. Regular subdivisions arising from unbounded polytope decompositions — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "F_{1}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "{\\operatorname{Gr}}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $\opc{M}$</a> / <span>7.3. Regular subdivisions arising from unbounded polytope decompositions</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">7.3. Regular subdivisions arising from unbounded polytope decompositions</h1>
+<p class="stacks-para">In this subsection, we will describe particular regular subdivisions $P = \bigcup_{i=1}^k P_i$ of possibly unbounded polytopes. Each such regular subdivision yields a decomposition $P \cap \Delta = \bigcup_{i=1}^k (P_i \cap \Delta)$ of bounded polytopes, which becomes a regular subdivision after removing lower-dimensional terms from the right-hand side. We will then use these regular subdivisions to construct the remaining degenerations $M_D$ that will be used in the proof of realval.</p>
+<p class="stacks-para">\begin{Lem}</p>
+<p>Given a convex (possibly unbounded) full-dimensional polytope $P$ in $\mb{R}^n$ and a nonzero vector $v$, we have a regular subdivision of $P+\mb{R}_{\ge 0}v$ induced by the piecewise affine function $h: z \mapsto \inf_\lambda \{\lambda | z-\lambda v \in P\}$. The subdivision consists of $P$ and all polytopes $F+\mb{R}_{\ge 0}v$, where $F$ ranges over facets of $P$ such that $(F+\mb{R}_{\ge 0}v)\cap P=F$.
+\end{Lem}</p>
+<p class="stacks-para">\begin{Def}
+We call the facets of $P$ appearing in finksub <em>shadow facets</em> as in [DF10, Appendix A]. They are the upper facets with respect to the $v$-direction. We further call the subdivision the <em>shadow facet subdivision</em>.
+\end{Def}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of finksub.</em> <a href="../tag/719A.html" class="stacks-tag-link">(719A)</a></div>
+  <div class="stacks-env-body"><p>Define the linear map $\phi : \mb{R}^n \times \mb{R} \to \mb{R}^n \times \mb{R}$ by $\phi(x, \lambda) = (x + \lambda v, \lambda)$ and define $Q = \phi(P \times \mb{R}_{\geq 0})$. Note that $(y,\lambda) \in Q$ if and only if $\lambda \ge 0$ and $y-\lambda v \in P$. Then, for any $x \in P + \mb{R}_{\geq 0}v$, the minimum of $\{\lambda \mid (x, \lambda) \in Q\}$ is exactly $h(x)$. Hence, the lower convex hull of $Q$ is $P^h$, so the facets of the regular subdivision of $P + \mb{R}_{\geq 0}v$ induced by $h$ are the projections of the lower facets of $Q$ to $P + \mb{R}_{\geq 0}v$.</p>
+<p>Because $\phi$ is a linear embedding, the facets of $Q$ are $\phi(P \times \{0\})$ and $\phi(F \times \mb{R}_{\geq 0})$ for the facets $F$ of $P$. The facet $\phi(P \times \{0\})$ is a lower facet and $\phi(F \times \mb{R}_{\geq 0})$ is a lower facet if and only if $F$ is a shadow facet. Projecting these facets to $P + \mb{R}_{\geq 0}v$ yields the shadow facet subdivision.
+\begin{comment}
+Let $\mc{P}$ be the collection of polytopes containing $P$ and all polytopes $F+\mb{R}_{\ge 0}v$, where $F$ ranges over all shadow facets. </p>
+<p>First, note that the condition on $F$ being a shadow facet is equivalent to $N_F \cdot v >0$, where $N_F$ is the outward normal vector to the facet.</p>
+<p>Suppose $z \in (P+\mb{R}_{\ge 0}v) \setminus P$, and let $\pi(z)$ be its projection in the $-v$-direction onto $P$. We claim at least one facet containing $\pi(z)$ is a shadow facet. Otherwise, the inequalities locally defining $P$ around $z$ are $N_F \cdot x \ge C_F$, where $N_F \cdot v \le 0$ and $F$ ranges over facets containing $z$. Thus, we can add $-\epsilon v$ to $\pi(z)$ for small $\epsilon>0$ without leaving the polytope $P$, contradicting the definition of $\pi(z)$. Hence, we get that the polytopes in $\mc{P}$ cover $P+\mb{R}_{\ge 0}v$.</p>
+<p>Define $h_F: P+\mb{R}_{\ge 0}v\to \mb{R}$ by
+$$\begin{aligned}h_F(z)&= \frac{N_F\cdot z-C_F}{N_F\cdot v},\end{aligned}$$
+where $N_F$ is the outward pointing normal vector to a shadow facet $F\subset P$ and $C_F$ is such that $F=\{N_F\cdot x=C_F\}\cap P$. Equivalently, $h_F(z)$ is the value of $\lambda$ such that  $z-\lambda v \in {\rm Span}(F)$. </p>
+<p>We claim that for $z\in P+\mb{R}_{\geq 0}v$ that
+$$\begin{aligned}h(z) &= \max(\max_{F\text{ shadow facet}}{h_F(z)},0).\end{aligned}$$
+This also shows $h$ is convex. Because the polytopes in $\mc{P}$ cover $P+\mb{R}_{\geq 0}v$, we have
+$$\begin{aligned}h(z) &=
+\begin{cases}
+0&\qquad\text{if $z\in P$}\\
+h_F(z) &\qquad\text{if $z\notin P$ and $\pi(z)\in F$ for $F$ a shadow facet.}
+\end{cases}\end{aligned}$$
+Therefore, we clearly have
+$$\begin{aligned}h(z) &\leq  \max(\max_{F\text{ shadow facet}}{h_F(z)},0).\end{aligned}$$
+To show the other inequality, it suffices to show $h_F(z)\leq h(z)$ for all shadow facets $F$. This is true for $z\in P$ since in this case $h_F(z)\leq 0$. If $z\in (P+\mb{P}_{\geq 0}v)\backslash P$, then for a shadow facet $F$, we clearly have $h_F(z)\leq h(z)$, since $z-h_F(z)v \in \{N_F\cdot x= C_F\}$, $z-h(z)v\in P\subset \{N_F\cdot x\le C_F\}$, and $N_F \cdot v >0$. </p>
+<p>To finish, it suffices to show that $P=\{z|\ h(z)=0\}$ and $F+\mb{R}_{\geq 0}v=\{z|\ h(z)=h_F(z)\}$ for all shadow facets $F$. The first equality is trivial and $\{z|\ h(z)=h_F(z)\}\supset F+\mb{R}_{\geq 0}v$. For the other containment, suppose $h(z)=h_F(z)$. Since $z-h(z)v\in P$ and $z-h_F(z)v\in {\rm Span}(F)$, we know $z-h(z)v\in P\cap {\rm Span}(F)=F$, so $z\in F+\mb{R}_{\geq 0}v$.</p>
+<p>\end{comment}</p></div>
+</div>
+<p class="stacks-para">\begin{comment}
+The unbounded polytopes we will use in the remainder of the proof of realval take the following very particular form.</p>
+<p class="stacks-para">\begin{Def}
+Let $M \in \mb{A}^{d \times n}$ be a matrix and let $C$ be a matroidal cone. We say that the pair $(M, C)$ is <em>admissible</em> if $P_{M} + C$ is full-dimensional in $\{\sum x_i = d\}$ and $(P_M + C) \cap \Delta = P_M$.
+\end{Def}
+\end{comment}</p>
+<p class="stacks-para">We will now use addcone to construct the remaining degenerations needed in the proof of realval.</p>
+<p class="stacks-para">\begin{Thm}
+Let $(M,C)$ be an admissible pair and let $v = e_i - e_j$ with $i \neq j$. Then there exists a regular map $M_D : \mb{A}^1_t \to \mb{A}^{d \times n}$ with $M_D(0)=M$ such that for general $s \in \mb{A}^1_t$, there exist admissible pairs $(M_1, C_1), \ldots, (M_k, C_k)$, where each $M_i$ is an orb-limit of $M_D$ and
+<ol><li>The pair $(M_D(s), C + \mb{R}_{\geq 0} v)$ is admissible and $P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) + \mb{R}_{\geq 0} v$.</li>
+<li>We have a decomposition $$P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) \cup \bigcup_{i=1}^k (P_{M_i} + C_i)$$ which is the shadow facet subdivision of $(P_{M} + C) + \mb{R}_{\geq 0} v$.</li>
+<li>We have a decomposition $$P_{M_D(s)} = P_{M} \cup \bigcup_{i=1}^k P_{M_i}$$ which becomes the regular subdivision of $P_{M_D(s)}$ with lifting function $h_{M_D}$ associated to the degeneration $M_D$ after removing all terms of positive codimension in $P_{M_D(s)}$.</li>
+<li>We have $$\opc{M_D(s)} = \opc{M} + \sum_{i=1}^k \opc{M_i}.$$</li></ol></p>
+<p class="stacks-para">\begin{comment}
+Let $M\in \mb{A}^{d \times n}$ be a matrix of rank $d$. Let $C$ be a matroidal cone such that $(P_M+C)\cap \Delta= P_M$. Let $v=e_i-e_j$ for fixed $i > j$. Letting $\lambda_{kl}$ be general elements of $K$, if we set $$B_{kl}=\begin{cases}\lambda_{kl} &  \text{if $e_l-e_k \in C+\mb{R}_{\ge 0}v$}\\ 0 & \text{otherwise} \end{cases},$$ then the matroid polytope of $M_D(t)=M(1+tB)$ is $$P=(P_M+C+\mb{R}_{\ge 0}v)\cap \Delta,$$ and the height function associated to the degeneration $M_D$ is given by $$z \mapsto \inf\{\lambda \mid z-\lambda v \in P_M+C\}.$$
+For each shadow facet $F$ of $P_M+C$ with direction vector $v$ (c.f. finksub) with characteristic cone $C_F$, we may find in the subdivision associated to $M_D$ a (not necessarily top-dimensional) face associated to a matrix $M_F$ which $M_D$ orb-limits to such that <ul><li>The facets in the expression $P=P_M\cup \bigcup_{\text{F a shadow facet}} P_{M_F}$ yield the subdivision associated to $M_D$.</li>
+<li>$P+C+\mb{R}_{\ge 0}v=(P_M+C) \cup \bigcup_{\text{F a shadow facet}} (P_{M_F}+C_F+\mb{R}_{\ge 0}v)$ is precisely the shadow facet subdivision $P_M+C+\mb{R}_{\ge 0}v=(P_M+C)\cup \bigcup_{\text{F a shadow facet}} (F+\mb{R}_{\ge 0}v)$</li>
+<li>Intersecting the shadow facet subdivision with $\Delta$ gives back the subdivision associated to $M_D$ after discarding non-facets.</li></ul>
+\end{comment}
+\end{Thm}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/07EA.html" class="stacks-tag-link">(07EA)</a></div>
+  <div class="stacks-env-body"><p>Define the $n \times n$ matrix $B$ by
+$$B_{i,k}= \begin{cases}
+\lambda_{i,k} & \mbox{if $e_k-e_i \in C+\mb{R}_{\ge 0}v$ and $k \ne i$}\\
+0 & \mbox{otherwise}
+\end{cases}$$
+where the $\lambda_{i,k}$ are general elements of $K$. Define $M_D$ by $M_D(t) = M(1+tB)$.</p>
+<p>By addcone, we have $P_{M_D(s)}=(P_M+(C+\mb{R}_{\ge 0}v))\cap \Delta$. Thus $P_{M_D(s)}+(C+\mb{R}_{\ge 0}v)=(P_M+C)+\mb{R}_{\ge 0}v$, which proves (a).</p>
+<p>Furthermore by addcone and lambdalambdaprime we have that $h_{M_D}$, when restricted to $\Delta$, coincides with the height function of the shadow facet subdivision of $(P_M+C)+\mb{R}_{\ge 0}v$ as given in finksub. Hence, letting $F_1,\ldots,F_k$ be the shadow facets of $P_M+C$, we have that $(F_i+\mb{R}_{\ge 0}v)\cap \Delta$ are faces of the regular subdivision of $P_{M_D(t)}$ with lifting function $h_{M_D}$, and all facets of the regular subdivision apart from $P_M$ arise in this way. Each shadow facet $F_i$ is the Minkowski sum of a face of $P_M$ with a face of $C$, so $F_i \cap \Delta \ne \emptyset$. Therefore the faces $(F_i+\mb{R}_{\ge 0}v)\cap \Delta$ are nonempty. By Section&nbsp;6.2, for each $i$, the degeneration $M_D$ orb-limits to a matrix $M_i$ such that $P_{M_i} = (F_i+\mb{R}_{\ge 0}v)\cap \Delta$. By definition of the $M_i$, part (c) follows. Define $C_i = C_{F_i} + \mb{R}_{\ge 0} v$, where $C_{F_i}$ is the cone generated by the unbounded edges of $F_i$.</p>
+<p>We will now show that $P_{M_i}+C_i=F_i+\mb{R}_{\ge 0}v$, which by definition of $M_i$ implies that $(M_i,C_i)$ is admissible. Clearly $P_{M_i}+C_i\subset F_i+\mb{R}_{\ge 0}v$, so it remains to show that $F_i+\mb{R}_{\ge 0}v \subset P_{M_i}+C_i$. As $F_i$ is the Minkowski sum of a face of $P_M$ with a face of $C$, we have $F_i=(F_i \cap P_M)+C_{F_i} \subset P_{M_i}+C_{F_i}$ from which we conclude $F_i+\mb{R}_{\ge 0}v \subset P_{M_i}+C_i$. Along with (a), this in particular implies (b).</p>
+<p>Finally, (d) follows from (c) and siorbit.</p>
+<p>\begin{comment}
+By addcone, the matroid polytope of $M_D(t)$ is $P$ as desired. Also, for every $z \in \Vt(P)$, the height $h_{M_D}(z)$ is the minimum value $\lambda'$ of $|z \setminus w|$ over all pairs $(w, \phi)$ such that $w \in \Vt(P_A)$ and $\phi: z \setminus w \to w \setminus z$ is a bijection with $e_k-e_{\phi(k)} \in C$ for all $k \in z \setminus w$. The geometric description of the height function now follows from lambdalambdaprime.</p>
+<p>For the second part, we note that as the height function agrees with finksub on $\Delta$, the intersection of the shadow facet decomposition of $P_M+C+\mb{R}_{\ge 0}v$ yields the regular subdivision of $P$ associated to $M_D$. Hence $(F+\mb{R}_{\ge 0}v)\cap \Delta$ are faces of the subdivision associated to $M_D$. Furthermore, each shadow facet $F$ is the Minkowski sum of a face of $P_M$ with a face of $C$, so has non-trivial intersection with $\Delta$ &mdash; in particular $(F+\mb{R}_{\ge 0}v)\cap \Delta$ is a non-empty face of the subdivision and we may define $M_F$ to be a matrix associated to this face which $M_D$ orb-limits to by Section&nbsp;6.2. Furthermore, all facets of the subdivision must appear this way. Hence, the first and third items are clear and it suffices to prove the second item. $P+C+\mb{R}_{\ge 0}v$ is easily seen to agree with $P_M+C+\mb{R}_{\ge 0}v$ by the description of $P$ from the first part, so it suffices to show that $P_{M_F}+C_F+\mb{R}_{\ge 0}v=F+\mb{R}_{\ge 0}v$. Clearly the left hand side is contained in the right, so to show the other inclusion we will show that $P_{M_F}+C_F$ contains $F$. But as $F$ is the Minkowski sum of a face of $P_M$ with a face of $C$, $F=(P_M\cap F)+C_F\subset P_{M_F}+C_F$ as desired.
+\end{comment}</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 7.3. Regular subdivisions arising from unbounded polytope decompositions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.SS3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

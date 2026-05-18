@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>2.5. The operation $[M]_\hbar$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>2.5. Class of an arbitrary orbit closure — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -74,12 +74,43 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <span>2.5. The operation $[M]_\hbar$</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <span>2.5. Class of an arbitrary orbit closure</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">2.5. The operation $[M]_\hbar$</h1>
-<p class="stacks-para">In this last subsection, we define our operation $[M]_\hbar$ for a $d \times n$ matrix $M$. The operator $$[M]_\hbar:A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n} \to QH^\bullet_{GL_{r+1}}(\mb{P}^r)$$ is defined by taking the formal sum of convolutions (partial integrals to the last factor of $\mb{P}^r$)
-$$\begin{aligned}[M]_\hbar(f_1(H_1),\ldots,f_n(H_n))=\sum_{k=0}^{d-1}\left(\int_{(\mb{P}^r)^{n+1}\to \mb{P}^r}f_1(H_1)\ldots f_n(H_n)\opc{\tau^{\le k+1}(M\oplus \ast)}\right)\hbar^k\\\in A^\bullet_{GL_{r+1}}(\mb{P}^r)[\hbar]\cong QH^\bullet_{GL_{r+1}}(\mb{P}^r).\end{aligned}$$</p>
-<p class="stacks-para">See KSI, where we exposit the geometric construction of the small equivariant quantum cohomology of $\mb{P}^r$, which parallels the above.</p>
+<h1 class="stacks-section-title">2.5. Class of an arbitrary orbit closure</h1>
+<p class="stacks-para">Observe that since we defined $\op{M}$ to be an $((r+1)d-1)$-dimensional algebraic cycle, it does not contain the data of $\ol{\im(\mu_M)}$ if $\dim (\ol{\im(\mu_M)}) < (r+1)d-1$. This in particular occurs if $M$ is not a ``connected'' matrix. Nevertheless, for $d \leq r+1$ we can still write $\ol{\im(\mu_M)}$ as the product of generalized matrix orbits as follows. First, by replacing $M$ with a subset of rows we may assume $\rk(M)=d$.</p>
+<p class="stacks-para">\begin{Def}
+We say that a $d \times n$ matrix $M$ is <em>connected</em> if $\rk(M) = d$ and there does not exist $\varnothing \subsetneq A \subsetneq \{1, \ldots, n\}$ such that $\rk_M(A) + \rk_M(\{1, \ldots, n\} \setminus A) = d$.
+\end{Def}
+\begin{Exam}
+Any direct sum $M_1\oplus M_2$ is not connected. If $M$ is a general $d\times n$ matrix, then $M$ is connected if and only if $d<n$.
+\end{Exam}</p>
+<p class="stacks-para">Observe that any $d \times n$ matrix $M$ of rank $d$ with no zero columns can be written as $$g (M_1 \oplus \ldots \oplus M_k) P$$ where each $M_i$ is connected, $P$ is a permutation matrix, and $g \in GL_d$.
+\begin{Prop}</p>
+<p>Let $\wt{x}_1, \ldots, \wt{x}_n \in \mb{P}^{d-1}$ be points not all contained in any hyperplane and let $M$ be the matrix with columns $x_1, \ldots, x_n$. Suppose that $M = M_1 \oplus \cdots \oplus M_k$ where each $M_i$ is connected.</p>
+<p class="stacks-para">Then if $d \leq r+1$, the $GL_{r+1}$-orbit closure $\ol{\im(\mu_M)}$ of $(\wt{x}_1, \ldots, \wt{x}_n) \in (\mb{P}^r)^n$ is equal to $\op{M_1} \times \ldots \times \op{M_k}$ and has the expected dimension $(r+1)d - k$. Hence $[\ol{\im(\mu_M)}]=\prod_{i=1}^k \opc{M_i}$.
+\end{Prop}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/41A4.html" class="stacks-tag-link">(41A4)</a></div>
+  <div class="stacks-env-body"><p>We will first prove the proposition for $k=1$. Viewing $\mb{P}^{d-1}$ as linearly embedded in $\mb{P}^r$, it suffices to show that any element stabilizing $(\wt{x}_1, \ldots, \wt{x}_n)$ stabilizes every point of $\mb{P}^{d-1}$. Indeed, given such a $g$, each $x_i$ is an eigenvector of $g$, so $K^{d} = \operatorname{Span} \{x_1, \ldots, x_n\}$ is a direct sum of eigenspaces of $g$. Since $M$ is connected, each $x_i$ has the same eigenvalue, so $g$ acts by a scalar on $K^d$, as desired.</p>
+<p>For any $k$, let $d_i$ be the number of columns of $M_i$. Then, if $A_i$  is a $(r+1)\times d_i$ matrix for $1 \leq i \leq n$, we have the equality of block matrices
+$$\begin{pmatrix}
+\vert &  & \vert \\
+A_1 & \cdots & A_k \\
+\vert &  & \vert
+\end{pmatrix}
+\begin{pmatrix}M_1 & & \\
+ & \ddots & \\
+&  &  M_k
+\end{pmatrix}
+= \begin{pmatrix}
+\vert &  & \vert \\
+A_1 M_1 & \cdots & A_k M_k \\
+\vert &  & \vert
+\end{pmatrix}.$$
+Hence $\ol{\im(\mu_M)} = \ol{\im(\mu_{M_1})} \times \ldots \times \ol{\im(\mu_{M_k})}$ and the result follows from the previous paragraph.</p></div>
+</div>
+<p class="stacks-para">By the above, to compute the equivariant class of any $GL_{r+1}$-orbit in $(\mb{P}^r)^n$ it suffices to compute the classes $\opc{M}$. From now on we work exclusively with $\op{M}$ instead of $\ol{\im(\mu_M)}$.</p>
+<p class="stacks-para">All of our theorems can be trivially extended to all matrices by defining $\op{M}$, $(\mu_M)_*$, $\mu_M^*$, and $\ol{\Gamma_M}$ to all be zero if $M$ has a zero column. However, we will not treat matrices with a zero column in our proofs.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -89,7 +120,7 @@ $$\begin{aligned}[M]_\hbar(f_1(H_1),\ldots,f_n(H_n))=\sum_{k=0}^{d-1}\left(\int_
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 2.5. The operation $[M]_\hbar$">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 2.5. Class of an arbitrary orbit closure">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S2.SS5.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>

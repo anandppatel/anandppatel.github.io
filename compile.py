@@ -137,6 +137,52 @@ def remove_latex_commands(text, command):
     return replace_latex_commands(text, command, lambda _argument: "")
 
 
+def split_latex_heading_blocks(text, command):
+    """Split text into [(title, content)] blocks for balanced LaTeX headings."""
+    matches = list(iter_latex_heading_spans(text, command))
+    blocks = []
+    for idx, (start, end, title) in enumerate(matches):
+        next_start = matches[idx + 1][0] if idx + 1 < len(matches) else len(text)
+        blocks.append((title.strip(), text[end:next_start]))
+    return text[:matches[0][0]] if matches else text, blocks
+
+
+def iter_latex_heading_spans(text, command):
+    """Yield (start, end, title) for \\section-like headings."""
+    heading_re = re.compile(r'\\' + re.escape(command) + r'\*?\s*\{')
+    pos = 0
+    while True:
+        m = heading_re.search(text, pos)
+        if not m:
+            break
+        i = m.end()
+        arg_start = i
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            yield m.start(), i, text[arg_start:i - 1]
+            pos = i
+        else:
+            pos = m.end()
+
+
+def replace_latex_heading_commands(text, command, callback):
+    """Replace \\section-like headings using a callback on the balanced title."""
+    pieces = []
+    pos = 0
+    for start, end, title in iter_latex_heading_spans(text, command):
+        pieces.append(text[pos:start])
+        pieces.append(callback(title.strip()))
+        pos = end
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
 def label_to_tag(label, existing_tags):
     """Deterministic 4-char hex tag from a label string.
     Uses SHA-256 and takes the first 4 hex chars (uppercase) that
@@ -551,10 +597,7 @@ def parse_auxiliary_labels(body):
 
 def parse_sections(body):
     """Split body into sections and subsections."""
-    # Regex handles one level of nested braces in section titles
-    # e.g. \section{Geometry of $\transvectant_{m,n}$}
-    sec_pattern = r'\\section\{((?:[^{}]|\{[^{}]*\})*)\}'
-    sec_splits = re.split(sec_pattern, body)
+    _, section_blocks = split_latex_heading_blocks(body, "section")
 
     section_labels = {}  # label -> {"number": "2", "title": "..."} etc.
 
@@ -567,10 +610,9 @@ def parse_sections(body):
     )
 
     def collect_heading_labels(text, base_number):
-        subsub_pattern = re.compile(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}')
-        for idx, hm in enumerate(subsub_pattern.finditer(text), start=1):
-            title = hm.group(1).strip()
-            label_region = text[hm.end():hm.end() + 300]
+        _, subsub_blocks = split_latex_heading_blocks(text, "subsubsection")
+        for idx, (title, content) in enumerate(subsub_blocks, start=1):
+            label_region = content[:300]
             label_m = re.search(r'\\label\{([^}]+)\}', label_region)
             if label_m:
                 section_labels[label_m.group(1)] = {
@@ -579,18 +621,12 @@ def parse_sections(body):
                 }
 
     sections = []
-    sec_num = 0
-    for i in range(1, len(sec_splits), 2):
-        sec_num += 1
-        sec_title = sec_splits[i].strip()
-        sec_content = sec_splits[i+1] if i+1 < len(sec_splits) else ""
+    for sec_num, (sec_title, sec_content) in enumerate(section_blocks, start=1):
 
         # Split subsections FIRST, then extract labels per-piece
-        sub_pattern = r'\\subsection\{((?:[^{}]|\{[^{}]*\})*)\}'
-        sub_splits = re.split(sub_pattern, sec_content)
+        pre_raw, subsection_blocks = split_latex_heading_blocks(sec_content, "subsection")
 
         # Extract section labels from pre-subsection content
-        pre_raw = sub_splits[0]
         for lm in re.finditer(r'\\label\{([^}]+)\}', pre_raw[:300]):
             label = lm.group(1)
             if not any(label.startswith(p) for p in theorem_label_prefixes):
@@ -599,12 +635,7 @@ def parse_sections(body):
         pre_content = re.sub(r'\\label\{(?:sec|section|subsec|subsection|sub:)[^}]*\}', '', pre_raw)
 
         subsections = []
-        sub_num = 0
-        for j in range(1, len(sub_splits), 2):
-            sub_num += 1
-            sub_title = sub_splits[j].strip()
-            sub_content = sub_splits[j+1] if j+1 < len(sub_splits) else ""
-
+        for sub_num, (sub_title, sub_content) in enumerate(subsection_blocks, start=1):
             # Extract subsection labels from the beginning of content
             for lm in re.finditer(r'\\label\{([^}]+)\}', sub_content[:300]):
                 label = lm.group(1)
@@ -1179,8 +1210,11 @@ def tex_to_html(tex):
                itemize_replace, s, flags=re.DOTALL)
 
     # \subsubsection{...} → inline heading
-    s = re.sub(r'\\subsubsection\*?\{((?:[^{}]|\{[^{}]*\})*)\}',
-               r'<h3 class="stacks-subsections-heading">\1</h3>', s)
+    s = replace_latex_heading_commands(
+        s,
+        "subsubsection",
+        lambda title: f'<h3 class="stacks-subsections-heading">{tex_to_html(title)}</h3>',
+    )
 
     # \customlabel{key}{shown-value} should display just its shown value.
     s = re.sub(r'\\customlabel\{[^}]+\}\{([^}]+)\}', r'\1', s)

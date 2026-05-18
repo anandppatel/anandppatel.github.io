@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$ — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degeneration II: Acquiring nodes and cusps</a> / <span>6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$</span></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$</h1>
+<p class="stacks-para">Next, we
+compute the degree of the orbit closure
+$\P \Orb(C_{\on{flex}}[j]) \subset \P \on{Sym}^{d}V^{\vee}$, where $j$
+is <em>general</em>.  Again, although this can be computed in principle
+using the algorithm of Aluffi and Faber [AF00b], we have decided
+to proceed independently, providing a further check.</p>
+<p class="stacks-para">First, we record the analogue to <a href="/papers/equivariant-degenerations/tag/13BA.html" class="stacks-ref-link">Lemma&nbsp;6.8 <span class="stacks-ref-tag">[13BA]</span></a>.</p>
+<div class="stacks-lemma" id="lem-Cflexpoly">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.16.</strong> <a href="../tag/441D.html" class="stacks-tag-link">(441D)</a></div>
+  <div class="stacks-env-body"><p>As a function of $d$, the degree of the orbit
+  closure $\P \Orb(C_{\on{flex}}[j])$, $j$ general, is a quadratic
+  polynomial $a + b\cdot(d-3) + c \cdot (d-3)^{2}$, where the
+  coefficients $a,b,c$ are the answers to the following enumerative
+  problems:
+$$\begin{aligned}a &= 9\cdot 12\# \{\textrm{Cubics through 9 points} \}= 108\\
+  b &= 12\cdot \binom{8}{1}\# \{\text{Cubics through 8 points with flex line containing a fixed 9th point}\}\\
+  c &= 12\cdot \binom{8}{2} \#\{\text{Cubics through 7 points flexed at a specified line}\}\end{aligned}$$</p></div>
+</div>
+<p class="stacks-para">\begin{comment}
+The 12 comes from the fact that specified j-invariant is equivalent to 12 times point condition.
+For b, use Hesse pencil. Each base point of the Hesse pencil is a common flex, and the tangent lines sweep on P^2 once.
+For c, the net of cubics restricts to a net on L, this maps L to P^2 as a nodal cubic, and the three flexes correspond to triple points in this net on L.
+\end{comment}</p>
+<div class="stacks-proof" id="proof-Cflex">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7216.html" class="stacks-tag-link">(7216)</a></div>
+  <div class="stacks-env-body"><p>Recall the schemes $\mathcal{W}$ and $\mathcal{W}_j$ from
+  (6.4), and the classes $H_{\on{curve}}$ and $H_{\on{line}}$
+  from <a href="/papers/equivariant-degenerations/tag/5399.html" class="stacks-ref-link">Definition&nbsp;6.13 <span class="stacks-ref-tag">[5399]</span></a>. The variety $\mathcal{W}$ affords the natural map
+  $$\varphi: \mathcal{W} \to \P \on{Sym}^{d}V^{\vee}$$
+  defined by sending $(C,L,p)$ to the curve $C \cup (d-3)L$, and the
+  pullback of a hyperplane under this map has class
+  $H_{\on{curve}} + (d-3)H_{\on{line}}$.</p>
+<p>  Our objective is to calculate the degree of the image
+  $\varphi(\mathcal{W}_{j})$, as this is precisely the orbit closure
+  of $C_{\on{flex}}[j]$.  Thus, it suffices to compute
+  $\int_{\mathcal{W}}(H_{\on{curve}}+(d-3)H_{\on{line}})^{8} \cdot
+  [W_j]$ in the Chow ring of $\mathcal{W}$.</p>
+<p>  Since
+  $H_{\on{line}}^{3}=0$, we get that the degree of the orbit closure
+  of $C_{\on{flex}}[j]$ is:
+  $$\begin{aligned}\int_{\mathcal{W}} \left(H_{\on{curve}}^{8}\cdot [\mathcal{W}_j] + 8(d-3)H_{\on{curve}}^{7}H_{\on{line}}\cdot [\mathcal{W}_j] + {8 \choose 2}(d-3)^{2}H_{\on{curve}}^{6}H_{\on{line}}^{2}\cdot [\mathcal{W}_j] \right).\end{aligned}$$</p>
+<p>  Next, we observe that the divisor class of $\mathcal{W}_j$ is
+  $12 H_{\on{curve}}$, because the degree of the divisorial locus in
+  $\P \on{Sym}^{3}V^{\vee}$ consisting of the closure of plane cubics
+  with prescribed generic $j$-invariant is $12$.  Therefore, the
+  degree of the orbit closure of $C_{\on{flex}}[j]$ is
+  $$\begin{aligned}12 \int_{\mathcal{W}}\left( H_{\on{curve}}^{9} + 8(d-3)H_{\on{curve}}^{8}H_{\on{line}} + {8 \choose 2}(d-3)^{2}H_{\on{curve}}^{7}H_{\on{line}}^{2} \right).\end{aligned}$$</p>
+<p>  The lemma now follows by interpreting the three intersection numbers
+  $$\int_{\mathcal{W}}H_{\on{curve}}^{9}, \int_{\mathcal{W}}
+    H_{\on{curve}}^{8}H_{\on{line}}, \int_{\mathcal{W}}
+    H_{\on{curve}}^{7}H_{\on{line}}^{2}$$ as the quantities appearing
+  in the descriptions of $a, b$ and $c$ in the statement of the lemma.</p></div>
+</div>
+<p class="stacks-para">Our next task is to determine the coefficients $a,b,c$ in
+  <a href="/papers/equivariant-degenerations/tag/441D.html" class="stacks-ref-link">Lemma&nbsp;6.16 <span class="stacks-ref-tag">[441D]</span></a>.</p>
+<div class="stacks-lemma" id="lem-bCflex">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.17.</strong> <a href="../tag/A90F.html" class="stacks-tag-link">(A90F)</a></div>
+  <div class="stacks-env-body"><p>There are $9$ cubic curves passing through eight general points
+    and having a flex line containing a general fixed ninth point,
+    i.e. $$\int_{\mathcal{W}}H_{\on{curve}}^{8}H_{\on{line}} = 9.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/ED77.html" class="stacks-tag-link">(ED77)</a></div>
+  <div class="stacks-env-body"><p>Let $\Lambda \subset \P \on{Sym}^{3}V^{\vee}$ denote the Hesse
+    pencil
+    $$s(X^{3} + Y^3 + Z^3) + tXYZ = 0, \, [s:t] \in \P^1.$$ Recall
+    that the $9$ base points of the Hesse pencil consist of the $9$
+    flexes of every smooth cubic in $\Lambda$.  At each base point $p$
+    of the pencil, the flex lines of the cubic curves in the pencil in
+    sweep out a pencil of lines in $\P V^{\vee}$.  Therefore, a
+    general point $x$ in $\P^{2}$ is contained in exactly $9$ flex
+    lines of members of the Hesse pencil, one per basepoint.</p>
+<p>    Thus, if we use the pullback of the Hesse pencil $\Lambda$ to
+    represent the curve class $H_{\on{curve}}^{8}$ on $\mathcal{W}$,
+    we deduce the lemma.</p></div>
+</div>
+<div class="stacks-lemma" id="lem-cCflex">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.18.</strong> <a href="../tag/8AE0.html" class="stacks-tag-link">(8AE0)</a></div>
+  <div class="stacks-env-body"><p>There are $3$ cubic curves passing through $7$
+    general points and possessing a particular line as flex line,
+    i.e. $$\int_{\mathcal{W}}H_{\on{curve}}^{7}H_{\on{line}}^{2}=3.$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4CD6.html" class="stacks-tag-link">(4CD6)</a></div>
+  <div class="stacks-env-body"><p>Let $L \subset \P V$ be a fixed line, and suppose
+    $p_{1}, ..., p_{7} \in \P V$ are general points.  Then the net of
+    cubic curves containing the points $p_{i}$ restricts to a general
+    net in the linear system $|\mc{O}_{L}(3)|$.  A general such net
+    maps $L$ to a nodal cubic in $\P^{2}$. This nodal cubic has
+    exactly $3$ (smooth) flex points.  The points on $L$ corresponding
+    to these flex points, in turn, provide the solutions to the
+    enumerative problem in the statement of the lemma.</p></div>
+</div>
+<div class="stacks-lemma" id="cor-predegreeCflex">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.19.</strong> <a href="../tag/D717.html" class="stacks-tag-link">(D717)</a></div>
+  <div class="stacks-env-body"><p>The degree of $\P \Orb(C_{\on{flex}}[j])$, $j$-general, is
+    $12 \left(9 + 72(d-3) + 84(d-3)^2\right)$. The predegree of
+    $C_{\on{flex}}[j]$ is $24 \left(9 + 72(d-3) + 84(d-3)^2\right)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BCD1.html" class="stacks-tag-link">(BCD1)</a></div>
+  <div class="stacks-env-body"><p>Combine <a href="/papers/equivariant-degenerations/tag/441D.html" class="stacks-ref-link">Lemma&nbsp;6.16 <span class="stacks-ref-tag">[441D]</span></a>, <a href="/papers/equivariant-degenerations/tag/A90F.html" class="stacks-ref-link">Lemma&nbsp;6.17 <span class="stacks-ref-tag">[A90F]</span></a>,
+    <a href="/papers/equivariant-degenerations/tag/8AE0.html" class="stacks-ref-link">Lemma&nbsp;6.18 <span class="stacks-ref-tag">[8AE0]</span></a>. The second statement on the predegree follows
+    from the fact that the curve $C_{\on{flex}}[j]$ has an order $2$
+    automorphism group, since the generic elliptic curve has an order
+    $2$ automorphism group.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.SS6.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>3.2. Families of holomorphic vector bundles with connection — The rank two $p$-curvature conjecture\\on generic curves</title>
+  <title>3.2. Setup — The rank two $p$-curvature conjecture\\on generic curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
@@ -64,85 +64,26 @@
     <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture\\on generic curves</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Good reduction at the special fiber</a> / <span>3.2. Families of holomorphic vector bundles with connection</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Good reduction at the special fiber</a> / <span>3.2. Setup</span></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">3.2. Families of holomorphic vector bundles with connection</h1>
-<p class="stacks-para"></p>
-<p class="stacks-para">Here we spell out for the reader standard constructions and results involving families of vector bundles with connection. For a reference, see [6].</p>
-<p class="stacks-para">Our usual setting is: $f: X \to B$ is a smooth morphism between smooth complex manifolds with $d$-dimensional fibers, and $p: B \to X$ is a section.  Further, $(V, \nabla)$ is a rank $r$ holomorphic vector bundle with integrable connection relative to $f$ on $X$.</p>
-<p class="stacks-para">When the family $f$ is locally (on $B$) homeomorphic to a product, we review the construction of the corresponding holomorphic family of monodromy representations attached to $(V,\nabla)$.  We  assume that the reader is familiar with the basic correspondence between locally constant sheaves on a manifold and representations of its fundamental group.</p>
-<p class="stacks-para">The essential ingredient is:</p>
-<div class="stacks-lemma" id="Cauchy-Kowalewski">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;3.9.</strong> <a href="../tag/F00A.html" class="stacks-tag-link">(F00A)</a></div>
-  <div class="stacks-env-body"><p>The sheaf of solutions $\ker \nabla$ is locally (in the Euclidean topology on $X$) isomorphic to the inverse-image sheaf
-    $f^{-1}\Oo_{B}^{r}$.</p></div>
+<h1 class="stacks-section-title">3.2. Setup</h1>
+<p class="stacks-para">The proof of Theorem <a href="/papers/rank-two-p-curvature/tag/2756.html" class="stacks-ref-link">3.5 <span class="stacks-ref-tag">[2756]</span></a> goes along the lines of the arguments used in [20, Lemma 3.3, Proposition 3.4]. We first set up our notation. Let $r$ be the rank of $V$. The connection matrix $A$ (of $\nabla(D)$) with respect to the cyclic basis $\be$ has the form
+$$A=
+\left(
+\begin{array}{cccc}
+&&& f_0\\
+1& &&f_1\\
+&\ddots & &\vdots\\
+&&1&f_{r-1}
+\end{array}
+\right)$$
+In order to prove Theorem <a href="/papers/rank-two-p-curvature/tag/2756.html" class="stacks-ref-link">3.5 <span class="stacks-ref-tag">[2756]</span></a>, it suffices to prove that the $f_i \in S[1/q]$ all have non-negative $q$-adic valuation. Let $\fp \subset \Oo_k$ (with associated rational prime $p$) be such that: (1) $p > r$, (2) the $q$-adic valuations of the $f_i$ stay the same modulo $\fp$, and (3) the $p$-curvature of $(V,\nabla)$ vanishes modulo $\fp$. It then suffices to prove that the reductions of the $f_i$ modulo such primes $\fp$ have non-negative $q$-adic valuation.</p>
+<p class="stacks-para">To that end, we work modulo $\fp$ for the rest of the proof, and we assume for sake of contradiction that some $f_i \in S[1/q]$ has negative $q$-adic valuation. We localize $R$ and $S$ at $(q)$, and replace these rings by their $q$-adic completions. Then, the map $C \rightarrow B$ is replaced by $\Spec \kappa_C[[q]] \rightarrow \Spec \kappa_B[[q]]$, where $\kappa_B \subset \kappa_C$ are fields of characteristic $p$. The derivation $D$ naturally extends to a $q$-integral derivation $D \in \Der(\kappa_C[[q]] / \kappa_B[[q]])$. And finally, the connection $\nabla$ yields a map $\nabla(D): \kappa_C((q))^r \rightarrow \kappa_C((q))^r$, with $\nabla(D) (v) = Av + D(v)$, where $A$ is as in Equation (connectionmatrix). <a href="/papers/rank-two-p-curvature/tag/2756.html" class="stacks-ref-link">Theorem&nbsp;3.5 <span class="stacks-ref-tag">[2756]</span></a> immediately follows from the following proposition:</p>
+<div class="stacks-lemma" id="reduceto">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.6.</strong> <a href="../tag/C127.html" class="stacks-tag-link">(C127)</a></div>
+  <div class="stacks-env-body"><p>Notation as above. Suppose that one of the entries of $A$ has negative $q$-adic valuation. Then, $\nabla(D)^p \neq \nabla(D^p)$, i.e. the $p$-curvature of $\nabla$ doesn't vanish.</p></div>
 </div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BCF5.html" class="stacks-tag-link">(BCF5)</a></div>
-  <div class="stacks-env-body"><p>This statement is contained in the proof of [6, Theorem 2.23]. It is known as the Cauchy-Kowalewski theorem
-    on existence and uniqueness of solutions to certain types of differential
-    equations.</p></div>
-</div>
-<div class="stacks-lemma" id="">
-  <div class="stacks-env-head"><strong>Corollary&nbsp;3.10.</strong> <a href="../tag/BB42.html" class="stacks-tag-link">(BB42)</a></div>
-  <div class="stacks-env-body"><p>Let $i : X_{b} \hookrightarrow X$ denote the inclusion of the fiber
-    over $b \in B$. Then
-    the sheaf $i^{-1}\ker \nabla$ is a locally constant sheaf of
-    free rank $r$ $\Oo_{B,b}$-modules on $X_{b}$ (in the Euclidean topology).</p></div>
-</div>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Relative local systems and monodromy representations</h3></p>
-<p class="stacks-para">Throughout this section, let $f: X \to B$ be a smooth morphism between complex manifolds, which is locally on $B$ homeomorphic to a product. Furthermore, assume $p: B \to X$ is a section, and suppose the fundamental groups of the fibers of the family are finitely generated.  All sheaves considered here are in the analytic topology.</p>
-<div class="stacks-definition" id="">
-  <div class="stacks-env-head"><strong>Definition&nbsp;3.11.</strong> <a href="../tag/FDD9.html" class="stacks-tag-link">(FDD9)</a></div>
-  <div class="stacks-env-body"><p>A <strong>$f$-local system</strong> of rank $r$ on $X$ is a sheaf of $f^{-1}\Oo_{B}$-modules on $X$ which is locally (in the Euclidean topology) isomorphic to $(f^{-1}\Oo_{B})^{r}$.</p>
-<p>	If $M$ is an $f$-local system, we let $p^{*}M$ denote the rank $r$ locally free sheaf of $\Oo_{B}$-modules $p^{-1}(M)$.</p></div>
-</div>
-<p class="stacks-para">We define $\underline{\pi_{1}(X/B)}$ to be the locally constant sheaf on $B$ whose stalk at a point $b \in B$ is $\pi_{1}(X_{b}, p(b))$.</p>
-<div class="stacks-lemma" id="prop-ForwardCorrespondence">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.12.</strong> <a href="../tag/8EAA.html" class="stacks-tag-link">(8EAA)</a></div>
-  <div class="stacks-env-body"><p>A $f$-local system $M$ on $X$  naturally defines a homomorphism of sheaves of groups: $\rho_{M}: \underline{\pi_{1}(X/B)} \to \Aut(p^{*}M)$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/01DD.html" class="stacks-tag-link">(01DD)</a></div>
-  <div class="stacks-env-body"><p>If $b \in B$ is any point and $i_{b}: X_{b} \hookrightarrow X$ is the inclusion of the fiber, we obtain a locally constant sheaf $i^{-1}(M)$ of $\mathcal{O}_{B,b}$-modules on $X_{b}$. The correspondence between locally constant sheaves and representations of $\pi_{1}(X_{b},p(b))$ on the stalk $(p^{*}(M))_{b}$  provides a canonical  representation
-	$$\begin{aligned}\rho_{b}: \pi_{1}(X_{b},p(b)) \to \Aut(p^{*}M)_{b}\end{aligned}$$
-	Since the above fundamental group is finitely generated, there exists an open neighborhood $U \subset B$ of $b$ and a representation $\rho_{U}: \pi_{1}(X_{b},p(b)) \to \Aut(p^{*}M)(U)$ whose germ is $\rho_{b}$.  </p>
-<p>	The representations $\rho_{U}$ are clearly compatible on intersections, and collectively define $\rho_{M}$.</p></div>
-</div>
-<p class="stacks-para">If $M$ is a local system relative to $f$, we call $\rho_{M}$ the <strong>monodromy representation of $M$</strong>.</p>
-<div class="stacks-lemma" id="prop-BackwardCorrespondence">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.13.</strong> <a href="../tag/496D.html" class="stacks-tag-link">(496D)</a></div>
-  <div class="stacks-env-body"><p>Let $W$ be a vector bundle on $B$, and $\rho: \underline{\pi_{1}(X/B)} \to \Aut(W)$ a homomorphism of sheaves of groups. Then there exists a unique $f$-local system $M$ such that $\rho_{M} = \rho$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5580.html" class="stacks-tag-link">(5580)</a></div>
-  <div class="stacks-env-body"><p>The $f$-local system $M$ is constructed as follows.  Let $\{U_{\alpha}\}$ be a cover of $B$ consisting of contractible open sets and such that every pairwise and triple intersection are also contractible, and let $\pi_{\alpha}: \tilde{X}_{\alpha} \to X_{\alpha} \to U_{\alpha}$ denote the universal covers of $X_{\alpha}$ mapping down to $U_{\alpha}$.  Then the sheaf $\pi^{-1}_{\alpha}(W)$ inherits, through $\rho_{U_{\alpha}}$, an action of $\pi_{1}(X_{\alpha},p_{\alpha})$ which is compatible with the action of $\pi_{1}(X_{\alpha},p_{\alpha})$ on the universal cover $\tilde{X}_{\alpha}$. Thus, the sheaf descends to a sheaf $M_{\alpha}$ on $X_{\alpha}$, which is locally on $X_{\alpha}$ isomorphic to $f^{-1}(W)$ by construction. </p>
-<p>    Next, over an intersection $U_{\alpha \beta} = U_{\alpha} \cap U_{\beta}$ we get natural sheaf isomorphisms $\phi_{\alpha \beta}: M_{\alpha}|_{X_{\alpha \beta}} \to M_{\beta}|_{X_{\alpha \beta}}$ by noticing that the identity map $X_{\alpha \beta} \times \pi_{\alpha}^{-1}(W|_{U_{\alpha}})|_{\alpha \beta} \to X_{\alpha \beta} \times \pi_{\beta}^{-1}(W|_{U_{\beta}})|_{\alpha \beta}$ is equivariant with respect to the action of $\pi_{1}(X_{\alpha}, p_{\alpha})$ on the left and $\pi_{1}(X_{\beta}, p_{\beta})$ on the right. (Note that the existence of the section $p$ provides  canonical inclusions of the universal cover $\tilde{X}_{\alpha \beta}$ into the universal covers $\tilde{X}_{\alpha}$ and $\tilde{X}_{\beta}$.) The equivariance comes from the agreement of the restrictions of $\rho_{U_{\alpha}}$ and $\rho_{U_{\beta}}$ to $U_{\alpha \beta}$.</p>
-<p>    Similarly, on triple intersections we get that the cocycle condition $\phi_{\beta \gamma} \circ \phi_{\alpha \beta} = \phi_{\alpha \gamma}$ holds automatically.</p></div>
-</div>
-<p class="stacks-para">To summarize, the content of Propositions <a href="/papers/rank-two-p-curvature/tag/8EAA.html" class="stacks-ref-link">3.12 <span class="stacks-ref-tag">[8EAA]</span></a> and <a href="/papers/rank-two-p-curvature/tag/496D.html" class="stacks-ref-link">3.13 <span class="stacks-ref-tag">[496D]</span></a> is that the category of $f$-local systems is equivalent to the category of monodromy representations.</p>
-<div class="stacks-lemma" id="proposition-extension">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;3.14.</strong> <a href="../tag/B670.html" class="stacks-tag-link">(B670)</a></div>
-  <div class="stacks-env-body"><p>Let $i : C \hookrightarrow X$ be a complex submanifold containing the section $p$ which is locally topologically trivial over $B$, with the property that the induced map $\underline{\pi_{1}(C/B)} \to \underline{\pi_{1}(X/B)}$ is surjective.</p>
-<p>         If $L$ is a $f$-local system on $C$ which, over a dense open subset $U \subset B$ is the inverse image of an $f$-local system $M_{U}$ on $X_{U}$,  then $M_{U}$ extends to an $f$-local system $M$ on $X$.</p></div>
-</div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8AB9.html" class="stacks-tag-link">(8AB9)</a></div>
-  <div class="stacks-env-body"><p>The $f$-local system $L$ gives, by Proposition <a href="/papers/rank-two-p-curvature/tag/8EAA.html" class="stacks-ref-link">3.12 <span class="stacks-ref-tag">[8EAA]</span></a>, a monodromy representation
-    $$\begin{aligned}\rho_{L}: \underline{\pi_{1}(C/B)} \to \Aut(p^{*}{L})\end{aligned}$$
-    which factors through $\underline{\pi_{1}(X/B)}$ over the dense open subset $U \subset B$ by hypothesis. By continuity, $\rho_{L}$ must factor through $\underline{\pi_{1}(X/B)}$ on all of $B$, and therefore defines (by Proposition  <a href="/papers/rank-two-p-curvature/tag/496D.html" class="stacks-ref-link">3.13 <span class="stacks-ref-tag">[496D]</span></a>) the required $f$-local system $M$.</p></div>
-</div>
-<p class="stacks-para">We make the following remark for future use:</p>
-<div class="stacks-commentary" id="rem-nottrivial">
-  <div class="stacks-env-head"><strong>Remark&nbsp;3.15.</strong> <a href="../tag/7DB8.html" class="stacks-tag-link">(7DB8)</a></div>
-  <div class="stacks-env-body"><p>If $f:X \to B$ is a smooth morphism between complex varieties with
-  section $p:B \to X$ and if $b \in B$ is a any point, then the
-  discussion in this section attaches to a vector bundle with
-  integrable connection $(V,\nabla)$ on $X$ a monodromy representation
-  $$\begin{aligned}\rho: \pi_1(X_b, p(b)) \to \Aut p^{*}(V)_{b}\end{aligned}$$
-  This local monodromy representation exists irrespective of any
-  hypotheses on the topological triviality of the family $f$.</p></div>
-</div>
+<p class="stacks-para">The idea of the proof of Proposition <a href="/papers/rank-two-p-curvature/tag/C127.html" class="stacks-ref-link">3.6 <span class="stacks-ref-tag">[C127]</span></a> is to argue that $\nabla(D)^p(w) \neq \nabla(D^p)(w)$ for an appropriately chosen eigenvector $w$ of $A$, by showing that the $q$-adic absolute value of a component of the vector $\nabla(D)^p(w)$ is strictly greater than its counterpart in $\nabla(D^p)(w)$. The proof of Proposition <a href="/papers/rank-two-p-curvature/tag/C127.html" class="stacks-ref-link">3.6 <span class="stacks-ref-tag">[C127]</span></a> will be provided after two lemmas.</p>
 
 <hr>
 <div class="stacks-comments">
@@ -152,7 +93,7 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture\\on generic curves — 3.2. Families of holomorphic vector bundles with connection">
+      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture\\on generic curves — 3.2. Setup">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/rank-two-p-curvature/section/S3.SS2.html">
       <input type="hidden" name="_captcha" value="true">
       <label for="name">Name:</label>
