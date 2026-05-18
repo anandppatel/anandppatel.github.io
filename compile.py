@@ -176,6 +176,66 @@ def replace_latex_commands(text, command, callback, allow_optional=False):
     return "".join(pieces)
 
 
+def replace_latex_optional_arg_commands(text, command, callback):
+    """Replace \\command[optional]{...} commands with balanced braces."""
+    pieces = []
+    pos = 0
+    needle = "\\" + command
+    while True:
+        start = text.find(needle, pos)
+        if start == -1:
+            break
+        i = start + len(needle)
+        if i < len(text) and (text[i].isalpha() or text[i] == "*"):
+            pos = i
+            continue
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+
+        optional = None
+        if i < len(text) and text[i] == "[":
+            opt_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            if depth:
+                pos = start + len(needle)
+                continue
+            optional = text[opt_start:i - 1]
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = start + len(needle)
+            continue
+
+        arg_start = i + 1
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth:
+            pos = start + len(needle)
+            continue
+
+        pieces.append(text[pos:start])
+        pieces.append(callback(optional, text[arg_start:i - 1]))
+        pos = i
+
+    pieces.append(text[pos:])
+    return "".join(pieces)
+
+
 def remove_latex_commands(text, command):
     """Remove full \\command{...} commands with balanced braces."""
     return replace_latex_commands(text, command, lambda _argument: "")
@@ -1884,6 +1944,18 @@ def tex_to_html(tex):
     # and labels as plain HTML around any rendered diagrams or tables.
     s = re.sub(r'\\begin\{(?:figure|table)\}(?:\[[^\]]*\])?', '', s)
     s = re.sub(r'\\end\{(?:figure|table)\}', '', s)
+    s = replace_latex_optional_arg_commands(
+        s,
+        "subfigure",
+        lambda caption, body: (
+            body.strip()
+            + (
+                '\n<div class="stacks-caption stacks-subcaption">'
+                f'{tex_to_html(caption.strip())}</div>'
+                if caption and caption.strip() else ''
+            )
+        ),
+    )
     s = re.sub(r'\\begin\{subfigure\}(?:\[[^\]]*\])?(?:\{[^{}]*\})?', '', s)
     s = re.sub(r'\\end\{subfigure\}', '', s)
     s = re.sub(r'\\centering\b', '', s)
@@ -1999,6 +2071,8 @@ def tex_to_html(tex):
     # and commands such as \text{\sl ...} may occur inside formulas.  HTML tags
     # inside a MathJax delimiter break rendering and expose literal "$$".
     s, math_fragments = protect_latex_math_fragments(s)
+    s = re.sub(r'\\(?:quad|qquad)\b', ' ', s)
+    s = re.sub(r'\\hspace\*?(?:\[[^\]]*\])?\{[^{}]*\}', ' ', s)
 
     s = replace_latex_text_command(s, "emph", "em")
     s = replace_latex_text_command(s, "textit", "em")
