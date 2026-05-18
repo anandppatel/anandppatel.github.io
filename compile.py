@@ -239,6 +239,113 @@ def replace_latex_two_arg_commands(text, command, callback, allow_optional=False
     return "".join(pieces)
 
 
+def parse_latex_macro_definitions(text):
+    """Yield simple \\newcommand-style macro definitions from LaTeX source."""
+    command_re = re.compile(r'\\(?:new|renew|provide)command\*?(?=\s|\\|\{)')
+    pos = 0
+    while True:
+        match = command_re.search(text, pos)
+        if not match:
+            break
+        i = match.end()
+        while i < len(text) and text[i].isspace():
+            i += 1
+
+        if i < len(text) and text[i] == "{":
+            name_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "{":
+                    depth += 1
+                elif text[i] == "}":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                pos = match.end()
+                continue
+            raw_name = text[name_start:i - 1].strip()
+        elif i < len(text) and text[i] == "\\":
+            name_start = i
+            i += 1
+            while i < len(text) and (text[i].isalpha() or text[i] == "@"):
+                i += 1
+            raw_name = text[name_start:i]
+        else:
+            pos = match.end()
+            continue
+
+        name_m = re.match(r'\\([A-Za-z@]+)$', raw_name)
+        if not name_m:
+            pos = match.end()
+            continue
+        name = name_m.group(1)
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        nargs = None
+        if i < len(text) and text[i] == "[":
+            opt_start = i + 1
+            i += 1
+            depth = 1
+            while i < len(text) and depth:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            if depth != 0:
+                pos = match.end()
+                continue
+            opt = text[opt_start:i - 1].strip()
+            if opt.isdigit():
+                nargs = int(opt)
+
+        while i < len(text) and text[i].isspace():
+            i += 1
+        if i >= len(text) or text[i] != "{":
+            pos = match.end()
+            continue
+        def_start = i + 1
+        i += 1
+        depth = 1
+        while i < len(text) and depth:
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+            i += 1
+        if depth != 0:
+            pos = match.end()
+            continue
+
+        yield {
+            "start": match.start(),
+            "end": i,
+            "name": name,
+            "nargs": nargs,
+            "definition": text[def_start:i - 1],
+        }
+        pos = i
+
+
+def remove_latex_macro_definitions(text):
+    """Remove visible macro definitions from body text."""
+    pieces = []
+    pos = 0
+    for macro in parse_latex_macro_definitions(text):
+        pieces.append(text[pos:macro["start"]])
+        pos = macro["end"]
+    pieces.append(text[pos:])
+    text = "".join(pieces)
+    text = re.sub(
+        r'\\DeclareMathOperator\*?\s*\{?\\\w+\}?\s*\{(?:[^{}]|\{[^{}]*\})*\}',
+        '',
+        text,
+    )
+    return text
+
+
 def split_latex_heading_blocks(text, command):
     """Split text into [(title, content)] blocks for balanced LaTeX headings."""
     matches = list(iter_latex_heading_spans(text, command))
@@ -313,12 +420,7 @@ def label_to_tag(label, existing_tags):
 # ============================================================
 
 def parse_preamble_macros(tex_source):
-    """Extract LaTeX macro definitions from the preamble for MathJax."""
-    m = re.search(r'\\begin\{document\}', tex_source)
-    if not m:
-        return {}
-    preamble = tex_source[:m.start()]
-
+    """Extract LaTeX macro definitions from the source for MathJax."""
     macros = {}
     non_math_macros = {
         # Presentation macros used by the PDF source, not MathJax macros.
@@ -327,33 +429,28 @@ def parse_preamble_macros(tex_source):
 
     # \newcommand{\foo}{definition} or \newcommand{\foo}[n]{definition}
     # \renewcommand{\foo}{definition} or \renewcommand{\foo}[n]{definition}
-    # Handle nested braces up to 2 levels deep in the definition
-    for match in re.finditer(
-        r'\\(?:new|renew|provide)command\s*\{?\\(\w+)\}?'
-        r'(?:\[(\d+)\])?'
-        r'\s*\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}',
-        preamble
-    ):
-        name = match.group(1)
-        nargs = match.group(2)
-        definition = normalize_geometric_alphabets(match.group(3))
+    for macro in parse_latex_macro_definitions(tex_source):
+        name = macro["name"]
+        nargs = macro["nargs"]
+        definition = normalize_geometric_alphabets(macro["definition"])
         # Skip non-math macros
         if name in ('labelitemi',) or name in non_math_macros:
             continue
         if any(token in definition for token in (
             "\n", "\\begin", "\\end", "\\noindent", "\\vspace", "\\hspace",
-            "tcolorbox", "minipage", "flushleft", "flushright",
+            "\\errmessage", "\\renewcommand", "tcolorbox", "minipage",
+            "flushleft", "flushright",
         )):
             continue
         if nargs:
-            macros[name] = [definition, int(nargs)]
+            macros[name] = [definition, nargs]
         else:
             macros[name] = definition
 
     # \DeclareMathOperator{\foo}{text} — handles nested braces
     for match in re.finditer(
         r'\\DeclareMathOperator\s*\{?\\(\w+)\}?\s*\{((?:[^{}]|\{[^{}]*\})*)\}',
-        preamble
+        tex_source
     ):
         name = match.group(1)
         text = normalize_geometric_alphabets(match.group(2).strip())
@@ -1551,6 +1648,7 @@ def tex_to_html(tex):
     # Text macros from the source preamble which are not MathJax macros.
     s = s.replace('\\Aletheia', '<em>Aletheia</em>')
     s = re.sub(r'\\texorpdfstring\{((?:[^{}]|\{[^{}]*\})*)\}\{(?:[^{}]|\{[^{}]*\})*\}', r'\1', s)
+    s = remove_latex_macro_definitions(s)
 
     # --- Block-level environments (before inline processing) ---
 
@@ -2390,7 +2488,7 @@ def compile_paper(tex_path):
 
     # Extract MathJax macros from preamble
     macros = parse_preamble_macros(tex_source)
-    print(f"  Extracted {len(macros)} MathJax macros from preamble")
+    print(f"  Extracted {len(macros)} MathJax macros from source")
 
     # Parse citations and bibliography
     bibliography = parse_bibliography(meta, out_dir, tex_source)
