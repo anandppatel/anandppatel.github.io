@@ -50,6 +50,7 @@ import tempfile
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 TAG_REGISTRY_PATH = os.path.join(SITE_ROOT, "papers", "tag-registry.json")
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
+COMMENTS_ASSET_VERSION = "comments-20260519"
 TEX_RENDER_CONTEXT = {
     "preamble": "",
     "tikzset": "",
@@ -2482,6 +2483,8 @@ def head(title, paper_title, depth=0, macros=None):
   <title>{document_title}</title>
   <link rel="stylesheet" href="{prefix}../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260517">
+  <script src="{prefix}../../comments-config.js?v={COMMENTS_ASSET_VERSION}" defer></script>
+  <script src="{prefix}../../comments.js?v={COMMENTS_ASSET_VERSION}" defer></script>
   <script>
     window.MathJax = {{
       loader: {{ load: ['[tex]/bboldx'] }},
@@ -2734,20 +2737,35 @@ def wrap_content_html(content, paragraph_class=None):
 def comment_form(page_label, return_url, paper_title):
     subject = html_attr(f"Comment on {paper_title} — {page_label}")
     next_url = html_mod.escape(return_url, quote=True)
+    page_id = html_attr(return_url)
+    page_title = html_attr(f"{paper_title} — {page_label}")
+    page_label_attr = html_attr(page_label)
+    paper_title_attr = html_attr(paper_title)
     return f"""
 <hr>
-<div class="stacks-comments">
+<div class="stacks-comments"
+     data-comment-page-id="{page_id}"
+     data-comment-page-url="{next_url}"
+     data-comment-page-title="{page_title}"
+     data-comment-page-label="{page_label_attr}"
+     data-comment-paper-title="{paper_title_attr}">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
   <div class="stacks-comment-form">
     <h4>Leave a comment</h4>
-    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/{FORMSUBMIT_EMAIL}" method="POST">
       <input type="hidden" name="_subject" value="{subject}">
       <input type="hidden" name="_next" value="{next_url}">
+      <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="page" value="{next_url}">
+      <input type="hidden" name="paper" value="{paper_title_attr}">
+      <input type="hidden" name="location" value="{page_label_attr}">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
       <label for="comment">Comment:</label>
       <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
       <button type="submit">Submit comment</button>
