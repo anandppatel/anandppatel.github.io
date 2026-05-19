@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>4.4. Thirteen point conditions — Counting 3-uple Veronese Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -33,9 +38,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
+          Z: "\\mathbb{Z}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -50,7 +55,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -59,13 +64,47 @@
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}"
+          red: "\\operatorname{red}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -75,13 +114,13 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.4. Thirteen point conditions</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.4. Thirteen point conditions</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S4.SS3.html" aria-label="Previous: 4.3. Point conditions on singular quintic pencils" title="Previous: 4.3. Point conditions on singular quintic pencils">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S5.html" aria-label="Next: Section 5: Intersections in SQP" title="Next: Section 5: Intersections in SQP">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">4.4. Thirteen point conditions</h1>
 <p class="stacks-para">From here on, let $\Gamma_{13} = \{p_{1}, \dots, p_{13}\}$ be 13 general points in
 $\P^{2}$, and set $$\Theta := \bigcap \limits_{i=1, \dots, 13} \Dom(p_i).$$
 Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" class="stacks-ref-link">Theorem&nbsp;4.25 <span class="stacks-ref-tag">[2247]</span></a>, which states that $\Theta$ is indeed the set we must enumerate. The strategy is of course to argue that certain possible and undesirable types of points do not occur in the intersection.  We first deal with possibilities inside the open set $\Fin$ using dimension counts in  <a href="/papers/counting-veronese/tag/73C7.html" class="stacks-ref-link">Lemma&nbsp;4.13 <span class="stacks-ref-tag">[73C7]</span></a>, and <a href="/papers/counting-veronese/tag/228E.html" class="stacks-ref-link">Lemma&nbsp;4.14 <span class="stacks-ref-tag">[228E]</span></a>. Then we deal with undesirable possibilities inside $\Inf$ &ndash; this is more difficult, occupying <a href="/papers/counting-veronese/tag/3211.html" class="stacks-ref-link">Lemma&nbsp;4.16 <span class="stacks-ref-tag">[3211]</span></a>, <a href="/papers/counting-veronese/tag/E8B4.html" class="stacks-ref-link">Proposition&nbsp;4.17 <span class="stacks-ref-tag">[E8B4]</span></a>,  <a href="/papers/counting-veronese/tag/1347.html" class="stacks-ref-link">Proposition&nbsp;4.18 <span class="stacks-ref-tag">[1347]</span></a>, and <a href="/papers/counting-veronese/tag/E014.html" class="stacks-ref-link">Proposition&nbsp;4.19 <span class="stacks-ref-tag">[E014]</span></a>.  <a href="/papers/counting-veronese/tag/E014.html" class="stacks-ref-link">Proposition&nbsp;4.19 <span class="stacks-ref-tag">[E014]</span></a> in particular uses a limit-linear series argument.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Finite base schemes</h3></p>
+<h3 class="stacks-subsections-heading">Finite base schemes</h3>
 <div class="stacks-lemma" id="lemma-finite">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.13.</strong> <a href="../tag/73C7.html" class="stacks-tag-link">(73C7)</a></div>
   <div class="stacks-env-body"><p>Every point
@@ -141,11 +180,11 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
   $V' \to (\P^{2})^{13}$ cannot be dominant, and in particular cannot
   contain the general tuple $(p_1,\dots, p_{13})$ in its image, implying the lemma.</p></div>
 </div>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Dealing with infinite base schemes</h3></p>
+<h3 class="stacks-subsections-heading">Dealing with infinite base schemes</h3>
 <p class="stacks-para">We now take on the challenge of showing emptiness of $\Theta \cap \Inf$.</p>
 <div class="stacks-definition" id="definition-1dpart">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.15.</strong> <a href="../tag/21E9.html" class="stacks-tag-link">(21E9)</a></div>
-  <div class="stacks-env-body"><p><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
+  <div class="stacks-env-body"><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
     a pencil of degree $d$ curves, with base scheme $\Base(\Lambda)$, we
     define the <strong>fixed curve</strong> of $\Base(\Lambda)$ to be the Cartier
     divisor on $\P^{2}$ defined by the greatest common factor of any two
@@ -156,22 +195,24 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
     the members of $\Lambda$ by the equation of the fixed curve.</li>
 <li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then a <strong>fixed point</strong> of $\Lambda$ will mean a point in $C \setminus \Base(\Lambda')$.</li>
 <li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>isolated point</strong> of $\Lambda$ will mean a point in $\Base(\Lambda') \setminus C$.</li>
-<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol></p></div>
+<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol>
+</div>
 </div>
 <div class="stacks-lemma" id="lemma-QLNo">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.16.</strong> <a href="../tag/3211.html" class="stacks-tag-link">(3211)</a></div>
   <div class="stacks-env-body"><p>Suppose $\Lambda$ is a pencil of quintic curves whose fixed curve is a quartic $Q$.
-    Suppose furthermore that $\Lambda$ satisfies one of the following:
-    <ol><li><strong>(a)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of at most two points, each a node,</li>
+    Suppose furthermore that $\Lambda$ satisfies one of the following:</p>
+<ol><li><strong>(a)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of at most two points, each a node,</li>
 <li><strong>(b)</strong> $\Base(\Lambda)$ has no embedded points and $\Sing Q$ consists of a single ordinary cusp,</li>
 <li><strong>(c)</strong> $\Base(\Lambda)$ has one embedded point at a smooth point of $Q$ while $\Sing Q$ has at most one singular point which is a node,</li>
-<li><strong>(d)</strong> $\Sing Q$ consists of a single node and this node is the embedded point of $\Base(\Lambda)$.</li></ol></p>
-<p>    Then $\Base (\Lambda)$ does not contain any subscheme of the form $\s(T,T^{*})$ for any $(T,T^{*}) \in \CT$.</p></div>
+<li><strong>(d)</strong> $\Sing Q$ consists of a single node and this node is the embedded point of $\Base(\Lambda)$.</li></ol>
+<p>Then $\Base (\Lambda)$ does not contain any subscheme of the form $\s(T,T^{*})$ for any $(T,T^{*}) \in \CT$.</p>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6D71.html" class="stacks-tag-link">(6D71)</a></div>
-  <div class="stacks-env-body"><p>The moving part $\Lambda'$ of $\Lambda$ is a pencil of lines; we let $b \in \P^{2}$ denote the base point $\Lambda'$.  Then, $\Base (\Lambda)$ contains an embedded point if and only if $b \in Q$, in which case $b$ is the sole embedded point. Before taking each case up in turn, observe that as $\s(T,T^{*})$ has $2$-dimensional Zariski tangent space at each of its points, if $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ must be supported on the singular points of $Q$ or on the embedded point of $\Base(\Lambda)$, if it exists (or both).
-    <ol><li><strong>(a)</strong> In this scenario, one of the two nodes, call it $n \in Q$, must support a length $\geq 2$ connected component $T_{n} \subset T$ of $T$. </p>
+  <div class="stacks-env-body"><p>The moving part $\Lambda'$ of $\Lambda$ is a pencil of lines; we let $b \in \P^{2}$ denote the base point $\Lambda'$.  Then, $\Base (\Lambda)$ contains an embedded point if and only if $b \in Q$, in which case $b$ is the sole embedded point. Before taking each case up in turn, observe that as $\s(T,T^{*})$ has $2$-dimensional Zariski tangent space at each of its points, if $\s(T,T^{*}) \subset \Base(\Lambda)$ then $T$ must be supported on the singular points of $Q$ or on the embedded point of $\Base(\Lambda)$, if it exists (or both).</p>
+<ol><li><strong>(a)</strong> In this scenario, one of the two nodes, call it $n \in Q$, must support a length $\geq 2$ connected component $T_{n} \subset T$ of $T$. </p>
 <p>        If $T_{n}$ has length $2$, then in affine coordinates $(x,y)$ around $n$ the ideal $\I_{T_{n}}$ is $(y,x^{2})$ and so the ideal $\I_{\s(T,T^{*})}$ is given by $(y^{2},yx^{2},x^{4})$.  The ideal $\I_{\s(T,T^{*})}$ does not contain an element with non-degenerate quadratic part, and so $Q$'s local equation cannot be contained it, eliminating this case.  </p>
 <p>        If $T_{n}$ has length $3$ and is curvilinear, then in suitable \text{analytic} local coordinates $(u,v)$ around $n$, the ideal $\I_{T_{n}}$ can be taken to be $(u,v^{3})$, and so $\I_{\s(T,T^{*})} = (u^{2},uv^{3},v^{6})$.  Once again, an analytic local equation for $Q$ cannot  be contained in $\I_{\s(T,T^{*})}$ because it would have a non-degenerate quadratic term. </p>
 <p>        Finally, if $T_{n}$ is a fat point, then $\s(T,T^{*})$ (for any $T^{*}$) is contained in the cube of the maximal ideal $\m \subset \O_{\P^{2},n}$, while $Q$'s local equation lies in $\m^{2} \setminus \m^{3}$.  And so in all possible scenarios, $Q$'s local equation cannot be contained in $\I_{\s(T,T^{*})}$, which is what we needed to show.</li>
@@ -183,7 +224,8 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
 <p>        In the fat case, $\I_{\s(T,T^*)}$ is contained in the cube of the maximal ideal $\m = (x,y) \subset \O_{\P^{2},b}$, while the two generators of $\mathcal{J}$ are not ($Q$ is smooth at $b$). So $\s(T,T^{*}) \not\subset \Base(\Lambda)$ in this case. </p>
 <p>        On the other hand, if $T$ is curvilinear a calculation as in the proof of part (b) implies that, modulo $\m^{3}$, $\I_{\s(T,T^{*})} \cap \m^{2}$ consists of a single quadratic form on $(\m/\m^{2})^{\vee}$ up to scaling. However, $\mathcal{J} \cap \m^{2}$ has two linearly independent quadratic forms modulo $\m^{3}$, and thus again $\s(T,T^{*}) \not\subset \Base (\Lambda)$. So our hypothetical situation is impossible, as we needed to show.</li>
 <li><strong>(d)</strong> Let $n \in Q$ denote the node, let $x,y \in \O_{\P^{2},n}$ be local affine coordinates of $\P^{2}$ near $n$, and let $f(x,y) \in \O_{\P^{2},n}$ denote a local defining equation of $Q$.  If, hypothetically, $\s(T,T^{*}) \subset \Base (\Lambda)$, then $T$ must be entirely supported at $n$.  As in the proof of part (c), we consider the two possibilities: $T$ is either a fat point or is curvilinear with length $3$.  If $T$ is fat, then $\I_{\s(T,T^{*})}$ is contained in $\m^{3}$, where $\m = (x,y)$ is the maximal ideal. Furthermore, $\I_{\s(T,T^{*})}$ contains exactly one element (up to scale) in $\m^{3}$, modulo $\m^{4}$. However, the ideal $\mathcal{J} := (xf,yf)$ contains two $\k$-linearly independent such elements. Thus, $T$ cannot be fat.  </p>
-<p>        If $T$ is curvilinear we observe that, modulo $\m^{4}$, the elements of $\I_{\s(T,T^{*})} \cap \m^{3}$ are binary cubic forms (on $(\m/\m^{2})^{\vee}$) all sharing a common factor which is a perfect square. This can be checked after passing to (any) analytic local coordinates $(u,v)$ &ndash; we can choose convenient coordinates where $\I_{T} = (u,v^{3})$ and so $\I_{\s(T,T^{*})} = (u^2, uv^3,v^6)$.  Indeed, modulo $(u,v)^4$ all elements in $\I_{\s(t,T^{*})} \cap (u,v)^{3}$  are multiples of $u^{2}$.  This property of having a perfect square common factor is not shared by the ideal $\mathcal{J}$, and hence $\s(T,T^*) \not\subset \Base (\Lambda)$, eliminating this curvilinear possibility.</li></ol></p></div>
+<p>        If $T$ is curvilinear we observe that, modulo $\m^{4}$, the elements of $\I_{\s(T,T^{*})} \cap \m^{3}$ are binary cubic forms (on $(\m/\m^{2})^{\vee}$) all sharing a common factor which is a perfect square. This can be checked after passing to (any) analytic local coordinates $(u,v)$ &ndash; we can choose convenient coordinates where $\I_{T} = (u,v^{3})$ and so $\I_{\s(T,T^{*})} = (u^2, uv^3,v^6)$.  Indeed, modulo $(u,v)^4$ all elements in $\I_{\s(t,T^{*})} \cap (u,v)^{3}$  are multiples of $u^{2}$.  This property of having a perfect square common factor is not shared by the ideal $\mathcal{J}$, and hence $\s(T,T^*) \not\subset \Base (\Lambda)$, eliminating this curvilinear possibility.</li></ol>
+</div>
 </div>
 <div class="stacks-lemma" id="proposition-infline">
   <div class="stacks-env-head"><strong>Proposition&nbsp;4.17.</strong> <a href="../tag/E8B4.html" class="stacks-tag-link">(E8B4)</a></div>
@@ -196,7 +238,7 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
   <div class="stacks-env-body"><p>We proceed by considering one by one the possible degrees of the
   fixed curve $C \subset \Base(\Lambda)$. Each case is resolved by the tension between
   generality of $\Gamma_{13} = \{p_1, \dots, p_{13}\}$ (which by assumption is contained in $\Base(\Lambda)$) on the one hand, and the number of points in the intersection $\Gamma_{13} \cap C$ on the other. For ease of reading, let $\Gamma_{C} := \Gamma_{13} \cap C$.</p>
-<p><ol><li>\text{Assuming $\deg (C) = 4$},  the moving part of $\Lambda$ is a pencil of
+<ol><li>\text{Assuming $\deg (C) = 4$},  the moving part of $\Lambda$ is a pencil of
   lines. Furthermore, $C$ must be reduced, as at most $5$ of the
   points of $\Gamma_{13}$ can lie on a conic. There are
   two possibilities for the number $\# \Gamma_{C}$: either $12$ or $13$, depending on whether the basepoint of $\Lambda'$ is in $\Gamma_{13}$ or not. Suppose first that $\# \Gamma_{C} = 13$. The unique, general, pencil of quartics
@@ -239,8 +281,9 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
   the smooth conic $C$ and $9$ reduced points not contained in $C$. This base
   scheme evidently does not contain any subscheme of the form
   $\s(T,T^{*})$, again by tangent space considerations.</li></ol>
-  We've finished the analysis of all cases, and the proposition
-  follows.</p></div>
+<p>We've finished the analysis of all cases, and the proposition
+  follows.</p>
+</div>
 </div>
 <div class="stacks-lemma" id="proposition-Movesingular">
   <div class="stacks-env-head"><strong>Proposition&nbsp;4.18.</strong> <a href="../tag/1347.html" class="stacks-tag-link">(1347)</a></div>
@@ -256,24 +299,28 @@ Our next major objective is <a href="/papers/counting-veronese/tag/2247.html" cl
 <p class="stacks-para">The next proposition is needed to remove an <em>a priori</em> possible situation in $\Theta \cap \Inf$.</p>
 <div class="stacks-lemma" id="proposition-LinDom">
   <div class="stacks-env-head"><strong>Proposition&nbsp;4.19.</strong> <a href="../tag/E014.html" class="stacks-tag-link">(E014)</a></div>
-  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda)$ is an element of  $\Dom(p) \cap \Lin(p)$ satisfying:
+  <div class="stacks-env-body"><p>Suppose $(T,T^{*},\Lambda)$ is an element of  $\Dom(p) \cap \Lin(p)$ satisfying:</p>
 <ol><li>The fixed part of $\Lambda$ is the line $L$ spanned by $T$, and</li>
 <li>$p \notin T$.</li></ol>
-Then the moving part $\Lambda'$ of $\Lambda$ satisfies $$\length \left(\Base(\Lambda') \cap L\right) = 4.$$</p></div>
+<p>Then the moving part $\Lambda'$ of $\Lambda$ satisfies $$\length \left(\Base(\Lambda') \cap L\right) = 4.$$</p>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BC5E.html" class="stacks-tag-link">(BC5E)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">The proof uses a limit linear series style argument.  First observe that since the fixed part of $\Lambda$ is the reduced line $L$, the moving part $\Lambda'$ is a pencil of quartics and the length of $\Base(\Lambda')\cap L$ cannot exceed $4$.   We will approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family contained in $\Dom(p)$.</p>
-<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying:
-    <ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
+<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying:</p>
+<ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
 <li><strong>(b)</strong> The $b \to 0$ flat limit of $\mathcal{T}_{b}$, denoted $\mathcal{T}_{0}$, is thin. We let $L \subset \P^{2}_{b=0}$ denote the line containing $\mathcal{T}_{0}$.  ($\mathcal{T}_{0}$ is simply $T$ from the statement of the lemma, but we use calligraphic font for consistency in the following paragraphs.)</li>
 <li><strong>(c)</strong> $\mathcal{T}_{0}$ does not contain the point $p$. (This is the second assumption in the proposition.)</li>
 <li><strong>(d)</strong> The line $L$ contains $p$.</li>
-<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol></p>
+<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol>
 <p class="stacks-para">If $b \neq 0$, then the vector space $$V_{b} := H^{0}\left(\P^{2}_{b}, \I^{2}_{\mathcal{T}_{b}}\I_{p}(5)\right)$$ is $11$-dimensional because $\mathcal{T}_{b}$ and $p$ are in linear general position. Yet, when $b=0$, the vector space $V_{0}$ has dimension $12$.  Indeed, a quintic curve in $\P^{2}_{0}$ passing through $p$ and singular along $\mathcal{T}_{0}$ necessarily contains the line $L$ as an irreducible component and secondly its residual quartic curve $Q$ must contain $\mathcal{T}_{0}$.  The equations of such quartic curves form a $12$-dimensional vector space. Still, as $B$ is a smooth curve, the $b \to 0$ limit of $V_{b}$ is a well-defined $11$-dimensional vector space inside $V_{0}$ &ndash; the following claim is equivalent to the conclusion of the proposition:</p>
 <div class="stacks-env" id="claim-quinticforms">
   <div class="stacks-env-head"><strong>Claim&nbsp;4.20.</strong> <a href="../tag/45DE.html" class="stacks-tag-link">(45DE)</a></div>
-  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{\begin{array}{c} Quintic forms which are a product\\ $L \cdot Q$ where $Q$ is a quartic\\ containing the divisor $\mathcal{T}_{0} + q$ on $L$\end{array}\right\}.$$</p></div>
+  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>Quintic forms which are a product</td></tr><tr><td>$L \cdot Q$ where $Q$ is a quartic</td></tr><tr><td>containing the divisor $\mathcal{T}_{0} + q$ on $L$</td></tr></tbody></table></div>
+<p>\right\}.$$</p>
+</div>
 </div>
 <p class="stacks-para">Going forward we focus on <a href="/papers/counting-veronese/tag/45DE.html" class="stacks-ref-link">Claim&nbsp;4.20 <span class="stacks-ref-tag">[45DE]</span></a>.  We blow up $\P^{2}_{B}$  along the line $L \subset \P^{2}_{b=0}$. Let $$\widetilde{\P^{2}_{B}}$$ denote the blow up $\Bl_{L} \P^{2}_{B},$ and denote by $$\beta: \widetilde{\P^{2}_{B}} \to \P^{2}_{B}$$ the blowdown map.  The structural morphism $\pi: \widetilde{\P^{2}_{B}} \to B$ has fiber over $b \neq 0$ simply equal to $\P^{2}_{b}$, while the fiber $\pi^{-1}(\{0\})$ is the transverse union of two smooth surfaces: the exceptional divisor of $\beta$, denoted $E$,  and the proper transform of $\P^{2}_{0} \subset \P^{2}_{B}$ in the blow up, denoted $P$. $P$ maps isomorphically onto $\P^{2}_{0}$ under $\beta$.</p>
 <p class="stacks-para">The current geometric circumstance has certain features we want to emphasize:
@@ -300,10 +347,10 @@ Then the moving part $\Lambda'$ of $\Lambda$ satisfies $$\length \left(\Base(\La
   <div class="stacks-env-body"><p>Assume that $Z \subset E$ is <strong>not</strong> contained in a line.</p></div>
 </div>
 <p class="stacks-para">Operating under this assumption, we can finish the argument. On the reducible surface $P \cup E$, the global sections of
-$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of
+$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of</p>
 <ul><li>A global section $Q$ of $\O_{P}(4)$, and</li>
 <li>a global section of $\O_{E}(D+5F)$ which, if nonzero, defines a reducible divisor of the form $$\beta^{-1}(\mathcal{T}_{0}) \cup C$$ where $C$ is the unique curve in the linear series $|\I_{Z}(D+2F)|$ (<a href="/papers/counting-veronese/tag/5DB5.html" class="stacks-ref-link">Lemma&nbsp;4.21 <span class="stacks-ref-tag">[5DB5]</span></a>)</li></ul>
-satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a>, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
+<p class="stacks-para">satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a>, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
 <p class="stacks-para">Finally, we will explain how to finish the proof of <a href="/papers/counting-veronese/tag/E014.html" class="stacks-ref-link">Proposition&nbsp;4.19 <span class="stacks-ref-tag">[E014]</span></a> in the case where <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a> does not hold. Suppose $Z \subset E$ is contained in a line, and call the line $L_1 \subset E$.  We then blow up the threefold $\widetilde{\P}^{2}_{B}$ along $L_1$.  Once again, $\widetilde{\mathcal{T}}$ will lift to the new blow up, as will the section which for general $b \in B$ selects the point $p$. Blowing up more and more in a similar fashion if necessary, after finitely many blow ups the strict transform of $\mathcal{T}$ and $\{p\} \times B$ are no longer collinear over $b=0$.  Then, we proceed as we did under the simplifying assumption, except now the special fiber is a chain of surfaces $E_0 \cup E_{1} \cup \dots \cup P$, the $E_{i}$'s being $\mathbb{F}_{1}$'s, glued one to the next along directrices on one side and lines on the other.  Then the line bundle $\beta^{*}\O(5)(-E_{0}-E_{1}-\dots E_{k})$ serves the same role as $\mathcal{L}$ did in the simplified situation, and the argument runs parallel to the simple case.</p>
 </div>
 </div>
@@ -324,10 +371,10 @@ satisfying the compatibility condition that both sections agree on the curve $D 
 <div class="stacks-theorem" id="theorem-solutionset">
   <div class="stacks-env-head"><strong>Theorem&nbsp;4.25.</strong> <a href="../tag/2247.html" class="stacks-tag-link">(2247)</a></div>
   <div class="stacks-env-body"><p>Let $p_1, \dots, p_{13}$
-  be 13 general points in $\P^{2}$, and let $\Theta$ be as in Equation&nbsp;4.6. Then   $$\Theta = \left\{ \begin{array}{c}
-         $(T,T^{*}) \in\CT$ such that\\  $T$ is a singular triad  \\
-         for $p_{1}, \dots, p_{13}$
-    \end{array} \right\}.$$</p></div>
+  be 13 general points in $\P^{2}$, and let $\Theta$ be as in Equation&nbsp;4.6. Then   $$\Theta = \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>$(T,T^{*}) \in\CT$ such that</td></tr><tr><td>$T$ is a singular triad</td></tr><tr><td>for $p_{1}, \dots, p_{13}$</td></tr></tbody></table></div>
+<p>\right\}.$$</p>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4538.html" class="stacks-tag-link">(4538)</a></div>
@@ -356,7 +403,7 @@ satisfying the compatibility condition that both sections agree on the curve $D 
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

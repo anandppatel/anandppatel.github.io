@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Theorem 4.7 (0E20) — Counting sums of two powers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Q: "\\mathbb{Q}",
-          A: "\\mathbf{A}",
+          A: "\\mathbb{A}",
           Sch: "\\mathsf{Sch}",
           Hilb: "\\operatorname{Hilb}",
           Pic: "\\operatorname{Pic}",
@@ -27,7 +32,7 @@
           PGL: "\\operatorname{PGL}",
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           GL: "\\operatorname{GL}",
           SL: "\\operatorname{SL}",
@@ -43,7 +48,7 @@
           G: "\\mathbb{G}",
           Z: "\\mathbb{Z}",
           N: "\\mathbb{N}",
-          F: "\\mathbf{F}",
+          F: "\\mathbb{F}",
           O: "\\mathscr{O}",
           L: "\\mathscr{L}",
           S: "\\mathscr{S}",
@@ -61,13 +66,43 @@
           red: "\\operatorname{red}",
           from: "\\colon",
           k: "\\mathscr{k}",
-          m: "\\mathfrak{m}"
+          m: "\\mathfrak{m}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -82,14 +117,13 @@
 <div class="stacks-tag-nav"><a href="ABF2.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 0E20</span><a href="F02C.html">Proof  &raquo;</a></div>
 <div class="stacks-theorem" id="theorem-czvclass">
   <div class="stacks-env-head"><strong>Theorem&nbsp;4.7.</strong> <a href="../tag/0E20.html" class="stacks-tag-link">(0E20)</a></div>
-  <div class="stacks-env-body"><p>Let $m, n$ be two positive integers satisfying $m \leq n$ and consider the variety of first transvectants $\beta: \transvectant_{m,n} \to \P S_{m} \times \P S_{n} \times \P S_{m+n-2}$. For $i \in \{1,2,3\}$ let $\zeta_{i} \in \CH^{1}(\P S_{m} \times \P S_{n} \times \P S_{m+n-2})$ denote the pullback of the hyperplane class from the $i$-th factor.
-    <ol><li>If $\gcd(m,n) = 1$, then
-        $$
-        \beta_{*}[\transvectant_{m,n}] = \left[\frac{(1+\zeta_{1}+\zeta_{2})^{m+n-1}}{1+\zeta_{1}+\zeta_{2}-\zeta_{3}} \right]_{m+n-2}.
-        $$</li>
+  <div class="stacks-env-body"><p>Let $m, n$ be two positive integers satisfying $m \leq n$ and consider the variety of first transvectants $\beta: \transvectant_{m,n} \to \P S_{m} \times \P S_{n} \times \P S_{m+n-2}$. For $i \in \{1,2,3\}$ let $\zeta_{i} \in \CH^{1}(\P S_{m} \times \P S_{n} \times \P S_{m+n-2})$ denote the pullback of the hyperplane class from the $i$-th factor.</p>
+<ol><li>If $\gcd(m,n) = 1$, then
+        $$\beta_{*}[\transvectant_{m,n}] = \left[\frac{(1+\zeta_{1}+\zeta_{2})^{m+n-1}}{1+\zeta_{1}+\zeta_{2}-\zeta_{3}} \right]_{m+n-2}.$$</li>
 <li>If $\gcd(m,n) = 2$, then
         $$\begin{aligned}\beta_{*}[\transvectant_{m,n}] & =  \left[\frac{(1+\zeta_{1}+\zeta_{2})^{m+n-1}}{1+\zeta_{1}+\zeta_{2}-\zeta_{3}} \right]_{m+n-2} \\
-        & - 2^{m-2}\left(\left(\frac{m}{2}\right)^{2}\zeta_{1}^{m-2}\zeta_{2}^{n} + \frac{n}{2}\frac{m}{2}\zeta_{1}^{n-1}\zeta_{2}^{m-1} + \left(\frac{n}{2}\right)^{2}\zeta_{1}^{m}\zeta_{2}^{n-2}\right).\end{aligned}$$</li></ol></p></div>
+        & - 2^{m-2}\left(\left(\frac{m}{2}\right)^{2}\zeta_{1}^{m-2}\zeta_{2}^{n} + \frac{n}{2}\frac{m}{2}\zeta_{1}^{n-1}\zeta_{2}^{m-1} + \left(\frac{n}{2}\right)^{2}\zeta_{1}^{m}\zeta_{2}^{n-2}\right).\end{aligned}$$</li></ol>
+</div>
 </div>
 
 <hr>
@@ -114,7 +148,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2507.08337">arXiv:2507.08337</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

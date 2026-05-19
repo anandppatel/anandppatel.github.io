@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>1.2. Orbit closures — Orbits of linear series on the projective line</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          len: "\\operatorname{len}",
+          im: "\\operatorname{im}",
+          supp: "\\operatorname{supp}",
+          ann: "\\operatorname{ann}",
+          k: "\\mathbf k",
+          M: "\\mathfrak M",
+          Orb: "\\operatorname{Orb}",
+          WOrb: "\\operatorname{WOrb}",
+          Stab: "\\operatorname{Stab}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits of linear series on the projective line</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Orbit closures</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS1.html" aria-label="Previous: 1.1. Main theorem" title="Previous: 1.1. Main theorem">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS3.html" aria-label="Next: 1.3. Orbit specialisation" title="Next: 1.3. Orbit specialisation">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">1.2. Orbit closures</h1>
+<p class="stacks-para">The method of proof of the main theorem also yields a description of the boundary points of the orbit closure.</p>
+<div class="stacks-theorem" id="thm-closure">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.4.</strong> <a href="../tag/7440.html" class="stacks-tag-link">(7440)</a></div>
+  <div class="stacks-env-body"><p>The orbit closure \(\Orb(S) \subset \Gr(r+1, \Sym^d\k^2)\) is a union of finitely many orbits.
+  In addition to the orbit of \(S\), these are the orbits of subspaces of the form
+  $$\langle w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r} \rangle,$$
+  where \(a_0 < \dots < a_r\) is the vanishing sequence of \(S\) at some point of \(\P^1\) and \(w_1, w_2\) is a basis of \(\k^2\).</p></div>
+</div>
+<p class="stacks-para">At a generic point of \(\P^1\), the vanishing sequence is given by \(a_i = i\).
+The orbit of the corresponding linear series \(\langle  w_1^{d}w_2^0, \dots, w_1^{d-r}w_2^r \rangle\) is \(1\)-dimensional.
+At a ramification point, the vanishing sequence is different, and the orbit of the corresponding linear series \(\langle  w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r} \rangle\) is \(2\)-dimensional.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits of linear series on the projective line — 1.2. Orbit closures">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-linear-series/section/S1.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2211.16603">arXiv:2211.16603</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

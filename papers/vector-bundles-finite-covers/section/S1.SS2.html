@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>1.2. Strategy of proof — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,13 +105,13 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Strategy of proof</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Strategy of proof</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS1.html" aria-label="Previous: 1.1. Motivation and related work" title="Previous: 1.1. Motivation and related work">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS3.html" aria-label="Next: 1.3. Acknowledgements" title="Next: 1.3. Acknowledgements">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.2. Strategy of proof</h1>
 <p class="stacks-para">The proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> proceeds by degeneration.
 To help the reader, we first outline our approach to a weaker version of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a>.
 In the weaker version, we consider not the vector bundle $E$ itself, but its projectivization $\P E$, which we call the <em>Tschirnhausen scroll</em>.
-A branched cover with Gorenstein fibers $\phi \from X \to Y$ with Tschirnhausen bundle $E$ factors through a <em>relative canonical embedding</em> $\iota \from X \hookrightarrow \P E$ by the main theorem in \cite{cas:96}.</p>
+A branched cover with Gorenstein fibers $\phi \from X \to Y$ with Tschirnhausen bundle $E$ factors through a <em>relative canonical embedding</em> $\iota \from X \hookrightarrow \P E$ by the main theorem in [9].</p>
 <div class="stacks-theorem" id="thm-weak">
   <div class="stacks-env-head"><strong>Theorem&nbsp;1.6.</strong> <a href="../tag/3E0C.html" class="stacks-tag-link">(3E0C)</a></div>
   <div class="stacks-env-body"><p>Let $E$ be any vector bundle on a smooth projective curve $Y$.
@@ -88,7 +123,7 @@ We omit the details, since they are subsumed by the results in the paper.</p>
 \item First consider the case
   $$E = L_1 \oplus \dots \oplus L_{d-1},$$
   where the $L_i$ are line bundles on $Y$ whose degrees satisfy
-  $$ \deg L_i \ll \deg L_{i+1}.$$
+  $$\deg L_i \ll \deg L_{i+1}.$$
   For such $E$, we construct a nodal cover $\psi \from X \to Y$ such that $\P E_{\psi} = \P E$.
   For example, we may take $X$ to be a nodal union of $d$ copies of $Y$, each mapping isomorphically to $Y$ under $\psi$, where the $i$th copy meets the $(i+1)$th copy along nodes lying in the linear series $|L_i|$.</p>
 <p class="stacks-para">\item
@@ -97,7 +132,7 @@ We omit the details, since they are subsumed by the results in the paper.</p>
   However, the normal bundle $N_{X/ \P E}$ may be quite negative.
   Fixing this negativity is the most crucial step.</p>
 <p class="stacks-para">To overcome the negativity, we draw motivation from Mori's idea to deform maps from curves to projective varieties, which says that a map from a curve to a projective variety becomes more flexible after attaching sufficiently free rational tails.
-  If we view a cover $X \to Y$ as a map from (a stacky modification of) $Y$ to the classifying stack $BS_d$ as done in \cite{abr.cor.vis:03}, then attaching flexible rational tails can be interpreted as attaching general rational normal curves to $X$ in the fibers of $\P E \to Y$.
+  If we view a cover $X \to Y$ as a map from (a stacky modification of) $Y$ to the classifying stack $BS_d$ as done in [1], then attaching flexible rational tails can be interpreted as attaching general rational normal curves to $X$ in the fibers of $\P E \to Y$.
   Of course, the classifying stack $BS_d$ is not a projective variety, so the above only serves as an inspiration.</p>
 <p class="stacks-para">\item
   Given a general point $y \in Y$, the $d$ points $\psi^{-1}(y) \subset \P E_{y} \simeq \P^{d-2}$ are in linear general position, and therefore they lie on many smooth rational normal curves $R_{y} \subset \P E_{y}$.
@@ -107,12 +142,12 @@ We omit the details, since they are subsumed by the results in the paper.</p>
   Using this positivity, we get that $Z$ is the flat limit of a family of smooth, relatively-canonically embedded curves $X_t \subset \P E$.
   The generic cover $\phi \from X_t \to Y$ in this family satisfies $E_\phi \cong L_1 \oplus \dots \oplus L_{d-1}$.</p>
 <p class="stacks-para">\item
-  We tackle the case of an arbitrary bundle $E$ as follows.
-  <ol><li>We note that every vector bundle $E$ degenerates <em>isotrivially</em> to a bundle of the form $E_0 = L_1 \oplus \dots \oplus L_{d-1}$ treated in the previous steps.</li>
+  We tackle the case of an arbitrary bundle $E$ as follows.</p>
+<ol><li>We note that every vector bundle $E$ degenerates <em>isotrivially</em> to a bundle of the form $E_0 = L_1 \oplus \dots \oplus L_{d-1}$ treated in the previous steps.</li>
 <li>We take a cover $X_0 \to Y$ with Tschirnhausen bundle $E_0$ constructed above.
     Using the abundant positivity of $N_{X_0/\P E_0}$, we show that $X_0 \subset \P E_0$ deforms to $X \subset \P E$.
     The cover $\phi \from X \to Y$ satisfies $E_\phi \cong  E$.</li></ol>
-\end{enumerate}
+<p class="stacks-para">\end{enumerate}
 We need to refine the strategy above to handle the vector bundle $E$ itself, and not just its projectivization.
 Therefore, we work with the <em>canonical affine embedding</em> of $X$ in the total space of $E$.
 The proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> involves carrying out the steps outlined above for the embedding $X \subset E$ relative to the divisor of hyperplanes at infinity in a projective completion of $E$.</p>
@@ -139,7 +174,7 @@ The proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class=
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

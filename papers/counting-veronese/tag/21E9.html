@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Definition 4.15 (21E9) — Counting 3-uple Veronese Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -33,9 +38,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
+          Z: "\\mathbb{Z}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -50,7 +55,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -59,13 +64,47 @@
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}"
+          red: "\\operatorname{red}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -80,7 +119,7 @@
 <div class="stacks-tag-nav"><a href="E504.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 21E9</span><a href="3211.html">Lemma 4.16 &raquo;</a></div>
 <div class="stacks-definition" id="definition-1dpart">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.15.</strong> <a href="../tag/21E9.html" class="stacks-tag-link">(21E9)</a></div>
-  <div class="stacks-env-body"><p><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
+  <div class="stacks-env-body"><ol><li>If $\Lambda \subset H^{0}(\P^2, \O(d))$ is
     a pencil of degree $d$ curves, with base scheme $\Base(\Lambda)$, we
     define the <strong>fixed curve</strong> of $\Base(\Lambda)$ to be the Cartier
     divisor on $\P^{2}$ defined by the greatest common factor of any two
@@ -91,7 +130,8 @@
     the members of $\Lambda$ by the equation of the fixed curve.</li>
 <li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then a <strong>fixed point</strong> of $\Lambda$ will mean a point in $C \setminus \Base(\Lambda')$.</li>
 <li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>isolated point</strong> of $\Lambda$ will mean a point in $\Base(\Lambda') \setminus C$.</li>
-<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol></p></div>
+<li>If $\Lambda$ is a pencil of curves with fixed curve $C$, then an <strong>embedded point</strong> of $\Lambda$ will mean a point in $C \cap \Base(\Lambda')$.</li></ol>
+</div>
 </div>
 
 <hr>
@@ -116,7 +156,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

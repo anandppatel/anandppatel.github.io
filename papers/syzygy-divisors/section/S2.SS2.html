@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>2.2. Divisors from the topology of covers — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Divisors on Hurwitz spaces</a> / <span>2.2. Divisors from the topology of covers</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.SS1.html" aria-label="Previous: 2.1. The rational Picard group" title="Previous: 2.1. The rational Picard group">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS3.html" aria-label="Next: 2.3. Divisors from the algebra of covers" title="Next: 2.3. Divisors from the algebra of covers">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.2. Divisors from the topology of covers</h1>
+<p class="stacks-para">We have three natural divisors on $\widetilde H_{d,g}$ arising from topological considerations.
+A generic point of $\widetilde H_{d,g}$ represents a cover $\alpha \from C \to \P^1$ that has simple branching.
+That is, $\alpha$ has $b = 2g+2d-2$ distinct branch points and over each branch point, there is a unique ramification point at which the local degree of $\alpha$ is $2$.</p>
+<p class="stacks-para">A simply branched cover specializes in three topologically distinct ways in codimension 1; each possibility gives a divisor on $\widetilde H_{d,g}$.
+The divisor $T$ is the locus of $\alpha$ that have a point of higher ramification&mdash;a point $x \in C$ at which the local degree of $\alpha$ is at least $3$.
+The divisor $D$ is the locus of $\alpha$ that have at least two distinct ramification points over the same branch point.
+The divisor $\delta$ is the locus of $\alpha$ whose domain $C$ is singular.
+It is easy to see that $T$, $D$, and $\delta$ are irreducible divisors in $\widetilde H_{d,g}$.</p>
+<div class="stacks-commentary" id="rem-top">
+  <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/9145.html" class="stacks-tag-link">(9145)</a></div>
+  <div class="stacks-env-body"><p>We can use the topological considerations above to obtain locally closed subsets of $\widetilde H_{d,g}$ of higher codimension.
+  Doing so gives a stratification of $\widetilde
+  H_{d,g}$ according to the topological type of $\alpha \from C \to
+  \P^1$.  A complete specification of the topological type of $\alpha$
+  is rather intricate.  It includes, for example, the types of
+  ramification profiles for $\alpha$, the number of singularities of
+  $C$, and the location of the singularities relative to the
+  ramification profiles.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — 2.2. Divisors from the topology of covers">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S2.SS2.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

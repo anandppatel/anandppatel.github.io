@@ -1,10 +1,33 @@
-\documentclass[12pt,reqno]{amsart}
-\usepackage[margin = 1.3 in]{geometry}
+%! TeX program = xelatex
+\documentclass[reqno]{amsart}
+
+% Modernizer uniform typography.
+% Compile with LuaLaTeX or XeLaTeX.
+\PassOptionsToPackage{unicode=false,bookmarks=false}{hyperref}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{EBGaramond}[
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic
+]
+\setmathfont{Garamond-Math.otf}
+\setstretch{1.15}
+
+% Modernizer: disabled prior page/font/spacing package.
+% \usepackage[margin = 1.3 in]{geometry}
+%\usepackage[frenchmath,defaultmathsizes]{mathastext}
 \usepackage{cite}
 \usepackage{
   hyperref,
   amsmath,
-  amssymb,
+% Modernizer: disabled amssymb; unicode-math provides the math symbol setup.
+%   amssymb,
   tikz,
   amsthm,
   thmtools,
@@ -24,10 +47,13 @@
 \usepackage{booktabs}
 \usepackage{subcaption}
 
+%\usepackage{showlabels}
 
-\linespread{1.2}
+% Modernizer: disabled prior line-spread command.
+% \linespread{1.2}
 \usepackage[all]{xy}
-\usepackage{eucal}
+% Modernizer: disabled prior math-font package; unicode-math provides the math font setup.
+% \usepackage{eucal}
 
 \title{A universal formula for counting cubic surfaces}
 \author{Anand Deopurkar, Anand Patel
@@ -38,6 +64,7 @@
 
 
 
+%-----------------------------------------------
 \def\labelitemi{--}
 \newcommand{\todo}[1]{\fbox{ToDo: #1}}
 \renewcommand{\k}{k}
@@ -56,7 +83,11 @@
 \renewcommand{\sectionautorefname}{\S}
 \renewcommand{\subsectionautorefname}{\S}
 \renewcommand{\subsubsectionautorefname}{\S}
+% BEGIN inlined macros.tex
+% Let us keep this minimial
+% Let us also define things only if they are previously undefined.
 
+% Common theorem-like environments
 \ifcsname theorem\endcsname{}\else\declaretheorem[parent=subsection]{theorem}\fi
 \ifcsname corollary\endcsname{}\else\declaretheorem[sibling=theorem]{corollary}\fi
 \ifcsname lemma\endcsname{}\else\declaretheorem[sibling=theorem]{lemma}\fi
@@ -69,27 +100,34 @@
 \ifcsname example\endcsname{}\else\declaretheorem[sibling=theorem, style=definition]{example}\fi
 \ifcsname remark\endcsname{}\declaretheorem[sibling=theorem, style=remark]{remark}\fi
 
+% Common abbreviations
 
+% Absolutely standard rings and fields
 \providecommand {\N}{{\bf N}}
 \providecommand {\Z}{{\bf Z}}
 \providecommand {\Q}{{\bf Q}}
 \providecommand {\R}{{\bf R}}
 \providecommand {\C}{{\bf C}}
 
+% Common spaces grassmannian
 \renewcommand {\P}{{\bf P}}
 \providecommand {\Gr}{{\bf Gr}}
 \providecommand {\A}{{\bf A}}
 
+% Groups
 \providecommand{\SL}{\operatorname{SL}}
 \providecommand{\GL}{\operatorname{GL}}
 \providecommand{\PGL}{\operatorname{PGL}}
 \providecommand{\Gm}{{\bf G}_m}
 
+% f \from G \to H reads much better than f \colon G \to H
 \providecommand {\from}{{\colon}}
 
+% Absolutely standard notation
 \providecommand{\spec}{\operatorname{Spec}}
 \providecommand{\proj}{\operatorname{Proj}}
 \providecommand{\coker}{\operatorname{coker}}
+% Kernel is already defined
 \providecommand{\Blowup}{\operatorname{Bl}}
 \providecommand{\Hom}{\operatorname{Hom}}
 \providecommand{\Ext}{\operatorname{Ext}}
@@ -97,25 +135,28 @@
 \providecommand{\End}{\operatorname{End}}
 \providecommand{\Aut}{\operatorname{Aut}}
 \providecommand{\codim}{\operatorname{codim}}
+% Dim is already defined
 \providecommand{\Pic}{\operatorname{Pic}}
 \providecommand{\Sym}{\operatorname{Sym}}
-\providecommand{\rk}{\operatorname{rk}} \declaretheorem[sibling=theorem,style=remark]{remark}
+\providecommand{\rk}{\operatorname{rk}}
+% END inlined macros.tex
+\declaretheorem[sibling=theorem,style=remark]{remark}
 \numberwithin{equation}{section}
 \declaretheorem[title=Theorem]{maintheorem}
 \renewcommand{\themaintheorem}{\Alph{maintheorem}}
 
 
-\renewcommand{\O}{\mathcal O}
-\newcommand{\G}{\mathbf G}
-\newcommand{\F}{\mathbf F}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\G}{\mathbf{G}}
+\newcommand{\F}{\mathbf{F}}
 \newcommand{\td}{\widetilde}
-\newcommand{\V}{\mathcal V}
-\newcommand{\cP}{\mathcal P}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\cP}{\mathcal{P}}
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cX}{\mathcal{X}}
 \newcommand{\hL}{\widehat{\mathcal{L}}}
 \newcommand{\hpsi}{\widehat{\psi}}
-\newcommand{\fm}{\mathfrak m}
+\newcommand{\fm}{\mathfrak{m}}
 \newcommand{\smvee}{\raise0.5ex\hbox{$\scriptscriptstyle\vee$}}
 \newcommand{\hM}{\widehat{\M}}
 \newcommand{\compl}[1]{\widehat{#1}}
@@ -124,7 +165,9 @@
 \renewcommand {\o}[1]{\overline{#1}}
 \newcommand{\Proj}{{\text{\rm Proj}\,}}
 \newcommand{\git}{\sslash}
+% -----------------------------------------------
 
+%%% BEGIN DOCUMENT
 
 
 \begin{document}
@@ -164,7 +207,7 @@ Our formula answers all questions of this kind.  The answers to these
 specific questions are $96120$, $42120$, and $25920$, respectively.
 
 To state our formula, we must fix a precise moduli space of cubics.
-Let us denote by $\mathcal M$ the GIT quotient of the set of
+Let us denote by $\mathcal{M}$ the GIT quotient of the set of
 semistable cubic surfaces in $\P^3$ by the action of $\PGL_4$.  By a
 \emph{family of cubic surfaces}, we mean a flat, proper morphism whose
 geometric fibers are isomorphic to cubic surfaces in $\P^3$.
@@ -173,10 +216,10 @@ geometric fibers are isomorphic to cubic surfaces in $\P^3$.
   Let $\pi \colon \cX \to B$ be a good family of cubic surfaces over a
   proper base $B$.
   Let $\V$ denote the rank 4 vector bundle
-  $ \pi_* \left(\omega_\pi^{-1}\right)$, and let
+  $ \pi_* \left(\omega_{\pi}^{-1}\right)$, and let
   \(v_i = c_i\left(\V\right)\) be its Chern classes.  Assume that a
   general fiber of $\pi$ is semistable, and let
-  $\mu \colon B \dashrightarrow \mathcal M$ be the induced moduli map.  Then,
+  $\mu \colon B \dashrightarrow \mathcal{M}$ be the induced moduli map.  Then,
   \begin{align}
     \deg \mu =
     \label{eq:MAIN}
@@ -190,7 +233,7 @@ GIT-semistable or have a finite automorphism group.
 Question~\ref{orbit} in \autoref{sec:intro} fits in a broader story
 that has been an ongoing topic of study.  Consider a hypersurface
 \(X\) in a projective space $\P V$ cut out by a homogeneous polynomial
-$F \in \Sym^d V^\vee$.  In $\P\Sym^dV^\vee$, consider the orbit of
+$F \in \Sym^d V^{\vee}$.  In $\P\Sym^dV^{\vee}$, consider the orbit of
 $[F]$ under the action of $\GL(V)$, and let $\Orb([F])$ be its
 closure.  What is the degree of $\Orb([F])$?  To our knowledge,
 Enriques and Fano in 1897 were the first to address this question.
@@ -214,7 +257,7 @@ Our approach is different.
 \subsection{The equivariant class of the orbit closure}
 Our key idea is to consider not just the degree of the orbit closure,
 but the class of the orbit closure in the equivariant Chow ring
-$A^\bullet_{\GL V}(\Sym^dV^\vee)$.
+$A^{\bullet}_{\GL V}(\Sym^dV^{\vee})$.
 The equivariant class subsumes the
 degree, but, counter-intuitively, it is easier to find.
 
@@ -222,25 +265,25 @@ Let us explain how the equivariant class yields the degree.
 We have natural maps
 \[
 \begin{tikzcd}
-  A^\bullet_{\GL V}(\Sym^dV^\vee) \ar{r}& A^\bullet_{\GL V}(\Sym^d V^\vee \setminus
+  A^{\bullet}_{\GL V}(\Sym^dV^{\vee}) \ar{r}& A^{\bullet}_{\GL V}(\Sym^d V^{\vee} \setminus
   \{0\}) \otimes \Q \ar[equal]{d}\\
-  &A^\bullet_{\PGL V}(\P \Sym^dV^\vee) \otimes \Q \ar{r}&
-  A^\bullet(\P \Sym^dV^\vee) \otimes \Q.
+  &A^{\bullet}_{\PGL V}(\P \Sym^dV^{\vee}) \otimes \Q \ar{r}&
+  A^{\bullet}(\P \Sym^dV^{\vee}) \otimes \Q.
 \end{tikzcd}
 \]
-Under the composite map, the class of $\Orb(F) \in A^\bullet_{\GL
-  V}(\Sym^dV^\vee)$ is mapped to the class of $\Orb([F]) \in
-A^\bullet(\P \Sym^dV^\vee) \otimes \Q$, which is simply the degree of $\Orb([F])$.
+Under the composite map, the class of $\Orb(F) \in A^{\bullet}_{\GL
+  V}(\Sym^dV^{\vee})$ is mapped to the class of $\Orb([F]) \in
+A^{\bullet}(\P \Sym^dV^{\vee}) \otimes \Q$, which is simply the degree of $\Orb([F])$.
 
 Let us explain what makes it possible to find the equivariant
-class.  The ring $A^\bullet_{\GL V}(\Sym^dV^\vee)$ is the polynomial ring
+class.  The ring $A^{\bullet}_{\GL V}(\Sym^dV^{\vee})$ is the polynomial ring
 in variables $c_1, \dots, c_r$, where $r = \dim V$, and the variable
 $c_i$ has degree $i$.  The equivariant class of $\Orb(F)$ lies in the
-graded component $A^m(\Sym^dV^\vee)$, where
-$m = \dim \Sym^d V^\vee - \dim \GL V$.  As a result, it can be expressed as
+graded component $A^m(\Sym^dV^{\vee})$, where
+$m = \dim \Sym^d V^{\vee} - \dim \GL V$.  As a result, it can be expressed as
 a $\Z$-linear combination of monomials in $c_i$ of total degree
 $m$. We can now use the method of undetermined coefficients.  We
-construct maps $B \to [\Sym^dV^\vee/\GL V]$ where the pull-back of
+construct maps $B \to [\Sym^dV^{\vee}/\GL V]$ where the pull-back of
 $\Orb(F)$ as well as the classes $c_i$ can be explicitly
 computed. Every such family gives a linear relationship between the
 coefficients in the expression of $\Orb(F)$, which are to be determined.
@@ -250,9 +293,9 @@ coefficients to be determined and we construct 8 families. The redundancy
 serves as an extra check on the result.
 \begin{theorem}\label{thm:eqvclass2}
   Let $V$ be a 4-dimensional vector space and let $F$ be a general
-  element of $\Sym^3 V^\vee$.
+  element of $\Sym^3 V^{\vee}$.
   The equivariant class of the $\GL(V)$-orbit closure $\Orb(F)$ of $F$
-  in $A^\bullet_{\GL V}(\Sym^3 V^\vee)$ is given by
+  in $A^{\bullet}_{\GL V}(\Sym^3 V^{\vee})$ is given by
   \[
     [\Orb F] = 24c_1^4 + 12c_1^2c_2 - 6c_1c_3 + 9c_4,
   \]
@@ -302,11 +345,11 @@ The formula in \autoref{theorem:main} has some curious consequences.
   \label{cor:div} Let $\pi \colon \cX \to B$ is a good family of cubic
   surfaces parametrized by a $4$ dimensional proper variety $B$.
   Assume that a general fiber of $\pi$ is smooth and the induced map
-  $\mu \colon B \dashrightarrow \mathcal M$ is dominant.
+  $\mu \colon B \dashrightarrow \mathcal{M}$ is dominant.
   Then the degree of $\mu$ is divisible by 1080.
 \end{corollary}
 In particular, a parameter space for cubic surfaces that carries a
-good universal family must cover $\mathcal M$ by a map of degree
+good universal family must cover $\mathcal{M}$ by a map of degree
 divisible by 1080.  Interestingly, the number 1080 is also the least
 common multiple of the orders of the finite groups that arise as
 automorphism groups of cubic surfaces.
@@ -351,9 +394,10 @@ enumerative reference on cuspidal cubic curves and Jarod Alper for discussions o
 
 
 
-  
 
 
+
+%---------------------------------------------------------------------------
 
 
 \section{Preliminaries}
@@ -373,24 +417,24 @@ free sheaf of its sections.
 
 Given a map of schemes $\pi \colon X \to Y$ and a point $y \in Y$, we
 let $X_y$ denote the fiber scheme $\pi^{-1}(y)$.  If $\pi$ is proper
-and Gorenstein, we write $\omega_{X/Y}$ or $\omega_\pi$ for the
+and Gorenstein, we write $\omega_{X/Y}$ or $\omega_{\pi}$ for the
 dualizing line bundle.  If $X$ and $Y$ are themselves Gorenstein and
 $\pi$ is flat, then we have
 $\omega_{X/Y} = \omega_X \otimes \pi^*\omega_Y^{-1}$.
 
-For a closed subscheme $Y \subset X$, the notation $\mathcal I_Y \subset \O_X$ denotes the ideal sheaf of $Y \subset X$ and if $Y$ and $X$ are smooth, then $N_{Y/X}$ denotes the normal bundle of $Y \subset X$.
+For a closed subscheme $Y \subset X$, the notation $\mathcal{I}_Y \subset \O_X$ denotes the ideal sheaf of $Y \subset X$ and if $Y$ and $X$ are smooth, then $N_{Y/X}$ denotes the normal bundle of $Y \subset X$.
 
-Given a vector bundle $\mathcal W$, we let $\P \mathcal W$ be its
+Given a vector bundle $\mathcal{W}$, we let $\P \mathcal{W}$ be its
 projectivization.  Contrary to Grothendieck's convention,
-$\P \mathcal W$ parametrizes $1$-dimensional subspaces in the fibers
-of $\mathcal W$.  In other words, we set
-\[ \P \mathcal W = \Proj \Sym(\mathcal W^\vee).\] As a result,
-$\P \mathcal W$ comes equipped with a line bundle $\O(1)$ whose
-push-forward to the base is $\mathcal W^\vee$.
+$\P \mathcal{W}$ parametrizes $1$-dimensional subspaces in the fibers
+of $\mathcal{W}$.  In other words, we set
+\[ \P \mathcal{W} = \Proj \Sym(\mathcal{W}^{\vee}).\] As a result,
+$\P \mathcal{W}$ comes equipped with a line bundle $\O(1)$ whose
+push-forward to the base is $\mathcal{W}^{\vee}$.
 
 Let $Q \subset \P V$ be a non-degenerate quadric.  The bilinear form
 associated to $Q$ gives an isomorphism of $\P V$ with the dual
-projective space $\P V^\vee$.  Given a point $p \in \P V$, we denote
+projective space $\P V^{\vee}$.  Given a point $p \in \P V$, we denote
 by $\Polar_Q(p) \subset \P V$ the hyperplane dual to $p$ with respect to
 $Q$. Similarly, given a hyperplane $H \subset \P V$, we denote by
 $\Pole_Q(H) \in \P V$ the point dual to $H$ with respect to $Q$.  In
@@ -402,70 +446,70 @@ Let $\pi \colon \cX \to B$ be a family of cubic surfaces.  That is,
 let $\pi$ be a flat, proper morphism whose fibers are isomorphic to
 cubic hypersurfaces in $\P^3$.  Since $\pi$ is flat and its fibers are
 Gorenstein, it is a Gorenstein morphism, and hence admits a dualizing
-line bundle $\omega_\pi$.  By the adjunction formula, it follows that
+line bundle $\omega_{\pi}$.  By the adjunction formula, it follows that
 the restriction of $\omega_{\pi}^{-1}$ to every fiber is isomorphic to
 the restriction of $\O(1)$ with respect to an embedding of the fiber
 as a cubic hypersurface in $\P^3$.  By standard theorems about
 cohomology and base-change, it follows that
 $R^i\pi_* \left(\omega_{\pi}^{-1}\right)$ vanishes for $i > 0$, and is
 a vector bundle for $i = 0$.  Set
-\[ \mathcal V = \pi_* \left( \omega_\pi^{-1} \right).\]
-The natural map 
-\[ \pi^*\mathcal V \to \omega_{\pi}^{-1}\]
+\[ \mathcal{V} = \pi_* \left( \omega_{\pi}^{-1} \right).\]
+The natural map
+\[ \pi^*\mathcal{V} \to \omega_{\pi}^{-1}\]
 yields a closed embedding
 \begin{equation}\label{eqn:relcanx}
-  \cX \subset \P \mathcal V^\vee.
+  \cX \subset \P \mathcal{V}^{\vee}.
 \end{equation}
 We know that
-\[ \omega_{\P \mathcal V^\vee/B} = \O(-4) \otimes \det \mathcal V^\vee,\]
+\[ \omega_{\P \mathcal{V}^{\vee}/B} = \O(-4) \otimes \det \mathcal{V}^{\vee},\]
 and hence, by adjunction,
-\[ \omega_{\cX/B}= \O(-4) \otimes \O(\cX) \otimes \det \mathcal V^\vee |_\cX.\]
+\[ \omega_{\cX/B}= \O(-4) \otimes \O(\cX) \otimes \det \mathcal{V}^{\vee} |_{\cX}.\]
 By construction, we also have
-\[ \omega_{\cX/B} = \O(-1)|_\cX,\]
+\[ \omega_{\cX/B} = \O(-1)|_{\cX},\]
 and hence we obtain that
 \begin{equation}\label{eqn:ox}
-  \O(\cX) = \O(3) \otimes \det \mathcal V.
+  \O(\cX) = \O(3) \otimes \det \mathcal{V}.
 \end{equation}
-In other words, $\cX \subset \P \mathcal V^\vee$ is the zero locus of
-a section of the line bundle $\O(3) \otimes \det \mathcal V^\vee$.
+In other words, $\cX \subset \P \mathcal{V}^{\vee}$ is the zero locus of
+a section of the line bundle $\O(3) \otimes \det \mathcal{V}^{\vee}$.
 
 Consider the category $\mathscr {C}$ fibered in groupoids over the
 category of schemes whose objects over a scheme $B$ are families of
 cubic surfaces $\pi \colon \cX \to B$, and whose morphisms are pull-back
 diagrams.  Consider the category $\mathscr {M}$ fibered in groupoids
 over the category of schemes whose objects over a scheme $B$ are
-vector bundles $\mathcal V$ over $B$ of rank 4 along with a nowhere
+vector bundles $\mathcal{V}$ over $B$ of rank 4 along with a nowhere
 zero section $\xi$ of
-$\Sym^3 \mathcal V^\vee \otimes \det \mathcal V$, and whose morphisms
+$\Sym^3 \mathcal{V}^{\vee} \otimes \det \mathcal{V}$, and whose morphisms
 are pull-back diagrams.  Let $V$ be a $\k$-vector space of dimension
 4.  Note that $\mathscr{M}$ is simply the quotient stack
-\[\mathscr{M} = \left[\Sym^3 V^\vee \otimes \det V \setminus \{0\} / \GL V \right]. \]
+\[\mathscr{M} = \left[\Sym^3 V^{\vee} \otimes \det V \setminus \{0\} / \GL V \right]. \]
 \begin{proposition}\label{prop:cubicstack}
   The categories $\mathscr{C}$ and $\mathscr{M}$ are equivalent as categories fibered over ${\rm Schemes}_k$.
 \end{proposition}
 \begin{proof}
   Let $\pi \colon \cX \to B$ be a family of cubic surfaces, and set
-  $\mathcal V = \pi_* \left( \omega_{\pi}^{-1} \right)$.  Consider the
-  relative canonical embedding $\cX \subset \P \mathcal V^\vee$.  In
+  $\mathcal{V} = \pi_* \left( \omega_{\pi}^{-1} \right)$.  Consider the
+  relative canonical embedding $\cX \subset \P \mathcal{V}^{\vee}$.  In
   this embedding, $\cX$ is cut out by a section of
-  $\O(3) \otimes \det \mathcal V$ on $\P \mathcal V^\vee$, or
+  $\O(3) \otimes \det \mathcal{V}$ on $\P \mathcal{V}^{\vee}$, or
   equivalently, by a section of $\xi$ of
-  $\Sym^3V^\vee \otimes \det \mathcal V$ on $B$.  Since $\pi$ is flat,
+  $\Sym^3V^{\vee} \otimes \det \mathcal{V}$ on $B$.  Since $\pi$ is flat,
   $\xi$ is nowhere zero on $B$.  We thus have a natural transformation
   from $\mathscr{C}$ to $\mathscr{M}$.
 
-  To go from $\mathscr{M}$ to $\mathscr{C}$, given a rank 4 bundle $\mathcal V$ and a nowhere section $\xi$ of $\Sym^3 \mathcal V^\vee \otimes \det \mathcal V$, define $\cX \subset \P \mathcal V^\vee$ as the zero-locus of the corresponding section of $\O(3) \otimes \det \mathcal V$.
+  To go from $\mathscr{M}$ to $\mathscr{C}$, given a rank 4 bundle $\mathcal{V}$ and a nowhere section $\xi$ of $\Sym^3 \mathcal{V}^{\vee} \otimes \det \mathcal{V}$, define $\cX \subset \P \mathcal{V}^{\vee}$ as the zero-locus of the corresponding section of $\O(3) \otimes \det \mathcal{V}$.
 \end{proof}
 
 We call $\mathscr{M}$ the \emph{moduli stack of cubic surfaces}.
 Sometimes, it will be convenient to add in the zero section and consider the bigger stack
-\[ \mathscr{M}^* = \left[\Sym^3 V^\vee \otimes \det V / \GL V \right].\]
-Note that the diagonal $\G_m \subset \GL V$ acts by weight $-1$ on $\Sym^3 V^\vee \otimes \det V$.
+\[ \mathscr{M}^* = \left[\Sym^3 V^{\vee} \otimes \det V / \GL V \right].\]
+Note that the diagonal $\G_m \subset \GL V$ acts by weight $-1$ on $\Sym^3 V^{\vee} \otimes \det V$.
 In particular, its action is free.
 Therefore, the stack $\mathscr{M}$ is isomorphic to the quotient stack
-\[ \mathscr{M} = \left[ \P \Sym^3V^\vee / \PGL V \right].\]
+\[ \mathscr{M} = \left[ \P \Sym^3V^{\vee} / \PGL V \right].\]
 
-We let $\mathcal M$ denote the GIT quotient of $\P \Sym^3V^\vee$ by
+We let $\mathcal{M}$ denote the GIT quotient of $\P \Sym^3V^{\vee}$ by
 the action of $\PGL V$.  The semistable and stable locus of the
 action were computed by Mumford; see \cite[Chapter 4, \S
 2]{mum.fog.kir:94} or \cite[1.14]{mum:77}.  The stable locus consists
@@ -475,10 +519,10 @@ of invariants was computed much earlier, in the 1860s, by Salmon
 \cite{sal:60} and Clebsch \cite{cle:61,cle:61*1}, and later by
 Beklemishev \cite{bek:82} using more modern methods.  The invariant
 ring is freely generated by polynomials of degree 8, 16, 24, 32, and
-40, and as a result, the coarse moduli space $\mathcal M$ is
+40, and as a result, the coarse moduli space $\mathcal{M}$ is
 isomorphic to the weighted projective space $\P(1,2,3,4,5)$.
 
-We recall perhaps the most famous fact about cubic surfaces, discovered in 1849. 
+We recall perhaps the most famous fact about cubic surfaces, discovered in 1849.
 \begin{theorem}[Cayley \cite{cay:49}, Salmon \cite{sal:49}]
   \label{theorem:cayleysalmon}
   Every smooth cubic surface contains exactly $27$ lines.
@@ -504,20 +548,20 @@ Thus, each smooth cubic surface admits 72 distinct maps to
 $\P^2$, up to automorphisms of $\P^2$, each of which
 blows down 6 lines.
 
-The sixes on a cubic surface allow us to relate $\mathcal M$ to a more
-familiar moduli space.  Let $\mathcal M^\dagger$ denote the moduli
+The sixes on a cubic surface allow us to relate $\mathcal{M}$ to a more
+familiar moduli space.  Let $\mathcal{M}^{\dagger}$ denote the moduli
 space of pairs $(S, \ell)$, where $S$ is a smooth cubic surface and
 $\ell$ is a six on $S$.  By \autoref{theorem:schlafli}, the natural
 forgetful map
 \begin{align*}
-  \sigma \colon \mathcal M^\dagger &\to \mathcal M \\
+  \sigma \colon \mathcal{M}^{\dagger} &\to \mathcal{M} \\
   (S, \ell) &\mapsto S
 \end{align*}
 is dominant and quasi-finite of degree
 \[ \deg \sigma = 72 \times 6! = 51840.\] On the other hand, the space
-$\mathcal M^\dagger$ is isomorphic to the configuration space of 6
+$\mathcal{M}^{\dagger}$ is isomorphic to the configuration space of 6
 ordered points on $\P^2$
-\[ \mathcal M^\dagger \xrightarrow{\sim} \left( (\P^2)^6 \setminus
+\[ \mathcal{M}^{\dagger} \xrightarrow{\sim} \left( (\P^2)^6 \setminus
     \text{Diagonals} \right) / \Aut(\P^2).\] The isomorphism sends
 $(S, (\ell_i))$ to $(\P^2, (p_i))$, where $\beta \colon S \to \P^2$
 blows down the lines $\ell_i$ and $p_i = \beta(\ell_i)$.
@@ -558,14 +602,14 @@ representation $V$.  Then we have
 \[ A_{\GL V}(W) = \Z[v_1,\dots,v_n].\]
 
 Let $V$ be a $4$-dimensional vector space.
-Consider the $\GL V$ representation $W = \Sym^3 V^\vee \otimes \det V$.
+Consider the $\GL V$ representation $W = \Sym^3 V^{\vee} \otimes \det V$.
 By \autoref{prop:cubicstack}, (non-zero) $\GL V$ orbits in $W$ correspond canonically to cubic surfaces.
 Note that the action of $\GL V$ on $W$ is generically free, and hence the codimension of a generic orbit is $20-16 = 4$.
 Given a point $w \in W$, let $\Orb(w)$ denote the closure of its $\GL V$ orbit, and let
-\[ [\Orb(w)] \in A^4_{\GL V}(W) = A^4(\mathscr M)\]
+\[ [\Orb(w)] \in A^4_{\GL V}(W) = A^4(\mathscr{M})\]
 denote the fundamental class.
 By a slight abuse of notation, if $X \subset \P^3$ is a cubic surface or $F \in k[X_0, \dots, X_3]$ is a non-zero cubic form, we let $\Orb(X)$ or $\Orb(F)$ denote the closure of the orbit in $W$ of the corresponding point $w$, and $[\Orb(X)]$ or $[\Orb(F)]$ the fundamental class.
-Since $\A^4(\mathscr M)$ is generated by monomials in $v_i$ of total degree 4, we have an expression
+Since $\A^4(\mathscr{M})$ is generated by monomials in $v_i$ of total degree 4, we have an expression
 \begin{equation}\label{eqn:chernexpansion}
   [\Orb(X)] = a_{1^4} \cdot v_1^4 + a_{1^2\cdot 2} \cdot v_1^2v_2 + a_{1\cdot 3} \cdot v_1v_3 + a_{2^2} \cdot v_2^2 + a_4 \cdot v_4,
 \end{equation}
@@ -578,15 +622,15 @@ Note that $\partial \Orb(X) \subset W$ has codimension at least $5$.
 
 \subsection{Good families}
 \label{sec:good-families}
-Our strategy is to compute $[\Orb(X)]$ for a generic $X$ by pulling it back to various families $B \to \mathscr M$.
-If there is a point of $B$ that lies in every $\Orb(X)$, then we have the issue of excess intersection. 
+Our strategy is to compute $[\Orb(X)]$ for a generic $X$ by pulling it back to various families $B \to \mathscr{M}$.
+If there is a point of $B$ that lies in every $\Orb(X)$, then we have the issue of excess intersection.
 A good family is one that does not suffer from this defect.
 Recall that $V$ is a $4$-dimensional $\k$-vector space.
 \begin{definition}[Good family]
 \label{def:goodfamily}
 A family of cubic surfaces $\pi \colon \cX \to B$ is \emph{good} if
 the following holds: there exists a non-empty Zariski open subset
-$U \subset \Sym^3V^\vee$ such that for every $F \in U$ and $b \in B$,
+$U \subset \Sym^3V^{\vee}$ such that for every $F \in U$ and $b \in B$,
 the fiber $\cX_b$ does not lie in $\partial \Orb(F)$.
 \end{definition}
 \begin{example}[Fibers with finite automorphism groups]
@@ -608,32 +652,32 @@ the fiber $\cX_b$ does not lie in $\partial \Orb(F)$.
 \begin{example}[A combination]
   Suppose every fiber $\cX_b$ has a finite automorphism group or is GIT semistable.
   Let $U$ be the subset corresponding to smooth cubic surfaces.
-  Since smooth cubic surfaces have a finite automorphism group and are GIT stable, we see that $\pi \colon \mathcal X \to B$ is good.
+  Since smooth cubic surfaces have a finite automorphism group and are GIT stable, we see that $\pi \colon \mathcal{X} \to B$ is good.
 \end{example}
 
 \begin{proposition}\label{prop:goodisgood}
   Let $\pi \colon \cX \to B$ be a good family of cubic surfaces.
   Assume that $B$ is proper of dimension 4 and a general fiber $\cX_b$ is semistable.
-  Let $\mu \colon B \to \mathscr M$ be the map induced by $\pi$ and $m \colon B \dashrightarrow \mathcal M$ the rational map to the coarse moduli space.
+  Let $\mu \colon B \to \mathscr{M}$ be the map induced by $\pi$ and $m \colon B \dashrightarrow \mathcal{M}$ the rational map to the coarse moduli space.
   Then
   \[ \deg m = \deg \mu^*\left( \Orb(F) \right)\]
   for a general cubic form $F$.
 \end{proposition}
 \begin{proof}
-  There exists an open $W \subset \mathcal M$ such that $m^{-1} (W) \to W$ is a finite \'etale morphism.
+  There exists an open $W \subset \mathcal{M}$ such that $m^{-1} (W) \to W$ is a finite \'etale morphism.
   Then the degree of $m$ is simply the number of points in $m^{-1}(u)$ for $u \in W$.
   By shrinking $W$ if necessary, we may assume that the map
-  \[ \mathscr M^{ss} \to \mathcal M\]
+  \[ \mathscr{M}^{ss} \to \mathcal{M}\]
   is an isomorphism over $W$.
 
   Let $U$ be as in the definition a good family.
   Then, for every $u \in U$, we have the equality
-  \[ \cX \times_{\mathscr M} u = \cX \times_{\mathscr M} \overline u.\]
-  By shrinking $U$ if necessary, we may assume that $U$ consists of semistable points and maps to $W \subset \mathcal M$ in the coarse space.
+  \[ \cX \times_{\mathscr{M}} u = \cX \times_{\mathscr{M}} \overline u.\]
+  By shrinking $U$ if necessary, we may assume that $U$ consists of semistable points and maps to $W \subset \mathcal{M}$ in the coarse space.
   Then, for every $u \in U$, we have
   \begin{align*}
-    \deg \mu^* \Orb(u) &= \# \left(\cX \times_{\mathscr M} u \right)\\
-                       &= \# \left(\cX \times_{\mathcal M} u\right) \\
+    \deg \mu^* \Orb(u) &= \# \left(\cX \times_{\mathscr{M}} u \right)\\
+                       &= \# \left(\cX \times_{\mathcal{M}} u\right) \\
                        &= \deg m.
   \end{align*}
 \end{proof}
@@ -646,11 +690,11 @@ The following proposition identifies certain nice sub-schemes to blow up.
 \begin{definition}[Admissible subscheme]
   \label{def:admissible}
   Let $S$ be a smooth del Pezzo surface of degree $d \geq 3$ and let $Z \subset S$ be a subscheme of length $(d-3)$.
-  We say that $Z$ is \emph{admissible} if 
+  We say that $Z$ is \emph{admissible} if
   \begin{enumerate}
   \item $Z$ is curvilinear (contained in a smooth curve),
   \item $h^{0}\left(\mathcal{I}_Z \otimes \omega_S^{-1}\right) = 4$, and
-  \item $\mathcal I_Z \otimes \omega_S^{-1}$ is generated by its global sections.
+  \item $\mathcal{I}_Z \otimes \omega_S^{-1}$ is generated by its global sections.
   \end{enumerate}
 \end{definition}
 The last condition means that $Z$ is scheme-theoretically cut out by the sections of $\omega_S^{-1}$ that vanish on it.
@@ -675,8 +719,8 @@ Then the following hold.
   Since $Z$ is curvilinear, $X$ has at worst $A_n$ singularities.
   Indeed, if $Z$ is isomorphic to $\spec k[t]/t^{n+1}$ at a point $z$ in its support, then $X$ is singular at a unique point of $\pi^{-1}(z)$; this singularity is of type $A_n$.
   Note that $E_z := \pi^{-1}(z)$ (taken with the reduced structure) is isomorphic to $\P^1$.
-  
-  Let $E \subset X$ be the exceptional divisor, namely, the Cartier divisor defined by the ideal $\pi^{-1}\mathcal I_Z$.
+
+  Let $E \subset X$ be the exceptional divisor, namely, the Cartier divisor defined by the ideal $\pi^{-1}\mathcal{I}_Z$.
   Over the point $z$ as above, $E$ has multiplicity $n$ along the component $E_z$.
   Furthermore, we have $(nE_z)^2 = -n$, and hence $E^2 = -(d-3)$.
   Also, see that we have
@@ -686,8 +730,8 @@ Then the following hold.
   and therefore,
   \[ \omega_X^{-1} = \pi^* \omega^{-1}_{S} \otimes \O_X(-E).\]
   By applying $\pi_*$, we get
-  \[ \pi_* \left( \omega_X^{-1} \right) = \mathcal I_Z \otimes \omega_S^{-1}.\]
-  By our assumption, $H^0\left(\mathcal I_Z \otimes \omega_S^{-1}\right)$ is $4$-dimensional and its base-locus is precisely $Z$.
+  \[ \pi_* \left( \omega_X^{-1} \right) = \mathcal{I}_Z \otimes \omega_S^{-1}.\]
+  By our assumption, $H^0\left(\mathcal{I}_Z \otimes \omega_S^{-1}\right)$ is $4$-dimensional and its base-locus is precisely $Z$.
   Hence $H^0\left( X, \omega_X^{-1} \right)$ is $4$-dimensional and base-point free.
 
   For the vanishing of higher cohomology, we induct on $n$.
@@ -702,7 +746,7 @@ Then the following hold.
   The restriction $\omega_X^{-n}|_C$ has degree $3n$, which is positive if $n$ is positive, and hence $h^i\left(\omega_X^{-n}|_C\right) = 0$ for $i > 0$.
   By applying the long exact sequence in cohomology, we see that if $i > 0$, then $h^i(\omega_X^{-n+1}) = 0$ implies $h^i(\omega_X^{-n}) = 0$.
   By induction on $n$, we conclude $h^i(\omega_X^{-n}) = 0$ for all $n \geq 0$ and $i > 0$.
-    
+
   To get the degree of the image of $X \to \P^3$, we compute the self-intersection $c_1(\omega_X)^2$.
   Using \eqref{eqn:wx} and $E^2 = -(d-3)$, we compute
   \[ c_1(\omega_X)^2 = c_1(\omega_{S})^2 - d + 3 = 3.\]
@@ -759,7 +803,7 @@ $Z_b \subset P_b$, as in \autoref{def:cubicZ}.
   \[R_I(A) = \bigoplus_{n \geq 0}I^n.\]
   Since $I \subset A$ is generated by a regular sequence, the associated graded ring $\operatorname{gr} R_I(A)$ is a polynomial algebra over $A/I$, and hence flat over $B$.
   It follows that $R_I(A)$ is flat over $B$, and hence its $\Proj$ is flat over $\spec B$.
-  
+
   For the statement about base-change, we show that the formation of the Rees algebra commutes with base-change.
   For a $B$-algebra $C$, let $J \subset A \otimes_B C$ be the image of $I \otimes_B C$.
   Consider the map
@@ -788,7 +832,7 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
   To show that the image has finite index, let $\tau \colon \widetilde Y \to \Bl_Z\P^2$ be the minimal desingularization and set $Y = X_Z$.
   Since $\Bl_Z\P^2$ has only $A_n$ singularities and such singularities are canonical, we conclude that
   \[\tau^* \omega_{\Bl_Z\P^2} = \omega_{\widetilde Y}.\]
-  Consider the composite $\mu$ of 
+  Consider the composite $\mu$ of
   \[ \widetilde Y \xrightarrow{\tau} \Bl_Z \P^2 \xrightarrow{\kappa} Y.\]
   Note that
   \[ \mu^* \omega_Y = \omega_{\widetilde Y}.\]
@@ -798,12 +842,12 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
   \[ \widetilde Y \xrightarrow{\alpha} Y' \to Y.\]
   Since $\alpha$ is a birational morphism between non-singular surfaces, it is a composite of blow-ups at points.
   In particular, if it is not an isomorphism, then there exists a $(-1)$-curve $E \subset \widetilde Y$ contracted by $\alpha$.
-  But then we have 
+  But then we have
   \[ E \cdot \omega_{\widetilde Y} = E \cdot \mu^* \omega_Y = 0,\]
   which contradicts the adjunction formula
   \[ \left(\omega_{\widetilde Y}+ E\right) \cdot E = -2.\]
   Thus, we deduce that $\alpha$ is an isomorphism, and hence $\widetilde Y \to Y$ is the minimal desingularization of $Y$.
-  
+
   Since every automorphism of a surface lifts uniquely to its minimal
   desingularization, we have an injective map
   \[ \Aut(\P^3, X_Z) \to \Aut(\widetilde Y).\]
@@ -814,7 +858,7 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
   To see this, note that we have
   \[ \omega_{\widetilde Y}^2 = 3 \text{ and } \omega_{\widetilde Y} \cdot H = -3, \]
   and hence $(\omega_{\widetilde Y} + H)$ is orthogonal to $\omega_{\widetilde Y}$ under the intersection pairing.
-  Since $\omega_{\widetilde Y}$ has positive self-intersection, its orthogonal complement $\omega_{\widetilde Y}^\perp \subset \Pic(\widetilde Y) = {\rm NS}(\widetilde Y)$ is a negative definite lattice by the Hodge index theorem.
+  Since $\omega_{\widetilde Y}$ has positive self-intersection, its orthogonal complement $\omega_{\widetilde Y}^{\perp} \subset \Pic(\widetilde Y) = {\rm NS}(\widetilde Y)$ is a negative definite lattice by the Hodge index theorem.
   Thus, it has only finitely many elements of a given self-intersection.
   Any automorphism of $\widetilde Y$ preserves $\omega_{\widetilde Y}$ and the self-intersection number.
   Therefore, under $\Aut(\widetilde Y)$, the orbit of $\omega_{\widetilde Y} + H$ and hence the orbit of $H$, must be finite.
@@ -826,12 +870,13 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
   Hence $\tau$ induces an automorphism $\tau' \colon \P^2 \to \P^2$.
   It remains to show that $\tau'$ preserves $Z$.
   Note that we have
-  \[ \beta_* \left(\omega_{\widetilde Y}^{-1}\right) = \O(3) \otimes \mathcal I_Z,\]
+  \[ \beta_* \left(\omega_{\widetilde Y}^{-1}\right) = \O(3) \otimes \mathcal{I}_Z,\]
   and hence
-  \[ \beta_* \left( \omega_{\widetilde Y}^{-1} (-3H) \right) = \mathcal I_Z.\]
-  Therefore, the induced map $\tau'$ preserves $\mathcal I_Z$, and hence $Z$.
+  \[ \beta_* \left( \omega_{\widetilde Y}^{-1} (-3H) \right) = \mathcal{I}_Z.\]
+  Therefore, the induced map $\tau'$ preserves $\mathcal{I}_Z$, and hence $Z$.
 \end{proof}
 
+%-------------------------------------------------------------------------
 
 
 \section{Test families}\label{sec:testfamilies}
@@ -839,7 +884,8 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
 \label{sec:family-b_1}
 \begin{figure}
   \centering
-  \begin{tikzpicture}[very thick]
+  % BEGIN inlined figures/familyB1.tex
+\begin{tikzpicture}[very thick]
   \draw (0,0) ellipse (2 and 1.5) (2,0) node [right] {$C$};
   \draw[red,fill] (-3, 0) circle (0.05) node [black, left] {$z_0$};
   \draw[red, fill] (1.4, 1.05) circle (0.05) node [black, above right] {$z_1$}
@@ -849,7 +895,13 @@ An automorphism of the pair $(\P^2, Z)$ induces an automorphism of $\Bl_Z\P^2$ a
   (1.4,-1.05) circle (0.05) node [black, below right] {$z_5$};
 \end{tikzpicture}
 
-   \caption{In the first test family, we blow up the plane along $\{z_0, \dots, z_5\}$ as $z_0$ stays fixed and $z_1,\dots,z_5$ vary in a general 4-dimensional series on a fixed conic $C$.}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/familyB1.tex
+  \caption{In the first test family, we blow up the plane along $\{z_0, \dots, z_5\}$ as $z_0$ stays fixed and $z_1,\dots,z_5$ vary in a general 4-dimensional series on a fixed conic $C$.}
   \label{fig:FamilyB1}
 \end{figure}
 Fix a point $z_0$ and a conic $C \subset \P^2$ not containing $z_0$.
@@ -862,13 +914,13 @@ Blowing up the six points $\{z_0, \dots, z_5\}$ gives a 4-parameter family of cu
 \end{proposition}
 \begin{proof}
   The subscheme $Z' = Z \cup \{z_0\}$ is clearly curvilinear.
-  Checking that $\mathcal I_{Z'} \otimes \O(3)$ is generated by its global sections is straightforward.
+  Checking that $\mathcal{I}_{Z'} \otimes \O(3)$ is generated by its global sections is straightforward.
 \end{proof}
 
 We now formally define the family.
 Let $H = C^{[5]}$ be the Hilbert scheme of 5 points in $C$, so that $H \cong \P^5$, and let $B \cong \P^4 \subset H \cong \P^5$ be a general hyperplane.
 Let $Z \subset B \times C$ be the restriction of the universal closed subscheme.
-Set 
+Set
 \[Z' = Z \sqcup \left(B \times \{z_0\}\right) \subset B \times \P^2.\]
 Our family
 \[\pi \colon X \to B\]
@@ -890,30 +942,30 @@ is the family of cubic surfaces associated to $Z' \subset B \times \P^2$ (see \a
 
 We now compute with the Chern classes of the anti-canonical section bundle.
 \begin{proposition}\label{lem:v1}
-  Let $\mathcal V = \pi_* \left( \omega_{X/B}^{-1} \right)$.
+  Let $\mathcal{V} = \pi_* \left( \omega_{X/B}^{-1} \right)$.
   Then we have
   \[
     \int_{B}v_{1}^{4} = 16, \quad \int_{B}v_{1}^{2}v_{2} = 4,\quad \int_{B}v_{1}v_{3} =0,\quad \int_{B}v_2^{2} = 1,\quad \int_{B}v_{4} = 0.\]
 \end{proposition}
 \begin{proof}
-By the construction of the cubic surface, we see that $\mathcal V$ is the rank 4 bundle
-\[ \mathcal V = \pi_* (\mathcal I_{Z'} \otimes \omega_{\pi}^{-1}),\]
+By the construction of the cubic surface, we see that $\mathcal{V}$ is the rank 4 bundle
+\[ \mathcal{V} = \pi_* (\mathcal{I}_{Z'} \otimes \omega_{\pi}^{-1}),\]
 where $\pi \colon B \times \P^2 \to B$ is the first projection.
 It contains the constant rank 2 bundle
 \begin{equation}\label{eqn:v11}
-  \pi_*\left( \mathcal I_{B \times C} \otimes \mathcal I_{B \times z_0} \otimes \omega_\pi^{-1} \right) = H^0\left(\mathcal I_{C} \otimes \mathcal I_{z_0} \otimes \omega_{\P^2}^{-1}\right) \otimes \O_{B},
+  \pi_*\left( \mathcal{I}_{B \times C} \otimes \mathcal{I}_{B \times z_0} \otimes \omega_{\pi}^{-1} \right) = H^0\left(\mathcal{I}_{C} \otimes \mathcal{I}_{z_0} \otimes \omega_{\P^2}^{-1}\right) \otimes \O_{B},
 \end{equation}
-and the quotient is the rank 2 bundle $\pi_*\left( I_{Z/B \times C} \otimes \omega_\pi^{-1} \right)$.
+and the quotient is the rank 2 bundle $\pi_*\left( I_{Z/B \times C} \otimes \omega_{\pi}^{-1} \right)$.
 To identify the quotient, note that $Z \subset B \times C$ is a divisor of class $(1,5)$ and $\omega^{-1}_{\pi}|_{B\times C}$ is isomorphic to $\O(0,6)$.
-Hence, $I_{Z/B \times C} \otimes \omega_\pi^{-1}$ is isomorphic to $\O(-1,1)$, and therefore
+Hence, $I_{Z/B \times C} \otimes \omega_{\pi}^{-1}$ is isomorphic to $\O(-1,1)$, and therefore
 \begin{equation}\label{eqn:v12}
   \begin{split}
-    \pi_*\left( I_{Z/B \times C} \otimes \omega_\pi^{-1} \right) \cong \O_{B}(-1)^{2}.
+    \pi_*\left( I_{Z/B \times C} \otimes \omega_{\pi}^{-1} \right) \cong \O_{B}(-1)^{2}.
   \end{split}
 \end{equation}
-By combining \eqref{eqn:v11} and \eqref{eqn:v12}, we see that $\mathcal V$ is an extension
+By combining \eqref{eqn:v11} and \eqref{eqn:v12}, we see that $\mathcal{V}$ is an extension
 \begin{equation}\label{eqn:V1}
-  0 \to \O_{B}^2 \to \mathcal V \to \O_{B}(-1)^2 \to 0.
+  0 \to \O_{B}^2 \to \mathcal{V} \to \O_{B}(-1)^2 \to 0.
 \end{equation}
 The Chern class calculation is now straightforward using the Whitney sum formula.
 \end{proof}
@@ -923,22 +975,22 @@ Let us find the degree of the map to moduli $B \dashrightarrow \M$.
   The degree of $B \dashrightarrow \M$ is $4320$.
 \end{proposition}
 \begin{proof}
-  Consider the space of marked cubic surfaces $\M^\dagger$, which is isomorphic to the configuration space of 6 ordered points on $\P^2$.
-  We have the action of $S_5$ on $\M^\dagger$ via permutations of the last 5 points.
+  Consider the space of marked cubic surfaces $\M^{\dagger}$, which is isomorphic to the configuration space of 6 ordered points on $\P^2$.
+  We have the action of $S_5$ on $\M^{\dagger}$ via permutations of the last 5 points.
   The map $B \dashrightarrow \M$ lifts to
   \begin{equation}\label{eqn:b1lift}
-    B \to \M^\dagger / S_5,
+    B \to \M^{\dagger} / S_5,
   \end{equation}
   where $b \in B$ is mapped to $(z_0, z_1 + \dots + z_5)|_b$.
   Let us compute the degree of this map.
-  Given a general $(y_0, y_1 + \dots + y_5)$ in $\M^\dagger / S_5$, there is a unique conic $Q$ through $y_1 + \dots + y_5$.
+  Given a general $(y_0, y_1 + \dots + y_5)$ in $\M^{\dagger} / S_5$, there is a unique conic $Q$ through $y_1 + \dots + y_5$.
   Note that there exists an automorphism of $\P^2$ that takes $(C, z_0)$ to $(Q, y_0)$, and such an automorphism is unique up to automorphisms preserving $(C, z_0)$.
   Suppose, under one such automorphism, $y_1 + \dots + y_5 \subset Q$ is taken to $z_1' + \dots + z_5' \subset C$.
   We must find out how many points of $B$ are equivalent to $z_1' + \dots + z_5'$ up to an automorphism of $\P^2$ preserving $(C, z_0)$.
-  Let $w_0 + w_\infty \subset C$ be the scheme $\Polar_C(z_0) \cap C$.
+  Let $w_0 + w_{\infty} \subset C$ be the scheme $\Polar_C(z_0) \cap C$.
   Then we have
    \[\Aut(\P^2, C, z_0) = \Aut(C, w_0 + w_{\infty}) \cong \G_m \rtimes \Z/2\Z. \]
-   Choose an isomorphism $C \cong \P^1$ such that $w_0$ and $w_\infty$ are identified with $[0:1]$ and $[1:0]$.
+   Choose an isomorphism $C \cong \P^1$ such that $w_0$ and $w_{\infty}$ are identified with $[0:1]$ and $[1:0]$.
    Then the $\G_m$ corresponds to the diagonal $\G_m \subset \PGL_2$ and the $\Z/2\Z$ corresponds to the swapping of the two homogeneous coordinates.
    Write $z_1' + \dots + z_5'$ as the vanishing locus of a binary quintic form $F$.
    It is easy to see that under the action of the $\G_m$, the closure of the orbit of $V(F)$ in $C^{[5]} \cong \P^5$ is a rational normal curve.
@@ -946,7 +998,7 @@ Let us find the degree of the map to moduli $B \dashrightarrow \M$.
    Accounting for the additional $\Z/2\Z$, we conclude that there are precisely 10 points of $B$ equivalent to $z_1' + \dots + z_5'$ up to an automorphism of $\P^2$ preserving $(C, z_0)$.
    Thus, the degree of the map in \eqref{eqn:b1lift} is 10.
 
-   Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, the degree of $B \to \M$ is
+   Since the degree of $\M^{\dagger} \to \M$ is $72 \times 6!$, the degree of $B \to \M$ is
    \[72 \times 6! / 5! \times 10 = 4320.\]
 \end{proof}
 
@@ -957,19 +1009,21 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
   16 \cdot a_{1^4} + 4 \cdot a_{1^2 2} + a_{2^2} = 4320.
 \end{align}
 
+%------------------------------------------------------------------------------------
 
 \subsection{The second test family}
 \label{sec:family-b_2}
 \begin{figure}
     \centering
-    \begin{tikzpicture}[very thick]
+    % BEGIN inlined figures/familyB2.tex
+\begin{tikzpicture}[very thick]
   \draw (0,0) ellipse (2 and 1.5) (2,0) node [right] {$C$};
   \draw[shorten >=-3cm, shorten <=-3cm] (0.8, 1.4) -- (5,0);
   \draw[shorten >=-3cm, shorten <=-3cm] (0.8, -1.4) -- (5,0);
 
   \draw[red, fill] (5,0) circle (0.05) node [black, below] {$t$};
   \draw[fill] (0.8, 1.4) circle (0.05) node [above right] {$s_0$};
-  \draw[fill] (0.8, -1.4) circle (0.05) node [below right] {$s_\infty$};
+  \draw[fill] (0.8, -1.4) circle (0.05) node [below right] {$s_{\infty}$};
 
   \draw[red, fill]
   (-1, 1.3) circle (0.05) node [black, above left] {$s_1$}
@@ -979,63 +1033,69 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
   (-1.7, -0.8) circle (0.05) node [black, below left] {$s_4$};
 \end{tikzpicture}
 
-     \caption{
-      In the second test family, we blow up the plane at the points $\{s_{1}, \dots, s_{5}, t\}$ as the seven points $\{s_1, \dots, s_5, s_0, s_\infty\}$ vary freely on a conic $C$.}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/familyB2.tex
+    \caption{
+      In the second test family, we blow up the plane at the points $\{s_{1}, \dots, s_{5}, t\}$ as the seven points $\{s_1, \dots, s_5, s_0, s_{\infty}\}$ vary freely on a conic $C$.}
     \label{fig:FamilyB2}
   \end{figure}
 Forget the notation introduced in \autoref{sec:family-b_1}.
-We take a smooth conic $C \subset \P^2$ and 7 distinct marked points $s_0, s_1, \dots, s_5, s_\infty$ on $C$.
-Let $t \in \P^2$ be the pole, with respect to $C$, of the line joining $s_0$ and $s_\infty$.
+We take a smooth conic $C \subset \P^2$ and 7 distinct marked points $s_0, s_1, \dots, s_5, s_{\infty}$ on $C$.
+Let $t \in \P^2$ be the pole, with respect to $C$, of the line joining $s_0$ and $s_{\infty}$.
 We blow up the six points $s_1,\dots, s_5, t$ to get a cubic surface (see \autoref{fig:FamilyB2}).
 As the 7 points vary on $C$, we get a 4-parameter family of cubic surfaces.
 
 
 
 We now make the construction more precise, and show how to use it construct a family of cubic surfaces over $\overline {\M}_{0,7}$.
-Let $\phi \colon \mathcal C \to \overline \M_{0,7}$ be the universal curve with the universal sections denoted by $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_\infty$.
-Let $\mathcal L$ be the line bundle $\sigma_\infty^*\left(\omega_\phi\right)$ on $\overline \M_{0,7}$.
-As is customary, we denote its Chern class by $\psi_\infty$.
+Let $\phi \colon \mathcal{C} \to \overline{\M}_{0,7}$ be the universal curve with the universal sections denoted by $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_{\infty}$.
+Let $\mathcal{L}$ be the line bundle $\sigma_{\infty}^*\left(\omega_{\phi}\right)$ on $\overline{\M}_{0,7}$.
+As is customary, we denote its Chern class by $\psi_{\infty}$.
 Consider the rank 2 vector bundle
-\[ \mathcal A = \phi_* \O_{\mathcal C}\left(\sigma_\infty\right).\]
+\[ \mathcal{A} = \phi_* \O_{\mathcal{C}}\left(\sigma_{\infty}\right).\]
 It is easy to check that the evaluation maps yield an isomorphism
 \begin{align*}
-  \mathcal A &\xrightarrow{\sim} \sigma_\infty^*\O_{\mathcal C}\left( \sigma_\infty \right) \oplus \sigma_0^*\O_{\mathcal C}\left( \sigma_\infty \right)\\
-  &= \mathcal L^{-1} \oplus \O_{\overline \M_{0,7}}.
+  \mathcal{A} &\xrightarrow{\sim} \sigma_{\infty}^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right) \oplus \sigma_0^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right)\\
+  &= \mathcal{L}^{-1} \oplus \O_{\overline{\M}_{0,7}}.
 \end{align*}
-Set $\overline {\mathcal C} = \P \mathcal A^\vee$ with the structure map $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
-The evaluation map $\phi^*\mathcal A \to \O_{\mathcal C}\left(\sigma_\infty\right)$ yields a map $\gamma \colon \mathcal C \to \overline {\mathcal C}$.
-The effect of $\gamma$ on a stable curve $(C, s_0, \dots, s_\infty)$ is to contract all irreducible components of $C$ not containing the marked point $s_\infty$.
-The unique remaining $\P^1$ is identified with the corresponding fiber of $\overline \phi$.
-Set $\overline \sigma_i = \sigma_i \circ \gamma$; these $\overline \sigma_i$ are sections of $\overline \phi \colon \overline {\mathcal C} \to \overline \M_{0,7}$.
+Set $\overline {\mathcal{C}} = \P \mathcal{A}^{\vee}$ with the structure map $\overline{\phi} \colon \overline {\mathcal{C}} \to \overline{\M}_{0,7}$.
+The evaluation map $\phi^*\mathcal{A} \to \O_{\mathcal{C}}\left(\sigma_{\infty}\right)$ yields a map $\gamma \colon \mathcal{C} \to \overline {\mathcal{C}}$.
+The effect of $\gamma$ on a stable curve $(C, s_0, \dots, s_{\infty})$ is to contract all irreducible components of $C$ not containing the marked point $s_{\infty}$.
+The unique remaining $\P^1$ is identified with the corresponding fiber of $\overline{\phi}$.
+Set $\overline{\sigma}_i = \sigma_i \circ \gamma$; these $\overline{\sigma}_i$ are sections of $\overline{\phi} \colon \overline {\mathcal{C}} \to \overline{\M}_{0,7}$.
 They satisfy the following properties
 \begin{itemize}
 \item $\overline{\sigma}_{\infty}$ is disjoint from all the other sections, and
-\item in each fiber of $\overline \phi$, the union of all seven sections
+\item in each fiber of $\overline{\phi}$, the union of all seven sections
   is supported on at least three points.
 \end{itemize}
 We now invoke the relative 2-Veronese embedding
 \[
-\iota \colon \overline {\mathcal C} \to \mathcal P := \P \Sym^2 \mathcal A^\vee.
+\iota \colon \overline {\mathcal{C}} \to \mathcal{P} := \P \Sym^2 \mathcal{A}^{\vee}.
 \]
-Let $\rho \colon \mathcal P \to \overline{\M}_{0,7}$ be the structure morphism.
-Then $\overline {\mathcal C} \subset \mathcal P$ is a family of smooth conics with 7 marked points $\sigma_0, \dots, \sigma_\infty$ satisfying the two properties above.
+Let $\rho \colon \mathcal{P} \to \overline{\M}_{0,7}$ be the structure morphism.
+Then $\overline {\mathcal{C}} \subset \mathcal{P}$ is a family of smooth conics with 7 marked points $\sigma_0, \dots, \sigma_{\infty}$ satisfying the two properties above.
 
-Let $\tau \colon \overline \M_{0,7} \to \mathcal P$ be the section obtained by fiber-wise taking the pole with respect to $\overline {\mathcal C}$ of the line joining the points $\overline \sigma_0$ and $\overline \sigma_\infty$.
+Let $\tau \colon \overline{\M}_{0,7} \to \mathcal{P}$ be the section obtained by fiber-wise taking the pole with respect to $\overline {\mathcal{C}}$ of the line joining the points $\overline{\sigma}_0$ and $\overline{\sigma}_{\infty}$.
 Here is an alternate description of $\tau$.
-The direct sum decomposition $\mathcal A = \O \oplus \mathcal L^{-1}$ gives the decomposition
-\[ \Sym^2 \mathcal A = \O \oplus \mathcal L^{-1} \oplus \mathcal L^{-2}.\]
-In $\P \mathcal A^\vee$, the sections $\overline \sigma_0$ and $\overline \sigma_\infty$ correspond to the projections $\mathcal A \to \O$ and $\mathcal A \to \mathcal L^{-1}$, respectively.
-Hence, in the Veronese embedding, they correspond to the projections $\Sym^2 A \to \O$ and $\Sym^2 A \to \mathcal L^{-2}$, respectively.
-Using the quadratic form on $\Sym^2 \mathcal A$ given by the Veronese conic, it is easy to check that the section $\tau$ is given by the third projection $\Sym^2 A \to \mathcal L^{-1}$.
+The direct sum decomposition $\mathcal{A} = \O \oplus \mathcal{L}^{-1}$ gives the decomposition
+\[ \Sym^2 \mathcal{A} = \O \oplus \mathcal{L}^{-1} \oplus \mathcal{L}^{-2}.\]
+In $\P \mathcal{A}^{\vee}$, the sections $\overline{\sigma}_0$ and $\overline{\sigma}_{\infty}$ correspond to the projections $\mathcal{A} \to \O$ and $\mathcal{A} \to \mathcal{L}^{-1}$, respectively.
+Hence, in the Veronese embedding, they correspond to the projections $\Sym^2 A \to \O$ and $\Sym^2 A \to \mathcal{L}^{-2}$, respectively.
+Using the quadratic form on $\Sym^2 \mathcal{A}$ given by the Veronese conic, it is easy to check that the section $\tau$ is given by the third projection $\Sym^2 A \to \mathcal{L}^{-1}$.
 
-We let $\Sigma \subset \overline{\mathcal C}$ denote the closed subscheme associated to the divisor $\overline \sigma_1 + \dots + \overline \sigma_5$ and $\mathcal Z \subset \mathcal P$ the disjoint union $\Sigma \sqcup \tau$.
-By \autoref{prop:B1}, $\mathcal Z \subset \mathcal P$ is a family of admissible subschemes.
+We let $\Sigma \subset \overline{\mathcal{C}}$ denote the closed subscheme associated to the divisor $\overline{\sigma}_1 + \dots + \overline{\sigma}_5$ and $\mathcal{Z} \subset \mathcal{P}$ the disjoint union $\Sigma \sqcup \tau$.
+By \autoref{prop:B1}, $\mathcal{Z} \subset \mathcal{P}$ is a family of admissible subschemes.
 We let
-\[ \pi \colon \mathcal X \to \overline \M_{0,7}\]
-be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (see \autoref{def:cubicZ}).
+\[ \pi \colon \mathcal{X} \to \overline{\M}_{0,7}\]
+be the family of cubic surfaces associated to $\mathcal{Z} \subset \mathcal{P}$ (see \autoref{def:cubicZ}).
 
 \begin{proposition}  \label{prop:goodnessB2}
-  The family $\pi \colon \mathcal X \to \overline \M_{0,7}$ is good.
+  The family $\pi \colon \mathcal{X} \to \overline{\M}_{0,7}$ is good.
 \end{proposition}
 \begin{proof}
   All fibers have finite automorphism groups by the same proof as \autoref{prop:goodnessB1}.
@@ -1043,12 +1103,12 @@ be the family of cubic surfaces associated to $\mathcal Z \subset \mathcal P$ (s
 
 We now compute the Chern classes of the anti-canonical section bundle.
 \begin{proposition}\label{lem:v2}
-  Let $\mathcal V = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal V)$.
+  Let $\mathcal{V} = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal{V})$.
   Then we have
   \[
     \begin{split}
-      \int_{\overline \M_{0,7}}v_{1}^{4} = 625&, \quad \int_{\overline \M_{0,7}}v_{1}^{2}v_{2} = 125,\quad \int_{\overline \M_{0,7}}v_{1}v_{3} = -25,\\
-      &\int_{\overline \M_{0,7}}v_2^{2} = 25,\quad \int_{\overline \M_{0,7}}v_{4} = -6.
+      \int_{\overline{\M}_{0,7}}v_{1}^{4} = 625&, \quad \int_{\overline{\M}_{0,7}}v_{1}^{2}v_{2} = 125,\quad \int_{\overline{\M}_{0,7}}v_{1}v_{3} = -25,\\
+      &\int_{\overline{\M}_{0,7}}v_2^{2} = 25,\quad \int_{\overline{\M}_{0,7}}v_{4} = -6.
     \end{split}
   \]
 \end{proposition}
@@ -1063,48 +1123,48 @@ For the proof, we use the following.
   We induct on $d$.
   Both sides are 0 for $d = -1$.
   The exact sequence
-  \[ 0 \to \O(D-\sigma) \to \O(D) \to \O(D)|_\sigma \to 0\]
+  \[ 0 \to \O(D-\sigma) \to \O(D) \to \O(D)|_{\sigma} \to 0\]
   pushed-forward to $B$ provides the induction step.
 \end{proof}
 \begin{proof}[Proof of \autoref{lem:v2}]
-  Recall that $\mathcal X \to \overline \M_{0,7}$ is the cubic surface associated to $\mathcal Z \subset \mathcal P$ in the $\P^2$-bundle $\rho \colon \mathcal P \to \overline \M_{0,7}$.
+  Recall that $\mathcal{X} \to \overline{\M}_{0,7}$ is the cubic surface associated to $\mathcal{Z} \subset \mathcal{P}$ in the $\P^2$-bundle $\rho \colon \mathcal{P} \to \overline{\M}_{0,7}$.
   By construction, we have
-  \[ \mathcal V = \rho_*(\mathcal I_{\mathcal Z} \otimes \omega^{-1}_\rho).\]
-  Hence, in the Grothendieck group of $\overline \M_{0,7}$, we have
+  \[ \mathcal{V} = \rho_*(\mathcal{I}_{\mathcal{Z}} \otimes \omega^{-1}_{\rho}).\]
+  Hence, in the Grothendieck group of $\overline{\M}_{0,7}$, we have
   \begin{equation}\label{eqn:diff}
-    [\mathcal V] = \rho_*(\omega_\rho^{-1}) - \rho_*(\omega_\rho^{-1}|_{\mathcal Z}).
+    [\mathcal{V}] = \rho_*(\omega_{\rho}^{-1}) - \rho_*(\omega_{\rho}^{-1}|_{\mathcal{Z}}).
   \end{equation}
-  By the relative Euler sequence, we see that $\omega^{-1}_\rho$ is isomorphic to $\O_{\mathcal P}(3) \otimes \rho^* \det (\Sym^2 \mathcal A)^\vee$, and hence the first term in \eqref{eqn:diff} is
+  By the relative Euler sequence, we see that $\omega^{-1}_{\rho}$ is isomorphic to $\O_{\mathcal{P}}(3) \otimes \rho^* \det (\Sym^2 \mathcal{A})^{\vee}$, and hence the first term in \eqref{eqn:diff} is
   \begin{equation}\label{eqn:diff1}
-    \rho_*(\omega_\rho^{-1}) = \Sym^3(\Sym^2 \mathcal A) \otimes \mathcal L^3.
+    \rho_*(\omega_{\rho}^{-1}) = \Sym^3(\Sym^2 \mathcal{A}) \otimes \mathcal{L}^3.
   \end{equation}
-  Since $\mathcal Z$ is the disjoint union $\Sigma \cup \tau$, the second term is a sum
-  \[ \rho_*(\omega_\rho^{-1}|_{\mathcal Z}) = \rho_*(\omega_\rho^{-1}|_{\tau}) + \rho_*(\omega_\rho^{-1}|_{\Sigma}). \]
-  Since $\tau$ is defined by the surjection $\Sym^2 \mathcal A \to \mathcal L^{-1}$, the restriction $\omega_\rho^{-1}|_\tau$ is trivial.
-  To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal C} = \P A^\vee$ and let $D = \omega_\rho^{-1}|_{\overline C} = \O(6) \otimes \overline \phi^* \mathcal L^3$.
+  Since $\mathcal{Z}$ is the disjoint union $\Sigma \cup \tau$, the second term is a sum
+  \[ \rho_*(\omega_{\rho}^{-1}|_{\mathcal{Z}}) = \rho_*(\omega_{\rho}^{-1}|_{\tau}) + \rho_*(\omega_{\rho}^{-1}|_{\Sigma}). \]
+  Since $\tau$ is defined by the surjection $\Sym^2 \mathcal{A} \to \mathcal{L}^{-1}$, the restriction $\omega_{\rho}^{-1}|_{\tau}$ is trivial.
+  To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal{C}} = \P A^{\vee}$ and let $D = \omega_{\rho}^{-1}|_{\overline C} = \O(6) \otimes \overline{\phi}^* \mathcal{L}^3$.
   Thus, in the Grothendieck group, we have
   \begin{equation}\label{eqn:diff2}
-    \rho_*(\omega_\rho^{-1}|_{\Sigma}) = \overline\phi_*\left(D\right) - \overline\phi_* \left( D(-\Sigma)\right).
+    \rho_*(\omega_{\rho}^{-1}|_{\Sigma}) = \overline{\phi}_*\left(D\right) - \overline{\phi}_* \left( D(-\Sigma)\right).
   \end{equation}
-  We now use \autoref{lem:push} with the section $\sigma_\infty$ to compute the terms on the right hand side of \eqref{eqn:diff2}.
+  We now use \autoref{lem:push} with the section $\sigma_{\infty}$ to compute the terms on the right hand side of \eqref{eqn:diff2}.
   Putting this together with \eqref{eqn:diff} and \eqref{eqn:diff1}, we get
-  \[ [\mathcal V] = \mathcal L^{-3}+ \mathcal L^{1}+ \mathcal L^{-1}+ \mathcal L^{-2}\]
+  \[ [\mathcal{V}] = \mathcal{L}^{-3}+ \mathcal{L}^{1}+ \mathcal{L}^{-1}+ \mathcal{L}^{-2}\]
   in the Grothendieck group.
-  The result is now a simple computation using $c_1(\mathcal L) = \psi_\infty$ and $\int_{\overline \M_{0,7}} \psi_\infty^4 = 1$.
+  The result is now a simple computation using $c_1(\mathcal{L}) = \psi_{\infty}$ and $\int_{\overline{\M}_{0,7}} \psi_{\infty}^4 = 1$.
 \end{proof}
 
-Having computed the Chern classes, we find the degree of the map $\overline \M_{0,7} \dashrightarrow \M$.
+Having computed the Chern classes, we find the degree of the map $\overline{\M}_{0,7} \dashrightarrow \M$.
 \begin{proposition}\label{prop:deg2}
-  The degree of the map $\overline \M_{0,7} \dashrightarrow \M$, induced by $\pi \colon \mathcal X \to \overline \M_{0,7}$ is $2 \times 72 \times 6!$.
+  The degree of the map $\overline{\M}_{0,7} \dashrightarrow \M$, induced by $\pi \colon \mathcal{X} \to \overline{\M}_{0,7}$ is $2 \times 72 \times 6!$.
 \end{proposition}
 \begin{proof}
-  The map lifts to $\overline \M_{0,7} \dashrightarrow \M^\dagger$.
-  Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, we must prove that the degree of $\overline \M_{0,7} \dashrightarrow \M^\dagger$ is $2$.
+  The map lifts to $\overline{\M}_{0,7} \dashrightarrow \M^{\dagger}$.
+  Since the degree of $\M^{\dagger} \to \M$ is $72 \times 6!$, we must prove that the degree of $\overline{\M}_{0,7} \dashrightarrow \M^{\dagger}$ is $2$.
 
-  Recall that $\M^\dagger$ is isomorphic to the configuration space of 6 points in $\P^2$.
+  Recall that $\M^{\dagger}$ is isomorphic to the configuration space of 6 points in $\P^2$.
   Given a general 6-tuple of points $(s_1,\dots, s_5, y)$ in $\P^2$, there is a unique conic $C$ passing through $s_1,\dots, s_5$.
   Let $x$ and $y$ be the two points of $\Polar_C(t) \cap C$.
-  Then the two pre-images of $(s_1,\dots, s_5, t)$ in $\overline \M_{0,7}$ are $(C, x, s_1, \dots, s_5, y)$ and $(C,y, s_1, \dots, s_5, x)$.
+  Then the two pre-images of $(s_1,\dots, s_5, t)$ in $\overline{\M}_{0,7}$ are $(C, x, s_1, \dots, s_5, y)$ and $(C,y, s_1, \dots, s_5, x)$.
   The proof is thus complete.
 \end{proof}
 
@@ -1115,14 +1175,16 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
   625 a_{1^{4}} + 125 a_{1^{2}2} - 25a_{13} + 25a_{2^2} - 6 a_{4} = 2 \times 72 \times 6!.
 \end{align}
 
+%------------------------------------------------------------------------------
 
 
 \subsection{The third test family}
 \label{sec:family-b_3}
 \begin{figure}
     \centering
-    \begin{tikzpicture}[thick]
-  \draw [domain=0:1.4, samples=100] 
+    % BEGIN inlined figures/familyB3.tex
+\begin{tikzpicture}[thick]
+  \draw [domain=0:1.4, samples=100]
   plot ({\x^2}, {\x^3} )
   plot ({\x^2}, {-\x^3} );
   \draw (2, -3) node {$C$};
@@ -1133,20 +1195,26 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
   \draw[red, fill] (0.9^2, -0.9^3) circle (0.05) node [black, left] {$t_4$};
 \end{tikzpicture}
 
-     \caption{In the family $B_3$, we blow up the points $t_i$ for $i = 1, \dots, 5$ and a fixed point $t_\infty$ at infinity (not shown) as the points $\{t_1, \dots, t_5\}$ move freely on a fixed cuspidal cubic $C$ with a flex at $t_\infty$.}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/familyB3.tex
+    \caption{In the family $B_3$, we blow up the points $t_i$ for $i = 1, \dots, 5$ and a fixed point $t_{\infty}$ at infinity (not shown) as the points $\{t_1, \dots, t_5\}$ move freely on a fixed cuspidal cubic $C$ with a flex at $t_{\infty}$.}
     \label{fig:FigureB3}
 \end{figure}
-We take a cuspidal plane cubic $C \subset \P^2$ and let $t_\infty$ be its unique flex point.
-We vary 5 points $\{t_1, \dots, t_5\}$ on $C$ and blow up the plane at $\{t_1, \dots, t_5, t_\infty\}$ to get a cubic surface (see \autoref{fig:FigureB3}).
+We take a cuspidal plane cubic $C \subset \P^2$ and let $t_{\infty}$ be its unique flex point.
+We vary 5 points $\{t_1, \dots, t_5\}$ on $C$ and blow up the plane at $\{t_1, \dots, t_5, t_{\infty}\}$ to get a cubic surface (see \autoref{fig:FigureB3}).
 Since $\Aut(C)$ is one dimensional, this gives us a 4-parameter family of cubic surfaces.
 
 We now convert the above construction into a good family of cubic surfaces over a complete base.
-We take our base to be $\widehat \M_{0,7}$, one of the compactifications of $\M_{0,7}$ constructed by Hassett \cite{has:03}.
+We take our base to be $\widehat{\M}_{0,7}$, one of the compactifications of $\M_{0,7}$ constructed by Hassett \cite{has:03}.
 Precisely, set
 \[
-  \mathbf w = \left(1-\epsilon, \epsilon, \dots, \epsilon, 1-3 \epsilon \right), \text{ where } 0 < \epsilon \ll 1,
+  \mathbf{w} = \left(1-\epsilon, \epsilon, \dots, \epsilon, 1-3 \epsilon \right), \text{ where } 0 < \epsilon \ll 1,
 \]
-and let $\widehat \M_{0,7}$ be the space of $\mathbf w$-weighted stable pointed curves $(C, s_0, s_1, \dots, s_5, s_\infty)$.
+and let $\widehat{\M}_{0,7}$ be the space of $\mathbf{w}$-weighted stable pointed curves $(C, s_0, s_1, \dots, s_5, s_{\infty})$.
 Such curves are easy to describe:
 \begin{itemize}
 \item $C$ must be a smooth rational curve,
@@ -1155,51 +1223,51 @@ Such curves are easy to describe:
 \item at most three of the $s_1, \dots, s_5$ can coincide with $s_{\infty}$.
 \end{itemize}
 There are no constraints on how many of the the points $s_1, \dots, s_5$ coincide with each other.
-Let $\nu \colon C \to \P^2$ be the map which is birational onto its image, whose image is a cuspidal cubic, and under which $s_0$ maps to the unique cusp point and $s_\infty$ to the unique flex point.
-Let $Z \subset C$ be the subscheme corresponding to the divisor $s_1 + \dots + s_5 + s_\infty$.
+Let $\nu \colon C \to \P^2$ be the map which is birational onto its image, whose image is a cuspidal cubic, and under which $s_0$ maps to the unique cusp point and $s_{\infty}$ to the unique flex point.
+Let $Z \subset C$ be the subscheme corresponding to the divisor $s_1 + \dots + s_5 + s_{\infty}$.
 Since at most one of the points $s_1, \dots, s_5$ can coincide with $s_0$, it follows that $\nu \colon Z \to \P^2$ is a closed embedding and the image is a curvilinear subscheme.
 It is also easy to check that the image is cut out by cubics.
 That is, $Z \subset \P^2$ is an admissible subscheme (see \autoref{def:admissible}).
 We let $X_Z$ be the associated cubic surface (see \autoref{def:cubicZ}).
 
-We now formalize the construction as a family over $\widehat \M_{0,7}$.
-Let $\phi \colon \mathcal C \to \widehat \M_{0,7}$ be the universal curve with universal sections $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_\infty$.
+We now formalize the construction as a family over $\widehat{\M}_{0,7}$.
+Let $\phi \colon \mathcal{C} \to \widehat{\M}_{0,7}$ be the universal curve with universal sections $\sigma_0, \sigma_1, \dots, \sigma_5, \sigma_{\infty}$.
 Observe that $\phi$ is a $\P^1$-bundle.
 Consider the rank 2 bundle
 \begin{equation}\label{eqn:hatA}
-  \mathcal A = \phi_* \O_{\mathcal C}(\sigma_\infty).
+  \mathcal{A} = \phi_* \O_{\mathcal{C}}(\sigma_{\infty}).
 \end{equation}
 As before, the evaluation maps yield an isomorphism
 \begin{align*}
-  \mathcal A &\xrightarrow{\sim} \sigma_\infty^*\O_{\mathcal C}\left( \sigma_\infty \right) \oplus \sigma_0^*\O_{\mathcal C}\left( \sigma_\infty \right)\\
-  &= \mathcal L^{-1} \oplus \O_{\widehat \M_{0,7}},
+  \mathcal{A} &\xrightarrow{\sim} \sigma_{\infty}^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right) \oplus \sigma_0^*\O_{\mathcal{C}}\left( \sigma_{\infty} \right)\\
+  &= \mathcal{L}^{-1} \oplus \O_{\widehat{\M}_{0,7}},
 \end{align*}
-where $\mathcal L = \sigma_\infty^*(\omega_\phi)$.
-We have a map $\mathcal C \to \P \mathcal A^\vee$ induced by the surjection $\phi^* \mathcal A \to \O_{\mathcal C}(\sigma_\infty)$, and since $\mathcal C \to \widehat \M_{0,7}$ is a $\P^1$-bundle, this map is an isomorphism.
-Observe that the sections $\sigma_0$ and $\sigma_\infty$ correspond to the projections $\mathcal A \to \O$ and $\mathcal A \to \mathcal L^{-1}$, respectively.
+where $\mathcal{L} = \sigma_{\infty}^*(\omega_{\phi})$.
+We have a map $\mathcal{C} \to \P \mathcal{A}^{\vee}$ induced by the surjection $\phi^* \mathcal{A} \to \O_{\mathcal{C}}(\sigma_{\infty})$, and since $\mathcal{C} \to \widehat{\M}_{0,7}$ is a $\P^1$-bundle, this map is an isomorphism.
+Observe that the sections $\sigma_0$ and $\sigma_{\infty}$ correspond to the projections $\mathcal{A} \to \O$ and $\mathcal{A} \to \mathcal{L}^{-1}$, respectively.
 Now consider the summand
 \begin{equation}\label{eqn:hatS}
-  \mathcal S := \O_{\widehat \M_{0,7}} \oplus \mathcal L^{-2} \oplus \mathcal L^{-3} \subset \Sym^3 \mathcal A,
+  \mathcal{S} := \O_{\widehat{\M}_{0,7}} \oplus \mathcal{L}^{-2} \oplus \mathcal{L}^{-3} \subset \Sym^3 \mathcal{A},
 \end{equation}
 and denote by
-\[ \nu \colon \mathcal C \to \P \mathcal S^\vee\]
-the map induced by the surjection $\phi^* \mathcal S \to \O_{\mathcal C}(3\sigma_\infty)$.
-Let $\rho \colon \P\mathcal S^\vee \to \widehat \M_{0,7}$ be the structure map.
-Thanks to our choice of $\mathcal S$, fiber-wise the map $\nu$ maps $\mathcal C$ to cuspidal cubics with $s_0$ mapping to the cusp and $s_\infty$ to the flex.
-Let $\mathcal Z \subset \mathcal C$ be the subscheme corresponding to the divisor $\sigma_1 + \dots + \sigma_\infty$.
-Our family 
-\[ \pi \colon \mathcal X \to \widehat \M_{0,7}\]
-is the family of cubic surfaces associated to the family of admissible subschemes $\nu \colon \mathcal Z \to \P \mathcal S^\vee$.
+\[ \nu \colon \mathcal{C} \to \P \mathcal{S}^{\vee}\]
+the map induced by the surjection $\phi^* \mathcal{S} \to \O_{\mathcal{C}}(3\sigma_{\infty})$.
+Let $\rho \colon \P\mathcal{S}^{\vee} \to \widehat{\M}_{0,7}$ be the structure map.
+Thanks to our choice of $\mathcal{S}$, fiber-wise the map $\nu$ maps $\mathcal{C}$ to cuspidal cubics with $s_0$ mapping to the cusp and $s_{\infty}$ to the flex.
+Let $\mathcal{Z} \subset \mathcal{C}$ be the subscheme corresponding to the divisor $\sigma_1 + \dots + \sigma_{\infty}$.
+Our family
+\[ \pi \colon \mathcal{X} \to \widehat{\M}_{0,7}\]
+is the family of cubic surfaces associated to the family of admissible subschemes $\nu \colon \mathcal{Z} \to \P \mathcal{S}^{\vee}$.
 
 \begin{proposition}\label{prop:goodness3}
-  The family $\pi \colon \mathcal X \to \widehat \M_{0,7}$ is good.
+  The family $\pi \colon \mathcal{X} \to \widehat{\M}_{0,7}$ is good.
 \end{proposition}
 \begin{proof}
-  We show that no fiber $\mathcal X_b$ is in the closure of the orbit of any smooth cubic surface $S$ without Eckardt points.
-  Let $Z \subset \P^2$ be the image of $\nu \colon Z_b \to \P \mathcal S^\vee_b$.
+  We show that no fiber $\mathcal{X}_b$ is in the closure of the orbit of any smooth cubic surface $S$ without Eckardt points.
+  Let $Z \subset \P^2$ be the image of $\nu \colon Z_b \to \P \mathcal{S}^{\vee}_b$.
   By construction, $Z$ does not have a point of multiplicity 6, and since $Z$ lies on a cubic, no four distinct points of $Z$ can be collinear.
   Suppose $Z$ does not have a point of multiplicity 4.
-  Then we use \autoref{prop:cubictopoints} and \autoref{prop:limit4} to conclude that $\mathcal X_b$ is not in the orbit closure of $S$.
+  Then we use \autoref{prop:cubictopoints} and \autoref{prop:limit4} to conclude that $\mathcal{X}_b$ is not in the orbit closure of $S$.
 
   We now treat the cases where $Z$ has a point of multiplicity 4 or 5.
   We repeatedly use the following fact about the geometry of the cuspidal cubic $C$: no line through the flex point is tangent to $C$, except the tangent line at the flex and the line joining the flex and the cusp.
@@ -1209,30 +1277,30 @@ is the family of cubic surfaces associated to the family of admissible subscheme
   If the tangent line $T_rZ = T_rC$ does not contain $p$ or $q$, we appeal to \autoref{prop:pq4r} and \autoref{prop:2p4r}.
   Suppose $T_rZ$ contains $p$.
   Then $T_rZ$ cannot contain $q$, and hence $p, q, r$  are not collinear.
-  By the construction of $Z$, one of $p,q,r$ must be the flex point $s_\infty$.
-  Using the fact about tangent lines through the flex,  we see that the only possibility is $q = s_\infty$.
+  By the construction of $Z$, one of $p,q,r$ must be the flex point $s_{\infty}$.
+  Using the fact about tangent lines through the flex,  we see that the only possibility is $q = s_{\infty}$.
   Now $Z \subset C$ is uniquely determined up to an automorphism of $(\P^2, C)$.
   It is easy to write down such a $Z$ and check directly that $\Aut(\P^2, Z)$ is finite.
-  By \autoref{prop:good}, $\Aut(\mathcal X_b)$ is also finite, and $\mathcal X_b$ is not in the orbit closure of $S$.
+  By \autoref{prop:good}, $\Aut(\mathcal{X}_b)$ is also finite, and $\mathcal{X}_b$ is not in the orbit closure of $S$.
   Alternatively, we see that the cubic surface associated to $Z$ has a unique singular point, which is of type $D_4$.
   It is known that, up to isomorphism, there are exactly two cubic surfaces with singularity $D_4$ (see \cite[Lemma~4]{bru.wal:79}).
   One has a finite automorphism group and the other one is treated by \autoref{prop:isogood}.
 
   Suppose $Z = p + 5q$, where $p$ and $q$ are distinct.
-  Then we must have $p = s_\infty$ and $q \not \in \{s_0, s_\infty\}$.
+  Then we must have $p = s_{\infty}$ and $q \not \in \{s_0, s_{\infty}\}$.
   Let $Q$ be the unique conic containing $5q$.
   We claim that $C$ cannot contain $p$.
   If it did, then we get $5(q-p) = 0 \in \Pic(C) \cong \G_a$, forcing $p = q$.
   We also claim that the two points of $\Polar_Q(p) \cap Q$ are distinct from $q$.
   This is because $Q$ and $C$ share the tangent line at $q$; this line does not pass through $p$, but the tangent lines to $Q$ at the points of $\Polar_Q(p)$ do pass through $p$.
   Now, any $\sigma \in \Aut(\P^2, Z)$ must preserve $C$ the three points $\Polar_Q(p) \cap Q \cup \{q\}$.
-  Then $\Aut(\P^2, Z)$ and hence $\Aut(\mathcal X_b)$ is finite, and $\mathcal X_b$ is not in the orbit closure of $S$.
+  Then $\Aut(\P^2, Z)$ and hence $\Aut(\mathcal{X}_b)$ is finite, and $\mathcal{X}_b$ is not in the orbit closure of $S$.
 \end{proof}
 
 It is time for enumerative computations.
 \begin{proposition}\label{prop:v3}
-  Let $\mathcal V = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal V)$.
-  Then on $\widehat \M_{0,7}$, we have
+  Let $\mathcal{V} = \pi_* \omega_{\pi}^{-1}$ and let $v_i = c_i(\mathcal{V})$.
+  Then on $\widehat{\M}_{0,7}$, we have
   \[
     \begin{split}
       \int_{}v_{1}^{4} = 3436&, \quad \int_{}v_{1}^{2}v_{2} = 1076,\quad \int_{}v_{1}v_{3} = 116,\\
@@ -1241,54 +1309,54 @@ It is time for enumerative computations.
   \]
 \end{proposition}
 \begin{proof}
-  We begin by finding the class of $\mathcal V$ in the Grothendieck group of $\widehat \M_{0,7}$.
+  We begin by finding the class of $\mathcal{V}$ in the Grothendieck group of $\widehat{\M}_{0,7}$.
   The computation parallels the computation in the proof \autoref{lem:v2}, so we will be brief.
-  Recall that $\phi \colon \mathcal C \to \widehat \M_{0,7}$ is the universal curve with sections $\sigma_0, \sigma_1, \dots, \sigma_\infty$.
-  Setting $\mathcal L = \sigma_\infty^* \omega_\phi$, recall the bundles
+  Recall that $\phi \colon \mathcal{C} \to \widehat{\M}_{0,7}$ is the universal curve with sections $\sigma_0, \sigma_1, \dots, \sigma_{\infty}$.
+  Setting $\mathcal{L} = \sigma_{\infty}^* \omega_{\phi}$, recall the bundles
   \begin{align}
-    \mathcal A = \O \oplus \mathcal L^{-1} \text{ from \eqref{eqn:hatA}, and }
-    \mathcal S = \O \oplus \mathcal L^{-2} \oplus \mathcal L^{-3} \text{ from \eqref{eqn:hatS}}.
+    \mathcal{A} = \O \oplus \mathcal{L}^{-1} \text{ from \eqref{eqn:hatA}, and }
+    \mathcal{S} = \O \oplus \mathcal{L}^{-2} \oplus \mathcal{L}^{-3} \text{ from \eqref{eqn:hatS}}.
   \end{align}
-  Recall that $\rho \colon \P \mathcal S^\vee \to \widehat \M_{0,7}$ is the structure map and $\mathcal Z \subset \mathcal C$ the subscheme corresponding to the divisor $s_1 + \dots + s_5 + s_\infty$.
-  In the Grothendieck group of $\widehat \M_{0,7}$, we have
+  Recall that $\rho \colon \P \mathcal{S}^{\vee} \to \widehat{\M}_{0,7}$ is the structure map and $\mathcal{Z} \subset \mathcal{C}$ the subscheme corresponding to the divisor $s_1 + \dots + s_5 + s_{\infty}$.
+  In the Grothendieck group of $\widehat{\M}_{0,7}$, we have
   \begin{equation}\label{eqn:v31}
     \begin{split}
-      \mathcal V &= \rho_* \omega^{-1}_\rho - \phi_* \left( \nu^* \omega^{-1}_\rho |_{\mathcal Z}\right)\\
-      &= (\Sym^3 \mathcal S) \otimes \det \mathcal S^\vee - \phi_*\left(\mathcal \O\left(9\sigma_\infty\right) \otimes \phi^*\det \mathcal S^\vee|_{\mathcal Z}\right)\\
-      &= (\Sym^3 \left( \O \oplus \mathcal L^{-2} \oplus \mathcal L^{-3} \right)) \otimes \mathcal L^5 - \phi_*\left(\mathcal \O\left(9\sigma_\infty\right) \otimes \phi^*\mathcal L^5\right) \\
-      & \qquad +  \phi_*\left(\mathcal \O\left(9\sigma_\infty-{\mathcal Z}\right) \otimes \phi^*\mathcal L^5\right)\\
-      &= \mathcal L^{-1} - \mathcal L^4 + (\mathcal L^2 + \mathcal L^3 + \mathcal L^4 + \mathcal L^5) \otimes \O\left(-\Delta_0\right).       
+      \mathcal{V} &= \rho_* \omega^{-1}_{\rho} - \phi_* \left( \nu^* \omega^{-1}_{\rho} |_{\mathcal{Z}}\right)\\
+      &= (\Sym^3 \mathcal{S}) \otimes \det \mathcal{S}^{\vee} - \phi_*\left(\mathcal \O\left(9\sigma_{\infty}\right) \otimes \phi^*\det \mathcal{S}^{\vee}|_{\mathcal{Z}}\right)\\
+      &= (\Sym^3 \left( \O \oplus \mathcal{L}^{-2} \oplus \mathcal{L}^{-3} \right)) \otimes \mathcal{L}^5 - \phi_*\left(\mathcal \O\left(9\sigma_{\infty}\right) \otimes \phi^*\mathcal{L}^5\right) \\
+      & \qquad +  \phi_*\left(\mathcal \O\left(9\sigma_{\infty}-{\mathcal{Z}}\right) \otimes \phi^*\mathcal{L}^5\right)\\
+      &= \mathcal{L}^{-1} - \mathcal{L}^4 + (\mathcal{L}^2 + \mathcal{L}^3 + \mathcal{L}^4 + \mathcal{L}^5) \otimes \O\left(-\Delta_0\right).
     \end{split}
   \end{equation}
-  Here $\Delta_0 \subset \widehat \M_{0,7}$ is the divisor $\sigma_0^* \O(\sigma_1 + \dots + \sigma_5)$.
+  Here $\Delta_0 \subset \widehat{\M}_{0,7}$ is the divisor $\sigma_0^* \O(\sigma_1 + \dots + \sigma_5)$.
   This is the locus of marked curves where the marked point $\sigma_0$ coincides with $\sigma_i$ for some $i = 1, \dots, 5$.
-  In the last step of the computation, we have used \autoref{lem:push} with the section $\sigma_0$ and that 
-  \[ \sigma_0^* \O(\sigma_0) = \sigma_\infty^*\O(-\sigma_\infty) = \mathcal L,\]
-  which holds since $\sigma_0$ and $\sigma_\infty$ are two disjoint sections of a $\P^1$-bundle.
+  In the last step of the computation, we have used \autoref{lem:push} with the section $\sigma_0$ and that
+  \[ \sigma_0^* \O(\sigma_0) = \sigma_{\infty}^*\O(-\sigma_{\infty}) = \mathcal{L},\]
+  which holds since $\sigma_0$ and $\sigma_{\infty}$ are two disjoint sections of a $\P^1$-bundle.
   The rest is a straightforward computation using the Whitney sum formula.
 \end{proof}
-Let us indicate how to carry out the Chern class computation on $\widehat \M_{0,7}$.
+Let us indicate how to carry out the Chern class computation on $\widehat{\M}_{0,7}$.
 The boundary divisors of the Hassett spaces are products of smaller Hassett spaces.
-We can use this inductive structure to break down the computation, similar to how it is done on the usual $\overline \M_{0,7}$.
-Alternatively, we can use the map $\zeta \colon \overline \M_{0,7} \to \widehat \M_{0,7}$ to pull back the classes to $\overline \M_{0,7}$, and do the computation there.
-Let $\widehat \psi_i = c_1(\sigma_i^* \omega_\phi)$ denote the $\psi$-classes on $\widehat \M_{0,7}$ and $\psi_i$ its analogue on $\overline \M_{0,7}$.
-Let $\Delta_{i,j} \subset \overline \M_{0,7}$ be the boundary divisor whose general point corresponds to the nodal union of two smooth rational curves with one component only containing the marked points indexed $i$ and $j$.
+We can use this inductive structure to break down the computation, similar to how it is done on the usual $\overline{\M}_{0,7}$.
+Alternatively, we can use the map $\zeta \colon \overline{\M}_{0,7} \to \widehat{\M}_{0,7}$ to pull back the classes to $\overline{\M}_{0,7}$, and do the computation there.
+Let $\widehat{\psi}_i = c_1(\sigma_i^* \omega_{\phi})$ denote the $\psi$-classes on $\widehat{\M}_{0,7}$ and $\psi_i$ its analogue on $\overline{\M}_{0,7}$.
+Let $\Delta_{i,j} \subset \overline{\M}_{0,7}$ be the boundary divisor whose general point corresponds to the nodal union of two smooth rational curves with one component only containing the marked points indexed $i$ and $j$.
 It is easy to see that
 \begin{align*}
-  \zeta^* \widehat \psi_0 &= \psi_0 - \sum_{i= 1}^5 [\Delta_{0,i}], \text{ and }\\
+  \zeta^* \widehat{\psi}_0 &= \psi_0 - \sum_{i= 1}^5 [\Delta_{0,i}], \text{ and }\\
   \zeta^* [\Delta_{0}] &= \sum_{i= 1}^5 [\Delta_{0,i}],
 \end{align*}
-using which we can transport the entire Chern class computation to $\overline \M_{0,7}$.
+using which we can transport the entire Chern class computation to $\overline{\M}_{0,7}$.
 
-We now compute the degree of the rational map from $\widehat \M_{0,7}$ to the moduli space $\M$ of cubic surfaces, induced by the family $\mathcal X \to \widehat \M_{0,7}$.
+We now compute the degree of the rational map from $\widehat{\M}_{0,7}$ to the moduli space $\M$ of cubic surfaces, induced by the family $\mathcal{X} \to \widehat{\M}_{0,7}$.
 \begin{proposition}\label{prop:deg3}
-  The degree of the map $\widehat \M_{0,7} \dashrightarrow \M$ is $20 \times 72 \times 6!$.
+  The degree of the map $\widehat{\M}_{0,7} \dashrightarrow \M$ is $20 \times 72 \times 6!$.
 \end{proposition}
 \begin{proof}
-  The map lifts to $\widehat \M_{0,7} \dashrightarrow \M^\dagger$.
+  The map lifts to $\widehat{\M}_{0,7} \dashrightarrow \M^{\dagger}$.
   The degree of this map is the answer to the following enumerative problem: given 6 general points in $\P^2$, how many cuspidal cubics contain the first five and have a flex point at the sixth?
   Fortunately for us, this question has been answered already---the answer is 20.
-  The answers appears in a remarkable paper \cite{mir.des:89} of Miret and Xamb\'o, who credit it to Schubert. 
+  The answers appears in a remarkable paper \cite{mir.des:89} of Miret and Xamb\'o, who credit it to Schubert.
   The paper contains a staggering number of enumerative results about cuspidal cubics.
   Our answer is in the first column in the row labelled $v^2$ in the second table (titled ``Order 2'') in Section~12 of \cite{mir.des:89}.
 
@@ -1298,7 +1366,7 @@ We now compute the degree of the rational map from $\widehat \M_{0,7}$ to the mo
   The $i$-th column in the row labelled $v^2$ is the intersection number $(v^* H)^2 \cdot X_0^{6-i}X_1^{i-1}$, where $H \subset \P^2$ is a general line.
   For $i = 1$, this is precisely the number of cuspidal cubics flexed at a given point and passing through 5 general points.
 
-  Since the degree of $\M^\dagger \to \M$ is $72 \times 6!$, the degree of $\widehat \M_{0,7} \dashrightarrow \M$ is $20 \times 72 \times 6!$.
+  Since the degree of $\M^{\dagger} \to \M$ is $72 \times 6!$, the degree of $\widehat{\M}_{0,7} \dashrightarrow \M$ is $20 \times 72 \times 6!$.
 \end{proof}
 
 Using \autoref{prop:goodisgood} and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
@@ -1309,12 +1377,14 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
 \end{equation}
 
 
+%----------------------------------------------------------------------------
 
 \subsection{The fourth test family}
 \label{sec:family-b_4}
 \begin{figure}
     \centering
-    \begin{tikzpicture}
+    % BEGIN inlined figures/family4.tex
+\begin{tikzpicture}
   \draw (0,0) ellipse (2 and 1.5);
   \begin{scope}[xshift=-1cm, yshift=-0.5cm]
   \draw[blue,fill]
@@ -1330,7 +1400,13 @@ Using \autoref{prop:goodisgood} and the computation of the Chern classes and the
   ;
 \end{tikzpicture}
 
-     \caption{In the fourth test family, we blow up the plane at 4 fixed points (blue) and 2 variable points (red).}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/family4.tex
+    \caption{In the fourth test family, we blow up the plane at 4 fixed points (blue) and 2 variable points (red).}
     \label{fig:family4}
   \end{figure}
 Our fourth family is perhaps the most obvious one.
@@ -1340,7 +1416,7 @@ When the two varying points lie on the line joining two of the fixed points, the
 It takes some effort to resolve this issue.
 
 Let $S$ be the blow up of $\P^2$ at 4 general points.
-Then $S$ is a quintic del Pezzo. 
+Then $S$ is a quintic del Pezzo.
 Let $S^{[2]}$ denote the Hilbert scheme of 2 points on $S$.
 We have 10 exceptional curves $L_1, \dots, L_{10}$ on $S$.
 Consider the planes $L^{[2]}_i \subset S^{[2]}$.
@@ -1368,15 +1444,15 @@ Set
   \label{eq:Xtilde}
   \mathcal{Y} := \Bl_{F}\left( \widetilde{S^{[2]}} \times S \right),
 \end{equation}
-with $\eta \colon \mathcal Y \to  \widetilde{S^{[2]}} \times S$ being the blow-down map.
+with $\eta \colon \mathcal{Y} \to  \widetilde{S^{[2]}} \times S$ being the blow-down map.
 Consider the map
-\[ \widetilde \pi \colon \mathcal Y \to \widetilde {S^{[2]}}\]
+\[ \widetilde{\pi} \colon \mathcal{Y} \to \widetilde {S^{[2]}}\]
 obtained by composing $\eta$ with the projection on to the first factor.
-It is easy to check that $\widetilde \pi$ is a flat family of surfaces, isomorphic to the constant family with fiber $S$ over the complement of $E$ in $\widetilde{S^{[2]}}$.
+It is easy to check that $\widetilde{\pi}$ is a flat family of surfaces, isomorphic to the constant family with fiber $S$ over the complement of $E$ in $\widetilde{S^{[2]}}$.
 
-Let $\mathcal Z \subset S^{[2]} \times S$ be the universal closed subscheme of length 2.
-Let $\widetilde {\mathcal Z} \subset \widetilde{S^{[2]}} \times S$ be the fiber product
-\[ \widetilde {\mathcal Z} = \mathcal Z \times_{S^{[2]}} \widetilde {S^{[2]}}.\]
+Let $\mathcal{Z} \subset S^{[2]} \times S$ be the universal closed subscheme of length 2.
+Let $\widetilde {\mathcal{Z}} \subset \widetilde{S^{[2]}} \times S$ be the fiber product
+\[ \widetilde {\mathcal{Z}} = \mathcal{Z} \times_{S^{[2]}} \widetilde {S^{[2]}}.\]
 The next lemma is critical to our construction.
 \begin{lemma}
   The closed embedding
@@ -1385,18 +1461,18 @@ The next lemma is critical to our construction.
   $j: \widetilde{\mathcal{Z}} \hookrightarrow  \mathcal{Y}$.
 \end{lemma}
 \begin{proof}
-  The subscheme $(L^{[2]}_i \times S) \cap \mathcal Z$ is contained in $(L^{[2]}_i \times L_i)$.
+  The subscheme $(L^{[2]}_i \times S) \cap \mathcal{Z}$ is contained in $(L^{[2]}_i \times L_i)$.
   Hence, we have an equality of schemes
   \[
-    (L^{[2]}_i \times L_i) \cap \mathcal Z = (L^{[2]}_i \times S) \cap \mathcal Z.
+    (L^{[2]}_i \times L_i) \cap \mathcal{Z} = (L^{[2]}_i \times S) \cap \mathcal{Z}.
   \]
   By pulling back both sides to $\widetilde{S^{[2]}} \times S$, we get
   \begin{equation}
     \label{eq:Cartier}
     F_i \cap \widetilde{\mathcal{Z}} = (E_i \times S) \cap \widetilde{\mathcal{Z}}.
   \end{equation}
-  In particular, $F_i \cap \widetilde {\mathcal Z}$ is a Cartier divisor.
-  By the universal property of the blow up, we get a lift $j \colon \widetilde{\mathcal Z} \to \mathcal Y$.
+  In particular, $F_i \cap \widetilde {\mathcal{Z}}$ is a Cartier divisor.
+  By the universal property of the blow up, we get a lift $j \colon \widetilde{\mathcal{Z}} \to \mathcal{Y}$.
   Since $i = \beta \circ j$ is a closed embedding, so is $j$.
 \end{proof}
 
@@ -1411,20 +1487,21 @@ The following diagram summarizes the situation so far:
 We let $\mathcal{F} \subset \mathcal{Y}$ denote the exceptional
 divisor of $\eta$. It has $10$ disjoint components, corresponding to
 each $F_{i}$, which in turn correspond to the ten lines $L_{i}$.
-To ease notation, we suppress the map $j \colon \widetilde{\mathcal Z} \to \mathcal Y$, and write $\widetilde{\mathcal Z} \subset \mathcal Y$.
+To ease notation, we suppress the map $j \colon \widetilde{\mathcal{Z}} \to \mathcal{Y}$, and write $\widetilde{\mathcal{Z}} \subset \mathcal{Y}$.
 
-Let us study the family $\widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}}$.
+Let us study the family $\widetilde{\pi} \colon \mathcal{Y} \to \widetilde{S^{[2]}}$.
 Its fiber over a point in the complement of $E$ is just $S$.
-The following proposition describes the fiber of $\mathcal Y$ over $e \in E_i$, along with the fiber of $\widetilde{\mathcal Z}$ in it; see \autoref{fig:familyY} for a picture.
+The following proposition describes the fiber of $\mathcal{Y}$ over $e \in E_i$, along with the fiber of $\widetilde{\mathcal{Z}}$ in it; see \autoref{fig:familyY} for a picture.
 \begin{figure}
   \centering
-    \begin{tikzpicture}[very thick]
+    % BEGIN inlined figures/familyY.tex
+\begin{tikzpicture}[very thick]
   \draw (-4,0) -- (4,0);
-  \draw (5.5, 3) node (Y) {$\mathcal Y$};
+  \draw (5.5, 3) node (Y) {$\mathcal{Y}$};
   \draw (5.5,0) node (S){$\widetilde {S^{[2]}}$};
   \draw (Y) edge[->] (S);
   \draw (0,0) circle (0.05) node [below] {$\qquad e \in E$};
-  
+
   \begin{scope}[xshift=-3cm, yshift=3cm, yscale=1.25]
     \draw (60:1) -- (120:1) -- (170:1) -- (230:1) -- (280:1) -- (330:1) -- (10:1) -- (60:1);
     \draw[fill, red]
@@ -1457,12 +1534,18 @@ The following proposition describes the fiber of $\mathcal Y$ over $e \in E_i$, 
     \draw (80:2.4) node {$\F_1$};
   \end{scope}
   \draw[thin, draw=red, bend left=10] (a1) edge (z1) (z1) edge (b1);
-  \draw[thin, draw=red, bend left=10] (a2) edge node[above] {$\widetilde{\mathcal Z}$} (z2)
+  \draw[thin, draw=red, bend left=10] (a2) edge node[above] {$\widetilde{\mathcal{Z}}$} (z2)
   (z2) edge (b2);
 \end{tikzpicture}
 
 
-     \caption{The family of surfaces $\mathcal Y \to \widetilde {S^{[2]}}$ and the subscheme $\widetilde {\mathcal Z} \subset \mathcal Y$.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/familyY.tex
+    \caption{The family of surfaces $\mathcal{Y} \to \widetilde {S^{[2]}}$ and the subscheme $\widetilde {\mathcal{Z}} \subset \mathcal{Y}$.
       The dashed lines on the central fiber represent the three exceptional curves of $S$ intersecting the double curve.
     }
     \label{fig:familyY}
@@ -1471,11 +1554,11 @@ The following proposition describes the fiber of $\mathcal Y$ over $e \in E_i$, 
 \begin{proposition}
   \label{prop:geometry}
   Let $e \in E_{i}$ be any point, and let
-  $\mathcal{Y}_{e} = \widetilde \pi^{-1}(e)$.
+  $\mathcal{Y}_{e} = \widetilde{\pi}^{-1}(e)$.
   \begin{enumerate}
-  \item $\mathcal{Y}_{e}$ is the union of two surfaces $S$ and $\mathcal F_e$, where $\mathcal F_e$ is a copy of the Hirzebruch surface $\F_1$.
+  \item $\mathcal{Y}_{e}$ is the union of two surfaces $S$ and $\mathcal{F}_e$, where $\mathcal{F}_e$ is a copy of the Hirzebruch surface $\F_1$.
     They meet transversely along $L_{i} \subset S$ and a smooth curve of self-intersection $1$ in $\F_1$.
-  \item The subscheme $\widetilde{\mathcal Z}_e \subset \mathcal Y_e$ lies in $\mathcal F_e$ and is disjoint from $S$.
+  \item The subscheme $\widetilde{\mathcal{Z}}_e \subset \mathcal{Y}_e$ lies in $\mathcal{F}_e$ and is disjoint from $S$.
     It maps isomorphically onto its image in $L_{i}$ under $\eta$.
   \end{enumerate}
 \end{proposition}
@@ -1501,10 +1584,10 @@ The following proposition describes the fiber of $\mathcal Y$ over $e \in E_i$, 
   $N_{L_{i}/S} = \O_{L_{i}}(-1)$.
   Altogether, we get the description of $\mathcal{Y}_{e}$ provided in (1).
 
-  Since the embedding $i \colon \widetilde {\mathcal Z} \to \widetilde{S^{[2]}} \times S$ is the composite
-  \[\widetilde {\mathcal Z} \xrightarrow{j} \mathcal Y \xrightarrow{\eta} \widetilde{S^{[2]}} \times S,\]
-  and $\mathcal F = \eta^{-1}(F)$, we have
-  \[ \widetilde {\mathcal Z} \cap j^{-1}\left(\mathcal F\right) = \widetilde {\mathcal Z} \cap i^{-1}(F).\]
+  Since the embedding $i \colon \widetilde {\mathcal{Z}} \to \widetilde{S^{[2]}} \times S$ is the composite
+  \[\widetilde {\mathcal{Z}} \xrightarrow{j} \mathcal{Y} \xrightarrow{\eta} \widetilde{S^{[2]}} \times S,\]
+  and $\mathcal{F} = \eta^{-1}(F)$, we have
+  \[ \widetilde {\mathcal{Z}} \cap j^{-1}\left(\mathcal{F}\right) = \widetilde {\mathcal{Z}} \cap i^{-1}(F).\]
   We have already seen in \eqref{eq:Cartier} that
   \[F \cap \td{\mathcal{Z}} = (E \times S)\cap \td{\mathcal{Z}}.\]
   Restricting the first coordinate of $E \times S$ to $e$ implies
@@ -1519,12 +1602,12 @@ other hand, by part (1), it is equal to
 $[\td{\mathcal{Z}}] \cdot ([\mathcal{F}_{e}]+ [S])$.
 Since we have
 $\td{\mathcal{Z}}_{e} \subset \mathcal{F}_{e}$, we get
-$[\td{\mathcal{Z}}] \cdot [S] = 0$, and hence $\td{\mathcal Z}$ must be disjoint from $S$.
+$[\td{\mathcal{Z}}] \cdot [S] = 0$, and hence $\td{\mathcal{Z}}$ must be disjoint from $S$.
 
-The last assertion follows immediately from the fact that $\widetilde Z \subset \mathcal Y$ maps isomorphically to its image in $\widetilde{S^{[2]}} \times S$.
+The last assertion follows immediately from the fact that $\widetilde Z \subset \mathcal{Y}$ maps isomorphically to its image in $\widetilde{S^{[2]}} \times S$.
 \end{proof}
 
-The following proposition provides one more necessary detail about the position of $\widetilde {\mathcal Z}_e$ in the $\F_1$ component of $\mathcal Y_e$.
+The following proposition provides one more necessary detail about the position of $\widetilde {\mathcal{Z}}_e$ in the $\F_1$ component of $\mathcal{Y}_e$.
 \begin{proposition}
   \label{prop:nodirectrix}
   Maintain the notation of \autoref{prop:geometry}.
@@ -1532,14 +1615,14 @@ The following proposition provides one more necessary detail about the position 
   \item The length two
     subscheme $\td{\mathcal{Z}}_{e} \subset \F_{1}$ is not contained in the directrix of $\F_{1}$.
   \item Set $\tau_i = T_i \cap \F_1$.
-    The subscheme $\td{\mathcal Z}_e \cup \tau_i$ is an admissible subscheme of $\F_1$.
+    The subscheme $\td{\mathcal{Z}}_e \cup \tau_i$ is an admissible subscheme of $\F_1$.
   \end{enumerate}
 \end{proposition}
 \begin{proof}
   The proof follows easily from unravelling the map
-  \[ j \colon \widetilde {\mathcal Z}_e \to \F_1,\]
+  \[ j \colon \widetilde {\mathcal{Z}}_e \to \F_1,\]
   which we now do.
-  Set $Z = \widetilde{\mathcal Z}_e$ and let $N_e$ be the 1-dimensional vector space
+  Set $Z = \widetilde{\mathcal{Z}}_e$ and let $N_e$ be the 1-dimensional vector space
   \[ N_e = N_{E_i/\widetilde{S^{[2]}}} \big|_e. \]
   From the proof of \autoref{prop:geometry}, we write the $\F_1$ component more canonically as
   \[
@@ -1578,33 +1661,33 @@ The following proposition provides one more necessary detail about the position 
 
 We are now in a position to describe the family of cubic surfaces.
 Consider the family
-\[ \widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}},\]
-along with $\widetilde {\mathcal Z} \subset \mathcal Y$.
+\[ \widetilde{\pi} \colon \mathcal{Y} \to \widetilde{S^{[2]}},\]
+along with $\widetilde {\mathcal{Z}} \subset \mathcal{Y}$.
 Set $U = \widetilde{S^{[2]}} \setminus E$.
-Over $U$, the $\widetilde{\mathcal Z}$ is an admissible subscheme of $\mathcal Y$, and here our family will be the associated cubic surface as in \autoref{def:cubicZ}.
+Over $U$, the $\widetilde{\mathcal{Z}}$ is an admissible subscheme of $\mathcal{Y}$, and here our family will be the associated cubic surface as in \autoref{def:cubicZ}.
 We now describe our cubic surface over a point $e \in E_i$.
-In the $S$ component of $\mathcal Y_e$, we have three exceptional curves that meet the double curve $L_i \subset S$.
+In the $S$ component of $\mathcal{Y}_e$, we have three exceptional curves that meet the double curve $L_i \subset S$.
 They intersect $L_i$ in three distinct points.
 Let $T_i$ be the union of these three exceptional curves (in \autoref{fig:familyY}, these are indicated by the dashed lines).
-On the $\F_1$ component, we have a distinguished length 5 subscheme: the union of the length two subscheme $\widetilde{\mathcal Z}_e$ and the 3 points $\tau_i := T_i \cap L_i$.
+On the $\F_1$ component, we have a distinguished length 5 subscheme: the union of the length two subscheme $\widetilde{\mathcal{Z}}_e$ and the 3 points $\tau_i := T_i \cap L_i$.
 This subscheme of length 5 is admissible, and our cubic surface over $e$ will be its associated cubic surface.
 
 We construct the family that we described fiber-wise above using the linear series associated to the line bundle
 \begin{equation}\label{eqn:l1}
-  \mathcal L = \omega_{\widetilde \pi}^{-1} \otimes \O_{\mathcal Y}(-\mathcal F).
+  \mathcal{L} = \omega_{\widetilde{\pi}}^{-1} \otimes \O_{\mathcal{Y}}(-\mathcal{F}).
 \end{equation}
-Since $\mathcal Y$ is the blow up of $\widetilde{S^{[2]}} \times S$ with exceptional divisor $\mathcal F$, we can also write this line bundle as
+Since $\mathcal{Y}$ is the blow up of $\widetilde{S^{[2]}} \times S$ with exceptional divisor $\mathcal{F}$, we can also write this line bundle as
 \begin{equation}\label{eqn:l2}
-  \mathcal L = \omega_{S}^{-1} \otimes \O_{\mathcal Y}(-2\mathcal F).
+  \mathcal{L} = \omega_{S}^{-1} \otimes \O_{\mathcal{Y}}(-2\mathcal{F}).
 \end{equation}
-The following proposition describes $\mathcal L$ on the degenerate fibers of $\widetilde \pi$.
+The following proposition describes $\mathcal{L}$ on the degenerate fibers of $\widetilde{\pi}$.
 \begin{proposition}
   \label{prop:LYe}
   Let $e \in E_{i}$ and $\mathcal{Y}_{e} = S \cup_{L_{i}} \F_{1}$ as in \autoref{prop:geometry}.
   Let $T_i \subset S$ be the union of the three exceptional curves meeting $L_i$ and set $\tau_i = L_i \cap T_i$.
   Then
   \begin{enumerate}
-  \item $\mathcal{L}|_{S} \simeq \O_{S}(T_{i})$. 
+  \item $\mathcal{L}|_{S} \simeq \O_{S}(T_{i})$.
   \item $\mathcal{L}|_{\F_{1}} \simeq \omega_{\F_1}^{-1}$.
   \item The restriction map
   \begin{align}
@@ -1613,63 +1696,63 @@ The following proposition describes $\mathcal L$ on the degenerate fibers of $\w
   \end{align}
   is an isomorphism onto the $6$ dimensional vector space
   $H^{0}\left(\F_{1}, \omega_{\F_1}^{-1}\otimes \mathcal{I}_{\tau_{i}}\right).$
-\item The base locus of the complete linear system $|\mathcal L|$ on $\mathcal Y_e$ is $T_i$.
+\item The base locus of the complete linear system $|\mathcal{L}|$ on $\mathcal{Y}_e$ is $T_i$.
   \end{enumerate}
 \end{proposition}
 \begin{proof}
   We have $\omega_S^{-1} = \O(T_i + 2L_i)$.
-  This and \eqref{eqn:l2} gives $\mathcal L|_S = \O_S(T_i)$.
+  This and \eqref{eqn:l2} gives $\mathcal{L}|_S = \O_S(T_i)$.
 
-  Let $\mathcal S \subset \mathcal Y$ be the proper transform of $E \times S \subset \widetilde{S^{[2]}} \times S$, so that the preimage in $\mathcal Y$ of $E \times S$ is the sum $\mathcal F + \mathcal S$  .
+  Let $\mathcal{S} \subset \mathcal{Y}$ be the proper transform of $E \times S \subset \widetilde{S^{[2]}} \times S$, so that the preimage in $\mathcal{Y}$ of $E \times S$ is the sum $\mathcal{F} + \mathcal{S}$  .
   Then we have
-  \[\O(\mathcal F)|_{\F_1} = \O(-\mathcal S)|_{\F_1}.\]
+  \[\O(\mathcal{F})|_{\F_1} = \O(-\mathcal{S})|_{\F_1}.\]
   Since $\omega_S^{-1} \cdot L_i = 1$, the pull-back of $\omega_S^{-1}$ to $\F_1$ is the class of a fiber.
-  Since $\omega^{-1}_{\F_1}$ is the sum of a fiber class and 2 times the class of a section of self-intersection 1, we get $\mathcal L|_{\F_1} = \omega_{\F_1}^{-1}$.
+  Since $\omega^{-1}_{\F_1}$ is the sum of a fiber class and 2 times the class of a section of self-intersection 1, we get $\mathcal{L}|_{\F_1} = \omega_{\F_1}^{-1}$.
 
-  The statements about the dimension and the base locus of $|\mathcal L|$ on $\mathcal Y_e$ are straightforward.
+  The statements about the dimension and the base locus of $|\mathcal{L}|$ on $\mathcal{Y}_e$ are straightforward.
   The only key point is that $\O_S(T_i)$ is one-dimensional, and the vanishing locus of its non-zero sections is $T_i$.
 \end{proof}
 
 Let
 \[
-\mathcal W := \widetilde \pi_* \left( \mathcal L \otimes \mathcal I_{\widetilde{\mathcal Z}} \right).
+\mathcal{W} := \widetilde{\pi}_* \left( \mathcal{L} \otimes \mathcal{I}_{\widetilde{\mathcal{Z}}} \right).
 \]
-It follows from Grauert's theorem that $\mathcal W$ is a vector bundle of rank 4.
+It follows from Grauert's theorem that $\mathcal{W}$ is a vector bundle of rank 4.
 Consider the rational map
-\[ \kappa \colon \mathcal Y \dashrightarrow \P \mathcal W^\vee\]
+\[ \kappa \colon \mathcal{Y} \dashrightarrow \P \mathcal{W}^{\vee}\]
 induced by the evaluation
-\[ \widetilde \pi^* \mathcal W \to \mathcal L.\]
-It is easy to check that for every $e \in \widetilde{S^{[2]}}$, the image of $\kappa(\mathcal Y_e)$ is contained in a unique cubic surface in $\P \mathcal W^\vee_e$.
-Let $\mathcal X \subset \P \mathcal W^\vee$ be the resulting family of cubic surfaces.
+\[ \widetilde{\pi}^* \mathcal{W} \to \mathcal{L}.\]
+It is easy to check that for every $e \in \widetilde{S^{[2]}}$, the image of $\kappa(\mathcal{Y}_e)$ is contained in a unique cubic surface in $\P \mathcal{W}^{\vee}_e$.
+Let $\mathcal{X} \subset \P \mathcal{W}^{\vee}$ be the resulting family of cubic surfaces.
 More precisely, consider the map
-\[ \Sym^3 \mathcal W \to \pi_*(\mathcal L^3)\]
+\[ \Sym^3 \mathcal{W} \to \pi_*(\mathcal{L}^3)\]
 and verify (by looking at the fibers) that both sides are vector bundles and the map is surjective with kernel of rank 1.
-The rank 1 kernel defines the cubic $\mathcal X \subset \P \mathcal W^\vee$.
-Let $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$ be the obvious map.
+The rank 1 kernel defines the cubic $\mathcal{X} \subset \P \mathcal{W}^{\vee}$.
+Let $\pi \colon \mathcal{X} \to \widetilde{S^{[2]}}$ be the obvious map.
 
 The next proposition identifies the anti-canonical bundle of $\pi$.
 \begin{proposition}
-  We have $\omega_\pi^{-1} = \O(1) \otimes \pi^*\O(E)$.
+  We have $\omega_{\pi}^{-1} = \O(1) \otimes \pi^*\O(E)$.
 \end{proposition}
 \begin{proof}
-  Let $\widehat {\mathcal Y}$ be the blow-up of $\mathcal Y$ along $\widetilde{\mathcal Z}$ and $\widehat \pi \colon \widehat{\mathcal Y} \to \widetilde{S^{[2]}}$ the resulting map.
-  Then it is easy to check that the rational map $\widehat\kappa \colon \widehat {\mathcal Y} \dashrightarrow \mathcal X$ (induced by $\kappa$) extends to a regular map away from the union of the curves $T_i$ over the points of $E_i$.
-  Recall that $\mathcal S \subset \mathcal Y$ is the proper transform of $E \times S$, so that $\widetilde \pi^* \O(E) = \mathcal F + \mathcal S$.
+  Let $\widehat {\mathcal{Y}}$ be the blow-up of $\mathcal{Y}$ along $\widetilde{\mathcal{Z}}$ and $\widehat{\pi} \colon \widehat{\mathcal{Y}} \to \widetilde{S^{[2]}}$ the resulting map.
+  Then it is easy to check that the rational map $\widehat{\kappa} \colon \widehat {\mathcal{Y}} \dashrightarrow \mathcal{X}$ (induced by $\kappa$) extends to a regular map away from the union of the curves $T_i$ over the points of $E_i$.
+  Recall that $\mathcal{S} \subset \mathcal{Y}$ is the proper transform of $E \times S$, so that $\widetilde{\pi}^* \O(E) = \mathcal{F} + \mathcal{S}$.
   The map
   \[
-    \widehat \kappa \colon \widehat {\mathcal Y} \setminus \mathcal S \dashrightarrow \mathcal X
+    \widehat{\kappa} \colon \widehat {\mathcal{Y}} \setminus \mathcal{S} \dashrightarrow \mathcal{X}
   \]
   is an isomorphism away from a locus of codimension at least 2 on both sides.
-  If $\widehat D \subset \widehat {\mathcal Y}$ is the exceptional divisor of the blow-up, then we have
+  If $\widehat D \subset \widehat {\mathcal{Y}}$ is the exceptional divisor of the blow-up, then we have
   \begin{align*}
-    \widehat \kappa ^* \O(1) &= \mathcal L(-\widehat D) \\
-                             &= \omega^{-1}_{\widetilde \pi} \otimes \O(-\mathcal F) \otimes \O_{\widehat Y}(-\widehat D) \\
-                             &= \omega_{\widehat \pi}^{-1} \otimes \O(-\mathcal F).
+    \widehat{\kappa} ^* \O(1) &= \mathcal{L}(-\widehat D) \\
+                             &= \omega^{-1}_{\widetilde{\pi}} \otimes \O(-\mathcal{F}) \otimes \O_{\widehat Y}(-\widehat D) \\
+                             &= \omega_{\widehat{\pi}}^{-1} \otimes \O(-\mathcal{F}).
   \end{align*}
-  We see that the line bundles $\widehat \kappa^* \O(1) \otimes \widehat \pi^* \O(E)$ and $\omega_{\widetilde \pi}^{-1}$ are isomorphic on $\widehat {\mathcal Y} \setminus \mathcal S$.
-  Hence, they are isomorphic away from a locus of codimension at least 2 on $\mathcal X$.
-  Since $\mathcal X$ is a hypersurface in a smooth variety, and it is smooth in codimension 1, it is normal.
-  It follows that $\O(1) \otimes \pi^* \O(E)$ and $\omega_\pi^{-1}$ are isomorphic on $\mathcal X$.
+  We see that the line bundles $\widehat{\kappa}^* \O(1) \otimes \widehat{\pi}^* \O(E)$ and $\omega_{\widetilde{\pi}}^{-1}$ are isomorphic on $\widehat {\mathcal{Y}} \setminus \mathcal{S}$.
+  Hence, they are isomorphic away from a locus of codimension at least 2 on $\mathcal{X}$.
+  Since $\mathcal{X}$ is a hypersurface in a smooth variety, and it is smooth in codimension 1, it is normal.
+  It follows that $\O(1) \otimes \pi^* \O(E)$ and $\omega_{\pi}^{-1}$ are isomorphic on $\mathcal{X}$.
 \end{proof}
 
 \begin{proposition}
@@ -1677,43 +1760,43 @@ The next proposition identifies the anti-canonical bundle of $\pi$.
   good.
 \end{proposition}
 \begin{proof}
-  Over $e \not \in E$, the cubic $\mathcal X_e$ is the one associated to $\mathcal Z_e \subset S$, and over $e \in E$, say $e \in E_i$, the cubic $\mathcal X_e$ is the one associated to $\widetilde {\mathcal Z}_e \cup \tau_i \subset \F_1$.
-  In both cases, it is easy to verify using \autoref{prop:good} that $\mathcal X_e$ has a finite automorphism group.
+  Over $e \not \in E$, the cubic $\mathcal{X}_e$ is the one associated to $\mathcal{Z}_e \subset S$, and over $e \in E$, say $e \in E_i$, the cubic $\mathcal{X}_e$ is the one associated to $\widetilde {\mathcal{Z}}_e \cup \tau_i \subset \F_1$.
+  In both cases, it is easy to verify using \autoref{prop:good} that $\mathcal{X}_e$ has a finite automorphism group.
 \end{proof}
 
-Having constructed the family $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$, we take up the task of calculating the Chern classes of
-\[ \mathcal V = \pi_* \left(\omega_\pi^{-1}\right) = \mathcal W \otimes \O_{\widetilde{S^{[2]}}}(E).\]
-Let $\mathcal U = \left(\omega_S^{-1}\right)^{[2]}$ be the rank 2 tautological bundle on $S^{[2]}$, defined by
-\[ \mathcal U = {\pi_1}_*\pi_2^* \left(\omega_S^{-1}\right),\]
+Having constructed the family $\pi \colon \mathcal{X} \to \widetilde{S^{[2]}}$, we take up the task of calculating the Chern classes of
+\[ \mathcal{V} = \pi_* \left(\omega_{\pi}^{-1}\right) = \mathcal{W} \otimes \O_{\widetilde{S^{[2]}}}(E).\]
+Let $\mathcal{U} = \left(\omega_S^{-1}\right)^{[2]}$ be the rank 2 tautological bundle on $S^{[2]}$, defined by
+\[ \mathcal{U} = {\pi_1}_*\pi_2^* \left(\omega_S^{-1}\right),\]
 where $\pi_i$ are the two projections on $S^{[2]} \times S$.
 \begin{proposition}\label{prop:v4groth}
   In the Grothendieck group of $\widetilde {S^{[2]}}$, we have
   \[
-    \mathcal V =  \O(E) + \O^3 + \O(-E)^2 - \mathcal U \otimes \O(-E),
+    \mathcal{V} =  \O(E) + \O^3 + \O(-E)^2 - \mathcal{U} \otimes \O(-E),
   \]
   where $\O$ denotes $\O_{\widetilde{S^[2]}}$.
 \end{proposition}
 \begin{proof}
-  We compute the class of $\mathcal W$ and obtain the class of $\mathcal V$ by tensoring by $\O(E)$.
-  Recall the family $\widetilde \pi \colon \mathcal Y \to \widetilde{S^{[2]}}$ and the line bundle $\mathcal L$ on it defined in \eqref{eqn:l1}.
+  We compute the class of $\mathcal{W}$ and obtain the class of $\mathcal{V}$ by tensoring by $\O(E)$.
+  Recall the family $\widetilde{\pi} \colon \mathcal{Y} \to \widetilde{S^{[2]}}$ and the line bundle $\mathcal{L}$ on it defined in \eqref{eqn:l1}.
   Set
-  \[ \mathcal A := \widetilde{\pi}_* \mathcal L \text{ and } \mathcal B := \widetilde{\pi}_* \left( \mathcal L|_{\widetilde{\mathcal Z}} \right).\]
-  Then $\mathcal A$ and $\mathcal B$ are vector bundles of rank 6 and 2, respectively.
-  By the definition of $\mathcal W$, we have the exact sequence
-  \[ 0 \to \mathcal B \to \mathcal A \to \mathcal W \to 0,\]
-  and hence $\mathcal W = \mathcal A - \mathcal B$ in the Grothendieck group.
-  
-  We first compute $\mathcal B$.
-  By the push-pull formula and the description \eqref{eqn:l2} of $\mathcal L$, we get
+  \[ \mathcal{A} := \widetilde{\pi}_* \mathcal{L} \text{ and } \mathcal{B} := \widetilde{\pi}_* \left( \mathcal{L}|_{\widetilde{\mathcal{Z}}} \right).\]
+  Then $\mathcal{A}$ and $\mathcal{B}$ are vector bundles of rank 6 and 2, respectively.
+  By the definition of $\mathcal{W}$, we have the exact sequence
+  \[ 0 \to \mathcal{B} \to \mathcal{A} \to \mathcal{W} \to 0,\]
+  and hence $\mathcal{W} = \mathcal{A} - \mathcal{B}$ in the Grothendieck group.
+
+  We first compute $\mathcal{B}$.
+  By the push-pull formula and the description \eqref{eqn:l2} of $\mathcal{L}$, we get
   \begin{equation}\label{eqn:B}
-    \mathcal B = \mathcal U \otimes \O_{\widetilde{S^{[2]}}}(-2E).
+    \mathcal{B} = \mathcal{U} \otimes \O_{\widetilde{S^{[2]}}}(-2E).
   \end{equation}
-  
-  We now compute $\mathcal A$.
-  Recall that $\eta \colon \mathcal Y \to \widetilde{S^{[2]}} \times S$ is the blow-up at $F = \bigsqcup_i E_i \times L_i$.
+
+  We now compute $\mathcal{A}$.
+  Recall that $\eta \colon \mathcal{Y} \to \widetilde{S^{[2]}} \times S$ is the blow-up at $F = \bigsqcup_i E_i \times L_i$.
   Using \eqref{eqn:l2} again, we get
   \[
-    \eta_* \mathcal L = \omega_S^{-1} \otimes \mathcal I^2_{F}.
+    \eta_* \mathcal{L} = \omega_S^{-1} \otimes \mathcal{I}^2_{F}.
   \]
   Using the pair of sequences
   \begin{equation}
@@ -1725,7 +1808,7 @@ where $\pi_i$ are the two projections on $S^{[2]} \times S$.
   \end{equation}
   and tensoring by $\omega_S^{-1}$ gives (in the Grothendieck group)
   \begin{equation}\label{eqn:el}
-    \eta_* \mathcal L = \omega_S^{-1} \otimes \left(\O_{\widetilde{S^{[2]}} \times S} - \O_F - \mathcal{I}_F / \mathcal{I}^2_F\right).
+    \eta_* \mathcal{L} = \omega_S^{-1} \otimes \left(\O_{\widetilde{S^{[2]}} \times S} - \O_F - \mathcal{I}_F / \mathcal{I}^2_F\right).
   \end{equation}
   On the component $F_i$ of $F$, the conormal bundle $\mathcal{I}_F / \mathcal{I}^2_F$ splits as a direct sum
   \[ \pi_1^*\O_{E_i}(-E_i) \oplus \pi_2^*\O_{L_i}(1),\]
@@ -1733,19 +1816,19 @@ where $\pi_i$ are the two projections on $S^{[2]} \times S$.
   After substituting in \eqref{eqn:el} and pushing forward to $\widetilde{S^{[2]}}$, we get
   \begin{equation}\label{eqn:A}
     \begin{split}
-      \mathcal A &= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
+      \mathcal{A} &= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
       &= \O + \O(-E)^3 + \O(-2E)^2.
     \end{split}
   \end{equation}
   Subtracting $\eqref{eqn:B}$ from $\eqref{eqn:A}$ and tensoring by $\O(E)$ gives the result.
 \end{proof}
 
-Having computed the class of $\mathcal V$, what remains is a computation in the Chow ring of $\widetilde{S^{[2]}}$.
+Having computed the class of $\mathcal{V}$, what remains is a computation in the Chow ring of $\widetilde{S^{[2]}}$.
 In the computation, we suppress pull-back symbols to ease notation.
 We have the following simplification.
 \begin{proposition}
     \label{lemma:uE}
-  Let $u_i = c_i(\mathcal U)$ for $i = 1, 2$.
+  Let $u_i = c_i(\mathcal{U})$ for $i = 1, 2$.
   Then  $u_{1}\cdot E = u_{2} \cdot E = 0$.
 \end{proposition}
 \begin{proof}
@@ -1754,7 +1837,7 @@ We have the following simplification.
   For $u_2$, fix a general $C \in |\omega_S^{-1}|$.
   Then $C$ intersects each exceptional curve $L_i$ transversely in a single point.
   Then $u_2$ is the class of $C^{[2]} \subset S^{[2]}$, which is clearly disjoint from $\Lambda$.
-  
+
   For $u_1$, fix a general pencil of curves $\{C_t \mid t \in \P^1\} \subset |\omega_S^{-1}|$.
   Then for every $t \in \P^1$, the curve $C_t$ intersects each exceptional curve $L_i$ transversely in a single point.
   Then $u_{1}$ is the class of
@@ -1768,7 +1851,7 @@ We now compute the non-trivial degree 4 intersection numbers.
   On $\widetilde{S^{[2]}}$, we have
   \[
     \begin{split}
-      \int u_{1}^{4} = 36, \qquad   \int u_{1}^{2}u_{2} = 15, \qquad 
+      \int u_{1}^{4} = 36, \qquad   \int u_{1}^{2}u_{2} = 15, \qquad
       \int  u_{2}^{2} = 10, \qquad    \int  E^{4} = -30.
     \end{split}
 \]
@@ -1799,8 +1882,8 @@ We now compute the non-trivial degree 4 intersection numbers.
   Now it is a straightforward to check that $E_i^4 = -3$, and hence $E^2 = -30$.
 \end{proof}
 \begin{proposition}\label{prop:4deg4}
-  Let $\mathcal V = \pi_*\left(  \omega_{\pi}^{-1} \right)$ be the anti-canonical section bundle of $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$,
-  and let $v_i = c_i(\mathcal V)$.
+  Let $\mathcal{V} = \pi_*\left(  \omega_{\pi}^{-1} \right)$ be the anti-canonical section bundle of $\pi \colon \mathcal{X} \to \widetilde{S^{[2]}}$,
+  and let $v_i = c_i(\mathcal{V})$.
   Then we have
   \[
     \int_{B_{4}} v_{1}^{4} = 6, \qquad
@@ -1811,19 +1894,19 @@ We now compute the non-trivial degree 4 intersection numbers.
   \]
 \end{proposition}
 \begin{proof}
-  Follows from the expression for $\mathcal V$ in the Grothendieck group we found in \autoref{prop:v4groth} and the Chern class computations we did in \autoref{prop:monomialsU} and \autoref{prop:4deg4}.
+  Follows from the expression for $\mathcal{V}$ in the Grothendieck group we found in \autoref{prop:v4groth} and the Chern class computations we did in \autoref{prop:monomialsU} and \autoref{prop:4deg4}.
 \end{proof}
 
-Let $\mu \colon \widetilde{S^{[2]}} \dashrightarrow \M$ be the map to the moduli space of cubic surfaces induced by the family $\pi \colon \mathcal X \to \widetilde{S^{[2]}}$.
+Let $\mu \colon \widetilde{S^{[2]}} \dashrightarrow \M$ be the map to the moduli space of cubic surfaces induced by the family $\pi \colon \mathcal{X} \to \widetilde{S^{[2]}}$.
 \begin{proposition}
   The degree of $\mu \colon \widetilde{S^{[2]}} \dashrightarrow \M$ is $36 \times 6!$.
 \end{proposition}
 \begin{proof}
-  Recall that the moduli space of marked cubic surfaces $\M^\dagger$ is the configuration space of 6 ordered points in $\P^2$.
+  Recall that the moduli space of marked cubic surfaces $\M^{\dagger}$ is the configuration space of 6 ordered points in $\P^2$.
   The map $\mu$ clearly lifts to a birational map
-  \[ \widetilde S^{[2]} \dashrightarrow \M^\dagger / S_2,\]
+  \[ \widetilde S^{[2]} \dashrightarrow \M^{\dagger} / S_2,\]
   where the $S_2$ permutes the last 2 points of the configuration.
-  Since the degree of $\M^\dagger \to \M$ is  $72 \times 6!$, the degree of $\mu$ is half of that.
+  Since the degree of $\M^{\dagger} \to \M$ is  $72 \times 6!$, the degree of $\mu$ is half of that.
 \end{proof}
 
 Using \autoref{prop:goodisgood} and the computation of the Chern classes and the degree, we obtain the following relation on the undetermined coefficients of $[\Orb(X)]$ in
@@ -1839,7 +1922,7 @@ Let $X \subset \P^3$ be a cubic surface with an automorphism group $G$.
 We then get a family of cubic surfaces
 \[ \pi \colon [X/G] \to BG,\]
 and hence a map from $BG$ to the moduli stack of cubic surfaces
-\[ \mu \colon BG \to \mathscr M.\]
+\[ \mu \colon BG \to \mathscr{M}.\]
 Suppose we know that the family $\pi$ is good.
 In this case, this simply means that $X$ is not in the closure of a general cubic surface $S$.
 Then, we get
@@ -1912,17 +1995,17 @@ Assume that the $\G_m$ acts on the variables $x_i$ by scaling, say $t \in \G_m$ 
 where $w_i \in \Z$.
 Since $V(F)$ is $\G_m$-fixed, there exists $w \in \Z$ such that
 \[ F \left(t x_0, t x_1, t x_2, t x_3\right) = t^w F\left(x_0, x_1, x_2,x_3\right).\]
-Write $V^\vee$ for the $k$-vector space $\langle x_0, x_1, x_2,x_3 \rangle$.
+Write $V^{\vee}$ for the $k$-vector space $\langle x_0, x_1, x_2,x_3 \rangle$.
 As a $\G_m$-representation, we have
-\[ V^\vee = \chi(w_1) \oplus \chi(w_2) \oplus \chi(w_3) \otimes \chi(w_4).\]
-The cubic $F$ defines a $\G_m$-invariant section of $\Sym^3 V^\vee \otimes \chi(-w)$.
+\[ V^{\vee} = \chi(w_1) \oplus \chi(w_2) \oplus \chi(w_3) \otimes \chi(w_4).\]
+The cubic $F$ defines a $\G_m$-invariant section of $\Sym^3 V^{\vee} \otimes \chi(-w)$.
 Thus, we can view $X$ as the zero locus of the line bundle $\O(3) \otimes \pi^*\chi(-w)$ in the projective bundle $\pi \colon [\P V/\G_m] \to B\G_m$.
 By the adjunction formula, we get
 \[ \omega_X^{-1} = \O_{\P V}(1) \otimes \det V \otimes \pi^*\chi(w) |_X,\]
 and hence
 \begin{equation}\label{eqn:rep}
 \begin{split}
-  \pi_*\left( \omega_X^{-1} \right) &= V^\vee \otimes \det V \otimes \chi(w) \\
+  \pi_*\left( \omega_X^{-1} \right) &= V^{\vee} \otimes \det V \otimes \chi(w) \\
   &\cong \left( \bigoplus \chi(w_i)  \right) \otimes \chi\left(-\sum w_i\right) \otimes \chi(w).
 \end{split}
 \end{equation}
@@ -1997,26 +2080,26 @@ can construct an isotrivial family over $B$ by pulling back one of the
 families above.  We describe this explicitly in an example.
 
 Let $B = \P^4$.  Set
-\[V^\vee = \mathcal O(5) \oplus \mathcal O(1) \oplus \mathcal O(1) \oplus
-  \mathcal O(-7).\] Let $x_0, x_1, x_2, x_3$ be generators of the four
+\[V^{\vee} = \mathcal{O}(5) \oplus \mathcal{O}(1) \oplus \mathcal{O}(1) \oplus
+  \mathcal{O}(-7).\] Let $x_0, x_1, x_2, x_3$ be generators of the four
 summands on the standard $\A^4 \subset \P^4$.  We have
 the section $(x_3x_0^2-x_1^3-x_2^3)$ of
-$\Sym^3 V^\vee = \mathcal O(3)^{\oplus 20}$.  Note that this section has a
+$\Sym^3 V^{\vee} = \mathcal{O}(3)^{\oplus 20}$.  Note that this section has a
 pole of order $3$ along the hyperplane at infinity.  As a result, it
-defines a section $\xi$ of $\Sym^3 V^\vee \otimes \mathcal O(-3)$, which is
+defines a section $\xi$ of $\Sym^3 V^{\vee} \otimes \mathcal{O}(-3)$, which is
 nowhere vanishing.  Equivalently, $\xi$ is a section of
-$\mathcal O_{\P V}(3) \otimes \pi^* \mathcal O(-3)$.  Our family
-$\mathcal X \to B$ is defined by the zero-locus of $\xi$ in
+$\mathcal{O}_{\P V}(3) \otimes \pi^* \mathcal{O}(-3)$.  Our family
+$\mathcal{X} \to B$ is defined by the zero-locus of $\xi$ in
 $\P V \to B$.
 
 \section{The equivariant orbit class}
 \label{sec:tietogether}
 We use the information provided by the test families to prove the theorems advertised in the introduction.
 Let $V$ be a 4 dimensional vector space.
-Recall our notation $W$ for the $\GL V$ representation 
-\[W = \Sym^3V^\vee \otimes \det V\]
+Recall our notation $W$ for the $\GL V$ representation
+\[W = \Sym^3V^{\vee} \otimes \det V\]
 and
-\[\mathscr M = \left[ W \setminus \{0\} / \GL V \right]\]
+\[\mathscr{M} = \left[ W \setminus \{0\} / \GL V \right]\]
 for the moduli stack of cubic surfaces.
 \begin{theorem}\label{thm:eqvclass}
   There exists a non-empty open subset $U \subset W$ such that for every cubic surface $X$ represented by a point of $U$, the class of $\Orb(X)$ in $A^4_{\GL V}(W)$ is given by
@@ -2027,7 +2110,7 @@ for the moduli stack of cubic surfaces.
 \end{theorem}
 \begin{proof}
   By excision and homotopy invariance of equivariant Chow groups, we have
-  \[ A^4(\mathscr M) = A^4_{\GL V}(W) = A^4_{\GL V}(\bullet).\]
+  \[ A^4(\mathscr{M}) = A^4_{\GL V}(W) = A^4_{\GL V}(\bullet).\]
   The ring $A^*_{\GL V}(\bullet)$ is generated by the classes $v_i$, and hence $A^4_{\GL V}(\bullet)$ is a free $\Z$-module generated by the monomials in $v_i$ of total degree 4.
   Therefore, for every cubic surface $X$, we have an expression
   \[[\Orb(X)] = a_{1^4}v_1^4 + a_{1^2\cdot 2} v_1^2v_2 + a_{1\cdot 3} v_1v_3 + a_{2^2}v_2^2 + a_4 v_4,\]
@@ -2051,20 +2134,20 @@ for the moduli stack of cubic surfaces.
 \end{corollary}
 \begin{proof}
   Let $\P^3 = \P V$.
-  Consider the universal cubic surface $X \subset \P V\times \P \Sym^3 V^\vee$.
-  Let $\pi \colon \mathcal X \to \P \Sym^3 V^\vee$ be the second projection and $\mu \colon \P \Sym^3 V^\vee \to \mathscr M$ the map induced by $\pi$.
+  Consider the universal cubic surface $X \subset \P V\times \P \Sym^3 V^{\vee}$.
+  Let $\pi \colon \mathcal{X} \to \P \Sym^3 V^{\vee}$ be the second projection and $\mu \colon \P \Sym^3 V^{\vee} \to \mathscr{M}$ the map induced by $\pi$.
   Tautologically, for any cubic surface $X$, the pre-image under $\mu$ of $\Orb(X)$ is the closure of the $\PGL(V)$ orbit of $X$.
   By adjunction, we have
-  \[ \omega_\pi = \O(1) \boxtimes \O(1),\]
+  \[ \omega_{\pi} = \O(1) \boxtimes \O(1),\]
   and hence
-  \[ \mathcal V = \pi_* \omega_\pi \cong \O(1)^4.\]
-  For a generic $X$, we evaluate 
+  \[ \mathcal{V} = \pi_* \omega_{\pi} \cong \O(1)^4.\]
+  For a generic $X$, we evaluate
   \[ [\Orb(X)] = 1080(v_1^2v_2 - v_1v_3+9v_4)\]
-  in $A^4(\P \Sym^3V^\vee)$ and find that the answer is $96120$ (times the class of a codimension 4 linear subspace).
+  in $A^4(\P \Sym^3V^{\vee})$ and find that the answer is $96120$ (times the class of a codimension 4 linear subspace).
 \end{proof}
 
 \begin{corollary}
-  Let $X \subset \P^4$ be a general cubic 3-fold, and let $\pi \colon \mathcal X \to \P^4$ be the family of hyperplane sections of $X$.
+  Let $X \subset \P^4$ be a general cubic 3-fold, and let $\pi \colon \mathcal{X} \to \P^4$ be the family of hyperplane sections of $X$.
   Given a generic cubic surface $S$, there are $42120$ fibers of $\pi$ isomorphic to $S$.
 \end{corollary}
 \begin{proof}
@@ -2075,23 +2158,24 @@ for the moduli stack of cubic surfaces.
 \end{proof}
 
 \subsection{Proof of \texorpdfstring{\autoref{theorem:main}}{first theorem} from the introduction}
+%\label{proof:main}
 The theorem follows immediately from \autoref{thm:eqvclass} and \autoref{prop:goodisgood}.
 
 \subsection{Proof of \texorpdfstring{\autoref{thm:eqvclass2}}{second theorem} from the introduction}\label{proof:eqvclass2}
 Let $V$ be a 4-dimensional vector space.
 Set
-\[\mathscr N = \left[ \Sym^3V^\vee \setminus \{0\} / \GL V \right]. \]
-Let $\mathcal V$ denote the vector bundle on $\mathscr N$ corresponding to the standard representation of $\GL V$.
-The tautological non-zero section of $\Sym^3V^\vee$ on $\mathscr N$ defines a family of cubic surfaces
-\[ \pi \colon \mathscr X \to \mathscr N,\]
-and hence a map $\mathscr N \to \mathscr M$.
+\[\mathscr{N} = \left[ \Sym^3V^{\vee} \setminus \{0\} / \GL V \right]. \]
+Let $\mathcal{V}$ denote the vector bundle on $\mathscr{N}$ corresponding to the standard representation of $\GL V$.
+The tautological non-zero section of $\Sym^3V^{\vee}$ on $\mathscr{N}$ defines a family of cubic surfaces
+\[ \pi \colon \mathscr{X} \to \mathscr{N},\]
+and hence a map $\mathscr{N} \to \mathscr{M}$.
 Under this map, the pull-back of an orbit closure is an orbit closure.
-Note that $\mathscr X \subset \P \mathcal V$ is the zero locus of $\O(3)$.
+Note that $\mathscr{X} \subset \P \mathcal{V}$ is the zero locus of $\O(3)$.
 By adjunction, we have
-\[ \omega_\pi = \O(1) \otimes \det V |_{\mathscr X},\]
+\[ \omega_{\pi} = \O(1) \otimes \det V |_{\mathscr{X}},\]
 and hence
-\[ \pi_* \omega_\pi = V^\vee \otimes \det V.\]
-\autoref{thm:eqvclass} gives the class of the pull-back of a generic orbit closure in terms of the Chern classes $v_i = c_i(V^\vee \otimes \det V)$.
+\[ \pi_* \omega_{\pi} = V^{\vee} \otimes \det V.\]
+\autoref{thm:eqvclass} gives the class of the pull-back of a generic orbit closure in terms of the Chern classes $v_i = c_i(V^{\vee} \otimes \det V)$.
 Writing them in terms of $c_i = c_i(V)$ yields the result.
 
 \section{Addressing the orbit closure problem}
@@ -2176,7 +2260,7 @@ We immediately get an application to cubic surfaces.
 \end{proposition}
 \begin{proof}
   Let $V$ be a 4-dimensional vector space.
-  Set $W = \P \Sym^3 V^\vee$ and $H = \P V^\vee$; both have natural linearized actions of $\PGL(V)$.
+  Set $W = \P \Sym^3 V^{\vee}$ and $H = \P V^{\vee}$; both have natural linearized actions of $\PGL(V)$.
   The product $W \times H$ parametrizes cubic surfaces along with a hyperplane.
   We use the GIT analysis for this space carried out by Gallardo and Martinez-Garcia \cite{gal.mar:19}.
   We have a $1$-parameter choice of linearizations on $W \times V$ indexed by a positive rational number $t$.
@@ -2220,31 +2304,31 @@ This method can show, for example, that the cubic with the $A_5$ singularity doe
   Then $W$ lies in the $\PGL_3$ orbit closure of a length 6 scheme $Z \subset \P^2$ such that $\Bl_Z \P^2$ is isomorphic to $S$.
 \end{proposition}
 \begin{proof}
-  Since $W$ is in the orbit closure of $S$, there exists a $\k$-algebra DVR $R$ with fraction field $K$ and residue field $k$ with a family of cubic surfaces $\pi \colon \mathcal X \to \spec R$ whose central fiber $\mathcal X_0$ is isomorphic to $X$ and whose general fiber $\mathcal X_K$ is isomorphic to $S_K = S \times_k K$.
+  Since $W$ is in the orbit closure of $S$, there exists a $\k$-algebra DVR $R$ with fraction field $K$ and residue field $k$ with a family of cubic surfaces $\pi \colon \mathcal{X} \to \spec R$ whose central fiber $\mathcal{X}_0$ is isomorphic to $X$ and whose general fiber $\mathcal{X}_K$ is isomorphic to $S_K = S \times_k K$.
   We know that $X$ has only ADE singularities (\autoref{prop:admissibleblowup}) and hence we can resolve the singularities of $X$ in the family.
-  That is, there exists a smooth and projective $\pi' \colon \mathcal X' \to \spec R$ and $\beta \colon \mathcal X' \to \mathcal X$ such that $\beta_K$ is an isomorphism and $\beta_0$ is the minimal resolution of singularities; see \cite{bri:70} or \cite{tju:70}.
+  That is, there exists a smooth and projective $\pi' \colon \mathcal{X}' \to \spec R$ and $\beta \colon \mathcal{X}' \to \mathcal{X}$ such that $\beta_K$ is an isomorphism and $\beta_0$ is the minimal resolution of singularities; see \cite{bri:70} or \cite{tju:70}.
 
-  Set $X' = \mathcal X'_0$.
+  Set $X' = \mathcal{X}'_0$.
   We know from the proof of \autoref{prop:good} that $X'$ is also the minimal desingularization of $\Bl_Z\P^2$.
-  Let $X' \to \P^2$ be the composite $X' \to \Bl_Z \P^2 \to \P^2$, and let $L'$ be pullback of $\O(1)$ to $\mathcal X'_0$.
+  Let $X' \to \P^2$ be the composite $X' \to \Bl_Z \P^2 \to \P^2$, and let $L'$ be pullback of $\O(1)$ to $\mathcal{X}'_0$.
   It is easy to see that $h^i(X', L') = 0$ for $i > 0$ and $h^0(X', L') = 3$.
-  Since $H^2(X', \O_{X'}) = 0$, there are no obstructions to deforming $L'$---it extends to compatible family of line bundles on $\mathcal X' \times_R \spec R/t^n$ for every $n$, where $t \in R$ is the uniformizer. 
-  By Artin's approximation theorem \cite{art:69} applied to the relative Picard functor of $\pi'$, we deduce that $L'$ extends to a line bundle $\mathcal L$ on $\mathcal X'$, after possibly replacing $R$ by a finite \'etale cover.
-  By cohomology and base change, we see that $\pi'_* \mathcal L$ is a free $R$-module of rank 3.
-  It is also easy to see that the evaluation map $\pi'^*\pi'_* \mathcal L \to \mathcal L$ is surjective.
-  After choosing an isomorphism $\pi'_* \mathcal L \cong R^3$, we get a map $\alpha \colon \mathcal X' \to \P^2_R$, which restricts to the original map $X' \to \P^2$ on the central fiber.
-  
-  Recall that $\mathcal X'_K = \mathcal X_K = S \times_k K$.
-  Since $H^1(S, \O_S) = 0$, it follows that the line bundle $\mathcal L$ on $S \times_k K$ is constant, that is, isomorphic to $L \otimes_k K$ for some line bundle $L$ on $S$.
+  Since $H^2(X', \O_{X'}) = 0$, there are no obstructions to deforming $L'$---it extends to compatible family of line bundles on $\mathcal{X}' \times_R \spec R/t^n$ for every $n$, where $t \in R$ is the uniformizer.
+  By Artin's approximation theorem \cite{art:69} applied to the relative Picard functor of $\pi'$, we deduce that $L'$ extends to a line bundle $\mathcal{L}$ on $\mathcal{X}'$, after possibly replacing $R$ by a finite \'etale cover.
+  By cohomology and base change, we see that $\pi'_* \mathcal{L}$ is a free $R$-module of rank 3.
+  It is also easy to see that the evaluation map $\pi'^*\pi'_* \mathcal{L} \to \mathcal{L}$ is surjective.
+  After choosing an isomorphism $\pi'_* \mathcal{L} \cong R^3$, we get a map $\alpha \colon \mathcal{X}' \to \P^2_R$, which restricts to the original map $X' \to \P^2$ on the central fiber.
+
+  Recall that $\mathcal{X}'_K = \mathcal{X}_K = S \times_k K$.
+  Since $H^1(S, \O_S) = 0$, it follows that the line bundle $\mathcal{L}$ on $S \times_k K$ is constant, that is, isomorphic to $L \otimes_k K$ for some line bundle $L$ on $S$.
   The complete linear system $|L|$ gives a map $a \colon S \to \P^2$.
-  It is easy to check that the map $\alpha \colon \mathcal X'_K \to \P^2_K$ and $a_K \colon \mathcal X'_K \to \P^2_K$ are equal, up to an automorphism of $\P^2_K$.
-  
-  The natural map $\alpha^* \omega_{\P^2_R/R} \to \omega_{\mathcal X'/R}$ gives a map $\omega^{-1}_{\mathcal X'/R} \to \alpha^* \omega^{-1}_{\P^2_R/R}$ and hence an evaluation map
-  \[ \pi'_* \left(\omega_{\mathcal X'/R}\right) \otimes_R \O_{\P^2_R} \to \omega_{\P^2_R/R}^{-1}.\]
+  It is easy to check that the map $\alpha \colon \mathcal{X}'_K \to \P^2_K$ and $a_K \colon \mathcal{X}'_K \to \P^2_K$ are equal, up to an automorphism of $\P^2_K$.
+
+  The natural map $\alpha^* \omega_{\P^2_R/R} \to \omega_{\mathcal{X}'/R}$ gives a map $\omega^{-1}_{\mathcal{X}'/R} \to \alpha^* \omega^{-1}_{\P^2_R/R}$ and hence an evaluation map
+  \[ \pi'_* \left(\omega_{\mathcal{X}'/R}\right) \otimes_R \O_{\P^2_R} \to \omega_{\P^2_R/R}^{-1}.\]
   Tensor by $\omega_{\P^2_R/R}$ to get
-  \[ \pi'_* \left(\omega_{\mathcal X'/R}\right) \otimes_R \omega_{\P^2_R/R} \to \O_{\P^2_R}.\]
-  Then the cokernel is $\O_{\mathcal Z}$ for a closed subscheme $\mathcal Z \subset \P^2_R$.
-  Note that both the general and the special fiber of $\mathcal Z \to \spec R$ have length 6, and hence $\mathcal Z \to \spec R$ is flat.
+  \[ \pi'_* \left(\omega_{\mathcal{X}'/R}\right) \otimes_R \omega_{\P^2_R/R} \to \O_{\P^2_R}.\]
+  Then the cokernel is $\O_{\mathcal{Z}}$ for a closed subscheme $\mathcal{Z} \subset \P^2_R$.
+  Note that both the general and the special fiber of $\mathcal{Z} \to \spec R$ have length 6, and hence $\mathcal{Z} \to \spec R$ is flat.
   The central fiber is the subscheme $W \subset \P^2$ and, up to an automorphism of $\P^2_K$, the general fiber is $Z \times_k K \subset \P^2_K$, where $Z \subset \P^2$ is such that $S \cong \Bl_Z \P^2$.
   The proof is now complete.
 \end{proof}
@@ -2322,7 +2406,8 @@ Likewise, the last surface $P_n$ is $\F_1$ if $a = b$ or $\P^2$ if $b > a$.
 
 \begin{figure}
   \centering
-  \begin{tikzpicture}[very thick]
+  % BEGIN inlined figures/appendix1.tex
+\begin{tikzpicture}[very thick]
   \begin{scope}[xshift=-3cm]
     \draw (0,0) ellipse (1 and 2);
     \draw (0,0) node {$\P^2$};
@@ -2346,7 +2431,13 @@ Likewise, the last surface $P_n$ is $\F_1$ if $a = b$ or $\P^2$ if $b > a$.
     \draw (0,0) node {$\P^2$};
   \end{scope}
 \end{tikzpicture}
-   \caption{A family of surfaces with an accordion like central fiber arises while resolving a linear rational map $\P^2_R \dashrightarrow \P^2_R$.}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+% END inlined figures/appendix1.tex
+  \caption{A family of surfaces with an accordion like central fiber arises while resolving a linear rational map $\P^2_R \dashrightarrow \P^2_R$.}
   \label{fig:accordion}
 \end{figure}
 
@@ -2399,37 +2490,37 @@ A \emph{star-free} configuration is one without any star points.
   We show that $T_r W$ contains $p$ or $q$.
   The key idea is to consider flat limits of lines in $\P^2$ under the action of $\phi$.
   To do so, we use the same analysis as before but for the map between dual projective spaces
-  \[\phi^\vee \colon (\P^2)_R^\vee \dashrightarrow (\P^2)_R^\vee.\]
-  If $A$ is the $3 \times 3$ matrix defining $\phi$, then the matrix defining $\phi^\vee$ is $(A^T)^{-1}$.
+  \[\phi^{\vee} \colon (\P^2)_R^{\vee} \dashrightarrow (\P^2)_R^{\vee}.\]
+  If $A$ is the $3 \times 3$ matrix defining $\phi$, then the matrix defining $\phi^{\vee}$ is $(A^T)^{-1}$.
 
-  If $\phi_0^\vee$ is defined for a line $\ell \in (\P^2)^\vee$, then the flat limit of the family of lines $\phi(\ell_K) \subset \P^2_K$ is the line corresponding to $\phi_0^\vee(\ell)$.
+  If $\phi_0^{\vee}$ is defined for a line $\ell \in (\P^2)^{\vee}$, then the flat limit of the family of lines $\phi(\ell_K) \subset \P^2_K$ is the line corresponding to $\phi_0^{\vee}(\ell)$.
   The statements \eqref{eqn:rk2} and \eqref{eqn:rk1} for the dual projective space say the following.
-  If $\phi^\vee$ has rank 1, then the indeterminacy locus of $\phi^\vee_0$ consists of a particular $\Lambda \in (\P^2)^\vee$.
-  For $\ell \neq \Lambda$, the map $\phi_0^\vee$ is the composite of $\ell \mapsto \ell \cap \Lambda$ and a linear inclusion $\Lambda \to (\P^2)^\vee$.
-  In this case, a fiber of $\phi_0^\vee$ consists of a collection of concurrent lines, with the point of concurrency on $\Lambda$.
-  If $\phi^\vee$ has rank 1, then the indeterminacy locus of $\phi^\vee_0$ consists of lines through a particular point $p \in \P^2$.
-  For $\ell \in (\P^2)^\vee$ not containing $p$, the map $\phi_0^\vee$ is constant.
+  If $\phi^{\vee}$ has rank 1, then the indeterminacy locus of $\phi^{\vee}_0$ consists of a particular $\Lambda \in (\P^2)^{\vee}$.
+  For $\ell \neq \Lambda$, the map $\phi_0^{\vee}$ is the composite of $\ell \mapsto \ell \cap \Lambda$ and a linear inclusion $\Lambda \to (\P^2)^{\vee}$.
+  In this case, a fiber of $\phi_0^{\vee}$ consists of a collection of concurrent lines, with the point of concurrency on $\Lambda$.
+  If $\phi^{\vee}$ has rank 1, then the indeterminacy locus of $\phi^{\vee}_0$ consists of lines through a particular point $p \in \P^2$.
+  For $\ell \in (\P^2)^{\vee}$ not containing $p$, the map $\phi_0^{\vee}$ is constant.
 
   Consider a line $\ell$ joining pairs of points of $Z$.
   By semi-continuity, the flat limit of $\phi(\ell_K)$ must intersect $W$ in a scheme of length at least 2.
   There are at most four lines in $\P^2$ that intersect $W$ in a scheme of length at least 2: the lines $\overline{pq}$, $\overline{pr}$, $\overline{qr}$, and $T_rW$.
-  In particular, if $\phi_0^\vee$ is defined at $\ell$, then $\phi_0^\vee(\ell)$ must be one of these 4.
-  This immediately implies that $\phi^\vee$ cannot have rank 1.
+  In particular, if $\phi_0^{\vee}$ is defined at $\ell$, then $\phi_0^{\vee}(\ell)$ must be one of these 4.
+  This immediately implies that $\phi^{\vee}$ cannot have rank 1.
   To see this, suppose it has rank 1.
   Consider the ${6 \choose  2} = 15$ lines joining pairs of points of $Z$.
-  If $\phi_0^\vee$ takes only 4 values on these lines (or may be undefined on one of them), we would be able to partition them into 4 collections of concurrent lines, such that the points of concurrency are collinear.
+  If $\phi_0^{\vee}$ takes only 4 values on these lines (or may be undefined on one of them), we would be able to partition them into 4 collections of concurrent lines, such that the points of concurrency are collinear.
   But it is easy to check that this is impossible for a star-free configuration $Z$.
 
-  We have now concluded that $\phi^\vee$ has rank 2, and hence $\phi_0^\vee$ is constant on its domain.
-  Suppose the constant value of $\phi_0^\vee$ corresponds to the line $L \subset \P^2$.
+  We have now concluded that $\phi^{\vee}$ has rank 2, and hence $\phi_0^{\vee}$ is constant on its domain.
+  Suppose the constant value of $\phi_0^{\vee}$ corresponds to the line $L \subset \P^2$.
   Suppose $z_1 \in Z$ (resp. $z_2 \in Z$) is such that the flat limit of $\phi({z_1}_K)$ is $p$ (resp. $q$).
   Consider the 8 lines $\overline {z_i z}$ for $i= 1,2$ and $z \in Z \setminus \{z_1,z_2\}$.
-  Since these lines are not all concurrent, $\phi_0^\vee$ is defined for at least one of them, say $\ell = \overline {z_1 z}$.
-  Then $\phi^\vee_0(\ell)$ corresponds to the line $L$.
+  Since these lines are not all concurrent, $\phi_0^{\vee}$ is defined for at least one of them, say $\ell = \overline {z_1 z}$.
+  Then $\phi^{\vee}_0(\ell)$ corresponds to the line $L$.
   Since $\ell$ contains $z_1$, the flat limit $L$ of $\phi(\ell_K)$ contains the flat limit $p$ of $\phi({z_1}_K)$.
 
   Now consider the ${4 \choose 2} = 6$ lines joining pairs of points of $Z \setminus \{z_1,z_2\}$.
-  Since the 6 lines are not all concurrent, $\phi_0^\vee$ is defined on at least one of them, say $\ell$.
+  Since the 6 lines are not all concurrent, $\phi_0^{\vee}$ is defined on at least one of them, say $\ell$.
   Then the flat limit of $\phi(\ell_K)$ is also $L$.
   Since the flat limit of a point of $Z \setminus \{z_1,z_2\}$ is $r$, by semi-continuity, we have
   \[ \mult_r(L \cap W) \geq 2.\]
@@ -2464,6 +2555,160 @@ The identity component of the automorphism group of $X$ is $\G_a$.
   The result now follows from \autoref{prop:cubictopoints} and \autoref{prop:pq4r}.
 \end{proof}
 
-\bibliographystyle{plain}
-\bibliography{references}
+\begin{thebibliography}{10}
+
+\bibitem{alp:10}
+Jarod Alper.
+\newblock On the local quotient structure of {A}rtin stacks.
+\newblock {\em J. Pure Appl. Algebra}, 214(9):1576--1591, 2010.
+
+\bibitem{alp.hal.ryd:20}
+Jarod Alper, Jack Hall, and David Rydh.
+\newblock A {L}una \'{e}tale slice theorem for algebraic stacks.
+\newblock {\em Ann. of Math. (2)}, 191(3):675--738, 2020.
+
+\bibitem{alu.fab:93}
+Paolo Aluffi and Carel Faber.
+\newblock Linear orbits of smooth plane curves.
+\newblock {\em J. Algebraic Geom.}, 2(1):155--184, 1993.
+
+\bibitem{alu.fab:00}
+Paolo Aluffi and Carel Faber.
+\newblock Linear orbits of arbitrary plane curves.
+\newblock volume~48, pages 1--37. 2000.
+\newblock Dedicated to William Fulton on the occasion of his 60th birthday.
+
+\bibitem{Aluffi1993}
+Paolo Aluffi and Carol Faber.
+\newblock Linear orbits of d-tuples of points in $\mathbf{P}^1$.
+\newblock {\em Journal für die reine und angewandte Mathematik}, 445:205--220, 1993.
+
+\bibitem{art:69}
+M.~{Artin}.
+\newblock {Algebraic approximation of structures over complete local rings}.
+\newblock {\em {Publ. Math., Inst. Hautes \'Etud. Sci.}}, 36:23--58, 1969.
+
+\bibitem{bek:82}
+N.~D. {Beklemishev}.
+\newblock {Invariants of cubic forms in four variables}.
+\newblock {\em {Mosc. Univ. Math. Bull.}}, 37(2):54--62, 1982.
+
+\bibitem{bri:70}
+Egbert Brieskorn.
+\newblock Singular elements of semi-simple algebraic groups.
+\newblock In {\em Actes du Congres International des Math{\'e}maticiens (Nice, 1970)}, volume~2, pages 279--284, 1970.
+
+\bibitem{bru.wal:79}
+J.~W. {Bruce} and C.~T.~C. {Wall}.
+\newblock {On the classification of cubic surfaces}.
+\newblock {\em {J. Lond. Math. Soc., II. Ser.}}, 19:245--256, 1979.
+
+\bibitem{bru-i-mon.tim.wei:20}
+Laura Brustenga I~Moncus\'{\i}, Sascha Timme, and Madeleine Weinstein.
+\newblock 96120: the degree of the linear orbit of a cubic surface.
+\newblock {\em Matematiche (Catania)}, 75(2):425--437, 2020.
+
+\bibitem{cay:49}
+Arthur Cayley.
+\newblock On the triple tangent planes of surfaces of third order.
+\newblock {\em The Cambridge and Dublin Mathematical Journal}, 4:118--132, 1849.
+
+\bibitem{caz.ska:20}
+Elisa Cazzador and Bj\"orn Skauli.
+\newblock Towards the degree of the {${\rm PGL}(4)$}-orbit of a cubic surface.
+\newblock {\em Matematiche (Catania)}, 75(2):439--456, 2020.
+
+\bibitem{cle:61*1}
+A.~Clebsch.
+\newblock Ueber die {K}notenpunkte der {H}esseschen {F}l\"{a}che, insbesondere bei {O}berfl\"{a}chen dritter {O}rdnung.
+\newblock {\em J. Reine Angew. Math.}, 59:193--228, 1861.
+
+\bibitem{cle:61}
+A.~Clebsch.
+\newblock Ueber eine {T}ransformation der homogenen {F}unctionen dritter {O}rdnung mit vier {V}er\"{a}nderlichen.
+\newblock {\em J. Reine Angew. Math.}, 58:109--126, 1861.
+
+\bibitem{edi.gra:98}
+Dan Edidin and William Graham.
+\newblock Equivariant intersection theory.
+\newblock {\em Invent. Math.}, 131(3):595--634, 1998.
+
+\bibitem{enr.fan:97}
+F~Enriques and G~Fano.
+\newblock Sui gruppi di trasformazioni cremoniane dello spazio.
+\newblock {\em Annali di Matematica pura id applicata}, 15(2):59--98, 1897.
+
+\bibitem{ful:78}
+William Fulton.
+\newblock A note on residual intersections and the double point formula.
+\newblock {\em Acta Mathematica}, 140(1):93--101, 1978.
+
+\bibitem{gal.mar:19}
+Patricio Gallardo and Jesus Martinez-Garcia.
+\newblock Moduli of cubic surfaces and their anticanonical divisors.
+\newblock {\em Rev. Mat. Complut.}, 32(3):853--873, 2019.
+
+\bibitem{has:03}
+Brendan {Hassett}.
+\newblock {Moduli spaces of weighted pointed stable curves.}
+\newblock {\em {Adv. Math.}}, 173(2):316--352, 2003.
+
+\bibitem{kem:78}
+George~R. Kempf.
+\newblock Instability in invariant theory.
+\newblock {\em Ann. of Math. (2)}, 108(2):299--316, 1978.
+
+\bibitem{mir.des:89}
+JM~Miret and S~Xamb{\'o} Descamps.
+\newblock Geometry of complete cuspidal plane cubics.
+\newblock In {\em Algebraic Curves and Projective Geometry}, pages 195--234. Springer, 1989.
+
+\bibitem{mum.fog.kir:94}
+D.~Mumford, J.~Fogarty, and F.~Kirwan.
+\newblock {\em Geometric invariant theory}, volume~34 of {\em Ergebnisse der Mathematik und ihrer Grenzgebiete (2) [Results in Mathematics and Related Areas (2)]}.
+\newblock Springer-Verlag, Berlin, third edition, 1994.
+
+\bibitem{mum:77}
+David Mumford.
+\newblock Stability of projective varieties.
+\newblock {\em Enseign. Math. (2)}, 23(1-2):39--110, 1977.
+
+\bibitem{ran.stu:20}
+Kristian Ranestad and Bernd Sturmfels.
+\newblock Twenty-seven questions about the cubic surface.
+\newblock {\em Matematiche (Catania)}, 75(2):411--424, 2020.
+
+\bibitem{sak:10}
+Yoshiyuki Sakamaki.
+\newblock Automorphism groups on normal singular cubic surfaces with no parameters.
+\newblock {\em Trans. Amer. Math. Soc.}, 362(5):2641--2666, 2010.
+
+\bibitem{sal:49}
+George Salmon.
+\newblock On the triple tangent planes to a surface of the third order.
+\newblock {\em The Cambridge and Dublin Mathematical Journal}, 4:252--260, 1849.
+
+\bibitem{sal:60}
+George Salmon.
+\newblock Xiv. on quaternary cubics.
+\newblock {\em Philosophical Transactions of the Royal Society of London}, 150:229--239, 1860.
+
+\bibitem{sch:58}
+Ludwig Schl{\"a}fli.
+\newblock An attempt to determine the twenty-seven lines upon a surface of the third order, and to derive such surfaces in species, in reference to the reality of the lines upon the surface.
+\newblock {\em Quarterly Journal of Pure and Applied Mathematics}, 2:110--120, 1858.
+
+\bibitem{tju:70}
+G.~N. Tjurina.
+\newblock Resolution of singularities of flat deformations of double rational points.
+\newblock {\em Funkcional. Anal. i Prilo\v{z}en.}, 4(1):77--83, 1970.
+
+\end{thebibliography}
+
+
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

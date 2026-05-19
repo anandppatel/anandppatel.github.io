@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>4.4. Degenerating the domain curve — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Motivating example and the connection of $\mu_M$ with $QH_{GL_{r+1}}^\bullet(\mb{P}^r)$</a> / <span>4.4. Degenerating the domain curve</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S4.SS3.html" aria-label="Previous: 4.3. Connecting the Kontsevich mapping space with $\mu_M$" title="Previous: 4.3. Connecting the Kontsevich mapping space with $\mu_M$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S4.SS5.html" aria-label="Next: 4.5. Expanding out a small quantum product" title="Next: 4.5. Expanding out a small quantum product">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">4.4. Degenerating the domain curve</h1>
+<p class="stacks-para">By the proof of <a href="/papers/orbits-equivariant-quantum/tag/36D1.html" class="stacks-ref-link">Lemma&nbsp;4.4 <span class="stacks-ref-tag">[36D1]</span></a>, we have $\op{M_{d+1}}=\ev_*\pi^{-1}(\mc{C})$ if $\mc{C} = [(\mb{P}^1, p_1, \ldots, p_n)]$, where $p_1, \ldots, p_n \in \mb{P}^1$ have the same moduli as in Section&nbsp;4.1.
+Since $\pi$ is flat, the same equation holds for any $\mc{C}$, so we can choose $\mc{C} = [(C_0,p_1,\ldots,p_n)]$ to be a chain of $n-2$ rational curves.</p>
+<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370pt" height="30pt" viewBox="0 0 370 30">
+<defs>
+<g>
+<g id="glyph-0-0">
+<path d="M 0.453125 1.21875 C 0.375 1.5625 0.34375 1.625 -0.09375 1.625 C -0.203125 1.625 -0.3125 1.625 -0.3125 1.8125 C -0.3125 1.890625 -0.265625 1.9375 -0.1875 1.9375 C 0.078125 1.9375 0.375 1.90625 0.640625 1.90625 C 0.984375 1.90625 1.3125 1.9375 1.640625 1.9375 C 1.6875 1.9375 1.8125 1.9375 1.8125 1.734375 C 1.8125 1.625 1.71875 1.625 1.578125 1.625 C 1.078125 1.625 1.078125 1.5625 1.078125 1.46875 C 1.078125 1.34375 1.5 -0.28125 1.5625 -0.53125 C 1.6875 -0.234375 1.96875 0.109375 2.484375 0.109375 C 3.640625 0.109375 4.890625 -1.34375 4.890625 -2.8125 C 4.890625 -3.75 4.3125 -4.40625 3.5625 -4.40625 C 3.0625 -4.40625 2.578125 -4.046875 2.25 -3.65625 C 2.15625 -4.203125 1.71875 -4.40625 1.359375 -4.40625 C 0.890625 -4.40625 0.703125 -4.015625 0.625 -3.84375 C 0.4375 -3.5 0.3125 -2.90625 0.3125 -2.875 C 0.3125 -2.765625 0.40625 -2.765625 0.421875 -2.765625 C 0.53125 -2.765625 0.53125 -2.78125 0.59375 -3 C 0.765625 -3.703125 0.96875 -4.1875 1.328125 -4.1875 C 1.5 -4.1875 1.640625 -4.109375 1.640625 -3.734375 C 1.640625 -3.5 1.609375 -3.390625 1.5625 -3.21875 Z M 2.203125 -3.109375 C 2.265625 -3.375 2.546875 -3.65625 2.71875 -3.8125 C 3.078125 -4.109375 3.359375 -4.1875 3.53125 -4.1875 C 3.921875 -4.1875 4.171875 -3.84375 4.171875 -3.25 C 4.171875 -2.65625 3.84375 -1.515625 3.65625 -1.140625 C 3.3125 -0.4375 2.84375 -0.109375 2.46875 -0.109375 C 1.8125 -0.109375 1.6875 -0.9375 1.6875 -1 C 1.6875 -1.015625 1.6875 -1.03125 1.71875 -1.15625 Z M 2.203125 -3.109375 "/>
+</g>
+<g id="glyph-1-0">
+<path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
+</g>
+<g id="glyph-1-1">
+<path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
+</g>
+<g id="glyph-1-2">
+<path d="M 1.90625 -2.328125 C 2.453125 -2.328125 2.84375 -1.953125 2.84375 -1.203125 C 2.84375 -0.34375 2.328125 -0.078125 1.9375 -0.078125 C 1.65625 -0.078125 1.03125 -0.15625 0.75 -0.578125 C 1.078125 -0.578125 1.15625 -0.8125 1.15625 -0.96875 C 1.15625 -1.1875 0.984375 -1.34375 0.765625 -1.34375 C 0.578125 -1.34375 0.375 -1.21875 0.375 -0.9375 C 0.375 -0.28125 1.09375 0.140625 1.9375 0.140625 C 2.90625 0.140625 3.578125 -0.515625 3.578125 -1.203125 C 3.578125 -1.75 3.140625 -2.296875 2.375 -2.453125 C 3.09375 -2.71875 3.359375 -3.234375 3.359375 -3.671875 C 3.359375 -4.21875 2.734375 -4.625 1.953125 -4.625 C 1.1875 -4.625 0.59375 -4.25 0.59375 -3.6875 C 0.59375 -3.453125 0.75 -3.328125 0.953125 -3.328125 C 1.171875 -3.328125 1.3125 -3.484375 1.3125 -3.671875 C 1.3125 -3.875 1.171875 -4.03125 0.953125 -4.046875 C 1.203125 -4.34375 1.671875 -4.421875 1.9375 -4.421875 C 2.25 -4.421875 2.6875 -4.265625 2.6875 -3.671875 C 2.6875 -3.375 2.59375 -3.046875 2.40625 -2.84375 C 2.1875 -2.578125 1.984375 -2.5625 1.640625 -2.53125 C 1.46875 -2.515625 1.453125 -2.515625 1.421875 -2.515625 C 1.40625 -2.515625 1.34375 -2.5 1.34375 -2.421875 C 1.34375 -2.328125 1.40625 -2.328125 1.53125 -2.328125 Z M 1.90625 -2.328125 "/>
+</g>
+<g id="glyph-2-0">
+<path d="M 0.84375 -0.4375 C 0.828125 -0.34375 0.78125 -0.171875 0.78125 -0.15625 C 0.78125 0 0.90625 0.0625 1.015625 0.0625 C 1.140625 0.0625 1.25 -0.015625 1.296875 -0.078125 C 1.328125 -0.140625 1.375 -0.375 1.421875 -0.515625 C 1.453125 -0.640625 1.53125 -0.96875 1.5625 -1.140625 C 1.609375 -1.296875 1.65625 -1.453125 1.6875 -1.609375 C 1.765625 -1.890625 1.78125 -1.953125 1.984375 -2.234375 C 2.171875 -2.515625 2.5 -2.875 3.03125 -2.875 C 3.421875 -2.875 3.4375 -2.515625 3.4375 -2.390625 C 3.4375 -1.96875 3.140625 -1.203125 3.03125 -0.90625 C 2.953125 -0.703125 2.921875 -0.640625 2.921875 -0.53125 C 2.921875 -0.15625 3.21875 0.0625 3.578125 0.0625 C 4.28125 0.0625 4.578125 -0.890625 4.578125 -1 C 4.578125 -1.09375 4.5 -1.09375 4.46875 -1.09375 C 4.375 -1.09375 4.375 -1.046875 4.34375 -0.96875 C 4.1875 -0.40625 3.875 -0.125 3.609375 -0.125 C 3.453125 -0.125 3.421875 -0.21875 3.421875 -0.375 C 3.421875 -0.53125 3.46875 -0.625 3.59375 -0.9375 C 3.671875 -1.15625 3.953125 -1.890625 3.953125 -2.28125 C 3.953125 -2.953125 3.421875 -3.078125 3.046875 -3.078125 C 2.46875 -3.078125 2.078125 -2.71875 1.875 -2.4375 C 1.828125 -2.921875 1.421875 -3.078125 1.125 -3.078125 C 0.828125 -3.078125 0.671875 -2.859375 0.578125 -2.703125 C 0.421875 -2.4375 0.328125 -2.046875 0.328125 -2 C 0.328125 -1.921875 0.421875 -1.921875 0.453125 -1.921875 C 0.546875 -1.921875 0.546875 -1.9375 0.59375 -2.125 C 0.703125 -2.53125 0.84375 -2.875 1.109375 -2.875 C 1.296875 -2.875 1.34375 -2.71875 1.34375 -2.53125 C 1.34375 -2.40625 1.28125 -2.140625 1.21875 -1.953125 C 1.171875 -1.765625 1.109375 -1.484375 1.078125 -1.328125 Z M 0.84375 -0.4375 "/>
+</g>
+<g id="glyph-3-0">
+<path d="M 5.1875 -1.578125 C 5.296875 -1.578125 5.46875 -1.578125 5.46875 -1.734375 C 5.46875 -1.921875 5.296875 -1.921875 5.1875 -1.921875 L 1.03125 -1.921875 C 0.921875 -1.921875 0.75 -1.921875 0.75 -1.75 C 0.75 -1.578125 0.90625 -1.578125 1.03125 -1.578125 Z M 5.1875 -1.578125 "/>
+</g>
+</g>
+</defs>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00028125 -0.00028125 L 85.038781 28.347375 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 56.695031 28.347375 L 141.734094 -0.00028125 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 20.390344 6.3005 C 20.390344 7.124719 19.722375 7.792687 18.898156 7.792687 C 18.073937 7.792687 17.402062 7.124719 17.402062 6.3005 C 17.402062 5.472375 18.073937 4.804406 18.898156 4.804406 C 19.722375 4.804406 20.390344 5.472375 20.390344 6.3005 Z M 20.390344 6.3005 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="14.544" y="17.857"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-0" x="19.556" y="19.351"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 44.015344 14.171594 C 44.015344 14.999719 43.347375 15.667687 42.51925 15.667687 C 41.695031 15.667687 41.027062 14.999719 41.027062 14.171594 C 41.027062 13.347375 41.695031 12.679406 42.51925 12.679406 C 43.347375 12.679406 44.015344 13.347375 44.015344 14.171594 Z M 44.015344 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="38.166" y="9.983"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-1" x="43.178" y="11.477"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 100.70675 14.171594 C 100.70675 14.999719 100.038781 15.667687 99.214562 15.667687 C 98.390344 15.667687 97.718469 14.999719 97.718469 14.171594 C 97.718469 13.347375 98.390344 12.679406 99.214562 12.679406 C 100.038781 12.679406 100.70675 13.347375 100.70675 14.171594 Z M 100.70675 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="94.859" y="9.983"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-2" x="99.871" y="11.477"/>
+</g>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 113.386437 -0.00028125 L 141.734094 9.448937 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 156.902062 14.171594 C 156.902062 14.722375 156.45675 15.171594 155.905969 15.171594 C 155.359094 15.171594 154.909875 14.722375 154.909875 14.171594 C 154.909875 13.624719 155.359094 13.1755 155.905969 13.1755 C 156.45675 13.1755 156.902062 13.624719 156.902062 14.171594 Z M 156.902062 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 226.773156 9.448937 L 255.120812 -0.00028125 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 213.597375 14.171594 C 213.597375 14.722375 213.152062 15.171594 212.601281 15.171594 C 212.0505 15.171594 211.605187 14.722375 211.605187 14.171594 C 211.605187 13.624719 212.0505 13.1755 212.601281 13.1755 C 213.152062 13.1755 213.597375 13.624719 213.597375 14.171594 Z M 213.597375 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 185.249719 14.171594 C 185.249719 14.722375 184.804406 15.171594 184.253625 15.171594 C 183.702844 15.171594 183.257531 14.722375 183.257531 14.171594 C 183.257531 13.624719 183.702844 13.1755 184.253625 13.1755 C 184.804406 13.1755 185.249719 13.624719 185.249719 14.171594 Z M 185.249719 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 226.773156 -0.00028125 L 311.816125 28.347375 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 270.788781 14.171594 C 270.788781 14.999719 270.120812 15.667687 269.296594 15.667687 C 268.468469 15.667687 267.8005 14.999719 267.8005 14.171594 C 267.8005 13.347375 268.468469 12.679406 269.296594 12.679406 C 270.120812 12.679406 270.788781 13.347375 270.788781 14.171594 Z M 270.788781 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="259.362" y="9.595"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-2-0" x="264.374" y="11.09"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-3-0" x="269.298898" y="11.09"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-1" x="275.525804" y="11.09"/>
+</g>
+<path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%, 50%, 50%)" stroke-opacity="1" stroke-miterlimit="10" d="M 283.468469 28.347375 L 368.507531 -0.00028125 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 327.484094 14.171594 C 327.484094 14.999719 326.812219 15.667687 325.988 15.667687 C 325.163781 15.667687 324.495812 14.999719 324.495812 14.171594 C 324.495812 13.347375 325.163781 12.679406 325.988 12.679406 C 326.812219 12.679406 327.484094 13.347375 327.484094 14.171594 Z M 327.484094 14.171594 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="316.055" y="9.595"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-2-0" x="321.067" y="11.09"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-3-0" x="325.991898" y="11.09"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-1-0" x="332.218804" y="11.09"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 351.105187 6.3005 C 351.105187 7.124719 350.437219 7.792687 349.609094 7.792687 C 348.784875 7.792687 348.116906 7.124719 348.116906 6.3005 C 348.116906 5.472375 348.784875 4.804406 349.609094 4.804406 C 350.437219 4.804406 351.105187 5.472375 351.105187 6.3005 Z M 351.105187 6.3005 " transform="matrix(1, 0, 0, -1, 0.387, 29.613)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-0-0" x="344.776" y="17.857"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#glyph-2-0" x="349.788" y="19.351"/>
+</g>
+</svg></div>
+<p class="stacks-para">Let $\Gamma_0$ be the dual graph of $C_0$, which is a chain of $n-2$ vertices connected by edges. Then the fiber of $\pi$ over $(C_0,p_1,\ldots,p_n)$ has $\binom{n-3+d}{d}$ components, indexed by assignments of degrees to the $n-2$ vertices of $\Gamma_0$ that sum to $d$. However, most components push forward to zero under ${\rm ev}_{*}$ for dimension reasons, and only $\binom{n-2}{d}$ components, corresponding to assignments of degrees of 0's and 1's, survive.</p>
+<p class="stacks-para">Therefore, the cycle $\op{M_{d+1}}$ degenerates to $\binom{n-2}{d}$ generalized matrix orbits by <a href="/papers/orbits-equivariant-quantum/tag/36D1.html" class="stacks-ref-link">Lemma&nbsp;4.4 <span class="stacks-ref-tag">[36D1]</span></a>.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 4.4. Degenerating the domain curve">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S4.SS4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

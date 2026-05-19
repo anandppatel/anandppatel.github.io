@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Lemma 4.17 (36EF) — Invariants of a general branched cover of $\P^1$</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
           D: "{\\bf D}",
-          P: "{\\bf P}",
+          P: "\\mathbb{P}",
           from: "\\colon",
           into: "{\\hookrightarrow}",
           onto: "\\twoheadrightarrow",
@@ -32,7 +37,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           isom: "\\stackrel\\sim\\longrightarrow",
@@ -58,6 +63,14 @@
           epsilon: "\\varepsilon",
           MC: "MC",
           chain: ["\\P_{#1}", 1],
+          rotatebox: ["#2", 2],
+          Xright: "X_{\\text{right}}",
+          Hright: "H_{\\text{right}}",
+          Lambdaright: "\\Lambda_{\\text{right}}",
+          Hleft: "H_{\\text{left}}",
+          Lambdaleft: "\\Lambda_{\\text{left}}",
+          Xleft: "X_{\\text{left}}",
+          Rmiddle: "R_{\\text{middle}}",
           Crimp: "\\operatorname{Crimp}",
           Mor: "\\operatorname{Mor}",
           Def: "\\operatorname{Def}",
@@ -72,8 +85,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\operatorname{{\\mathbf G}}",
-          A: "\\operatorname{{\\mathbf A}}",
+          G: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +94,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\operatorname{\\mathbf F}",
+          F: "\\mathbb{F}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -97,13 +110,43 @@
           im: "\\operatorname{im}",
           three: "\\operatorname{[3]}",
           End: "\\operatorname{End}",
-          Sing: "\\operatorname{Sing}"
+          Sing: "\\operatorname{Sing}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -119,14 +162,13 @@
 <div class="stacks-lemma" id="lemma-description-of-directrix">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.17.</strong> <a href="../tag/36EF.html" class="stacks-tag-link">(36EF)</a></div>
   <div class="stacks-env-body"><p>There is a map of vector bundles over $\chain{a}$:
-$$
-\Phi \from F \to \chain{a} \times H^0(\P^{d-2}, \cO_{\P^{d-2}}(2))
-$$
+$$\Phi \from F \to \chain{a} \times H^0(\P^{d-2}, \cO_{\P^{d-2}}(2))$$
 such that:</p>
-<p><ol><li>$\Phi_t$ sends the vector space $F_t$ to the vector space of quadrics vanishing at the
+<ol><li>$\Phi_t$ sends the vector space $F_t$ to the vector space of quadrics vanishing at the
 $d$ points $\alpha^{-1}(t) \subset X \subset \P^{d-2}$.</li>
 <li>For each component $R_i \subset X$, the directrix $W_i \subset F_i$ maps under $\Phi_t$ to the
-vector space $H^{0}(I_{R_{i}}(2))$ of quadrics containing the rational normal curve $R_i$.</li></ol></p></div>
+vector space $H^{0}(I_{R_{i}}(2))$ of quadrics containing the rational normal curve $R_i$.</li></ol>
+</div>
 </div>
 
 <hr>
@@ -151,7 +193,7 @@ vector space $H^{0}(I_{R_{i}}(2))$ of quadrics containing the rational normal cu
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

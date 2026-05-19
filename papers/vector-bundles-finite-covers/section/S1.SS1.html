@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>1.1. Motivation and related work — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,13 +105,13 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.1. Motivation and related work</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.1. Motivation and related work</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.html" aria-label="Previous: Section 1: Introduction" title="Previous: Section 1: Introduction">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS2.html" aria-label="Next: 1.2. Strategy of proof" title="Next: 1.2. Strategy of proof">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.1. Motivation and related work</h1>
 <p class="stacks-para">The question of understanding the vector bundles associated to finite covers arises in many different contexts.
-We explain three main motivations below.
+We explain three main motivations below.</p>
 <h3 class="stacks-subsections-heading">The realization problem for finite covers</h3>
-Given a space $Y$ and a positive integer $d$, a basic question in algebraic geometry is to find algebraic constructions of all possible degree $d$ branched coverings of $Y$.
+<p class="stacks-para">Given a space $Y$ and a positive integer $d$, a basic question in algebraic geometry is to find algebraic constructions of all possible degree $d$ branched coverings of $Y$.
 The prototypical example occurs when $d = 2$.
 A double cover $X \to Y$ is given as $X = \spec(\O_Y \oplus L^\vee)$ where $L$ is a line bundle on $Y$, and the algebra structure on $\O_Y \oplus L^\vee$ is specified by a map $L^{\otimes -2} \to \O_Y$ of $\O_Y$-modules.
 In other words, the data of a double cover consists of a line bundle $L$ and a section of $L^{\otimes 2}$.
@@ -85,66 +120,66 @@ The specification of the algebra structure, however, is much less obvious.
 For higher $d$, it is far from clear that simple linear algebraic data determines an algebra structure.
 In fact, given an $E$ it is not clear whether there exists a (regular/normal/Cohen-Macaulay) $\O_Y$-algebra structure on $\O_Y \oplus E^\vee$, that is, whether $E$ can be realized as the Tschirnhausen bundle of a cover $\phi \from X \to Y$  for some (regular/normal/Cohen-Macaulay) $X$.
 We call this the <em>realization problem</em> for Tschirnhausen bundles.</p>
-<p class="stacks-para">For $d = 3, 4$, and $5$, theorems of Miranda, Casnati, and Ekedahl provide a linear algebraic description of degree $d$ coverings of $Y$ in terms of vector bundles on $Y$ \cite{mir:85,cas.eke:96}.
+<p class="stacks-para">For $d = 3, 4$, and $5$, theorems of Miranda, Casnati, and Ekedahl provide a linear algebraic description of degree $d$ coverings of $Y$ in terms of vector bundles on $Y$ [23, 10].
 These descriptions give a direct method for attacking the realization problem for $d$ up to $5$.
 For $d \geq 6$, however, no such description is known, and finding one is a difficult open problem.
 <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> solves the realization problem for all $d$ up to twisting by a line bundle, circumventing the lack of effective structure theorems.</p>
-<p class="stacks-para">The realization problem has attracted the attention of several mathematicians, even in the simplest non-trivial case, namely where $Y = \P^1$ \cite{ohb:97,cop:99, sch:86, bal:01}.
+<p class="stacks-para">The realization problem has attracted the attention of several mathematicians, even in the simplest non-trivial case, namely where $Y = \P^1$ [25, 12, 30, 2].
 Historically, this problem for $Y = \P^1$ is known as the problem of classifying <em>scrollar invariants</em>.
 Recall that every vector bundle on $\P^1$ splits as a direct sum of line bundles.
 Suppose $\phi \from X \to Y = \P^1$ is a branched cover with $X$ smooth and connected.
 Writing $E_\phi = \O(a_{1}) \oplus \dots \oplus \O(a_{d-1})$, the scrollar invariants of $\phi$ are the integers $a_1, \dots, a_{d-1}$.
 For $d = 2$, any positive integer $a_1$ is realized as a scrollar invariant of a smooth double cover.
-For $d = 3$, a pair of positive integers $(a_1, a_2)$ with $a_1 \leq a_2$ is realized as scrollar invariants of smooth triple coverings if and only if $a_2\leq 2a_1$ \cite[\S&nbsp;9]{mir:85}.
+For $d = 3$, a pair of positive integers $(a_1, a_2)$ with $a_1 \leq a_2$ is realized as scrollar invariants of smooth triple coverings if and only if $a_2\leq 2a_1$ [23, &sect;&nbsp;9].
 Though it may be possible to use the structure theorems to settle the cases of $d = 4$ and $5$, such direct attacks are infeasible for $d \geq 6$.
-Nevertheless, the picture emerging from the collective work of several authors \cite{cop:99,ohb:97}, and visible in the $d = 3$ case, indicates that if the $a_i$ are too far apart, then they cannot be scrollar invariants.</p>
+Nevertheless, the picture emerging from the collective work of several authors [12, 25], and visible in the $d = 3$ case, indicates that if the $a_i$ are too far apart, then they cannot be scrollar invariants.</p>
 <p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> specialized to $Y = \P^1$ says that the picture is the cleanest possible if we allow twisting by a line bundle.</p>
 <div class="stacks-lemma" id="cor-P1">
   <div class="stacks-env-head"><strong>Corollary&nbsp;1.2.</strong> <a href="../tag/6F6A.html" class="stacks-tag-link">(6F6A)</a></div>
   <div class="stacks-env-body"><p>Let $a_1, \dots, a_{d-1}$ be integers.
   For every sufficiently large $c$, the integers $a_1 + c, \dots, a_{d-1}+c$ can be realized as scrollar invariants of $\phi \from X \to \P^1$ where $X$ is a smooth projective curve.</p></div>
 </div>
-<p class="stacks-para">Before our work, the work of Ballico \cite{bal:01} came closest to a characterization of scrollar invariants up to a shift.
+<p class="stacks-para">Before our work, the work of Ballico [2] came closest to a characterization of scrollar invariants up to a shift.
 He showed that one can arbitrarily specify the smallest $d/2$ of the $(d-1)$ scrollar invariants.
-<a href="/papers/vector-bundles-finite-covers/tag/6F6A.html" class="stacks-ref-link">Corollary&nbsp;1.2 <span class="stacks-ref-tag">[6F6A]</span></a> answers the question completely: one can in fact arbitrarily specify <em>all</em> of them.
+<a href="/papers/vector-bundles-finite-covers/tag/6F6A.html" class="stacks-ref-link">Corollary&nbsp;1.2 <span class="stacks-ref-tag">[6F6A]</span></a> answers the question completely: one can in fact arbitrarily specify <em>all</em> of them.</p>
 <h3 class="stacks-subsections-heading">Arithmetic analogues</h3>
-The realization problem of Tschirnhausen bundles is a well-studied and difficult open problem in number theory.
+<p class="stacks-para">The realization problem of Tschirnhausen bundles is a well-studied and difficult open problem in number theory.
 When $\phi \from \spec \O_L \to \spec \O_K$ is the map corresponding to the extension of rings of integers of number fields $L/K$, the isomorphism class of $E_\phi$ is encoded by its Steinitz class, which is the ideal class  $\det E \in \Cl (K)$.
-Indeed, the structure theorem of projective modules over a Dedekind domain \cite{ser:58} says that every projective module $E$ of rank $(d-1)$ is isomorphic to $\O_K^{d-2} \oplus \det E$ as an $\O_K$-module.
+Indeed, the structure theorem of projective modules over a Dedekind domain [32] says that every projective module $E$ of rank $(d-1)$ is isomorphic to $\O_K^{d-2} \oplus \det E$ as an $\O_K$-module.
 A long-standing unsolved problem in number theory is to prove that, for each fixed degree $d \geq 2$, every element of the class group is realized as the Steinitz class of some degree $d$ extension of $K$.
-The first cases ($d \leq 5$) of this problem follow from the work of Bhargava, Shankar, and Wang \cite[Theorem 4]{bha.sha.wan:15}.
-In general, the realization problem for Steinitz classes is open, with progress under various conditions on the Galois group; see \cite{byo.gre.sod-gui:06} and the references therein.</p>
+The first cases ($d \leq 5$) of this problem follow from the work of Bhargava, Shankar, and Wang [7, Theorem 4].
+In general, the realization problem for Steinitz classes is open, with progress under various conditions on the Galois group; see [8] and the references therein.</p>
 <p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> completely answers the complex function field analogue of the realization problem for Steinitz classes.</p>
 <div class="stacks-lemma" id="">
   <div class="stacks-env-head"><strong>Corollary&nbsp;1.3.</strong> <a href="../tag/F8BC.html" class="stacks-tag-link">(F8BC)</a></div>
   <div class="stacks-env-body"><p>Suppose $Y$ is a smooth affine curve, and $I \in \Pic(Y)$.
   Then $I$ is realized as the Steinitz class of a degree $d$ covering $\phi \from X \to Y$, with $X$ smooth and connected.
   That is, there exists $\phi \from X \to Y$ with $X$ smooth and connected such that
-  $$ E_\phi \cong \O_Y^{d-2} \oplus I.$$</p></div>
+  $$E_\phi \cong \O_Y^{d-2} \oplus I.$$</p></div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3141.html" class="stacks-tag-link">(3141)</a></div>
   <div class="stacks-env-body"><p>Extend $E$ to a vector bundle $E'$ on the smooth projective compactification $Y'$ of $Y$. Apply <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> to $E'$, twisting by a sufficiently positive line bundle $L$ on $Y'$ whose divisor class is supported on the complement $Y' \setminus Y$.  We obtain a smooth curve $X'$ and a map $\phi \from X' \to Y'$ whose Tschirnhausen bundle is $E' \otimes L$; letting $X = \phi^{-1}(Y)$, we obtain the corollary.</p></div>
 </div>
 <p class="stacks-para">We note that the affine covers in the above corollary have full $(S_d)$ monodromy groups, as can easily be deduced from the method of proof of <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a>.</p>
-<p class="stacks-para">The analogy between the arithmetic and the geometric realization problems discussed above for affine curves extends further to projective curves, provided we interpret the projective closure of an arithmetic curve like $\spec \O_K$ in the sense of Arakelov geometry \cite{sou:92}.
+<p class="stacks-para">The analogy between the arithmetic and the geometric realization problems discussed above for affine curves extends further to projective curves, provided we interpret the projective closure of an arithmetic curve like $\spec \O_K$ in the sense of Arakelov geometry [34].
 For simplicity, take $K = \Q$ and $Y = \P^1$.
 A vector bundle on a ``projective closure'' of $\spec \Z$ in the Arakelov sense is a free $\Z$-module $E$ with a Hermitian form on its complex fiber $E \otimes \C$.
 Let $L/\Q$ be an extension of degree $d$.
 The Tschirnhausen bundle $E_\phi$ of $\phi \from \spec \O_L \to \spec \O_K$ is naturally an Arakelov bundle, where the Hermitian form is induced by the trace.
 Thus, the realization problem has a natural interpretation in the Arakelov sense.
 An Arakelov bundle over $\spec \Z$ of rank $r$ is just a lattice of rank $r$, and the set of such lattices (up to isomorphism and scaling) forms an orbifold (a double quotient space), denoted by $\mathcal S_r$.
-A theorem of Bhargava and Harron says that for $d \leq 5$, the (Arakelov) Tschirnhausen bundles are equidistributed in $\mathcal S_{d-1}$ \cite[Theorem&nbsp;1]{bha.har:16}.
+A theorem of Bhargava and Harron says that for $d \leq 5$, the (Arakelov) Tschirnhausen bundles are equidistributed in $\mathcal S_{d-1}$ [6, Theorem&nbsp;1].
 Again, one crucial ingredient in their proof is provided by the structure theorems for finite covers.
 We may view <a href="/papers/vector-bundles-finite-covers/tag/6F6A.html" class="stacks-ref-link">Corollary&nbsp;1.2 <span class="stacks-ref-tag">[6F6A]</span></a> as a (complex) function field analogue, but for all $d$.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Geometry of Hurwitz spaces</h3>
-Another source of motivation for <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> concerns the geometry of moduli spaces of coverings, known as Hurwitz spaces.
+<h3 class="stacks-subsections-heading">Geometry of Hurwitz spaces</h3>
+<p class="stacks-para">Another source of motivation for <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> concerns the geometry of moduli spaces of coverings, known as Hurwitz spaces.
 For simplicity, take $\k = \C$ and let $Y$ be a smooth projective curve over $\k$.
 Denote by $H_{d,g}(Y)$ the coarse moduli space that parametrizes primitive covers $\phi \from X \to Y$ where $\phi$ is a map of degree $d$ and $X$ is a smooth curve of genus $g$ (the cover $\phi$ is primitive if $\phi_* \from \pi_1(X) \to \pi_1(Y)$ is surjective).
-The space $H_{d,g}(Y)$ is an irreducible algebraic variety \cite[Theorem&nbsp;9.2]{gab.kaz:87}.</p>
+The space $H_{d,g}(Y)$ is an irreducible algebraic variety [16, Theorem&nbsp;9.2].</p>
 <p class="stacks-para">The association $\phi \leadsto E_\phi$ gives rise to interesting cycles on $H_{d,g}(Y)$, called the Maroni loci.
 For a vector bundle $E$ on $Y$, define the <em>Maroni locus</em> $M(E) \subset H_{d,g}(Y)$ as the locally closed subset that parametrizes covers with Tschirnhausen bundle isomorphic to $E$.
-This notion generalizes the classical Maroni loci for $Y = \P^1$, which play a key role in describing the cones of various cycles classes on $H_{d,g}(Y)$ in \cite{deo.pat:13} and \cite{pat:15}.
+This notion generalizes the classical Maroni loci for $Y = \P^1$, which play a key role in describing the cones of various cycles classes on $H_{d,g}(Y)$ in [13] and [26].
 It would be interesting to know if the cycle of $\overline{M(E)}$ has similar distinguishing properties, such as rigidity or extremality, more generally than for $Y = \P^1$.
 A first step towards this study is to determine when these cycles are non-empty and of the expected dimension.
 As a consequence of the method of proof of the main theorem, we obtain the following.</p>
@@ -156,14 +191,14 @@ As a consequence of the method of proof of the main theorem, we obtain the follo
 </div>
 <p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/E21C.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[E21C]</span></a> is <a href="/papers/vector-bundles-finite-covers/tag/58FD.html" class="stacks-ref-link">Theorem&nbsp;3.17 <span class="stacks-ref-tag">[58FD]</span></a> in the main text.
 Going further, it would be valuable to know whether all the components of $M(E \otimes L)$ are of the expected dimension or, even better, if $M(E \otimes L)$ is irreducible.
-The results of \cite[\S&nbsp;2]{deo.pat:15} imply irreducibility for $Y = \P^1$ and some vector bundles $E$.
+The results of [14, &sect;&nbsp;2] imply irreducibility for $Y = \P^1$ and some vector bundles $E$.
 But the question remains open in general.</p>
 <p class="stacks-para">More broadly, the association $\phi \leadsto E_\phi$ allows us to relate $H_{d,g}(Y)$ to the moduli space of vector bundles on $Y$.
 Denote by $M_{r,k}(Y)$ the moduli space of semi-stable vector bundles of rank $r$ and degree $k$ on $Y$.
-It is well-known that $M_{r,k}(Y)$ is an irreducible algebraic variety \cite{ses:82}.
+It is well-known that $M_{r,k}(Y)$ is an irreducible algebraic variety [33].
 Note that the Tschirnhausen bundle of a degree $d$ and genus $g$ cover of $Y$ has rank $d-1$ and degree $b = g-1-d(g_Y-1)$.
 One would like to say that $\phi \leadsto E_\phi$ yields a rational map
-$$ H_{d,g}(Y) \dashrightarrow M_{d-1,b},$$
+$$H_{d,g}(Y) \dashrightarrow M_{d-1,b},$$
 but to say so we must know the basic fact that a general element $\phi \from X \to Y$ of $H_{d,g}(Y)$ gives a semi-stable vector bundle $E_\phi$.
 We obtain this as a consequence of our methods.</p>
 <div class="stacks-theorem" id="thm-generalstable">
@@ -174,11 +209,11 @@ We obtain this as a consequence of our methods.</p>
 <p>  The same statement holds for $g_{Y} = 1$, with ``stable'' replaced with ``regular poly-stable.''</p></div>
 </div>
 <p class="stacks-para"><a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a> is <a href="/papers/vector-bundles-finite-covers/tag/F4CC.html" class="stacks-ref-link">Theorem&nbsp;3.15 <span class="stacks-ref-tag">[F4CC]</span></a> in the main text.</p>
-<p class="stacks-para">The low degree cases ($d \leq 5$) of <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a> were proved by Kanev \cite{kan:05,kan:04,kan:13} using the structure theorems.
+<p class="stacks-para">The low degree cases ($d \leq 5$) of <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a> were proved by Kanev [20, 19, 21] using the structure theorems.
 The crucial new ingredient in our approach is the use of deformation theory to circumvent such direct attacks.
 The validity of <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a> for low $g$ is an interesting open problem.
 It would be nice to know whether $\phi \mapsto E_\phi$ is dominant as soon as we have $\dim H_{d,g}(Y) \geq \dim M_{d-1,b}(Y)$.</p>
-<p class="stacks-para">We also draw the reader's attention to results, similar in spirit to <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a>, proved by Beauville, Narasimhan, and Ramanan \cite{bea.nar.ram:89}.
+<p class="stacks-para">We also draw the reader's attention to results, similar in spirit to <a href="/papers/vector-bundles-finite-covers/tag/E97B.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[E97B]</span></a>, proved by Beauville, Narasimhan, and Ramanan [3].
 Motivated by the study of the Hitchin fibration, they study not the pushforward of $\O_X$ itself but the pushforwards of general line bundles on $X$.</p>
 
 <hr>
@@ -203,7 +238,7 @@ Motivated by the study of the Hitchin fibration, they study not the pushforward 
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

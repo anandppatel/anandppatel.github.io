@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Section 1 — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,7 +105,7 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS1.html" aria-label="Next: 1.1. Motivation and related work" title="Next: 1.1. Motivation and related work">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 1. Introduction</h1>
 <p class="stacks-para">Associated to a finite flat morphism $\phi \from X \to Y$ is the vector bundle $\phi_* \O_X$ on $Y$.
@@ -90,8 +125,8 @@ Therefore, every bundle of the form $\phi_* \O_X$ contains $\O_Y$ as a direct su
 The dual of the remaining direct summand is called the <em>Tschirnhausen bundle</em> and is denoted by $E = E_\phi$ (the dual is taken as a convention.)
 <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> says that on a smooth projective curve, a sufficiently positive twist of every vector bundle is Tschirnhausen.</p>
 <p class="stacks-para">The reason for needing the twist is a bit more subtle, and arises from some geometric restrictions on Tschirnhausen bundles.
-For $Y = \P^n$ and a smooth $X$, the Tschirnhausen bundle $E$ is ample by a result of Lazarsfeld \cite{laz:80}.
-For more general $Y$ and smooth $X$, it enjoys several positivity properties as shown in \cite{pet.som:00,pet.som:04}.
+For $Y = \P^n$ and a smooth $X$, the Tschirnhausen bundle $E$ is ample by a result of Lazarsfeld [22].
+For more general $Y$ and smooth $X$, it enjoys several positivity properties as shown in [27, 28].
 The precise necessary and sufficient conditions for being Tschirnhausen (without the twist) are unknown, and seem to be delicate even when $Y = \P^1$.</p>
 <p class="stacks-para">The attempt at extending <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> to higher dimensional varieties $Y$ presents interesting new challenges.
 We discuss them through some examples in Section&nbsp;4.
@@ -127,7 +162,7 @@ We end the paper by posing modifications for which we are unable to find counter
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

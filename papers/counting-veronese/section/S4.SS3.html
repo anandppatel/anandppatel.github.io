@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>4.3. Point conditions on singular quintic pencils — Counting 3-uple Veronese Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -33,9 +38,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
+          Z: "\\mathbb{Z}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -50,7 +55,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -59,13 +64,47 @@
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}"
+          red: "\\operatorname{red}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -75,7 +114,7 @@
     <a href="../index.html" class="stacks-paper-link">Counting 3-uple Veronese Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.3. Point conditions on singular quintic pencils</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <span>4.3. Point conditions on singular quintic pencils</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S4.SS2.html" aria-label="Previous: 4.2. First definitions" title="Previous: 4.2. First definitions">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S4.SS4.html" aria-label="Next: 4.4. Thirteen point conditions" title="Next: 4.4. Thirteen point conditions">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">4.3. Point conditions on singular quintic pencils</h1>
 <p class="stacks-para">Fix a point $p \in \P^{2}$.  The point $p$ determines the hyperplane
@@ -104,7 +143,7 @@ $(T,T^{*},\Lambda) \in \SQP$ having the property that $p \in \Base(\Lambda)$.</p
   <div class="stacks-env-body"><p>Let $(T,T^{*}) \in \CT$ be arbitrary, and let $W = H^{0}(\P^{2}, \I_{\s(T,T^{*})}(5))$.  Then $$\Supp \Base(W) = \Supp T$$ if and only if $T \notin \Thin$ and otherwise $\Supp \Base(W)$ is the line $\langle T \rangle$.</p></div>
 </div>
 <div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of <a href="/papers/counting-veronese/tag/D12E.html" class="stacks-ref-link">Lemma&nbsp;4.7 <span class="stacks-ref-tag">[D12E]</span></a>.</em> <a href="../tag/9DB3.html" class="stacks-tag-link">(9DB3)</a></div>
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/counting-veronese/tag/D12E.html" class="stacks-ref-link">4.7 <span class="stacks-ref-tag">[D12E]</span></a>.</em> <a href="../tag/9DB3.html" class="stacks-tag-link">(9DB3)</a></div>
   <div class="stacks-env-body"><p>The claim rests on the observation that $\Supp T = \Supp \Base (\Lambda_{T})$ if and only if $T$ is not contained in a line. Here $\Lambda_{T}$ is the net of conics (<a href="/papers/counting-veronese/tag/021F.html" class="stacks-ref-link">Definition&nbsp;3.1 <span class="stacks-ref-tag">[021F]</span></a>) containing $T$.  If $T \in \Thin$, then the quintic curves in $W$ are those which contain the line spanned by $T$ as a component, and whose residual quartic curve contains $T$.  From this description it is clear that $\Supp\Base(W) = \langle T \rangle$ as claimed.  </p>
 <p>    So we can and will assume $T \notin \Thin$. Then the inclusion $$\Supp \Base (H^{0}(\I_{T}^{2}(4))) \subset \Supp T$$ is seen by considering the pairwise products of  three quadratic polynomials spanning $\Lambda_{T}$.  Therefore, $\Supp \Base (H^{0}(\I_{T}^{2}(5))) \subset \Supp T$ as well. Since $\Base (W) \subset \Base (H^{0}(\I_{T}^{2}(5)))$, we conclude that $\Supp \Base (W) \subset \Supp T$. The opposite inclusion is trivial, concluding the proof.</p></div>
 </div>
@@ -115,22 +154,21 @@ $(T,T^{*},\Lambda) \in \SQP$ having the property that $p \in \Base(\Lambda)$.</p
 <p class="stacks-para">The proof of <a href="/papers/counting-veronese/tag/2F00.html" class="stacks-ref-link">Proposition&nbsp;4.6 <span class="stacks-ref-tag">[2F00]</span></a> justifies the following definition.</p>
 <div class="stacks-definition" id="definition-D">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.8.</strong> <a href="../tag/0DB3.html" class="stacks-tag-link">(0DB3)</a></div>
-  <div class="stacks-env-body"><p><ol><li>We define $$\Dom (p) \subset \BP (p)$$ to be the unique irreducible
+  <div class="stacks-env-body"><ol><li>We define $$\Dom (p) \subset \BP (p)$$ to be the unique irreducible
   component (with reduced, induced scheme structure) whose general
   point $(T,T^{*},\Lambda)$ satisfies
-    \begin{enumerate}</li>
-<li>$(T,T^{*})$ is an honest triangle, and</li>
-<li>$p \notin T$.</li></ol> </p>
-<p>    \item  We define $$ \Inc (p) \subset \BP (p) $$ to be the irreducible component
+    <ol><li>$(T,T^{*})$ is an honest triangle, and</li>
+<li>$p \notin T$.</li></ol></li>
+<li>We define $$\Inc (p) \subset \BP (p)$$ to be the irreducible component
   (with reduced, induced scheme structure) consisting of triples
-  $(T,T^{*},\Lambda)$ such that $p \in T$.
-    \item  We define $$\Lin (p) \subset \BP (p)$$ to
+  $(T,T^{*},\Lambda)$ such that $p \in T$.</li>
+<li>We define $$\Lin (p) \subset \BP (p)$$ to
   be the irreducible component (with reduced, induced scheme
   structure) whose general point corresponds to a triple $(T,T^{*}, \Lambda)$ satisfying
   <ol><li>$T \in \Thin$</li>
 <li>$p \notin T$, and</li>
-<li>$T$ and $p$ are collinear.</li></ol>
-  \end{enumerate}</p></div>
+<li>$T$ and $p$ are collinear.</li></ol></li></ol>
+</div>
 </div>
 <div class="stacks-commentary" id="remark-Dombundle">
   <div class="stacks-env-head"><strong>Remark&nbsp;4.9.</strong> <a href="../tag/39CC.html" class="stacks-tag-link">(39CC)</a></div>
@@ -151,14 +189,14 @@ $(T,T^{*},\Lambda) \in \SQP$ having the property that $p \in \Base(\Lambda)$.</p
 <p class="stacks-para">$$\begin{aligned}S^{\dagger} \subset S \times _{\SQP}S\end{aligned}$$
 denote the bundle of frames for $S/\SQP$.  A point of $S^{\dagger}$ is a tuple $(F,G,T,T^{*})$ where $F$ and $G$ are linearly independent quintic forms which are both elements of $H^{0}\left(\P^{2}, \I_{\s(T,T^{*})}(5)\right)$.  The natural morphism $S^{\dagger} \to \SQP$ is smooth and faithfully flat (it is a $\GL_{2}$-torsor), and therefore, if we use the $\dagger$ superscript in the obvious way, it suffices to study the multiplicities of $\Dom(p)^{\dagger}, \Inc(p)^{\dagger},$ and $\Lin(p)^{\dagger}$ as irreducible components of $\BP(p)^{\dagger}$.</p>
 <p class="stacks-para">The reason for passing to $S^{\dagger}$ is that $\BP(p)^{\dagger}$ is a global complete intersection of two divisors: If we define
-$$\begin{aligned}H_{1}(p) &:= \left\{\begin{array}{c}
-         $(F,G,T,T^{*}) \in S^{\dagger}$ such\\ that
-         $F(p)=0$.\\
-    \end{array} \right\} \text{ and}\\
-    H_{2}(p) &:= \left\{\begin{array}{c}
-         $(F,G,T,T^{*}) \in S^{\dagger}$ such\\ that
-         $G(p)=0$.\\
-    \end{array} \right\} \text{,}\end{aligned}$$
+$$\begin{aligned}H_{1}(p) &:= \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>$(F,G,T,T^{*}) \in S^{\dagger}$ such</td></tr><tr><td>that
+         $F(p)=0$.</td></tr></tbody></table></div>
+<p class="stacks-para">\right\} \text{ and}\\
+    H_{2}(p) &:= \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>$(F,G,T,T^{*}) \in S^{\dagger}$ such</td></tr><tr><td>that
+         $G(p)=0$.</td></tr></tbody></table></div>
+<p class="stacks-para">\right\} \text{,}\end{aligned}$$
     then $\BP(p)^{\dagger} = H_{1}(p) \cap H_{2}(p)$ as schemes.
  For transversality arguments, it behooves us to better illuminate the three tangent spaces of $S^{\dagger}, H_{1}(p),$ and $H_{2}(p)$ at a point $(F,G,T,T^{*})$.  We will only need to analyze the situation where $T \subset \P^{2}$ consists of three distinct points $\{a,b,c\}$, and where $F$ and $G$ possess only ordinary nodes at $a,b,c$.  We will use the language of deformation theory, working over the dual numbers $\k[\varepsilon]/(\varepsilon^{2})$.</p>
 <p class="stacks-para">A first order deformation of $F$ (resp. $G$) is given by $F + \varepsilon F'$ (resp. $G + \varepsilon G'$) where $F'$ (resp. $G'$) is a quintic form.  A first order deformation of $F$ (resp. $G$) which continues to have three nodes and which  \text{allows their locations  $a,b$ and $c$ to deform} is of the form $F + \varepsilon F'$ where $F'(a)=F'(b) = F'(c) = 0$. Therefore, the tangent space $T_{(F,G,T,T^{*})}S^{\dagger}$ is a linear subspace of the product vector space $H^{0}\left(\P^{2},\I_{T}(5)\right) \times H^{0}\left(\P^{2},\I_{T}(5)\right)$, one  which we identify next.</p>
@@ -167,12 +205,10 @@ $$\begin{aligned}H_{1}(p) &:= \left\{\begin{array}{c}
         f_{xy} & f_{yy} \\
     \end{bmatrix}.$$   As a consequence of $F$ having an ordinary node at $a$, we see that $\hess_{F}$ is invertible.</p>
 <p class="stacks-para">Now, suppose $F + \varepsilon F'$ is a deformation satisfying $F'(a) = 0$. Then $F'$ determines its differential $$d F'_{a} \in \left(\m_{a}/\m_{a}^{2}\right) \otimes \O(5),$$ and therefore $$\tau_{F,a}(F') := \hess_{F}^{-1}(d F'_{a})$$ is a well-defined element of the tangent space $$\left(\m_{a}/ \m_{a}^{2} \right)^{\vee} = T_{a}\P^{2}.$$ This vector is the deformation of the node at  $a$ induced by the deformation $F + \varepsilon F'$, as can easily be checked in local coordinates.  We are prepared to  express the tangent space $T_{(F,G,T,T^{*})}S^{\dagger}$:
-    $$\begin{aligned}T_{(F,G,T,T^{*})}S^{\dagger} = \left\{ \begin{array}{c}
-            Pairs of quintics $(F',G')$ vanishing \\
-            at $T$
-            satisfying $\tau_{F,t}(F') = \tau_{G,t}(G')$ for \\ all three points $t \in T$
-        \end{array}
-        \right\}.\end{aligned}$$</p>
+    $$\begin{aligned}T_{(F,G,T,T^{*})}S^{\dagger} = \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>Pairs of quintics $(F',G')$ vanishing</td></tr><tr><td>at $T$
+            satisfying $\tau_{F,t}(F') = \tau_{G,t}(G')$ for</td></tr><tr><td>all three points $t \in T$</td></tr></tbody></table></div>
+<p class="stacks-para">\right\}.\end{aligned}$$</p>
 <div class="stacks-lemma" id="LinTransverse">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.11.</strong> <a href="../tag/3B24.html" class="stacks-tag-link">(3B24)</a></div>
   <div class="stacks-env-body"><p>The divisors $H_{1}(p)$ and $H_{2}(p)$ intersect transversely at a general point of $\Lin(p)^{\dagger}.$</p></div>
@@ -231,7 +267,7 @@ $$\begin{aligned}H_{1}(p) &:= \left\{\begin{array}{c}
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

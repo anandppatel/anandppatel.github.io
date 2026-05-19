@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Proof (BC5E) — Counting 3-uple Veronese Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -33,9 +38,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
+          Z: "\\mathbb{Z}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\operatorname{Gr}",
+          Gr: "\\mathbb{G}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -50,7 +55,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -59,13 +64,47 @@
           pt: "\\operatorname{\\mathsf{pt}}",
           ver: "\\operatorname{ver}",
           Orb: "\\operatorname{Orb}",
-          red: "\\operatorname{red}"
+          red: "\\operatorname{red}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -81,16 +120,19 @@
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BC5E.html" class="stacks-tag-link">(BC5E)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">The proof uses a limit linear series style argument.  First observe that since the fixed part of $\Lambda$ is the reduced line $L$, the moving part $\Lambda'$ is a pencil of quartics and the length of $\Base(\Lambda')\cap L$ cannot exceed $4$.   We will approach the point $(T,T^{*},\Lambda)$ along a general $1$-parameter family contained in $\Dom(p)$.</p>
-<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying:
-    <ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
+<p class="stacks-para">So, let $(B,0)$ be a smooth, irreducible pointed affine curve, and let $\pi: \P^{2}_{B} \to B$ denote the natural projection.  Suppose $t_1, t_2, t_{3}$ are sections of $\pi$ satisfying:</p>
+<ol><li><strong>(a)</strong> For $b \neq 0$, the three points $t_{i}(b)$ form an honest triangle, denoted $\mathcal{T}_{b} \subset \P^{2}_{b}$.</li>
 <li><strong>(b)</strong> The $b \to 0$ flat limit of $\mathcal{T}_{b}$, denoted $\mathcal{T}_{0}$, is thin. We let $L \subset \P^{2}_{b=0}$ denote the line containing $\mathcal{T}_{0}$.  ($\mathcal{T}_{0}$ is simply $T$ from the statement of the lemma, but we use calligraphic font for consistency in the following paragraphs.)</li>
 <li><strong>(c)</strong> $\mathcal{T}_{0}$ does not contain the point $p$. (This is the second assumption in the proposition.)</li>
 <li><strong>(d)</strong> The line $L$ contains $p$.</li>
-<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol></p>
+<li><strong>(e)</strong> For $b \neq 0$, the four points $t_{1}(b), t_{2}(b), t_{3}(b),$ and $p$ are in linear general position.</li></ol>
 <p class="stacks-para">If $b \neq 0$, then the vector space $$V_{b} := H^{0}\left(\P^{2}_{b}, \I^{2}_{\mathcal{T}_{b}}\I_{p}(5)\right)$$ is $11$-dimensional because $\mathcal{T}_{b}$ and $p$ are in linear general position. Yet, when $b=0$, the vector space $V_{0}$ has dimension $12$.  Indeed, a quintic curve in $\P^{2}_{0}$ passing through $p$ and singular along $\mathcal{T}_{0}$ necessarily contains the line $L$ as an irreducible component and secondly its residual quartic curve $Q$ must contain $\mathcal{T}_{0}$.  The equations of such quartic curves form a $12$-dimensional vector space. Still, as $B$ is a smooth curve, the $b \to 0$ limit of $V_{b}$ is a well-defined $11$-dimensional vector space inside $V_{0}$ &ndash; the following claim is equivalent to the conclusion of the proposition:</p>
 <div class="stacks-env" id="claim-quinticforms">
   <div class="stacks-env-head"><strong>Claim&nbsp;4.20.</strong> <a href="../tag/45DE.html" class="stacks-tag-link">(45DE)</a></div>
-  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{\begin{array}{c} Quintic forms which are a product\\ $L \cdot Q$ where $Q$ is a quartic\\ containing the divisor $\mathcal{T}_{0} + q$ on $L$\end{array}\right\}.$$</p></div>
+  <div class="stacks-env-body"><p>There exists a point $q \in L$ such that $$\lim_{b \to 0}V_{b} = \left\{</p>
+<div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>Quintic forms which are a product</td></tr><tr><td>$L \cdot Q$ where $Q$ is a quartic</td></tr><tr><td>containing the divisor $\mathcal{T}_{0} + q$ on $L$</td></tr></tbody></table></div>
+<p>\right\}.$$</p>
+</div>
 </div>
 <p class="stacks-para">Going forward we focus on <a href="/papers/counting-veronese/tag/45DE.html" class="stacks-ref-link">Claim&nbsp;4.20 <span class="stacks-ref-tag">[45DE]</span></a>.  We blow up $\P^{2}_{B}$  along the line $L \subset \P^{2}_{b=0}$. Let $$\widetilde{\P^{2}_{B}}$$ denote the blow up $\Bl_{L} \P^{2}_{B},$ and denote by $$\beta: \widetilde{\P^{2}_{B}} \to \P^{2}_{B}$$ the blowdown map.  The structural morphism $\pi: \widetilde{\P^{2}_{B}} \to B$ has fiber over $b \neq 0$ simply equal to $\P^{2}_{b}$, while the fiber $\pi^{-1}(\{0\})$ is the transverse union of two smooth surfaces: the exceptional divisor of $\beta$, denoted $E$,  and the proper transform of $\P^{2}_{0} \subset \P^{2}_{B}$ in the blow up, denoted $P$. $P$ maps isomorphically onto $\P^{2}_{0}$ under $\beta$.</p>
 <p class="stacks-para">The current geometric circumstance has certain features we want to emphasize:
@@ -117,10 +159,10 @@
   <div class="stacks-env-body"><p>Assume that $Z \subset E$ is <strong>not</strong> contained in a line.</p></div>
 </div>
 <p class="stacks-para">Operating under this assumption, we can finish the argument. On the reducible surface $P \cup E$, the global sections of
-$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of
+$$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}$$ consist of the data of</p>
 <ul><li>A global section $Q$ of $\O_{P}(4)$, and</li>
 <li>a global section of $\O_{E}(D+5F)$ which, if nonzero, defines a reducible divisor of the form $$\beta^{-1}(\mathcal{T}_{0}) \cup C$$ where $C$ is the unique curve in the linear series $|\I_{Z}(D+2F)|$ (<a href="/papers/counting-veronese/tag/5DB5.html" class="stacks-ref-link">Lemma&nbsp;4.21 <span class="stacks-ref-tag">[5DB5]</span></a>)</li></ul>
-satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a>, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
+<p class="stacks-para">satisfying the compatibility condition that both sections agree on the curve $D = E \cap P$.  Now we observe that under our simplifying <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a>, the curve $C$ is irreducible and meets $D$ at a single point $q$.  Therefore, on $D$ we obtain a particular degree $4$ divisor, namely $\mathcal{T}_{0} + q$, which the quartic $Q$ is forced to contain in its zero scheme if $Q$ is to contribute to a global section of  $$\I_{\widetilde{\mathcal{T}}_{0}}^{2}\I_{\widetilde{p}}\otimes \mathcal{L}|_{P \cup E}.$$ Unwinding what this means before blowing up, we arrive at the conclusion of the theorem.</p>
 <p class="stacks-para">Finally, we will explain how to finish the proof of <a href="/papers/counting-veronese/tag/E014.html" class="stacks-ref-link">Proposition&nbsp;4.19 <span class="stacks-ref-tag">[E014]</span></a> in the case where <a href="/papers/counting-veronese/tag/4E6D.html" class="stacks-ref-link">Assumption&nbsp;4.22 <span class="stacks-ref-tag">[4E6D]</span></a> does not hold. Suppose $Z \subset E$ is contained in a line, and call the line $L_1 \subset E$.  We then blow up the threefold $\widetilde{\P}^{2}_{B}$ along $L_1$.  Once again, $\widetilde{\mathcal{T}}$ will lift to the new blow up, as will the section which for general $b \in B$ selects the point $p$. Blowing up more and more in a similar fashion if necessary, after finitely many blow ups the strict transform of $\mathcal{T}$ and $\{p\} \times B$ are no longer collinear over $b=0$.  Then, we proceed as we did under the simplifying assumption, except now the special fiber is a chain of surfaces $E_0 \cup E_{1} \cup \dots \cup P$, the $E_{i}$'s being $\mathbb{F}_{1}$'s, glued one to the next along directrices on one side and lines on the other.  Then the line bundle $\beta^{*}\O(5)(-E_{0}-E_{1}-\dots E_{k})$ serves the same role as $\mathcal{L}$ did in the simplified situation, and the argument runs parallel to the simple case.</p>
 </div>
 </div>
@@ -147,7 +189,7 @@ satisfying the compatibility condition that both sections agree on the curve $D 
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2411.14232">arXiv:2411.14232</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

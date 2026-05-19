@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 8 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 8: Parallel and Series Connection, Existence of Rational Functions</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S7.SS4.html" aria-label="Previous: 7.4. The proof of Theorem 7.1 [4218]" title="Previous: 7.4. The proof of Theorem 7.1 [4218]">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S8.SS1.html" aria-label="Next: 8.1. Parallel Connection and Series Connection" title="Next: 8.1. Parallel Connection and Series Connection">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 8. Parallel and Series Connection, Existence of Rational Functions</h1>
+<p class="stacks-para">In this section, we show that the generalized matrix orbit classes of the series and parallel connection of two matrices (<a href="/papers/orbits-equivariant-quantum/tag/0CD8.html" class="stacks-ref-link">Definition&nbsp;2.4 <span class="stacks-ref-tag">[0CD8]</span></a>) can be computed from the generalized matrix orbit classes of the matrices themselves (<a href="/papers/orbits-equivariant-quantum/tag/0065.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[0065]</span></a>). Combining this with the additivity result of the previous section, we will prove that the generalized matrix orbit class of a matrix takes a very particular form (<a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>). In Section&nbsp;9, we will combine <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a> with the non-equivariant results of Section&nbsp;5 to compute $\opc{M}$ for any matrix $M$.</p>
+<p class="stacks-para">The next theorem, <a href="/papers/orbits-equivariant-quantum/tag/F221.html" class="stacks-ref-link">Theorem&nbsp;3.4 <span class="stacks-ref-tag">[F221]</span></a> from the introduction, relates the classes
+$$\begin{aligned}\opc[r][n_1]{M_1} &\in A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1}) = A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1-1}) \otimes A^\bullet_{GL_{r+1}} (\mb{P}^r) \\
+\opc[r][n_2]{M_2} &\in A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2}) = A^\bullet_{GL_{r+1}} (\mb{P}^r) \otimes A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2-1}) \\
+\opc[r][n_1 + n_2 - 1]{P(M_1, M_2)} &\in A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1 + n_2 - 1}) = A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1-1}) \otimes A^\bullet_{GL_{r+1}} (\mb{P}^r) \otimes A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2-1}) \\
+\opc[r][n_1 + n_2 - 1]{S(M_1, M_2)} &\in A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1 + n_2 - 1}) = A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1-1}) \otimes A^\bullet_{GL_{r+1}} (\mb{P}^r) \otimes A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2-1})\end{aligned}$$</p>
+<p class="stacks-para">using the quantum product $\star$ from Section&nbsp;2.3.</p>
+<div class="stacks-theorem" id="serpar">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;8.1.</strong> <a href="../tag/0065.html" class="stacks-tag-link">(0065)</a></div>
+  <div class="stacks-env-body"><p>For $i \in \{1,2\}$ let $M_i$ be a $d_i \times n_i$ matrix. We have the equality of equivariant Chow classes $$\opc[r][n_1]{M_1} \star \opc[r][n_2]{M_2}=\opc[r][n_1+n_2-1]{P(M_1,M_2)}+\hbar\opc[r][n_1+n_2-1]{S(M_1,M_2)}$$ where the quantum product $\star$ is taken along the last factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1}) = A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1-1}) \otimes A^\bullet_{GL_{r+1}} (\mb{P}^r)$ and the first factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2}) = A^\bullet_{GL_{r+1}} (\mb{P}^r) \otimes A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2-1})$.</p></div>
+</div>
+<div class="stacks-theorem" id="formulaexists">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;8.2.</strong> <a href="../tag/367A.html" class="stacks-tag-link">(367A)</a></div>
+  <div class="stacks-env-body"><p>For every matrix $M$, there is a rational function $Q_{M}(x_1,\ldots,x_n,y_1,\ldots,y_n)$ independent of $r$ such that $Q_{M}(z_1,\ldots,z_n,F(z_1),\ldots,F(z_n))$ is a polynomial of degree at most $r$ in the indeterminates $z_i$ that yields $\opc{M}$ after substituting $z_i = H_i$.</p></div>
+</div>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S8.SS1.html">8.1. Parallel Connection and Series Connection</a></li>
+  <li><a href="S8.SS2.html">8.2. Proof of Theorem 8.2 [367A]</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 8: Parallel and Series Connection, Existence of Rational Functions">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S8.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

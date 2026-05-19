@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Section 1 — Interpolation Problems: Del Pezzo Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "{\\mathbb F}",
+          F: "\\mathbb{F}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -65,14 +70,14 @@
           cZ: "{\\mathcal Z}",
           cp: "{\\mathcal p}",
           comment: ["", 1],
-          N: "{\\bf N}",
+          N: "\\mathbb{N}",
           DS: "{\\mathcal{DS}}",
           DP: "{\\mathcal{DP}}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
           E: "{\\bf E}",
-          C: "{\\bf C}",
+          C: "\\mathbb{C}",
           from: "{\\colon}",
           into: "\\,{\\hookrightarrow}\\,",
           onto: "\\twoheadrightarrow",
@@ -83,7 +88,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           compl: ["\\widehat{#1}", 1],
@@ -109,14 +114,14 @@
           se: "\\section",
           ssec: "\\subsection",
           sssec: "\\subsubsection",
-          bn: "{\\mathbb N}",
-          bc: "{\\mathbb C}",
-          br: "{\\mathbb R}",
-          bq: "{\\mathbb Q}",
-          bp: "{\\mathbb P}",
+          bn: "{\\mathbb{N}}",
+          bc: "{\\mathbb{C}}",
+          br: "{\\mathbb{R}}",
+          bq: "{\\mathbb{Q}}",
+          bp: "{\\mathbb{P}}",
           CF: "{\\mathcal F}",
-          bz: "{\\mathbb Z}",
-          ba: "{\\mathbb A}",
+          bz: "{\\mathbb{Z}}",
+          ba: "{\\mathbb{A}}",
           so: "{\\mathscr O}",
           sg: "{\\mathscr G}",
           sca: "\\mathscr A",
@@ -174,13 +179,40 @@
           vol: "\\operatorname{Vol}",
           supp: "\\operatorname{Supp}",
           Hilb: "\\operatorname{Hilb}",
-          codim: "\\operatorname{codim}"
+          codim: "\\operatorname{codim}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -190,17 +222,17 @@
     <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS1.html" aria-label="Next: 1.1. Relevance of Interpolation" title="Next: 1.1. Relevance of Interpolation">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 1. Introduction</h1>
 <p class="stacks-para">The question of interpolation is one of the most classical
 questions in algebraic geometry. Indeed, it dates all the
 way back to the ancients, starting with Euclid's postulate
 that through any two points there passes a unique line.   The problem of interpolating a polynomial function $y = f(x)$ of degree $\leq n-1$ passing through $n$ general points in the plane was explicitly solved by Lagrange in the late 1700's. These examples should be considered the first two instances of an interpolation problem in the sense of this paper.</p>
-<p class="stacks-para">In simple terms, an interpolation problem involves two pieces of data:
+<p class="stacks-para">In simple terms, an interpolation problem involves two pieces of data:</p>
 <ol><li>A class $\sch$ of varieties in projective space (e.g. ``rational normal curves'') often specified by a component of a Hilbert scheme</li>
 <li>A collection of (usually linear) incidence conditions (e.g. ``passing through five fixed points and incident to a fixed $2$-plane'').</li></ol>
-The problem is then to determine whether there exists a variety $[X] \in \sch$ meeting a general choice of conditions of the specified type.</p>
+<p class="stacks-para">The problem is then to determine whether there exists a variety $[X] \in \sch$ meeting a general choice of conditions of the specified type.</p>
 <p class="stacks-para">More precisely,
 suppose $U$ is an integral subscheme of the Hilbert scheme
 parameterizing varieties of dimension $k$ in $\bp^n$.
@@ -235,9 +267,8 @@ are the only places where a higher dimensional interpolation problem is addresse
 interpolation.
 In this paper, we continue the study of interpolation problems for higher dimensional
 varieties:
-\begin{restatable}{theorem}{main}
-	\label{theorem:main}
-All del Pezzo surfaces satisfy weak interpolation.
+\begin{restatable}{theorem}{main}</p>
+<p>All del Pezzo surfaces satisfy weak interpolation.
 \end{restatable}</p>
 <p class="stacks-para">In many ways, the del Pezzo surfaces are a natural next
 class of varieties to look at. First, as mentioned earlier, varieties of
@@ -289,7 +320,7 @@ known to satisfy interpolation.</p>
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

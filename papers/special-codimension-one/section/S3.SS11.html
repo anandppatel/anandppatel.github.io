@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>3.11. Constructing families of tetragonal curves. — Special Codimension One Loci in Hurwitz Spaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "{\\bf F}",
+          F: "\\mathbb{F}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -64,16 +69,16 @@
           cY: "{\\mathcal Y}",
           cZ: "{\\mathcal Z}",
           cp: "{\\mathcal p}",
-          bG: "{\\bf G}",
+          bG: "\\mathbb{G}",
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
           E: "{\\bf E}",
-          C: "{\\bf C}",
-          A: "{\\bf A}",
-          P: "{\\bf P}",
+          C: "\\mathbb{C}",
+          A: "\\mathbb{A}",
+          P: "\\mathbb{P}",
           from: "{\\colon}",
           into: "\\,{\\hookrightarrow}\\,",
           onto: "\\twoheadrightarrow",
@@ -84,7 +89,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           compl: ["\\widehat{#1}", 1],
@@ -108,13 +113,45 @@
           PGL: "{\\rm PGL}",
           length: "{\\rm length}",
           res: "{\\rm res}",
-          Ram: "\\operatorname{Ram}"
+          Ram: "\\operatorname{Ram}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -124,15 +161,14 @@
     <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <span>3.11. Constructing families of tetragonal curves.</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <span>3.11. Constructing families of tetragonal curves.</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS10.html" aria-label="Previous: 3.10. Rigidity and Extremality of $\sfM$ for trigonal curves." title="Previous: 3.10. Rigidity and Extremality of $\sfM$ for trigonal curves.">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS12.html" aria-label="Next: 3.12. Constructing families of pentagonal curves." title="Next: 3.12. Constructing families of pentagonal curves.">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.11. Constructing families of tetragonal curves.</h1>
-<p class="stacks-para">\label{TetragonalFamilies}</p>
 <p class="stacks-para">For any branched cover $[\alpha \from C \to \P^{1}] \in \td{\H}_{4,g}$, the Casnati-Ekedahl resolution is determined by the map
 $$\pi^{*}\cF(-2) \to \cO_{\P \cE}$$
 which in turn is determined, up to scalar multiple, by a global section $\eta \in H^{0}(\P^{1}, \dual{\cF}\otimes \Sym^{2}\cE)$.  For a general tetragonal curve $C$, the bundles $\cF$ and $\cE$ are balanced, and we assume they are throughout this section.</p>
 <p class="stacks-para">The locus $Z \subset \P(H^{0}(\P^{1}, \dual{\cF}\otimes \Sym^{2}\cE))$ parametrizing worse-than-nodal schemes in $\P \cE$ is has codimension two, as seen by a straightforward parameter count and Bertini's theorem.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Constructing families of tetragonal curves I.</h3></p>
+<h3 class="stacks-subsections-heading">Constructing families of tetragonal curves I.</h3>
 <p class="stacks-para">Take a general linear pencil $\P^{1}_{t} \subset \P(H^{0}(\P^{1}, \dual{\cF}\otimes \Sym^{2}\cE))$, and consider the resulting family $f \from \cC \to \P^{1}_{t}.$ We have the exact analogue of <a href="/papers/special-codimension-one/tag/E6F1.html" class="stacks-ref-link">Proposition&nbsp;3.14 <span class="stacks-ref-tag">[E6F1]</span></a>:</p>
 <div class="stacks-lemma" id="prop-flexiblefour">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.16.</strong> <a href="../tag/12E7.html" class="stacks-tag-link">(12E7)</a></div>
@@ -155,13 +191,14 @@ which in turn is determined, up to scalar multiple, by a global section $\eta \i
 <p>The irreducibility of the Casnati-Ekedahl divisor $\sfCE$ in all other cases is proved in [DP15][Proposition&nbsp;4.7] and the reducible example is discussed in [DP15][Example&nbsp;4.8]. </p>
 <p>With this caution, the rest of the argument for $\sfCE$ goes through as in the above argument for $\sfM$.</p></div>
 </div>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Constructing families of tetragonal curves II.</h3> The Casnati-Ekedahl resolution 3.14 reflects a classical fact about tetragonal curves: A genus $g_R$ cover $[\alpha \colon C \longrightarrow <strong>P</strong>^1]$  rests in its relative canonical embedding $\pi \colon <strong>P</strong>\mathcal{\cE} \longrightarrow <strong>P</strong>^1$ as a complete intersection of two relative conic divisors $Q_u$ and $Q_v$ in the linear systems $|2\zeta -uf|$ and $|2\zeta - vf|$, respectively. Here $\zeta$ and $f$ denote the hyperplane and fiber classes of $\P \cE$.</p>
+<h3 class="stacks-subsections-heading">Constructing families of tetragonal curves II.</h3>
+<p class="stacks-para">The Casnati-Ekedahl resolution 3.14 reflects a classical fact about tetragonal curves: A genus $g_R$ cover $[\alpha \colon C \longrightarrow \mathbb{P}^1]$  rests in its relative canonical embedding $\pi \colon \mathbb{P}\mathcal{\cE} \longrightarrow \mathbb{P}^1$ as a complete intersection of two relative conic divisors $Q_u$ and $Q_v$ in the linear systems $|2\zeta -uf|$ and $|2\zeta - vf|$, respectively. Here $\zeta$ and $f$ denote the hyperplane and fiber classes of $\P \cE$.</p>
 <p class="stacks-para">The integers $u$ and $v$ are such that $\cF_{\alpha} = \cO(u)\oplus \cO(v)$. Moreover by <a href="/papers/special-codimension-one/tag/2558.html" class="stacks-ref-link">Proposition&nbsp;1.14 <span class="stacks-ref-tag">[2558]</span></a>, $u+v = g_{R}+3.$ We assume that $u\leq v$, so that generically in $\H_{4,g_{R}}$,  $v = \lceil{\frac{g_R+3}{2}\rceil}$.  For a general cover $\alpha$, the line bundle $\cO_{\P\cE}(2\zeta - vf)$ is  globally generated on $\bf{P}\cE$, and $\cO_{\P\cE}(2\zeta - uf)$ is  very ample.  We assume from here on that the bundles $\cE$ and $\cF$ are balanced.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading"></h3>
-Fix a smooth surface $\F \in |2\zeta - vf|$, and consider a general pencil $<strong>P</strong>^1_t \subset |2\zeta-uf|$ on $\F$.  Let $p \colon Y \longrightarrow <strong>P</strong>^1_t$ denote the total space of the pencil. So $p$ is a family of tetragonal curves, and $Y$ is the blow up of $\F$ at the base locus of the pencil. We  compute the invariants $\delta \cdot p$ and $\lambda \cdot p$ using standard methods.</p>
+<h3 class="stacks-subsections-heading"></h3>
+<p class="stacks-para">Fix a smooth surface $\F \in |2\zeta - vf|$, and consider a general pencil $\mathbb{P}^1_t \subset |2\zeta-uf|$ on $\F$.  Let $p \colon Y \longrightarrow \mathbb{P}^1_t$ denote the total space of the pencil. So $p$ is a family of tetragonal curves, and $Y$ is the blow up of $\F$ at the base locus of the pencil. We  compute the invariants $\delta \cdot p$ and $\lambda \cdot p$ using standard methods.</p>
 <div class="stacks-lemma" id="basictetragonal">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.18.</strong> <a href="../tag/2CF9.html" class="stacks-tag-link">(2CF9)</a></div>
-  <div class="stacks-env-body"><p>For a general pencil $p \colon Y \longrightarrow <strong>P</strong>^1_t$ of the type described above,
+  <div class="stacks-env-body"><p>For a general pencil $p \colon Y \longrightarrow \mathbb{P}^1_t$ of the type described above,
 $$\begin{aligned}\lambda \cdot p &=& g_R,\\
  \delta \cdot p &=& v + 6g_R + 6.\\\end{aligned}$$
  Furthermore, every singular fiber of $p$ is simply nodal.</p></div>
@@ -169,8 +206,8 @@ $$\begin{aligned}\lambda \cdot p &=& g_R,\\
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D9F0.html" class="stacks-tag-link">(D9F0)</a></div>
   <div class="stacks-env-body"><p>The last statement is a straightforward application of Bertini's theorem. </p>
-<p>Since $\chi(\cO_{\sfY}) = 1$ ($Y$ is rational), it follows that $$\lambda \cdot p = \chi(\cO_{\sfY}) - \chi(\cO_{<strong>P</strong>^1_t})\chi(\cO_{C_{\gen}}) = g_R,$$ where $C_{\gen}$ denotes the curve in the pencil. </p>
-<p>We now compute $\delta \cdot p$.  We recall the following fact, easily seen using jet bundles: <em>If $L$ is an ample line bundle on a surface $S$, then a general pencil in $|L|$ has $c_{2</em>(L + L \otimes \Omega_{S})$ singular elements.}</p>
+<p>Since $\chi(\cO_{\sfY}) = 1$ ($Y$ is rational), it follows that $$\lambda \cdot p = \chi(\cO_{\sfY}) - \chi(\cO_{\mathbb{P}^1_t})\chi(\cO_{C_{\gen}}) = g_R,$$ where $C_{\gen}$ denotes the curve in the pencil. </p>
+<p>We now compute $\delta \cdot p$.  We recall the following fact, easily seen using jet bundles: <em>If $L$ is an ample line bundle on a surface $S$, then a general pencil in $|L|$ has $c_{2}(L + L \otimes \Omega_{S})$ singular elements.</em></p>
 <p> Letting $L := \cO_\F (2\zeta-uf)$, get:
 $$\begin{aligned}\delta \cdot p &=& c_2(L + L \otimes \Omega_\F) = c_1(L) \cdot c_1(L \otimes \Omega_\F)+ c_2(L \otimes \Omega_\F)\\
 &=&c_1(L) [K_\F + 2c_1(L)] + c_2(\Omega_\F) + c_1(L) K_\F + c_1^2(L)\\
@@ -181,14 +218,14 @@ $$\begin{aligned}c_1^2(L) &=& (2\zeta - uf)^2(2\zeta-vf) = [4\zeta^2 - 4u\zeta f
  &=& 8\zeta^3 - 8u - 4v = 8(u+v)-8u-4v = 4v,\\\end{aligned}$$
  which means
  $$\begin{aligned}\delta \cdot p  &=& 2(2g_R-2) +4v + c_2(\Omega_{\F}).\end{aligned}$$
-So it suffices to compute $c_2(\Omega_{\F})$. In order to compute this, we use the exact sequence of sheaves on $ <strong>P</strong>\cE$: $$0 \to \cO_{\F}(-2\zeta +vf) \to \Omega_{<strong>P</strong>\cE}|_{\F} \to \Omega_{\F} \to 0$$ Put $M :=  \cO_{\F}(-2\zeta +vf)$. Then the Whitney sum formula says:
-$$\begin{aligned}&&c(\Omega_{\F}) \cdot (1 + c_1(M)t) = c(\Omega_{<strong>P</strong>\cE}|_{\F})\\\end{aligned}$$ and so we get:
-$$\begin{aligned}c_2(\Omega_{\F}) = c_1^2(M) - K_{<strong>P</strong>\cE}|_{\F} \cdot c_1(M) + c_2(\Omega_{<strong>P</strong>\cE})|_{\F}.\end{aligned}$$</p>
-<p>The canonical class of $<strong>P</strong>\cE$, $K_{<strong>P</strong>\cE}$, is $-3\zeta + (u+v - 2)f$, so the first part of the right hand expression becomes
+So it suffices to compute $c_2(\Omega_{\F})$. In order to compute this, we use the exact sequence of sheaves on $ \mathbb{P}\cE$: $$0 \to \cO_{\F}(-2\zeta +vf) \to \Omega_{\mathbb{P}\cE}|_{\F} \to \Omega_{\F} \to 0$$ Put $M :=  \cO_{\F}(-2\zeta +vf)$. Then the Whitney sum formula says:
+$$\begin{aligned}&&c(\Omega_{\F}) \cdot (1 + c_1(M)t) = c(\Omega_{\mathbb{P}\cE}|_{\F})\\\end{aligned}$$ and so we get:
+$$\begin{aligned}c_2(\Omega_{\F}) = c_1^2(M) - K_{\mathbb{P}\cE}|_{\F} \cdot c_1(M) + c_2(\Omega_{\mathbb{P}\cE})|_{\F}.\end{aligned}$$</p>
+<p>The canonical class of $\mathbb{P}\cE$, $K_{\mathbb{P}\cE}$, is $-3\zeta + (u+v - 2)f$, so the first part of the right hand expression becomes
 $$\begin{aligned}-4\zeta^3 + 4u +4v - 8 = -8 .\end{aligned}$$
-In order to compute  $c_2(\Omega_{<strong>P</strong>\cE})|_{\F}$ , we consider the Euler sequence $$0 \to \Omega_{\pi} \to \pi^{*}\cE(-1) \to \cO \to 0$$ and the relative cotangent sequence $$0 \to \cO(-2f) \to \Omega_{<strong>P</strong>\cE} \to  \Omega_{\pi} \to 0.$$
+In order to compute  $c_2(\Omega_{\mathbb{P}\cE})|_{\F}$ , we consider the Euler sequence $$0 \to \Omega_{\pi} \to \pi^{*}\cE(-1) \to \cO \to 0$$ and the relative cotangent sequence $$0 \to \cO(-2f) \to \Omega_{\mathbb{P}\cE} \to  \Omega_{\pi} \to 0.$$
 We find that:
-$$\begin{aligned}c_2(\Omega_{<strong>P</strong>\cE})|_{\F} = 3v + 6u - 4g_R.\end{aligned}$$
+$$\begin{aligned}c_2(\Omega_{\mathbb{P}\cE})|_{\F} = 3v + 6u - 4g_R.\end{aligned}$$
 and  $$c_2(\Omega_{\F}) = 3v + 6u - 4g_R - 8.$$ </p>
 <p>The proposition now follows by putting these calculations together.</p></div>
 </div>
@@ -215,7 +252,7 @@ and  $$c_2(\Omega_{\F}) = 3v + 6u - 4g_R - 8.$$ </p>
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

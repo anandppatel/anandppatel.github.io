@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>1.2. Interpolation: a lay of the land — Interpolation Problems: Del Pezzo Surfaces</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "{\\mathbb F}",
+          F: "\\mathbb{F}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -65,14 +70,14 @@
           cZ: "{\\mathcal Z}",
           cp: "{\\mathcal p}",
           comment: ["", 1],
-          N: "{\\bf N}",
+          N: "\\mathbb{N}",
           DS: "{\\mathcal{DS}}",
           DP: "{\\mathcal{DP}}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
           E: "{\\bf E}",
-          C: "{\\bf C}",
+          C: "\\mathbb{C}",
           from: "{\\colon}",
           into: "\\,{\\hookrightarrow}\\,",
           onto: "\\twoheadrightarrow",
@@ -83,7 +88,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           compl: ["\\widehat{#1}", 1],
@@ -109,14 +114,14 @@
           se: "\\section",
           ssec: "\\subsection",
           sssec: "\\subsubsection",
-          bn: "{\\mathbb N}",
-          bc: "{\\mathbb C}",
-          br: "{\\mathbb R}",
-          bq: "{\\mathbb Q}",
-          bp: "{\\mathbb P}",
+          bn: "{\\mathbb{N}}",
+          bc: "{\\mathbb{C}}",
+          br: "{\\mathbb{R}}",
+          bq: "{\\mathbb{Q}}",
+          bp: "{\\mathbb{P}}",
           CF: "{\\mathcal F}",
-          bz: "{\\mathbb Z}",
-          ba: "{\\mathbb A}",
+          bz: "{\\mathbb{Z}}",
+          ba: "{\\mathbb{A}}",
           so: "{\\mathscr O}",
           sg: "{\\mathscr G}",
           sca: "\\mathscr A",
@@ -174,13 +179,40 @@
           vol: "\\operatorname{Vol}",
           supp: "\\operatorname{Supp}",
           Hilb: "\\operatorname{Hilb}",
-          codim: "\\operatorname{codim}"
+          codim: "\\operatorname{codim}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -190,11 +222,10 @@
     <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Interpolation: a lay of the land</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Interpolation: a lay of the land</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS1.html" aria-label="Previous: 1.1. Relevance of Interpolation" title="Previous: 1.1. Relevance of Interpolation">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS3.html" aria-label="Next: 1.3. Approaches to interpolation" title="Next: 1.3. Approaches to interpolation">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.2. Interpolation: a lay of the land</h1>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Rational normal curves</h3>
-\label{sssec:castelnuovos-lemma}</p>
+<h3 class="stacks-subsections-heading">Rational normal curves</h3>
 <p class="stacks-para">Interpolation holds for rational normal curves.
 This is precisely the well known fact that through $r+3$ general points in $\bp^{r}$ there exists a unique rational normal curve $\bp^{1} \subset \bp^{r}$.  A dimension count provides evidence for existence: the (main component of the) Hilbert scheme of rational normal curves is $r^{2}+2r-3 = (r+3)(r-1)$ dimensional, and the requirement of passing through a point imposes $r-1$ conditions on rational normal curves. Therefore we <em>expect</em> finitely many rational normal curves through $r+3$ general points.
 ``Counting constants'' as above  only provides a plausibility argument for existence of rational curves interpolating through the required points &ndash; it is not a proof. To illustrate this, we give an example where interpolation is not satisfied, even though the dimension count says otherwise.</p>
@@ -209,8 +240,9 @@ This is precisely the well known fact that through $r+3$ general points in $\bp^
 	which lies on the quadric, cannot contain $12$ general points.
 	In other words, canonical genus $4$ curves do not satisfy interpolation.</p></div>
 </div>
-<p class="stacks-para">There are many proofs that there is a unique rational normal curve through $r + 3$ points in $\bp^r$.  One proof proceeds by directly constructing a rational normal curve using explicit equations.  Another approach is via a degeneration argument, as in <a href="/papers/interpolation-del-pezzo/tag/CC8B.html" class="stacks-ref-link">Example&nbsp;1.6 <span class="stacks-ref-tag">[CC8B]</span></a>. One can also use <em>association</em> (see [EP00]) to deduce the lemma.  A purely synthetic proof also exists, as is found in [PP15, Proposition 2.4.4].
-<h3 class="stacks-subsections-heading">Higher genus curves</h3> One way to generalize interpolation
+<p class="stacks-para">There are many proofs that there is a unique rational normal curve through $r + 3$ points in $\bp^r$.  One proof proceeds by directly constructing a rational normal curve using explicit equations.  Another approach is via a degeneration argument, as in <a href="/papers/interpolation-del-pezzo/tag/CC8B.html" class="stacks-ref-link">Example&nbsp;1.6 <span class="stacks-ref-tag">[CC8B]</span></a>. One can also use <em>association</em> (see [EP00]) to deduce the lemma.  A purely synthetic proof also exists, as is found in [PP15, Proposition 2.4.4].</p>
+<h3 class="stacks-subsections-heading">Higher genus curves</h3>
+<p class="stacks-para">One way to generalize interpolation
 for rational normal curves is to consider higher genus curves in projective space. For many reasons it is simpler to consider curves embedded via nonspecial linear systems.
 Interpolation for arbitrary rational curves, not just rational normal curves, was proven in [Sac80],
 and later independently proven in [Ran07].
@@ -219,8 +251,8 @@ The related question of semistability for curves of genus 1 was explored in
 [EL92],
 which was later used in
 [Bal17, Theorem 1] to prove that elliptic normal curves satisfy interpolation.</p>
-<p class="stacks-para">Around the same time, it was shown in [Ata14, Theorem 7.1] that nonspecial curves, apart from those of genus $2$ and degree $5$, in $\mathbb P^3$ satisfy interpolation.
-This was generalized from $\mathbb P^3$ to projective spaces of arbitrary dimension in the following comprehensive recent result of Atanasov&ndash;Larson&ndash;Yang:</p>
+<p class="stacks-para">Around the same time, it was shown in [Ata14, Theorem 7.1] that nonspecial curves, apart from those of genus $2$ and degree $5$, in $\mathbb{P}^3$ satisfy interpolation.
+This was generalized from $\mathbb{P}^3$ to projective spaces of arbitrary dimension in the following comprehensive recent result of Atanasov&ndash;Larson&ndash;Yang:</p>
 <div class="stacks-theorem" id="thm-NaskoEricDavid">
   <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/9DC8.html" class="stacks-tag-link">(9DC8)</a></div>
   <div class="stacks-env-body"><p>Strong interpolation holds for the main component of the Hilbert scheme parameterizing nonspecial curves of degree $d$, genus $g$ in projective space $\bp^{r}$, with $d \geq g + r$ unless
@@ -260,7 +292,7 @@ such Castelnuovo curve.</p></div>
 ``form the boundary'' between Castelnuovo curves satisfying
 interpolation and
 Castelnuovo curves not satisfying interpolation.</p>
-<p class="stacks-para"><h3 class="stacks-subsections-heading">Higher dimensional varieties: Varieties of minimal degree</h3></p>
+<h3 class="stacks-subsections-heading">Higher dimensional varieties: Varieties of minimal degree</h3>
 <p class="stacks-para">Recent work of the first author [Lan18], establishes interpolation for all varieties of minimal degree. Recall
 that a variety of dimension $k$ and degree $d$ in $\bp^n$
 is of minimal degree
@@ -314,7 +346,7 @@ or a rational normal scroll.</p>
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1601.05840">arXiv:1601.05840</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 4 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mathbb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 4: Known orbit classes of special quartic curves</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S3.SS3.html" aria-label="Previous: 3.3. Specialize to $r=2$" title="Previous: 3.3. Specialize to $r=2$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S5.html" aria-label="Next: Section 5: Degeneration I: Splitting off a line" title="Next: Section 5: Degeneration I: Splitting off a line">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 4. Known orbit classes of special quartic curves</h1>
+<p class="stacks-para">Our intention in the section is to get a few critical orbit classes
+$\p_{C}$ of curves in our hands without using degeneration. We use
+Kazarian's formulas for counting curves with $A_6, D_6$ and $E_6$
+singularities. It is known that in the space of quartic curves, the
+set of curves with such singularities form three respective full
+(i.e. $8$-) dimensional orbits (<a href="/papers/equivariant-degenerations/tag/9E2D.html" class="stacks-ref-link">Proposition&nbsp;4.2 <span class="stacks-ref-tag">[9E2D]</span></a>). Kazarian's formulas
+then directly yield the equivariant orbit classes of these three
+orbits (<a href="/papers/equivariant-degenerations/tag/98EB.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[98EB]</span></a>). We also record the computation of $\p_{Q}$
+where $Q \subset \P \on{Sym}^{4}V^{\vee}$ is a complete quadrilateral,
+i.e. the union of four general lines.</p>
+<p class="stacks-para">We begin with the following calculation of Kazarian [Kaz03a, Theorem
+1]:</p>
+<div class="stacks-lemma" id="Kaztheman">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.1.</strong> <a href="../tag/94F1.html" class="stacks-tag-link">(94F1)</a></div>
+  <div class="stacks-env-body"><p>Let $\mc{S}\to B$ be a smooth morphism of varieties whose fibers are
+  smooth surfaces. Let $L$ be a line bundle on $\mc{S}$ and $\sigma$
+  be a section of $L$ cutting out a family of curves
+  $\mc{C}\subset \mc{S}$. The virtual classes $[Z_{A_6}]$
+  (respectively $[Z_{D_6}]$ and $[Z_{E_6}]$) supported on points
+  $p\in \mc{S}$ where the fiber of $\mc{C}\to B$ has an $A_6$
+  (respectively $D_6$ and $E_6$) singularity at $p$ are given by:
+$$\begin{aligned}[Z_{A_6}]=&\ u (-c_1 + u) (c_2 - c_1 u + u^2) (720 c_1^4
+  - 1248 c_1^2 c_2 + 156 c_2^2 - 1500 c_1^3 u\\& + 1514 c_1 c_2 u+
+  1236 c_1^2 u^2 - 485 c_2 u^2 -
+  487 c_1 u^3 + 79 u^4)\\
+  [Z_{D_6}] =&\ 2 u (-c_1 + u) (4 c_2 - 2 c_1 u + u^2) (c_2 - c_1 u + u^2) (12 c_1^2 -
+   6 c_2 - 13 c_1 u + 4 u^2)\\
+  [Z_{E_6}] =&\ 3 u (-c_1 + u) (2 c_1^2 + c_2 - 3 c_1 u + u^2)(4 c_2 - 2
+              c_1 u + u^2) (c_2 - c_1 u + u^2)\end{aligned}$$
+ where $c_i:=c_i(T_{\mc{S}/B})$ and $u=c_1(L)$.</p></div>
+</div>
+<div class="stacks-lemma" id="oneorbit">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.2.</strong> <a href="../tag/9E2D.html" class="stacks-tag-link">(9E2D)</a></div>
+  <div class="stacks-env-body"><p>The set of irreducible quartic plane curves with an $A_6$
+(respectively $D_6$ and $E_6$) singularity having full dimensional
+orbit consists of a single $PGL(V)$ orbit.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6A6B.html" class="stacks-tag-link">(6A6B)</a></div>
+  <div class="stacks-env-body"><p>The case of $D_6$ singularities is clear, since one of the branches
+  of the singularity must be a line, and therefore $D_6$ is the union
+  of a nodal cubic along with one of the branch lines at the node.
+  Hence such a curve must be the union of a nodal cubic with a tangent
+  branch line, constituting a single orbit.</p>
+<p>  The fact that irreducible plane quartics with an $A_6$ or $E_6$
+  singularity form an irreducible subvariety of codimension $6$ in the
+  projective space $\mb{P} \on{Sym}^{4}V^{\vee}$ of all quartics
+  follows from explicit classification, for example [NS11, Section
+  3.4]. </p>
+<p>  That an orbit of a general curve with such a singularity is
+  $8$-dimensional can be checked by the formulas for their pre-degrees
+  as found in [AF00b, Examples 5.2 and 5.4], which gives a nonzero
+  result. This proves the proposition.</p></div>
+</div>
+<div class="stacks-definition" id="def-specialcurves">
+  <div class="stacks-env-head"><strong>Definition&nbsp;4.3.</strong> <a href="../tag/1D54.html" class="stacks-tag-link">(1D54)</a></div>
+  <div class="stacks-env-body"><p>Let $C_{A_6}$ and $C_{E_6}$ denote the rational quartic curves with
+  an $A_6$ and $E_6$ singularity, respectively, which have full
+  dimensional orbits. By <a href="/papers/equivariant-degenerations/tag/9E2D.html" class="stacks-ref-link">Proposition&nbsp;4.2 <span class="stacks-ref-tag">[9E2D]</span></a>, this definition is
+  well-defined up to projective equivalence.</p></div>
+</div>
+<p class="stacks-para">There are explicit equations for $C_{A_6}$ and $C_{E_6}$ (see for
+example [NS11, Section 3.4]):
+$$\begin{aligned}C_{A_6}: (X^2+YZ)^2+2YZ^3=0\\
+  C_{D_6}: Z(ZXY+X^3+Z^3)=0\\
+  C_{E_6}: Y^3Z+X^4+X^2Y^2=0.\end{aligned}$$</p>
+<div class="stacks-lemma" id="A6E6orbit">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;4.4.</strong> <a href="../tag/98EB.html" class="stacks-tag-link">(98EB)</a></div>
+  <div class="stacks-env-body"><p>We have
+$$\begin{aligned}\p_{C_{A_6}}&= 3\cdot112 (9 c_1^3 + 12 c_1 c_2 - 11 c_3) (2 c_1^3 + c_1 c_2 + c_3)\\
+  \p_{C_{D_6}}&=3\cdot 64 (18 c_1^6 + 33 c_1^4 c_2 + 12 c_1^2 c_2^2 - 85 c_1^3 c_3 - 11 c_1 c_2 c_3 -
+                7 c_3^2)\\
+  \p_{C_{E_6}}&= 2\cdot 48 (2 c_1^3 + c_1 c_2 + c_3) (9 c_1^3 - 6 c_1 c_2 + 7 c_3),\end{aligned}$$
+where $\#\on{Aut}(C_{A_6})=\# \on{Aut}(C_{D_6})=3$ and
+$\#\on{Aut}(C_{E_6})=2$.</p></div>
+</div>
+<p class="stacks-para">We will also verify the result for $\p_{C_{D_6}}$ independently in
+Section&nbsp;7.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/31B7.html" class="stacks-tag-link">(31B7)</a></div>
+  <div class="stacks-env-body"><p>We apply <a href="/papers/equivariant-degenerations/tag/94F1.html" class="stacks-ref-link">Proposition&nbsp;4.1 <span class="stacks-ref-tag">[94F1]</span></a> to the case where $B$ is an arbitrary base
+  variety and $\mc{V} \to B$ is an arbitrary rank $3$ sub-bundle. Let
+  $T$ be the relative tangent bundle of $\mb{P}(\mc{V})\to B$. By the
+  splitting principle and the relative Euler exact sequence for
+  projective bundles, we get:
+$$\begin{aligned}c_1(T)&= c_1(\mc{V}) + 3c_1(\ms{O}_{\mb{P}(\mc{V})}(1)) \\
+  c_2(T) &= c_2(\mc{V}) + 2 c_1(\mc{V}) c_1(\ms{O}_{\mb{P}(\mc{V})}(1)) + 3 c_1(\ms{O}_{\mb{P}(\mc{V})}(1))^2.\end{aligned}$$
+Now, we substitute $u=4c_1(\ms{O}_{\mb{P}(\mc{V})}(1))$ in the
+formulas for $[Z_{A_6}]$, $[Z_{D_6}]$ and $[Z_{E_6}]$ <a href="/papers/equivariant-degenerations/tag/94F1.html" class="stacks-ref-link">Proposition&nbsp;4.1 <span class="stacks-ref-tag">[94F1]</span></a>
+and apply push-forward along the projection
+$\mb{P}(\mc{V})\xrightarrow{\pi} B$. This yields
+$$\begin{aligned}\pi_{*}[Z_{A_6}]=&\ 112 (9 c_1(\mc{V})^3 + 12 c_1(\mc{V}) c_2(\mc{V}) - 11 c_3(\mc{V})) (2 c_1(\mc{V})^3 + c_1(\mc{V}) c_2(\mc{V}) + c_3(\mc{V}))\\
+  \pi_{*}[Z_{D_6}]=&\ 64 (18 c_1(\mc{V})^6 + 33 c_1(\mc{V})^4 c_2(\mc{V}) + 12 c_1(\mc{V})^2 c_2(\mc{V})^2 - 85 c_1(\mc{V})^3 c_3(\mc{V}) \\
+  & - 11 c_1(\mc{V}) c_2(\mc{V}) c_3(\mc{V}) - 7 c_3(\mc{V})^2)\\
+  \pi_{*}[Z_{E_6}]=&\ 48 (2 c_1(\mc{V})^3 + c_1(\mc{V}) c_2(\mc{V}) + c_3(\mc{V})) (9 c_1(\mc{V})^3 - 6 c_1(\mc{V}) c_2(\mc{V}) + 7 c_3(\mc{V})).\end{aligned}$$
+Now, $\pi_{*}[Z_{A_6}]$, $\pi_{*}[Z_{D_6}]$, and $\pi_{*}[Z_{E_6}]$
+respectively give the formulas for $[\Orb({C_{A_6}})]_{GL(V)}$,
+$[\Orb({C_{D_6}})]_{GL(V)}$, $[\Orb({C_{E_6}})]_{GL(V)}$, as they are
+also the result of pulling back the relative cycles
+$(\Orb({C_{A_6}}))_{\mc{V}}$, $(\Orb({C_{D_6}}))_{\mc{V}}$, and
+$(\Orb({C_{E_6}}))_{\mc{V}}$ under a generic section
+$B\to \on{Sym}^4\mc{V}^{\vee}$.</p>
+<p>The statement on the automorphisms of $C_{A_6}$ and $C_{E_6}$ come
+from a direct analysis of equations. Alternatively, one could compare
+the predegrees of $C_{A_6}$ and $C_{E_6}$ with the projective versions
+of $[Z_{A_6}]$ and $[Z_{E_6}]$ using [AF00b, Examples 5.2 and 5.4]
+and <a href="/papers/equivariant-degenerations/tag/CCE8.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[CCE8]</span></a>.</p></div>
+</div>
+<p class="stacks-para">In order to calculate the orbit class of a general quartic with a
+triple point, we will need to know $\p_Q$ in the case where $Q$ is the
+union of four lines with no three concurrent, i.e. a complete
+quadrilateral.  The method is simply to ``present'' the orbit closure
+$\P \Orb(Q)$ by a more accessible variety.</p>
+<div class="stacks-lemma" id="fourlines">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;4.5.</strong> <a href="../tag/87CC.html" class="stacks-tag-link">(87CC)</a></div>
+  <div class="stacks-env-body"><p>Let $Q$ be the union of four lines, no three concurrent. Then,
+$$\begin{aligned}\p_Q = 24\cdot 16 (18 c_1^6 + 33 c_1^4 c_2 + 12 c_1^2 c_2^2 + 131 c_1^3 c_3 +
+  153 c_1 c_2 c_3 - 147 c_3^2).\end{aligned}$$
+Here, $\#\on{Aut}(Q)=24$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2224.html" class="stacks-tag-link">(2224)</a></div>
+  <div class="stacks-env-body"><p>We will closely follow the ideas in [FNR06, Theorem 3.1]. Let
+  $\mathcal{V} \to B$ be an arbitrary rank $3$ vector bundle. Consider
+  the map
+  $$\phi: \mb{P}(\mc{V}^{\vee})^4\to \mb{P}(\on{Sym}^4\mc{V}^{\vee}),$$
+  which, fiber by fiber over $B$, restricts to the map induced by
+  sending a tuple of linear forms $(L_1, \dots, L_{4})$ to the quartic
+  form $L_1 \cdot L_2, \cdot L_{3} \cdot L_{4}$ . Then, $\phi$ maps
+  $4!$ to 1 onto $\mb{P}\Orb(Q)_{\mathcal{V}}$, so
+  $[\mb{P}\Orb(Q)]_{\mathcal{V}}=\frac{1}{24}\phi_{*}(1)$.</p>
+<p>  Let $H=c_{1}\ms{O}_{\mb{P}\on{Sym}^4\mc{V}^{\vee}}(1)$ and set
+$$\begin{aligned}\alpha := H^{14}+c_1(\on{Sym}^4\mc{V}^{\vee})H^{13}+\cdots+c_{14}(\on{Sym}^4\mc{V}^{\vee}).\end{aligned}$$
+The Leray relation states that
+$\alpha H + c_{15}(\on{Sym}^4\mc{V}^{\vee})=0$, and it follows from
+this that the integral
+$$\begin{aligned}\int_{\mb{P}(\on{Sym}^4\mc{V}^{\vee})\to B}\alpha \cdot \beta\end{aligned}$$
+returns the ``constant term'' (with respect to $H$) of any class
+$\beta$. By this, we mean that any class
+$\beta\in A^{\bullet}(\mb{P}(\on{Sym}^4\mc{V}^{\vee})$ can be written
+as a polynomial in $H$ of degree at most $14$, with coefficients being
+pullbacks of classes of $A^{\bullet}(B)$ and that integrating against
+$\alpha$ and pushing forward to $B$ extracts the $H^{0}$ or constant
+term of $\beta$.  (We use the notation $\int_{X \to Y}$ to denote
+pushforward of classes along a map $X \to Y$.)</p>
+<p>To finish, we choose $\beta :=\frac{1}{24}\phi_{*}(1)$ and apply the
+push-pull formula to reduce our problem to the evaluation of
+$$\begin{aligned}\frac{1}{24}\int_{\mb{P}(\mc{V}^{\vee})^4\to B}\phi^{*}(\alpha).\end{aligned}$$
+This evaluation is now standard (and we leave it to the reader), given
+that $\phi^{*}H = h_1 + h_2 + h_3 + h_4$, where $h_{i}$ is the
+pullback of the relative hyperplane class under the projection
+$p_{i}: \P(\mc{V}^{\vee})^{4} \to \P(\mc{V}^{\vee})$ onto the $i$-th
+factor.  The end result yields $\p_Q$ as stated in the proposition, in
+light of <a href="/papers/equivariant-degenerations/tag/CCE8.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[CCE8]</span></a>.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 4: Known orbit classes of special quartic curves">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S4.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

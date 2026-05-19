@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Definition 2.6 (089F) — Complete families of generic covers of elliptic curves</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
@@ -20,7 +25,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathsf{C}",
+          C: "\\mathbb{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -30,7 +35,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\operatorname{\\mathbf{A}}",
+          A: "\\mathbb{A}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -45,12 +50,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\operatorname{\\mathbb{Z}}",
-          N: "\\operatorname{\\mathbb{N}}",
-          Gr: "\\operatorname{Gr}",
+          Z: "\\mathbb{Z}",
+          N: "\\mathbb{N}",
+          Gr: "\\mathbb{G}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\operatorname{\\mathbb{G}}",
+          G: "\\mathbb{G}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -59,19 +64,49 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\operatorname{\\mathbf{F}}",
+          F: "\\mathbb{F}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
           GL: "\\operatorname{GL}",
           length: "\\operatorname{length}",
-          pt: "\\operatorname{\\mathsf{pt}}"
+          pt: "\\operatorname{\\mathsf{pt}}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -86,12 +121,13 @@
 <div class="stacks-tag-nav"><a href="D883.html">&laquo; Definition 2.5</a><span class="stacks-tag-current">Tag 089F</span><a href="E34D.html">Remark 2.7 &raquo;</a></div>
 <div class="stacks-definition" id="">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.6.</strong> <a href="../tag/089F.html" class="stacks-tag-link">(089F)</a></div>
-  <div class="stacks-env-body"><p><ol><li>Define $\Bog(\mathcal{E}) \subset \HdgX$ (respectively $\Bog(\mathcal{F})$) to be the closed substack parametrizing $\alpha: C \to X$ such that $\mathcal{E}_{\alpha}$ (resp. $\mathcal{F}_{\alpha}$) is not regular polystable.</li>
+  <div class="stacks-env-body"><ol><li>Define $\Bog(\mathcal{E}) \subset \HdgX$ (respectively $\Bog(\mathcal{F})$) to be the closed substack parametrizing $\alpha: C \to X$ such that $\mathcal{E}_{\alpha}$ (resp. $\mathcal{F}_{\alpha}$) is not regular polystable.</li>
 <li>Define $$\St \subset \HdgX$$ to be the open substack parametrizing covers $\alpha: C \to X$ such that both $\mathcal{E}_{\alpha}$ and $\mathcal{F}_{\alpha}$ are regular polystable vector bundles on $X$. In other words, $$\St = \HdgX \setminus (\Bog(\mathcal{E}) \cup \Bog(\mathcal{F})).$$</li>
 <li>Define $$\Hurfixed{d}{g}(X) \subset \HdgX$$ to be the closed substack given by the requirement $$\det \mathcal{E}_{\alpha} \simeq \O_{X}((g-1)x).$$</li>
 <li>Define $\Hurfixedstable{d}{g}(X)$ to be the intersection $\St \cap \Hurfixed{d}{g}(X)$.</li>
 <li>We will denote by $$\alpha_{\univ}: \mathcal{C} \to \HdgX \times X$$ the universal branched covering and we let $\mathcal{E}_{\univ}, \mathcal{F}_{\univ}$ denote the corresponding universal bundles on $\HdgX \times X$.</li>
-<li>We let $\epsilon_{1,1}, \epsilon_{2} \in \Pic(\HdgX)$ (respectively $\varphi_{1,1}, \varphi_{2}$) denote the pushforwards of the classes $$c_{1}^{2}(\mathcal{E}_{\univ}), c_{2}(\mathcal{E}_{\univ})$$ (resp. for $\mathcal{F}_{\univ}$) to $\HdgX$.</li></ol></p></div>
+<li>We let $\epsilon_{1,1}, \epsilon_{2} \in \Pic(\HdgX)$ (respectively $\varphi_{1,1}, \varphi_{2}$) denote the pushforwards of the classes $$c_{1}^{2}(\mathcal{E}_{\univ}), c_{2}(\mathcal{E}_{\univ})$$ (resp. for $\mathcal{F}_{\univ}$) to $\HdgX$.</li></ol>
+</div>
 </div>
 
 <hr>
@@ -116,7 +152,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2410.20291">arXiv:2410.20291</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

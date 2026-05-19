@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 3 — Ramification divisors of general projections</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "\\mathbb{K}",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathcal O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "Section",
+          subsectionautorefname: "\\S",
+          subsubsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          G: "\\mathbb{G}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          F: "\\mathbb{F}",
+          Ram: "\\operatorname{Ram}",
+          ord: "\\operatorname{ord}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Eduard Duryev, Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 3: Maximal variation for incompressible and non-defective $X$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: The projection-ramification map" title="Previous: Section 2: The projection-ramification map">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.SS1.html" aria-label="Next: 3.1. Non-defective linear series" title="Next: 3.1. Non-defective linear series">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 3. Maximal variation for incompressible and non-defective $X$</h1>
+<p class="stacks-para">The goal of this section is to prove <a href="/papers/ramification-divisors/tag/A0D8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A0D8]</span></a>.
+We begin by proving part (1), which is substantially easier.</p>
+<div class="stacks-lemma" id="prop-incompress">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;3.1.</strong> <a href="../tag/B072.html" class="stacks-tag-link">(B072)</a></div>
+  <div class="stacks-env-body"><p>Let $X \subset \P^n$ be a non-degenerate, normal, incompressible projective variety over a field of characteristic zero.
+  Then $\rho_X$ is a finite map.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/15D0.html" class="stacks-tag-link">(15D0)</a></div>
+  <div class="stacks-env-body"><p>Set $L = \O(1)$ and let $W \subset H^0(X, L)$ be the image of $H^0(\P^n, \O(1))$.
+  Let $V \subset W$ be an $(r+1)$-dimensional subspace.
+  Since $X$ is incompressible, the projection map $p_{V,L} \from X \dashrightarrow \P V$ induced by $(L, V)$ is dominant.
+  By <a href="/papers/ramification-divisors/tag/2E59.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[2E59]</span></a>, this implies that $(L, V)$ is properly ramified.
+  Since $V$ was arbitrary, the projection-ramification map
+  $$\rho \from \Gr(r+1, W) \to |K_X + (r+1) H|$$
+  is regular.
+  Since the Picard rank of a Grassmannian is $1$, a regular map from a Grassmannian is either constant or finite.
+  It is easy to check that $\rho$ is not constant; so it must be finite.</p></div>
+</div>
+<p class="stacks-para">For the proof of part (2) of <a href="/papers/ramification-divisors/tag/A0D8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A0D8]</span></a>, we proceed inductively by showing that a general $(n-r-1)$-dimensional linear subspace which is incident to $X$ is an isolated point in its fiber under $\rho$.
+Again, it is more convenient to work with the more abstract set-up of a linear series, allowing for series that are not very ample.</p>
+<p class="stacks-para">Let $X$ be a proper variety of dimension $r$, and let $(L, W)$ be a linear series on $X$.
+For an ideal sheaf $I \subset \O_X$ we denote by $W \otimes I$ the subspace of $W$ consisting of the sections that vanish modulo $I$. More precisely, if $K$ is the kernel of the evaluation map
+$$W \otimes \O_X \to L \otimes \O_X/I,$$
+then $W \otimes I = H^0(X, K)$.
+In particular, for $W = H^0(X, L)$, we have $W \otimes I = H^0(X, L \otimes I)$.
+For $s \in W \otimes I$, the vanishing locus $v(s)$ refers to the vanishing locus of $s$ as a section of $L$.
+We set $|W| = \P W^*$, the space of one-dimensional subspaces of $W$, and likewise $|W \otimes I| = \P (W \otimes I)^*$.
+For a complete linear series, we write $|L|$ for $|W|$.
+Note that $v(s) = v(\lambda s)$ for a non-zero scalar $\lambda$, so it causes no ambiguity to talk about $v(s)$ for $s \in |W|$.</p>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S3.SS1.html">3.1. Non-defective linear series</a></li>
+  <li><a href="S3.SS2.html">3.2. Maximal variation for non-defective pairs</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Ramification divisors of general projections — Section 3: Maximal variation for incompressible and non-defective $X$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/ramification-divisors/section/S3.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1901.01513">arXiv:1901.01513</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

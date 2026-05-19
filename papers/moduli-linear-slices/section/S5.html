@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 5 — Moduli of linear slices of high degree hypersurfaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbb{G}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 5: Hyperplane sections</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S4.html" aria-label="Previous: Section 4: Plane curves" title="Previous: Section 4: Plane curves">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S6.html" aria-label="Next: Section 6: Bounds and computations for $B_k(n)$" title="Next: Section 6: Bounds and computations for $B_k(n)$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 5. Hyperplane sections</h1>
+<p class="stacks-para">We let $X$ be a smooth degree $d$ hypersurface in $\PP^n$.
+Using the notation from Section&nbsp;2.2, our objective is to prove that $\Phi$ has maximal rank when $k = n-1$ and $e=1$.  Unlike the plane curve case, we are unable to obtain a complete  classification statement like <a href="/papers/moduli-linear-slices/tag/A544.html" class="stacks-ref-link">Theorem&nbsp;4.2 <span class="stacks-ref-tag">[A544]</span></a>. However, we are able to prove that if $d$ is larger than $n+1$, the hyperplane sections of $X$ vary maximally in moduli. In this section, we prove <a href="/papers/moduli-linear-slices/tag/EE4A.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[EE4A]</span></a> and some generalizations, captured below in <a href="/papers/moduli-linear-slices/tag/15ED.html" class="stacks-ref-link">Theorem&nbsp;5.8 <span class="stacks-ref-tag">[15ED]</span></a> and <a href="/papers/moduli-linear-slices/tag/58B0.html" class="stacks-ref-link">Theorem&nbsp;5.9 <span class="stacks-ref-tag">[58B0]</span></a>.</p>
+<p class="stacks-para">Our results all rely on a stability result from Guenancia [Gue16]. The following version comes from Guenancia's Theorem A by observing that the canonical bundle of a degree $d$ hypersurface in $\PP^n$ is ample when $d \geq n+2$.</p>
+<div class="stacks-theorem" id="theorem-Guenancia">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.1.</strong> <a href="../tag/3585.html" class="stacks-tag-link">(3585)</a></div>
+  <div class="stacks-env-body"><p>If $X$ is a smooth hypersurface of degree $d \geq n+2$, then $T_{\PP^n}(-\log X)$ is semistable.</p></div>
+</div>
+<p class="stacks-para">Using Theorem <a href="/papers/moduli-linear-slices/tag/3585.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[3585]</span></a>, the basic strategy is to understand how large the degree $d$ can be such that the restricton of $T_{\PP^n}(-\log X)$ to the curve or $k$-plane can have a section. We use results from Section 3 to do this.</p>
+<div class="stacks-theorem" id="theorem-degEcurvesLargen">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.2.</strong> <a href="../tag/9E00.html" class="stacks-tag-link">(9E00)</a></div>
+  <div class="stacks-env-body"><p>If $X$ in $\mathbb{P}^n$ is a smooth hypersurface of degree $d$, then the space of degree $e$ rational curve sections of $X$ vary maximally in modulus when $d > \frac{n(n-1)}{2e} + n + 1$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8A91.html" class="stacks-tag-link">(8A91)</a></div>
+  <div class="stacks-env-body"><p>Consider the bundle $T_{\PP^n}(-\log X)$. By Theorem <a href="/papers/moduli-linear-slices/tag/3585.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[3585]</span></a>, this bundle is semi-stable. For $d$ larger than $n+1$, we see that a section of this bundle would give a destabilizing subsheaf, so we know that $T_{\PP^n}(-\log X)$ has no sections.</p>
+<p>Let $\cM=\operatorname{Mor}_e(\PP^1,\PP^n)$ be the space of parameterized degree $e$ rational curves in $\PP^n$. Given a choice of $F$ with $X=V(F)$, there is a natural map $\Phi: \cM \to H^0(\OO_{\PP^1}(ed))$ sending a map $f:\PP^1\to \PP^n$ to the pullback $f^{*}F\in H^0(\PP^1,\OO_{\PP^1}(de))$. We know by Lemma <a href="/papers/moduli-linear-slices/tag/3AF1.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[3AF1]</span></a> that the tangent space to the fiber of $\Phi$ at a given map $f:\PP^1\to \PP^n$ is simply $H^0(f^{*}T_{\PP^n}(-\log X))$. To show that $\phi$ is generically finite, we need only show that $h^0(f^{*}T_{\PP^n}(-\log X)) = 0$.</p>
+<p>By Theorem <a href="/papers/moduli-linear-slices/tag/6C21.html" class="stacks-ref-link">3.1 <span class="stacks-ref-tag">[6C21]</span></a>, we see that $f^{*}T_{\PP^n}(-\log X)$ is a direct sum of line bundles $\bigoplus \OO(a_i)$ with consecutive $a_i$ differing by at most 1. Thus, any such bundle on $\PP^1$ that has a section will have degree larger than that of the bundle $\OO \oplus \OO(-1) \oplus \cdots \oplus \OO(-n+1)$. From this it follows that any semi-stable bundle $E$ on $\PP^n$ such that $f^{*}E$ has a section for a general map $f:\PP^1\to \PP^n$ will have degree at least $-\frac{n(n-1)}{2}$. Thus, if we want $h^0(f^{*}T_{\PP^n}(-\log X)) = 0$, we must have that $\deg f^{*} T_{\PP^n}(-\log X) \geq - \frac{n(n-1)}{2}$. Since $\deg f^{*}T_{\PP^n}(-\log X) = e(n+1-d)$, the result follows.</p></div>
+</div>
+<p class="stacks-para">We now consider $k$-plane sections of smooth hypersurfaces. By Lemma <a href="/papers/moduli-linear-slices/tag/5EF1.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[5EF1]</span></a>, we need to understand torsion free sheaves on $\PP^k$ whose Harder-Narasimhan filtration has sub-quotients whose slopes do not decrease too quickly, namely $\mu_1>\mu_2>\cdots\mu_a$ with $\mu_{i}-\mu_{i+1}\leq \frac{1}{k}$ for all $i$. Understanding the possible slopes that may appear in the Harder-Narasimhan filtration is a combinatorially interesting problem, which we describe below.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.3.</strong> <a href="../tag/B19B.html" class="stacks-tag-link">(B19B)</a></div>
+  <div class="stacks-env-body"><p>Let a sequence $(d_1,r_1),(d_2,r_2),\ldots, (d_a,r_a)$ in $\mathbb{Z}_{\geq 0}\times \mathbb{Z}_{>0}$ be <em>$k$-admissible</em> if $d_1\leq 0$ and $0\leq \frac{d_{i+1}}{r_{i+1}}-\frac{d_i}{r_i}\leq \frac{1}{k}$ for each $i$. Let $A_{k,n}$ denote the set of $k$-admissible sequences with $\sum_{i} r_i=n$ (where $a$ is arbitrary).</p></div>
+</div>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.4.</strong> <a href="../tag/B9CA.html" class="stacks-tag-link">(B9CA)</a></div>
+  <div class="stacks-env-body"><p>Define $B_k(n)$ to be $\max\{\sum_{i=1}^{a}{d_i}\mid (d_1,r_1),\ldots(d_a,r_a)\text{ in }A_{k,n}\}$.</p></div>
+</div>
+<div class="stacks-lemma" id="lem-PhikrelationtoDegree">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;5.5.</strong> <a href="../tag/B288.html" class="stacks-tag-link">(B288)</a></div>
+  <div class="stacks-env-body"><p>If $E$ is a semistable sheaf on $\PP^n$ of rank $n$ such that its restriction to a general $k$-plane has a section, then $\deg E \geq -B_k(n)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B01F.html" class="stacks-tag-link">(B01F)</a></div>
+  <div class="stacks-env-body"><p>Let $\Lambda$ be a general $k$-plane and $0 = E_0 \subset E_1 \subset \cdots \subset E_a = E|_{\Lambda}$ be the Harder-Narasimhan filtration of $E|_{\Lambda}$. Let $-d_i$ be the degree of $E_i/E_{i-1}$ and $r_i$ be the rank of $E_i/E_{i-1}$. Since $E|_{\Lambda}$ has a section, we see that $d_1 \leq 0$. Since $E$ is semistable, by Lemma <a href="/papers/moduli-linear-slices/tag/5EF1.html" class="stacks-ref-link">3.3 <span class="stacks-ref-tag">[5EF1]</span></a> it follows that the sequence $(-d_1,r_1), \cdots, (-d_a,r_a)$ will be $k$-admissible. The result follows.</p></div>
+</div>
+<p class="stacks-para">We can compute a bound for when $k$-plane sections of a degree $d$ hypersurface in $\PP^n$ will vary maximally in moduli in terms of $B_k(n)$.</p>
+<div class="stacks-theorem" id="thm-Bbound">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.6.</strong> <a href="../tag/E0FE.html" class="stacks-tag-link">(E0FE)</a></div>
+  <div class="stacks-env-body"><p>Let $X$ be a smooth, degree $d$ hypersurface in $\PP^n$ with $d>B_k(n)+n+1$. Then,
+$$\begin{aligned}\Phi: \operatorname{Mor}_1(\PP^k,\PP^n)&\dashrightarrow \PP H^0(\PP^k,\OO_{\PP^k}(d))\\
+    \iota &\mapsto [\iota^{-1}(X)].\end{aligned}$$
+is of maximal rank.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/C522.html" class="stacks-tag-link">(C522)</a></div>
+  <div class="stacks-env-body"><p>By Theorem <a href="/papers/moduli-linear-slices/tag/3585.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[3585]</span></a>, $T_{\PP^n}(-\log X)$ will be semi-stable. By <a href="/papers/moduli-linear-slices/tag/5EF1.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[5EF1]</span></a>, $T_{\PP^n}(-\log X)|_{\Lambda}$ will have Harder-Narasimhan filtration as described in the statement of the theorem.
+Given a hypersurface $X$ together with a choice of defining equation $f$, we get a map $\phi: \operatorname{Mor}_1(\PP^k,\PP^n) \to H^0(\OO_{\PP^k}(d))$ sending a $k$-plane to the pull-back of $f$ by the $k$-plane. We wish to show that $\phi$ is generically finite.</p>
+<p> To get a contradiction, suppose $\phi$ has only positive-dimensional fibers. By Lemma <a href="/papers/moduli-linear-slices/tag/3AF1.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[3AF1]</span></a>, the tangent space to a fiber of $\phi$ at a general point $\Lambda$ is $H^0(T_{\PP^n}(-\log X)|_{\Lambda})$, so we know that $T_{\PP^n}(-\log X)|_{\Lambda}$ has a global section. Thus, by Theorem <a href="/papers/moduli-linear-slices/tag/3585.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[3585]</span></a> and Lemma <a href="/papers/moduli-linear-slices/tag/B288.html" class="stacks-ref-link">5.5 <span class="stacks-ref-tag">[B288]</span></a>, the degree of $T_{\PP^n}(-\log X)$ will be at least $- B_k(n)$. It follows that
+ $$ n+1-d \geq - B_k(n). $$
+This is impossible given the assumptions in the statement of the theorem.</p></div>
+</div>
+<p class="stacks-para">Then, <a href="/papers/moduli-linear-slices/tag/EE4A.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[EE4A]</span></a> follows from the following result on $B_k(n)$.</p>
+<div class="stacks-lemma" id="prop-k2n/3">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;5.7.</strong> <a href="../tag/85E8.html" class="stacks-tag-link">(85E8)</a></div>
+  <div class="stacks-env-body"><p>If $k \geq \frac{2n}{3}$, then $B_k(n) = 1$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/ADDE.html" class="stacks-tag-link">(ADDE)</a></div>
+  <div class="stacks-env-body"><p>Let $(d_1, r_1), \cdots, (d_a,r_a)$ be an admissible sequence of total degree $B_k(n)$. Without loss of generality, we may assume $d_1=0$, $d_i > 0$ for $i > 1$. Then it follows that $r_2 \geq k$, since $\frac{d_2}{r_2} \leq \frac{1}{k}$. Since $\frac{d_3}{r_3} \leq \frac{2}{k}$, we see that $r_3 \geq \frac{k}{2}$, provided that there are at least three terms in the sequence. However, in this case, $r_1+r_2+r_3 \geq 1+k+\frac{k}{2} = 1+\frac{3k}{2} > n$, which is impossible. Thus, $a \leq 2$.</p>
+<p>Next, we observe that $d_2 \leq 1$, since if $d_2 \geq 2$, then $r_2 \geq d_2 k \geq 2k > n$, a contradiction. It follows that the sum of the $d_i$ is at most $1$, and since we know that 1 is achievable with the admissible sequence $(0,n-k), (1, k)$, the result follows.</p></div>
+</div>
+<p class="stacks-para">We defer more detailed analysis of $B_k(n)$ to Section&nbsp;6. From the results in Section&nbsp;6 and <a href="/papers/moduli-linear-slices/tag/E0FE.html" class="stacks-ref-link">Theorem&nbsp;5.6 <span class="stacks-ref-tag">[E0FE]</span></a> we get the following results.</p>
+<div class="stacks-theorem" id="thm-knboundslice">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.8.</strong> <a href="../tag/15ED.html" class="stacks-tag-link">(15ED)</a></div>
+  <div class="stacks-env-body"><p>If $X\subset\PP^n$ is a smooth hypersurface of degree $d$ with $d>4(\frac{n^2}{k^{\frac{3}{2}}}+k^{\frac{3}{2}})$, then the map $$\begin{aligned}\Phi: \operatorname{Mor}_1(\PP^k,\PP^n)&\dashrightarrow \PP H^0(\PP^k,\OO_{\PP^k}(d))\\
+    \iota &\mapsto [\iota^{-1}(X)].\end{aligned}$$
+is of maximal rank.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5606.html" class="stacks-tag-link">(5606)</a></div>
+  <div class="stacks-env-body"><p>This follows from <a href="/papers/moduli-linear-slices/tag/3F66.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[3F66]</span></a>, where it is shown $B_k(n) \leq 3 \left(\frac{n^2}{k^{\frac{3}{2}}}+k^{\frac{3}{2}} \right)$. To finish, one checks that $\frac{n^2}{k^{\frac{3}{2}}}+k^{\frac{3}{2}}\geq 2n\geq n+2$. This follows from the AM-GM equality and the fact $n\geq 2$.</p></div>
+</div>
+<p class="stacks-para">In <a href="/papers/moduli-linear-slices/tag/15ED.html" class="stacks-ref-link">Theorem&nbsp;5.8 <span class="stacks-ref-tag">[15ED]</span></a>, we prioritized giving a clean statement and proof over giving an optimal constant. Still, one can wonder what the optimal constant by computing $B_k(n)$ for small $k$ and all $n$. In this case, <a href="/papers/moduli-linear-slices/tag/9754.html" class="stacks-ref-link">Corollary&nbsp;6.6 <span class="stacks-ref-tag">[9754]</span></a> gives the following result:</p>
+<div class="stacks-theorem" id="thm-smallkslice">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.9.</strong> <a href="../tag/58B0.html" class="stacks-tag-link">(58B0)</a></div>
+  <div class="stacks-env-body"><p>For $k\leq 5$. Then, there exists a linear function $\ell(n)$ and an integer $C_k$ such that $|B_k(n)-\frac{ n^2}{C_k}|\leq \ell(n)$. Here, $C_2=3,C_3=7,C_4=11,C_5=19$. In particular, the map
+$$\begin{aligned}\Phi: \operatorname{Mor}_1(\PP^k,\PP^n)&\dashrightarrow \PP H^0(\PP^k,\OO_{\PP^k}(d))\\
+    \iota &\mapsto [\iota^{-1}(X)].\end{aligned}$$
+is of maximal rank if $X\subset \PP^n$ is smooth and has degree $d\geq C_k n^2+\ell(n)+n+2$.</p></div>
+</div>
+<p class="stacks-para">We expect <a href="/papers/moduli-linear-slices/tag/58B0.html" class="stacks-ref-link">Theorem&nbsp;5.9 <span class="stacks-ref-tag">[58B0]</span></a> to hold for all values of $k$, but we can only check a finite number of cases with a computer. Roughly up to $k=100$ is what is reasonable with our methods.</p>
+<p class="stacks-para">Given <a href="/papers/moduli-linear-slices/tag/58B0.html" class="stacks-ref-link">Theorem&nbsp;5.9 <span class="stacks-ref-tag">[58B0]</span></a>, one can ask how fast $C_k$ grows with $k$. We trivially know $C_k=O(k^2)$ by relaxing the condition that the $d_i$ are integers in the definition of an admissible sequence to compute $B_k(n)$ (in which case we let all the $r_i$ be equal to 1). We also get $C_k=\Omega(k^{\frac{3}{2}})$ from <a href="/papers/moduli-linear-slices/tag/3F66.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[3F66]</span></a>. From experimental evidence, we think that the actual answer is strictly between $k^{\frac{3}{2}}$ and $k^{2}$ but closer to $k^{\frac{3}{2}}$.
+\appendix</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Section 5: Hyperplane sections">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

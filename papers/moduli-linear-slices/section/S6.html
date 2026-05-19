@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 6 — Moduli of linear slices of high degree hypersurfaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          k: "k",
+          Vec: "\\operatorname{Vec}",
+          cO: "{\\mathscr O}",
+          to: "{\\longrightarrow}",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          themaintheorem: "\\Alph{maintheorem}",
+          theexampletheorem: "\\Alph{exampletheorem}",
+          O: "\\mathcal O",
+          OO: "\\mathscr{O}",
+          PP: "\\mathbb{P}",
+          G: "\\mathbb{G}",
+          td: "\\widetilde",
+          Frac: "{\\mathrm{Frac}}\\,",
+          Jac: "{\\textrm{Jac}}",
+          fm: "\\mathfrak m",
+          smvee: "\\raise0.5ex\\hbox{$\\scriptscriptstyle\\vee$}",
+          cM: "\\mathcal{M}",
+          cU: "\\mathcal{U}",
+          CC: "\\mathbb{C}",
+          compl: ["\\widehat{#1}", 1],
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          o: ["\\overline{#1}", 1],
+          Proj: "{\\text{\\rm Proj}\\,}",
+          git: "\\sslash",
+          up: "\\textrm{upper}",
+          low: "\\textrm{lower}",
+          id: "\\operatorname{id}",
+          Bl: "\\operatorname{Bl}",
+          Br: "\\operatorname{Br}",
+          ProjBun: "\\operatorname{ProjBun}",
+          Def: "\\operatorname{Def}",
+          res: "\\operatorname{Res}",
+          Quot: "\\operatorname{Quot}",
+          Hilb: "\\operatorname{Hilb}",
+          sing: "\\operatorname{Sing}",
+          dm: "\\operatorname{dim}",
+          Mor: "\\operatorname{Mor}",
+          ord: "\\operatorname{ord}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel, Eric Riedl, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Moduli of linear slices of high degree hypersurfaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 6: Bounds and computations for $B_k(n)$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S5.html" aria-label="Previous: Section 5: Hyperplane sections" title="Previous: Section 5: Hyperplane sections">&larr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 6. Bounds and computations for $B_k(n)$</h1>
+<p class="stacks-para">We will bound $B_k(n)$ for all $k,n$ in <a href="/papers/moduli-linear-slices/tag/3F66.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[3F66]</span></a>. We also compute $B_{k}(n)$ for $k$ small and arbitrary $n$, and give some conjectures about $B_{k}(n)$ in general.</p>
+<p class="stacks-para">To give an idea of how the function $B_k(n)$ behaves, we note the results in Section&nbsp;6 can show $B_5(39)=39$, corresponding to the admissible sequence $$(0,1)(1,5)(1,3)(1,2)(2,3)(4,5)(1,1)(6,5)(4,3)(3,2)(5,3)(9,5)(2,1).$$</p>
+<p class="stacks-para">There are a couple of features of this admissible sequence we believe hold in general that we will only prove in special cases. First, this admissible sequence can be generated greedily, where we use greed to maximize the ratio $\frac{d}{r}$ of the last piece of the sequence. Second, the admissible sequence is essentially periodic in that the $(1,1)(6,5)(4,3)(3,2)(5,3)(9,5)$ is obtained from $(0,1)(1,5)(1,3)(1,2)(2,3)(4,5)$ by replacing each $(d,r)$ with $(d+r,r)$. We give a finite criterion that can be applied to show both the greedy property and the periodicity in <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a> in Section&nbsp;6 below.</p>
+<p class="stacks-para">We expect there are many other interesting patterns that can be found. For example, the segment $(0,1)(1,5)(1,3)(1,2)(2,3)(4,5)(1,1)$ of the admissible sequence above is preserved under reversing the order and replacing each $(d,r)$ with $(r-d,r)$. This pattern continues to hold for larger $k$ and suggests that these optimal admissible sequences can also be generated greedily backwards as well as forwards.</p>
+<div class="stacks-lemma" id="Phibound">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.1.</strong> <a href="../tag/3F66.html" class="stacks-tag-link">(3F66)</a></div>
+  <div class="stacks-env-body"><p>We have $B_k(n) \leq 3 \left(\frac{n^2}{k^{\frac{3}{2}}}+k^{\frac{3}{2}} \right)$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4F6D.html" class="stacks-tag-link">(4F6D)</a></div>
+  <div class="stacks-env-body"><p>Let $(d_1,r_1), \cdots, (d_a,r_a)$ be an admissible sequence with $\sum_i d_i = B_k(n)$. Let $\mu_i = \frac{d_i}{r_i}$. Let $n(j)$ be the sum of the $r_i$ such that $\mu_i\in [j-1,j)$.</p>
+<p>Since the $\mu_i$ contributing to $n(j)$ are all less than $j$, we observe that
+$$B_k(n) \leq \sum_{j=1}^\infty jn(j)  .$$
+Thus, understanding the $n(j)$ allows us to bound $B_k(n)$. The sum of all of the $n(j)$ is $n$. Let $J$ be the last nonzero $n(j)$, so $B_k(n) \leq \sum_{j=1}^{J} j n(j)$.</p>
+<p>Let $n_k^{\min}$ be a positive number that is at most $n(j)$ for any $j < J$. Then we obtain an upper bound for $B_k(n)$
+$$\begin{aligned}B_k(n)& \leq \sum_{i=1}^J jn(j)\leq n_k^{\min}+2n_k^{\min}+\cdots+\lceil \frac{n}{n_k^{\min}}\rceil n_k^{\min}\\
+     &= n_k^{\min} \frac{\lceil \frac{n}{n_k^{\min}}\rceil(1+\lceil\frac{n}{n_k^{\min}}\rceil)}{2}\\
+     &\leq n_k^{\min} \frac{(\frac{n}{n_k^{\min}}+1)(\frac{n}{n_k^{\min}}+2)}{2}\end{aligned}$$</p>
+<p>Thus, it remains to give a bound for $n_k^{\min}$. Fix $j<J$ and let $(d_{i_j+1},r_{i_j+1}),\ldots,(d_{i_j+c(j)},r_{i_j+c(j)})$ be the part of the admissible sequence with slopes $\frac{d_{i_j+1}}{r_{i_j+1}},\ldots,\frac{d_{i_j+c(j)}}{r_{i_j+c(j)}}$ in $[j-1,j)$. By definition, $r_{i_j+1}+\cdots+r_{i_j+c(j)}=n(j)$. First, we show $c(j)\geq k$. To see this, we first note that $\frac{d_{i_j+1}}{r_{i_j+1}}< (j-1)+\frac{1}{k}$. If $j=1$, then this is true because $\frac{d_{i_j+1}}{r_{i_j+1}}\leq 0$ by definition. If $j>1$, then this is true because $\frac{d_{i_j+1}}{r_{i_j+1}}\leq \frac{d_{i_j}}{r_{i_j}}+\frac{1}{k}<(j-1)+\frac{1}{k}$.</p>
+<p>Since $\frac{d_{i_j+1}}{r_{i_j+1}}< (j-1)+\frac{1}{k}$, we then see that
+$$\begin{aligned}\frac{d_{i_j+2}}{r_{i_j+2}}&\leq \frac{d_{i_j+1}}{r_{i_j+1}}+\frac{1}{k}< (j-1)+\frac{2}{k}\\
+    \vdots\quad &\quad  \vdots\\
+    \frac{d_{i_j+k}}{r_{i_j+k}}&\leq  \frac{d_{i_j+k-1}}{r_{i_j+k-1}}+\frac{1}{k}<j,\end{aligned}$$
+so $c(j)\geq k$.</p>
+<p>Now, we want to bound $r_{i_j+1}+\cdots+r_{i_j+c(j)}=n(j)$. In the multi-set $\{r_{i_j+1},\ldots,r_{i_j+c(j)}\}$, we know that there is at most element that is equal to 1, fewer than two elements that are equal to 2, fewer than three elements that are equal to 3 and so on. Therefore, if $m$ is the largest integer such that $1+(1+\cdots + m-1) = 1+\frac{m(m-1)}{2}$ is at most $k$, then $\frac{(m-1)^2}{2}<\frac{m(m_1)}{2}+1\leq k$, so $m \leq \sqrt{2k}+1$. Thus,
+$$\begin{aligned}n(j) = r_{i_j+1}+\cdots+r_{i_j+c(j)}&\geq 1+(2\cdot 1+3\cdot 2+\cdots m\cdot(m-1))\\
+    &= 1+2(\binom{2}{2}+\binom{3}{2}+\cdots+\binom{m}{2})\\
+    &= 1+ \frac{(m+1)m(m-1)}{3}\\
+    &\geq \frac{(\sqrt{2k}+2)(\sqrt{2k}+1)\sqrt{2k}}{3}>\frac{2\sqrt{2}}{3}k^{\frac{3}{2}}.\end{aligned}$$
+Thus, choosing $n_k^{\min}$ to be $\frac{2\sqrt{2}}{3}k^{\frac{3}{2}}$ suffices. Plugging into our earlier bound, we get an upper bound for $B_k(n)$ as
+$$\begin{aligned}n_k^{\min} \frac{(\frac{n}{n_k^{\min}}+1)(\frac{n}{n_k^{\min}}+2)}{2}=\frac{n^2}{2n_k^{\min}}+ \frac{3n}{2}+n_k^{\min}=\frac{n^2}{k^{\frac{3}{2}}}\frac{9}{4\sqrt{2}}+\frac{3n}{2}+\frac{2\sqrt{2}}{3}k^{\frac{3}{2}},\end{aligned}$$
+which is at most $2(\frac{n^2}{k^{\frac{3}{2}}}+n+k^{\frac{3}{2}})$. Applying the AM-GM inequality yields
+$$\begin{aligned}\frac{n^2}{k^{\frac{3}{2}}}+k^{\frac{3}{2}}\geq 2n,\end{aligned}$$
+yielding the claimed bound.</p></div>
+</div>
+<p class="stacks-para">We now move on to computing exact values of $B_k(n)$ for small $k$. Our strategy is a recursive algorithm that requires some conditions to be met, and we suspect that these conditions are always met. In the course of our proof, we will use the three quantities $\mu^{\max}(n)$, $B_k^{\up}(n)$ and $B_k^{\low}(n)$. We define $\mu^{\max}(n)$ by
+$$\mu^{\max}(n) := \max\{\frac{r_a}{d_a}\mid (d_1,r_1),\ldots(d_a,r_a)\text{ in }A_n\}.$$</p>
+<div class="stacks-lemma" id="lem-muMaxComputation">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.2.</strong> <a href="../tag/D37C.html" class="stacks-tag-link">(D37C)</a></div>
+  <div class="stacks-env-body"><p>We can compute $\mu^{\max}(n)$ inductively by $\mu^{\max}(1) = 0$ and
+$$\mu^{\max}(n) = \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\} .$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6290.html" class="stacks-tag-link">(6290)</a></div>
+  <div class="stacks-env-body"><p>Let $\mu^{\max'}_n = \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}$.</p>
+<p>We use induction. The base case $n=1$ is vacuous, so assume $n>1$. First, we show that $\mu^{\max\prime}_n\leq \mu^{\max}_n$. Given any $0<i<n$, $\frac{\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor}{n-i}$ is a slope achieved by taking an admissible sequence $(d_1,r_1),\ldots,(d_a,r_a)$ in $A_i$ and appending $(\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor,n-i)$. So by definition $\mu^{\max\prime}_n\leq \mu^{\max}_n$.</p>
+<p>Now we show $\mu^{\max\prime}_n\geq \mu^{\max}_n$. Let $(d_1,r_1),\ldots(d_a,r_a)$ be an admissible sequence in $A_n$ achieving $\frac{d_a}{r_a}= \mu^{\max}_n$. If $a=1$, then $d_a=0$ so $\mu^{\max}_n=0$ while $\mu^{\max\prime}_n$ is by definition nonnegative. Otherwise, let $i=r_1+\cdots+r_{a-1}$, so $\frac{d_{a-1}}{r_{a-1}}\leq \mu^{\max}_i=\mu^{\max\prime}_i$ by definition and the assumption hypothesis. Then, $r_a = n-i$
+$$\begin{aligned}\frac{d_a}{r_a}\leq \mu^{\max\prime}_i+\frac{1}{k},\end{aligned}$$
+so $d_a\leq \lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor$. Then, by definition $\mu^{\max\prime}_n\geq \mu^{\max}_n$. Therefore, we are done and $\mu^{\max\prime}_n=\mu^{\max}_n$ for all $n$.</p></div>
+</div>
+<p class="stacks-para">We define $B_k^{\up}(n)$ recursively by $B_k^{\up}(1) = 0$ and
+$$B_k^{\up}(n) = \max\{B_k^{\up}(i)+\lfloor(\mu^{\max}_i+\frac{1}{k})(n-i)\rfloor\mid 0<i<n\} .$$</p>
+<p class="stacks-para">For $B_k^{\low}$, we let $B_k^{\low}(1) = 0$ and let $i(n)$ be the smallest $i$ that maximizes $\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}$. Then define $B_k^{\low}$ inductively by
+$$B_k^{\low}(n)=B_k^{\low}(i(n))+\lfloor(\mu^{\max}(i(n))+\frac{1}{k})(n-i(n))\rfloor.$$</p>
+<p class="stacks-para">\begin{comment}
+To this end, we define $d^{\max\prime}_n $, $\mu^{\text{lower max}}_n$, and $\mu^{\text{upper max}}_n$ recursively and relate them to $d^{\max}_n$ and $\mu^{\max}_n$. We define
+$$\begin{aligned}\mu^{\max\prime}_1=0 \\
+    d^{\text{lower max}}_1 &= 0\\
+    d^{\text{upper max}}_1 &= 0\end{aligned}$$
+and
+$$\begin{aligned}\mu^{\max\prime}_n &= \max\{\frac{\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}\\</p>
+<p>    d^{\text{upper max}}_n &= \max\{d^{\text{upper max}}_i+\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor\mid 0<i<n\}\end{aligned}$$
+To define $d^{\text{lower max}}_n$, there are two steps. First, we define $i(n)$ as the smallest $i$ maximizing $\frac{\lfloor(\mu^{\max\prime}_i+\frac{1}{k})(n-i)\rfloor}{n-i}$ in the recursive definition for $\mu^{\max\prime}_n$. Then, we define $d^{\text{lower max}}_n=d^{\text{lower max}}_{i(n)}+\lfloor(\mu^{\max\prime}_{i(n)}+\frac{1}{k})(n-i(n))\rfloor$.
+\end{comment}</p>
+<p class="stacks-para">We now show that $B_k(n)$ is bounded by $B_k^{\up}(n)$ and $B_k^{\low}(n)$.</p>
+<div class="stacks-lemma" id="rbounds">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.3.</strong> <a href="../tag/794E.html" class="stacks-tag-link">(794E)</a></div>
+  <div class="stacks-env-body"><p>We have $B_k^{\low}(n) \leq B_k(n) \leq B_k^{\up}(n)$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DB23.html" class="stacks-tag-link">(DB23)</a></div>
+  <div class="stacks-env-body"><p>First we show $B_k^{\low}(n) \leq B_k(n)$ by induction. To do this, we show by induction that $B_k^{\low}(n)$ is always achieved by an admissible sequence $(d_1,r_1),\ldots,(d_a,r_a)$ with $\frac{d_a}{r_a} = \mu^{\max}(n)$ and $d_1+\cdots+d_a = B_k^{\low}(n)$. The base case $n=1$ vacuous, so we assume $n>1$. Let $i$ be the minimal index maximizing $\frac{\lfloor(\mu^{\max}_i+\frac{1}{k})(n-i)\rfloor}{n-i}$. By the induction assumption, there is an admissible sequence $(d_1,r_1),\ldots,(d_{a-1},r_{a-1})$ achieving $\frac{d_{a-1}}{r_{a-1}} = \mu^{\max}_i$ and $d_1+\cdots+d_{a-1} = B_k^{\low}(i)$. By appending $(\lfloor(\mu^{\max}_i+\frac{1}{k})(n-i)\rfloor,n-i)$ to the sequence we get an admissible sequence $(d_1,r_1),\ldots,(d_a,r_a)$ with  $\frac{d_a}{r_a} = \mu^{\max}_n$ and $d_1+\cdots+d_a = B_k^{\low}(n)$.</p>
+<p>Finally, we show $B_k^{\up}(n) \geq B_k(n)$ by induction. The base case $n=1$ is vacuous, so assume $n>1$. Let $(d_1,r_1),\ldots(d_a,r_a)$ be an admissible sequence in $A_n$ achieving $d_1+\cdots+d_a=B_k(n)$. If $a=1$, then $B_k(n)=0$ and $B_k^{\up}(n)$ is always nonnegative by definition. If $a>1$, then let $i=r_1+\cdots+r_{a-1}$ so $(d_1,r_1),\ldots(d_{a-1},r_{a-1})$ is an admissible sequence in $A_i$. By the inductive hypothesis, $d_1+\cdots+d_{a-1}\leq B_k^{\up}(i)$. We have $r_a=n-i$ and the maximum $d_a$ can be is $\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor$. Therefore,
+$$\begin{aligned}d_1+\cdots+d_{a}\leq B_k^{\up}(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor\leq B_k^{\up}(n),\end{aligned}$$
+finishing the proof.</p></div>
+</div>
+<p class="stacks-para">\begin{comment}
+As a simple application of Lemma 6.2 [D37C] and <a href="/papers/moduli-linear-slices/tag/794E.html" class="stacks-ref-link">Lemma&nbsp;6.3 <span class="stacks-ref-tag">[794E]</span></a>, we compute $B_k(n)$ for $k$ large relative to $n$.</p>
+<div class="stacks-lemma" id="">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.4.</strong> <a href="../tag/260A.html" class="stacks-tag-link">(260A)</a></div>
+  <div class="stacks-env-body"><p>We have
+$$\begin{aligned}B_k(n) &=
+    \begin{cases}
+    0 \qquad\text{if $n\leq k$}\\
+    1\qquad\text{if $k<n\leq \frac{3}{2}k$}
+    \end{cases}\end{aligned}$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4A46.html" class="stacks-tag-link">(4A46)</a></div>
+  <div class="stacks-env-body"><p>First, we show $B_k(n)=0$ if $n\geq k$ by induction. The case $n=1$ is vacuous. For $1<n\leq k$,
+$$\begin{aligned}\mu^{\max}(n) &= \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}\qquad\text{by Lemma 6.2 [D37C]}\\
+    &= \max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}=0.\end{aligned}$$
+By definition then $B_k^{\low}(n)=0$ and $B_k^{\up}(n)=0$. Now, assume $k<n\leq \frac{3}{2}k$. We will prove $B_k(n)$ by induction. First,
+$$\begin{aligned}\mu^{\max}(n) &= \max\{\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i<n\}\qquad\text{by Lemma 6.2 [D37C]}\\
+    &= \max\{\max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i\leq k\},\max\{\frac{\lfloor(\frac{1}{k}+\frac{1}{k})(n-i)\rfloor}{n-i}\mid k<i< n\}\}\end{aligned}$$
+The first maximum $\max\{\frac{\lfloor(0+\frac{1}{k})(n-i)\rfloor}{n-i}\mid 0<i\leq k\}$ is $\frac{1}{k}$ and achieves its maximum when $n-i=k$. The second maximum $\max\{\frac{\lfloor(\frac{2}{k})(n-i)\rfloor}{n-i}\mid k<i< n\}$ is zero since $n-i<\frac{k}{2}$ meaning $\frac{2}{k})(n-i)<1$.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<p class="stacks-para">From experimental evidence, we suspect $B_k^{\low}(n)$ and $B_k^{\up}(n)$ always coincide, which would give a recursive algorithm for $B_k(n)$. However, to give results for small values of $k$ and all $n$, we want to have a finite criterion that can be verified by a computer. We believe admissible sequences achieving $B_k(n)$ will always following a periodic structure in $n$ with $k$ fixed reflected in <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a> below.</p>
+<div class="stacks-lemma" id="periodic">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;6.5.</strong> <a href="../tag/0A59.html" class="stacks-tag-link">(0A59)</a></div>
+  <div class="stacks-env-body"><p>Suppose $\mu^{\max}(i_0)=\frac{k-1}{k}$ for some $i_0$. Then $\mu^{\max}(n) = \mu^{\max}(n-i_0) + 1$ all $n\geq i_0$. If in addition $B_k^{\up}(i)=B_k^{\low}(i)$ for each $i\leq 3i_0$, then $B_k^{\low}(n)=B_k(n)=B_k^{\up}(n)$ for all $n$.</p></div>
+</div>
+<p class="stacks-para">Using <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a>, one can show $B_k(n+i_0) = B_k(n)+n+B_k(i_0)$. Iterating this shows
+$$\begin{aligned}B_k(n+Ni_0) = B_k(n)+nN+NB_k(i_0) + \frac{N(N-1)i_0}{2}\end{aligned}$$
+for $1<n\leq i_0$ and $N\geq 0$. In particular, $B_k(n)=\Theta(\frac{1}{i_0}N^2)$.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B0D3.html" class="stacks-tag-link">(B0D3)</a></div>
+  <div class="stacks-env-body"><p>First note that if $\mu^{\max}(i)=m+\frac{k-1}{k}$ for $m$ an integer, then
+$$\begin{aligned}\mu^{\max}(i+1)&=\max_j \{\frac{\lfloor(\mu^{\max}(j)+\frac{1}{k})(i+1-j)\rfloor}{i+1-j}\mid 0<j\leq i\}\\
+    &= \lfloor m+\frac{k-1}{k}+\frac{1}{k}\rfloor = m+1.\end{aligned}$$
+In particular, there is a unique $i_0$ for which $\mu^{\max}(i_0)=\frac{k-1}{k}$ and $\mu^{\max}(i_0+1)=1=1+\mu^{\max}(1)$.</p>
+<p>We will now show $\mu^{\max}(n) = \mu^{\max}(n-i_0) + 1$ for all $n\geq i_0$ using induction on $n$. For the case $n=i_0+1$, $\mu^{\max}(i_0+1)=1$ from above.</p>
+<p>Now suppose $n>i_0+1$.  We first note that $$\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)=(\lfloor\frac{n-1}{i_0}\rfloor-1)+\frac{k-1}{k}$$ is $\frac{k-1}{k}$ by induction.</p>
+<p>Now, we claim that $\mu^{\max}(i)<\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$ for all $i<i_0 \lfloor \frac{n-1}{i_0}\rfloor$. Since $\mu^{\max}(j)$ is weakly increasing in $j$, the point is to prove they are not equal. If $\mu^{\max}(i)$ was equal to $\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0}\rfloor)$, then $\mu^{\max}(i+1)= \mu^{\max}(i)$, which contradicts (6.1).</p>
+<p>By Lemma <a href="/papers/moduli-linear-slices/tag/D37C.html" class="stacks-ref-link">6.2 <span class="stacks-ref-tag">[D37C]</span></a>, $\mu^{\max}(n)$ will be determined by the $i$ between $0$ and $n$ such that $\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}$ is maximized. Let $i(n)$ be this $i$. We claim $i(n) \geq i_0\lfloor \frac{n-1}{i_0}\rfloor$. To get a contradiction, suppose that $i(n) <i_0 \lfloor \frac{n-1}{i_0}\rfloor$.</p>
+<p>Since we have shown above that $\mu^{\max}(i(n))<\mu^{\max}(i_0 \lfloor \frac{n-1}{i_0} \rfloor)$, $\mu^{\max}(i(n))+\frac{1}{k}< \mu^{\max}(i_0 \lfloor \frac{n-1}{i_0} \rfloor)+\frac{1}{k}=\lfloor \frac{n-1}{i_0}\rfloor$, contradicting $i(n) <i_0 \lfloor \frac{n-1}{i_0}\rfloor$.</p>
+<p>Since $i(n) \geq i_0\lfloor \frac{n}{i_0}\rfloor$,
+$$\begin{aligned}\mu^{\max}(n) &=  \frac{\lfloor(\mu^{\max}(i(n))+\frac{1}{k})(n-i(n))\rfloor}{n-i(n)}\\
+   &= \frac{\lfloor(\mu^{\max}(i(n)-i_0)+1+\frac{1}{k})(n-i(n))\rfloor}{n-i(n)}\qquad\text{by induction}\\
+    &= \frac{\lfloor(\mu^{\max}(i(n)-i_0)+\frac{1}{k})((n-i_0)-(i(n)-i_0))\rfloor}{(n-i_0)-(i(n)-i_0)}+1\\
+    &= \max_j \left\{\frac{\lfloor(\mu^{\max}(j)+\frac{1}{k})(n-i_0-j)\rfloor}{n-i_0-j}\mid 0<j\leq n-i_0\right\}+1\qquad\text{by induction}\\
+   &= \mu^{\max}(n-i_0)+1\qquad\text{by definition}\end{aligned}$$
+This concludes our induction for $\mu^{\max}$. From our proof, we also see that
+$$\begin{aligned}i(n)-i_0 &= i(n-i_0).\end{aligned}$$</p>
+<p>Next, we want to show the statement regarding $B_k(n)$. It suffices to show that $B_k^{\low}(n)=B_k^{\up}(n)$ for all $n$. We will show this by induction and can assume $n> 3i_0$ and $B_k^{\low}(i)=B_k^{\up}(i)$ for all $0<i<n$. As before, let $i(n)$ be the minimum $i$ that maximizes $\frac{\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor}{n-i}$.
+By definition, we want to show
+$$\begin{aligned}B_k(i(n))+\lfloor(\mu^{\max}(i(n))+\frac{1}{k})(n-i(n))\rfloor&= \max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor\mid 0<i<n\}.\end{aligned}$$
+The inequality $\leq$ is clear as the left side is one of the terms on the right side. Let $i'$ be an index maximizing the right side. We want to show that $i'> i_0$. If $i'\leq i_0$, then $B^{\up}_k(i')+\lfloor(\mu^{\max}(i')+\frac{1}{k})(n-i')\rfloor$ is less than $n$ as $\mu^{\max}_{i'}+\frac{1}{k}\leq 1$ and $B^{\up}(i')\leq \mu^{\max}(i')i'<i'$. We also crudely bound $B_k^{\low}(n)$ from below.</p>
+<p>To do so, we first bound $B_k^{\low}(3i_0)$ by $3i_0$. From the statement of <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a> regarding $\mu^{\max}$, we know $\mu^{\max}(j)\geq m$ for all $i>m\cdot i_0$. Then,
+$$\begin{aligned}B_k^{\low}(n)&\geq 0\cdot i_0+1\cdot i_0+2\cdot i_0+3(n-3i_0).\end{aligned}$$
+ Since $n>3i_0$, $3i_0 + 3(n-3i_0)=2(n-3i_0)+n>n$, yielding a contradiction.</p>
+<p> Since $i'>i_0$, the right side of (6.3) is
+ $$\begin{aligned}\max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor\mid 0<i<n\}&=\\
+     \max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i)\rfloor\mid i_0<i<n\}&=\\
+     \max\{B_k(i+i_0)+\lfloor(\mu^{\max}(i+i_0)+\frac{1}{k})(n-i-i_0)\rfloor\mid 0<i<n-i_0\}&=\\
+    \max\{B_k(i)+i+B_k(i_0)+\lfloor(\mu^{\max}(i)+1+\frac{1}{k})(n-i-i_0)\rfloor\mid 0<i<n-i_0\}&=\\
+    \max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i-i_0)\rfloor\mid 0<i<n-i_0\}+n-i_0+B_k(i_0)&.\end{aligned}$$
+ But $\max\{B_k(i)+\lfloor(\mu^{\max}(i)+\frac{1}{k})(n-i-i_0)\rfloor\mid 0<i<n-i_0\}=B(n-i_0)$ by induction. Looking at the left side of (6.3), we get
+ $$\begin{aligned}B_k(i(n))+\lfloor(\mu^{\max}(i(n))+\frac{1}{k})(n-i(n))\rfloor&=\\
+     B_k(i(n)-i_0)+(i(n)-i_0)+B_k(i_0)+\lfloor(\mu^{\max}(i(n)-i_0+i_0)+\frac{1}{k})(n-i(n))\rfloor&=\\
+     B_k(i(n)-i_0)+(i(n)-i_0)+B_k(i_0)+\lfloor(\mu^{\max}(i(n)-i_0)+1+\frac{1}{k})(n-i(n))\rfloor&=\\
+    B_k(i(n)-i_0)+\lfloor(\mu^{\max}(i(n)-i_0)+\frac{1}{k})(n-i_0-(i(n)-i_0)\rfloor+n-i_0+B_k(i_0)&=\\
+    B_k(n-i_0)+B_k(i_0)+n-i_0&.\qquad\text{by (6.2)}\end{aligned}$$
+ Therefore, both sides of (6.3) are equal, which is what we wanted.</p></div>
+</div>
+<p class="stacks-para">We can verify the conditions of <a href="/papers/moduli-linear-slices/tag/0A59.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[0A59]</span></a> using a Python program for small $k$. For example, the answer for $k=2,3,4,5$ are given below.
+\begin{comment}
+Crappy code to generate the quadratic polynomials
+import numpy as np
+#generate table until you get to
+def getClosedForm(gap,table,index):
+    J = np.array([[0,0,1],[1,1,1],[4,2,1]])
+    Jinverse = np.linalg.inv(J)
+    polynomials = []
+    for i in range(0,gap):
+        v = np.array([[table[i][index]],[table[i+gap][index]],[table[i+2*gap][index]]])
+        polynomials.append(np.matrix.round(2*np.transpose(Jinverse.dot(v)),5))
+    return polynomials
+\end{comment}</p>
+<div class="stacks-lemma" id="cor-manyquadrics">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.6.</strong> <a href="../tag/9754.html" class="stacks-tag-link">(9754)</a></div>
+  <div class="stacks-env-body"><p>We have the following closed-form expressions for $B_k(n)$ for $k=2,3,4,5$. For $k=2$ and $n\geq 0$
+$$\begin{aligned}B_2(3n+1)&=\frac{3n^2+n}{2} \quad
+    B_2(3n+2)=\frac{3n^2+3n}{2} \quad
+    B_2(3n+3)=\frac{3n^2+5n+2}{2}.\end{aligned}$$
+For $k=3$,
+$$\begin{aligned}B_3(7n+1)&=\frac{7n^2+n}{2}\quad
+    B_3(7n+2)=\frac{7n^2+3n}{2}\quad
+    B_3(7n+3)=\frac{7n^2+5n}{2}\\
+    B_3(7n+4)&=\frac{7n^2+7n+2}{2}\quad
+    B_3(7n+5)=\frac{7n^2+9n+2}{2}\quad
+    B_3(7n+6)=\frac{7n^2+11n+4}{2}\\
+    B_3(7n+7)&=\frac{7n^2+13n+6}{2}.\end{aligned}$$
+\begin{comment}
+getClosedForm(3,generateTable(2,40),3)
+[array([[7., 1., 0.]]),
+ array([[7., 3., 0.]]),
+ array([[7., 5., 0.]]),
+ array([[7., 7., 2.]]),
+ array([[7., 9., 2.]]),
+ array([[ 7., 11.,  4.]]),
+ array([[ 7., 13.,  6.]])]
+\end{comment}
+For $k=4$,
+$$\begin{aligned}B_4(11n+1)&=\frac{11n^2+n}{2}\quad
+    B_4(11n+2)=\frac{11n^2+3n}{2}\quad
+    B_4(11n+3)=\frac{11n^2+5n}{2}\\
+    B_4(11n+4)&=\frac{11n^2+7n}{2}\quad
+    B_4(11n+5)=\frac{11n^2+9n+2}{2}\quad
+    B_4(11n+6)=\frac{11n^2+11n+2}{2}\\
+    B_4(11n+7)&=\frac{11n^2+13n+4}{2}\quad
+    B_4(11n+8)=\frac{11n^2+15n+4}{2}\quad
+    B_4(11n+9)=\frac{11n^2+17n+6}{2}\\
+    B_4(11n+10)&=\frac{11n^2+19n+8}{2}\quad
+    B_4(11n+11)=\frac{11n^2+21n+10}{2}.\quad\end{aligned}$$
+\begin{comment}
+[array([[11.,  1.,  0.]]),
+ array([[11.,  3.,  0.]]),
+ array([[11.,  5.,  0.]]),
+ array([[11.,  7.,  0.]]),
+ array([[11.,  9.,  2.]]),
+ array([[11., 11.,  2.]]),
+ array([[11., 13.,  4.]]),
+ array([[11., 15.,  4.]]),
+ array([[11., 17.,  6.]]),
+ array([[11., 19.,  8.]]),
+ array([[11., 21., 10.]])]
+\end{comment}
+For $k=5$,
+$$\begin{aligned}B_5(19n+1)&=\frac{19n^2+n}{2}\quad
+    B_5(19n+2)=\frac{19n^2+3n}{2}\quad
+    B_5(19n+3)=\frac{19n^2+5n}{2}\\
+    B_5(19n+4)&=\frac{19n^2+7n}{2}\quad
+    B_5(19n+5)=\frac{19n^2+9n}{2}\quad
+    B_5(19n+6)=\frac{19n^2+11n+2}{2}\\
+    B_5(19n+7)&=\frac{19n^2+13n+2}{2}\quad
+    B_5(19n+8)=\frac{19n^2+15n+2}{2}\quad
+    B_5(19n+9)=\frac{19n^2+17n+4}{2}\\
+    B_5(19n+10)&=\frac{19n^2+19n+4}{2}\quad
+    B_5(19n+11)=\frac{19n^2+21n+6}{2}\quad
+    B_5(19n+12)=\frac{19n^2+23n+6}{2}\\
+    B_5(19n+13)&=\frac{19n^2+25n+8}{2}\quad
+    B_5(19n+14)=\frac{19n^2+27n+10}{2}\quad
+    B_5(19n+15)=\frac{19n^2+29n+10}{2}\\
+    B_5(19n+16)&=\frac{19n^2+31n+12}{2}\quad
+    B_5(19n+17)=\frac{19n^2+33n+14}{2}\quad
+    B_5(19n+18)=\frac{19n^2+35n+16}{2}\\
+    B_5(19n+19)&=\frac{19n^2+37n+18}{2}.\end{aligned}$$
+\begin{comment}
+getClosedForm(19,generateTable(5,60),3)</p>
+<p>[array([[19.,  1.,  0.]]),
+ array([[19.,  3.,  0.]]),
+ array([[19.,  5.,  0.]]),
+ array([[19.,  7.,  0.]]),
+ array([[19.,  9.,  0.]]),
+ array([[19., 11.,  2.]]),
+ array([[19., 13.,  2.]]),
+ array([[19., 15.,  2.]]),
+ array([[19., 17.,  4.]]),
+ array([[19., 19.,  4.]]),
+ array([[19., 21.,  6.]]),
+ array([[19., 23.,  6.]]),
+ array([[19., 25.,  8.]]),
+ array([[19., 27., 10.]]),
+ array([[19., 29., 10.]]),
+ array([[19., 31., 12.]]),
+ array([[19., 33., 14.]]),
+ array([[19., 35., 16.]]),
+ array([[19., 37., 18.]])]
+\end{comment}</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Moduli of linear slices of high degree hypersurfaces — Section 6: Bounds and computations for $B_k(n)$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/moduli-linear-slices/section/S6.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/2005.03689">arXiv:2005.03689</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

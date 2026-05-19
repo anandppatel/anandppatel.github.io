@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Lemma 4.18 (EC3B) — Invariants of a general branched cover of $\P^1$</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
           D: "{\\bf D}",
-          P: "{\\bf P}",
+          P: "\\mathbb{P}",
           from: "\\colon",
           into: "{\\hookrightarrow}",
           onto: "\\twoheadrightarrow",
@@ -32,7 +37,7 @@
           sp: ["#1", 1],
           thk: ["{\\mathcal #1}", 1],
           o: ["\\overline{#1}", 1],
-          k: "{\\mathbf K}",
+          k: "{\\mathbb{K}}",
           ideal: ["\\langle #1 \\rangle", 1],
           dual: ["#1^{\\vee}", 1],
           isom: "\\stackrel\\sim\\longrightarrow",
@@ -58,6 +63,14 @@
           epsilon: "\\varepsilon",
           MC: "MC",
           chain: ["\\P_{#1}", 1],
+          rotatebox: ["#2", 2],
+          Xright: "X_{\\text{right}}",
+          Hright: "H_{\\text{right}}",
+          Lambdaright: "\\Lambda_{\\text{right}}",
+          Hleft: "H_{\\text{left}}",
+          Lambdaleft: "\\Lambda_{\\text{left}}",
+          Xleft: "X_{\\text{left}}",
+          Rmiddle: "R_{\\text{middle}}",
           Crimp: "\\operatorname{Crimp}",
           Mor: "\\operatorname{Mor}",
           Def: "\\operatorname{Def}",
@@ -72,8 +85,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\operatorname{{\\mathbf G}}",
-          A: "\\operatorname{{\\mathbf A}}",
+          G: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +94,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\operatorname{\\mathbf F}",
+          F: "\\mathbb{F}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -97,13 +110,43 @@
           im: "\\operatorname{im}",
           three: "\\operatorname{[3]}",
           End: "\\operatorname{End}",
-          Sing: "\\operatorname{Sing}"
+          Sing: "\\operatorname{Sing}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -119,13 +162,14 @@
 <div class="stacks-lemma" id="lemma-flag-description-even">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.18.</strong> <a href="../tag/EC3B.html" class="stacks-tag-link">(EC3B)</a></div>
   <div class="stacks-env-body"><p>Let $\alpha:X \to \chain{a} \in \Sigma_{d,a}$ be given. Assume that $d$ is even and $f(\alpha)=R_1 \cup \ldots \cup R_a$ is quadric-generic. For any node $p_{j} \in \chain{a}$, the
-left flag $L^\bullet_j=(L^1_j\subset L^2_j \subset \ldots \subset L^k_j)$ of $F_\alpha$ may be described as follows:
+left flag $L^\bullet_j=(L^1_j\subset L^2_j \subset \ldots \subset L^k_j)$ of $F_\alpha$ may be described as follows:</p>
 <ol><li>The total space: $L_j^k$ is the vector space of quadrics in $\P^{d-2}$ containing the $d$ anchor
 	points over the $j$-th node.</li>
 <li>$L_j^{k-l}$ is the vector space of quadrics in $\P^{d-2}$ containing the sub-chain $R_{j-l+1} \cup \ldots \cup R_j$.</li>
 <li>The codimension of $L^{k-l}_j \subset L^k_j$ is $l(d-3)$.</li>
 <li>The length $k$ of the flag $L^\bullet_j$ is equal
-to the minimum of $j+1$ and $\frac{d}{2}$.</li></ol></p></div>
+to the minimum of $j+1$ and $\frac{d}{2}$.</li></ol>
+</div>
 </div>
 
 <hr>
@@ -150,7 +194,7 @@ to the minimum of $j+1$ and $\frac{d}{2}$.</li></ol></p></div>
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1504.03756">arXiv:1504.03756</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

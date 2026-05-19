@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 1 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mathbb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 1: Introduction</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS1.html" aria-label="Next: 1.1. Summary of Degenerations" title="Next: 1.1. Summary of Degenerations">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 1. Introduction</h1>
+<p class="stacks-para">Let $V$ be an $(r+1)$-dimensional vector space, and let
+$F \in \on{Sym}^{d}V^\vee$ be a non-zero degree $d$ homogeneous form
+on $V$. The form $F$ naturally produces two varieties, first the
+$GL(V)$-orbit closure</p>
+<p class="stacks-para">$$\Orb(F) \subset \on{Sym}^{d}V^\vee,$$ and secondly its
+projectivization
+$$\P \Orb(F) \subset \P\on{Sym}^{d}V^\vee.$$  The relationship between the
+geometry of $\P \Orb(F)$ and the geometry of the hypersurface $X$
+defined by $\{F=0\}$ remains mostly mysterious.</p>
+<p class="stacks-para">Consider, for example, the enumerative problem of computing the degree
+of $\P \Orb(F)$. The analysis of the degree of $\P \Orb(F)$ was
+carried out for the first two cases $r=1,2$ in a series of remarkable
+papers of Aluffi and Faber
+[AF93a, AF93b, AF00a, AF00c, AF00b, AF10a, AF10b].  Aluffi and
+Faber's computation in the special case $r=2, d=4$ of quartic plane
+curves yields the highly non-trivial enumerative consequence: <em>In
+  a general $6$-dimensional linear system of quartic curves, a general
+  genus $3$ curve arises $14280$ times.</em></p>
+<p class="stacks-para">Our starting point is to interpret the calculation of the degree of
+$\P \Orb(F)$ as equivalent to the computation of the fundamental class
+$[\P \Orb(F)] \in A^{\bullet}(\P \on{Sym}^{d}V^{\vee})$. Our extra
+contributions stem from one very simple observation. Since
+$\P \Orb(F)$ is evidently preserved by the action of $GL(V)$, there is
+a natural <em>equivariant</em> extension of the problem: Compute the <em>equivariant</em> fundamental class
+$$[\P \Orb(F)]_{GL(V)} \in A^{\bullet}_{GL(V)}(\P
+  \on{Sym}^{d}V^{\vee}).$$</p>
+<p class="stacks-para">In elementary terms, beginning with a rank $r+1$ vector bundle
+$\mc{V}$ over a base $B$, the class $[\P \Orb(F)]$ encodes the
+universal expressions in the chern classes
+$c_1\mathcal{V}, ..., c_{r+1}\mathcal{V}$ appearing in the fundamental
+class of the relative orbit closure cycle
+$(\P \Orb(F))_{\mathcal{V}} \subset \P
+\on{Sym}^{d}\mathcal{V}^{\vee}$. This larger equivariant setting
+encodes the solution to many more challenging enumerative
+problems. For instance, our analysis of the case of quartic plane
+curves yields the enumerative consequence: <em>A general genus $3$
+  curve appears $510720$ times as a $2$-plane slice of a fixed general
+  quartic threefold.</em></p>
+<p class="stacks-para">To date, very few equivariant classes $[\P \Orb(F)]_{GL(V)}$ have been
+determined. For quadric hypersurfaces ($d=2$), the class
+$[\P \Orb(F)]_{GL(V)}$ is determined by the rank of the quadric
+hypersurface $F=0$ and its computation amounts to the Porteous formula
+for symmetric maps [HT84]. For another class of examples, the
+authors' work with H. Spink in [LPST20] provides access to
+$[\P \Orb(F)]_{GL(V)}$ when $F=0$ defines a hyperplane arrangement. In
+this paper, we study the frontier case $r=2$ of plane curves. As in
+[LPST20], our strategy will be to <em>specialize</em> the orbit
+$\P \Orb(F)$ until it breaks into a union of other orbits
+$\P \Orb(F_i)$ whose classes are more directly computable. To execute
+this strategy, we initiate a detailed study of how orbits of plane
+curves behave under some common degenerations.  This is our main
+purpose in the paper.</p>
+<p class="stacks-para">We will summarize the results of this study in the next subsection,
+but we emphasize here that the overall picture in the case of quartic
+plane curves is quite neat and beautiful &ndash; we deduce clean
+relationships among different classes $[\P \Orb(F)]_{GL(V)}$ for $F$
+ranging over several types of quartic plane curves possessing special
+geometric properties.</p>
+<p class="stacks-para">Finally, because the computation of equivariant orbit classes does not
+have a strong presence in the literature, we have written an appendix
+containing the $r=1$ case (points on a line) and the $r=2, d=3$ case
+of cubic plane curves. As a refreshing demonstration of alternate
+techniques, the case of points on a line is done in two independent
+ways: one by specializing the results in [LPST20] and the other by
+applying the Atiyah-Bott formula to the resolution of the orbit given
+in [AF93a].</p>
+<h2 class="stacks-subsections-heading">Subsections</h2>
+<ul>
+  <li><a href="S1.SS1.html">1.1. Summary of Degenerations</a></li>
+  <li><a href="S1.SS2.html">1.2. Orbit classes of quartic curves</a></li>
+  <li><a href="S1.SS3.html">1.3. Related Work</a></li>
+  <li><a href="S1.SS4.html">1.4. Assumptions on the characteristic of the base field</a></li>
+  <li><a href="S1.SS5.html">1.5. Acknowledgements</a></li>
+</ul>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 1: Introduction">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>2.3. Isotrivial degenerations — Vector bundles and finite covers</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           k: "k",
@@ -20,18 +25,18 @@
           sectionautorefname: "\\S",
           subsectionautorefname: "\\S",
           subsubsectionautorefname: "\\S",
-          N: "{\\bf N}",
-          Z: "{\\bf Z}",
-          Q: "{\\bf Q}",
-          R: "{\\bf R}",
-          C: "{\\bf C}",
-          P: "{\\bf P}",
-          Gr: "{\\bf Gr}",
-          A: "{\\bf A}",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
           SL: "\\operatorname{SL}",
           GL: "\\operatorname{GL}",
           PGL: "\\operatorname{PGL}",
-          Gm: "{\\bf G}_m",
+          Gm: "\\mathbb{G}_m",
           from: "{\\colon}",
           spec: "\\operatorname{Spec}",
           proj: "\\operatorname{Proj}",
@@ -54,13 +59,43 @@
           id: "\\operatorname{id}",
           br: "\\operatorname{br}",
           Cl: "\\operatorname{Cl}",
-          shExt: "\\operatorname{\\mathscr{E}xt}"
+          shExt: "\\operatorname{\\mathscr{E}xt}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -70,7 +105,7 @@
     <a href="../index.html" class="stacks-paper-link">Vector bundles and finite covers</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.3. Isotrivial degenerations</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <span>2.3. Isotrivial degenerations</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.SS2.html" aria-label="Previous: 2.2. Nodal curves and inflations of the normal bundle" title="Previous: 2.2. Nodal curves and inflations of the normal bundle">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS4.html" aria-label="Next: 2.4. The canonical affine embedding" title="Next: 2.4. The canonical affine embedding">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">2.3. Isotrivial degenerations</h1>
 <p class="stacks-para">We say that a bundle $E$ <em>isotrivially degenerates</em> to a bundle $E_0$ if there exists a pointed smooth curve $(\Delta, 0)$ and a bundle ${\mathcal E}$ on $Y \times \Delta$ such that ${\mathcal E}_{Y \times \{0\}} \cong E_0$ and ${\mathcal E}\big|_{Y \times \{t\}} \cong E$ for every $t \in \Delta \setminus \{0\}$.</p>
@@ -78,19 +113,20 @@
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.8.</strong> <a href="../tag/E16D.html" class="stacks-tag-link">(E16D)</a></div>
   <div class="stacks-env-body"><p>Let $E$ be a vector bundle on $Y$, and let $N$ be a non-negative integer.
   Then $E$ isotrivially degenerates to a vector bundle $E_0$ of the form
-  $$ E_0 = L_1 \oplus \dots \oplus L_r,$$
+  $$E_0 = L_1 \oplus \dots \oplus L_r,$$
   where the $L_i$ are line bundles and $\deg L_i + N \leq \deg L_{i+1}$ for all $i = 1, \dots, r-1$.</p></div>
 </div>
 <p class="stacks-para">For the proof of <a href="/papers/vector-bundles-finite-covers/tag/E16D.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E16D]</span></a>, we need a lemma.</p>
 <div class="stacks-lemma" id="lem-filtration">
   <div class="stacks-env-head"><strong>Lemma&nbsp;2.9.</strong> <a href="../tag/01C4.html" class="stacks-tag-link">(01C4)</a></div>
   <div class="stacks-env-body"><p>There exists a filtration
-  $$ E = F_{0} \supset F_{1} \supset \dots \supset F_{r-1} \supset F_{r} = 0,$$
-  satisfying the following properties.
-  <ol><li>\label{filt1} For every $i \in \{0, \dots, r-1\}$, the sub-quotient $F_{i}/F_{i+1}$ is a line bundle.</li>
-<li>\label{filt2} Set $L_i = F_{i}/F_{i+1}$ for $i \in \{1, \dots, r-1\}$ and $L_r = F_0/F_1$.
+  $$E = F_{0} \supset F_{1} \supset \dots \supset F_{r-1} \supset F_{r} = 0,$$
+  satisfying the following properties.</p>
+<ol><li>For every $i \in \{0, \dots, r-1\}$, the sub-quotient $F_{i}/F_{i+1}$ is a line bundle.</li>
+<li>Set $L_i = F_{i}/F_{i+1}$ for $i \in \{1, \dots, r-1\}$ and $L_r = F_0/F_1$.
     For every $i \in \{1, \dots, r-1\}$, we have
-    $$\deg L_i + N \leq \deg L_{i+1}.$$</li></ol></p></div>
+    $$\deg L_i + N \leq \deg L_{i+1}.$$</li></ol>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D058.html" class="stacks-tag-link">(D058)</a></div>
@@ -105,9 +141,9 @@
   Let $F_{r-2} \subset E$ be the preimage of $L_{r-2}$.
   Continue in this way.
   More precisely, suppose that we have constructed
-  $$ F_j \supset F_{j+1} \supset \dots \supset F_{r-1} \supset F_r = 0$$
+  $$F_j \supset F_{j+1} \supset \dots \supset F_{r-1} \supset F_r = 0$$
   such that $L_i = F_i / F_{i+1}$ satisfy
-  $$ \deg L_{i} \leq \deg L_{i+1} - N,$$
+  $$\deg L_{i} \leq \deg L_{i+1} - N,$$
   and suppose $j \geq 2$.
   Then let $L_{j-1} \subset E/F_j$ be a line bundle with $\deg L_{j-1} \leq \deg L_j - N$ with a locally free quotient.
   Let $F_{j-1} \subset E$ be the preimage of $L_{j-1}$.
@@ -125,7 +161,7 @@
   It is standard that a coherent sheaf degenerates isotrivially to the associated graded sheaf of its filtration.
   The construction goes as follows.
   Consider the $\O_Y[t]$-module
-  $$ \bigoplus_{n \in \Z} t^{-n} F_n,$$
+  $$\bigoplus_{n \in \Z} t^{-n} F_n,$$
   where $F_n = 0$ for $n > r$ and $F_n = E$ for $n < 0$.
   The corresponding sheaf $\mathcal E$ on $Y \times \A^1$ is coherent, $\k[t]$-flat, satisfies $\mathcal E_{Y \times \{t\}} \cong E$ for $t \neq 0$, and $\mathcal E_{Y \times \{0\}} \cong L_1 \oplus \dots \oplus L_r$.</p></div>
 </div>
@@ -152,7 +188,7 @@
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1608.01711">arXiv:1608.01711</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

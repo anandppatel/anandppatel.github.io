@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>6.1. Non-equivariant additivity — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: One-parameter degenerations of generalized matrix orbits</a> / <span>6.1. Non-equivariant additivity</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S6.html" aria-label="Previous: Section 6: One-parameter degenerations of generalized matrix orbits" title="Previous: Section 6: One-parameter degenerations of generalized matrix orbits">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S6.SS2.html" aria-label="Next: 6.2. Regular subdivisions arising from degenerations" title="Next: 6.2. Regular subdivisions arising from degenerations">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.1. Non-equivariant additivity</h1>
+<p class="stacks-para">We now prove that the non-equivariant class $\opc{M}$ is additive (See Section&nbsp;2.1), which is needed in the proof of <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a>. In the next section, we will use <a href="/papers/orbits-equivariant-quantum/tag/F6CF.html" class="stacks-ref-link">Theorem&nbsp;6.6 <span class="stacks-ref-tag">[F6CF]</span></a> to show that the equivariant class $\opc{M}$ is also additive.</p>
+<div class="stacks-definition" id="additivedef">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.8.</strong> <a href="../tag/03F4.html" class="stacks-tag-link">(03F4)</a></div>
+  <div class="stacks-env-body"><p>Let $d, n \geq 0$ be integers. Let $T(d,n)$ to be the abelian group generated by the indicator functions $1_{P_M}$ of rank polytopes of $d \times n$ matrices, modulo functions whose support has codimension at least $1$ in $\Delta$. For a $d \times n$ matrix $M$, we define $\langle M \rangle$ to be the class of $1_{P_M}$ in $T(d,n)$.</p>
+<p>Let $Z$ be an abelian group. Note that a map of sets $\phi : K^{d \times n} \to Z$ is additive if there is an abelian group homomorphism $\tilde\phi : T(d,n) \to Z$ such that $\tilde\phi(\langle M \rangle) = \phi(M)$ for all matrices $M \in K^{d \times n}$. Observe that if such a map exists, it is unique.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.9.</strong> <a href="../tag/1D64.html" class="stacks-tag-link">(1D64)</a></div>
+  <div class="stacks-env-body"><p>If $\phi$ is additive, then $\phi(M)$ depends only on the matroid of $M$, and $\phi(M) = 0$ if $P_M$ has positive codimension in $\Delta$. This in particular occurs if $\rk(M)<d$.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.10.</strong> <a href="../tag/C156.html" class="stacks-tag-link">(C156)</a></div>
+  <div class="stacks-env-body"><p>If $P_M = P_{M_1} \cup \ldots \cup P_{M_k}$ is a subdivision, then $\langle M\rangle = \sum_{i=1}^k \langle M_i\rangle.$</p></div>
+</div>
+<div class="stacks-theorem" id="realvalnoneq">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.11.</strong> <a href="../tag/23B3.html" class="stacks-tag-link">(23B3)</a></div>
+  <div class="stacks-env-body"><p>For each $r$, the association $M \mapsto \opc{M}$ of $d \times n$ matrices to non-equivariant Chow classes is additive.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/32FF.html" class="stacks-tag-link">(32FF)</a></div>
+  <div class="stacks-env-body"><p>Suppose $M_1,\ldots,M_k$ are $d \times n$ matrices with $\sum_{i=1}^k a_i\langle M_i \rangle=0$. By <a href="/papers/orbits-equivariant-quantum/tag/48AB.html" class="stacks-ref-link">Theorem&nbsp;5.2 <span class="stacks-ref-tag">[48AB]</span></a>, the coefficient of $\prod_{i=1}^{n} H_i^{r-e_i}$ in $\sum_{i=1}^k a_i \opc{M_i} $ is given by
+$$\begin{aligned}\sum_{i=1}^k a_i 1_{(r+1) P_{M_i}} (e_1 + \epsilon_1, \ldots, e_n + \epsilon_n)\end{aligned}$$
+for any $0<\epsilon_1,\ldots,\epsilon_n$ with $\sum \epsilon_i=1$.
+Since $\sum_{i=1}^k a_i \langle M_i \rangle = 0$, the sum $\sum_{i=1}^k a_i 1_{(r+1) P_{M_i}}$ is supported on a subset of $(r+1)\Delta$ with codimension at least $1$ in $(r+1)\Delta$. Hence we can find $\epsilon_1, \ldots, \epsilon_n$ with $\sum_{i=1}^k a_i 1_{(r+1) P_{M_i}} (e_1 + \epsilon_1, \ldots, e_n + \epsilon_n) = 0$. Therefore $\sum_{i=1}^k a_i \opc{M_i} = 0$ as no monomial can appear in its expansion.</p></div>
+</div>
+<div class="stacks-lemma" id="positivecodim">
+  <div class="stacks-env-head"><strong>Corollary&nbsp;6.12.</strong> <a href="../tag/95CF.html" class="stacks-tag-link">(95CF)</a></div>
+  <div class="stacks-env-body"><p>The equivariant Chow class $\opc{M}$ is zero if $P_M$ has positive codimension in $\Delta$. Also, if $\opc{M}=0$ then $\opc{M'}=0$ for all $M'$ with the same matroid as $M$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A4B9.html" class="stacks-tag-link">(A4B9)</a></div>
+  <div class="stacks-env-body"><p>For the first part, by <a href="/papers/orbits-equivariant-quantum/tag/23B3.html" class="stacks-ref-link">Theorem&nbsp;6.11 <span class="stacks-ref-tag">[23B3]</span></a> we have the non-equivariant class $\opc{M}=0$. Since $\op{M}$ is effective, it follows that $\op{M} = 0$, so the equivariant class $\opc{M} = 0$.</p>
+<p>For the second part, if $\opc{M}=0$, then $\opc{M'}=0$ non-equivariantly, so $\opc{M'}=0$ equivariantly by the same argument.</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;6.13.</strong> <a href="../tag/36E2.html" class="stacks-tag-link">(36E2)</a></div>
+  <div class="stacks-env-body"><p>The matrix $M$ is connected if and only if $P_M$ is full-dimensional in $\Delta$.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 6.1. Non-equivariant additivity">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S6.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

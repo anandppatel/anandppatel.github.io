@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Section 5 — Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</title>
-  <link rel="stylesheet" href="../../../style.css">
-  <link rel="stylesheet" href="../stacks.css">
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
   <script>
     window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
       tex: {
         inlineMath: [['$', '$']],
         displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
         macros: {
           operatorname: ['\\mathrm{#1}', 1],
           MM: "\\mathcal M",
@@ -18,7 +23,7 @@
           TMM: "\\widetilde{\\mathcal M}",
           BMg: "\\overline{\\mathcal M}_{g}",
           Mg: "\\mathcal M_g",
-          PP: "\\mathbb P",
+          PP: "\\mathbb{P}",
           QQ: "\\mathcal Q",
           BH: "\\overline{H}",
           CC: "\\mathcal C",
@@ -27,7 +32,7 @@
           OO: "\\mathcal O",
           ch: "\\mbox{ch}",
           td: "\\mbox{td}",
-          RR: "\\mathbb R",
+          RR: "\\mathbb{R}",
           HH: "\\mathcal H",
           II: "\\mathcal I",
           LL: "\\mathcal L",
@@ -57,24 +62,54 @@
           red: "\\operatorname{red}",
           Pic: "\\operatorname{Pic}",
           Bl: "\\operatorname{Bl}",
-          bbC: "\\mathbb C",
+          bbC: "\\mathbb{C}",
           bbE: "\\mathbb E",
-          bbF: "\\mathbb F",
+          bbF: "\\mathbb{F}",
           rank: "\\operatorname{rank}",
           chern: "\\operatorname{ch}",
-          bbP: "\\mathbb P",
+          bbP: "\\mathbb{P}",
           bbS: "\\mathbb S",
-          bbQ: "\\mathbb Q",
-          bbR: "\\mathbb R",
-          bbZ: "\\mathbb Z",
+          bbQ: "\\mathbb{Q}",
+          bbR: "\\mathbb{R}",
+          bbZ: "\\mathbb{Z}",
           sm: "\\operatorname{sm}",
-          SL: "\\operatorname{SL}"
+          SL: "\\operatorname{SL}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}"
         }
       },
       svg: { fontCache: 'global' }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
 </head>
 <body>
 <header class="stacks-header">
@@ -84,11 +119,11 @@
     <a href="../index.html" class="stacks-paper-link">Extremal effective divisors of Brill-Noether and Gieseker-Petri type in $\BM_{1,n}$</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Section 5: Pulling back the Gieseker-Petri divisor</span></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 5: Pulling back the Gieseker-Petri divisor</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S4.html" aria-label="Previous: Section 4: Pulling back the $d$-gonal divisor" title="Previous: Section 4: Pulling back the $d$-gonal divisor">&larr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 5. Pulling back the Gieseker-Petri divisor</h1>
 <p class="stacks-para">Consider the gluing map $\pi: \BM_{1,6}\to \BM_4$. Let $GP$ denote the Gieseker-Petri divisor in $\BM_{4}$. The divisor $GP$ has several geometric interpretations. Here we view it as the closure of the locus in $\BM_4$
- parameterizing genus four curves whose canonical images are contained in a quadric cone in $\bbP^3$. By \cite[Theorem 2]{EisenbudHarrisKodaira}, it has class
+ parameterizing genus four curves whose canonical images are contained in a quadric cone in $\bbP^3$. By [EH, Theorem 2], it has class
 $$\begin{aligned}GP & = & 34\lambda - 4\delta_{\irr} - 14\delta_{1} - 18 \delta_2 \\
       & = & 34\lambda - 4\delta - 10\delta_1 - 14\delta_2.\end{aligned}$$
 By Proposition&nbsp;<a href="/papers/extremal-effective-divisors/tag/1537.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[1537]</span></a>, we obtain:
@@ -122,10 +157,11 @@ $\zeta|_{E_i} = f_1|_{E_i} = r$ and $e_{i}|_{E_i} = r-l$. Therefore,
 $$ \big(3\zeta + (a-2)f_{1} - 2e\big) |_{E_i} =  2l + (a-1)r. $$</p>
 <div class="stacks-lemma" id="gen_D">
   <div class="stacks-env-head"><strong>Lemma&nbsp;5.1.</strong> <a href="../tag/A701.html" class="stacks-tag-link">(A701)</a></div>
-  <div class="stacks-env-body"><p>Let $D$ be a general divisor with divisor class $3\zeta + (a-2)f_{1} -2e$ on  $X$, where $a\gg 0$.
+  <div class="stacks-env-body"><p>Let $D$ be a general divisor with divisor class $3\zeta + (a-2)f_{1} -2e$ on  $X$, where $a\gg 0$.</p>
 <ol><li>$D$ is a smooth surface in $X$. Under the map $\varphi : D \to \bbP^1$, the fibers have genus one and the singular fibers are at worst nodal.</li>
 <li>The curves $C_{i} = D \cap E_{i}$ provide smooth $2$-sections to the family $\varphi : D \to \bbP^1$ for $i=1,2,3$. Moreover, the induced double cover $\varphi: C_{i} \to \bbP^1$ has $2a$ ramification points.</li>
-<li>There are exactly $(a+1)$ singular fibers in the family $\varphi : D \to \bbP^1$ having rational tails. Every rational tail meets $C_{i}$ once for each $i$.</li></ol></p></div>
+<li>There are exactly $(a+1)$ singular fibers in the family $\varphi : D \to \bbP^1$ having rational tails. Every rational tail meets $C_{i}$ once for each $i$.</li></ol>
+</div>
 </div>
 <div class="stacks-proof" id="">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7A32.html" class="stacks-tag-link">(7A32)</a></div>
@@ -170,7 +206,7 @@ corresponding to $f_1$ under the isomorphism $\Pi' \cong \Pi$. It gives rise to 
 $$12\chi(\OO_{D}) = K_{D}^2 + c_{2}(T_{D}).$$
 Since the fibers of $\varphi$ have genus one, the intersection number $K_{D}^2$ is $-(a+1)$, where each rational tail contributes $-1$. </p>
 <p>So we need only compute $c_{2}(T_{D})$. Using the exact sequence
-$$0 \to T_{D} \to T_{ X}|_{D} \to N_{D/{X}} \to 0, $$
+$$0 \to T_{D} \to T_{ X}|_{D} \to N_{D/{X}} \to 0,$$
 we see that
 $$\begin{aligned}c_{2}(T_{D}) & = & c_{2}(T_{X}|_{D}) - c_{1}(T_{D}) \cdot c_{1}(N_{D/X})  \\
 & = & c_{2}(T_{X}|_{D}) + K_{D}\cdot c_{1}(N_{D/X})  \\
@@ -184,7 +220,7 @@ where $i: E \to X$ is the inclusion map. For (5.5), we can use the Grothendieck-
 $$c_{1}(T_{E/Z}(E)) = E, $$
 $$c_{2}(T_{E/Z}(E)) = i_{*}[c_{1}(\omega_{E/Z})] = r-2l.$$
 Using the exact sequence
-$$ 0 \to \OO_{Y}(\Sigma+\Pi) \to T_{Y} \to p^{*}(T_{Q}) \to 0, $$ we obtain
+$$0 \to \OO_{Y}(\Sigma+\Pi) \to T_{Y} \to p^{*}(T_{Q}) \to 0,$$ we obtain
 $$c_{2}(T_{Y}) = -K_{Y}\cdot (\Sigma + \Pi) + 4f_{1} \cdot f_{2}.$$
    Finally, we can compute the quantity $c_{2}(T_{D})$ using the equality (5.3) and the intersection numbers given in Lemma&nbsp;<a href="/papers/extremal-effective-divisors/tag/6CFF.html" class="stacks-ref-link">5.2 <span class="stacks-ref-tag">[6CFF]</span></a>.   The end result is
 $$c_{2}(T_{D}) = 13a-11.$$
@@ -199,10 +235,10 @@ Therefore, $12\lambda = -(a+1) + 13a-11 = 12a-12$ as claimed.</p></div>
 <p class="stacks-para">In order to obtain a family of genus one curves with six ordered marked points, we need to perform a base change $T \to \bbP^1$ of degree $2^3 = 8$ to distinguish $p_{2k-1}$ and $p_{2k}$ that are glued as a node for $k=1,2,3$.
 We name the sections so that the marked points $\{p_{2k-1},p_{2k}\}$ correspond to the $2$-section $C_{k}$.
 Then the curve $T$ carries over it a family of genus one curves with six ordered marked points.</p>
-<p class="stacks-para">Using Lemmas&nbsp;<a href="/papers/extremal-effective-divisors/tag/A701.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[A701]</span></a>, <a href="/papers/extremal-effective-divisors/tag/930D.html" class="stacks-ref-link">5.3 <span class="stacks-ref-tag">[930D]</span></a> and the above analysis of singular fibers of $\varphi$, we obtain the following intersection numbers:
+<p class="stacks-para">Using Lemmas&nbsp;<a href="/papers/extremal-effective-divisors/tag/A701.html" class="stacks-ref-link">5.1 <span class="stacks-ref-tag">[A701]</span></a>, <a href="/papers/extremal-effective-divisors/tag/930D.html" class="stacks-ref-link">5.3 <span class="stacks-ref-tag">[930D]</span></a> and the above analysis of singular fibers of $\varphi$, we obtain the following intersection numbers:</p>
 <ol><li>$T \cdot \lambda = 8(a-1)$.</li>
 <li>$T \cdot \delta_{0;\{i,j,k\}} = a+1$ for each triple $(i,j,k) \in \{1,2\} \times \{3,4\} \times \{5,6\}$.</li>
-<li>$T \cdot \delta_{0;\{2k-1,2k\}} = 4 \cdot (2a) = 8a$ for $k = 1, 2, 3$.</li></ol></p>
+<li>$T \cdot \delta_{0;\{2k-1,2k\}} = 4 \cdot (2a) = 8a$ for $k = 1, 2, 3$.</li></ol>
 <p class="stacks-para">All intersections of $T$ with other boundary divisors of $\BM_{1,6}$ are trivial. Plugging these numbers into the expression of $\pi^{*}(GP)$ in (5.1) yields:
 $$T\cdot (\pi^{*}GP) = -16.$$</p>
 <div class="stacks-theorem" id="thm-GP">
@@ -240,7 +276,7 @@ Furthermore, the family $T$ is evidently moving in $\wt{GP}$, hence $\wt{GP}$ is
 </main>
 <footer class="stacks-footer">
   <div class="stacks-footer-inner">
-    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1407.4877">arXiv:1407.4877</a>
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1407.4877">arXiv:1407.4877</a> &middot; <a href="../bibliography.html">Bibliography</a>
   </div>
 </footer>
 </body>

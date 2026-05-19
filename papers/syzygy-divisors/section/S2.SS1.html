@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>2.1. The rational Picard group — Syzygy divisors on Hurwitz spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          todo: ["\\fbox{ToDo: #1}", 1],
+          c: "{\\rm c}",
+          orb: "\\mathcal",
+          O: "{\\mathcal O}",
+          ot: "\\leftarrow",
+          sectionautorefname: "\\S",
+          subsectionautorefname: "\\S",
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          C: "\\mathbb{C}",
+          P: "\\mathbb{P}",
+          Gr: "\\mathbb{G}",
+          A: "\\mathbb{A}",
+          SL: "\\operatorname{SL}",
+          GL: "\\operatorname{GL}",
+          PGL: "\\operatorname{PGL}",
+          Gm: "\\mathbb{G}_m",
+          from: "{\\colon}",
+          spec: "\\operatorname{Spec}",
+          proj: "\\operatorname{Proj}",
+          coker: "\\operatorname{coker}",
+          Blowup: "\\operatorname{Bl}",
+          Hom: "\\operatorname{Hom}",
+          Ext: "\\operatorname{Ext}",
+          Tor: "\\operatorname{Tor}",
+          End: "\\operatorname{End}",
+          Aut: "\\operatorname{Aut}",
+          codim: "\\operatorname{codim}",
+          Pic: "\\operatorname{Pic}",
+          Sym: "\\operatorname{Sym}",
+          rk: "\\operatorname{rk}",
+          id: "\\operatorname{id}",
+          br: "\\operatorname{br}",
+          ch: "\\operatorname{ch}",
+          td: "\\operatorname{td}",
+          Bog: "\\operatorname{Bog}",
+          Bl: "\\operatorname{Bl}",
+          im: "\\operatorname{im}",
+          F: "\\mathbb{F}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Divisors on Hurwitz spaces</a> / <span>2.1. The rational Picard group</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Divisors on Hurwitz spaces" title="Previous: Section 2: Divisors on Hurwitz spaces">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 2.2. Divisors from the topology of covers" title="Next: 2.2. Divisors from the topology of covers">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">2.1. The rational Picard group</h1>
+<p class="stacks-para">Denote by
+$$\alpha \from {\orb C} \to {\orb P}$$
+the universal object over $\widetilde{\orb H}_{d,g}$.
+Here $\pi \from \orb C \to \widetilde{\orb H}_{d,g}$ is a family of irreducible genus $g$ curves with at worst nodal singularities, $p \from \orb P \to \widetilde{\orb H}_{d,g}$ is a family of smooth genus $0$ curves, and $\alpha$ a finite morphism of degree $d$ over $\widetilde{\orb H}_{d,g}$.
+The universal family allows us to write the following two `tautological' divisor classes on $\mathcal H_{d,g}$:
+$$\pi_*\left(\c_1(\omega_\pi^2)\right) \quad \text{and} \quad p_* \left(\c_1(\omega_\pi) \cdot \c_1(\alpha^* \omega_p)\right).$$
+(The third natural product $\c_1(\omega_p)^2$ vanishes.)
+Set
+$$\kappa = \pi_*\left(\c_1(\omega_\pi^2)\right) \quad \text{and} \quad \zeta = \frac{-1}{2}p_* \left(\c_1(\omega_\pi) \cdot \c_1(\alpha^* \omega_p)\right).$$
+Together with the divisor $\Delta$&mdash;the locus of $\alpha \from C \to \P^1$ where $C$ is singular&mdash;we get three divisor classes on $\widetilde H_{d,g}$.
+Conjecturally, these exhaust the Picard group, at least modulo torsion.</p>
+<div class="stacks-env" id="conj-pic">
+  <div class="stacks-env-head"><strong>Conjecture&nbsp;2.1.</strong> <a href="../tag/3E25.html" class="stacks-tag-link">(3E25)</a></div>
+  <div class="stacks-env-body"><p>The divisor classes $\kappa$, $\xi$, and $\Delta$ generate $\Pic_\Q(\widetilde H_{d,g})$.</p></div>
+</div>
+<p class="stacks-para">The conjecture has been proved for $d \leq 5$ and for $d > 2g-2$.
+For $d \leq 5$, the proof uses the unirational parametrization of $\widetilde H_{d,g}$ [7].
+For $d > 2g-2$, the proof uses the fibration $\widetilde H_{d,g} \to M_g$ and the deep result of Harer that $\Pic_Q M_g$ has rank 1 [16, 8].
+The intermediate cases are still open.
+At any rate, all the divisors we consider in this paper can be written explicitly as linear combinations of $\kappa$, $\zeta$, and $\Delta$.</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Syzygy divisors on Hurwitz spaces — 2.1. The rational Picard group">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/syzygy-divisors/section/S2.SS1.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.00648">arXiv:1805.00648</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

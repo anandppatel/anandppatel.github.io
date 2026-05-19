@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>6.5. Degenerating the orbit of $C_{\on{flex}}[j]$ — Equivariant Degenerations of Plane Curve Orbits</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          rood: ["\\ignorespaces", 1],
+          on: "\\operatorname",
+          mb: "\\mathbb",
+          ol: "\\overline",
+          mc: "\\mathcal",
+          ms: "\\mathscr",
+          Spec: "\\on{Spec}",
+          rank: "\\on{rank}",
+          wt: "\\widetilde",
+          P: "\\mathbb{P}",
+          Orb: "\\mathsf{Orb}",
+          k: "\\mathbb{C}",
+          p: "\\mathsf{p}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          F: "\\mathbb{F}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degeneration II: Acquiring nodes and cusps</a> / <span>6.5. Degenerating the orbit of $C_{\on{flex}}[j]$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S6.SS4.html" aria-label="Previous: 6.4. Degeneration to a cusp" title="Previous: 6.4. Degeneration to a cusp">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S6.SS6.html" aria-label="Next: 6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$" title="Next: 6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">6.5. Degenerating the orbit of $C_{\on{flex}}[j]$</h1>
+<p class="stacks-para">In this subsection, we will study how $\P \Orb(C_{\on{flex}}[j])$
+specializes as we vary the $j$-invariant to $\infty$.  The outcome
+will be the proof of <a href="/papers/equivariant-degenerations/tag/929B.html" class="stacks-ref-link">Proposition&nbsp;6.2 <span class="stacks-ref-tag">[929B]</span></a>.  In order to proceed, we
+introduce and study particular variety which will induce the
+specialization implicit in <a href="/papers/equivariant-degenerations/tag/929B.html" class="stacks-ref-link">Proposition&nbsp;6.2 <span class="stacks-ref-tag">[929B]</span></a>.</p>
+<div class="stacks-definition" id="def-W">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.13.</strong> <a href="../tag/5399.html" class="stacks-tag-link">(5399)</a></div>
+  <div class="stacks-env-body"><p>Define
+  $$\mathcal{W} \subset \P \on{Sym}^{3}V^{\vee} \times \P V^{\vee}
+    \times \P V$$ to be the closed subvariety parametrizing triples
+  $(C,L,p)$ where $L$ is a line meeting the cubic curve $C$ at the
+  point $p$ with multiplicity $\geq 3$.  Let $p_{1}, p_{2}, p_{3}$
+  denote the projections of $\mathcal{W}$ to the respective factors.
+  Finally, we let $H_{\on{curve}}, H_{\on{line}}$ and $H_{\on{point}}$
+  denote the pullbacks of hyperplane classes under the maps
+  $p_{1}, p_{2}, p_{3}$ respectively.</p></div>
+</div>
+<p class="stacks-para">It is easy to see that $\mathcal{W}$ is smooth: Indeed, $\mathcal{W}$
+is a projective bundle over the smooth $3$-dimensional incidence
+variety parametrizing pairs $(L,p)$ with $p \in L$.</p>
+<div class="stacks-definition" id="def-j">
+  <div class="stacks-env-head"><strong>Definition&nbsp;6.14.</strong> <a href="../tag/690C.html" class="stacks-tag-link">(690C)</a></div>
+  <div class="stacks-env-body"><p>We let $$J: \mathcal{W} \dashrightarrow \P^1$$ denote the rational
+  map which sends a triple $(C,L,p)$ to the $j$-invariant $j(C)$.</p></div>
+</div>
+<p class="stacks-para">The $j$-invariant is well-defined (and finite) for smooth cubics.  It
+takes on the value $\infty$ for a cubic with a single node, for a
+cubic with two nodes (i.e. a smooth conic union a line), and for a
+cubic with three nodes (i.e. a union of three non-concurrent lines).
+For any other cubic curve, the $j$-invariant is not defined.</p>
+<p class="stacks-para">For each $j \in \P^{1}$ let
+$$\begin{aligned}\mathcal{W}_{j} \subset \mathcal{W}\end{aligned}$$
+  denote the divisor (possibly non-reduced) given by $J^{-1}(j)$.
+  This is well-defined, as the locus of indeterminacy of $J$ has
+  codimension at least $2$.  $J$ determines a rational equivalence of
+  cycles:
+  $$[\mathcal{W}_{j}] \sim [\mathcal{W}_{\infty}].$$</p>
+<p class="stacks-para">Our short-term objective is to understand the irreducible components
+  of $\mathcal{W}_{\infty}$.  We leave it to the reader to check that
+  $\mathcal{W}_{\infty}$ has precisely three irreducible components:</p>
+<ul><li><strong>$\mathcal{W}_{BN, \infty}$</strong> : This is the closure of the locus
+  of triples $(C,L,p)$ where $C$ has a unique node at $p$ and $L$ is
+  one of the branches at the node,</li>
+<li><strong>$\mathcal{W}_{AN, \infty}$</strong> : This is the closure of the locus
+  of those triples $(C,L,p)$ such that $C$ has a unique node, $p$ is a
+  (smooth) flex point of $C$, and $L$ is the flex line at $p$.</li>
+<li><strong>$\mathcal{W}_{\on{conic}}$</strong> : This is the closure of the locus
+  of those triples $(C,L,p)$ such that $C = Q \cup L$, where $Q$ is a
+  smooth conic, and $p \in L$ is a general point.</li></ul>
+<p class="stacks-para">Thus, for any finite $j \in \P^{1}$, we $J$ provides a
+$GL(V)$-equivariant rational equivalence:
+$$\begin{aligned}[\mathcal{W}_{j}] \sim t_{BN} \cdot [\mathcal{W}_{BN, \infty}] + t_{AN} \cdot [\mathcal{W}_{AN, \infty}] + t_{\on{conic}} \cdot [\mathcal{W}_{\on{conic}}].\end{aligned}$$</p>
+<p class="stacks-para">We must determine the two multiplicities $t_{BN},t_{AN}$ in
+particular, because $[\mathcal{W}_{\on{conic}}]$ will not matter in
+the final analysis.</p>
+<div class="stacks-lemma" id="prop-tBNtAN">
+  <div class="stacks-env-head"><strong>Proposition&nbsp;6.15.</strong> <a href="../tag/205D.html" class="stacks-tag-link">(205D)</a></div>
+  <div class="stacks-env-body"><p>In (6.5), $t_{BN} = 3$ and $t_{AN} = 1$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A954.html" class="stacks-tag-link">(A954)</a></div>
+  <div class="stacks-env-body"><p>Recall from <a href="/papers/equivariant-degenerations/tag/5399.html" class="stacks-ref-link">Definition&nbsp;6.13 <span class="stacks-ref-tag">[5399]</span></a> the class $H_{\on{curve}}$ on $\mathcal{W}$
+  corresponding to the line bundle $p_{1}^{*}(\mathcal{O}(1))$.  Upon
+  intersecting both sides of (6.5) by $H_{\on{curve}}^{8}$
+  we get:
+  $$\begin{aligned}\int_{\mathcal{W}} H_{\on{curve}}^{8} \cdot  [\mathcal{W}_{j}]  = t_{BN} \int_{\mathcal{W}}H_{\on{curve}}^{8} \cdot   [\mathcal{W}_{BN, \infty}] + t_{AN} \int_{\mathcal{W}}H_{\on{curve}}^{8} \cdot  [\mathcal{W}_{AN, \infty}] + 0.\end{aligned}$$
+  The $0$ arises because the cycle $\mathcal{W}_{\on{conic}}$ gets
+  contracted under the projection $p_{1}$.  Now, we simply determine
+  the three integrals above.</p>
+<ol><li>$\int_{\mathcal{W}} H_{\on{curve}}^{8} \cdot [\mathcal{W}_{j}] =
+    12 \times 9$ because, in a general pencil of cubic curves, a given
+    $j$-value arises $12$ times, and each smooth cubic has $9$ flexes.</li>
+<li>$\int_{\mathcal{W}}H_{\on{curve}}^{8} \cdot [\mathcal{W}_{BN,
+      \infty}] = 12 \times 2$ because, in a general pencil of cubics,
+    there are $12$ singular cubics and each one has two branch lines,</li>
+<li>$\int_{\mathcal{W}}H_{\on{curve}}^{8} \cdot [\mathcal{W}_{AN,
+      \infty}] = 12 \times 3$ because, a general pencil of cubics has
+    $12$ singular members, and each has $3$ (smooth) flex points.</li></ol>
+<p>Therefore, we conclude that $$108 = 24t_{BN} + 36t_{AN}.$$ The only
+  positive integer solution to this latter equation is
+  $t_{BN} = 3, t_{AN} = 1$, and the proposition is proved.</p>
+</div>
+</div>
+<p class="stacks-para">\begin{comment}</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of jdegeneration.</em> <a href="../tag/8B2A.html" class="stacks-tag-link">(8B2A)</a></div>
+  <div class="stacks-env-body"><p>Let $W$ denote the smooth variety parametrizing triples $(C,L,p)$
+  where $C$ is a plane cubic, $p \in C$ is a point and $L$ is a line
+  containing $p$ which meets $C$ with multiplicity at least $3$ at
+  $p$.  ($W$ is similar to the variety $V$ from the proof of
+  <a href="/papers/equivariant-degenerations/tag/13BA.html" class="stacks-ref-link">Lemma&nbsp;6.8 <span class="stacks-ref-tag">[13BA]</span></a>, however we allow $C$ to be an arbitrary
+  smooth cubic curve.  Therefore, $V$ is a closed subvariety of $W$.)</p>
+<p>  The $9$ dimensional variety $W$ has a natural projection to the
+  projective space $\mb{P}^{9}$ of cubic plane curves, and also has a
+  projection to the projective space $\mb{P}^{2*}$ of lines in
+  $\mb{P}^{2}$. We let $H$ and $h$ denote the divisor classes on $W$
+  corresponding to the respective pullbacks of $\mc{O}(1)$ under these
+  projections. Just as in the proof of <a href="/papers/equivariant-degenerations/tag/13BA.html" class="stacks-ref-link">Lemma&nbsp;6.8 <span class="stacks-ref-tag">[13BA]</span></a>,
+  the divisor class $H + (d-3)h$ is the pullback of $\mc{O}(1)$ under
+  the map $$f: W \to \mb{P}^{{d+2 \choose 2}-1}$$ sending $(C,L,p)$ to
+  the curve $C + (d-3)L$.</p>
+<p>  For each $j\in \mb{P}^1$, define the $8$ dimensional subvariety
+  $W_{j} \subset W$ to be the closure of the locus of triples
+  $(C,L,p)$ where $C$ is a cubic with $j$-invariant $j$. Let
+  $W_{\infty,AN},W_{\infty,BN}\subset W_\infty$ be the two components
+  of $W_\infty$, where $W_{\infty,AN}$ consists of triples $(C,L,p)$
+  where $C$ is singular at $p$ and $W_{\infty,BN}$ is the closure of
+  the triples $(C,L,p)$ where $C$ is smooth at $p$. By specializing
+  $j$ to $\infty$, we get
+  $$\begin{aligned}[W_{j}]\simeq A[W_{\infty,AN}]+B[W_{\infty,BN}]+C[Z],\end{aligned}$$
+  with $A,B,C$ positive integers and $j$ general. Here, $Z$ consists of $(C,L,p)$ where $C$ is the union of a conic and $L$ and $p$ is on $L$. Now, we intersect both sides of the equation with $H^8$, where $H$ is the hyperplane class pulled back from the $\mb{P}^9$ of cubic plane curves. </p>
+<p>  Specifically, $[W_{j}]H^8=12\cdot 9=108$, where $12$ is the degree of the orbits closure of a cubic with a fixed $j$-invariant and $9$ is the number of flexes on such a cubic. Similarly, we can compute $[W_{\infty,AN}]H^8=3\cdot 12=36$ and $[W_{\infty,BN}]H^8=2\cdot 12=24$, where we have $3$ smooth flexes of a nodal cubic and $2$ branches at a node, respectively. We know that the intersections are all multiplicity $1$ by Bertini. Finally, $H^8\cdot [Z]=0$. </p>
+<p>  We conclude by noting that $A=1$ and $B=3$ are the only positive integer solutions to $108=36A+24B$.</p></div>
+</div>
+<p class="stacks-para">\end{comment}</p>
+<div class="stacks-proof" id="proof-CANCBN">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/equivariant-degenerations/tag/929B.html" class="stacks-ref-link">Proposition&nbsp;6.2 <span class="stacks-ref-tag">[929B]</span></a>.</em> <a href="../tag/2394.html" class="stacks-tag-link">(2394)</a></div>
+  <div class="stacks-env-body"><p>The rational equivalence induced by $J$ in (6.5) is
+  evidently $GL(V)$-equivariant. We push forward this rational
+  equivalence to $\P \on{Sym}^{d}V^{\vee}$ via the map
+  $\varphi: \mathcal{W} \to \on{Sym}^{d}V^{\vee}$ sending $(C,L,p)$ to
+  the curve $C \cup (d-3)L$, and after using <a href="/papers/equivariant-degenerations/tag/205D.html" class="stacks-ref-link">Proposition&nbsp;6.15 <span class="stacks-ref-tag">[205D]</span></a>, the
+  proposition follows.</p></div>
+</div>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 6.5. Degenerating the orbit of $C_{\on{flex}}[j]$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.SS5.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1903.10069">arXiv:1903.10069</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

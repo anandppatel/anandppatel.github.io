@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Section 9 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260517">
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          operatorname: ['\\mathrm{#1}', 1],
+          mb: "\\mathbb",
+          mf: "\\mathfrak",
+          mc: "\\mathcal",
+          im: "{\\rm im}",
+          ol: "\\overline",
+          wt: "\\widetilde",
+          codim: "{\\rm codim}",
+          Hilb: "{\\rm Hilb}",
+          RHilb: "\\wt{{\\rm Hilb}}",
+          Chow: "{\\rm Chow}",
+          Spec: "{\\rm Spec}",
+          Prob: "{\\rm Prob}",
+          F: "\\mathbb{F}",
+          Fo: "F_{0,1}",
+          Co: "{\\rm Contain}",
+          Span: "{\\rm Span}",
+          Hyp: "{\\rm Hyp}",
+          rank: "{\\rm rank}",
+          Supp: "{\\rm Supp}",
+          Hom: "{\\rm Hom}",
+          ms: "\\mathscr",
+          OO: "\\mathscr{O}",
+          M: "\\ol{\\mc{M}}",
+          ev: "{\\rm ev}",
+          Ve: "{\\rm Vertex}",
+          Ed: "{\\rm Edge}",
+          Fl: "{\\rm Flag}",
+          Ta: "{\\rm Tail}",
+          NE: "{\\rm NE}",
+          Nef: "{\\rm Nef}",
+          pt: "{\\rm pt}",
+          rk: "{\\rm rk}",
+          MM: "{\\mathcal M}",
+          NN: "{\\mathcal N}",
+          pr: "{\\rm pr}",
+          Vt: "{\\operatorname{Vert}}",
+          Gr: "\\mathbb{G}",
+          ord: "{\\operatorname{ord}}",
+          conv: "{\\operatorname{conv}}",
+          headrulewidth: "0.4pt",
+          footrulewidth: "0.4pt",
+          theMain: "",
+          Sol: "\\text{Sol}",
+          A: "\\mathbb{A}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          C: "\\mathbb{C}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          N: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          P: "\\mathbb{P}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          Q: "\\mathbb{Q}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          Z: "\\mathbb{Z}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Mitchell Lee, Anand Patel, Hunter Spink, Dennis Tseng</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 9: Formulas for $\opc{M}$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S8.SS2.html" aria-label="Previous: 8.2. Proof of Theorem 8.2 [367A]" title="Previous: 8.2. Proof of Theorem 8.2 [367A]">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S10.html" aria-label="Next: Section 10: Kronecker duals of $\opc{M}$ and constructing $[M]_\hbar$" title="Next: Section 10: Kronecker duals of $\opc{M}$ and constructing $[M]_\hbar$">&rarr;</a></nav></div>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Section 9. Formulas for $\opc{M}$</h1>
+<p class="stacks-para">In this section, we will derive the formulas for the equivariant Chow classes of $\opc{M}$ using Brion's theorem on rational convex polytopes. In the special case $d=r+1$, by Section&nbsp;13 the formula in <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a> (<a href="/papers/orbits-equivariant-quantum/tag/2A79.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[2A79]</span></a> from the introduction) induces the localized classes at the torus-fixed points of the Grassmannian computed in [BF17, Lemma 5.2].</p>
+<p class="stacks-para">\begin{comment}
+For a $d \times n$ matrix $M$ and $B$ a basis of $M$, let $(S_n)_{M,B}$ be the set of permutations $(i_1,\ldots,i_n) \in S_n$ such that the lexicographic first basis of $M$ to appear in $i_1i_2\cdots i_n$ is $B$. Note that the $(S_n)_{M,B}$ partition $S_n$ for fixed $M$.</p>
+<div class="stacks-theorem" id="finkformulas">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;9.1.</strong> <a href="../tag/EC75.html" class="stacks-tag-link">(EC75)</a></div>
+  <div class="stacks-env-body"><p>For all $d \times n$ matrices $M$, we have the equivariant Chow class $\opc{M}$ is given by $$\opc{M}=\sum_{\textrm{A basis of }M} \left(\prod_{j \not \in A}  F(H_j)\right) \sum_{(i_1,\ldots,i_n)\in (S_n)_{M,B}} \frac{1}{(H_{i_2}-H_{i_1})\ldots (H_{i_{n}}-H_{i_{n-1}})}.$$</p></div>
+</div>
+<p class="stacks-para">\end{comment}
+For each permutation $\sigma=(\sigma(1),\ldots,\sigma(n))$ of $\{1,\ldots,n\}$, define the total ordering $\prec_\sigma$ on $\{1, \ldots, n\}$ by $\sigma(1)\prec_\sigma \cdots\prec_\sigma\sigma(n)$. This total ordering induces a (lexicographic) total ordering on the $d$-element subsets of $\{1, \ldots, n\}$.</p>
+<div class="stacks-theorem" id="finkformulas">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;9.2.</strong> <a href="../tag/C75C.html" class="stacks-tag-link">(C75C)</a></div>
+  <div class="stacks-env-body"><p>Let $M$ be a $d \times n$ matrix with columns $x_1,\ldots, x_n \ne 0$. If $\rk(M) < d$, then $\op{M} = 0$. Otherwise, for each permutation $\sigma$ of $\{1,\ldots,n\}$, let $B(\sigma)$ be the lexicographically first $d$-element subset of $\{1,\ldots,n\}$ with respect to the ordering $\prec_\sigma$ such that $e_{B(\sigma)} \in \Vt(P_M)$. Then for indeterminates $z_1,\ldots,z_n$, the expression
+$$\sum_{\sigma \in S_n} \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} F(z_i)\right)\frac{1}{(z_{\sigma(2)}-z_{\sigma(1)})\ldots (z_{\sigma(n)}-z_{\sigma(n-1)})}$$ is a polynomial of degree at most $r$ in each $z_i$ with coefficients in $A^{\bullet}_{GL_{r+1}}(\pt)$, and the equivariant Chow class $\opc{M}$ is given by evaluating this polynomial at $H_1,\ldots,H_r$, or informally
+$$\opc{M}=\sum_{\sigma \in S_n} \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} F(H_i)\right)\frac{1}{(H_{\sigma(2)}-H_{\sigma(1)})\cdots (H_{\sigma(n)}-H_{\sigma(n-1)})}.$$</p></div>
+</div>
+<div class="stacks-commentary" id="">
+  <div class="stacks-env-head"><strong>Remark&nbsp;9.3.</strong> <a href="../tag/37DD.html" class="stacks-tag-link">(37DD)</a></div>
+  <div class="stacks-env-body"><p>The expression for $\opc{M}$ must be evaluated by first writing (8.1) as a polynomial <em>before</em> plugging in the $H_i$. This is because the denominators appearing in (8.2) are zero-divisors (e.g. $H_i-H_j$ is killed by $\frac{F(H_i)-F(H_j)}{H_i-H_j}$).</p></div>
+</div>
+<p class="stacks-para">Before proving <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a>, we introduce notation and recall a classical theorem of Gale.</p>
+<div class="stacks-definition" id="">
+  <div class="stacks-env-head"><strong>Definition&nbsp;9.4.</strong> <a href="../tag/C312.html" class="stacks-tag-link">(C312)</a></div>
+  <div class="stacks-env-body"><p>For any permutation $\sigma \in S_n$, let $C_\sigma$ be the cone generated by all vectors of the form $e_{i}-e_{j}$ with $i \succ_\sigma j$.</p></div>
+</div>
+<div class="stacks-lemma" id="galemaximality">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;9.5.</strong> <a href="../tag/8355.html" class="stacks-tag-link">(8355)</a></div>
+  <div class="stacks-env-body"><p>For any permutation $\sigma \in S_n$ and any $d \times n$ matrix $M$, define $B(\sigma)$ as in the statement of <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a>. Then we have $P_M + C_\sigma = e_{B(\sigma)} + C_\sigma$.</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/82E2.html" class="stacks-tag-link">(82E2)</a></div>
+  <div class="stacks-env-body"><p>This is equivalent to the statement that if $B'$ is a $d$-element subset of $\{1, \ldots, n\}$ such that $e_{B'} \in \Vt(P_M)$, then there is a bijection $f : B(\sigma) \to B'$ such that $f(i) \succeq_\sigma i$ for all $i \in B(\sigma)$. This is the Gale&nbsp;Maximality&nbsp;Principle; see [Bor03, Theorem 1.1] or [Gal68].</p></div>
+</div>
+<p class="stacks-para">Let $Z$ be the abelian group generated by indicator functions of possibly unbounded rational convex polytopes in $\mb{R}^n$, and let $\phi : Z \to \mb{Q}(z_1, \ldots, z_n)$ be the Brion homomorphism, which sends the indicator function of a (possibly unbounded) convex polytope $P$ not containing a line to the integer point transform of $P$ [BHS09, Theorem 2.4]. If $P$ is a convex polytope containing a line, then $\phi(P) = 0$ [BHS09, Lemma 2.5]. We sometimes denote $\phi(1_P)$ by $\phi(P)$.</p>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a>.</em> <a href="../tag/81A5.html" class="stacks-tag-link">(81A5)</a></div>
+  <div class="stacks-env-body"><p class="stacks-para">If $\rk(M) < d$, then $\op{M} = 0$, so we may assume $\rk(M) = d$. First, we will show for all $r$ that substituting $F(H) = H^{r+1}$ into the right-hand side of (8.2) yields the expression for the non-equivariant class $\opc{M} \in A^\bullet((\mb{P}^r)^n)$ with degree at most $r$ in each $H_i$.</p>
+<p class="stacks-para">Let $\alpha = (r+\frac{1}{n})(1,\ldots,1)$ and let $P'_M = \alpha -(r+1)P_M$. By <a href="/papers/orbits-equivariant-quantum/tag/48AB.html" class="stacks-ref-link">Theorem&nbsp;5.2 <span class="stacks-ref-tag">[48AB]</span></a>, the non-equivariant class $\opc{M}$ is the sum of $\prod_{i=1}^n H_i^{e_i}$ over all $(e_i)\in P'_M$, and this sum has degree at most $r$ in each $H_i$. Hence
+$\opc{M} = \phi(P'_M) (H_1,\ldots, H_n)$ non-equivariantly, so we wish to show that
+$$\phi(P'_M) = \sum_{\sigma \in S_n} \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} z_i^{r+1}\right)\frac{1}{(z_{\sigma(2)}-z_{\sigma(1)})\cdots (z_{\sigma(n)}-z_{\sigma(n-1)})}.$$
+We will do so using the following lemma.</p>
+<div class="stacks-lemma" id="addallcones">
+  <div class="stacks-env-head"><strong>Lemma&nbsp;9.6.</strong> <a href="../tag/6836.html" class="stacks-tag-link">(6836)</a></div>
+  <div class="stacks-env-body"><p>Let $P \subset \mb{R}^n$ be a rational convex polytope. Then $$\phi(P) = \sum_{\sigma \in S_n} \phi(P + C_\sigma).$$</p></div>
+</div>
+<div class="stacks-proof" id="">
+  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F298.html" class="stacks-tag-link">(F298)</a></div>
+  <div class="stacks-env-body"><p>Let $\mc{P}$ be the convex hull of the vectors $$w_\sigma = -(\sigma^{-1}(1), \ldots, \sigma^{-1}(n)) + ((n+1)/2, \ldots, (n+1)/2)$$ for all $\sigma \in S_n$. (This is the permutohedron [Hoh12, Example 2.6] translated so that it contains $0$.) The tangent cone to $\mc{P}$ at $w_\sigma$ is $w_\sigma + C_\sigma$.</p>
+<p>For a sufficiently small rational number $\epsilon > 0$, the polytopes $P$ and $P_\epsilon := P + \epsilon \mc{P}$ have the same lattice points, so $\phi(P) = \phi(P_\epsilon)$. Now, by the description of vertices of Minkowski sums in Section&nbsp;14 and Brion's&nbsp;Theorem [BHS09, p.3], we have $\phi(P) = \phi(P_\epsilon)$ can be written as
+$$\sum_{u \in \Vt(P_\epsilon)} \phi(T_{u, P_\epsilon})
+= \sum_{\sigma \in S_n} \sum_{v \in \Vt(P)}  \phi(T_{v, P} + \epsilon w_\sigma + C_\sigma)
+= \sum_{\sigma \in S_n} \phi(P + \epsilon w_\sigma + C_\sigma).$$
+In each equality we used the vanishing of $\phi$ on cones containing lines.</p>
+<p>Since $- w_\sigma \in C_\sigma$, the polytopes $P + \epsilon w_\sigma + C_\sigma$ and $P + C_\sigma$ have the same lattice points for sufficiently small $\epsilon$. Hence this sum is equal to $\sum_{\sigma \in S_n} \phi(P + C_\sigma)$ as desired.</p></div>
+</div>
+<p class="stacks-para">Continuing the proof of <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a>, applying <a href="/papers/orbits-equivariant-quantum/tag/6836.html" class="stacks-ref-link">Lemma&nbsp;9.6 <span class="stacks-ref-tag">[6836]</span></a> with $P = P'_M$ we obtain
+$$\begin{aligned}\phi(P'_M) = \sum_{\sigma \in S_n} \phi(P'_M + C_\sigma)
+=\sum_{\sigma \in S_n} \phi(\alpha-(r+1)P_M + C_\sigma)
+= \sum_{\sigma \in S_n} \phi(\alpha-(r+1)(P_M + C_\sigma))\end{aligned}$$
+where the last equality comes from replacing $\sigma$ with its reverse $\sigma^r = (\sigma(n), \ldots, \sigma(1))$. By <a href="/papers/orbits-equivariant-quantum/tag/8355.html" class="stacks-ref-link">Lemma&nbsp;9.5 <span class="stacks-ref-tag">[8355]</span></a>, the term of this sum is equal to</p>
+<p class="stacks-para">$$\begin{aligned}\phi(\alpha-(r+1)(e_{B(\sigma)} + C_\sigma)) &= \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} z_i^{r+1}\right) (z_1 \cdots z_n)^{-1} \phi((1/n,\ldots,1/n) -  C_\sigma)\\
+&= \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} z_i^{r+1}\right)(z_1 \cdots z_n)^{-1} z_{\sigma(1)} \frac{1}{\left(1 - \frac{z_{\sigma(1)}}{z_{\sigma(2)}}\right) \cdots \left(1 - \frac{z_{\sigma(n-1)}}{z_{\sigma(n)}}\right)} \\
+&= \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} z_i^{r+1}\right)\frac{1}{(z_{\sigma(2)}-z_{\sigma(1)})\cdots (z_{\sigma(n)}-z_{\sigma(n-1)})}\end{aligned}$$
+where we used the fact that the polytopes $(1/n,\ldots,1/n) -  C_\sigma$ and $e_{\sigma(1)} - C_\sigma$ have the same lattice points, from which (8.3) follows.</p>
+<p class="stacks-para">\begin{comment}
+By Brion's theorem and the description of vertices of Minkowski sums in Section&nbsp;14, we have
+$$\begin{aligned}\phi(P'_\epsilon) &= \sum_{u \in \Vt(P'_\epsilon)} \phi(u + T_{u, P'_\epsilon}) \\
+&= \sum_{w \in \Vt( \mc{P}')} \sum_{v \in \Vt(P')}  \phi(v + T_{v, P'_\epsilon} + \epsilon w + T_{w, \mc{P}'}) \\
+&= \sum_{w \in \Vt( \mc{P}')} \phi(P' + \epsilon w + T_{w, \mc{P}'}).\end{aligned}$$
+In the second and third equality, we use the fact that if $P$ is a convex polytope containing a line, then $\phi(P) = 0$. Now, recall that the vertices of $\mc{P}'$ are the points $w_\sigma := \mc{P}_\sigma + ((n+1)/2, \ldots, (n+1)/2)$ for $\sigma \in S_n$, and the tangent cone $T_{w_\sigma, \mc{P}'}$ is $C_\sigma$. Hence, this sum becomes
+$$\begin{aligned}\phi(P'_\epsilon) &= \sum_{\sigma \in S_n} \phi(P'_\epsilon + \epsilon w_\sigma + C_\sigma).\end{aligned}$$
+We have $P'_\epsilon = $
+Choose $\epsilon$ small enough that $C_\sigma + \epsilon w_\sigma$ and</p>
+<p class="stacks-para">For any polytope $P$, applying the Brianchon-Gram theorem [Haase, Section 1.1] to the Minkowski sum $P+\epsilon \mathcal{P}$, we may write $1_{P+\epsilon\mathcal{P}}$ as an alternating sum of tangent cones at faces. Letting $\epsilon \to 0$, we obtain $1_P$ as an alternating sum of limiting tangent cones of $1_{P+\epsilon\mathcal{P}}$. Then by the description of Minkowski sums of vertices in Section&nbsp;14, we have $\phi(P)=\sum_\sigma\sum_{v \in \Vt(P)} \phi(v+T_{v,P}+C_\sigma)$.
+Taking $P=(r+1)P_M-(\frac{1}{n},\ldots,\frac{1}{n})$, as $P_M+C_\sigma=v_\sigma+C_\sigma$, for fixed $\sigma$ all terms in the sum except the one corresponding to $(r+1)v_\sigma-(\frac{1}{n},\ldots,\frac{1}{n})$ are zero as the other cones contain (translated) lines $\mb{R}(v-v_{\sigma})$. Hence,</p>
+<p class="stacks-para">The cone $C_\sigma-(1/n,\ldots,1/n)$ has the same lattice points as $C_\sigma-e_{\sigma(1)}$, so $$\phi(C_{\sigma}-(1/n,\ldots,1/n))=\frac{1}{(1-\frac{z_{\sigma(2)}}{z_{\sigma(1)}})\ldots(1-\frac{z_{\sigma(n)}}{z_{\sigma(n-1)}})z_{\sigma(1)}}.$$</p>
+<p class="stacks-para">$$\begin{aligned}\phi((r+1)P_M-(\frac{1}{n},\ldots,\frac{1}{n}))&=\sum_\sigma \phi((r+1)v_\sigma)\phi(C_\sigma-(1/n,\ldots,1/n))\\
+&=\sum_{\sigma \in S_n}\frac{1}{z_{\sigma(1)}}\left(\prod_{j \in v_{\sigma}}z_j^{r+1}\right)\frac{1}{(1-\frac{z_{\sigma(2)}}{z_{\sigma(1)}})\ldots(1-\frac{z_{\sigma(n)}}{z_{\sigma(n-1)}})}.\end{aligned}$$
+Finally,
+$$\begin{aligned}&\phi((r,\ldots,r)-((r+1)P_M-(\frac{1}{n},\ldots,\frac{1}{n})))\\
+=&\left(\prod_{i=1}^n z_i^r\right)\sum_{\sigma \in S_n}z_{\sigma(1)}\left(\prod_{j \in v_{\sigma}}\frac{1}{z_j^{r+1}}\right)\frac{1}{(1-\frac{z_{\sigma(1)}}{z_{\sigma(2)}})\ldots(1-\frac{z_{\sigma(n-1)}}{z_{\sigma(n)}})}\\
+=&\sum_{\sigma \in S_n}\left(\prod_{j \not \in v_\sigma}z_j^{r+1}\right)\frac{1}{(z_{\sigma(2)}-z_{\sigma(1)})\ldots(z_{\sigma(n)-\sigma(n-1)})}\\
+=&\sum_{\textrm{A basis of }M} \left(\prod_{j \not \in A}  z_j^{r+1}\right) \sum_{(i_1,\ldots,i_n)\in (S_n)_B} \frac{1}{(z_{i_2}-z_{i_1})\ldots (z_{i_{n}}-z_{i_{n-1}})}.\end{aligned}$$
+Hence the reduced expression is indeed as claimed.
+\end{comment}
+Let $f_M$ be the rational function
+$$\begin{aligned}f_M(x_1,\ldots,x_n,y_1,\ldots,y_n) &= \sum_{\sigma \in S_n} \left(\prod_{i \in \{1,\ldots,n\}\setminus B(\sigma)} y_i\right)\frac{1}{(x_{\sigma(2)}-x_{\sigma(1)})\ldots (x_{\sigma(n)}-x_{\sigma(n-1)})},\end{aligned}$$
+and let $Q_{M}(x_1,\ldots,x_n,y_1,\ldots,y_n)$ be the rational function from <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>. Then, by the above and <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>, we have for all $r$ that the expressions
+$$\begin{aligned}\text{$f_M(z_1,\ldots,z_n,z_1^{r+1},\ldots,z_{n}^{r+1})$ and $Q_{M}(z_1,\ldots,z_n,z_1^{r+1},\ldots,z_n^{r+1})$}\end{aligned}$$
+are both polynomials of degree at most $r$ in each $z_i$ that yield the non-equivariant class $\opc{M} \in A^\bullet((\mb{P}^r)^n)$ after substituting $z_i = H_i$. Therefore, they are equal.</p>
+<p class="stacks-para">Since the set $$\bigcup_{r=0}^\infty \{(z_1,\ldots,z_n,z_1^{r+1},\ldots,z_{n}^{r+1}) \mid z_1, \ldots, z_n \in K\}$$ is Zariski dense in $\mb{A}^{2n}$ (any polynomial of total degree $k$ vanishing on the $k$th term of this union is zero), this implies that $f_M = Q_M$, and the theorem follows from <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>.</p>
+</div>
+</div>
+<p class="stacks-para">\begin{comment}
+Therefore, we have shown that substituting $F(H) = H^{r+1}$ for all $r$ into the right-hand side of (8.2) yields the degree-reduced expression for the non-equivariant class $\opc{M} \in A^\bullet((\mb{P}^r)^n)$.</p>
+<p class="stacks-para">By <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>, there exists a rational function $Q_M$ of $2n$ variables, so that</p>
+<p class="stacks-para">Indeed, this implies that the rational function (8.1) agrees with $Q_M(z_1, \ldots, z_n, F(z_1), \ldots, F(z_n))$ (from <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>) after substituting $F(z) = z^{r+1}$. Since this holds for all $r$, the two expressions must also agree when $F$ is the universal Chern polynomial, and the result follows from <a href="/papers/orbits-equivariant-quantum/tag/367A.html" class="stacks-ref-link">Theorem&nbsp;8.2 <span class="stacks-ref-tag">[367A]</span></a>.
+\end{comment}</p>
+
+<hr>
+<div class="stacks-comments">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing. Your comment will be emailed to the author for approval.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 9: Formulas for $\opc{M}$">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S9.html">
+      <input type="hidden" name="_captcha" value="true">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1805.08181">arXiv:1805.08181</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>
