@@ -31,6 +31,47 @@
     document.body.appendChild(script);
   }
 
+  function mountGiscus(container, config) {
+    var repo = (config.giscusRepo || "").trim();
+    var repoId = (config.giscusRepoId || "").trim();
+    var category = (config.giscusCategory || "").trim();
+    var categoryId = (config.giscusCategoryId || "").trim();
+    if (!repo || !repoId || !category || !categoryId) {
+      return false;
+    }
+
+    var form = container.querySelector(".stacks-comment-form");
+    var empty = container.querySelector(".stacks-comments-empty");
+    if (empty) {
+      empty.remove();
+    }
+    if (form) {
+      form.innerHTML = "";
+    } else {
+      form = document.createElement("div");
+      form.className = "stacks-comment-form";
+      container.appendChild(form);
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", repo);
+    script.setAttribute("data-repo-id", repoId);
+    script.setAttribute("data-category", category);
+    script.setAttribute("data-category-id", categoryId);
+    script.setAttribute("data-mapping", config.giscusMapping || "pathname");
+    script.setAttribute("data-strict", config.giscusStrict || "0");
+    script.setAttribute("data-reactions-enabled", config.giscusReactionsEnabled || "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", config.giscusInputPosition || "bottom");
+    script.setAttribute("data-theme", config.giscusTheme || "light");
+    script.setAttribute("data-lang", config.giscusLang || "en");
+    script.crossOrigin = "anonymous";
+    script.async = true;
+    form.appendChild(script);
+    return true;
+  }
+
   function mountCusdis(container, config) {
     var appId = (config.cusdisAppId || "").trim();
     if (!appId) {
@@ -86,6 +127,9 @@
   ready(function () {
     var config = commentConfig();
     document.querySelectorAll(".stacks-comments").forEach(function (container) {
+      if (config.provider === "giscus" && mountGiscus(container, config)) {
+        return;
+      }
       if (config.provider === "cusdis" && mountCusdis(container, config)) {
         return;
       }
