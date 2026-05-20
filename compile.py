@@ -528,7 +528,7 @@ def parse_preamble_macros(tex_source):
     return macros
 
 
-def parse_bibliography(meta, tex_dir, tex_source):
+def parse_bibliography(meta, tex_dir, tex_source, render_html=True):
     """Build citation labels and bibliography entries."""
     bib_text = ""
 
@@ -547,7 +547,7 @@ def parse_bibliography(meta, tex_dir, tex_source):
             bib_text = bib_m.group(1)
 
     bib_text = cleanup_bibliography_environment(bib_text)
-    citations, entries = parse_bibitems(bib_text)
+    citations, entries = parse_bibitems(bib_text, render_html=render_html)
 
     # source.json can provide lightweight labels for papers whose sources do
     # not include a bibliography file.
@@ -567,7 +567,7 @@ def cleanup_bibliography_environment(bib_text):
     return bib_text.strip()
 
 
-def parse_bibitems(bib_text):
+def parse_bibitems(bib_text, render_html=True):
     citations = {}
     entries = []
     if not bib_text:
@@ -586,9 +586,43 @@ def parse_bibitems(bib_text):
         entries.append({
             "key": key,
             "label": label,
-            "html": bibliography_entry_to_html(body),
+            "raw": body,
+            "html": bibliography_entry_to_html(body) if render_html else bibliography_entry_to_light_html(body),
         })
     return citations, entries
+
+
+def bibliography_entry_to_light_html(entry):
+    """Cheap bibliography cleanup for the global pre-scan."""
+    entry = entry.replace('\n', ' ')
+    entry = re.sub(r'\s+', ' ', entry).strip()
+    entry = cleanup_bibliography_environment(entry)
+    entry = re.sub(r'\\bysame\b\s*,?', '&mdash;,', entry)
+    entry = re.sub(r'\\penalty\d+\s*', '', entry)
+    entry = replace_latex_accents(entry)
+    entry = re.sub(
+        r'\\leavevmode\\vrule\s+height\s+[-.\d]+pt\s+depth\s+[-.\d]+pt\s+width\s+[-.\d]+pt',
+        '&mdash;',
+        entry,
+    )
+    entry = re.sub(r'\\url\{([^}]*)\}', r'<a href="\1">\1</a>', entry)
+    entry = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'<a href="\1">\2</a>', entry)
+    entry = replace_latex_text_command(entry, "emph", "em")
+    entry = replace_latex_text_command(entry, "textit", "em")
+    entry = replace_latex_text_command(entry, "textsl", "em")
+    entry = replace_latex_text_command(entry, "textbf", "strong")
+    entry = replace_latex_text_command(entry, "texttt", "code")
+    entry = replace_latex_declaration_group(entry, "sl", "em")
+    entry = replace_latex_declaration_group(entry, "it", "em")
+    entry = replace_latex_declaration_group(entry, "em", "em")
+    entry = replace_latex_declaration_group(entry, "bf", "strong")
+    entry = replace_latex_declaration_group(entry, "tt", "code")
+    entry = replace_latex_declaration_group(entry, "sc", "span", ' class="stacks-small-caps"')
+    entry = entry.replace('~', '&nbsp;')
+    entry = entry.replace('---', '&mdash;').replace('--', '&ndash;')
+    entry = entry.replace('\\newblock', '')
+    entry = strip_text_braces_outside_math(entry)
+    return entry
 
 
 def bibliography_entry_to_html(entry):
@@ -596,6 +630,8 @@ def bibliography_entry_to_html(entry):
     entry = entry.replace('\n', ' ')
     entry = re.sub(r'\s+', ' ', entry).strip()
     entry = cleanup_bibliography_environment(entry)
+    entry = re.sub(r'\\bysame\b\s*,?', '&mdash;,', entry)
+    entry = re.sub(r'\\penalty\d+\s*', '', entry)
     # Plain BibTeX styles use a short rule for "same author as above".  In
     # HTML an em dash carries the same meaning without leaking raw TeX.
     entry = re.sub(
@@ -610,6 +646,172 @@ def bibliography_entry_to_html(entry):
     # are handled, those braces should not be visible in bibliography prose.
     html = strip_text_braces_outside_math(html)
     return html
+
+
+def html_to_plain_text(text):
+    """Collapse HTML-ish text to a normalized plain string."""
+    text = re.sub(r'<[^>]+>', ' ', text)
+    text = html_mod.unescape(text)
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+
+def bibliography_title_key(entry):
+    """Return a normalized title key for deduplicating bibliography entries."""
+    raw = replace_latex_accents(entry.get("raw", ""))
+    raw = cleanup_bibliography_environment(raw)
+    raw = raw.replace("\\newblock", " ")
+    raw = re.sub(r'\\url\{([^}]*)\}', r'\1', raw)
+    raw = re.sub(r'\\href\{([^}]*)\}\{([^}]*)\}', r'\2', raw)
+    raw = re.sub(r'\\(?:emph|textit|textsl|textbf|texttt)\{((?:[^{}]|\{[^{}]*\})*)\}', r'\1', raw)
+    raw = re.sub(r'\{\\(?:em|it|sl|bf|tt|sc)\s+((?:[^{}]|\{[^{}]*\})*)\}', r'\1', raw)
+    raw = re.sub(r'\$([^$]*)\$', r'\1', raw)
+    raw = raw.replace("~", " ")
+    raw = raw.replace("{", "").replace("}", "")
+    raw = re.sub(r'\\[A-Za-z]+', ' ', raw)
+    raw = raw.replace("\\", "")
+    raw = re.sub(r'\s+', ' ', raw).strip()
+
+    # Most .bbl styles emit "Author. Title. Journal..." or
+    # "Author. Title. In ...".  Use that title sentence when it is visible.
+    parts = re.split(r'\.\s+', raw, maxsplit=2)
+    if len(parts) >= 2 and len(parts[1].strip()) >= 4:
+        title = parts[1].strip()
+    else:
+        title = html_to_plain_text(entry.get("html", ""))
+        parts = re.split(r'\.\s+', title, maxsplit=2)
+        if len(parts) >= 2 and len(parts[1].strip()) >= 4:
+            title = parts[1].strip()
+
+    title = re.sub(r'\b(arxiv|preprint)\b.*$', '', title, flags=re.IGNORECASE)
+    key = title.lower()
+    key = key.replace('&', ' and ')
+    key = re.sub(r'[^a-z0-9]+', ' ', key)
+    key = re.sub(r'\s+', ' ', key).strip()
+    if key:
+        return "title:" + key
+
+    fallback = html_to_plain_text(entry.get("html", "")).lower()
+    fallback = re.sub(r'[^a-z0-9]+', ' ', fallback)
+    fallback = re.sub(r'\s+', ' ', fallback).strip()
+    return "entry:" + fallback
+
+
+def bibliography_global_id(key):
+    """Create a deterministic, readable HTML id for a global bibliography key."""
+    digest = hashlib.sha1(key.encode("utf-8")).hexdigest()[:8]
+    words = re.findall(r'[a-z0-9]+', key.replace("title:", "").replace("entry:", ""))[:6]
+    stem = "-".join(words)[:56].strip("-") or "entry"
+    return f"{stem}-{digest}"
+
+
+def collect_global_bibliography(tex_paths):
+    """Collect and deduplicate bibliography entries across all papers."""
+    entries_by_key = {}
+    citation_targets = {}
+
+    for tex_path in tex_paths:
+        out_dir = os.path.dirname(tex_path)
+        slug = os.path.basename(out_dir)
+        meta_path = tex_path.replace('.tex', '.json')
+        meta = {}
+        if os.path.exists(meta_path):
+            with open(meta_path) as f:
+                meta = json.load(f)
+        with open(tex_path, errors="replace") as f:
+            tex_source = f.read()
+
+        bibliography = parse_bibliography(meta, out_dir, tex_source, render_html=False)
+        for entry in bibliography["entries"]:
+            dedupe_key = bibliography_title_key(entry)
+            if not dedupe_key:
+                dedupe_key = "entry:" + entry.get("key", "")
+            if dedupe_key not in entries_by_key:
+                global_id = bibliography_global_id(dedupe_key)
+                entries_by_key[dedupe_key] = {
+                    "id": global_id,
+                    "label": entry["label"],
+                    "html": entry["html"],
+                    "title_key": dedupe_key,
+                    "papers": [],
+                    "aliases": [],
+                }
+            canonical = entries_by_key[dedupe_key]
+            canonical["papers"].append(slug)
+            alias = {
+                "paper": slug,
+                "key": entry["key"],
+                "label": entry["label"],
+            }
+            canonical["aliases"].append(alias)
+            citation_targets[(slug, entry["key"])] = canonical["id"]
+
+    entries = sorted(
+        entries_by_key.values(),
+        key=lambda item: html_to_plain_text(item["html"]).lower(),
+    )
+    print(f"Built global bibliography: {len(entries)} unique entries")
+    return {"entries": entries, "citation_targets": citation_targets}
+
+
+def write_global_bibliography(global_bibliography):
+    """Write the site-wide bibliography page."""
+    entries = global_bibliography.get("entries", [])
+    html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Bibliography — Anand Patel</title>
+  <link rel="stylesheet" href="style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="papers/hodge-bundle/stacks.css?v=stacks-20260519-qed">
+  <style>
+    .stacks-bibliography {
+      padding-left: 3.75em;
+    }
+    .stacks-bibliography li {
+      padding-left: 0.25em;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        packages: { '[+]': ['bboldx'] }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <span class="stacks-paper-link">Bibliography</span>
+  </div>
+</header>
+<main class="stacks-main">
+<h1 class="stacks-section-title">Bibliography</h1>
+<ol class="stacks-bibliography">
+"""
+    for entry in entries:
+        html += f'  <li id="bib-{html_attr(entry["id"])}">{entry["html"]}</li>\n'
+    html += """</ol>
+</main>
+<footer class="stacks-footer">
+  &copy; 2025 Anand Patel
+</footer>
+</body>
+</html>
+"""
+    write_html(os.path.join(SITE_ROOT, "bibliography.html"), html)
 
 
 def strip_text_braces_outside_math(text):
@@ -2427,10 +2629,11 @@ def assign_tags_and_numbers(paper, slug, registry, existing_tags, previous_tags=
     return all_envs, label_map
 
 
-def resolve_citations(paper, citations):
+def resolve_citations(paper, citations, citation_targets=None):
     """Resolve \\cite{key} references in all blocks."""
     if not citations:
         return
+    citation_targets = citation_targets or {}
 
     def format_cite_option(opt):
         opt = opt.replace("~", "&nbsp;")
@@ -2446,10 +2649,18 @@ def resolve_citations(paper, citations):
         keys = [k.strip() for k in keys_str.split(',')]
         labels = []
         for key in keys:
+            global_id = citation_targets.get(key)
             if key in citations:
-                labels.append(citations[key])
+                label = html_mod.escape(str(citations[key]))
             else:
-                labels.append(key)
+                label = html_mod.escape(key)
+            if global_id:
+                label = (
+                    f'<a class="stacks-cite" '
+                    f'href="__SITE_ROOT__bibliography.html#bib-{html_attr(global_id)}">'
+                    f'{label}</a>'
+                )
+            labels.append(label)
         label_text = ', '.join(labels)
         if opts:
             return f'[{label_text}, {", ".join(format_cite_option(opt) for opt in opts)}]'
@@ -2466,6 +2677,8 @@ def resolve_citations(paper, citations):
         for block in blocks:
             if "content" in block:
                 block["content"] = process_content(block["content"])
+            if "envType" in block:
+                block["envType"] = process_content(block["envType"])
             if block.get("children"):
                 process_blocks(block["children"])
 
@@ -2626,13 +2839,23 @@ def footer_html(arxiv_id, depth=0, has_bibliography=False):
 </html>"""
 
 
+def site_root_prefix(depth=0):
+    """Relative prefix from a generated paper page back to the site root."""
+    return "../" * depth + "../../"
+
+
+def resolve_site_root_placeholders(text, depth=0):
+    return text.replace("__SITE_ROOT__", site_root_prefix(depth))
+
+
 def render_block(block, depth=0):
     prefix = "../" * depth
     if block["type"] == "para":
-        stripped = block["content"].strip()
+        content = resolve_site_root_placeholders(block["content"], depth)
+        stripped = content.strip()
         if stripped.startswith('<div class="interaction-') or stripped == '</div>':
             return stripped + '\n'
-        return wrap_content_html(block["content"], "stacks-para")
+        return wrap_content_html(content, "stacks-para")
     elif block["type"] == "code":
         return block["content"] + '\n'
     elif block["type"] == "env":
@@ -2653,6 +2876,7 @@ def render_block(block, depth=0):
         else:
             label_text = f"{env_type}" + (f"&nbsp;{number}" if number else "")
             head_html = f'<strong>{label_text}.</strong>{tag_link}'
+        head_html = resolve_site_root_placeholders(head_html, depth)
 
         eid = (block.get("label") or "").replace(":", "-")
 
@@ -2663,7 +2887,8 @@ def render_block(block, depth=0):
                 inner_html += render_block(child, depth)
             body_html = inner_html
         else:
-            body_html = wrap_content_html(block["content"])
+            content = resolve_site_root_placeholders(block["content"], depth)
+            body_html = wrap_content_html(content)
 
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
@@ -2817,7 +3042,7 @@ def write_html(path, html):
 # COMPILE ONE PAPER
 # ============================================================
 
-def compile_paper(tex_path):
+def compile_paper(tex_path, global_bibliography=None):
     """Compile a single paper from its .tex file."""
 
     out_dir = os.path.dirname(tex_path)
@@ -2874,7 +3099,15 @@ def compile_paper(tex_path):
     page_nav = page_navigation_map(paper)
 
     # Resolve citations (after ref resolution, so citations in env content are handled)
-    resolve_citations(paper, citations)
+    citation_targets = {}
+    if global_bibliography:
+        all_targets = global_bibliography.get("citation_targets", {})
+        citation_targets = {
+            key: global_id
+            for (target_slug, key), global_id in all_targets.items()
+            if target_slug == slug
+        }
+    resolve_citations(paper, citations, citation_targets)
 
     save_registry(registry)
 
@@ -2938,8 +3171,9 @@ def compile_paper(tex_path):
     toc += '<table class="stacks-tag-table">\n'
     toc += '<tr><th>Tag</th><th>Type</th><th>Number</th></tr>\n'
     for env in all_envs:
+        env_type = resolve_site_root_placeholders(env["envType"], depth=0)
         toc += f'<tr><td><a href="tag/{env["tag"]}.html">{env["tag"]}</a></td>'
-        toc += f'<td>{env["envType"]}</td><td>{env.get("number","")}</td></tr>\n'
+        toc += f'<td>{env_type}</td><td>{env.get("number","")}</td></tr>\n'
     toc += '</table>\n</main>\n'
     toc += footer_html(arxiv_id, has_bibliography=has_bibliography)
 
@@ -3093,6 +3327,22 @@ def compile_paper(tex_path):
 # MAIN
 # ============================================================
 
+def manifest_tex_paths():
+    main_tex = os.path.join(SITE_ROOT, "main.tex")
+    if not os.path.exists(main_tex):
+        return []
+    tex_paths = []
+    with open(main_tex) as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith('#') or not line:
+                continue
+            tex_path = os.path.join(SITE_ROOT, line)
+            if os.path.exists(tex_path):
+                tex_paths.append(tex_path)
+    return tex_paths
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 compile.py papers/<slug>/source.tex")
@@ -3101,28 +3351,28 @@ def main():
 
     if sys.argv[1] == "--all":
         # Compile all papers listed in main.tex
-        main_tex = os.path.join(SITE_ROOT, "main.tex")
-        if not os.path.exists(main_tex):
+        tex_paths = manifest_tex_paths()
+        if not tex_paths:
             print("Error: main.tex not found")
             sys.exit(1)
-        with open(main_tex) as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith('#') or not line:
-                    continue
-                tex_path = os.path.join(SITE_ROOT, line)
-                if os.path.exists(tex_path):
-                    print(f"\n{'='*60}")
-                    print(f"Compiling: {line}")
-                    print(f"{'='*60}")
-                    compile_paper(tex_path)
-                else:
-                    print(f"Warning: {tex_path} not found, skipping")
+        global_bibliography = collect_global_bibliography(tex_paths)
+        write_global_bibliography(global_bibliography)
+        for tex_path in tex_paths:
+            rel_path = os.path.relpath(tex_path, SITE_ROOT)
+            print(f"\n{'='*60}")
+            print(f"Compiling: {rel_path}")
+            print(f"{'='*60}")
+            compile_paper(tex_path, global_bibliography)
     else:
         tex_path = sys.argv[1]
         if not os.path.isabs(tex_path):
             tex_path = os.path.join(SITE_ROOT, tex_path)
-        compile_paper(tex_path)
+        tex_paths = manifest_tex_paths()
+        if tex_path not in tex_paths:
+            tex_paths.append(tex_path)
+        global_bibliography = collect_global_bibliography(tex_paths)
+        write_global_bibliography(global_bibliography)
+        compile_paper(tex_path, global_bibliography)
 
 
 if __name__ == "__main__":
