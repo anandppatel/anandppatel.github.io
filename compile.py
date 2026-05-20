@@ -918,6 +918,7 @@ def clean_latex_metadata(text):
     text = re.sub(r'\\(?:unskip|ignorespaces)\b', '', text)
     text = text.replace(r'\&', '&')
     text = text.replace(r'\and', ', ')
+    text = re.sub(r'\s+', ' ', text).strip()
     text = text.replace(' ,', ',')
     return text
 
@@ -1500,9 +1501,13 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
 \usetikzlibrary{matrix,arrows,arrows.meta,positioning,shapes,decorations.markings,decorations.pathmorphing,plotmarks,calc,patterns,fit,backgrounds}
 """ + TEX_RENDER_CONTEXT["preamble"] + r"""
 """ + TEX_RENDER_CONTEXT["tikzset"] + r"""
-\providecommand{\Cref}[1]{#1}
-\providecommand{\cref}[1]{#1}
-\providecommand{\autoref}[1]{#1}
+\providecommand{\stacksrendererref}[1]{\mbox{\ttfamily\detokenize{#1}}}
+\providecommand{\Cref}[1]{\stacksrendererref{#1}}
+\providecommand{\cref}[1]{\stacksrendererref{#1}}
+\providecommand{\autoref}[1]{\stacksrendererref{#1}}
+\renewcommand{\Cref}[1]{\stacksrendererref{#1}}
+\renewcommand{\cref}[1]{\stacksrendererref{#1}}
+\renewcommand{\autoref}[1]{\stacksrendererref{#1}}
 \ProvideDocumentCommand{\op}{O{r} O{n} m}{\mathcal{O}_{#3}}
 \ProvideDocumentCommand{\opc}{O{r} O{n} m}{[\mathcal{O}_{#3}]}
 \ProvideDocumentCommand{\og}{O{r+1} O{n} m}{\mathcal{O}(#3)}
@@ -1597,8 +1602,18 @@ def render_picture_block(picture_source):
     return render_tikz_block(picture_source, "Figure")
 
 
+def sanitize_display_source_for_latex(display_source):
+    """Make display math friendlier to standalone LaTeX rendering."""
+    def sanitize_text_arg(arg):
+        arg = re.sub(r'\$([^$]+)\$', r'\\ensuremath{\1}', arg)
+        return r'\text{' + arg + '}'
+
+    return replace_latex_commands(display_source, "text", sanitize_text_arg)
+
+
 def render_latex_display_block(display_source):
     """Compile a display math block to inline SVG when MathJax is too fragile."""
+    display_source = sanitize_display_source_for_latex(display_source)
     return render_tikz_block("\\[\n" + display_source + "\n\\]", "Display equation")
 
 
