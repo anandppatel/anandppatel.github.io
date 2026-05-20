@@ -1439,6 +1439,41 @@ def normalize_geometric_alphabets(tex):
     return tex
 
 
+def replace_latex_accents(text):
+    """Convert simple LaTeX accent commands in text mode to HTML entities."""
+    accent_entities = {
+        '"': {
+            'a': '&auml;', 'e': '&euml;', 'i': '&iuml;', 'o': '&ouml;', 'u': '&uuml;', 'y': '&yuml;',
+            'A': '&Auml;', 'E': '&Euml;', 'I': '&Iuml;', 'O': '&Ouml;', 'U': '&Uuml;', 'Y': '&#376;',
+        },
+        "'": {
+            'a': '&aacute;', 'e': '&eacute;', 'i': '&iacute;', 'o': '&oacute;', 'u': '&uacute;', 'y': '&yacute;',
+            'A': '&Aacute;', 'E': '&Eacute;', 'I': '&Iacute;', 'O': '&Oacute;', 'U': '&Uacute;', 'Y': '&Yacute;',
+        },
+        '`': {
+            'a': '&agrave;', 'e': '&egrave;', 'i': '&igrave;', 'o': '&ograve;', 'u': '&ugrave;',
+            'A': '&Agrave;', 'E': '&Egrave;', 'I': '&Igrave;', 'O': '&Ograve;', 'U': '&Ugrave;',
+        },
+        '^': {
+            'a': '&acirc;', 'e': '&ecirc;', 'i': '&icirc;', 'o': '&ocirc;', 'u': '&ucirc;',
+            'A': '&Acirc;', 'E': '&Ecirc;', 'I': '&Icirc;', 'O': '&Ocirc;', 'U': '&Ucirc;',
+        },
+        '~': {
+            'a': '&atilde;', 'n': '&ntilde;', 'o': '&otilde;',
+            'A': '&Atilde;', 'N': '&Ntilde;', 'O': '&Otilde;',
+        },
+    }
+
+    def accent_replace(match):
+        accent = match.group(1)
+        letter = match.group(2) or match.group(3)
+        return accent_entities.get(accent, {}).get(letter, letter)
+
+    # Accept compact forms (\"u, \'{e}) and spaced forms emitted by some
+    # source normalizers (\" uller).
+    return re.sub(r'\\(["\'`\^~])\s*(?:\{([A-Za-z])\}|([A-Za-z]))', accent_replace, text)
+
+
 def resolve_graphics_path(name):
     """Find a graphics file referenced by \\includegraphics, if it is present."""
     cleaned = name.strip()
@@ -2077,6 +2112,7 @@ def tex_to_html(tex):
     s, math_fragments = protect_latex_math_fragments(s)
     s = re.sub(r'\\(?:quad|qquad)\b', ' ', s)
     s = re.sub(r'\\hspace\*?(?:\[[^\]]*\])?\{[^{}]*\}', ' ', s)
+    s = replace_latex_accents(s)
 
     s = replace_latex_text_command(s, "emph", "em")
     s = replace_latex_text_command(s, "textit", "em")
@@ -2112,14 +2148,8 @@ def tex_to_html(tex):
     s = s.replace('---', '&mdash;')
     s = s.replace('--', '&ndash;')
 
-    # Accented characters
-    s = s.replace('\\"u', '&uuml;')
-    s = s.replace('\\"o', '&ouml;')
-    s = s.replace('\\"a', '&auml;')
-    s = s.replace("\\'e", '&eacute;')
-    s = s.replace("\\'{e}", '&eacute;')
-    s = s.replace("\\'a", '&aacute;')
-    s = s.replace("\\'{a}", '&aacute;')
+    # This second pass catches text exposed by earlier command conversions.
+    s = replace_latex_accents(s)
 
     # \square, \qedhere — remove
     s = re.sub(r'\s*\\square\s*', '', s)
