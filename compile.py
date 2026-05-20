@@ -49,6 +49,8 @@ import tempfile
 
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 TAG_REGISTRY_PATH = os.path.join(SITE_ROOT, "papers", "tag-registry.json")
+PROJECT_STYLESHEET_SOURCE = os.path.join(
+    SITE_ROOT, "papers", "hodge-bundle", "stacks.css")
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
 COMMENTS_ASSET_VERSION = "comments-20260519"
 TEX_RENDER_CONTEXT = {
@@ -3078,6 +3080,25 @@ def write_html(path, html):
         f.write(cleaned)
 
 
+def ensure_project_stylesheet(out_dir):
+    """Keep every generated paper on the shared project-page stylesheet."""
+    src = PROJECT_STYLESHEET_SOURCE
+    dst = os.path.join(out_dir, "stacks.css")
+    if not os.path.exists(src):
+        print(f"  Warning: missing shared stylesheet {src}")
+        return
+    if os.path.abspath(src) == os.path.abspath(dst):
+        return
+    if os.path.exists(dst):
+        with open(src, "rb") as f:
+            src_bytes = f.read()
+        with open(dst, "rb") as f:
+            dst_bytes = f.read()
+        if src_bytes == dst_bytes:
+            return
+    shutil.copyfile(src, dst)
+
+
 # ============================================================
 # COMPILE ONE PAPER
 # ============================================================
@@ -3162,6 +3183,7 @@ def compile_paper(tex_path, global_bibliography=None):
             shutil.rmtree(old_dir)
     os.makedirs(os.path.join(out_dir, "tag"), exist_ok=True)
     os.makedirs(os.path.join(out_dir, "section"), exist_ok=True)
+    ensure_project_stylesheet(out_dir)
 
     # --- 1. Table of Contents ---
     toc = head("Table of Contents", paper["title"], macros=macros)
