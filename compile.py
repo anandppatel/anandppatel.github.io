@@ -1470,7 +1470,12 @@ def strip_svg_header(svg):
     return svg.strip()
 
 
-def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
+def render_tikz_block(
+    tikz_source,
+    aria_label="TikZ diagram",
+    block_class="stacks-tikzcd",
+    svg_class="stacks-tikzcd-svg",
+):
     """Compile a TikZ/tikz-cd environment to inline SVG, with a readable fallback."""
     cache_dir = TEX_RENDER_CONTEXT["cache_dir"]
     os.makedirs(cache_dir, exist_ok=True)
@@ -1581,9 +1586,9 @@ def render_tikz_block(tikz_source, aria_label="TikZ diagram"):
         source = html_mod.escape(tikz_source)
         return f'<pre class="stacks-latex-fallback">{source}</pre>'
 
-    svg = re.sub(r'<svg\b', '<svg class="stacks-tikzcd-svg"', svg, count=1)
+    svg = re.sub(r'<svg\b', f'<svg class="{svg_class}"', svg, count=1)
     return (
-        '<div class="stacks-tikzcd" role="img" '
+        f'<div class="stacks-rendered-latex {block_class}" role="img" '
         f'aria-label="{html_attr(aria_label)}">'
         f'{svg}</div>'
     )
@@ -1616,7 +1621,17 @@ def sanitize_display_source_for_latex(display_source):
 def render_latex_display_block(display_source):
     """Compile a display math block to inline SVG when MathJax is too fragile."""
     display_source = sanitize_display_source_for_latex(display_source)
-    return render_tikz_block("\\[\n" + display_source + "\n\\]", "Display equation")
+    return render_tikz_block(
+        "\\[\n" + display_source + "\n\\]",
+        "Display equation",
+        block_class="stacks-display-equation",
+        svg_class="stacks-display-equation-svg",
+    )
+
+
+def has_rendered_latex_block(body):
+    """Detect HTML blocks already rendered by the LaTeX-to-SVG pipeline."""
+    return 'stacks-rendered-latex' in body or 'stacks-tikzcd' in body
 
 
 def render_xypic_block(xy_source):
@@ -2260,7 +2275,7 @@ def tex_to_html(tex):
     # equation environment → display math
     def equation_replace(m):
         body = m.group(1)
-        if 'stacks-tikzcd' in body:
+        if has_rendered_latex_block(body):
             return body.strip()
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
@@ -2370,7 +2385,7 @@ def tex_to_html(tex):
     # \[ ... \] -> $$ ... $$, except rendered diagram blocks.
     def bracket_display_replace(m):
         body = m.group(1).strip()
-        if 'stacks-tikzcd' in body:
+        if has_rendered_latex_block(body):
             return body
         if re.match(r'\\begin\{(?:aligned|alignedat|gathered|split)\}', body):
             return render_latex_display_block(body)
@@ -2960,7 +2975,7 @@ def split_content_html_blocks(content):
         r'<(?:ol|ul)\b'
         r'|<h[2-4]\b[^>]*class="[^"]*stacks-subsections-heading[^"]*"'
         r'|<(div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
+        r'(?:stacks-rendered-latex|stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
         r'[^"]*"'
     )
     heading_re = re.compile(
@@ -2968,7 +2983,7 @@ def split_content_html_blocks(content):
     )
     div_pre_re = re.compile(
         r'<(?P<tag>div|pre)\b[^>]*class="[^"]*'
-        r'(?:stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
+        r'(?:stacks-rendered-latex|stacks-tikzcd|stacks-table-wrap|stacks-caption|stacks-latex-fallback|stacks-figure|stacks-figure-file|stacks-figure-missing)'
         r'[^"]*"[\s\S]*?</(?P=tag)>'
     )
 
