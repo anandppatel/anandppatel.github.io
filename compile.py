@@ -2482,7 +2482,7 @@ def head(title, paper_title, depth=0, macros=None):
   <meta http-equiv="Expires" content="0">
   <title>{document_title}</title>
   <link rel="stylesheet" href="{prefix}../../style.css?v=stacks-20260517">
-  <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260519-flat">
+  <link rel="stylesheet" href="{prefix}stacks.css?v=stacks-20260519-align">
   <script src="{prefix}../../comments-config.js?v={COMMENTS_ASSET_VERSION}" defer></script>
   <script src="{prefix}../../comments.js?v={COMMENTS_ASSET_VERSION}" defer></script>
   <script>
