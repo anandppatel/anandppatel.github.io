@@ -1634,6 +1634,17 @@ def has_rendered_latex_block(body):
     return 'stacks-rendered-latex' in body or 'stacks-tikzcd' in body
 
 
+def has_generated_html_block(body):
+    """Detect HTML blocks that should not be wrapped in display math delimiters."""
+    return (
+        has_rendered_latex_block(body)
+        or 'stacks-table-wrap' in body
+        or 'stacks-caption' in body
+        or 'stacks-figure' in body
+        or 'stacks-latex-fallback' in body
+    )
+
+
 def render_xypic_block(xy_source):
     """Compile an Xy-pic graph to inline SVG, with a readable fallback."""
     return render_tikz_block("\\[\n" + xy_source + "\n\\]", "Xy-pic diagram")
@@ -2275,7 +2286,7 @@ def tex_to_html(tex):
     # equation environment → display math
     def equation_replace(m):
         body = m.group(1)
-        if has_rendered_latex_block(body):
+        if has_generated_html_block(body):
             return body.strip()
         body = re.sub(r'\\label\{[^}]*\}', '', body)
         body = re.sub(r'\\nonumber', '', body)
@@ -2385,7 +2396,7 @@ def tex_to_html(tex):
     # \[ ... \] -> $$ ... $$, except rendered diagram blocks.
     def bracket_display_replace(m):
         body = m.group(1).strip()
-        if has_rendered_latex_block(body):
+        if has_generated_html_block(body):
             return body
         if re.match(r'\\begin\{(?:aligned|alignedat|gathered|split)\}', body):
             return render_latex_display_block(body)
