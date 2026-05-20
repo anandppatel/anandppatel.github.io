@@ -754,6 +754,19 @@ def collect_global_bibliography(tex_paths):
     return {"entries": entries, "citation_targets": citation_targets}
 
 
+def bibliography_entry_to_global_html(entry_html):
+    """Normalize global bibliography typography across mixed BibTeX styles."""
+    entry_html = re.sub(
+        r'<span class="stacks-small-caps">(.*?)</span>',
+        r'\1',
+        entry_html,
+        flags=re.DOTALL,
+    )
+    entry_html = re.sub(r'</?(?:em|strong|code)\b[^>]*>', '', entry_html)
+    entry_html = re.sub(r'\\(?:itshape|bfseries|scshape)\s*', '', entry_html)
+    return entry_html
+
+
 def write_global_bibliography(global_bibliography):
     """Write the site-wide bibliography page."""
     entries = global_bibliography.get("entries", [])
@@ -802,7 +815,8 @@ def write_global_bibliography(global_bibliography):
 <ol class="stacks-bibliography">
 """
     for entry in entries:
-        html += f'  <li id="bib-{html_attr(entry["id"])}">{entry["html"]}</li>\n'
+        entry_html = bibliography_entry_to_global_html(entry["html"])
+        html += f'  <li id="bib-{html_attr(entry["id"])}">{entry_html}</li>\n'
     html += """</ol>
 </main>
 <footer class="stacks-footer">
