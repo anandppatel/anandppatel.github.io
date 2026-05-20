@@ -2848,6 +2848,15 @@ def resolve_site_root_placeholders(text, depth=0):
     return text.replace("__SITE_ROOT__", site_root_prefix(depth))
 
 
+def append_qed_marker(body_html):
+    """Place the proof-ending square on the proof's final text line."""
+    marker = '<span class="stacks-qed" aria-hidden="true"></span>'
+    last_paragraph_end = body_html.rfind("</p>")
+    if last_paragraph_end != -1:
+        return body_html[:last_paragraph_end] + marker + body_html[last_paragraph_end:]
+    return body_html + marker
+
+
 def render_block(block, depth=0):
     prefix = "../" * depth
     if block["type"] == "para":
@@ -2889,6 +2898,8 @@ def render_block(block, depth=0):
         else:
             content = resolve_site_root_placeholders(block["content"], depth)
             body_html = wrap_content_html(content)
+        if env_name == "proof":
+            body_html = append_qed_marker(body_html)
 
         return f"""<div class="{css_class}" id="{eid}">
   <div class="stacks-env-head">{head_html}</div>
