@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A research agenda distilled from Anand Patel's work in algebraic geometry: stated questions, direct continuations, and cross-paper programs.">
+  <title>Research questions &mdash; Anand Patel</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        macros: {
+          P: "\\mathbb{P}",
+          A: "\\mathbb{A}",
+          M: "\\mathcal{M}",
+          H: "\\mathcal{H}",
+          Gr: "\\operatorname{Gr}",
+          Hilb: "\\operatorname{Hilb}",
+          Pic: "\\operatorname{Pic}",
+          Eff: "\\operatorname{Eff}",
+          Sym: "\\operatorname{Sym}",
+          PGL: "\\operatorname{PGL}",
+          GL: "\\operatorname{GL}",
+          SL: "\\operatorname{SL}"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1><a href="index.html">Anand Patel</a></h1>
+  </div>
+</header>
+
+<main class="directions-main">
+  <section class="directions-hero">
+    <p class="directions-kicker">A working research agenda &middot; July 2026</p>
+    <h2>Questions after the papers</h2>
+    <p class="directions-lede">This page distills a research agenda from twenty manuscript projects spanning Hurwitz spaces, interpolation, projective differential geometry, orbit closures, enumerative geometry, and arithmetic rigidity.</p>
+    <p class="directions-method">The recurring method is to turn geometric objects into a parameter space, control its boundary or degenerations, extract a computable class, and then ask how much of the original geometry that class remembers. The questions below follow that arc and include a proposed first move whenever the corpus suggests one.</p>
+
+    <div class="direction-legend" aria-label="Question labels">
+      <span><span class="direction-badge stated">Stated</span> asked or proposed in a source</span>
+      <span><span class="direction-badge continuation">Continuation</span> a direct next case or missing range</span>
+      <span><span class="direction-badge bridge">Bridge</span> suggested by reading several works together</span>
+      <span><span class="direction-badge milestone">Milestone</span> an older question advanced within the corpus</span>
+    </div>
+
+    <p class="agenda-notice"><strong>Status convention.</strong> A label records how a question enters this agenda; it is not a claim that the question remains open in the current literature. Before beginning a project, the post-publication literature and the newest source version should be checked. Later drafts supersede earlier ones throughout this page.</p>
+  </section>
+
+  <div class="research-arc" aria-label="Recurring research arc">
+    <div>
+      <strong>1. Construct</strong>
+      <p>Realize covers, bundles, subvarieties, configurations, or linear series inside a usable parameter space.</p>
+    </div>
+    <div>
+      <strong>2. Degenerate</strong>
+      <p>Compactify, resolve rational maps, and identify the components and multiplicities of the boundary.</p>
+    </div>
+    <div>
+      <strong>3. Compute</strong>
+      <p>Use splitting types, equivariant classes, principal parts, localization, or test families to obtain invariants.</p>
+    </div>
+    <div>
+      <strong>4. Recover</strong>
+      <p>Ask whether the invariant controls moduli, monodromy, birational geometry, or rigidity of the original object.</p>
+    </div>
+  </div>
+
+  <nav class="directions-toc" aria-labelledby="agenda-contents">
+    <h2 id="agenda-contents">Research programs</h2>
+    <ol>
+      <li><a href="#covers">Covers, bundles, and Hurwitz geometry</a></li>
+      <li><a href="#interpolation">Interpolation, linear sections, and contact</a></li>
+      <li><a href="#ramification">Projection, ramification, and differential geometry</a></li>
+      <li><a href="#orbits">Orbits, degenerations, and universal counts</a></li>
+      <li><a href="#veronese">Veronese varieties, powers, and covariants</a></li>
+      <li><a href="#rigidity">Monodromy, $p$-curvature, and Hodge rigidity</a></li>
+      <li><a href="#priorities">A possible order of attack</a></li>
+      <li><a href="#corpus">Corpus and editorial scope</a></li>
+    </ol>
+  </nav>
+
+  <section class="milestones" aria-labelledby="milestone-heading">
+    <h2 id="milestone-heading">The frontier moves inside the corpus</h2>
+    <div class="milestone-grid">
+      <article class="milestone-card">
+        <span class="direction-badge milestone">Milestone</span>
+        <h3>From singular triads to $4246$</h3>
+        <p>The 2016 interpolation project asks for the number of $3$-Veronese surfaces through thirteen general points. <a class="inline-link" href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a> computes it as $4246$. The live agenda begins with general $\nu_{d,n}$, monodromy, characteristic dependence, and reusable compactifications.</p>
+      </article>
+      <article class="milestone-card">
+        <span class="direction-badge milestone">Milestone</span>
+        <h3>From realizability to stability</h3>
+        <p>An early Hurwitz question asks which Tschirnhausen and syzygy bundles occur. <a class="inline-link" href="papers/vector-bundles-finite-covers/index.html">Vector bundles and finite covers</a> proves realization of the Tschirnhausen bundle $E$ after a sufficiently positive twist on a curve; it does not realize all syzygy bundles. In the elliptic genus-two program, stability of the bundle of quadrics $F$ is the decisive remaining input.</p>
+      </article>
+      <article class="milestone-card">
+        <span class="direction-badge milestone">Milestone</span>
+        <h3>The Hodge bundle is simple</h3>
+        <p><a class="inline-link" href="papers/hodge-bundle/index.html">The Simplicity of the Hodge Bundle</a> resolves the original no-subbundle question over $\mathcal M_g(\mathbb C)$. The residual problem concerns pluricanonical bundles, Weierstrass constructions, algebraic proofs, and characteristic two.</p>
+      </article>
+      <article class="milestone-card">
+        <span class="direction-badge milestone">Milestone</span>
+        <h3>Algebraic hypercuspidal germs now exist</h3>
+        <p>An August 2025 draft asks for algebraic hypercuspidal germs in higher projective space. The later December draft constructs affine algebraic heat-type examples in every $\P^n$, $n\geq4$. The genuine frontier is global: smooth complete examples, deformation theory, and the unfinished tangent-plane stratification.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="covers">
+    <div class="program-heading">
+      <span class="program-number">01</span>
+      <div>
+        <h2>Covers, bundles, and Hurwitz geometry</h2>
+        <p>The common spine is generic syzygy balance, the geometry of its jumping loci, realization and stability over positive-genus targets, and finally complete curves that test global birational geometry.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="cover-balance">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Find the exact balance range for every relative canonical syzygy bundle</h3></div>
+        <p class="question-statement">For a general degree-$d$, genus-$g$ cover $C\to\P^1$, when is each Casnati&ndash;Ekedahl syzygy bundle $N_i$ balanced, and what is the optimal bound on the spread of its summand degrees outside that range?</p>
+        <p class="first-move"><strong>First move.</strong> Extend the maximal-rank theorem for quadrics on maximally connected chains to higher Koszul maps. Record the smallest counterexamples and the sharp threshold $g_0(d,i)$; the proved $N_1$ range and the congruence class $g\equiv1\pmod d$ give calibration data. In parallel, make the proposed genus-one-fibration strategy and the comparison with Green's conjecture functorial on Koszul cohomology.</p>
+        <p class="source-thread">Source thread: <a href="papers/invariants-branched-cover/index.html">Invariants of a general branched cover of $\P^1$</a>; <a href="papers/special-codimension-one/index.html">Special Codimension One Loci in Hurwitz Spaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="syzygy-loci">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Determine the components, codimensions, and realizable splitting types of the loci $Z_i$</h3></div>
+        <p class="question-statement">For $Z_i=\{\alpha:N_i(\alpha)\text{ is unbalanced}\}$, are the components of expected dimension, when are they divisorial, and which vector bundles can actually occur in a Casnati&ndash;Ekedahl resolution? Is there an intrinsic interpretation of the bundle of quadrics $F$, analogous to the Tschirnhausen bundle's interpretation through the singularity of $W_d\subset\Pic^d(C)$?</p>
+        <p class="first-move"><strong>First move.</strong> Begin with degree five, the first low-degree case identified as unknown. Combine the Pfaffian description with deformation theory of the resolution, compute the determinantal expected class, and compare it with actual excess components.</p>
+        <p class="source-thread">Source thread: <a href="papers/special-codimension-one/index.html">Special Codimension One Loci</a>; <a href="papers/vector-bundles-finite-covers/index.html">Vector bundles and finite covers</a>.</p>
+      </article>
+
+      <article class="research-question" id="hurwitz-chow">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Describe the Chow ring of the small Hurwitz space and the source of all tautological relations</h3></div>
+        <p class="question-statement">Is $A^*(\mathcal H^s_{d,g})=\mathbb Q$ for all $d,g$? More structurally, are all tautological relations generated by impossible branching strata, can the rational calculation be lifted to integral Chow groups, and do the relevant discriminants stabilize cohomologically or motivically?</p>
+        <p class="first-move"><strong>First move.</strong> Treat the known degree-$4$ and degree-$5$ stable ranges as boundary conditions. Replace the ill-behaved Maroni stratification by the joint Tschirnhausen&ndash;Casnati&ndash;Ekedahl stratification; in the intermediate range $6\leq d\leq2g$, compare the resulting classes with braid-group cohomology.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1505.04323">On the Chow ring of the Hurwitz space of degree three covers</a>.</p>
+      </article>
+
+      <article class="research-question" id="hurwitz-birational">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Build the birational models predicted by Maroni and Casnati&ndash;Ekedahl divisors</h3></div>
+        <p class="question-statement">Can the Maroni or Casnati&ndash;Ekedahl divisor be contracted? When is the latter actually divisorial? What are the irreducible boundary strata and all extremal rays of the effective cone, what replaces the trigonal tangency divisor in higher degree, and why might the pentagonal locus behave differently in the log MMP of $\overline{\mathcal M}_g$?</p>
+        <p class="first-move"><strong>First move.</strong> Resolve the rational map to the proposed GIT quotient, vary the linearization, and track the special divisors and boundary across wall crossings. Parallel test curves should distinguish proportional divisor classes with different supports and remove the congruence restrictions in the known sharp-slope results.</p>
+        <p class="source-thread">Source thread: <a href="papers/special-codimension-one/index.html">Special Codimension One Loci</a>.</p>
+      </article>
+
+      <article class="research-question" id="tschirnhausen-exact">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Replace eventual Tschirnhausen realization by an exact criterion</h3></div>
+        <p class="question-statement">A sufficiently positive twist of every rank-$(d-1)$ bundle on a smooth curve is realizable. Which untwisted bundles occur, and is the Tschirnhausen map to bundle moduli dominant as soon as dimensions permit? In higher dimension the unrestricted analogue is false. Three residual problems should be kept separate: finite covers with smooth source when $\dim Y\leq d$; generically finite maps with smooth source; and finite covers with suitably controlled singularities on the source or fibers.</p>
+        <p class="first-move"><strong>First move.</strong> Express the twisting threshold in Harder&ndash;Narasimhan data and settle exact realization in degrees four and five, where explicit structure theorems still exist. The next structural task is to find replacement linear-algebraic data for degree at least six. For higher-dimensional bases, first sharpen the known obstruction rather than restating the disproved general conjecture.</p>
+        <p class="source-thread">Source thread: <a href="papers/vector-bundles-finite-covers/index.html">Vector bundles and finite covers</a>.</p>
+      </article>
+
+      <article class="research-question" id="steinitz-realization">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Resolve the arithmetic Steinitz realization problem in fixed degree</h3></div>
+        <p class="question-statement">Fix a number field $K$ and a degree $d$. Is every class in $\operatorname{Cl}(K)$ realized as the Steinitz class of some degree-$d$ extension $L/K$? The geometric Tschirnhausen theorem is an algebro-geometric analogue, but it does not settle the arithmetic question.</p>
+        <p class="first-move"><strong>First move.</strong> Translate the geometric construction into integral models with controlled discriminant, first over Dedekind domains with large residue characteristic, and determine which local conditions survive specialization.</p>
+        <p class="source-thread">Source thread: <a href="papers/vector-bundles-finite-covers/index.html">Vector bundles and finite covers</a>.</p>
+      </article>
+
+      <article class="research-question" id="ce-stability">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Prove stability of the bundle of quadrics $F$ over positive-genus targets</h3></div>
+        <p class="question-statement">For a general primitive cover between curves of positive genus, is the Casnati&ndash;Ekedahl bundle $F$ stable (regular polystable over an elliptic target)? What about the later terms of the resolution?</p>
+        <p class="first-move"><strong>First move.</strong> Start with genus-two covers of an elliptic curve. The Tschirnhausen bundle $E$ is already controlled throughout the fixed-determinant locus relevant to the conjecture; regular polystability of general $F$ would prove the full genus-two Complete Curve Conjecture. Atiyah's classification and Fourier&ndash;Mukai techniques make this unusually concrete.</p>
+        <p class="source-thread">Source thread: <a href="papers/complete-families-generic-covers/index.html">Complete Families of Generic Covers of Elliptic Curves</a>.</p>
+      </article>
+
+      <article class="research-question" id="complete-curves">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Construct complete curves of slope $5+6/d$ beyond the classical parametrized cases</h3></div>
+        <p class="question-statement">Do the Complete Curve and Elliptic Slope Conjectures hold for every $d,g\geq2$? The first named frontier is degree six and genus three; even a single complete curve in every regular-polystable locus would be progress.</p>
+        <p class="first-move"><strong>First move.</strong> Develop the degree-six resolution data for $(d,g)=(6,3)$, and in parallel construct complete boundary families that preserve primitivity and fixed determinant and can be deformed while avoiding $\operatorname{Bog}(E)$ and $\operatorname{Bog}(F)$. Remove the $g\gg0$ hypothesis in degrees three through five, and seek a cycle-level explanation for why the genus-two lattice count and the Bogomolov relation both yield $5+6/d$.</p>
+        <p class="source-thread">Source thread: <a href="papers/complete-families-generic-covers/index.html">Complete Families of Generic Covers of Elliptic Curves</a>.</p>
+      </article>
+
+      <article class="research-question" id="stability-dictionary">
+        <div class="question-title-row"><span class="direction-badge bridge">Bridge</span><h3>Create a single stability-and-positivity dictionary for covers</h3></div>
+        <p class="question-statement">Balanced splitting on $\P^1$, slope stability over higher-genus curves, Bogomolov jumping divisors, extremal Hurwitz divisors, and complete test curves appear to be different shadows of one structure. Can they be organized by a relative map to moduli of bundles and its wall geometry? In particular, are positive-genus Maroni loci irreducible, of expected dimension, rigid, or extremal?</p>
+        <p class="first-move"><strong>First move.</strong> Construct the relative Casnati&ndash;Ekedahl map to the appropriate stack of bundles, identify its Brill&ndash;Noether and instability walls, and compute pullbacks and cycle classes of the first walls in degrees four, five, and six.</p>
+        <p class="source-thread">Source thread: the four-paper progression from <a href="papers/invariants-branched-cover/index.html">branched-cover invariants</a> through <a href="papers/complete-families-generic-covers/index.html">complete elliptic-cover families</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="interpolation">
+    <div class="program-heading">
+      <span class="program-number">02</span>
+      <div>
+        <h2>Interpolation, linear sections, and contact</h2>
+        <p>Here the central question is whether a family meets the expected incidence conditions. The same evaluation maps then define enumerative degrees, special divisors on Hilbert schemes, monodromy representations, and high-contact loci.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="del-pezzo-strong">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Upgrade del Pezzo surfaces of degrees $6,7,8$ to strong interpolation</h3></div>
+        <p class="question-statement">The source proves weak interpolation in every degree. For degrees $3,4,5,9$, ordinary interpolation is known and the lci normal-bundle criterion upgrades it to strong interpolation. Do the remaining degrees satisfy strong interpolation, and how many surfaces meet each balanced collection of points and linear spaces?</p>
+        <p class="first-move"><strong>First move.</strong> Use the normal-bundle/evaluation-map formulations rather than new pointwise constructions for degrees $6,7,8$. The already strong cases provide the cleaner starting point for the associated enumerative counts.</p>
+        <p class="source-thread">Source thread: <a href="papers/interpolation-del-pezzo/index.html">Interpolation Problems: Del Pezzo Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="near-minimal">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Classify interpolation just beyond minimal degree</h3></div>
+        <p class="question-statement">Which anticanonically embedded Fano threefolds satisfy weak interpolation, and which satisfy full interpolation? Which higher-dimensional Fano varieties interpolate? Do projected varieties of minimal degree, surfaces of degree $d+1$ in $\P^d$, or more generally dimension-$k$, degree-$d$ varieties in $\P^{d+k-2}$ interpolate?</p>
+        <p class="first-move"><strong>First move.</strong> Organize families by their carrier curves or carrier scrolls and isolate geometric obstructions coming from containment in a larger variety that itself fails the incidence conditions.</p>
+        <p class="source-thread">Source thread: <a href="papers/interpolation-del-pezzo/index.html">Interpolation Problems: Del Pezzo Surfaces</a>; <a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>.</p>
+      </article>
+
+      <article class="research-question" id="moving-curve-slopes">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Use interpolation to construct and optimize moving curves on $\overline{\mathcal M}_g$</h3></div>
+        <p class="question-statement">What slopes can be realized by moving curves in the moduli space of curves, and what is the least upper bound? Interpolating projective models supply moving families but their divisor intersections have not been systematically optimized.</p>
+        <p class="first-move"><strong>First move.</strong> For each strongly interpolating family, compute the induced $\lambda$- and $\delta$-degrees after imposing a balanced pencil of incidence conditions, then compare the resulting slopes with the complete-cover families.</p>
+        <p class="source-thread">Source thread: <a href="papers/interpolation-del-pezzo/index.html">Interpolation Problems: Del Pezzo Surfaces</a>; <a href="papers/complete-families-generic-covers/index.html">Complete Families of Generic Covers</a>.</p>
+      </article>
+
+      <article class="research-question" id="canonical-curves">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Decide whether weakly interpolating canonical curves satisfy full interpolation</h3></div>
+        <p class="question-statement">The thesis isolates canonical curves as the missing Castelnuovo cases after weak interpolation. The problem is also tied to constructing moving curves and slope questions on moduli.</p>
+        <p class="first-move"><strong>First move.</strong> Compute interpolation of the canonical normal bundle genus by genus, beginning away from the exceptional genera already identified in the source, and compare failure with containment on surfaces of unexpectedly small moduli.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>.</p>
+      </article>
+
+      <article class="research-question" id="scroll-enumeration">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Make scroll interpolation effectively enumerable</h3></div>
+        <p class="question-statement">Do singular scrolls of degree below their dimension interpolate? How many higher-dimensional scrolls meet a balanced collection of linear spaces? Is there an efficient degeneration algorithm, and is there a closed form for degree-three scrolls of dimension $k$ through $3k+3$ points?</p>
+        <p class="first-move"><strong>First move.</strong> Generalize the known surface-scroll recursion while retaining singular scrolls of degree below the dimension. Compute low-degree tables, then search for a recursion compatible with splitting-type specialization.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>.</p>
+      </article>
+
+      <article class="research-question" id="determinantal-interpolation">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Determine which determinantal varieties and Pl&uuml;cker Grassmannians interpolate</h3></div>
+        <p class="question-statement">Varieties of minimal degree are determinantal, suggesting a much wider class. Does an appropriate determinantal family satisfy interpolation, and how do rank strata or singularities modify the expected conditions?</p>
+        <p class="first-move"><strong>First move.</strong> Test generic matrices of small format using the universal evaluation map and Thom&ndash;Porteous classes. Separate irreducible Hilbert components before formulating a general conjecture.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>.</p>
+      </article>
+
+      <article class="research-question" id="interpolation-functoriality">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Find functorial rules and genuine obstructions for interpolation</h3></div>
+        <p class="question-statement">Is interpolation preserved by taking cones or hyperplane sections? Does sufficiently high re-embedding force it? Is every known failure explained by containment in a non-interpolating family of one higher dimension, or are there intrinsic failures?</p>
+        <p class="first-move"><strong>First move.</strong> Translate each construction into the corresponding normal-bundle evaluation sequence and formulate hypotheses under which surjectivity descends or ascends. Counterexamples should be sought among reducible or obstructed Hilbert components.</p>
+        <p class="source-thread">Source thread: the “Further questions” chapter of <a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>.</p>
+      </article>
+
+      <article class="research-question" id="veronese-interpolation">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Separate Veronese existence from Veronese enumeration</h3></div>
+        <p class="question-statement">For which $(d,n)$ does a $d$-uple Veronese $n$-fold pass through the expected number of general points? When several do, must two of them meet in positive dimension? The cases $n=1$, $(d,n)=(2,2)$, and $(3,2)$ are milestones, not open starting points.</p>
+        <p class="first-move"><strong>First move.</strong> Use association and Cremona geometry to attack the next small pairs, while treating existence, finiteness, and the actual count as three separate assertions.</p>
+        <p class="source-thread">Source thread: <a href="papers/interpolation-del-pezzo/index.html">Interpolation Problems</a>; <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="grassmannian-effective-cone">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Use failed hypersurface interpolation to find extremal and rigid divisors</h3></div>
+        <p class="question-statement">In every balanced case, does the determinant divisor of $m$ $k$-planes lying on a degree-$d$ hypersurface&mdash;or a natural irreducible component&mdash;span the nontrivial pseudo-effective ray of $\Gr(k,N)^{[m]}$? This is proved for hyperplanes and for the Schubert component of the five-line cubic divisor; the quadric theorem remains conditional. After fixing one precise definition of cohomological rigidity, are any components rigid in that sense?</p>
+        <p class="first-move"><strong>First move.</strong> Reconcile the two rigidity formulations in the working source, then classify components before asserting extremality. Construct covering curves orthogonal to each candidate divisor and separately test rigidity using curves contained in the divisor and boundary restrictions.</p>
+        <p class="source-thread">Source thread: <em>Linear subspaces lying on hypersurfaces they ought not to</em> (working manuscript).</p>
+      </article>
+
+      <article class="research-question" id="grassmannian-first-cases">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Resolve the first quadric, hyper-Schubert, and quintic incidence cases</h3></div>
+        <p class="question-statement">For quadrics through lines, complete the odd auxiliary-degree case, construct the required complete moving curves in both parities, and prove that the resulting Grassmannian curves interpolate through $m$ general points. Also decide whether a hyper-Schubert quintet in $\P^4$ determines the predicted singular quartic base surface, and whether $21$ lines meeting a plane in points on a quintic lie on a quintic threefold.</p>
+        <p class="first-move"><strong>First move.</strong> Start with five lines in $\P^4$, where the quadric and hyper-Schubert problems meet; even there, the existing even-degree proposition does not yet supply the complete moving curve or Grassmannian interpolation. For the $21$-line question, compute $H^1(\mathcal I_{\cup L_i}(5))$ relative to the fixed plane.</p>
+        <p class="source-thread">Source thread: <em>Linear subspaces lying on hypersurfaces they ought not to</em>.</p>
+      </article>
+
+      <article class="research-question" id="section-versality">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Prove full versality for incident lines and higher-dimensional sections</h3></div>
+        <p class="question-statement">For a general hypersurface, the point-line correspondence is already versal at the minimally incident threshold $k=d-(2r-2)$. Does versality hold for every more-incident line $k>d-(2r-2)$, and is there an analogue for higher-dimensional sections? For each $m$, what is the full dimensionally admissible generic-injectivity range not covered by the stated theorem?</p>
+        <p class="first-move"><strong>First move.</strong> Replace the coordinate calculation by the logarithmic tangent bundle: sections of $T_{\P^n}(-\log X)|_\ell$ already parametrize deformations preserving intersection moduli. Compute its splitting type and evaluation maps.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1605.01788">Moduli of linear sections of a general hypersurface</a>; <a href="papers/lines-highly-tangent/index.html">Lines highly tangent to a hypersurface</a>.</p>
+      </article>
+
+      <article class="research-question" id="section-monodromy">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Compute equimultiplicity monodromy and the first unsolved section degrees</h3></div>
+        <p class="question-statement">What is the monodromy of $5$-tangent lines to a general quintic surface? Can the gap in D'Souza's claimed full-symmetric proof for $(2,2,2,2)$-contact lines to an octic surface be repaired, or can the monodromy be determined independently? What is $\deg(\mu_2:\Gr(2,4)\dashrightarrow\mathcal M_3)$ for a general quartic threefold? For a general plane sextic, what is the double-point curve of $\mu_1$ and its contra-invariant; and what are the analogous Fermat degrees in higher dimension?</p>
+        <p class="first-move"><strong>First move.</strong> Use local braid monodromy for equimultiplicity, where the existing simple-transposition argument fails. For the quartic threefold, compactify complete quadrilaterals and carry the stable-reduction calculation through the boundary; use Fermat automorphisms as a separate controlled test of degree drop.</p>
+        <p class="source-thread">Source thread: <a href="https://arxiv.org/abs/1605.01788">Moduli of linear sections</a>.</p>
+      </article>
+
+      <article class="research-question" id="high-contact">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Prove expected dimension for sixth and higher contact loci</h3></div>
+        <p class="question-statement">For a smooth degree-$d$ hypersurface in $\P^5$ in the range $d\geq5$ relevant to the plane bound, does the sixth-order contact locus have the expected dimension $3$? This would improve the bound on planes in the smooth fourfold from order $d^4$ to order $d^3$. Can the hierarchy be extended to half-dimensional linear spaces in $2m$-folds?</p>
+        <p class="first-move"><strong>First move.</strong> Classify non-sweeping components by the splitting of the restricted log-tangent bundle and the second fundamental form. Then run the principal-parts intersection calculation one contact order higher. In positive characteristic, first separate components produced by inseparable Gauss maps from genuinely new contact geometry.</p>
+        <p class="source-thread">Source thread: <a href="papers/lines-highly-tangent/index.html">Lines highly tangent to a hypersurface</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="ramification">
+    <div class="program-heading">
+      <span class="program-number">03</span>
+      <div>
+        <h2>Projection, ramification, and differential geometry</h2>
+        <p>A projection center determines a ramification divisor, while high contact and second fundamental forms measure infinitesimal failure of transversality. The program is to understand the degree, fibers, exceptional geometry, and characteristic dependence of these maps.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="ramification-degree">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Find the scroll degree function $\phi$</h3></div>
+        <p class="question-statement">For the rational normal scroll associated to a partition $(a_1,\dots,a_r)$, compute the degree of its projection&ndash;ramification map. Does the order-preserving function on splitting partitions satisfy a recurrence or generating series explaining the Catalan and apparent Baxter sequences?</p>
+        <p class="first-move"><strong>First move.</strong> Refine the linked-limit-series degeneration from a dominance statement to a degree formula. The existing proof supplies a semigroup relation on bundle degrees that propagates dominance, not an additive formula for $\phi$; determining how degree behaves under that gluing is the research problem. Combine the result with monotonicity under specialization and small-partition data.</p>
+        <p class="source-thread">Source thread: <a href="papers/ramification-divisors/index.html">Ramification divisors of general projections</a>.</p>
+      </article>
+
+      <article class="research-question" id="ramification-failure">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Classify failure of maximal variation</h3></div>
+        <p class="question-statement">Are scrolls over curves the only varieties whose projection&ndash;ramification map fails maximal variation? Which rational normal scrolls fail, and is a mismatch of generic stabilizers equivalent to failure?</p>
+        <p class="first-move"><strong>First move.</strong> Formulate the source and target as quotient stacks and compare stabilizer dimensions. Prove the criterion first for rational normal scrolls, where all known counterexamples live, before testing other dual-defective varieties.</p>
+        <p class="source-thread">Source thread: <a href="papers/ramification-divisors/index.html">Ramification divisors of general projections</a>.</p>
+      </article>
+
+      <article class="research-question" id="compressible-threefolds">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Classify compressible varieties and settle maximal variation for all threefolds</h3></div>
+        <p class="question-statement">Classify compressible varieties, beginning in codimension two. In dimension three, dual-defect theory reduces the outstanding maximal-variation problem to $\P^2$-bundles over curves, including bases of positive genus.</p>
+        <p class="first-move"><strong>First move.</strong> Extend the higher-rank linked ramification series from nodal rational bases to higher-genus bases and compute the differential of the ramification map at a general linked series.</p>
+        <p class="source-thread">Source thread: <a href="papers/ramification-divisors/index.html">Ramification divisors of general projections</a>.</p>
+      </article>
+
+      <article class="research-question" id="ramification-fields">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Separate characteristic-$p$ and real-topological contributions to ramification degree</h3></div>
+        <p class="question-statement">Do the characteristic-zero maximal-variation theorem and the characterization of minimal-degree varieties by equality of source and target dimensions survive in positive characteristic, after separating inseparable degree? Is there a higher-dimensional topological model, analogous to nets for the Wronski map, that explains the real fibers and the integers $\deg\rho$?</p>
+        <p class="first-move"><strong>First move.</strong> Define separable and inseparable projection&ndash;ramification degrees separately. For real geometry, use the elliptic $2$-torsion descriptions of the Veronese and quartic-scroll fibers as the first test cases.</p>
+        <p class="source-thread">Source thread: <a href="papers/ramification-divisors/index.html">Ramification divisors of general projections</a>.</p>
+      </article>
+
+      <article class="research-question" id="hypercuspidal-global">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Globalize the heat-type hypercuspidal surfaces</h3></div>
+        <p class="question-statement">Affine algebraic non-ruled everywhere-parabolic surfaces now exist in every $\P^n$, $n\geq4$. Does any projective closure, deformation, or resolution yield a smooth complete hypercuspidal surface?</p>
+        <p class="first-move"><strong>First move.</strong> Compute the projective closure and boundary singularities of the heat-polynomial embeddings, then test whether boundary modifications preserve the basepointed second fundamental system.</p>
+        <p class="source-thread">Source thread: <em>A Footnote to Algebraic Geometry and Local Differential Geometry</em> (December 2025 working draft).</p>
+      </article>
+
+      <article class="research-question" id="hypercuspidal-classification">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Finish and deform the local classification of everywhere-parabolic surfaces</h3></div>
+        <p class="question-statement">Complete the unfinished $b=3$ tangent-plane-intersection exclusion in $\P^4$, classify the finite intersection lengths, and determine whether the heat operator is rigid or merely a special point in a moduli space of hypercuspidal differential operators.</p>
+        <p class="first-move"><strong>First move.</strong> Put the second-order operator into formal normal form under coordinate changes, calculate its deformation complex, and only then revisit uniqueness claims and the projected-Veronese archival question.</p>
+        <p class="source-thread">Source thread: <em>A Footnote to Algebraic Geometry and Local Differential Geometry</em>.</p>
+      </article>
+
+      <article class="research-question" id="jets-bridge">
+        <div class="question-title-row"><span class="direction-badge bridge">Bridge</span><h3>Unify ramification, high contact, and second fundamental forms through jets</h3></div>
+        <p class="question-statement">Principal-parts bundles, log-tangent bundles, and second fundamental systems are three descriptions of how incidence fails infinitesimally. Can a single jet-theoretic package classify exceptional components and produce their cycle classes?</p>
+        <p class="first-move"><strong>First move.</strong> Express the projection&ndash;ramification differential and $k$-contact incidence as degeneracy loci of one filtered jet complex. Verify the construction for surfaces in $\P^4$ and lines with contact order five and six.</p>
+        <p class="source-thread">Source thread: <a href="papers/ramification-divisors/index.html">Ramification divisors</a>; <a href="papers/lines-highly-tangent/index.html">Lines highly tangent</a>; the second-fundamental-form note.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="orbits">
+    <div class="program-heading">
+      <span class="program-number">04</span>
+      <div>
+        <h2>Orbits, degenerations, and universal counts</h2>
+        <p>Equivariant fundamental classes convert an orbit problem into universal intersection formulas. Degeneration, matroid valuation, localization, and test families provide complementary engines; the next task is to make them reusable beyond the cases where the geometry is already explicit.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="linear-section-general">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Extend fixed-moduli linear-section counts beyond the solved models</h3></div>
+        <p class="question-statement">For fixed $Y$ and general $Z$, count linear spaces $\Lambda$ for which $\Lambda\cap Z\cong Y$. The matrix-orbit formulas handle unions of hyperplanes, and the later cubic-surface formula answers the general cubic-surface/hyperplane-section case with the count $42120$. The residual program concerns other $Y$, other ambient families, and constraints such as Schubert conditions.</p>
+        <p class="first-move"><strong>First move.</strong> Extend the generalized matrix-orbit operation from unrestricted Grassmannians to cycles pulled back from Schubert varieties, using the solved cubic-threefold count as a regression test rather than as an open target.</p>
+        <p class="source-thread">Source thread: <a href="papers/orbits-equivariant-quantum/index.html">Orbits in $(\P^r)^n$ and equivariant quantum cohomology</a>; <a href="papers/universal-formula-counting-cubic-surfaces/index.html">A universal formula for counting cubic surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="matrix-orbit-extensions">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Extend the matroid-valuative orbit calculus</h3></div>
+        <p class="question-statement">Can the equivariant formulas be extended from matrices to polymatroids and general systems of linear maps, from Chow groups to $K$-theory or quantum $K$-theory, and from the factorial permutation sum to deletion&ndash;contraction algorithms?</p>
+        <p class="first-move"><strong>First move.</strong> Prove an equivariant polymatroid pushforward theorem, then compare it with valuativity and direct-sum recursion. A dynamic implementation should make large configurations computationally accessible.</p>
+        <p class="source-thread">Source thread: <a href="papers/orbits-equivariant-quantum/index.html">Orbits in $(\P^r)^n$</a>.</p>
+      </article>
+
+      <article class="research-question" id="plane-orbit-calculus">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Build an all-degree boundary calculus for plane-curve orbits</h3></div>
+        <p class="question-statement">For $d\geq4$, line-splitting is controlled for a general residual curve and general lines; the node/cusp formula is controlled under the source's ordinary-singularity, smooth-total-space, and no-hyperflex hypotheses. The $A_6/E_6$ and hyperflex picture is quartic. Can one compute the weighted equivariant orbit classes of $C_{AN}$ and $C_{BN}$ in closed form, prove arbitrary-degree hyperflex degeneration, and incorporate broader singularities?</p>
+        <p class="first-move"><strong>First move.</strong> Execute the explicit relative-presentation recipe already left in the source and package it symbolically. Use stable reduction of singularity tails to predict the replacement orbits and their multiplicities before proving flatness, then verify the expected extension to perfect fields of characteristic at least seven and identify the exceptional small primes.</p>
+        <p class="source-thread">Source thread: <a href="papers/equivariant-degenerations/index.html">Equivariant Degenerations of Plane Curve Orbits</a>.</p>
+      </article>
+
+      <article class="research-question" id="cubic-orbits">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Stratify cubic-surface orbit classes by singularities and special geometry</h3></div>
+        <p class="question-statement">How does the equivariant orbit class change when a cubic surface acquires an ADE singularity or an Eckardt point? Is $1080$ the least positive degree of a dominant good family of cubic surfaces?</p>
+        <p class="first-move"><strong>First move.</strong> Reuse the eight test families and orbit-boundary exclusion tools to compute a table across the first ADE and Eckardt strata. In parallel, search for or obstruct a degree-$1080$ family satisfying the hypotheses behind the divisibility statement: a good family over a proper fourfold, smooth general fiber, and dominant moduli map.</p>
+        <p class="source-thread">Source thread: <a href="papers/universal-formula-counting-cubic-surfaces/index.html">A universal formula for counting cubic surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="del-pezzo-universal">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Construct universal counting formulas for del Pezzo surfaces of degrees $1,2,4$</h3></div>
+        <p class="question-statement">The cubic-surface formula is a single representation-theoretic case. Do analogous Chern-class formulas govern good families in the three additional del Pezzo degrees singled out in the source, $1,2,4$, and what is the correct representation or quotient stack in each case?</p>
+        <p class="first-move"><strong>First move.</strong> Identify a good-family condition and enough geometrically computable test families for degree four, the closest case to the cubic calculation, before moving to weighted models in degrees one and two.</p>
+        <p class="source-thread">Source thread: <a href="papers/universal-formula-counting-cubic-surfaces/index.html">A universal formula for counting cubic surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="linear-series-orbits">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Make linear-series orbit formulas canonical and move beyond $\P^1$</h3></div>
+        <p class="question-statement">Can the weighted formula be rewritten as a manifest Schubert-basis class with denominator cancellation? Is there a canonical positive decomposition into three-point ramification profiles? What survives for higher-genus curves, infinite stabilizers, non-injective series, or small characteristic?</p>
+        <p class="first-move"><strong>First move.</strong> First derive the non-equivariant Schubert formula and a confluent tree-reduction rule on $\P^1$. That combinatorial algebra should reveal what must replace Wronski finiteness on higher-genus curves.</p>
+        <p class="source-thread">Source thread: <a href="papers/orbits-linear-series/index.html">Orbits of linear series on the projective line</a>.</p>
+      </article>
+
+      <article class="research-question" id="orbit-machine">
+        <div class="question-title-row"><span class="direction-badge bridge">Bridge</span><h3>Build a common computational machine for equivariant orbit classes</h3></div>
+        <p class="question-statement">Matroid valuations, plane-curve flat limits, cubic test families, and linear-series localization currently solve different representations. Can one system accept a representation, a boundary graph, and test families, then produce and verify the universal class?</p>
+        <p class="first-move"><strong>First move.</strong> Standardize weighted orbit cycles and specialization relations, implement independent localization and degeneration checks, and use cubic surfaces and quartic plane curves as regression suites.</p>
+        <p class="source-thread">Source thread: the four orbit papers in this section.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="veronese">
+    <div class="program-heading">
+      <span class="program-number">05</span>
+      <div>
+        <h2>Veronese varieties, powers, and covariants</h2>
+        <p>These problems ask for degrees of images and joins defined by highly structured representations. Association, Cremona maps, complete-configuration compactifications, transvectants, and tangent-cone multiplicities form a surprisingly coherent toolkit.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="veronese-general-count">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Determine the general Veronese number $\nu_{d,n}$</h3></div>
+        <p class="question-statement">How many $d$-uple Veronese $n$-folds pass through $\binom{n+d}{d}+n+1$ general points when the incidence problem is finite? The value $\nu_{3,2}=4246$ is one solved entry, not a general formula.</p>
+        <p class="first-move"><strong>First move.</strong> Attack $\nu_{2,3}$ via the proposed quadro-quartic Cremona correspondence. Use certified numerical algebraic geometry to test finiteness, degree, and monodromy before constructing the required compactification.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="association-role">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Explain why association appears in every known Veronese count</h3></div>
+        <p class="question-statement">Does every finite Veronese interpolation problem admit a natural associated-point construction and a Cremona transform $g\circ\operatorname{ver}_d\circ\gamma$? Is association merely computational, or does it identify the correct moduli problem?</p>
+        <p class="first-move"><strong>First move.</strong> Formulate association as a correspondence between quotient stacks of point configurations and Veronese maps, then determine exactly when it is generically finite and compatible with compactification.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="veronese-monodromy">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Determine the Galois and monodromy structure of the Veronese counts</h3></div>
+        <p class="question-statement">Is the monodromy group of the $4246$ solutions to the $(3,2)$ problem the full symmetric group? Can the classical value $\nu_{2,2}=4$ be certified numerically and reproved by a transparent degeneration?</p>
+        <p class="first-move"><strong>First move.</strong> Track certified solution paths around explicit branch loops and search for a transposition plus double transitivity. A degeneration proof of the four-solution case should be used as a small model for the monodromy argument.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="veronese-characteristic">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Determine the primes at which Veronese counts change</h3></div>
+        <p class="question-statement">For which primes does $\nu_{3,2}=4246$ fail to specialize unchanged? More generally, how should inseparability, torsion, and nonreduced solution schemes enter an integral definition of $\nu_{d,n}$?</p>
+        <p class="first-move"><strong>First move.</strong> Construct integral models of the complete-triangle and singular-pencil spaces, then analyze flatness and fixed loci prime by prime. The characteristic-two drop in the $(2,2)$ problem supplies a known mechanism.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="veronese-integrals">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Find reusable smooth integral models for interpolation counts</h3></div>
+        <p class="question-statement">When can a Veronese number be written as $\int_X\alpha^m$ on a tractable smooth projective variety? Can complete triangles be replaced by a general “complete simplex” construction that resolves power maps on Hilbert schemes?</p>
+        <p class="first-move"><strong>First move.</strong> Compute the Chow presentation of the complete-triangle and singular-quintic-pencil spaces, isolate the universal features of the blowup, and test the construction on the next length/configuration.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a>.</p>
+      </article>
+
+      <article class="research-question" id="more-powers">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Count sums of more powers and powers in more variables</h3></div>
+        <p class="question-statement">What replaces the first-transvectant variety for sums of three or more powers? For two powers in several variables, the newer working introduction announces degree $118824$ for ternary $f^3+g^2$ sextics, but the available body does not complete the proof. Supply and verify that proof, and determine the degree of the other six-cuspidal component.</p>
+        <p class="first-move"><strong>First move.</strong> Finish the local two-blowup and global intersection analysis needed to justify the announced $118824$. For three summands, replace pencils by higher-plane parameter spaces and identify the first multi-covariant compactification.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-powers/index.html">Counting sums of two powers</a> and its later working notes.</p>
+      </article>
+
+      <article class="research-question" id="covariant-classes">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Compute graph-closure classes for higher transvectants and other covariants</h3></div>
+        <p class="question-statement">The first transvectant supplies a compactification and a fundamental graph class. What are the corresponding classes for higher transvectants and general $\SL_2$-covariants, and can they be composed into a calculus?</p>
+        <p class="first-move"><strong>First move.</strong> Treat the second transvectant in the smallest nontrivial bidegrees, resolve its base locus, and compare the resulting graph class with generalized matrix-orbit and linear-series orbit operations. Even in the first-transvectant case, record the full Schubert cycle and seek closed coefficient formulas rather than only numerical code.</p>
+        <p class="source-thread">Source thread: <a href="papers/counting-powers/index.html">Counting sums of two powers</a>; the orbit-class program above.</p>
+      </article>
+
+      <article class="research-question" id="gcd-excess">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Compute the normal cone for $\gcd(m,n)>2$</h3></div>
+        <p class="question-statement">For fixed $g=\gcd(m,n)$, the reduced transvectant base locus is the single irreducible common-power locus $\P(\operatorname{Sym}^g)$. Its scheme structure has excess dimension $g-1$. What is its normal cone or Segre class, possibly stratified by root type, and does the stronger generic weighted-initial-ideal degeneration hold?</p>
+        <p class="first-move"><strong>First move.</strong> Use the corrected rational-Catalan gcd-two normal slice as the base case, compute slices along the root-type strata of the common-power locus, and prove flat colength or Segre-class formulas before attempting equality of initial ideals. Update examples and software before extrapolating.</p>
+        <p class="source-thread">Source thread: the corrected tangent-cone proof and notes accompanying <a href="papers/counting-powers/index.html">Counting sums of two powers</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-program" id="rigidity">
+    <div class="program-heading">
+      <span class="program-number">06</span>
+      <div>
+        <h2>Monodromy, $p$-curvature, and Hodge rigidity</h2>
+        <p>Two apparently different proofs share a principle: restrictions to enough special topological or automorphism subgroups force a universal representation or bundle to be globally rigid.</p>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="research-question" id="grothendieck-katz">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Prove the full Grothendieck&ndash;Katz $p$-curvature conjecture</h3></div>
+        <p class="question-statement">For a connection of arbitrary rank on an arbitrary smooth variety, does vanishing $p$-curvature for almost all primes imply a full set of algebraic solutions, equivalently trivialization after a finite &eacute;tale cover?</p>
+        <p class="first-move"><strong>First move.</strong> Separate the curve and higher-dimensional steps: first seek higher-rank finiteness criteria on surface groups and good-reduction theorems through logarithmic degenerations; then identify the higher-dimensional complements that can be controlled by sufficiently general curve sections.</p>
+        <p class="source-thread">Source thread: <a href="papers/rank-two-p-curvature/index.html">The rank two $p$-curvature conjecture on generic curves</a>.</p>
+      </article>
+
+      <article class="research-question" id="pcurvature-beyond-generic">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Move the rank-two $p$-curvature theorem beyond generic curves</h3></div>
+        <p class="question-statement">The rank-two conjecture is proved for a generic punctured curve. Can finite monodromy on pairs of pants be established for arbitrary curves, and which nongeneric loci in $\mathcal M_{g,n}$ can be connected to tractable fibers by isomonodromic propagation?</p>
+        <p class="first-move"><strong>First move.</strong> Map the locus where the good-reduction and one-finite-fiber arguments remain valid. Degenerate chosen nongeneric curves to configurations of $\P^1\setminus\{0,1,\infty\}$ while controlling logarithmic extension across the boundary, then propagate the result to higher-dimensional complements accessible by generic curve sections.</p>
+        <p class="source-thread">Source thread: <a href="papers/rank-two-p-curvature/index.html">The rank two $p$-curvature conjecture on generic curves</a>.</p>
+      </article>
+
+      <article class="research-question" id="pcurvature-rank">
+        <div class="question-title-row"><span class="direction-badge continuation">Continuation</span><h3>Prove semisimplicity, then seek higher-rank surface finiteness criteria</h3></div>
+        <p class="question-statement">The source explicitly asks whether almost-everywhere vanishing $p$-curvature forces semisimple monodromy and unconditional isomonodromy. A further continuation is to ask what replaces the rank-two trace and unitarizability argument in higher rank.</p>
+        <p class="first-move"><strong>First move.</strong> Attack semisimplicity through self-extension classes, which the existing deformation argument already exposes. For higher rank, search for a finite set of invariant tensors or eigenvalue data detected on simple loops and pairs of pants; in rank two, also pursue the announced applications to finite or bounded mapping-class-group orbits in character varieties.</p>
+        <p class="source-thread">Source thread: <a href="papers/rank-two-p-curvature/index.html">The rank two $p$-curvature conjecture on generic curves</a>.</p>
+      </article>
+
+      <article class="research-question" id="pluricanonical-hodge">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Classify subbundles of the pluricanonical Hodge bundles</h3></div>
+        <p class="question-statement">For $\Omega_g^{(n)}|_C=H^0(C,\omega_C^{\otimes n})$, which line and higher-rank holomorphic subbundles exist? Do Weierstrass divisors account for every line subbundle?</p>
+        <p class="first-move"><strong>First move.</strong> Compute the character restrictions of $H^0(C,\omega_C^n)$ on the same $(\mathbb Z/2)^2$-automorphism loci used for $n=1$, then compare the permitted characters with the known Weierstrass constructions.</p>
+        <p class="source-thread">Source thread: <a href="papers/hodge-bundle/index.html">The Simplicity of the Hodge Bundle</a>.</p>
+      </article>
+
+      <article class="research-question" id="hodge-fields">
+        <div class="question-title-row"><span class="direction-badge stated">Stated</span><h3>Give algebraic, cohomological, and all-characteristic proofs of Hodge simplicity</h3></div>
+        <p class="question-statement">Can Teichm&uuml;ller fixed-locus connectedness be replaced by irreducibility of double-cover Hurwitz stacks? What is the topological obstruction to even a continuous subbundle? Does simplicity hold in characteristic two?</p>
+        <p class="first-move"><strong>First move.</strong> Write the characteristic-not-two algebraic proof already outlined in the source, then isolate precisely where wild involutions obstruct the argument. The monodromy representation should also yield a direct cohomological formulation.</p>
+        <p class="source-thread">Source thread: <a href="papers/hodge-bundle/index.html">The Simplicity of the Hodge Bundle</a>.</p>
+      </article>
+
+      <article class="research-question" id="rigidity-toolkit">
+        <div class="question-title-row"><span class="direction-badge bridge">Bridge</span><h3>Abstract a rigidity criterion from special subgroup restrictions</h3></div>
+        <p class="question-statement">In the $p$-curvature work, a semisimple rank-two representation with finite monodromy on every simple loop (positive genus) or every pair of pants (genus zero) has finite global image; in the Hodge work, character restrictions on automorphism loci force rank $0$ or full rank. Is there a general theorem for universal local systems and pushforward bundles?</p>
+        <p class="first-move"><strong>First move.</strong> Formulate a criterion in terms of a collection of substacks whose orbifold fundamental groups or stabilizers generate enough of the ambient Tannakian group. Test it on Hodge bundles with marked points and on rank-two character varieties.</p>
+        <p class="source-thread">Source thread: <a href="papers/rank-two-p-curvature/index.html">rank-two $p$-curvature</a> and <a href="papers/hodge-bundle/index.html">Hodge simplicity</a>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="priority-map" id="priorities">
+    <h2>A possible order of attack</h2>
+    <p>This ordering favors questions with a precise first case, reusable infrastructure, and clear downstream consequences. It is a dependency map, not a judgment of mathematical importance.</p>
+    <div class="priority-grid">
+      <article class="priority-card">
+        <h3>Short computational or local projects</h3>
+        <ul>
+          <li>Test regular polystability of $F$ for genus-two elliptic covers.</li>
+          <li>Prove expected dimension for sixth-order contact in $\P^5$.</li>
+          <li>Compute the first unknown scroll values of $\phi$ and the tri-incident numbers in $\deg\mu_1$.</li>
+          <li>Run certified monodromy experiments for the $4246$ Veronese solutions.</li>
+          <li>Execute the all-degree $C_{AN}/C_{BN}$ orbit-class recipe.</li>
+          <li>Finish the $b=3$ tangent-plane-intersection gap.</li>
+        </ul>
+      </article>
+      <article class="priority-card">
+        <h3>Theorem-scale infrastructure</h3>
+        <ul>
+          <li>Prove full line/higher-plane versality through log-tangent bundles.</li>
+          <li>Construct the first quadric moving curves on $\Gr(1,4)^{[5]}$.</li>
+          <li>Derive a linked-series recurrence for the scroll ramification degree.</li>
+          <li>Give exact Tschirnhausen realization criteria in degrees four and five.</li>
+          <li>Build complete-configuration spaces for $\nu_{2,3}$ and higher gcd power loci.</li>
+          <li>Upgrade degrees $6,7,8$ del Pezzos to strong interpolation.</li>
+        </ul>
+      </article>
+      <article class="priority-card">
+        <h3>Long programs</h3>
+        <ul>
+          <li>Determine Hurwitz Chow rings, contractions, and effective cones in all degrees.</li>
+          <li>Prove the Complete Curve Conjecture and the slope-$5$ consequence.</li>
+          <li>Find a general representation-orbit and covariant graph-class calculus.</li>
+          <li>Determine $\nu_{d,n}$ and counts of sums of arbitrary powers.</li>
+          <li>Extend $p$-curvature rigidity to nongeneric curves and higher rank.</li>
+          <li>Classify pluricanonical Hodge subbundles in every characteristic.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="corpus-scope" id="corpus">
+    <h2>Corpus and editorial scope</h2>
+    <p>The synthesis used the newest reliable source material in each of the twenty folders below, not merely filenames such as <em>final</em> or <em>truefinal</em>. Duplicate questions were merged, questions answered later in the corpus were moved to the milestone section, and draft-only claims were downgraded when a later source did so. In particular, no single file fully supersedes the 2025 sums-of-powers manuscript: the agenda uses the corrected gcd-two tangent-cone multiplicity assembled from the later compact proof and associated working notes.</p>
+    <ol class="corpus-list">
+      <li><a href="papers/invariants-branched-cover/index.html">Invariants of a general branched cover of $\P^1$</a> (1504.03756)</li>
+      <li><a href="https://arxiv.org/abs/1505.04323">On the Chow ring of the Hurwitz space of degree three covers</a> (1505.04323)</li>
+      <li><a href="papers/special-codimension-one/index.html">Special Codimension One Loci in Hurwitz Spaces</a> (1508.06016)</li>
+      <li><a href="papers/interpolation-del-pezzo/index.html">Interpolation Problems: Del Pezzo Surfaces</a> (1601.05840)</li>
+      <li><a href="https://arxiv.org/abs/1605.01117">A Thesis of Minimal Degree</a>, Aaron Landesman; appendix coauthored with Anand Patel (1605.01117)</li>
+      <li><a href="https://arxiv.org/abs/1605.01788">Moduli of linear sections of a general hypersurface</a> (1605.01788)</li>
+      <li><a href="papers/vector-bundles-finite-covers/index.html">Vector bundles and finite covers</a> (1608.01711)</li>
+      <li><a href="papers/orbits-equivariant-quantum/index.html">Orbits in $(\P^r)^n$ and equivariant quantum cohomology</a> (1805.08181)</li>
+      <li><a href="papers/rank-two-p-curvature/index.html">The rank two $p$-curvature conjecture on generic curves</a> (1811.04538)</li>
+      <li><a href="papers/ramification-divisors/index.html">Ramification divisors of general projections</a> (1901.01513)</li>
+      <li><a href="papers/equivariant-degenerations/index.html">Equivariant Degenerations of Plane Curve Orbits</a> (1903.10069)</li>
+      <li><a href="papers/universal-formula-counting-cubic-surfaces/index.html">A universal formula for counting cubic surfaces</a> (2109.12672)</li>
+      <li><a href="papers/lines-highly-tangent/index.html">Lines highly tangent to a hypersurface</a> (2208.04393)</li>
+      <li><a href="papers/orbits-linear-series/index.html">Orbits of linear series on the projective line</a> (2211.16603)</li>
+      <li><a href="papers/complete-families-generic-covers/index.html">Complete Families of Generic Covers of Elliptic Curves</a> (2410.20291)</li>
+      <li><a href="papers/counting-veronese/index.html">Counting 3-uple Veronese Surfaces</a> (2411.14232)</li>
+      <li><a href="papers/counting-powers/index.html">Counting sums of two powers</a>, together with its tangent-cone correction notes (2507.08337)</li>
+      <li><a href="papers/hodge-bundle/index.html">The Simplicity of the Hodge Bundle</a> (2603.19052, corrected source)</li>
+      <li><em>A Footnote to Algebraic Geometry and Local Differential Geometry</em> (December 2025 working source)</li>
+      <li><em>Linear subspaces lying on hypersurfaces they ought not to</em> (working source)</li>
+    </ol>
+    <p class="directions-updated">This page is a research-planning document, not a survey of present-day open-problem status. Last corpus synthesis: July 2026.</p>
+  </section>
+
+  <a href="index.html" class="back-link">Back to home page</a>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    &copy; 2026 Anand Patel
+  </div>
+</footer>
+
+</body>
+</html>
