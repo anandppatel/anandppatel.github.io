@@ -23,3 +23,9 @@ The optional, feature-detected WebMCP tool only moves triangle vertices in the c
 `proof-episodes/circumcenter/` proves the perpendicular-bisector locus fact in both directions, then constructs O from two bisectors and proves it lies on the third. Its 12 sentences each illuminate the corresponding construction. D, E, F remain the midpoints of BC, CA, AB. The midpoint cases in the locus proof cover right triangles.
 
 `geometry.js` holds the translated-coordinate circumcenter calculation and line clipping. `episode.js` draws both the main board and a whole-circle overview when O is outside the drawing; it never clamps O or changes the scale under a dragged vertex. Near-collinear triangles carry a numerical-precision notice; degenerate configurations pause the proof until the vertices separate.
+
+## Orthocenter episode
+
+`orthocenter/` proves altitude concurrence at H using the auxiliary triangle PQR formed by parallels through A, B, C. The 12 sentences establish the midpoint claims using parallelograms, verify PQR is noncollinear, and identify the altitudes with its perpendicular bisectors before invoking the circumcenter theorem. The episode links to the previous proof.
+
+The construction view widens once at sentence 3. Dragging keeps the scale fixed; “Fit construction” explicitly fits PQR again. An overview shows offscreen auxiliary points or H. Supporting side lines and right-angle marks cover obtuse triangles; right triangles label H at the right-angle vertex. Degenerate configurations pause the proof.
