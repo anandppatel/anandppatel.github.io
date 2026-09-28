@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore the centroid of a triangle. Drag its vertices and see why the three medians always meet at one point.">
+<title>The centroid — Proof episodes — Anand Patel</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23172035'/%3E%3Cpath d='M20 7 6 32h28Z M20 7v25M6 32 27 19.5M34 32 13 19.5' fill='none' stroke='%239db6ff' stroke-width='1.5'/%3E%3Ccircle cx='20' cy='23.7' r='3' fill='%23f4b860'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--ink:#172035;--muted:#59647a;--line:#e0e5ef;--blue:#315dcc;--green:#087c70;--purple:#8551bd;--gold:#a95b08;--paper:#fff;--bg:#f5f7fb;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}button{font:inherit}button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}header{background:var(--ink);color:white;padding:24px clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:24px}.eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#bdc9e0;margin:0 0 9px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.2vw,2.9rem);line-height:1.08;font-weight:400;margin:0}.header-note{max-width:290px;color:#d1daeb;font-size:.9375rem;line-height:1.5;margin:0}main{max-width:1500px;margin:auto;padding:28px clamp(16px,3vw,44px) 32px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}.drawing{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}.toolbar{padding:18px 22px;display:flex;gap:16px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.toolbar p{font-size:.9375rem;margin:0;line-height:1.4}.toolbar strong{font-weight:600}.reset{border:1px solid #ccd4e3;border-radius:7px;background:white;padding:9px 14px;color:var(--ink);cursor:pointer;font-size:.875rem;white-space:nowrap}.reset:hover{background:#f0f4fc}.board{height:clamp(380px,53vw,590px);position:relative;overflow:hidden;touch-action:none;background-image:radial-gradient(#dbe1ed .8px,transparent .8px);background-size:24px 24px}.board svg{width:100%;height:100%;position:absolute;inset:0;overflow:visible;pointer-events:none}.triangle{fill:#315dcc08;stroke:#69758d;stroke-width:2;stroke-linejoin:round}.median{stroke-width:2.4;fill:none}.median-a{stroke:var(--blue)}.median-b{stroke:var(--green)}.median-c{stroke:var(--purple)}.midpoint{fill:white;stroke-width:2}.labels{font-family:Georgia,"Times New Roman",serif;font-size:18px;fill:var(--muted);paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round}.g-label{fill:#81500f;font-size:20px;font-style:italic}.vertex{--vertex:var(--ink);position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border:0;background:transparent;border-radius:50%;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;z-index:2}.vertex::before{content:"";position:absolute;width:17px;height:17px;inset:13.5px;border-radius:50%;background:white;border:3px solid var(--vertex);box-shadow:0 0 0 6px #ffffffa8;transition:box-shadow .12s}.vertex:hover::before,.vertex:focus-visible::before{box-shadow:0 0 0 8px color-mix(in srgb,var(--vertex) 13%,transparent)}.vertex.dragging{cursor:grabbing;z-index:4}.vertex.dragging::before{background:var(--vertex)}.vertex span{font:italic 22px Georgia,"Times New Roman",serif;color:var(--vertex);position:absolute;left:var(--label-x,14px);top:var(--label-y,-19px);pointer-events:none;text-shadow:0 0 5px white,0 0 5px white}.legend{border-top:1px solid var(--line);padding:16px 22px;display:flex;gap:12px 24px;align-items:center;flex-wrap:wrap;font-size:.875rem;color:var(--muted)}.legend-item{display:inline-flex;gap:9px;align-items:center}.legend-line{height:2px;width:22px;background:var(--blue)}.legend-mid{height:8px;width:8px;border:2px solid #69758d;background:white;transform:rotate(45deg)}.legend-g{height:10px;width:10px;background:#c87820;border-radius:50%}.keyboard-hint{font-size:.8125rem;color:var(--muted);margin:13px 4px 0;line-height:1.5}.sidebar{display:flex;flex-direction:column;gap:20px}.discovery{padding:24px;background:var(--ink);border-radius:16px;color:white}.kicker{text-transform:uppercase;font-size:.75rem;letter-spacing:.12em;margin:0 0 12px;color:#bdc9e0}.discovery h2{font:400 1.7rem/1.2 Georgia,"Times New Roman",serif;margin:0 0 12px}.discovery p{color:#d1daeb;font-size:.9375rem;line-height:1.6;margin:0}.discovery em{color:#f4b860}.ratio-title{margin:24px 0 7px;font-size:.875rem;color:#d1daeb}.ratio-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid #ffffff25;gap:12px}.ratio-name{font:italic 1rem Georgia,"Times New Roman",serif}.ratio-value{font-size:1.05rem;font-variant-numeric:tabular-nums;letter-spacing:.03em}.ratio-swatch{display:inline-block;height:3px;width:16px;margin:0 8px 3px 0}.proof{padding:0 5px}.proof h2{font:400 1.4rem Georgia,"Times New Roman",serif;margin:0 0 12px}.proof p{font-size:.9375rem;color:var(--muted);line-height:1.6;margin:10px 0}.math{font:italic 1.17rem/1.6 Georgia,"Times New Roman",serif;color:var(--ink);text-align:center;background:#e9eef9;border-radius:9px;padding:12px 10px;margin:15px 0}.fraction{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;line-height:1.25;margin:0 3px}.fraction>span:first-child{padding:0 4px 2px;border-bottom:1px solid currentColor}.fraction>span:last-child{padding-top:2px}details{border-top:1px solid var(--line);margin-top:18px;padding-top:14px}summary{cursor:pointer;font-size:.9375rem;font-weight:600;line-height:1.5}.proof .small-math{font-family:Georgia,"Times New Roman",serif;color:var(--ink);font-style:italic;font-size:1.05rem;line-height:1.8;overflow-wrap:anywhere}.notice{margin:0;padding:14px 22px;background:#fff5e3;border-top:1px solid #edcd95;color:#734a15;line-height:1.5;font-size:.875rem}.notice[hidden]{display:none}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1450px){.board{height:640px}}
+@media(max-width:1000px){.workspace{grid-template-columns:minmax(0,1fr) 285px;gap:18px}.discovery{padding:20px}.toolbar{padding:16px}.legend{padding:15px 16px;gap:12px 16px}}
+@media(max-width:760px){header{padding:22px 20px}.header-note{display:none}main{padding-top:18px}.workspace{grid-template-columns:1fr}.board{height:440px}.sidebar{display:grid;grid-template-columns:1fr 1fr;gap:20px}.toolbar{align-items:center}.proof{padding-top:6px}.keyboard-hint{margin-bottom:3px}}
+@media(max-width:530px){.sidebar{grid-template-columns:1fr}.board{height:400px}.toolbar p{max-width:190px}.legend{gap:12px 18px;font-size:.8125rem}.proof{padding:5px 8px}.discovery{padding:24px}.ratio-row{padding:9px 0}h1{font-size:2.25rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+[hidden]{display:none!important}
+.proof-start{background:var(--blue);color:white;border:0;border-radius:8px;padding:12px 17px;cursor:pointer;font-weight:600;margin-top:8px}.proof-start:hover{background:#244baa}
+.proof-panel{padding:20px 24px;background:#f6f8fd;border-top:1px solid var(--line)}.proof-top,.proof-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.proof-top{font-size:.8125rem;color:var(--muted);margin-bottom:10px}.proof-top strong{font-size:.875rem;color:var(--blue)}.proof-close{background:none;border:0;color:var(--muted);font-size:.875rem;cursor:pointer;padding:6px}.proof-sentence{font-size:1.0625rem;line-height:1.6;color:var(--ink);margin:0;min-height:3.2em;max-width:74ch}.proof-equation{font:italic 1.3rem/1.6 Georgia,"Times New Roman",serif;margin:10px 0;color:var(--ink);overflow-wrap:anywhere}.proof-key{font-size:.875rem;color:var(--muted);margin:7px 0 15px;display:flex;gap:8px 18px;flex-wrap:wrap}.proof-key span{display:inline-flex;align-items:center;gap:7px}.proof-notation{font-size:.8125rem;color:var(--muted);margin:0 0 12px}.proof-key i{width:11px;height:11px;border-radius:2px;display:inline-block}.proof-controls{justify-content:flex-end}.proof-controls button{min-height:40px}.proof-next{background:var(--blue);color:white;border-color:var(--blue)}.proof-next:hover{background:#244baa}.proof-controls button:disabled{opacity:.42;cursor:default}.proof-pause{padding:12px 14px;background:#fff2d9;border-radius:8px;font-size:.9375rem;line-height:1.5;color:#734a15;margin:12px 0}
+.proof-area{stroke-width:2;stroke-linejoin:round}.proof-region-label{font:500 14px ui-sans-serif,system-ui,sans-serif;fill:#172035;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round;text-anchor:middle;dominant-baseline:middle}.proof-segment{fill:none;stroke:#ab620e;stroke-width:5;stroke-linecap:round;stroke-opacity:.85}.proof-cut{fill:#c6cdd9;fill-opacity:.08;stroke:#8b95a8;stroke-width:1.5;stroke-dasharray:5 5}
+.proving .board{height:clamp(270px,44svh,430px)}.proving .legend,.proving .keyboard-hint{display:none}.proving .discovery{opacity:.6}.proof .area-note{font-size:.875rem}
+@media(max-width:760px){.proving .sidebar{display:none}.proving .board{height:clamp(220px,37svh,350px)}.proof-panel{padding:16px}.proof-sentence{font-size:1rem;min-height:4.8em}.proof-equation{font-size:1.16rem}.proof-controls{gap:8px}.proof-top{gap:6px}.proof-key{font-size:.8125rem}}
+.collection-link{color:inherit;text-underline-offset:4px}.collection-link:hover{color:#fff}.collection-link:focus-visible{outline:2px solid #bdc9e0;outline-offset:5px}
+</style>
+</head>
+<body>
+<header><div><p class="eyebrow"><a class="collection-link" href="../">Proof episodes</a> / Geometry</p><h1>The centroid</h1></div><p class="header-note">Three medians.<br>One point, for every triangle.</p></header>
+<main>
+<div class="workspace" id="workspace">
+<section aria-label="Interactive triangle">
+<div class="drawing">
+<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag any vertex to explore.</p><button class="reset" id="reset" type="button">Reset triangle</button></div>
+<div class="board" id="board">
+<svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Three medians meeting at the centroid</title><desc id="diagram-desc">Triangle ABC, with D, E, and F the midpoints of BC, CA, and AB. The segments AD, BE, and CF meet at G.</desc>
+<path class="triangle" id="triangle"/>
+<g id="area-highlights" aria-hidden="true"></g><g id="area-cutouts" aria-hidden="true"></g>
+<line class="median median-a" id="median-a"/><line class="median median-b" id="median-b"/><line class="median median-c" id="median-c"/>
+<rect class="midpoint median-a" id="mid-a" width="8" height="8"/><rect class="midpoint median-b" id="mid-b" width="8" height="8"/><rect class="midpoint median-c" id="mid-c" width="8" height="8"/>
+<text class="labels" id="label-d">D</text><text class="labels" id="label-e">E</text><text class="labels" id="label-f">F</text>
+<line id="proof-ray" class="median median-c" visibility="hidden"/><g id="proof-segments" aria-hidden="true"></g><g id="area-labels" aria-hidden="true"></g><circle id="x-point" r="4" fill="#8551bd" visibility="hidden"/><text id="label-x" class="labels" visibility="hidden">X</text>
+<circle id="g-halo" r="13" fill="#efb057" fill-opacity=".22"/><circle id="g-point" r="5.5" fill="#bd6d13" stroke="white" stroke-width="2"/><text class="labels g-label" id="label-g">G</text>
+</svg>
+<button type="button" class="vertex" data-vertex="0" style="--vertex:var(--blue)" aria-label="Vertex A. Use arrow keys to move." aria-describedby="keyboard-help"><span>A</span></button>
+<button type="button" class="vertex" data-vertex="1" style="--vertex:var(--green)" aria-label="Vertex B. Use arrow keys to move." aria-describedby="keyboard-help"><span>B</span></button>
+<button type="button" class="vertex" data-vertex="2" style="--vertex:var(--purple)" aria-label="Vertex C. Use arrow keys to move." aria-describedby="keyboard-help"><span>C</span></button>
+</div>
+<p class="notice" id="notice" hidden></p>
+<div class="legend" aria-label="Diagram key"><span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Medians</span><span class="legend-item"><span class="legend-mid" aria-hidden="true"></span>Midpoints D, E, F</span><span class="legend-item"><span class="legend-g" aria-hidden="true"></span>Centroid G</span></div>
+<section class="proof-panel" id="proof-panel" aria-label="Guided area proof" hidden>
+<div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button type="button" class="proof-close" id="proof-close">Close proof</button></div>
+<div id="proof-reading" aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><p class="proof-equation" id="proof-equation"></p></div>
+<p id="proof-pause" class="proof-pause" role="status" hidden>The area proof requires a noncollinear triangle; move a vertex off the line to continue from this sentence.</p>
+<div class="proof-key" id="proof-key"></div>
+<p class="proof-notation">[ABC] means the area of triangle ABC.</p>
+<div class="proof-controls"><button type="button" class="reset" id="proof-prev">Previous</button><button type="button" class="reset proof-next" id="proof-next">Next sentence</button></div>
+</section>
+</div>
+<p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. With a vertex focused, use the arrow keys; hold Shift for larger steps.</p>
+<p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+</section>
+<aside class="sidebar" aria-label="Centroid explanation">
+<section class="discovery"><p class="kicker">The observation</p><h2 id="observation-title">They always meet.</h2><p id="observation">For every triangle, the three medians meet at a single point <em>G</em>, called the centroid.</p><div class="ratio-title">Distance from vertex : distance to midpoint</div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#8caeff" aria-hidden="true"></span>AG : GD</span><span class="ratio-value" id="ratio-a">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#63c8bb" aria-hidden="true"></span>BG : GE</span><span class="ratio-value" id="ratio-b">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#c3a0ea" aria-hidden="true"></span>CG : GF</span><span class="ratio-value" id="ratio-c">2 : 1</span></div></section>
+<section class="proof"><h2>Why they always meet</h2><p>A <strong>median</strong> joins a vertex to the midpoint of the opposite side.</p><p>Equal bases and a shared height give equal areas; watch this simple fact force the three medians to meet.</p><button type="button" class="proof-start" id="proof-start" aria-controls="proof-panel" aria-expanded="false">See the area proof</button><p class="area-note">One sentence at a time, with the relevant pieces illuminated; you can still drag the vertices.</p><p class="area-note">In the proof, [ABC] means the area of triangle ABC.</p></section>
+</aside>
+</div>
+</main>
+<script>
+(() => {
+'use strict';
+const board = document.getElementById('board');
+const svg = document.getElementById('diagram');
+const buttons = Array.from(document.querySelectorAll('.vertex'));
+const initial = [{x:.37,y:.17},{x:.16,y:.79},{x:.85,y:.72}];
+let points = initial.map(p=>({...p}));
+let size = {width:1,height:1};
+let drag = null;
+let lastPicked = -1;
+const byId = id=>document.getElementById(id);
+const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+const names = ['A','B','C'];
+const keys = ['a','b','c'];
+const set = (element,attrs)=>Object.entries(attrs).forEach(([key,value])=>element.setAttribute(key,value));
+const mean = (a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
+const padding = 35;
+const scaled = p=>({x:padding+p.x*(size.width-2*padding),y:padding+p.y*(size.height-2*padding)});
+function geometry(){
+  const vertices=points.map(scaled);
+  const midpoints=vertices.map((_,i)=>mean(vertices[(i+1)%3],vertices[(i+2)%3]));
+  const centroid={x:vertices.reduce((s,p)=>s+p.x,0)/3,y:vertices.reduce((s,p)=>s+p.y,0)/3};
+  const [a,b,c]=vertices;
+  const area2=(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+  const edges=vertices.map((p,i)=>Math.hypot(p.x-vertices[(i+1)%3].x,p.y-vertices[(i+1)%3].y));
+  const scale=Math.max(...edges,1);
+  return {vertices,midpoints,centroid,area2,scale,degenerate:Math.abs(area2)<=1e-10*scale*scale,near:Math.abs(area2)<.008*scale*scale};
+}
+function labelPosition(point,center,distance=22){
+  let dx=point.x-center.x,dy=point.y-center.y;
+  const length=Math.hypot(dx,dy);
+  if(length<1){dx=0;dy=1;}else{dx/=length;dy/=length;}
+  return {x:clamp(point.x+dx*distance,15,size.width-15),y:clamp(point.y+dy*distance+6,22,size.height-9)};
+}
+function draw(){
+  const g=geometry();
+  set(svg,{viewBox:`0 0 ${size.width} ${size.height}`});
+  byId('triangle').setAttribute('d',g.vertices.map((p,i)=>`${i?'L':'M'}${p.x},${p.y}`).join(' ')+' Z');
+  g.vertices.forEach((p,i)=>{
+    const m=g.midpoints[i],key=keys[i],button=buttons[i];
+    set(byId('median-'+key),{x1:p.x,y1:p.y,x2:m.x,y2:m.y});
+    set(byId('mid-'+key),{x:m.x-4,y:m.y-4,transform:`rotate(45 ${m.x} ${m.y})`});
+    const label=labelPosition(m,g.centroid,20);
+    set(byId('label-'+['d','e','f'][i]),{x:label.x,y:label.y,'text-anchor':'middle'});
+    button.style.left=p.x+'px';button.style.top=p.y+'px';
+    const vertexLabel=labelPosition(p,g.centroid,31);
+    button.style.setProperty('--label-x',vertexLabel.x-p.x+14+'px');
+    button.style.setProperty('--label-y',vertexLabel.y-p.y+2+'px');
+    const nearLength=Math.hypot(p.x-m.x,p.y-m.y);
+    byId('ratio-'+key).textContent=nearLength===0?'undefined':'2 : 1';
+  });
+  ['g-point','g-halo'].forEach(id=>set(byId(id),{cx:g.centroid.x,cy:g.centroid.y}));
+  // Place G in the clearest of eight nearby label positions.
+  let best=null;
+  for(let i=0;i<8;i++){
+    const angle=-Math.PI/4+i*Math.PI/4;
+    const candidate={x:clamp(g.centroid.x+23*Math.cos(angle),15,size.width-15),y:clamp(g.centroid.y+23*Math.sin(angle),20,size.height-12)};
+    const score=Math.min(...g.vertices.concat(g.midpoints).map(p=>Math.hypot(candidate.x-p.x,candidate.y-p.y)));
+    if(!best||score>best.score)best={...candidate,score};
+  }
+  set(byId('label-g'),{x:best.x,y:best.y+5,'text-anchor':'middle'});
+  const notice=byId('notice');
+  notice.hidden=!g.near;
+  notice.textContent=g.degenerate?'At drawing precision, these vertices are collinear or coincident. G is still their average and lies on every median segment. The usual unique-intersection theorem assumes a noncollinear triangle. A zero-length median has no defined ratio.':'This triangle is nearly flat. The medians still meet at G, but they may be difficult to distinguish.';
+  byId('observation-title').textContent=g.degenerate?'The average remains.':'They always meet.';
+  byId('observation').innerHTML=g.degenerate?'Even here, <em>G</em> is the average of the three vertices. Move a vertex to make the triangle easier to see.':'For every triangle, the three medians meet at a single point <em>G</em>, called the centroid.';
+  window.dispatchEvent(new CustomEvent('triangle-changed',{detail:g}));
+  return g;
+}
+function announce(){
+  const g=geometry();
+  byId('announcement').textContent=g.degenerate?'At drawing precision, the vertices are collinear or coincident. G is still their average.':'Triangle updated. All three medians meet at G, two-thirds of the way from each vertex to its opposite midpoint.';
+}
+function move(index,x,y){
+  points[index]={x:clamp((x-padding)/(size.width-2*padding),0,1),y:clamp((y-padding)/(size.height-2*padding),0,1)};
+  draw();
+}
+buttons.forEach((button,index)=>{
+  button.addEventListener('pointerdown',event=>{
+    if(drag||event.button!==0)return;
+    const rect=board.getBoundingClientRect();
+    const px=event.clientX-rect.left,py=event.clientY-rect.top;
+    const distances=points.map(scaled).map(p=>Math.hypot(px-p.x,py-p.y));
+    const closest=Math.min(...distances);
+    const candidates=distances.flatMap((d,i)=>Math.abs(d-closest)<.5?[i]:[]);
+    const chosen=candidates[(candidates.indexOf(lastPicked)+1)%candidates.length];
+    lastPicked=chosen;
+    const target=buttons[chosen];
+    drag={index:chosen,pointerId:event.pointerId,dx:px-scaled(points[chosen]).x,dy:py-scaled(points[chosen]).y};
+    target.setPointerCapture(event.pointerId);target.classList.add('dragging');
+    target.focus({preventScroll:true});event.preventDefault();
+  });
+  button.addEventListener('pointermove',event=>{
+    if(!drag||drag.pointerId!==event.pointerId||drag.index!==index)return;
+    const rect=board.getBoundingClientRect();
+    move(index,event.clientX-rect.left-drag.dx,event.clientY-rect.top-drag.dy);
+  });
+  const end=event=>{
+    if(!drag||drag.pointerId!==event.pointerId||drag.index!==index)return;
+    drag=null;button.classList.remove('dragging');
+    if(button.hasPointerCapture(event.pointerId))button.releasePointerCapture(event.pointerId);
+    announce();
+  };
+  button.addEventListener('pointerup',end);button.addEventListener('pointercancel',end);button.addEventListener('lostpointercapture',end);
+  button.addEventListener('keydown',event=>{
+    const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+    if(!directions[event.key])return;
+    event.preventDefault();const step=event.shiftKey?20:4;
+    const [dx,dy]=directions[event.key];move(index,scaled(points[index]).x+dx*step,scaled(points[index]).y+dy*step);announce();
+  });
+});
+byId('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));draw();announce();});
+window.addEventListener('triangle-request',()=>{if(size.width>1)draw();});
+new ResizeObserver(entries=>{
+  const {width,height}=entries[0].contentRect;
+  if(width<=0||height<=0)return;
+  size={width,height};
+  draw();
+}).observe(board);
+// Expose the same vertex movement to supporting browsers; no network or storage is used.
+if(document.modelContext?.registerTool){
+  const lifecycle=new AbortController();
+  const tool={name:'set_triangle_vertices',title:'Move triangle vertices',description:'Set all three triangle vertices on the visible drawing board. Coordinates are fractions of the usable drawing width and height; x and y must be between 0.1 and 0.9.',inputSchema:{type:'object',properties:Object.fromEntries(['A','B','C'].map(name=>[name,{type:'object',properties:{x:{type:'number',minimum:.1,maximum:.9},y:{type:'number',minimum:.1,maximum:.9}},required:['x','y'],additionalProperties:false}])),required:['A','B','C'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){
+    if(!input||typeof input!=='object'||Object.keys(input).sort().join(',')!=='A,B,C')throw new Error('Supply only vertices A, B, and C.');
+    const next=['A','B','C'].map(name=>{const p=input[name];if(!p||typeof p!=='object'||Object.keys(p).sort().join(',')!=='x,y'||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<.1||p.x>.9||p.y<.1||p.y>.9)throw new Error('Each vertex needs finite x and y coordinates between 0.1 and 0.9.');return {x:p.x,y:p.y};});
+    points=next;const g=draw();announce();return {vertices:Object.fromEntries(names.map((name,i)=>[name,points[i]])),centroid:{x:points.reduce((s,p)=>s+p.x,0)/3,y:points.reduce((s,p)=>s+p.y,0)/3},degenerate:g.degenerate};
+  }};
+  try{Promise.resolve(document.modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch{}
+  window.addEventListener('pagehide',event=>{if(!event.persisted)lifecycle.abort();});
+}
+})();
+</script>
+<script src="area-proof.js"></script>
+</body>
+</html>
