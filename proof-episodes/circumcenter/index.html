@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Drag a triangle and discover its circumcenter O, with an illuminated proof one sentence at a time.">
+<title>The circumcenter — Proof episodes — Anand Patel</title>
+<link rel="stylesheet" href="episode.css">
+</head>
+<body>
+<header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Geometry</p><h1>The circumcenter</h1></div><p class="header-note">Three perpendicular bisectors.<br>One center, equally far from every vertex.</p></header>
+<main><div class="workspace" id="workspace">
+<section aria-label="Interactive triangle">
+<div class="drawing">
+<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag any vertex to explore.</p><button id="reset" type="button">Reset triangle</button></div>
+<div class="board" id="board">
+<svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">The circumcenter of triangle ABC</title><desc id="diagram-desc"></desc><g id="scene"></g></svg>
+<button type="button" class="vertex" data-vertex="0" aria-label="Vertex A. Use arrow keys to move." aria-describedby="keyboard-help"><span>A</span></button>
+<button type="button" class="vertex" data-vertex="1" aria-label="Vertex B. Use arrow keys to move." aria-describedby="keyboard-help"><span>B</span></button>
+<button type="button" class="vertex" data-vertex="2" aria-label="Vertex C. Use arrow keys to move." aria-describedby="keyboard-help"><span>C</span></button>
+</div>
+<p class="notice" id="notice" role="status" hidden></p>
+<div class="overview" id="overview" hidden><div><strong>O is beyond the main drawing.</strong><p id="overview-caption">This smaller view shows the whole circle and the same triangle; keep moving the vertices above.</p></div><svg id="overview-diagram" viewBox="0 0 220 200" role="img" aria-label="Whole-circle view of the same triangle"><g id="overview-scene"></g></svg></div>
+<div class="legend"><span><i class="line"></i>Perpendicular bisectors</span><span><i class="dot"></i>Circumcenter O</span></div>
+<section id="proof-panel" class="proof-panel" aria-label="Guided circumcenter proof" hidden>
+<div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button class="text-button" id="proof-close" type="button">Close proof</button></div>
+<div aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><p class="proof-equation" id="proof-equation"></p></div>
+<p class="proof-pause" id="proof-pause" role="status" hidden>The proof needs three noncollinear vertices; move a vertex off the line to continue from this sentence.</p>
+<p class="proof-key" id="proof-key"></p>
+<div class="proof-controls"><button id="proof-prev" type="button">Previous</button><button id="proof-next" class="primary" type="button">Next sentence</button></div>
+</section>
+</div>
+<p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. With a vertex focused, use the arrow keys; hold Shift for larger steps.</p>
+<p id="announcement" class="sr-only" aria-live="polite"></p>
+</section>
+<aside class="sidebar">
+<section class="discovery"><p class="kicker">The observation</p><h2>Equally far from all three.</h2><p>Every noncollinear triangle has a unique point <em>O</em>, its <em>circumcenter</em>, at the same distance from A, B, and C.</p><div class="distance-equation">OA = OB = OC</div><p>The circle with center O through one vertex passes through all three.</p><p class="location" id="location"></p></section>
+<section class="explanation"><h2>Why O exists</h2><p>A <strong>perpendicular bisector</strong> crosses a segment at its midpoint at a right angle.</p><p>We will use one fact: it is exactly the set of points equally far from the segment’s two endpoints.</p><button class="primary" id="proof-start" type="button" aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small">One sentence at a time, with the relevant pieces illuminated; the vertices stay movable.</p>
+<details><summary>Why the equal-distance fact holds</summary><p>Let U and V be distinct points, and let M be the midpoint of UV.</p><p>If P lies on its perpendicular bisector and P ≠ M, the right triangles PMU and PMV are congruent: they share PM and have MU = MV. Thus PU = PV. If P = M, the equality follows directly from the midpoint definition.</p><p>Conversely, suppose PU = PV. If P is on line UV, it must be M. Otherwise, triangles PMU and PMV are congruent by three equal sides. Their angles at M are equal and add to 180°, so each is 90°. In either case P lies on the perpendicular bisector.</p></details>
+</section></aside>
+</div></main>
+<script src="geometry.js"></script><script src="episode.js"></script>
+</body></html>

@@ -17,3 +17,9 @@ No build step or new dependency is required. GitHub Pages publishes from the roo
 `centroid/` contains the centroid area proof: draggable vertices, 15 guided sentences, matching region highlights, backward navigation, replay, and a pause for degenerate triangles. Both `index.html` and `area-proof.js` are required.
 
 The optional, feature-detected WebMCP tool only moves triangle vertices in the current page; ordinary browsers do not need it.
+
+## Circumcenter episode
+
+`proof-episodes/circumcenter/` proves the perpendicular-bisector locus fact in both directions, then constructs O from two bisectors and proves it lies on the third. Its 12 sentences each illuminate the corresponding construction. D, E, F remain the midpoints of BC, CA, AB. The midpoint cases in the locus proof cover right triangles.
+
+`geometry.js` holds the translated-coordinate circumcenter calculation and line clipping. `episode.js` draws both the main board and a whole-circle overview when O is outside the drawing; it never clamps O or changes the scale under a dragged vertex. Near-collinear triangles carry a numerical-precision notice; degenerate configurations pause the proof until the vertices separate.
