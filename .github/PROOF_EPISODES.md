@@ -29,3 +29,14 @@ The optional, feature-detected WebMCP tool only moves triangle vertices in the c
 `orthocenter/` proves altitude concurrence at H using the auxiliary triangle PQR formed by parallels through A, B, C. The 12 sentences establish the midpoint claims using parallelograms, verify PQR is noncollinear, and identify the altitudes with its perpendicular bisectors before invoking the circumcenter theorem. The episode links to the previous proof.
 
 The construction view widens once at sentence 3. Dragging keeps the scale fixed; “Fit construction” explicitly fits PQR again. An overview shows offscreen auxiliary points or H. Supporting side lines and right-angle marks cover obtuse triangles; right triangles label H at the right-angle vertex. Degenerate configurations pause the proof.
+
+## The Basics: the shared allowed tools
+
+`proof-episodes/basics/` is a reference, not a numbered proof episode. It imports the class Google Doc "The Basics" (document ID `1JgPxVVxsZd-uQ0Fo-s-2xSq_Tw8COb30pFlIf-H_gE0`), retaining C1–C5, T1–T6, P1–P2, and O1–O2. The isosceles theorem belongs inside T1; do not introduce T1a. Statements and illustrations have no proofs. Keep the same nondegeneracy assumptions and explicitly stated converses.
+
+- Cite a tool with a relative link such as `../basics/#c4` from an episode. Use its label and named rule (for example, "T1 (SAS)"). The collection links to the reference before the episode list; the public homepage remains unchanged.
+- Edit `proof-episodes/basics/tools.json` to extend a statement or add a tool. Preserve existing IDs and labels. Append new labels within their family without renumbering old entries. Add precise hypotheses and list any permitted converse explicitly.
+- Add standalone SVGs in `proof-episodes/basics/figures/`, with a title and description, readable labels, and exact geometric relations. Add each figure's filename, caption, and text alternative to its tool's `figures` array. Figure IDs can name a subprinciple (such as `t1-sas`) without inventing another numbered section.
+- Run `python3 .github/build-basics.py` after editing the data. The generated `index.html` is checked in and works without JavaScript; GitHub Pages requires no build dependency. Commit the data, figures, and regenerated page together.
+- Verify every label and figure, direct links, keyboard access, and desktop/mobile layout. A drawing illustrates a fact; it never authorizes an additional fact based on its appearance.
+- This is a maintained import, not an automatic live sync with Google Drive. Reconcile later additions to the class source deliberately.
