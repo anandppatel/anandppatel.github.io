@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof of Proposition 3.6 [B343] (2477) — A universal formula for counting cubic surfaces</title>
+  <title>Proof of Proposition 3.2.2 [B343] (2477) — A universal formula for counting cubic surfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -126,11 +130,11 @@
     <a href="../index.html" class="stacks-paper-link">A universal formula for counting cubic surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS2.html">3.2. The second test family</a> / <span>Proof of Proposition 3.6 [B343] (2477)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS2.html">3.2. The second test family</a> / <span>Proof of Proposition 3.2.2 [B343] (2477)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="66A6.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 2477</span><a href="6556.html">Proposition 3.8 &raquo;</a></div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B343.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[B343]</span></a>.</em> <a href="../tag/2477.html" class="stacks-tag-link">(2477)</a></div>
+<div class="stacks-tag-nav"><a href="66A6.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 2477</span><a href="6556.html">Proposition 3.2.4 &raquo;</a></div>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/B343.html" class="stacks-ref-link">Proposition&nbsp;3.2.2 <span class="stacks-ref-tag">[B343]</span></a>.</em> <a href="../tag/2477.html" class="stacks-tag-link">(2477)</a></div>
   <div class="stacks-env-body"><p>Recall that $\mathcal{X} \to \overline{\M}_{0,7}$ is the cubic surface associated to $\mathcal{Z} \subset \mathcal{P}$ in the $\P^2$-bundle $\rho \colon \mathcal{P} \to \overline{\M}_{0,7}$.
   By construction, we have
   $$\mathcal{V} = \rho_*(\mathcal{I}_{\mathcal{Z}} \otimes \omega^{-1}_{\rho}).$$
@@ -144,19 +148,20 @@
   To compute the restriction to $\Sigma$, we view $\Sigma$ as a divisor in $\overline{\mathcal{C}} = \P A^{\vee}$ and let $D = \omega_{\rho}^{-1}|_{\overline C} = \O(6) \otimes \overline{\phi}^* \mathcal{L}^3$.
   Thus, in the Grothendieck group, we have
   $$\rho_*(\omega_{\rho}^{-1}|_{\Sigma}) = \overline{\phi}_*\left(D\right) - \overline{\phi}_* \left( D(-\Sigma)\right).$$
-  We now use <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.7 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_{\infty}$ to compute the terms on the right hand side of (3.8).
+  We now use <a href="/papers/universal-formula-counting-cubic-surfaces/tag/38DB.html" class="stacks-ref-link">Lemma&nbsp;3.2.3 <span class="stacks-ref-tag">[38DB]</span></a> with the section $\sigma_{\infty}$ to compute the terms on the right hand side of (3.8).
   Putting this together with (3.6) and (3.7), we get
   $$[\mathcal{V}] = \mathcal{L}^{-3}+ \mathcal{L}^{1}+ \mathcal{L}^{-1}+ \mathcal{L}^{-2}$$
   in the Grothendieck group.
-  The result is now a simple computation using $c_1(\mathcal{L}) = \psi_{\infty}$ and $\int_{\overline{\M}_{0,7}} \psi_{\infty}^4 = 1$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The result is now a simple computation using $c_1(\mathcal{L}) = \psi_{\infty}$ and $\int_{\overline{\M}_{0,7}} \psi_{\infty}^4 = 1$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/2477.html"
      data-comment-page-url="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/2477.html"
-     data-comment-page-title="A universal formula for counting cubic surfaces — Tag 2477 (Proof of Proposition 3.6 [B343])"
-     data-comment-page-label="Tag 2477 (Proof of Proposition 3.6 [B343])"
+     data-comment-page-title="A universal formula for counting cubic surfaces — Tag 2477 (Proof of Proposition 3.2.2 [B343])"
+     data-comment-page-label="Tag 2477 (Proof of Proposition 3.2.2 [B343])"
      data-comment-paper-title="A universal formula for counting cubic surfaces">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -164,13 +169,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — Tag 2477 (Proof of Proposition 3.6 [B343])">
+      <input type="hidden" name="_subject" value="Comment on A universal formula for counting cubic surfaces — Tag 2477 (Proof of Proposition 3.2.2 [B343])">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/2477.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/universal-formula-counting-cubic-surfaces/tag/2477.html">
       <input type="hidden" name="paper" value="A universal formula for counting cubic surfaces">
-      <input type="hidden" name="location" value="Tag 2477 (Proof of Proposition 3.6 [B343])">
+      <input type="hidden" name="location" value="Tag 2477 (Proof of Proposition 3.2.2 [B343])">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -121,7 +125,8 @@
 <div class="stacks-tag-nav"><a href="0065.html">&laquo; Theorem 8.1</a><span class="stacks-tag-current">Tag 367A</span><a href="E4C4.html">Lemma 8.3 &raquo;</a></div>
 <div class="stacks-theorem" id="formulaexists">
   <div class="stacks-env-head"><strong>Theorem&nbsp;8.2.</strong> <a href="../tag/367A.html" class="stacks-tag-link">(367A)</a></div>
-  <div class="stacks-env-body"><p>For every matrix $M$, there is a rational function $Q_{M}(x_1,\ldots,x_n,y_1,\ldots,y_n)$ independent of $r$ such that $Q_{M}(z_1,\ldots,z_n,F(z_1),\ldots,F(z_n))$ is a polynomial of degree at most $r$ in the indeterminates $z_i$ that yields $\opc{M}$ after substituting $z_i = H_i$.</p></div>
+  <div class="stacks-env-body"><p>For every matrix $M$, there is a rational function $Q_{M}(x_1,\ldots,x_n,y_1,\ldots,y_n)$ independent of $r$ such that $Q_{M}(z_1,\ldots,z_n,F(z_1),\ldots,F(z_n))$ is a polynomial of degree at most $r$ in the indeterminates $z_i$ that yields $[\mathcal{O}_{M}]$ after substituting $z_i = H_i$.</p>
+</div>
 </div>
 
 <hr>

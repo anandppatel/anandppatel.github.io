@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,7 +123,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <a href="../section/S3.SS3.html">3.3. Smoothness</a> / <span>Proof (5A90)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6601.html">&laquo; Theorem 3.17</a><span class="stacks-tag-current">Tag 5A90</span><a href="328A.html">Corollary 3.18 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5A90.html" class="stacks-tag-link">(5A90)</a></div>
   <div class="stacks-env-body"><p>We use upper semi-continuity, <a href="/papers/counting-veronese/tag/AD31.html" class="stacks-ref-link">Proposition&nbsp;3.15 <span class="stacks-ref-tag">[AD31]</span></a>, and
   <a href="/papers/counting-veronese/tag/2430.html" class="stacks-ref-link">Proposition&nbsp;3.14 <span class="stacks-ref-tag">[2430]</span></a>. The group $\PGL(3)$ acts on the scheme
@@ -128,7 +132,8 @@
   (where we interchange $X,Y,Z$ with $\check{X},\check{Y},\check{Z}$ everywhere) is contained
   in the closure of every orbit.  We conclude that the tangent space
   is $6$-dimensional at every point in $\CT$ by semi-continuity, and
-  conclude by <a href="/papers/counting-veronese/tag/2430.html" class="stacks-ref-link">Proposition&nbsp;3.14 <span class="stacks-ref-tag">[2430]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  conclude by <a href="/papers/counting-veronese/tag/2430.html" class="stacks-ref-link">Proposition&nbsp;3.14 <span class="stacks-ref-tag">[2430]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

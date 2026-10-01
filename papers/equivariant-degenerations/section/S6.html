@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 6 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <title>Section 5: Degeneration II: Acquiring nodes and cusps — Equivariant Degenerations of Plane Curve Orbits</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,9 +91,9 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 6: Degeneration II: Acquiring nodes and cusps</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S5.SS2.html" aria-label="Previous: 5.2. Summary" title="Previous: 5.2. Summary">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S6.SS1.html" aria-label="Next: 6.1. Framework and summary of main results" title="Next: 6.1. Framework and summary of main results">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 5: Degeneration II: Acquiring nodes and cusps</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S5.SS2.html" aria-label="Previous: 4.2. Summary" title="Previous: 4.2. Summary">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S6.SS1.html" aria-label="Next: 5.1. Framework and summary of main results" title="Next: 5.1. Framework and summary of main results">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">Section 6. Degeneration II: Acquiring nodes and cusps</h1>
+<h1 class="stacks-section-title">Section 5. Degeneration II: Acquiring nodes and cusps</h1>
 <p class="stacks-para">In this section, we establish the effect of acquiring an ordinary node
 or cusp (a cusp is a singularity with analytic equation $y^{2}=x^{3}$)
 on the polynomial $\p_{C}$, in the case of arbitrary $d \geq 4$.  A
@@ -103,21 +107,21 @@ of $U$, and we let $v: R \to \mb{N}$ denote the valuation
 corresponding to the point $0 \in U$.</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
-  <li><a href="S6.SS1.html">6.1. Framework and summary of main results</a></li>
-  <li><a href="S6.SS2.html">6.2. Degeneration to a node</a></li>
-  <li><a href="S6.SS3.html">6.3. The degree of $\P \Orb(C_{BN})$</a></li>
-  <li><a href="S6.SS4.html">6.4. Degeneration to a cusp</a></li>
-  <li><a href="S6.SS5.html">6.5. Degenerating the orbit of $C_{\on{flex}}[j]$</a></li>
-  <li><a href="S6.SS6.html">6.6. The degree of $\P \Orb(C_{\on{flex}}[j])$</a></li>
-  <li><a href="S6.SS7.html">6.7. Proof of Theorem 6.3 [E37E]</a></li>
+  <li><a href="S6.SS1.html">5.1. Framework and summary of main results</a></li>
+  <li><a href="S6.SS2.html">5.2. Degeneration to a node</a></li>
+  <li><a href="S6.SS3.html">5.3. The degree of $\P \Orb(C_{BN})$</a></li>
+  <li><a href="S6.SS4.html">5.4. Degeneration to a cusp</a></li>
+  <li><a href="S6.SS5.html">5.5. Degenerating the orbit of $C_{\on{flex}}[j]$</a></li>
+  <li><a href="S6.SS6.html">5.6. The degree of $\P \Orb(C_{\on{flex}}[j])$</a></li>
+  <li><a href="S6.SS7.html">5.7. Proof of Theorem 5.3 [E37E]</a></li>
 </ul>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.html"
      data-comment-page-url="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.html"
-     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — Section 6: Degeneration II: Acquiring nodes and cusps"
-     data-comment-page-label="Section 6: Degeneration II: Acquiring nodes and cusps"
+     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — Section 5: Degeneration II: Acquiring nodes and cusps"
+     data-comment-page-label="Section 5: Degeneration II: Acquiring nodes and cusps"
      data-comment-paper-title="Equivariant Degenerations of Plane Curve Orbits">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -125,13 +129,13 @@ corresponding to the point $0 \in U$.</p>
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 6: Degeneration II: Acquiring nodes and cusps">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 5: Degeneration II: Acquiring nodes and cusps">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S6.html">
       <input type="hidden" name="paper" value="Equivariant Degenerations of Plane Curve Orbits">
-      <input type="hidden" name="location" value="Section 6: Degeneration II: Acquiring nodes and cusps">
+      <input type="hidden" name="location" value="Section 5: Degeneration II: Acquiring nodes and cusps">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

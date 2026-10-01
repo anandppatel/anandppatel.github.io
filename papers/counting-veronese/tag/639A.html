@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,10 +123,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Intersections in SQP</a> / <span>Proof (639A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="EBB7.html">&laquo; Lemma 5.2</a><span class="stacks-tag-current">Tag 639A</span><a href="0546.html">Lemma 5.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/639A.html" class="stacks-tag-link">(639A)</a></div>
-  <div class="stacks-env-body"><p>Let $i=0,1,2,$ or $3$. Fix $13-i$ general points on $\P^{2}$ and let $V$ denote the vector space of quintic forms vanishing at those $13-i$ points. Then the class $[\BP]^{13-i} \in \CH^{26-2i}\SQP$ can be represented by the cycle which parametrizes triples $(T,T^{*},\Lambda)$ where the  $\Lambda \subset V$. </p>
-<p>        Pushing this cycle down to $\CT$ via $\varphi$, we get the degeneracy scheme of the natural evaluation map of vector bundles $$ev: \underline{V} \to E$$ consisting of points in $\CT$ where $ev$ has at least a $2$-dimensional kernel. The lemma follows from applying Porteous's formula to $ev$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Let $i=0,1,2,$ or $3$. Fix $13-i$ general points on $\P^{2}$ and let $V$ denote the vector space of quintic forms vanishing at those $13-i$ points. Then the class $[\BP]^{13-i} \in \CH^{26-2i}\SQP$ can be represented by the cycle which parametrizes triples $(T,T^{*},\Lambda)$ where the  $\Lambda \subset V$.</p>
+<p>Pushing this cycle down to $\CT$ via $\varphi$, we get the degeneracy scheme of the natural evaluation map of vector bundles $$ev: \underline{V} \to E$$ consisting of points in $\CT$ where $ev$ has at least a $2$-dimensional kernel. The lemma follows from applying Porteous's formula to $ev$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

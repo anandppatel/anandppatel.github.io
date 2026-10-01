@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,7 +134,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal variation for incompressible and non-defective $X$</a> / <a href="../section/S3.SS1.html">3.1. Non-defective linear series</a> / <span>Proof (976A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="FA5E.html">&laquo; Proposition 3.9</a><span class="stacks-tag-current">Tag 976A</span><a href="71D8.html">Corollary 3.10 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/976A.html" class="stacks-tag-link">(976A)</a></div>
   <div class="stacks-env-body"><p>By the definition of $P(L)$, we have a natural isomorphism
   $$P(L)|_x = L/\mathfrak m_x^2 L,$$
@@ -138,9 +142,10 @@
   $$e \from W \otimes \O_X \to P(L)$$
   is surjective at $x$.
   Let $k$ be the generic rank of $K$, the kernel of $e$.
-  From the proof of prop:dimP, we get
+  From the proof of <a href="/papers/ramification-divisors/tag/9A55.html" class="stacks-ref-link">Proposition&nbsp;3.5 <span class="stacks-ref-tag">[9A55]</span></a>, we get
   $$k = \dim W - r - 1.$$
-  Since $(r+1)$ is the generic rank of $P(L)$, we conclude that $e$ is generically surjective.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since $(r+1)$ is the generic rank of $P(L)$, we conclude that $e$ is generically surjective.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

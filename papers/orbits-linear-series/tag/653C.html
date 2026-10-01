@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -104,16 +108,16 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Orbit specialisation</a> / <span>Proof (653C)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="8C9F.html">&laquo; Proposition 6.6</a><span class="stacks-tag-current">Tag 653C</span><a href="AFAD.html">Corollary 6.7 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/653C.html" class="stacks-tag-link">(653C)</a></div>
   <div class="stacks-env-body"><p>Let \(U \subset \Hom(\k^{r+1}, \Sym^d\k^2)\) be the open subset of injective homomorphisms.
   The action of \(\GL(r+1)\) on \(U\) is free and the map
   $$\im \colon U \to \Gr(r+1, \Sym^d\k^2)$$
   taking a homomorphism to its image is the quotient by \(\GL(r+1)\).
   On \(U\), the assertions follow from <a href="/papers/orbits-linear-series/tag/53F9.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[53F9]</span></a>.</p>
-<p>  It suffices to prove that \(\Sigma\) does contain any \((r+1)^2+3\)-dimensional components in the complement of \(U\).
+<p>It suffices to prove that \(\Sigma\) does contain any \((r+1)^2+3\)-dimensional components in the complement of \(U\).
   We claim that \(\Sigma\) is the closure of \(\Sigma \cap U\), from which the statement follows.</p>
-<p>  To see this, take \(x \in \Sigma\).
+<p>To see this, take \(x \in \Sigma\).
   Then, possibly after a base change, we can choose \(x_\eta \in \Hom(\k^{r+1}, \Sym^d\k^2)_\eta\) in the \(\GL(r+1) \times \GL(2)\)-orbit of \(s_\eta\) such that the flat limit of \(x_\eta\) is \(x\).
   Let \(S \subset \Sym^d\k^2\) be the \((r+1)\)-dimensional subspace corresponding to the flat limit of \(\im(x_\eta)\) in \(\Gr(r+1, \Sym^d\k^2)\).
   Then it is easy to see that \(S\) contains the image of \(x\).
@@ -125,7 +129,8 @@
   $$(\underbrace{1, \dots, 1}_{\ell}, \underbrace{t, \dots, t}_{r+1-\ell}).$$
   Then, by construction, \(\lim_{t \to 0} \lambda_t(s') = x\).
   Since \(\Sigma \cap U\) is \(\GL(r+1)\)-invariant, and \(s' \in \Sigma \cap U\), we get that \(\lambda_t(s') \in \Sigma \cap U\) for \(t \neq 0\).
-  We conclude that \(x\) lies in the closure of \(\Sigma \cap U\).<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  We conclude that \(x\) lies in the closure of \(\Sigma \cap U\).<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

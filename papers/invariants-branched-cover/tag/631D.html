@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -164,8 +168,8 @@
 <div class="stacks-theorem" id="criteria">
   <div class="stacks-env-head"><strong>Theorem&nbsp;3.9.</strong> <a href="../tag/631D.html" class="stacks-tag-link">(631D)</a></div>
   <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{} = P_{1} \cup  \ldots \cup P_{k}$.  Then  $h^{1}(\End V) = 0$ if and only if</p>
-<ol><li>Each $V_i$ is balanced, for $i = 1, \ldots, k$, and</li>
-<li>$V$ has transverse directrices.</li></ol>
+<ol><li><p>Each $V_i$ is balanced, for $i = 1, \ldots, k$, and</p></li>
+<li><p>$V$ has transverse directrices.</p></li></ol>
 </div>
 </div>
 

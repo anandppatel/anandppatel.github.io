@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -111,7 +115,7 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">2.4. The canonical affine embedding</h1>
 <p class="stacks-para">We end the section with a basic construction that relates finite covers and their Tschirnhausen bundles.
-Let $d$ be a positive integer and assume that $\charac \k = 0$ or $\charac \k > d$.</p>
+Let $d$ be a positive integer and assume that $\charac \k = 0$ or $\charac \k &gt; d$.</p>
 <p class="stacks-para">Let $X$ be a curve of arithmetic genus $g_X$; let $\phi \from X \to Y$ be a finite flat morphism of degree $d$; and let $E$ be the associated Tschirnhausen bundle.
 Then we have a decomposition $\phi_* \O_X = \O_Y \oplus E^\vee$.
 The map $E^\vee \to \phi_* \O_X$ induces a surjection $\Sym^* E^\vee \to \phi_* \O_X$.
@@ -125,22 +129,24 @@ For all $y \in Y$, the subscheme $X_y \subset E_y$ is in affine general position
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.10.</strong> <a href="../tag/A565.html" class="stacks-tag-link">(A565)</a></div>
   <div class="stacks-env-body"><p>Retain the notation above.
   Let $F$ be a vector bundle on $Y$ of the same rank and degree as $E$, and let $\iota \from X \to F$ be an embedding over $Y$ such that for a general $y \in Y$, the scheme $\iota(X_y) \subset F_y \cong \A^{d-1}$ is in affine general position.
-  Then we have $F \cong E$, and up to an affine linear automorphism of $F / Y$, the embedding $\iota$ is the canonical affine embedding.</p></div>
+  Then we have $F \cong E$, and up to an affine linear automorphism of $F / Y$, the embedding $\iota$ is the canonical affine embedding.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BECB.html" class="stacks-tag-link">(BECB)</a></div>
   <div class="stacks-env-body"><p>The restriction map $\Sym^* F^\vee \to \phi_*\O_X = \O_Y \oplus E^\vee$ induces a map
   $$\lambda \from F^\vee \to E^\vee.$$
   Since a general fiber $X_y \subset F_y$ is in affine general position, the map $\lambda$ is an injective map of sheaves.
   But the source and the target are locally free of the same degree and rank.
   Therefore, $\lambda$ is an isomorphism.</p>
-<p>  Recall that the affine canonical embedding is induced by the map
+<p>Recall that the affine canonical embedding is induced by the map
   $$(0, \id) \from E^\vee \to \O_Y \oplus E^\vee = \phi_* \O_X.$$
   Suppose $\iota$ induces the map
   $$(\alpha, \lambda) \from F^\vee \to \O_Y \oplus E^\vee.$$
   Compose $\iota$ with the affine linear isomorphism of $T_\alpha \from \Tot(F) \to \Tot(F)$ over $Y$ defined by the map $\Sym^*F^\vee \to \Sym^*F^\vee$ induced by
   $$(-\alpha, \id) \from F^\vee \to \O_Y \oplus F^\vee.$$
-  Then $T_\alpha \circ \iota \from X \to F$ is the affine canonical embedding, as desired.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Then $T_\alpha \circ \iota \from X \to F$ is the affine canonical embedding, as desired.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

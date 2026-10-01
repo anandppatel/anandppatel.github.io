@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -167,14 +171,14 @@
 hyperplane transverse to $L$, and $R \subset H$ a rational normal curve.
 Let $V \subset H^0(\sh{I}_{L \cup R}(2))$ be a non-empty linear
 series. Assume:</p>
-<ol><li>no element of $V$ is a reducible quadric containing $H$,</li>
-<li>the general element $Q_\text{gen} \subset \P^r$ of $V$ is such that
-	$L \not\subset \Sing Q_\text{gen}$.</li></ol>
+<ol><li><p>no element of $V$ is a reducible quadric containing $H$,</p></li>
+<li><p>the general element $Q_\text{gen} \subset \P^r$ of $V$ is such that
+	$L \not\subset \Sing Q_\text{gen}$.</p></li></ol>
 <p>Then for general choices of $p\in L$ and $q \in R$:</p>
-<ul><li>The line $L_\text{gen} = \overline{pq}$
-is not contained in $Q_\text{gen}$.</li>
-<li>Among the quadrics $Q \in V$ containing
-$L_\text{gen}$, a general one does not contain $L_\text{gen}$ in its singular locus.</li></ul>
+<ul><li><p>The line $L_\text{gen} = \overline{pq}$
+is not contained in $Q_\text{gen}$.</p></li>
+<li><p>Among the quadrics $Q \in V$ containing
+$L_\text{gen}$, a general one does not contain $L_\text{gen}$ in its singular locus.</p></li></ul>
 </div>
 </div>
 

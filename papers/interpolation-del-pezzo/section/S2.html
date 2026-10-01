@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 2 — Interpolation Problems: Del Pezzo Surfaces</title>
+  <title>Section 2: Degree 5 del Pezzos — Interpolation Problems: Del Pezzo Surfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -234,20 +238,21 @@
 <div class="stacks-theorem" id="thm-quinticDPinterpolation">
   <div class="stacks-env-head"><strong>Theorem&nbsp;2.1.</strong> <a href="../tag/D5A2.html" class="stacks-tag-link">(D5A2)</a></div>
   <div class="stacks-env-body"><p>Quintic del Pezzo surfaces satisfy
-	weak interpolation.</p></div>
+	weak interpolation.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/285E.html" class="stacks-tag-link">(285E)</a></div>
   <div class="stacks-env-body"><p>By Table&nbsp;1	it suffices to show quintic del Pezzo surfaces pass through $11$ points.</p>
-<p>	Start by choosing $11$ points.
+<p>Start by choosing $11$ points.
 	Since degree $3$, dimension $3$	scrolls satisfy interpolation,
-	by <a href="/papers/interpolation-del-pezzo/tag/F076.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[F076]</span></a>,
+	by <a href="/papers/interpolation-del-pezzo/tag/F076.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[F076]</span></a>,
 	there is such a scroll through any $12$ general points.
 	Equivalently, there is a two dimensional family of scrolls
 	through $11$ points, which sweeps out all of $\bp^5$.
 	In any scroll in this two dimensional family, we will show
 	there is a quintic del Pezzo.</p>
-<p>	First, start with a scroll $X$ containing the $11$ points.
+<p>First, start with a scroll $X$ containing the $11$ points.
 	Since $X$ is projectively normal and its ideal is defined by
 	$3$ quadrics, $h^0(X, \sco_X(2)) = 21 - 3 = 18.$
 	Therefore, if we let $P$ be a ruling two plane of $X$,
@@ -258,20 +263,22 @@
 	However, the intersection of any such quadric with $X$
 	is the union of $P$ and a quintic del Pezzo surface.
 	Therefore, we have produced a two dimensional family of
-	quintic del Pezzo surfaces containing the $11$ points.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+	quintic del Pezzo surfaces containing the $11$ points.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
-<div class="stacks-commentary" id="remark-">
+</div>
+<div class="stacks-commentary" id="remark-32BC">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/32BC.html" class="stacks-tag-link">(32BC)</a></div>
   <div class="stacks-env-body"><p>Another way to prove weak interpolation of quintic del Pezzo
 	surfaces uses curves instead of threefolds.
-	Specifically, by [<a class="stacks-cite" href="../../../bibliography.html#bib-on-the-number-of-points-determining-d86f561e">Ste89</a>, Corollary 6], every genus $6$ canonical curve passes through
+	Specifically, by [<a class="stacks-cite" href="../../../bibliography.html#bib-jan-stevens-on-the-number-of-430c9251">Ste89</a>, Corollary 6], every genus $6$ canonical curve passes through
 	$11$ general points. Then, since there is a quintic del Pezzo
 	surface containing any genus 6 canonical curve,
 	as proved in, among other places,
-	[<a class="stacks-cite" href="../../../bibliography.html#bib-canonical-curves-and-quadrics-of-rank-b6462155">AH81</a>, 5.8].
+	[<a class="stacks-cite" href="../../../bibliography.html#bib-enrico-arbarello-and-joseph-harris-canonical-2daf232c">AH81</a>, 5.8].
 	Then, because there is a canonical curve containing these points
 	and a quintic del Pezzo containing the canonical curve,
-	there is a quintic del Pezzo containing these points.</p></div>
+	there is a quintic del Pezzo containing these points.</p>
+</div>
 </div>
 
 <hr>

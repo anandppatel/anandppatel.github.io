@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 1 — Lines highly tangent to a hypersurface</title>
+  <title>Section 1: Introduction — Lines highly tangent to a hypersurface</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "\\fontdimen2\\font=0.4em\\fontdimen3\\font=0.2em\\fontdimen4\\font=0.1em\\fontdimen7\\font=0.1em\\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -115,7 +114,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -148,24 +152,26 @@ provide a quick proof of the following theorem of Landsberg without
 using moving frames:</p>
 <div class="stacks-theorem" id="theorem-Landsberg">
   <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/A8C8.html" class="stacks-tag-link">(A8C8)</a></div>
-  <div class="stacks-env-body"><p>[[<a class="stacks-cite" href="../../../bibliography.html#bib-j-m-landsberg-lines-on-projective-b1401ac1">6</a>] Theorem 2] Let $X \subset \P^{n}$ be a reduced
+  <div class="stacks-env-body"><p>[[<a class="stacks-cite" href="../../../bibliography.html#bib-j-m-landsberg-lines-on-projective-0bc3252c">6</a>] Theorem 2] Let $X \subset \P^{n}$ be a reduced
   hypersurface over a characteristic zero field, $p \in X$ a general
   point, and let $\Sigma_{k} \subset \G(1,n)$ denote any irreducible
   component of the variety of lines meeting $X$ to order at least $k$
   at $p$.  If $\dm \Sigma_{k}$ exceeds its expected dimension $n-k$,
   then all lines parametrized by $\Sigma_{k}$ are entirely contained
-  in $X$.</p></div>
+  in $X$.</p>
+</div>
 </div>
 <p class="stacks-para">A special instance of <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A8C8]</span></a> is the fact that the
 <em>flec-nodal</em> locus $F$ of a smooth, degree $d \geq 3$ surface $S$
-in $\P^{3}$ is always one dimensional, a fact initially proved by Salmon [<a class="stacks-cite" href="../../../bibliography.html#bib-a-treatise-on-the-analytic-geometry-1824c1de">9</a>].  This fact, coupled with the
-calculation of the degree of $F$, was used by Segre [<a class="stacks-cite" href="../../../bibliography.html#bib-segre-a4ed94e4">10</a>] to show that the number of lines contained in $S$ is at most $(d-2)(11d-6)$.</p>
-<p class="stacks-para">Using Theorem <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">1.1 <span class="stacks-ref-tag">[A8C8]</span></a> together with a careful geometric analysis, we can show that for any smooth hypersurface $X$ of degree $d$ in $\PP^5$, any component of the space of lines meeting $X$ to order 5 has dimension at most 2 (see Theorem <a href="/papers/lines-highly-tangent/tag/81FA.html" class="stacks-ref-link">3.8 <span class="stacks-ref-tag">[81FA]</span></a>), which generalizes the $n=5$ case of the de Jong-Debarre Conjecture [<a class="stacks-cite" href="../../../bibliography.html#bib-lines-on-projective-hypersurfaces-8bbdb4d4">1</a>]. Related work on lines highly tangent to hypersurfaces can also be found in [<a class="stacks-cite" href="../../../bibliography.html#bib-the-kontsevich-space-of-rational-curves-0f887265">11</a>]. Using an intersection theory calculation, we obtain an explicit upper bound on the space of $2$-planes in $X$, which had for $d \geq 3$ been known to be finite [<a class="stacks-cite" href="../../../bibliography.html#bib-t-d-browning-d-r-heath-fa4626a2">2</a>, Corollary in Appendix].</p>
-<div class="stacks-theorem" id="">
+in $\P^{3}$ is always one dimensional, a fact initially proved by Salmon [<a class="stacks-cite" href="../../../bibliography.html#bib-george-salmon-a-treatise-on-the-50fd9d4d">9</a>].  This fact, coupled with the
+calculation of the degree of $F$, was used by Segre [<a class="stacks-cite" href="../../../bibliography.html#bib-b-segre-the-maximum-number-of-4dfc5a8a">10</a>] to show that the number of lines contained in $S$ is at most $(d-2)(11d-6)$.</p>
+<p class="stacks-para">Using Theorem <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">1.1 <span class="stacks-ref-tag">[A8C8]</span></a> together with a careful geometric analysis, we can show that for any smooth hypersurface $X$ of degree $d$ in $\PP^5$, any component of the space of lines meeting $X$ to order 5 has dimension at most 2 (see Theorem <a href="/papers/lines-highly-tangent/tag/81FA.html" class="stacks-ref-link">3.8 <span class="stacks-ref-tag">[81FA]</span></a>), which generalizes the $n=5$ case of the de Jong-Debarre Conjecture [<a class="stacks-cite" href="../../../bibliography.html#bib-roya-beheshti-lines-on-projective-hypersurfaces-b6411c79">1</a>]. Related work on lines highly tangent to hypersurfaces can also be found in [<a class="stacks-cite" href="../../../bibliography.html#bib-lloyd-smith-the-kontsevich-space-of-05b93862">11</a>]. Using an intersection theory calculation, we obtain an explicit upper bound on the space of $2$-planes in $X$, which had for $d \geq 3$ been known to be finite [<a class="stacks-cite" href="../../../bibliography.html#bib-t-d-browning-d-r-heath-164597be">2</a>, Corollary in Appendix].</p>
+<div class="stacks-theorem">
   <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/7289.html" class="stacks-tag-link">(7289)</a></div>
-  <div class="stacks-env-body"><p>Let $X \subset \PP^5$ be a smooth hypersurface of degree $d$. Then $X$ contains at most $120 d^2 - 150 d^3 + 35 d^4$ 2-planes.</p></div>
+  <div class="stacks-env-body"><p>Let $X \subset \PP^5$ be a smooth hypersurface of degree $d$. Then $X$ contains at most $120 d^2 - 150 d^3 + 35 d^4$ 2-planes.</p>
 </div>
-<p class="stacks-para">The Fermat hypersurface of degree $d$ in $\PP^5$ is known to contain $15d^3$ 2-planes, which can be compared to the $O(d^4)$ bound that we obtain. See [<a class="stacks-cite" href="../../../bibliography.html#bib-planes-in-cubic-fourfolds-6dec07af">4</a>] for some recent results about the space of planes on cubic 4-folds using lattice theory. In characteristic $p$, many of these results do not hold. See [<a class="stacks-cite" href="../../../bibliography.html#bib-geometry-of-q-bic-hypersurfaces-da94918f">3</a>] for some examples of the types of behavior that can occur.</p>
+</div>
+<p class="stacks-para">The Fermat hypersurface of degree $d$ in $\PP^5$ is known to contain $15d^3$ 2-planes, which can be compared to the $O(d^4)$ bound that we obtain. See [<a class="stacks-cite" href="../../../bibliography.html#bib-alex-degtyarev-ilia-itenberg-and-john-8baa9f42">4</a>] for some recent results about the space of planes on cubic 4-folds using lattice theory. In characteristic $p$, many of these results do not hold. See [<a class="stacks-cite" href="../../../bibliography.html#bib-raymond-cheng-geometry-of-q-bic-60d8a19a">3</a>] for some examples of the types of behavior that can occur.</p>
 <p class="stacks-para"><strong>Acknowledgements:</strong> We gratefully acknowledge conversations with Izzet Coskun, Changho Han, Mitchell Lee, and Gwyneth Moreland. Eric Riedl was supported by NSF CAREER grant DMS-1945944.</p>
 
 <hr>

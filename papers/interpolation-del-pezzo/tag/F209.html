@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -231,14 +235,15 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degrees $9,8$ and $7$</a> / <a href="../section/S6.SS3.html">6.3. Inducing association from a singular triad</a> / <span>Proof (F209)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="B27D.html">&laquo; Proposition 6.6</a><span class="stacks-tag-current">Tag F209</span><a href="AA38.html">Proposition 6.7 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F209.html" class="stacks-tag-link">(F209)</a></div>
   <div class="stacks-env-body"><p>We use Goppa's theorem, <a href="/papers/interpolation-del-pezzo/tag/4F62.html" class="stacks-ref-link">Theorem&nbsp;5.3 <span class="stacks-ref-tag">[4F62]</span></a>. Pick a general quintic $Q$ in the pencil $Q_{t}$, and let $\nu \from \td{Q} \to Q$ denote the smooth genus $3$ normalization.
 	Let $H$ denote the hyperplane divisor class on $\bp^{2}$.
 	Note that by degree considerations and Riemann-Roch, the divisor class $H$ is nonspecial on $\td{Q}$, and $\td{Q}$ is mapped
 		via the complete linear series $|H|$. We claim that the linear system $|K_{\td{Q}} + \Gamma_{13} - H|$ from Goppa's theorem is induced by sextic curves triple at $x,y$ and $z$.</p>
-<p>Indeed, the canonical series $|K_{\td{Q}}|$ is cut out by the adjoint series consisting of conics passing through the nodes $x,y,$ and $z$.  By <a href="/papers/interpolation-del-pezzo/tag/BE2C.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[BE2C]</span></a>, the divisor $\Gamma_{13}$ is cut out by a quintic singular at $x,y,z$.  Putting these together says that sextics having triple points at $x,y,$ and $z$ cut out divisors in the linear system $|K_{\td{Q}} + \Gamma_{13} - H|$ on $\td{Q}$. </p>
-<p>Finally, notice that there cannot be a sextic triple at $x,y$ and $z$ which also vanishes identically on $Q$ &ndash; the residual curve would be a line containing $T$, but we are assuming $x,y,z$ are not collinear. Therefore, the system of sextics having triple points at $x,y,$ and $z$ cuts out the complete linear system $|K_{\td{Q}} + \Gamma_{13} - H|$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>Indeed, the canonical series $|K_{\td{Q}}|$ is cut out by the adjoint series consisting of conics passing through the nodes $x,y,$ and $z$.  By <a href="/papers/interpolation-del-pezzo/tag/BE2C.html" class="stacks-ref-link">Lemma&nbsp;6.5 <span class="stacks-ref-tag">[BE2C]</span></a>, the divisor $\Gamma_{13}$ is cut out by a quintic singular at $x,y,z$.  Putting these together says that sextics having triple points at $x,y,$ and $z$ cut out divisors in the linear system $|K_{\td{Q}} + \Gamma_{13} - H|$ on $\td{Q}$.</p>
+<p>Finally, notice that there cannot be a sextic triple at $x,y$ and $z$ which also vanishes identically on $Q$ &ndash; the residual curve would be a line containing $T$, but we are assuming $x,y,z$ are not collinear. Therefore, the system of sextics having triple points at $x,y,$ and $z$ cuts out the complete linear system $|K_{\td{Q}} + \Gamma_{13} - H|$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           c: "{\\rm c}",
           orb: "\\mathcal",
@@ -60,7 +59,7 @@
           Bog: "\\operatorname{Bog}",
           Bl: "\\operatorname{Bl}",
           im: "\\operatorname{im}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{{\\mathbb{F}}}",
           AA: "\\mathbb{A}",
           ba: "\\mathbb{A}",
           bbA: "\\mathbb{A}",
@@ -89,7 +88,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -100,7 +104,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
   </div>
@@ -142,19 +146,21 @@ Denote by $K_{i+1}(j)$ the $j$th term in the above complex, starting from $j = 0
   <div class="stacks-env-head"><strong>Proposition&nbsp;4.2.</strong> <a href="../tag/E90D.html" class="stacks-tag-link">(E90D)</a></div>
   <div class="stacks-env-body"><p>Let $1 \leq i \leq d-3$ and let $N_i$ be the $i$th syzygy bundle of $\alpha$.
   Then we have
-  $$\ch N_i = \sum_{j=0}^{i+1} (-1)^{j-i-1} \ch \left(K_{i+1}(j)\right).$$</p></div>
+  $$\ch N_i = \sum_{j=0}^{i+1} (-1)^{j-i-1} \ch \left(K_{i+1}(j)\right).$$</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B313.html" class="stacks-tag-link">(B313)</a></div>
   <div class="stacks-env-body"><p>From the Casnati&ndash;Ekedahl resolution of $\alpha$ and the identification of the syzygy bundles with the cohomology of the Koszul complex, we know that
   $$H^p(K_{i+1}) =
   \begin{cases}
-    N_i & \text{if $p = i$}\\
-    0 & \text{otherwise}
+    N_i &amp; \text{if $p = i$}\\
+    0 &amp; \text{otherwise}
   \end{cases}.$$
   Therefore, we have the equality
   $$N_i = \sum_{j=0}^{i+1} (-1)^{j-i-1} K_{i+1}(j)$$
-  in the K-ring, from which the formula for the Chern character follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  in the K-ring, from which the formula for the Chern character follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

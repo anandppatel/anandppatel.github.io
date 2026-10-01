@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Z: "\\mathbb{Z}",
           V: "\\mathscr{V}",
@@ -34,7 +33,7 @@
           C: "\\mathbb{C}",
           sHom: "\\underline{Hom}",
           syz: "\\operatorname{syz}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           Flag: "\\operatorname{Flag}",
           id: "\\operatorname{id}",
           Deg: "\\operatorname{Deg}",
@@ -78,7 +77,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -96,13 +100,14 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: The proof</a> / <a href="../section/S2.SS2.html">2.2. Some curves with two commuting involutions</a> / <span>Proof (D06D)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="4C27.html">&laquo; Lemma 2.5</a><span class="stacks-tag-current">Tag D06D</span><a href="AAAF.html">Commentary 2.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="4C27.html">&laquo; Lemma 2.5</a><span class="stacks-tag-current">Tag D06D</span><a href="AAAF.html">Human Comment 2.6 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D06D.html" class="stacks-tag-link">(D06D)</a></div>
   <div class="stacks-env-body"><p>Consider the linear operator $F: V \to V$ given by $\frac{1}{|G|}\sum_{g \in
   G}\chi(g)^{-1}g$. Then it follows immediately that $F(v) = v$ for any $v \in V^{\chi}$,
    and also that for any $w \in V$ and $h \in G$, $$h(F(w)) = \chi(h)w.$$ Therefore, $F$ is a projector with image $V^{\chi}$.
-  Since the trace of a projector is the dimension of its image, we conclude that $$\dim V^{\chi} = \frac{1}{|G|}\sum_{g \in G}\chi(g)^{-1}\tr{g}$$ as claimed.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since the trace of a projector is the dimension of its image, we conclude that $$\dim V^{\chi} = \frac{1}{|G|}\sum_{g \in G}\chi(g)^{-1}\tr{g}$$ as claimed.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

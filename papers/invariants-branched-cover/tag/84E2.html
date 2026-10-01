@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,12 +165,13 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Balanced $F$-bundles and a maximal rank problem</a> / <span>Definition 4.11 (84E2)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="98B2.html">&laquo; Definition 4.10</a><span class="stacks-tag-current">Tag 84E2</span><a href="C89F.html">Definition 4.12 &raquo;</a></div>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.11.</strong> <a href="../tag/84E2.html" class="stacks-tag-link">(84E2)</a></div>
   <div class="stacks-env-body"><p>Let $X=R_1 \cup \ldots \cup R_n \subset \P^r$ be a maximally connected chain. The residual intersection with $R_{i+1}$
 of a quadric $Q$ containing a link $R_i$ is
 $$\operatorname{res}_{R_{i+1}}(Q)= Q \cap R_{i+1} - R_i \cap R_{i+1}$$
-That is, the $r-2$ points of intersection of $Q$ with $R_{i+1}$ besides the $r+2$ anchor points $R_i \cap R_{i+1}$.</p></div>
+That is, the $r-2$ points of intersection of $Q$ with $R_{i+1}$ besides the $r+2$ anchor points $R_i \cap R_{i+1}$.</p>
+</div>
 </div>
 
 <hr>

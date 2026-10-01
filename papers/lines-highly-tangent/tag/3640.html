@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "\\fontdimen2\\font=0.4em\\fontdimen3\\font=0.2em\\fontdimen4\\font=0.1em\\fontdimen7\\font=0.1em\\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -115,7 +114,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -139,7 +143,8 @@
   <div class="stacks-env-body"><p>Suppose $X \subset \P^{n}$ is a smooth hypersurface, and suppose an
   irreducible component $B \subset F_{1}(X)$ sweeps out $X$,
   i.e. $\oTot(B) = X$. The normal bundle $N_{\ell/X}$ is globally
-  generated for a general line $\ell \in B$.</p></div>
+  generated for a general line $\ell \in B$.</p>
+</div>
 </div>
 
 <hr>

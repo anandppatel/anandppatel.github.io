@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -118,16 +122,17 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof (F298)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="6836.html">&laquo; Lemma 9.6</a><span class="stacks-tag-current">Tag F298</span><a href="E460.html">Definition 10.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="6836.html">&laquo; Lemma 9.4</a><span class="stacks-tag-current">Tag F298</span><a href="E460.html">Definition 10.1 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F298.html" class="stacks-tag-link">(F298)</a></div>
-  <div class="stacks-env-body"><p>Let $\mc{P}$ be the convex hull of the vectors $$w_\sigma = -(\sigma^{-1}(1), \ldots, \sigma^{-1}(n)) + ((n+1)/2, \ldots, (n+1)/2)$$ for all $\sigma \in S_n$. (This is the permutohedron [<a class="stacks-cite" href="../../../bibliography.html#bib-permutahedra-and-associahedra-generalized-associahedra-f-9d930e26">Hoh12</a>, Example 2.6] translated so that it contains $0$.) The tangent cone to $\mc{P}$ at $w_\sigma$ is $w_\sigma + C_\sigma$.</p>
-<p>For a sufficiently small rational number $\epsilon > 0$, the polytopes $P$ and $P_\epsilon := P + \epsilon \mc{P}$ have the same lattice points, so $\phi(P) = \phi(P_\epsilon)$. Now, by the description of vertices of Minkowski sums in Section&nbsp;14 and Brion's&nbsp;Theorem [<a class="stacks-cite" href="../../../bibliography.html#bib-formulas-of-brion-lawrence-and-varchenko-42585240">BHS09</a>, p.3], we have $\phi(P) = \phi(P_\epsilon)$ can be written as
+  <div class="stacks-env-body"><p>Let $\mc{P}$ be the convex hull of the vectors $$w_\sigma = -(\sigma^{-1}(1), \ldots, \sigma^{-1}(n)) + ((n+1)/2, \ldots, (n+1)/2)$$ for all $\sigma \in S_n$. (This is the permutohedron [<a class="stacks-cite" href="../../../bibliography.html#bib-christophe-hohlweg-permutahedra-and-associahedra-general-768b0aa8">Hoh12</a>, Example 2.6] translated so that it contains $0$.) The tangent cone to $\mc{P}$ at $w_\sigma$ is $w_\sigma + C_\sigma$.</p>
+<p>For a sufficiently small rational number $\epsilon &gt; 0$, the polytopes $P$ and $P_\epsilon := P + \epsilon \mc{P}$ have the same lattice points, so $\phi(P) = \phi(P_\epsilon)$. Now, by the description of vertices of Minkowski sums in Section&nbsp;A and Brion's&nbsp;Theorem [<a class="stacks-cite" href="../../../bibliography.html#bib-matthias-beck-christian-haase-and-frank-5f8a70b2">BHS09</a>, p.3], we have $\phi(P) = \phi(P_\epsilon)$ can be written as
 $$\sum_{u \in \Vt(P_\epsilon)} \phi(T_{u, P_\epsilon})
 = \sum_{\sigma \in S_n} \sum_{v \in \Vt(P)}  \phi(T_{v, P} + \epsilon w_\sigma + C_\sigma)
 = \sum_{\sigma \in S_n} \phi(P + \epsilon w_\sigma + C_\sigma).$$
 In each equality we used the vanishing of $\phi$ on cones containing lines.</p>
-<p>Since $- w_\sigma \in C_\sigma$, the polytopes $P + \epsilon w_\sigma + C_\sigma$ and $P + C_\sigma$ have the same lattice points for sufficiently small $\epsilon$. Hence this sum is equal to $\sum_{\sigma \in S_n} \phi(P + C_\sigma)$ as desired.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>Since $- w_\sigma \in C_\sigma$, the polytopes $P + \epsilon w_\sigma + C_\sigma$ and $P + C_\sigma$ have the same lattice points for sufficiently small $\epsilon$. Hence this sum is equal to $\sum_{\sigma \in S_n} \phi(P + C_\sigma)$ as desired.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

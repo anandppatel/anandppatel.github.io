@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 4 — Complete families of generic covers of elliptic curves</title>
+  <title>Section 4: Final remarks and possible next steps — Complete families of generic covers of elliptic curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           Q: "\\mathbb{Q}",
@@ -27,7 +26,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathbb{C}",
+          C: "\\mathsf{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -37,7 +36,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -52,12 +51,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
-          N: "\\mathbb{N}",
-          Gr: "\\mathbb{G}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\mathbb{G}",
+          G: "\\operatorname{\\mathbb{G}}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -66,7 +65,7 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -102,7 +101,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -125,41 +129,47 @@
 <p class="stacks-para">We understand half of the answer to this riddle.  When $g=2$, the Tschirnhausen bundle $\mathcal{E}$ has degree $1$, and so poly-stability just means that $\mathcal{E}$ is indecomposable.  In <a href="/papers/complete-families-generic-covers/tag/415B.html" class="stacks-ref-link">Theorem&nbsp;4.4 <span class="stacks-ref-tag">[415B]</span></a> below we will in fact show that $\Bog(\mathcal{E})$ is empty when $g = 2$.  Given <a href="/papers/complete-families-generic-covers/tag/454C.html" class="stacks-ref-link">Proposition&nbsp;2.11 <span class="stacks-ref-tag">[454C]</span></a>, if we knew that $\mathcal{F}_{\alpha}$ is regular polystable for a general $\alpha$ then by <a href="/papers/complete-families-generic-covers/tag/14AF.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[14AF]</span></a> we would conclude that $\Bog(\mathcal{F_{\alpha}})$ must also be empty, and therefore that <a href="/papers/complete-families-generic-covers/tag/2541.html" class="stacks-ref-link">Conjecture&nbsp;2.10 <span class="stacks-ref-tag">[2541]</span></a> holds for $g=2$. But we do not know this. In general, it would be great to know the answer to the following question:</p>
 <div class="stacks-env" id="question-stableF">
   <div class="stacks-env-head"><strong>Question&nbsp;4.1.</strong> <a href="../tag/F81A.html" class="stacks-tag-link">(F81A)</a></div>
-  <div class="stacks-env-body"><p>Does a general (primitive) branched cover $\alpha: C \to D$ between two curves of genus $\geq 1$ have a stable Casnati-Ekedahl bundle $\mathcal{F}$? What about the other terms of the Casnati-Ekedahl resolution?</p></div>
+  <div class="stacks-env-body"><p>Does a general (primitive) branched cover $\alpha: C \to D$ between two curves of genus $\geq 1$ have a stable Casnati-Ekedahl bundle $\mathcal{F}$? What about the other terms of the Casnati-Ekedahl resolution?</p>
 </div>
-<div class="stacks-commentary" id="">
+</div>
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;4.2.</strong> <a href="../tag/3A34.html" class="stacks-tag-link">(3A34)</a></div>
-  <div class="stacks-env-body"><p>The stability of the general Tschirnhausen bundle was demonstrated beautifully in [<a class="stacks-cite" href="../../../bibliography.html#bib-stability-of-tschirnhausen-bundles-5b74d21c">CLV24</a>]. In another direction, [<a class="stacks-cite" href="../../../bibliography.html#bib-vector-bundles-and-finite-covers-ca03cf3f">DP22</a>] proves that the up to twist, all conceivable rank $d-1$ vector bundles eventually arise as Tschirnhausen bundles, as $g$ increases.</p></div>
+  <div class="stacks-env-body"><p>The stability of the general Tschirnhausen bundle was demonstrated beautifully in [<a class="stacks-cite" href="../../../bibliography.html#bib-izzet-coskun-eric-larson-and-isabel-e4a5a092">CLV24</a>]. In another direction, [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-vector-8fce0f91">DP22</a>] proves that the up to twist, all conceivable rank $d-1$ vector bundles eventually arise as Tschirnhausen bundles, as $g$ increases.</p>
+</div>
 </div>
 <p class="stacks-para">Throughout this section, we let $\alpha: C \to X$ be an element of $\Hurfixed{d}{2}(X)$ &ndash; in particular recall that $\alpha$ is primitive.</p>
 <div class="stacks-lemma" id="lemma-degree0twist">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.3.</strong> <a href="../tag/E848.html" class="stacks-tag-link">(E848)</a></div>
-  <div class="stacks-env-body"><p>If $\mathcal{L}$ is any degree $0$ line bundle on $X$ then $$h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = 1.$$</p></div>
+  <div class="stacks-env-body"><p>If $\mathcal{L}$ is any degree $0$ line bundle on $X$ then $$h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = 1.$$</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DA2C.html" class="stacks-tag-link">(DA2C)</a></div>
-  <div class="stacks-env-body"><p>By definition, $$\alpha_{*} \O_{C} \simeq \O_{X} \oplus \mathcal{E}_{\alpha}^{\vee}.$$  Therefore, $$h^{0}(X,\mathcal{L}) + h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = h^{0}(X, (\alpha_{*} \O_{C})\otimes \mathcal{L}) = h^{0}(C, \alpha^{*} \mathcal{L}),$$  using the push-pull formula.  Now, $\alpha^{*} \mathcal{L}$ is a degree $0$ line bundle on $C$, and so $h^{0}(C, \alpha^{*} \mathcal{L}) = 1$ if and only if $\alpha^{*} \mathcal{L} \simeq \O_{C}$, and otherwise $h^{0}(C, \alpha^{*} \mathcal{L}) = 0$.  </p>
-<p>    The pushforward of the divisor $c_{1} \alpha^{*} \mathcal{L}$ is $d \cdot c_{1} \mathcal{L}$, and therefore if $\alpha^{*} \mathcal{L} \simeq \O_{C}$ then $\mathcal{L}$ is $d$-torsion in $\Pic^{0}(X)$. </p>
-<p>    Suppose $e \mid d$ is the smallest positive integer such that $\mathcal{L}$ is $e$-torsion. Then $\mathcal{L}$ defines a a degree $e$ finite et&aacute;le cover $\beta: \tilde{X} \to X$ with the property that: if $\gamma: Z \to X$ is any morphism such that $\gamma^{*} \mathcal{L} \simeq \O_{Z}$ then $\gamma$ factors through $\beta$. In particular, $\alpha$ factors through $\beta$, and therefore by primitivity $e=1$.  To summarize, $\alpha^{*} \mathcal{L} \simeq \O_{C}$ if and only if $\mathcal{L} \simeq \O_{X}$.  The lemma follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>By definition, $$\alpha_{*} \O_{C} \simeq \O_{X} \oplus \mathcal{E}_{\alpha}^{\vee}.$$  Therefore, $$h^{0}(X,\mathcal{L}) + h^{0}(X, \mathcal{L} \otimes \mathcal{E}_{\alpha}^{\vee}) = h^{0}(X, (\alpha_{*} \O_{C})\otimes \mathcal{L}) = h^{0}(C, \alpha^{*} \mathcal{L}),$$  using the push-pull formula.  Now, $\alpha^{*} \mathcal{L}$ is a degree $0$ line bundle on $C$, and so $h^{0}(C, \alpha^{*} \mathcal{L}) = 1$ if and only if $\alpha^{*} \mathcal{L} \simeq \O_{C}$, and otherwise $h^{0}(C, \alpha^{*} \mathcal{L}) = 0$.</p>
+<p>The pushforward of the divisor $c_{1} \alpha^{*} \mathcal{L}$ is $d \cdot c_{1} \mathcal{L}$, and therefore if $\alpha^{*} \mathcal{L} \simeq \O_{C}$ then $\mathcal{L}$ is $d$-torsion in $\Pic^{0}(X)$.</p>
+<p>Suppose $e \mid d$ is the smallest positive integer such that $\mathcal{L}$ is $e$-torsion. Then $\mathcal{L}$ defines a a degree $e$ finite et&aacute;le cover $\beta: \tilde{X} \to X$ with the property that: if $\gamma: Z \to X$ is any morphism such that $\gamma^{*} \mathcal{L} \simeq \O_{Z}$ then $\gamma$ factors through $\beta$. In particular, $\alpha$ factors through $\beta$, and therefore by primitivity $e=1$.  To summarize, $\alpha^{*} \mathcal{L} \simeq \O_{C}$ if and only if $\mathcal{L} \simeq \O_{X}$.  The lemma follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-theorem" id="theorem-genus2stableE">
   <div class="stacks-env-head"><strong>Theorem&nbsp;4.4.</strong> <a href="../tag/415B.html" class="stacks-tag-link">(415B)</a></div>
-  <div class="stacks-env-body"><p>The Tschirnhausen bundle $\mathcal{E_{\alpha}}$ is indecomposable for \underline{any} element $[\alpha: C \to X] \in \Hurfixed{d}{2}(X)$.</p></div>
+  <div class="stacks-env-body"><p>The Tschirnhausen bundle $\mathcal{E_{\alpha}}$ is indecomposable for <u>any</u> element $[\alpha: C \to X] \in \Hurfixed{d}{2}(X)$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D944.html" class="stacks-tag-link">(D944)</a></div>
-  <div class="stacks-env-body"><p>Write $\mathcal{E}_{\alpha}^{\vee}$ as a direct sum of indecomposable bundles $$\mathcal{E}_{\alpha}^{\vee} = \bigoplus_{i=1}^{r} \mathcal{A}_{i}.$$  Since $h^{0}(X,\mathcal{E}_{\alpha}^{\vee}) = 0$ ($C$ is connected), none of the summands $\mathcal{A}_{i}$ can have positive degree.  </p>
-<p>    Suppose one particular $\mathcal{A}_{j}$ has degree $0$.  By Atiyah's classification, $\mathcal{A}_{j}$ is the tensor product of the bundle $\mathcal{F}$ by some line bundle $\mathcal{M}$ of degree $0$.  Here $\mathcal{F}$ is the unique indecomposable vector bundle of rank $\rk \mathcal{A}_{j}$ and degree $0$ which has a non-trivial global section.  If we set $\mathcal{L} := \mathcal{M}^{-1}$, then $\mathcal{A}_{j} \otimes \mathcal{L} = \mathcal{F}$, and so  $h^{0}(X, \mathcal{A}_{j} \otimes \mathcal{L}) = 1$.  And so <a href="/papers/complete-families-generic-covers/tag/E848.html" class="stacks-ref-link">Lemma&nbsp;4.3 <span class="stacks-ref-tag">[E848]</span></a> is violated.  </p>
-<p>    Therefore, all summands $\mathcal{A}_{i}$ have strictly negative degree, and these degrees sum to $\deg \mathcal{E}_{\alpha}^{\vee} = -1$.  Hence there is only one summand, and the theorem follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Write $\mathcal{E}_{\alpha}^{\vee}$ as a direct sum of indecomposable bundles $$\mathcal{E}_{\alpha}^{\vee} = \bigoplus_{i=1}^{r} \mathcal{A}_{i}.$$  Since $h^{0}(X,\mathcal{E}_{\alpha}^{\vee}) = 0$ ($C$ is connected), none of the summands $\mathcal{A}_{i}$ can have positive degree.</p>
+<p>Suppose one particular $\mathcal{A}_{j}$ has degree $0$.  By Atiyah's classification, $\mathcal{A}_{j}$ is the tensor product of the bundle $\mathcal{F}$ by some line bundle $\mathcal{M}$ of degree $0$.  Here $\mathcal{F}$ is the unique indecomposable vector bundle of rank $\rk \mathcal{A}_{j}$ and degree $0$ which has a non-trivial global section.  If we set $\mathcal{L} := \mathcal{M}^{-1}$, then $\mathcal{A}_{j} \otimes \mathcal{L} = \mathcal{F}$, and so  $h^{0}(X, \mathcal{A}_{j} \otimes \mathcal{L}) = 1$.  And so <a href="/papers/complete-families-generic-covers/tag/E848.html" class="stacks-ref-link">Lemma&nbsp;4.3 <span class="stacks-ref-tag">[E848]</span></a> is violated.</p>
+<p>Therefore, all summands $\mathcal{A}_{i}$ have strictly negative degree, and these degrees sum to $\deg \mathcal{E}_{\alpha}^{\vee} = -1$.  Hence there is only one summand, and the theorem follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Like we said earlier, we do not know whether $\mathcal{F}_{\alpha}$ is regular polystable for a general $[\alpha: C \to X] \in \Hurfixed{d}{2}(X)$ &ndash; this is a natural thing to look into.  An affirmative answer to <a href="/papers/complete-families-generic-covers/tag/F81A.html" class="stacks-ref-link">Question&nbsp;4.1 <span class="stacks-ref-tag">[F81A]</span></a> means that the ability to construct complete families of branched covers of $X$ lying entirely inside $\Hurfixedstable{d}{g}(X)$ has little to do with the existence of nice parametrizations &ndash; the curves $\Hurfixed{d}{2}(X)$ are themselves examples in genus $2$.  This in turn gives us more confidence in <a href="/papers/complete-families-generic-covers/tag/2541.html" class="stacks-ref-link">Conjecture&nbsp;2.10 <span class="stacks-ref-tag">[2541]</span></a>.</p>
 <p class="stacks-para">We leave the reader with some ideas for next steps:</p>
-<ol><li>Is the general Casnati-Ekedahl bundle $\mathcal{F}$ stable (or regular polystable in the case of a genus $1$ target)? Start with the genus $2$ case.  We'd like to point out the main theorem of [<a class="stacks-cite" href="../../../bibliography.html#bib-invariants-of-a-general-branched-cover-368e8126">BP21</a>] and [<a class="stacks-cite" href="../../../bibliography.html#bib-invariants-of-a-general-branched-cover-368e8126">BP21</a>, Proposition 2.4].  One must be cautious, in light of [<a class="stacks-cite" href="../../../bibliography.html#bib-invariants-of-a-general-branched-cover-368e8126">BP21</a>, Example 2.3]!</li>
-<li>Is the weaker <a href="/papers/complete-families-generic-covers/tag/09ED.html" class="stacks-ref-link">Conjecture&nbsp;2.14 <span class="stacks-ref-tag">[09ED]</span></a> true for the Hurwitz space parametrizing degree $6$ genus $3$ covers, $\Hurfixed{6}{3}(X)$? This is the frontier case, in our eyes.</li>
-<li>Can we leverage the success in genus 2 to serve higher genera? Perhaps by constructing complete families in the boundary, and then attempting to deform?</li>
-<li>Relaxing the requirements of the complete curve conjecture, can one show that there are plenty of complete curves avoiding $\Bog(\mathcal{E})$ or $\Bog(\mathcal{F})$ individually?</li>
-<li>Relaxing the requirements of the complete curve conjecture in another direction: Can we exhibit a single complete curve in every $\Hurfixedstable{d}{g}(X)$, moving or otherwise?</li>
-<li>Prove <a href="/papers/complete-families-generic-covers/tag/09DD.html" class="stacks-ref-link">Theorem&nbsp;3.12 <span class="stacks-ref-tag">[09DD]</span></a> after dropping the convenient assumption that $g$ is sufficiently large.</li></ol>
+<ol><li><p>Is the general Casnati-Ekedahl bundle $\mathcal{F}$ stable (or regular polystable in the case of a genus $1$ target)? Start with the genus $2$ case.  We'd like to point out the main theorem of [<a class="stacks-cite" href="../../../bibliography.html#bib-gabriel-bujokas-and-anand-patel-invariants-2bb44699">BP21</a>] and [<a class="stacks-cite" href="../../../bibliography.html#bib-gabriel-bujokas-and-anand-patel-invariants-2bb44699">BP21</a>, Proposition 2.4].  One must be cautious, in light of [<a class="stacks-cite" href="../../../bibliography.html#bib-gabriel-bujokas-and-anand-patel-invariants-2bb44699">BP21</a>, Example 2.3]!</p></li>
+<li><p>Is the weaker <a href="/papers/complete-families-generic-covers/tag/09ED.html" class="stacks-ref-link">Conjecture&nbsp;2.14 <span class="stacks-ref-tag">[09ED]</span></a> true for the Hurwitz space parametrizing degree $6$ genus $3$ covers, $\Hurfixed{6}{3}(X)$? This is the frontier case, in our eyes.</p></li>
+<li><p>Can we leverage the success in genus 2 to serve higher genera? Perhaps by constructing complete families in the boundary, and then attempting to deform?</p></li>
+<li><p>Relaxing the requirements of the complete curve conjecture, can one show that there are plenty of complete curves avoiding $\Bog(\mathcal{E})$ or $\Bog(\mathcal{F})$ individually?</p></li>
+<li><p>Relaxing the requirements of the complete curve conjecture in another direction: Can we exhibit a single complete curve in every $\Hurfixedstable{d}{g}(X)$, moving or otherwise?</p></li>
+<li><p>Prove <a href="/papers/complete-families-generic-covers/tag/09DD.html" class="stacks-ref-link">Theorem&nbsp;3.12 <span class="stacks-ref-tag">[09DD]</span></a> after dropping the convenient assumption that $g$ is sufficiently large.</p></li></ol>
 
 <hr>
 <div class="stacks-comments"

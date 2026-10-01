@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Theorem 6.6 (F6CF) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Theorem 6.2 (F6CF) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,18 +120,18 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: One-parameter degenerations of generalized matrix orbits</a> / <span>Theorem 6.6 (F6CF)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: One-parameter degenerations of generalized matrix orbits</a> / <span>Theorem 6.2 (F6CF)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="276C.html">&laquo; Definition 6.5</a><span class="stacks-tag-current">Tag F6CF</span><a href="E453.html">Corollary 6.7 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="276C.html">&laquo; Definition 6.4</a><span class="stacks-tag-current">Tag F6CF</span><a href="E453.html">Corollary 6.3 &raquo;</a></div>
 <div class="stacks-theorem" id="degenerationfibers">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;6.6.</strong> <a href="../tag/F6CF.html" class="stacks-tag-link">(F6CF)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.2.</strong> <a href="../tag/F6CF.html" class="stacks-tag-link">(F6CF)</a></div>
   <div class="stacks-env-body"><p>Let $D$ be a smooth affine $1$-dimensional $K$-scheme of finite type, let $0 \in D$ be a closed point, and let $t$ be a uniformizing parameter for $D$ around $0$. Let $M_D : D \to \mb{A}^{d \times n}$ be a morphism that maps the generic point of $D$ to a rank $d$ matrix with no identically zero column.</p>
 <p>Consider the map $\psi: \mb{P}^{(r+1)\times d-1}\times D \dashrightarrow (\mb{P}^r)^n\times D$ given by $(\widetilde A,p) \mapsto (\widetilde{AM_D(p)},p)$. Let $U\subset \mb{P}^{(r+1)\times d-1}\times (D \setminus \{0\})$ be a dense open subset of the domain of definition of $\psi$, and let $\wt{\mc{O}}$ be the family $\overline{\psi(U)} \subset (\mb{P}^{r})^n\times D$. Then</p>
-<ol><li>The family $\wt{\mc{O}}$ is locally flat over $0 \in D$.</li>
-<li>The fiber of $\wt{\mc{O}}$ over a general point $p \in D$ set-theoretically contains $\op{M_D(p)}$, and it is equal (as an algebraic cycle) to $\op{M_D(p)}$ if it is $((r+1)d-1)$-dimensional.</li>
-<li>Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by <a href="/papers/orbits-equivariant-quantum/tag/387B.html" class="stacks-ref-link">Lemma&nbsp;6.14 <span class="stacks-ref-tag">[387B]</span></a>.) Then the fiber of $\wt{\mc{O}}$ over $0 \in D$ is equal to
-$$\bigcup_{i=1}^{k}\op{M_i}$$
-as an $((r+1)d-1)$-dimensional algebraic cycle.</li></ol>
+<ol><li><p>The family $\wt{\mc{O}}$ is locally flat over $0 \in D$.</p></li>
+<li><p>The fiber of $\wt{\mc{O}}$ over a general point $p \in D$ set-theoretically contains $\mathcal{O}_{M_D(p)}$, and it is equal (as an algebraic cycle) to $\mathcal{O}_{M_D(p)}$ if it is $((r+1)d-1)$-dimensional.</p></li>
+<li><p>Suppose that $M_D$ orb-limits to matrices $M_1, \ldots, M_k$ whose rank polytopes are the facets of the regular subdivision of $P$ induced by the lifting function $h_{M_D}$. (The existence of the $M_i$ is guaranteed by <a href="/papers/orbits-equivariant-quantum/tag/387B.html" class="stacks-ref-link">Lemma&nbsp;6.9 <span class="stacks-ref-tag">[387B]</span></a>.) Then the fiber of $\wt{\mc{O}}$ over $0 \in D$ is equal to
+$$\bigcup_{i=1}^{k}\mathcal{O}_{M_i}$$
+as an $((r+1)d-1)$-dimensional algebraic cycle.</p></li></ol>
 </div>
 </div>
 
@@ -135,8 +139,8 @@ as an $((r+1)d-1)$-dimensional algebraic cycle.</li></ol>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F6CF.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F6CF.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F6CF (Theorem 6.6)"
-     data-comment-page-label="Tag F6CF (Theorem 6.6)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F6CF (Theorem 6.2)"
+     data-comment-page-label="Tag F6CF (Theorem 6.2)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -144,13 +148,13 @@ as an $((r+1)d-1)$-dimensional algebraic cycle.</li></ol>
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F6CF (Theorem 6.6)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F6CF (Theorem 6.2)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F6CF.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F6CF.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag F6CF (Theorem 6.6)">
+      <input type="hidden" name="location" value="Tag F6CF (Theorem 6.2)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

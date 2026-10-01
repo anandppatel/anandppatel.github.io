@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,10 +123,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Parallel and Series Connection, Existence of Rational Functions</a> / <a href="../section/S8.SS2.html">8.2. Proof of Theorem 8.2 [367A]</a> / <span>Proof (2092)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="8326.html">&laquo; Lemma 8.6</a><span class="stacks-tag-current">Tag 2092</span><a href="FF90.html">Lemma 8.7 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2092.html" class="stacks-tag-link">(2092)</a></div>
-  <div class="stacks-env-body"><p>Clearly $\op{M}$ is the image of the diagonal map $\mb{P}^r \to \mb{P}^r \times \mb{P}^r$. The equivariant class of the diagonal is the unique class which satisfies $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)\opc{M}= \int_{\mb{P}^r}f(H)g(H).$$ This is indeed satisfied by $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ since $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_1)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r}f(H_1)g(H_1),$$
-where the first equality came from the fact that the difference of the two expressions is $f(H_1)\frac{g(H_1)-g(H_2)}{H_1-H_2}(F(H_1)-F(H_2))$, and the second from the fact that $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ is of degree $r$ in $H_2$ with leading coefficient $1$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Clearly $\mathcal{O}_{M}$ is the image of the diagonal map $\mb{P}^r \to \mb{P}^r \times \mb{P}^r$. The equivariant class of the diagonal is the unique class which satisfies $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)[\mathcal{O}_{M}]= \int_{\mb{P}^r}f(H)g(H).$$ This is indeed satisfied by $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ since $$\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_2)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r \times \mb{P}^r}f(H_1)g(H_1)\frac{F(H_1)-F(H_2)}{H_1-H_2}=\int_{\mb{P}^r}f(H_1)g(H_1),$$
+where the first equality came from the fact that the difference of the two expressions is $f(H_1)\frac{g(H_1)-g(H_2)}{H_1-H_2}(F(H_1)-F(H_2))$, and the second from the fact that $\frac{F(H_1)-F(H_2)}{H_1-H_2}$ is of degree $r$ in $H_2$ with leading coefficient $1$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

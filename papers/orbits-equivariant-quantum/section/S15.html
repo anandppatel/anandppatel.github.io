@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 15 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Section B: Resolution via wonderful compactification — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,23 +120,23 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 15: Resolution via wonderful compactification</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S14.html" aria-label="Previous: Section 14: Polytopes" title="Previous: Section 14: Polytopes">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S15.SS1.html" aria-label="Next: 15.1. Arrangement of subvarieties" title="Next: 15.1. Arrangement of subvarieties">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section B: Resolution via wonderful compactification</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S14.html" aria-label="Previous: Section A: Polytopes" title="Previous: Section A: Polytopes">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S15.SS1.html" aria-label="Next: B.1. Arrangement of subvarieties" title="Next: B.1. Arrangement of subvarieties">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">Section 15. Resolution via wonderful compactification</h1>
-<p class="stacks-para">We recall the setup to blow up inductively an arrangement of subvarieties from [<a class="stacks-cite" href="../../../bibliography.html#bib-wonderful-compactification-of-an-arrangement-of-6a4ff791">Li09</a>]. In this section, a <em>variety</em> is a reduced irreducible scheme of finite type over $K$.</p>
+<h1 class="stacks-section-title">Section B. Resolution via wonderful compactification</h1>
+<p class="stacks-para">We recall the setup to blow up inductively an arrangement of subvarieties from [<a class="stacks-cite" href="../../../bibliography.html#bib-li-li-wonderful-compactification-of-an-5b036085">Li09</a>]. In this section, a <em>variety</em> is a reduced irreducible scheme of finite type over $K$.</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
-  <li><a href="S15.SS1.html">15.1. Arrangement of subvarieties</a></li>
-  <li><a href="S15.SS2.html">15.2. Wonderful compactification</a></li>
-  <li><a href="S15.SS3.html">15.3. Resolution of maps</a></li>
+  <li><a href="S15.SS1.html">B.1. Arrangement of subvarieties</a></li>
+  <li><a href="S15.SS2.html">B.2. Wonderful compactification</a></li>
+  <li><a href="S15.SS3.html">B.3. Resolution of maps</a></li>
 </ul>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 15: Resolution via wonderful compactification"
-     data-comment-page-label="Section 15: Resolution via wonderful compactification"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section B: Resolution via wonderful compactification"
+     data-comment-page-label="Section B: Resolution via wonderful compactification"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -140,13 +144,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 15: Resolution via wonderful compactification">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section B: Resolution via wonderful compactification">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Section 15: Resolution via wonderful compactification">
+      <input type="hidden" name="location" value="Section B: Resolution via wonderful compactification">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

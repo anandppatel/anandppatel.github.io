@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,10 +165,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Balanced $F$-bundles and a maximal rank problem</a> / <span>Proof (EC51)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6759.html">&laquo; Lemma 4.9</a><span class="stacks-tag-current">Tag EC51</span><a href="98B2.html">Definition 4.10 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EC51.html" class="stacks-tag-link">(EC51)</a></div>
   <div class="stacks-env-body"><p>Let $X \subset \P^{d-2}$ be a general maximally connected chain of length $n$, and let $R_{1}, \ldots , R_{a}$ be its components.  For $i = 2, \ldots ,a-1$, the rational curve $R_{i}$ has a distinguished pencil of divisors on $\cO_{R_{i}}(d)$, namely the pencil spanned by the two sets of anchor points $R_{i} \cap R_{i-1}$ and $R_{i} \cap R_{i+1}$.  Let $0 \in \P^1$ correspond to the former, and let $\infty \in \P^1$ correspond to the latter. Now, for $R_{1}$ (and $R_{a}$), simply choose a basepoint free pencil of sections of $\cO_{R_{1}}(d)$  (resp. $\cO_{R_{a}}$) containing $R_{1} \cap R_{2}$ (resp. $R_{a-1} \cap R_{a}$). The data of the curves $R_{i}$ along with the pencils of degree $d$ divisors on each gives rise to an admissible cover $\alpha \from X \to \chain{a}$. The map $X \to \P^{d-2} \times \chain{a}$ is the relative canonical embedding for $\alpha$, because each fiber $X_t \subset \P^{d-2}$ is a length $d$ arithmetically Gorenstein subscheme. Therefore, $f(\alpha)$ is the
-original maximally connected chain $X \subset \P^{d-2}$, as we wanted to show.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+original maximally connected chain $X \subset \P^{d-2}$, as we wanted to show.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

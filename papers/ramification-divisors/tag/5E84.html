@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,25 +134,25 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal variation for incompressible and non-defective $X$</a> / <a href="../section/S3.SS2.html">3.2. Maximal variation for non-defective pairs</a> / <span>Proof of Theorem 3.12 [D7AA] (5E84)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6FEA.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 5E84</span><a href="056A.html">Corollary 3.15 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/ramification-divisors/tag/D7AA.html" class="stacks-ref-link">Theorem&nbsp;3.12 <span class="stacks-ref-tag">[D7AA]</span></a>.</em> <a href="../tag/5E84.html" class="stacks-tag-link">(5E84)</a></div>
   <div class="stacks-env-body"><p>We induct on $\dim W$.
   The base case $\dim W = r+1$ is clear.</p>
-<p>  We now do the induction step.
+<p>We now do the induction step.
   Suppose $\dim W \geq r+2$.
   Choose a general point $x \in X$ such that the induced linear series $(\widetilde L, \widetilde W)$ on $\widetilde X = \Bl_x X$ is non-defective as in <a href="/papers/ramification-divisors/tag/5840.html" class="stacks-ref-link">Proposition&nbsp;3.11 <span class="stacks-ref-tag">[5840]</span></a>.
   Choose a general $(r+1)$-dimensional subspace $V \subset W \otimes \mathfrak m_x = \widetilde W$ that satisfies the hypotheses of <a href="/papers/ramification-divisors/tag/9AC6.html" class="stacks-ref-link">Lemma&nbsp;3.13 <span class="stacks-ref-tag">[9AC6]</span></a>.
   By the induction hypothesis, $V$ considered as a projection of $(\widetilde L, \widetilde W)$ is an isolated point in the projection-ramification map for $\widetilde X$.
   We now show that it is also an isolated point in the projection-ramification map for $X$.</p>
-<p>  Let $(C, 0)$ be a pointed smooth curve and $V \subset W \otimes \O_C$ a sub-bundle of rank $(r+1)$ such that</p>
-<ol><li>$V_{0} = V$, and</li>
-<li>$V_{c} \neq V_{0}$ for $c \in C \setminus \{0\}$.</li></ol>
+<p>Let $(C, 0)$ be a pointed smooth curve and $V \subset W \otimes \O_C$ a sub-bundle of rank $(r+1)$ such that</p>
+<ol><li><p>$V_{0} = V$, and</p></li>
+<li><p>$V_{c} \neq V_{0}$ for $c \in C \setminus \{0\}$.</p></li></ol>
 <p>We must show that $R(V_c) \neq R(V)$ for a general $c \in C$.</p>
-<p>  Suppose $V_c \subset W \otimes \mathfrak m_x = \widetilde W$ for all $c \in C$.
+<p>Suppose $V_c \subset W \otimes \mathfrak m_x = \widetilde W$ for all $c \in C$.
   Denote by $\widetilde R(V_c)$ the ramification divisor of $V_c$ considered as a projection of $\widetilde X$.
   Since $V = V_0$ is an isolated point in the projection-ramification map for $\widetilde X$, we know that $\widetilde R(V_c) \neq \widetilde R(V_0)$ for a general $c \in C$.
   Clearly, $R(V_c)$ and $\widetilde R(V_c)$ agree away from the exceptional divisor, and hence we conclude that $R(V_c) \neq R(V_0)$ for a general $c \in C$.</p>
-<p>  On the other hand, suppose $V_c \not \subset W \otimes \mathfrak m_x = \widetilde W$ for a general $c \in C$.
+<p>On the other hand, suppose $V_c \not \subset W \otimes \mathfrak m_x = \widetilde W$ for a general $c \in C$.
   Consider the evaluation maps
   $$e_c \from V_c \to L / \mathfrak m_x^2 L$$
   between an $(r+1)$-dimensional source and $(r+1)$-dimensional target.

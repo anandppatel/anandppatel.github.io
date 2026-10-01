@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Theorem C (83A0) — Special Codimension One Loci in Hurwitz Spaces</title>
+  <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
+  <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
+  <script src="../../../comments-config.js?v=comments-20260519" defer></script>
+  <script src="../../../comments.js?v=comments-20260519" defer></script>
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/bboldx'] },
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: { '[+]': ['bboldx'] },
+        macros: {
+          themaintheorem: "\\Alph{maintheorem}",
+          M: "\\mathcal M",
+          H: "{\\mathcal{H}}",
+          td: "\\widetilde",
+          F: "\\mathbb{F}",
+          sub: "{\\rm sub}",
+          Hdg: "\\overline{\\H}_{d,g}",
+          Hdgn: "\\overline{\\H}_{d,g}",
+          Hdgnt: "\\overline{\\H}_{d,g}^{(2)}",
+          Hdgnth: "\\overline{\\H}_{d,g}^{(3)}",
+          to: "\\longrightarrow",
+          sfA: "{\\mathsf A}",
+          sfE: "{\\mathsf E}",
+          sfY: "{\\mathsf Y}",
+          sfX: "{\\mathsf X}",
+          sfT: "{\\mathsf T}",
+          sfD: "{\\mathsf D}",
+          sfB: "{\\mathsf B}",
+          sfC: "{\\mathsf C}",
+          sfCE: "{\\mathsf {CE}}",
+          sfM: "{\\mathsf M}",
+          fa: "{\\mathfrak a}",
+          fc: "{\\mathfrak c}",
+          fm: "{\\mathfrak m}",
+          fp: "{\\mathfrak p}",
+          fq: "{\\mathfrak q}",
+          fC: "{\\mathfrak C}",
+          Mg: "{\\overline{\\mathcal{M}}_{g}}",
+          cA: "{\\mathcal A}",
+          cC: "{\\mathcal C}",
+          cD: "{\\mathcal D}",
+          cE: "{\\mathcal E}",
+          cF: "{\\mathcal F}",
+          cG: "{\\mathcal G}",
+          cI: "{\\mathcal I}",
+          cJ: "{\\mathcal J}",
+          cK: "{\\mathcal K}",
+          cL: "{\\mathcal L}",
+          cM: "{\\mathcal M}",
+          cN: "{\\mathcal N}",
+          cO: "{\\mathcal O}",
+          cP: "{\\mathcal P}",
+          cR: "{\\mathcal R}",
+          cS: "{\\mathcal S}",
+          cT: "{\\mathcal T}",
+          cU: "{\\mathcal U}",
+          cV: "{\\mathcal V}",
+          cW: "{\\mathcal W}",
+          cX: "{\\mathcal X}",
+          cY: "{\\mathcal Y}",
+          cZ: "{\\mathcal Z}",
+          cp: "{\\mathcal p}",
+          bG: "\\mathbb{G}",
+          comment: ["", 1],
+          N: "\\mathbb{N}",
+          Z: "\\mathbb{Z}",
+          Q: "\\mathbb{Q}",
+          R: "\\mathbb{R}",
+          E: "{\\bf E}",
+          C: "\\mathbb{C}",
+          A: "\\mathbb{A}",
+          P: "\\mathbb{P}",
+          from: "{\\colon}",
+          into: "\\,{\\hookrightarrow}\\,",
+          onto: "\\twoheadrightarrow",
+          st: ["\\mathscr{#1}", 1],
+          sh: ["{\\mathcal #1}", 1],
+          orb: ["{\\mathcal #1}", 1],
+          cat: ["\\mathbf{#1}", 1],
+          sp: ["#1", 1],
+          thk: ["{\\mathcal #1}", 1],
+          o: ["\\overline{#1}", 1],
+          k: "{\\mathbb{K}}",
+          ideal: ["\\langle #1 \\rangle", 1],
+          dual: ["#1^{\\vee}", 1],
+          compl: ["\\widehat{#1}", 1],
+          tw: ["\\widetilde{#1}", 1],
+          Br: "{\\rm Br}",
+          gen: "{\\rm gen}",
+          Spec: "{\\text{\\rm Spec}\\,}",
+          Spf: "{\\text{\\rm Spf}\\,}",
+          Proj: "{\\text{\\rm Proj}\\,}",
+          rk: "{\\text{rk}\\,}",
+          Eff: "{\\rm Eff}\\,",
+          ns: "{\\rm ns}",
+          Pic: "{\\rm Pic}\\,",
+          Sym: "{\\rm Sym}",
+          irr: "{\\rm irr}",
+          top: "{\\rm top}",
+          spl: "{\\rm split}",
+          ram: "{\\rm ram}",
+          End: "{\\rm End \\,}",
+          Ext: "{\\rm Ext \\,}",
+          PGL: "{\\rm PGL}",
+          length: "{\\rm length}",
+          res: "{\\rm res}",
+          Ram: "\\operatorname{Ram}",
+          AA: "\\mathbb{A}",
+          ba: "\\mathbb{A}",
+          bbA: "\\mathbb{A}",
+          CC: "\\mathbb{C}",
+          bc: "\\mathbb{C}",
+          bbC: "\\mathbb{C}",
+          FF: "\\mathbb{F}",
+          bbF: "\\mathbb{F}",
+          G: "\\mathbb{G}",
+          Gr: "\\mathbb{G}",
+          Grass: "\\mathbb{G}",
+          Ga: "\\mathbb{G}_{a}",
+          Gm: "\\mathbb{G}_{m}",
+          K: "\\mathbb{K}",
+          KK: "\\mathbb{K}",
+          bbK: "\\mathbb{K}",
+          NN: "\\mathbb{N}",
+          bn: "\\mathbb{N}",
+          bbN: "\\mathbb{N}",
+          PP: "\\mathbb{P}",
+          bP: "\\mathbb{P}",
+          bp: "\\mathbb{P}",
+          bbP: "\\mathbb{P}",
+          QQ: "\\mathbb{Q}",
+          bq: "\\mathbb{Q}",
+          bbQ: "\\mathbb{Q}",
+          RR: "\\mathbb{R}",
+          br: "\\mathbb{R}",
+          bbR: "\\mathbb{R}",
+          ZZ: "\\mathbb{Z}",
+          bz: "\\mathbb{Z}",
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
+        }
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" async></script>
+</head>
+<body>
+<header class="stacks-header">
+  <div class="stacks-header-inner">
+    <a href="../../../index.html" class="stacks-home-link">Anand Patel</a>
+    <span class="stacks-separator">&rsaquo;</span>
+    <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
+  </div>
+</header>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S0.html">Section 0: Front matter</a> / <a href="../section/S0.SS2.html">0.2. Outline and main results.</a> / <span>Theorem C (83A0)</span></div>
+<main class="stacks-main">
+<div class="stacks-tag-nav"><a href="919E.html">&laquo; Theorem B</a><span class="stacks-tag-current">Tag 83A0</span><a href="E2BA.html">Remark 1 &raquo;</a></div>
+<div class="stacks-theorem" id="slope45">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;C (Slope bounds).</strong> <a href="../tag/83A0.html" class="stacks-tag-link">(83A0)</a></div>
+  <div class="stacks-env-body"><ol><li><p>(Stankova [<a class="stacks-cite" href="../../../bibliography.html#bib-zvezdelina-e-stankova-frenkel-moduli-of-bc9be970">SF00</a>]) Let $g \geq 4$ be even. Then $$s(\o{\H}_{3,g}) = 7 + \frac{6}{g}.$$</p></li>
+<li><p>(P &ndash;) Let $g = 3 \mod  6$. Then $$s(\o{\H}_{4,g}) = \frac{13}{2} + \frac{15}{2g}.$$</p></li>
+<li><p>(P &ndash;) Let $g = 16 \mod 20$.  Then $$s(\o{\H}_{5,g}) = \frac{31}{5} + \frac{44}{5g}.$$</p></li></ol>
+<p>In all three cases there exist sweeping families achieving the given bound.</p>
+</div>
+</div>
+
+<hr>
+<div class="stacks-comments"
+     data-comment-page-id="https://anandpatel.github.io/papers/special-codimension-one/tag/83A0.html"
+     data-comment-page-url="https://anandpatel.github.io/papers/special-codimension-one/tag/83A0.html"
+     data-comment-page-title="Special Codimension One Loci in Hurwitz Spaces — Tag 83A0 (Theorem C)"
+     data-comment-page-label="Tag 83A0 (Theorem C)"
+     data-comment-paper-title="Special Codimension One Loci in Hurwitz Spaces">
+  <h3>Comments</h3>
+  <p class="stacks-comments-empty">No comments yet.</p>
+  <div class="stacks-comment-form">
+    <h4>Leave a comment</h4>
+    <p>Comments are reviewed before appearing.</p>
+    <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
+      <input type="hidden" name="_subject" value="Comment on Special Codimension One Loci in Hurwitz Spaces — Tag 83A0 (Theorem C)">
+      <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/special-codimension-one/tag/83A0.html">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="page" value="https://anandpatel.github.io/papers/special-codimension-one/tag/83A0.html">
+      <input type="hidden" name="paper" value="Special Codimension One Loci in Hurwitz Spaces">
+      <input type="hidden" name="location" value="Tag 83A0 (Theorem C)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" rows="5" required placeholder="You may use LaTeX: $..$ for inline, $$...$$ for display."></textarea>
+      <button type="submit">Submit comment</button>
+    </form>
+  </div>
+</div>
+</main>
+<footer class="stacks-footer">
+  <div class="stacks-footer-inner">
+    &copy; 2025 Anand Patel &middot; <a href="https://arxiv.org/abs/1508.06016">arXiv:1508.06016</a> &middot; <a href="../bibliography.html">Bibliography</a>
+  </div>
+</footer>
+</body>
+</html>

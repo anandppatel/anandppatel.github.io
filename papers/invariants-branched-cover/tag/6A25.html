@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,17 +165,18 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS2.html">2.2. Evidence</a> / <span>Proof of Proposition 2.4 [A1AC] (6A25)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="2068.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 6A25</span><a href="1F3B.html">Remark 2.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a>.</em> <a href="../tag/6A25.html" class="stacks-tag-link">(6A25)</a></div>
   <div class="stacks-env-body"><p>We essentially apply <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a> relatively over $\P^{1}$.  Let $C \subset E \times \P^1$ be a smooth bi-degree $(d,m)$ curve; this means that $C$ intersects the elliptic curve rulings $d$ times.  These intersections are all in the same linear system $|D|$ of degree $d$ on $E$.   By adjunction, the curve $C$ is seen to have genus $g = d(m-1) + 1$.</p>
-<p>We can embed the surface $E \times \P^1$ into $\P^{d-1} \times \P^1$ where the first factor is embedded by the linear system $|D|$, i.e. $E \times \P^1$ is a constant family of degree $d$ elliptic normal curves in $\P^{d-1} \times \P^1$. </p>
+<p>We can embed the surface $E \times \P^1$ into $\P^{d-1} \times \P^1$ where the first factor is embedded by the linear system $|D|$, i.e. $E \times \P^1$ is a constant family of degree $d$ elliptic normal curves in $\P^{d-1} \times \P^1$.</p>
 <p>Let $\pi \from \P^{d-1} \times \P^1 \to \P^1$ denote the projection.  Then the ideal sheaf $\sh I_{E \times \P^1}$ has a ``relative'' minimal resolution which is pulled back via the projection to $\P^{d-1}$:
 $$0 \to F_{1} \to ... \to F_{k}\to {\sh I}_{E \times \P^{1} \subset \P^{d-1} \times \P^{1}} \to 0$$</p>
-<p>Let $h$ denote the pullback of the hyperplane class on $\P^{d-1}$ to the product $\P^{d-1} \times \P^{1}$, and let $f$ denote the class of a fiber of $\pi$. Then the curve $C \subset E \times \P^{1}$ is the intersection of $E \times \P^{1}$ with some relative hyperplane divisor $\Lambda \subset \P^{d-1} \times \P^{1}$ with divisor class $h+mf$.  </p>
-<p>The curve $C$, viewed as a subscheme of the $\P^{d-2}$-bundle $\Lambda$, is a branched cover in its relative canonical embedding. This follows because, by <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a>, the fibers $C \cap \P^{d-2} \subset \P^{d-2}$ are length $d$ arithmetically Gorenstein subschemes of $\P^{d-2}$, a property which characterizes the relative canonical embedding [<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-and-t-c87b2161">CE96</a>].</p>
-<p>We then restrict sequence (2.7) to the relative hyperplane $\Lambda$, and use <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a> in each fiber of $\pi$ to conclude that
+<p>Let $h$ denote the pullback of the hyperplane class on $\P^{d-1}$ to the product $\P^{d-1} \times \P^{1}$, and let $f$ denote the class of a fiber of $\pi$. Then the curve $C \subset E \times \P^{1}$ is the intersection of $E \times \P^{1}$ with some relative hyperplane divisor $\Lambda \subset \P^{d-1} \times \P^{1}$ with divisor class $h+mf$.</p>
+<p>The curve $C$, viewed as a subscheme of the $\P^{d-2}$-bundle $\Lambda$, is a branched cover in its relative canonical embedding. This follows because, by <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a>, the fibers $C \cap \P^{d-2} \subset \P^{d-2}$ are length $d$ arithmetically Gorenstein subschemes of $\P^{d-2}$, a property which characterizes the relative canonical embedding [<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-and-t-ekedahl-covers-867f7259">CE96</a>].</p>
+<p>We then restrict sequence (7) to the relative hyperplane $\Lambda$, and use <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a> in each fiber of $\pi$ to conclude that
 $$0 \to F_{1}|_{\Lambda} \to ... \to F_{k}|_{\Lambda}\to {\sh I}_{C  \subset \Lambda} \to 0$$
-is the Casnati-Ekedahl resolution of $C \subset \Lambda$. If we write $$F_{i}|_{\Lambda} = \pi^{*}N_{i}(-m_{i})$$ we see that each bundle $N_{i}$ is in fact <em>perfectly</em> balanced, i.e. $$N_{i} = \cO_{\P^{1}}(k_{i})^{\oplus r_{i}}$$ for some integer $k_{i}$, where $r_{i}$ is given in Item&nbsp;2 of <a href="/papers/invariants-branched-cover/tag/A279.html" class="stacks-ref-link">Theorem&nbsp;2.1 <span class="stacks-ref-tag">[A279]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+is the Casnati-Ekedahl resolution of $C \subset \Lambda$. If we write $$F_{i}|_{\Lambda} = \pi^{*}N_{i}(-m_{i})$$ we see that each bundle $N_{i}$ is in fact <em>perfectly</em> balanced, i.e. $$N_{i} = \cO_{\P^{1}}(k_{i})^{\oplus r_{i}}$$ for some integer $k_{i}$, where $r_{i}$ is given in Item&nbsp;2 of <a href="/papers/invariants-branched-cover/tag/A279.html" class="stacks-ref-link">Theorem&nbsp;2.1 <span class="stacks-ref-tag">[A279]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

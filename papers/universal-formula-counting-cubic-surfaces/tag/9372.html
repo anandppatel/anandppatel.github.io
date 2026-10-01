@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,28 +132,29 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS4.html">3.4. The fourth test family</a> / <span>Proof (9372)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="A966.html">&laquo; Proposition 3.20</a><span class="stacks-tag-current">Tag 9372</span><a href="80DD.html">Proposition 3.21 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="A966.html">&laquo; Proposition 3.4.9</a><span class="stacks-tag-current">Tag 9372</span><a href="80DD.html">Proposition 3.4.10 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9372.html" class="stacks-tag-link">(9372)</a></div>
-  <div class="stacks-env-body"><p>We know explicit cycles on $S^{[2]}$ that represent $u_1$ and $u_2$ (see the proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/C5DB.html" class="stacks-ref-link">Proposition&nbsp;3.19 <span class="stacks-ref-tag">[C5DB]</span></a>).
+  <div class="stacks-env-body"><p>We know explicit cycles on $S^{[2]}$ that represent $u_1$ and $u_2$ (see the proof of <a href="/papers/universal-formula-counting-cubic-surfaces/tag/C5DB.html" class="stacks-ref-link">Proposition&nbsp;3.4.8 <span class="stacks-ref-tag">[C5DB]</span></a>).
   Using these, we convert the intersection numbers into enumerative problems, which we solve.</p>
-<p>  The number $\int u_1^4$ is the answer to the following problem.
+<p>The number $\int u_1^4$ is the answer to the following problem.
   Choose $4$ general anti-canonical pencils on $S$, and let $f \colon S \dashrightarrow (\P^1)^4$ be the rational map induced by them.
   Then $u_1^4$ is the number of double points of the map $f$ (pairs of points in $S$ that have the same image under $f$).
-  We find that the number is 36 by applying the double point formula [<a class="stacks-cite" href="../../../bibliography.html#bib-a-note-on-residual-intersections-and-e931ed49">17</a>, Theorem&nbsp;2] to a resolution of $f$.</p>
-<p>  The number $\int u_{1}^{2}u_{2}$ is the answer to the following problem.
+  We find that the number is 36 by applying the double point formula [<a class="stacks-cite" href="../../../bibliography.html#bib-william-fulton-a-note-on-residual-ddf5c84e">17</a>, Theorem&nbsp;2] to a resolution of $f$.</p>
+<p>The number $\int u_{1}^{2}u_{2}$ is the answer to the following problem.
   Fix a general anti-canonical $C \subset S$ and two general anti-canonical pencils.
   Then $\int u_1^2u_2$ is the number of double points of the map $C \to \P^1 \times \P^1$ induced by the two pencils.
   Using the genus of $C$, which is 1, and the arithmetic genus of $f(C)$, which is 16, we see that the number is 15.</p>
-<p>  The number $\int u_2^2$ is the number of pairs of points common to two general anti-canonical curves $C_1$ and $C_2$.
+<p>The number $\int u_2^2$ is the number of pairs of points common to two general anti-canonical curves $C_1$ and $C_2$.
   Since there are $5$ points in $C_1 \cap C_2$, the number of pairs is ${5 \choose 2} = 10$.</p>
-<p>  Finally, to compute $\int E^4$, observe that $E$ is the disjoint union of $E_i$ for $i = 1, \dots, 10$.
+<p>Finally, to compute $\int E^4$, observe that $E$ is the disjoint union of $E_i$ for $i = 1, \dots, 10$.
   Each $E_i$ is the $\P^1$-bundle over $L_i$ defined by
   $$E_i = \P N_{L_i^{[2]}/S^{[2]}},$$
   and the restriction of $E_i$ to $E_i$ is $\O(-1)$.
   We have $L_i^{[2]} \cong \P^2$ and
   $$N_{L_i^{[2]}/S^{[2]}} = N_{L_i/S}^{[2]} \cong \O_{\P^2}(-1) \oplus \O_{\P^2}(-1).$$
-  Now it is a straightforward to check that $E_i^4 = -3$, and hence $E^2 = -30$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Now it is a straightforward to check that $E_i^4 = -3$, and hence $E^2 = -30$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

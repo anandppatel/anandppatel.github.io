@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>2.1. Picard groups of quotients — The Picard rank conjecture for the Hurwitz spaces of degree up to five</title>
+  <title>1.1. Picard groups of quotients — The Picard rank conjecture for the Hurwitz spaces of degree up to five</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -51,7 +50,7 @@
           U: "\\mathcal U",
           M: "\\mathcal M",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           gen: "{\\rm gen}",
           irr: "{\\rm irr}",
@@ -90,7 +89,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -106,50 +110,55 @@
     <a href="../index.html" class="stacks-paper-link">The Picard rank conjecture for the Hurwitz spaces of degree up to five</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <span>2.1. Picard groups of quotients</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 2: Preliminaries" title="Previous: Section 2: Preliminaries">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 2.2. The Casnati–Ekedahl structure theorem" title="Next: 2.2. The Casnati–Ekedahl structure theorem">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 1: Preliminaries</a> / <span>1.1. Picard groups of quotients</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S2.html" aria-label="Previous: Section 1: Preliminaries" title="Previous: Section 1: Preliminaries">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.SS2.html" aria-label="Next: 1.2. The Casnati–Ekedahl structure theorem" title="Next: 1.2. The Casnati–Ekedahl structure theorem">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">2.1. Picard groups of quotients</h1>
+<h1 class="stacks-section-title">1.1. Picard groups of quotients</h1>
 <p class="stacks-para">Let $G$ be a linear algebraic group acting on a variety $X$. Denote by $\Pic_GX$ the group of $G$-linearized line bundles on $X$. Forgetting the $G$-linearization gives a homomorphism $\Pic_GX \to \Pic X$.</p>
 <div class="stacks-lemma" id="thm-kkv">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;2.1.</strong> <a href="../tag/D162.html" class="stacks-tag-link">(D162)</a></div>
-  <div class="stacks-env-body"><p>[<a class="stacks-cite" href="../../../bibliography.html#bib-friedrich-knop-hanspeter-kraft-and-thierry-c7581a89">KKV89</a>, Lemma&nbsp;2.2 + Proposition&nbsp;2.3] For a connected linear algebraic group $G$ acting on an irreducible variety $X$, we have an exact sequence
+  <div class="stacks-env-head"><strong>Proposition&nbsp;1.1.</strong> <a href="../tag/D162.html" class="stacks-tag-link">(D162)</a></div>
+  <div class="stacks-env-body"><p>[<a class="stacks-cite" href="../../../bibliography.html#bib-friedrich-knop-hanspeter-kraft-and-thierry-d0c1ab92">KKV89</a>, Lemma&nbsp;2.2 + Proposition&nbsp;2.3] For a connected linear algebraic group $G$ acting on an irreducible variety $X$, we have an exact sequence
    $$\chi(G) \to \Pic_G X \to \Pic X,$$
-   where $\chi(G)$ is the group of (algebraic) characters of $G$. Furthermore, if $X$ is normal, then the sequence has an extension by a homomorphism $\Pic X \to \Pic G$.</p></div>
+   where $\chi(G)$ is the group of (algebraic) characters of $G$. Furthermore, if $X$ is normal, then the sequence has an extension by a homomorphism $\Pic X \to \Pic G$.</p>
+</div>
 </div>
 <p class="stacks-para">Let $\pi \from X \to Y$ be a morphism that is equivariant with the trivial $G$ action on $Y$. Let $L$ be a line bundle on $Y$. The pullback $\pi^*L$ carries a natural $G$-linearization. We thus have a homomorphism $\Pic Y \to \Pic_G X$.</p>
 <div class="stacks-lemma" id="thm-pic_quotient">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;2.2.</strong> <a href="../tag/70FF.html" class="stacks-tag-link">(70FF)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;1.2.</strong> <a href="../tag/70FF.html" class="stacks-tag-link">(70FF)</a></div>
   <div class="stacks-env-body"><p>Let $X$ and $Y$ be irreducible normal varieties, $G$ a linear algebraic group acting on $X$, and $\pi \from X \to Y$ a surjective morphism, equivariant with the trivial action on $Y$. Suppose the fibers of $\pi$ consist of single $G$-orbits. Then the map $\Pic Y \to \Pic_G X$ is injective and we have
    $$\rk \Pic Y  \leq \rk \chi(G) + \rk \Pic X.$$
    Furthermore, if $G$ is reductive and the stabilizers $G_x$ are finite, then we have an isomorphism
-   $$\Pic Y \otimes \Q \xrightarrow{\sim} \Pic_G X \otimes \Q.$$</p></div>
+   $$\Pic Y \otimes \Q \xrightarrow{\sim} \Pic_G X \otimes \Q.$$</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FB18.html" class="stacks-tag-link">(FB18)</a></div>
-  <div class="stacks-env-body"><p>Suppose $L$ is a line bundle on $Y$ such that $\pi^*L$ is trivial as a $G$-linearized line bundle. Then $\pi^*L$ has a $G$-invariant nowhere-vanishing section. We claim that such a section descends to a nowhere-vanishing section of $L$ on $Y$. The crucial point is that in our setup, $Y$ is a geometric quotient of $X$ [<a class="stacks-cite" href="../../../bibliography.html#bib-34-springer-verlag-berlin-1994-516d6873">MFK94</a>, Proposition&nbsp;0.2]. That is, for every open $U \subset Y$, the preimage $\pi^{-1}U$ is open and the functions on $U$ are the invariant functions on $\pi^{-1}U$:
+  <div class="stacks-env-body"><p>Suppose $L$ is a line bundle on $Y$ such that $\pi^*L$ is trivial as a $G$-linearized line bundle. Then $\pi^*L$ has a $G$-invariant nowhere-vanishing section. We claim that such a section descends to a nowhere-vanishing section of $L$ on $Y$. The crucial point is that in our setup, $Y$ is a geometric quotient of $X$ [<a class="stacks-cite" href="../../../bibliography.html#bib-david-mumford-john-fogarty-and-frances-f4b223f6">MFK94</a>, Proposition&nbsp;0.2]. That is, for every open $U \subset Y$, the preimage $\pi^{-1}U$ is open and the functions on $U$ are the invariant functions on $\pi^{-1}U$:
    $$\Gamma(U, O_Y) = \Gamma(\pi^{-1} U, O_X)^G.$$
    It follows that the sections of $L$ on $U$ are the invariant sections of $\pi^*L$ on $\pi^{-1}(U)$:
    $$\Gamma(U, L) = \Gamma(\pi^{-1}U, \pi^* L)^G.$$
    Thus, a $G$-invariant section $\sigma$ of $\pi^*L$ on $X$ gives a section $\overline \sigma$ of $L$ on $Y$. It is easy to check that if $\sigma$ is nowhere-vanishing, so is $\overline \sigma$.</p>
-<p>   The bound on $\rk \Pic Y$ follows from the injectivity and <a href="/papers/picard-rank-conjecture/tag/D162.html" class="stacks-ref-link">Proposition&nbsp;2.1 <span class="stacks-ref-tag">[D162]</span></a>. For the last statement, we use the characterization of the image of $\Pic Y \to \Pic_GX$ from [<a class="stacks-cite" href="../../../bibliography.html#bib-friedrich-knop-hanspeter-kraft-and-thierry-c7581a89">KKV89</a>, Proposition&nbsp;4.2]: a $G$-linearized line bundle $L$ is in the image if and only if for every $x \in X$, the stabilizer group $G_x$ acts trivially on the fiber $L_x$. Since the stabilizers are finite, we can arrange this by passing to a large enough power of $L$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>The bound on $\rk \Pic Y$ follows from the injectivity and <a href="/papers/picard-rank-conjecture/tag/D162.html" class="stacks-ref-link">Proposition&nbsp;1.1 <span class="stacks-ref-tag">[D162]</span></a>. For the last statement, we use the characterization of the image of $\Pic Y \to \Pic_GX$ from [<a class="stacks-cite" href="../../../bibliography.html#bib-friedrich-knop-hanspeter-kraft-and-thierry-d0c1ab92">KKV89</a>, Proposition&nbsp;4.2]: a $G$-linearized line bundle $L$ is in the image if and only if for every $x \in X$, the stabilizer group $G_x$ acts trivially on the fiber $L_x$. Since the stabilizers are finite, we can arrange this by passing to a large enough power of $L$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">We end with a simple application.</p>
 <div class="stacks-lemma" id="thm-framed_unframed">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/E425.html" class="stacks-tag-link">(E425)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;1.3.</strong> <a href="../tag/E425.html" class="stacks-tag-link">(E425)</a></div>
   <div class="stacks-env-body"><p>Let $U \subset \td \H_{d,g}$ be any open subset and $U^\dagger$ its preimage under $\td \H_{d,g}^\dagger \to \td \H_{d,g}$. Then
-  $$\rk \Pic U = \rk \Pic U^\dagger.$$</p></div>
+  $$\rk \Pic U = \rk \Pic U^\dagger.$$</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B16D.html" class="stacks-tag-link">(B16D)</a></div>
-  <div class="stacks-env-body"><p>Apply <a href="/papers/picard-rank-conjecture/tag/D162.html" class="stacks-ref-link">Proposition&nbsp;2.1 <span class="stacks-ref-tag">[D162]</span></a> and <a href="/papers/picard-rank-conjecture/tag/70FF.html" class="stacks-ref-link">Proposition&nbsp;2.2 <span class="stacks-ref-tag">[70FF]</span></a> with $G = \PGL_2$, $X = U^\dagger$, and $Y = U$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Apply <a href="/papers/picard-rank-conjecture/tag/D162.html" class="stacks-ref-link">Proposition&nbsp;1.1 <span class="stacks-ref-tag">[D162]</span></a> and <a href="/papers/picard-rank-conjecture/tag/70FF.html" class="stacks-ref-link">Proposition&nbsp;1.2 <span class="stacks-ref-tag">[70FF]</span></a> with $G = \PGL_2$, $X = U^\dagger$, and $Y = U$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/picard-rank-conjecture/section/S2.SS1.html"
      data-comment-page-url="https://anandpatel.github.io/papers/picard-rank-conjecture/section/S2.SS1.html"
-     data-comment-page-title="The Picard rank conjecture for the Hurwitz spaces of degree up to five — 2.1. Picard groups of quotients"
-     data-comment-page-label="2.1. Picard groups of quotients"
+     data-comment-page-title="The Picard rank conjecture for the Hurwitz spaces of degree up to five — 1.1. Picard groups of quotients"
+     data-comment-page-label="1.1. Picard groups of quotients"
      data-comment-paper-title="The Picard rank conjecture for the Hurwitz spaces of degree up to five">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -157,13 +166,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The Picard rank conjecture for the Hurwitz spaces of degree up to five — 2.1. Picard groups of quotients">
+      <input type="hidden" name="_subject" value="Comment on The Picard rank conjecture for the Hurwitz spaces of degree up to five — 1.1. Picard groups of quotients">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/picard-rank-conjecture/section/S2.SS1.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/picard-rank-conjecture/section/S2.SS1.html">
       <input type="hidden" name="paper" value="The Picard rank conjecture for the Hurwitz spaces of degree up to five">
-      <input type="hidden" name="location" value="2.1. Picard groups of quotients">
+      <input type="hidden" name="location" value="1.1. Picard groups of quotients">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

@@ -374,15 +374,47 @@
   margin-bottom: 10px;
 }
 
-.stacks-tikzcd {
+.stacks-tikzcd,
+.stacks-display-equation {
   margin: 18px auto;
   overflow-x: auto;
   text-align: center;
 }
 
-.stacks-tikzcd-svg {
+.stacks-tikzcd-svg,
+.stacks-display-equation-svg {
   max-width: 100%;
   height: auto;
+  vertical-align: middle;
+}
+
+/* Keep long MathJax displays inside the reading column on narrow screens.
+   A block SVG centers when it fits and begins at the left scroll edge when it
+   does not, so neither half of a wide formula becomes unreachable. */
+mjx-container[display="true"] {
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+mjx-container[display="true"] > svg {
+  display: block;
+  margin-inline: auto;
+}
+
+.stacks-inline-tikz {
+  display: inline-block;
+  margin: 0 0.08em;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.stacks-inline-tikz-svg {
+  width: auto;
+  height: 2.5em;
   vertical-align: middle;
 }
 
@@ -398,6 +430,17 @@
 .stacks-table-wrap {
   margin: 18px 0;
   overflow-x: auto;
+}
+
+.stacks-code {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .stacks-table {

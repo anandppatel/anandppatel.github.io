@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -118,11 +122,12 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Parallel and Series Connection, Existence of Rational Functions</a> / <a href="../section/S8.SS1.html">8.1. Parallel Connection and Series Connection</a> / <span>Proof (9D87)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="93E8.html">&laquo; Lemma 8.5</a><span class="stacks-tag-current">Tag 9D87</span><a href="9942.html">Proof  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="93E8.html">&laquo; Lemma 8.5</a><span class="stacks-tag-current">Tag 9D87</span><a href="A020.html">Proof of Theorem 8.1 [0065]  &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9D87.html" class="stacks-tag-link">(9D87)</a></div>
   <div class="stacks-env-body"><p>We work with $T$-equivariant cohomology, where $T = (K^\times)^{r+1}$ is the standard torus (see Section&nbsp;2). First, we note that both sides of the stated equation are $A_{T}^{\bullet}(\pt)$-linear with respect to both $f$ and $g$. Therefore, it suffices to prove the theorem for $f=\prod_{i\in I}(H+t_i)$ and $g=\prod_{j\in J}(H+t_j)$ where $I,J\subsetneq \{0,\ldots,r\}$ and either $|I|+|J|\le r$ or $I \cup J=\{0,\ldots,r\}$. If $|I|+|J|\leq r$, then both sides of the equation are zero, the left for dimension reasons, and the right because $\overline{f}(z)\overline{g}(z)$ has degree at most $r$.</p>
-<p>Suppose now that $I \cup J = \{0, \ldots, r\}$. Observe that $f$ and $g$ are the classes of the $T$-invariant linear subspaces $\Lambda_I = \{x_i=0\mid i\in I\}$ and $\Lambda_J=\{x_j=0\mid j\in J\}$ respectively. Because $\pi_3$ is proper, the integral $$\int_{(\mb{P}^r)^3\xrightarrow{\pi_3}\mb{P}^r}{(\pi_1^{*}f) \cap (\pi_2^{*}g) \cap \opc[r][3]{L}}$$ is the class of the subvariety of $\mb{P}^r$ swept out by all lines connecting a point in $\Lambda_I$ to a point in $\Lambda_J$, which is precisely $\Lambda_{I \cap J}$. The class of $\Lambda_{I \cap J}$ is $\prod_{k\in I \cap J}(H+t_k)$. We also have $\overline{f}(z)\overline{g}(z)=F(z)\prod_{k \in I \cap J} (z+t_k)$, so $[\hbar](f \star g)=\prod_{k\in I \cap J}(H+t_k)$ as desired.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>Suppose now that $I \cup J = \{0, \ldots, r\}$. Observe that $f$ and $g$ are the classes of the $T$-invariant linear subspaces $\Lambda_I = \{x_i=0\mid i\in I\}$ and $\Lambda_J=\{x_j=0\mid j\in J\}$ respectively. Because $\pi_3$ is proper, the integral $$\int_{(\mb{P}^r)^3\xrightarrow{\pi_3}\mb{P}^r}{(\pi_1^{*}f) \cap (\pi_2^{*}g) \cap [\mathcal{O}_{L}]}$$ is the class of the subvariety of $\mb{P}^r$ swept out by all lines connecting a point in $\Lambda_I$ to a point in $\Lambda_J$, which is precisely $\Lambda_{I \cap J}$. The class of $\Lambda_{I \cap J}$ is $\prod_{k\in I \cap J}(H+t_k)$. We also have $\overline{f}(z)\overline{g}(z)=F(z)\prod_{k \in I \cap J} (z+t_k)$, so $[\hbar](f \star g)=\prod_{k\in I \cap J}(H+t_k)$ as desired.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

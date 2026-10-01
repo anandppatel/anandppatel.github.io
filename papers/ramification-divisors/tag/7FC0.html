@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -129,14 +133,15 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: The projection-ramification map</a> / <span>Definition 2.1 (7FC0)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="589F.html">&laquo; Theorem 1.5</a><span class="stacks-tag-current">Tag 7FC0</span><a href="9C51.html">Remark 2.2 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="589F.html">&laquo; Theorem E</a><span class="stacks-tag-current">Tag 7FC0</span><a href="9C51.html">Remark 2.2 &raquo;</a></div>
 <div class="stacks-definition" id="def-properlyramified">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/7FC0.html" class="stacks-tag-link">(7FC0)</a></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1 (Properly ramified projection).</strong> <a href="../tag/7FC0.html" class="stacks-tag-link">(7FC0)</a></div>
   <div class="stacks-env-body"><p>We say that a projection $(L,V)$ is <em>properly ramified</em> if the evaluation homomorphism
 $$e \from V \otimes \O_{X} \to P(L)$$
 is an isomorphism over a general point in $X$.  If $(L,V)$ is properly ramified, its <em>ramification divisor</em>
 $$R(L,V) \subset X$$
-is the closure of the scheme defined by the determinant of $e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}}$.</p></div>
+is the closure of the scheme defined by the determinant of $e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}}$.</p>
+</div>
 </div>
 
 <hr>

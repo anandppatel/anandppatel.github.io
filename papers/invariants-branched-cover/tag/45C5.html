@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -165,17 +169,17 @@
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.19.</strong> <a href="../tag/45C5.html" class="stacks-tag-link">(45C5)</a></div>
   <div class="stacks-env-body"><p>Let $d$ be odd and $f(\alpha)=R_1 \cup R_2 \cup \ldots \cup R_a$ be quadric-generic and have transverse residues.
 The elements of the left flag $L_j^\bullet$ are of the following form:</p>
-<ol><li>The total space: Quadrics containing the anchor points $p_1,\ldots, p_d$ over the
-$j$-th node. This is a vector space of dimension $d(d-3)/2$.</li>
-<li>Quadrics containing a subchain of rational curves
+<ol><li><p>The total space: Quadrics containing the anchor points $p_1,\ldots, p_d$ over the
+$j$-th node. This is a vector space of dimension $d(d-3)/2$.</p></li>
+<li><p>Quadrics containing a subchain of rational curves
 $R_{j-l+1} \cup \ldots \cup R_j$. This has dimension $(d-2l) \frac{d-3}{2}$.
-Note that $l< \frac{d}{2}$.</li>
-<li>Quadrics containing the subchain $R_{j-l+1} \cup \ldots \cup R_j$, and whose
+Note that $l&lt; \frac{d}{2}$.</p></li>
+<li><p>Quadrics containing the subchain $R_{j-l+1} \cup \ldots \cup R_j$, and whose
 residual intersection with $R_{j-l}$ is equal to the residual intersection of a quadric
 containing the length $\frac{d-1}{2}$ subchain
 $R_{j-l-\frac{d-1}{2}} \cup \ldots \cup R_{j-l-1}$. We will call this the <em>restriction condition on $R_{j-l}$</em>.
 This flag element has dimension
-$(d-2l-1)\frac{d-3}{2}$.</li></ol>
+$(d-2l-1)\frac{d-3}{2}$.</p></li></ol>
 </div>
 </div>
 

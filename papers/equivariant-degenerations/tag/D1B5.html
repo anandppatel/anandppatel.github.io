@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,13 +91,13 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS2.html">8.2. Preliminary lemmas</a> / <span>Proof (D1B5)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 7: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS2.html">7.2. Preliminary lemmas</a> / <span>Proof (D1B5)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="8FD0.html">&laquo; Lemma 8.2</a><span class="stacks-tag-current">Tag D1B5</span><a href="B34A.html">Lemma 8.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="8FD0.html">&laquo; Lemma 7.2</a><span class="stacks-tag-current">Tag D1B5</span><a href="B34A.html">Lemma 7.3 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D1B5.html" class="stacks-tag-link">(D1B5)</a></div>
   <div class="stacks-env-body"><p>We will do this case by case. Let $p\in C$ be the singular point.</p>
-<ul><li><strong><strong>Case $n=3$</strong>:</strong> For the case of a tacnode $n=3$, the
+<ul><li><p><strong><strong>Case $n=3$</strong>:</strong> For the case of a tacnode $n=3$, the
     desired conic is required to pass through $p$ with a specified
     tangent direction and otherwise intersect $C$ transversely. There
     is a $3$-dimensional linear system
@@ -104,11 +108,11 @@
   union of the unique line passing through $p$ in the specified
   tangent direction together with a line intersecting $C$ transversely
   provides an example.</p>
-<p>  Since the set of smooth conics in $\Lambda$ is also nonempty, there
+<p>Since the set of smooth conics in $\Lambda$ is also nonempty, there
   exists a smooth conic passing through $p$ in the specified tangent
   direction and intersecting $C$ at four other points transversely,
-  finishing this case..</li>
-<li><strong><strong>Case $n=4$</strong>:</strong> For the case $n=4$, (a <em>ramphoid cusp</em>)
+  finishing this case..</p></li>
+<li><p><strong><strong>Case $n=4$</strong>:</strong> For the case $n=4$, (a <em>ramphoid cusp</em>)
   we need to resort to actual equations. The space of conics meeting
   $C$ at $p$ to order 5 is the same as the space of conics containing
   a particular length 3 curvilinear scheme $Z$, and we can assume
@@ -117,7 +121,7 @@
   open, we can specialize $C$ while preserving $p$ and $Z$, and it
   suffices to prove the result for a specialization of $C$. To this
   end, consider the particular rational quartic curve $C_0$ given by
-$$(X^2+YZ)^2+X^3Y=0,$$ which has a rhamphoid cusp ($A_4$ singularity) at $[0:0:1]$ and an ordinary cusp at $[0:1:0]$.<span class="stacks-qed" aria-hidden="true"></span></p>
+$$(X^2+YZ)^2+X^3Y=0,$$ which has a rhamphoid cusp ($A_4$ singularity) at $[0:0:1]$ and an ordinary cusp at $[0:1:0]$.</p>
 <p>Consider the conic $Q_{a,b}$ given by $$X^2+YZ+aXY+bY^2=0.$$ If we
 reduce the equation of $C_0$ modulo the equation of $Q_{a,b}$, then we
 get the same result as reducing the equation
@@ -129,15 +133,15 @@ check the remaining three lines are distinct for general $a,b$. This
 can be shown by noting that the discriminant of the cubic polynomial
 $X^3+a^2X^2Y+2abXY^2+b^2Y^3$ does not vanish identically (indeed it is
 not even homogenous). Thus, for general $a,b$, $Q_{a,b}$ furnishes the
-conic we want.</li>
-<li><strong><strong>Cases $n=5,6$</strong>:</strong> For the cases $n=5,6$, we use
-  <a href="/papers/equivariant-degenerations/tag/0A81.html" class="stacks-ref-link">Lemma&nbsp;8.1 <span class="stacks-ref-tag">[0A81]</span></a>. In both cases, we have a curvilinear scheme $Z$
+conic we want.</p></li>
+<li><p><strong><strong>Cases $n=5,6$</strong>:</strong> For the cases $n=5,6$, we use
+  <a href="/papers/equivariant-degenerations/tag/0A81.html" class="stacks-ref-link">Lemma&nbsp;7.1 <span class="stacks-ref-tag">[0A81]</span></a>. In both cases, we have a curvilinear scheme $Z$
   of length $n-2$ contained in a conic, and we need to find a smooth
   conic containing $Z$ and passing through $7-n$ distinct other points
   of $C$. If $n=5$, then it suffices to pick the remaining 2 points
   $p_1,p_2$ of $C$ so that $p$, $p_1$, and $p_2$ do not all lie on a
   line. If $n=6$, it suffices to pick the remaining point $p_{1}$ to
-  not be contained in the tangent line to $Z$.</li></ul>
+  not be contained in the tangent line to $Z$.<span class="stacks-qed" aria-hidden="true"></span></p></li></ul>
 </div>
 </div>
 

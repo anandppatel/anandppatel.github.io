@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           MM: "\\mathcal M",
           BM: "\\overline{\\mathcal M}",
           TMM: "\\widetilde{\\mathcal M}",
@@ -106,7 +105,12 @@
           br: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
-          bz: "\\mathbb{Z}"
+          bz: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -129,9 +133,10 @@
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.1.</strong> <a href="../tag/1537.html" class="stacks-tag-link">(1537)</a></div>
   <div class="stacks-env-body"><p>Under the above setting, we have
 $$ \pi^{*}\lambda = \lambda, $$
-$$ \pi^{*}\delta_i = \sum_{S\in \Lambda_i} \delta_{0; S} + \sum_{S^c\in \Lambda_{i-1}} \delta_{0; S}, \quad i <\frac{m+1}{2}, $$
+$$ \pi^{*}\delta_i = \sum_{S\in \Lambda_i} \delta_{0; S} + \sum_{S^c\in \Lambda_{i-1}} \delta_{0; S}, \quad i &lt;\frac{m+1}{2}, $$
 $$ \pi^{*}\delta_i = \sum_{S\in \Lambda_i} \delta_{0; S}, \quad i = \frac{m+1}{2} \ \mbox{for odd}\ m, $$
-$$ \pi^{*}\delta = (12 - 2m)\lambda - \sum_{|S|\geq 2} (|S| - 1)\delta_{0;S}. $$</p></div>
+$$ \pi^{*}\delta = (12 - 2m)\lambda - \sum_{|S|\geq 2} (|S| - 1)\delta_{0;S}. $$</p>
+</div>
 </div>
 
 <hr>

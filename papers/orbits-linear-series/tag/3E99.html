@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -104,7 +108,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Equivariant orbit classes</a> / <span>Proof (3E99)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="EF94.html">&laquo; Proposition 2.2</a><span class="stacks-tag-current">Tag 3E99</span><a href="605C.html">Proposition 2.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3E99.html" class="stacks-tag-link">(3E99)</a></div>
   <div class="stacks-env-body"><p>Consider the \(H\)-equivariant bundle \(\phi^* E\) on \(X\).
   Set
@@ -119,7 +123,7 @@
   It is easy to check that the stabiliser of \([s]\) in \(\PGL V \times \overline H\) maps isomorphically to \(\Gamma \subset \overline H\) under the second projection.
   By <a href="/papers/orbits-linear-series/tag/AFBB.html" class="stacks-ref-link">Proposition&nbsp;2.1 <span class="stacks-ref-tag">[AFBB]</span></a>, in \(A^*_G(\Hom(V,W))\) we have
   $$|\Gamma|[\Orb(s)] = \int_Y c_{\rm top}(\coker(j \circ i)).$$
-  From the sequence in (2.5), we have an exact sequence
+  From the sequence in (9), we have an exact sequence
   $$0 \to \coker i \to \coker(j \circ i) \to \coker j \to 0.$$
   and hence the equality of top Chern classes
   $$c_{\rm top}(\coker j \circ i) = c_{\rm top}(\coker i) \cdot c_{\rm top}(\coker j).$$
@@ -129,7 +133,8 @@
   $$\int_{Y/X} c_{\rm top}(\coker i) = [X].$$
   Now, the push-pull formula gives
   $$\int_{Y/X} c_{\rm top}(\coker i) \cdot c_{\rm top}(\coker j) = c_{\rm top}(\Hom(\underline V, \phi^* Q)).$$
-  Integrating the two sides along \(X\) gives the result.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Integrating the two sides along \(X\) gives the result.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

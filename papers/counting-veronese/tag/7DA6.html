@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,9 +123,9 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: The space of complete triangles</a> / <a href="../section/S3.SS7.html">3.7. The 31 fixed points of the $\Gm$ action on $\CT$</a> / <span>Proof (7DA6)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="8B83.html">&laquo; Proposition 3.26</a><span class="stacks-tag-current">Tag 7DA6</span><a href="CBDB.html">Proposition 3.27 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7DA6.html" class="stacks-tag-link">(7DA6)</a></div>
-  <div class="stacks-env-body"><p>To see how these are calculated, we consider two representative examples: (3) and (6).  </p>
+  <div class="stacks-env-body"><p>To see how these are calculated, we consider two representative examples: (3) and (6).</p>
 <p>At a complete triangle of type (3), the
 map $\varphi_{1}: \CT \to \Hilb_3 \P^2$ is a local isomorphism.
 Therefore, we have
@@ -141,7 +145,8 @@ by $\widehat{X}$, $\widehat{Y}$, and $\widehat{Z}$ the variables dual
 to $X$, $Y$, and $Z$.  Then the corresponding point in
 $\Hilb_3 \check{\P}^2$ is the point
 $$\langle \widehat{Z}, \widehat{Y}^2\widehat{X} \rangle.$$ As in the
-third case, we get the weights $(c-a, 2b-2a, c-b, b-a, a-b, c-b)$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+third case, we get the weights $(c-a, 2b-2a, c-b, b-a, a-b, c-b)$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

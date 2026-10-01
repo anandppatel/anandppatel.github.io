@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,16 +134,16 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Projection-ramification for varieties of minimal degree</a> / <a href="../section/S4.SS2.html">4.2. Failure of maximal variation</a> / <span>Proof (34BB)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="A0FB.html">&laquo; Proposition 4.5</a><span class="stacks-tag-current">Tag 34BB</span><a href="7364.html">Corollary 4.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/34BB.html" class="stacks-tag-link">(34BB)</a></div>
   <div class="stacks-env-body"><p>Take
   $$E = \O(a)^{r-1} \oplus \O(b),$$
-  where $0 < a < b$ are to be determined.
+  where $0 &lt; a &lt; b$ are to be determined.
   Elements of $\Aut (E/\P^1)$ can be represented by block lower triangular square matrices
   $$M =
     \begin{pmatrix}
-      A &  \\
-      U & B
+      A &amp;  \\
+      U &amp; B
     \end{pmatrix},$$
   where $A \in \GL_a(\k)$, $B \in \k^\times$, and $U = (u_i)$ is an $(r-1)$ length row with entries in $H^0(\P^1, \O(b-a))$.
   Set $d = (r-1)a + b$ so that $\det E = \O(d)$.
@@ -159,7 +163,8 @@
   In particular, there exist $u_i \in H^0(\P^1, \O(b-a))$ for $i = 1, \dots, r-1$, such that
   $$q(1-\lambda) = \sum u_i p_i.$$
   With this choice of $U = (u_i)$, we get $M$ such that $Mv = v$.</p>
-<p>  Finally, note that the requirement (4.11) is satisfied for $a = 1$ and $b = k+1$ if $k \geq 1$ and $r \geq 4$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>Finally, note that the requirement (4.11) is satisfied for $a = 1$ and $b = k+1$ if $k \geq 1$ and $r \geq 4$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -93,27 +97,27 @@
 <p class="stacks-para">Our relations among $GL(V)$-equivariant orbit classes will be given by
 degenerating orbits.  We now provide the basic setup for our
 degenerations.</p>
-<p class="stacks-para">\begin{def}
-   Let
+<div class="stacks-definition" id="defleadsto">
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/679E.html" class="stacks-tag-link">(679E)</a></div>
+  <div class="stacks-env-body"><p>Let
   $m \cdot Z, m_{1} \cdot Z^{1}, \dots, m_{k} \cdot Z^{k} \subset
   \on{Sym}^dV^{\vee}$ be cycles (i.e. irreducible, closed subvarieties
   with attached positive multiplicities $m, m_{i} \in \mathbb{Z}$),
   each preserved by the action of $GL(V)$.  Then we write
-  $$Z \leadsto \sum_{i=1}^{k}Z^{i}$$ if there exists:
-  \begin{enumerate}
-  \item An open neighborhood $U \subset \mathbb{A}^{1}$ containing the
-    point $0$,
-  \item a closed subvariety $W \subset U \times \on{Sym}^dV^{\vee}$
+  $$Z \leadsto \sum_{i=1}^{k}Z^{i}$$ if there exists:</p>
+<ol><li><p>An open neighborhood $U \subset \mathbb{A}^{1}$ containing the
+    point $0$,</p></li>
+<li><p>a closed subvariety $W \subset U \times \on{Sym}^dV^{\vee}$
     flat over $U$ and invariant under the action of $GL(V)$ (acting on
-    the second factor) with the property that</p>
-<p class="stacks-para">\item there exists a point $u \in U$ such that the fiber
+    the second factor) with the property that</p></li>
+<li><p>there exists a point $u \in U$ such that the fiber
     $W_{u} \subset \{u\} \times \on{Sym}^dV^{\vee}$ is equal to $Z$
     with multiplicity $m$, and the fiber
     $W_{0} \subset \{0\} \times \on{Sym}^dV^{\vee}$ (the
     scheme-theoretic fiber of $W \to U$ over $0$) is the union of the
-    $Z^{i}$'s with $Z^{i}$ having multiplicity $m_{i}$.
-  \end{enumerate}
-\end{def}</p>
+    $Z^{i}$'s with $Z^{i}$ having multiplicity $m_{i}$.</p></li></ol>
+</div>
+</div>
 <p class="stacks-para">(The concept of $\leadsto$ affords its obvious projectivized version
 for $GL(V)$-equivariant cycles in $\P \on{Sym}^{d}V^{\vee}$.)</p>
 <p class="stacks-para">We will primarily be interested in the notion of $\leadsto$ in the

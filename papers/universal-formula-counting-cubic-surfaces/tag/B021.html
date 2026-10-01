@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,8 +132,8 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS1.html">3.1. The first test family</a> / <span>Proof (B021)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="0D52.html">&laquo; Proposition 3.3</a><span class="stacks-tag-current">Tag B021</span><a href="F787.html">Proposition 3.4 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="0D52.html">&laquo; Proposition 3.1.3</a><span class="stacks-tag-current">Tag B021</span><a href="F787.html">Proposition 3.1.4 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B021.html" class="stacks-tag-link">(B021)</a></div>
   <div class="stacks-env-body"><p>By the construction of the cubic surface, we see that $\mathcal{V}$ is the rank 4 bundle
 $$\mathcal{V} = \pi_* (\mathcal{I}_{Z'} \otimes \omega_{\pi}^{-1}),$$
@@ -144,7 +148,8 @@ $$\begin{split}
   \end{split}$$
 By combining (3.1) and (3.2), we see that $\mathcal{V}$ is an extension
 $$0 \to \O_{B}^2 \to \mathcal{V} \to \O_{B}(-1)^2 \to 0.$$
-The Chern class calculation is now straightforward using the Whitney sum formula.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+The Chern class calculation is now straightforward using the Whitney sum formula.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

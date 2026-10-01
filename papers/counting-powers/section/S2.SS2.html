@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Q: "\\mathbb{Q}",
           A: "\\mathbb{A}",
@@ -34,7 +33,7 @@
           PGL: "\\operatorname{PGL}",
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           GL: "\\operatorname{GL}",
           SL: "\\operatorname{SL}",
@@ -98,7 +97,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -120,17 +124,19 @@
 <p class="stacks-para">The following elementary lemma provides us our first step.  We are grateful to John Doyle for conversations which led to this lemma.</p>
 <div class="stacks-lemma" id="lemma-extension">
   <div class="stacks-env-head"><strong>Lemma&nbsp;2.1.</strong> <a href="../tag/8E0A.html" class="stacks-tag-link">(8E0A)</a></div>
-  <div class="stacks-env-body"><p>Suppose $X, Y$ and $Z$ are varieties with $X$ normal, and with $Y$ assumed proper. Suppose $\alpha : X \dashrightarrow Y$ is a rational map, and that $\beta : Y \to Z$ is a quasi-finite morphism.  Then $\alpha$ is regular if and only if $\beta \circ \alpha$ is regular.</p></div>
+  <div class="stacks-env-body"><p>Suppose $X, Y$ and $Z$ are varieties with $X$ normal, and with $Y$ assumed proper. Suppose $\alpha : X \dashrightarrow Y$ is a rational map, and that $\beta : Y \to Z$ is a quasi-finite morphism.  Then $\alpha$ is regular if and only if $\beta \circ \alpha$ is regular.</p>
+</div>
 </div>
 <div class="stacks-proof" id="proof-extension">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/85B7.html" class="stacks-tag-link">(85B7)</a></div>
   <div class="stacks-env-body"><p>One direction is obvious, so we focus on the non-trivial direction and assume that $\beta \circ \alpha$ is regular. Let $\Gamma_{\alpha} \subset X \times Y$ denote the closure of the graph of $\alpha$, and let $\Gamma_{\beta \circ \alpha} \subset X \times Z$ be the graph of the morphism $\beta \circ \alpha$.  We must show that the first projection $p_1 : \Gamma_{\alpha} \to X$ is an isomorphism.  The projection $p_1$ is evidently birational and proper (because $Y$ is proper), so in light of $X$'s normality it suffices to show that $p_1$ is quasi-finite.</p>
-<p>        The rule $(x,y) \mapsto (x,\beta(y))$ defines a morphism $\Gamma_{\alpha} \to X \times Z$ which must factor through $\Gamma_{\beta \circ \alpha}$ because it does so on a non-empty open subset of $\Gamma_{\alpha}$.  The induced map $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha}$ is quasi-finite because $\beta$ is quasi-finite.   But the  first projection $\Gamma_{\beta \circ \alpha} \to X$ is an isomorphism (because $\beta \circ \alpha$ is a morphism) and in particular quasi-finite, and hence $p_1 : \Gamma_{\alpha} \to X$, which is the composite $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha} \to X$, is quasi-finite as promised. The lemma follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>The rule $(x,y) \mapsto (x,\beta(y))$ defines a morphism $\Gamma_{\alpha} \to X \times Z$ which must factor through $\Gamma_{\beta \circ \alpha}$ because it does so on a non-empty open subset of $\Gamma_{\alpha}$.  The induced map $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha}$ is quasi-finite because $\beta$ is quasi-finite.   But the  first projection $\Gamma_{\beta \circ \alpha} \to X$ is an isomorphism (because $\beta \circ \alpha$ is a morphism) and in particular quasi-finite, and hence $p_1 : \Gamma_{\alpha} \to X$, which is the composite $\Gamma_{\alpha} \to \Gamma_{\beta \circ \alpha} \to X$, is quasi-finite as promised. The lemma follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-commentary" id="remark-grassmannian">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/8605.html" class="stacks-tag-link">(8605)</a></div>
-  <div class="stacks-env-body"><ol><li>We will use Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> in a situation where $Y$ is a Grassmannian: every non-constant morphism out of a Grassmannian is necessarily finite (because the Grassmannian's Picard group is $\Z$), and so the critical hypothesis of Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> will be satisfied.</li>
-<li>Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> is true in arbitrary characteristic.</li></ol>
+  <div class="stacks-env-body"><ol><li><p>We will use Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> in a situation where $Y$ is a Grassmannian: every non-constant morphism out of a Grassmannian is necessarily finite (because the Grassmannian's Picard group is $\Z$), and so the critical hypothesis of Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> will be satisfied.</p></li>
+<li><p>Lemma&nbsp;<a href="/papers/counting-powers/tag/8E0A.html" class="stacks-ref-link">2.1 <span class="stacks-ref-tag">[8E0A]</span></a> is true in arbitrary characteristic.</p></li></ol>
 </div>
 </div>
 

@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -228,10 +232,10 @@
     <a href="../index.html" class="stacks-paper-link">Interpolation Problems: Del Pezzo Surfaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Interpolation in General</a> / <a href="../section/S8.SS6.html">8.6. Complete intersections</a> / <span>Proof (614B)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section A: Interpolation in General</a> / <a href="../section/S8.SS6.html">A.6. Complete intersections</a> / <span>Proof (614B)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="584C.html">&laquo; Lemma 8.16</a><span class="stacks-tag-current">Tag 614B</span></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="584C.html">&laquo; Lemma A.16</a><span class="stacks-tag-current">Tag 614B</span></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/614B.html" class="stacks-tag-link">(614B)</a></div>
   <div class="stacks-env-body"><p>First, observe that $\dim \ci k d n = k(\binom{d+ n}{d} - k)$
 	because a point of $\ci k d n$ corresponds to the
@@ -248,12 +252,12 @@
 	dimensional subspace of $H^0(\bp^n, \sco_{\bp^n}(d))$
 	passing through the any collection
 	of $\binom{d+n}{d} - k$ points.</p>
-<p>	It remains to verify that if the points are chosen
+<p>It remains to verify that if the points are chosen
 	generally, then the intersection of degree
 	$d$ hypersurfaces in the subspace passing through
 	the points is a complete intersection.
 	To see this, note that the map $\pi_2$
-	from <a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;8.3 <span class="stacks-ref-tag">[2885]</span></a>
+	from <a href="/papers/interpolation-del-pezzo/tag/2885.html" class="stacks-ref-link">Definition&nbsp;A.3 <span class="stacks-ref-tag">[2885]</span></a>
 	is a generically finite map between varieties of
 	the same dimension. In particular,
 	the element of
@@ -267,7 +271,8 @@
 	corresponds to a complete intersection,
 	there will indeed be a complete intersection
 	passing through a general collection of
-	$\binom{d+n}{d}-k$ points.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+	$\binom{d+n}{d}-k$ points.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

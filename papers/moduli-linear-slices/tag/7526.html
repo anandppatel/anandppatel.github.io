@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
@@ -97,7 +96,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,56 +120,40 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Grauert-Mulich</a> / <span>Proof (7526)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="4668.html">&laquo; Lemma 3.8</a><span class="stacks-tag-current">Tag 7526</span><a href="E1C1.html">Lemma 3.9 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7526.html" class="stacks-tag-link">(7526)</a></div>
   <div class="stacks-env-body"><p>First we compare the normal sheaf of $\cU$ in $\cM \times Z$ to the normal sheaf $N_{\cU_p/Z}$. We have the following diagram.</p>
-<p>\catcode`\@=10
-\newdimen\cdsep
-\cdsep=3em</p>
-<p>\def\cdstrut{\vrule height .25\cdsep width 0pt depth .12\cdsep}
-\def\@cdstrut{{\advance\cdsep by 2em\cdstrut}}</p>
-<p>\def\arrow#1#2{
-  \ifx d#1
-    \llap{$\scriptstyle#2$}\left\downarrow\cdstrut\right.\@cdstrut\fi
-  \ifx u#1
-    \llap{$\scriptstyle#2$}\left\uparrow\cdstrut\right.\@cdstrut\fi
-  \ifx r#1
-    \mathop{\hbox to \cdsep{\rightarrowfill}}\limits^{#2}\fi
-  \ifx l#1
-    \mathop{\hbox to \cdsep{\leftarrowfill}}\limits^{#2}\fi
-}
-\catcode`\@=10</p>
-<p>\cdsep=3em
-$$
+<p>$$
 \begin{matrix}
-& & 0 & & 0 \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-& & \cO_{\cU_p}^N & \arrow{r}{=} & \cO_{\cU_p}^N \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-0 & \arrow{r}{} &  T_{\cU}|_{\cU_p}  & \arrow{r}{} & T_{\cM \times Z}|_{\cU_p} & \arrow{r}{} &  N_{\cU/ \cM \times Z}|_{\cU_p}& \arrow{r}{} & 0          \cr
-& &  \arrow{u}{} & & \arrow{u}{} & & \arrow{u}{\cong} \cr
-0 & \arrow{r}{} & T_{\cU_p} & \arrow{r}{} & T_{Z}|_{\cU_p} & \arrow{r}{} &  N_{\cU_p/Z} & \arrow{r}{} & 0 \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-& & 0 & & 0 \cr
+&amp; &amp; 0 &amp; &amp; 0 \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+&amp; &amp; \cO_{\cU_p}^N &amp; \mathop{\longrightarrow}\limits^{=} &amp; \cO_{\cU_p}^N \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+0 &amp; \longrightarrow &amp;  T_{\cU}|_{\cU_p}  &amp; \longrightarrow &amp; T_{\cM \times Z}|_{\cU_p} &amp; \longrightarrow &amp;  N_{\cU/ \cM \times Z}|_{\cU_p}&amp; \longrightarrow &amp; 0          \\
+&amp; &amp;  \uparrow &amp; &amp; \uparrow &amp; &amp; \mathop{\uparrow}\limits^{\cong} \\
+0 &amp; \longrightarrow &amp; T_{\cU_p} &amp; \longrightarrow &amp; T_{Z}|_{\cU_p} &amp; \longrightarrow &amp;  N_{\cU_p/Z} &amp; \longrightarrow &amp; 0 \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+&amp; &amp; 0 &amp; &amp; 0 \\
 \end{matrix}
 $$</p>
 <p>In this diagram, we have written $H^0(N_{\cU_{p}/Z}) \otimes \cO_{\cU_{p}}$ as $\cO_{\cU_p}^N$, where $N=h^0(N_{\cU_{p}/Z})$.  We see that $N_{\cU/ \cM \times Z}|_{\cU_{p}}$ is isomorphic to $N_{\cU_{p}/Z}$ by the eight lemma. Next we relate $N_{\cU/ \cM \times Z}|_{\cU_{p}}$ to the Lazarsfeld-Mukai bundle. Consider the following diagram, where the lower right entry is computed by the eight lemma.</p>
 <p>$$
 \begin{matrix}
-& & 0 & & 0 \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-& & T_Z|_{\cU_p} & \arrow{r}{=} & T_Z|_{\cU_p} \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-0 & \arrow{r}{} &  T_{\cU}|_{\cU_p}  & \arrow{r}{} & T_{\cM \times Z}|_{\cU_p} & \arrow{r}{} &  N_{\cU / \cM \times Z}|_{\cU_p}& \arrow{r}{} & 0          \cr
-& &  \arrow{u}{} & & \arrow{u}{} & & \arrow{u}{\cong} \cr
-0 & \arrow{r}{} & T_{\cU / Z} & \arrow{r}{} & \pi^{*}T_{\cM}|_{\cU_p} & \arrow{r}{} &  N_{\cU / \cM \times Z}|_{\cU_p} & \arrow{r}{} & 0 \cr
-& & \arrow{u}{} & & \arrow{u}{} \cr
-& & 0 & & 0 \cr
+&amp; &amp; 0 &amp; &amp; 0 \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+&amp; &amp; T_Z|_{\cU_p} &amp; \mathop{\longrightarrow}\limits^{=} &amp; T_Z|_{\cU_p} \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+0 &amp; \longrightarrow &amp;  T_{\cU}|_{\cU_p}  &amp; \longrightarrow &amp; T_{\cM \times Z}|_{\cU_p} &amp; \longrightarrow &amp;  N_{\cU / \cM \times Z}|_{\cU_p}&amp; \longrightarrow &amp; 0          \\
+&amp; &amp;  \uparrow &amp; &amp; \uparrow &amp; &amp; \mathop{\uparrow}\limits^{\cong} \\
+0 &amp; \longrightarrow &amp; T_{\cU / Z} &amp; \longrightarrow &amp; \pi^{*}T_{\cM}|_{\cU_p} &amp; \longrightarrow &amp;  N_{\cU / \cM \times Z}|_{\cU_p} &amp; \longrightarrow &amp; 0 \\
+&amp; &amp; \uparrow &amp; &amp; \uparrow \\
+&amp; &amp; 0 &amp; &amp; 0 \\
 \end{matrix}
 $$</p>
 <p>Then since $\pi^* T_{\cM}$ is constant on $\cU_p$ and $N_{\cU/ \cM \times Z}|_{\cU_p} \cong N_{\cU_p/Z}$, we see that the last row becomes
 $$0 \to T_{\cU / Z}|_{\cU_p} \to H^0(N_{\cU_p/Z}) \otimes \cO \to N_{\cU_p/Z} \to 0.$$</p>
-<p>The result follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>The result follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,8 +132,8 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Addressing the orbit closure problem</a> / <a href="../section/S5.SS2.html">5.2. Using 6 points in $\P^2$</a> / <span>Proof (8A09)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="E774.html">&laquo; Proposition 5.5</a><span class="stacks-tag-current">Tag 8A09</span><a href="9D0D.html">Proposition 5.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="E774.html">&laquo; Proposition 5.2.2</a><span class="stacks-tag-current">Tag 8A09</span><a href="9D0D.html">Proposition 5.2.3 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8A09.html" class="stacks-tag-link">(8A09)</a></div>
   <div class="stacks-env-body"><p>There exists a $\k$-algebra DVR $R$ with fraction field $K$ and $\phi \in \Aut(\P^2_K)$ such that $W$ is the flat limit of $\phi(Z_K)$.
   Consider the rational map
@@ -138,7 +142,7 @@
   For $z \in Z$, let $z_K$ denote the constant section $z \times_k K$ of $\P^2_K$, and let $\phi(z)_0$ be the flat limit of $\phi(z_K)$.
   Then the cycle $[W]$ of $W$ is simply
   $$[W] = \sum_{z \in Z} \phi(z)_0.$$</p>
-<p>  Suppose $\phi$ has rank 2.
+<p>Suppose $\phi$ has rank 2.
   Then the indeterminacy locus of $\phi$ consists of a single point $p$ in the central fiber, and the map $\phi_0 \colon \P^2 \dashrightarrow \P^2$
   is the linear projection with center $p$ onto a line $L \subset \P^2$ (see (5.2)).
   If $p \not \in Z$, then  $\phi_0$ is defined for every $z \in Z$, and $\phi(z)_0$ is simply $\phi_0(z)$.
@@ -148,12 +152,13 @@
   Then $\phi_0$ is defined on $Z'$, and $\phi(z)_0$ is simply $\phi_0(z)$ for $z \in Z'$.
   Since no 3 points of $Z$ are collinear, the linear projection from $p$ maps the points of $Z'$ to distinct points.
   As a result, the set $\{\phi_0(z) \mid z \in Z\}$ actually consists of 5 distinct points on $L$.</p>
-<p>  Suppose $\phi$ has rank 1.
+<p>Suppose $\phi$ has rank 1.
   Then the indeterminacy locus of $\phi_0$ is a line $L \subset \P^2$ and $\phi_0$ is constant on $\P^2 \setminus L$.
   Let $Z' = Z \setminus L$.
   Since no three points of $Z$ are collinear, $L$ contains at most 2 points of $Z$, and hence $Z'$ contains at least 4 points.
   By construction, $\phi_0$ is defined on $Z'$, and hence $\phi(z)_0 = \phi_0(z)$ for $z \in Z'$.
-  Since $\phi_0$ is constant, we conclude that $W$ contains a point of multiplicity at least 4.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since $\phi_0$ is constant, we conclude that $W$ contains a point of multiplicity at least 4.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

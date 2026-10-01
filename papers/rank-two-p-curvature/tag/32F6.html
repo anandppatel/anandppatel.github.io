@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (32F6) — The rank two $p$-curvature conjecture\\on generic curves</title>
+  <title>Proof (32F6) — The rank two $p$-curvature conjecture on generic curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,12 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
-          theinnercustomthm: "#1",
           N: "\\mathbb{N}",
           Q: "\\mathbb{Q}",
           Z: "\\mathbb{Z}",
@@ -83,7 +81,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -96,13 +99,13 @@
   <div class="stacks-header-inner">
     <a href="../../../index.html" class="stacks-home-link">Anand Patel, Ananth N. Shankar, and Junho Peter Whang</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture\\on generic curves</a>
+    <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture on generic curves</a>
   </div>
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Constancy of monodromy</a> / <span>Proof (32F6)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="A7A2.html">&laquo; Proposition 4.4</a><span class="stacks-tag-current">Tag 32F6</span><a href="0D70.html">Claim 4.5 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="A7A2.html">&laquo; Proposition 4.1</a><span class="stacks-tag-current">Tag 32F6</span><a href="0D70.html">Claim 4.2 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/32F6.html" class="stacks-tag-link">(32F6)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">Without loss of generality, we assume the existence of a derivation $D \in \Der(\Oo_C)$, such that $D^p \equiv D \mod p$.</p>
 <p class="stacks-para">We proceed by induction on $m$, and will assume the existence of a basis such that the connection matrix $\nabla(D)$ is constant modulo $q^{m-1}$. Let $C_0$ denote the special fiber of $C$. As $C_0$ is affine and smooth, the infinitesimal lifting property implies that $C \times_{k[[q]]} k[[q]]/q^m$ is isomorphic to the trivial deformation $C_0 \times_k k[[q]]/q^m$. Therefore, in terms of this trivialization of $C$ mod $q^m$, the connection matrix $\nabla(D)$ can be expressed as $A + q^{m-1}B$, with $A,B \in M_{n \times n}(\Oo_{C_0})$.</p>
@@ -110,66 +113,70 @@
 $$M =
 \left[
 \begin{array}{c|c}
-A & B \\
+A &amp; B \\
 \hline
-0 & A
+0 &amp; A
 \end{array}
 \right].$$</p>
 <p class="stacks-para">We will prove the following two statements:</p>
 <div class="stacks-env" id="cone">
-  <div class="stacks-env-head"><strong>Claim&nbsp;4.5.</strong> <a href="../tag/0D70.html" class="stacks-tag-link">(0D70)</a></div>
-  <div class="stacks-env-body"><p>If there exists a block upper-triangular change of coordinates of $V'$ (with coefficients in $\Oo_{C_{0}}$) with respect to which $\nabla'(D)$ is block-diagonal, then the assertions of Proposition <a href="/papers/rank-two-p-curvature/tag/A7A2.html" class="stacks-ref-link">4.4 <span class="stacks-ref-tag">[A7A2]</span></a> hold.</p></div>
+  <div class="stacks-env-head"><strong>Claim&nbsp;4.2.</strong> <a href="../tag/0D70.html" class="stacks-tag-link">(0D70)</a></div>
+  <div class="stacks-env-body"><p>If there exists a block upper-triangular change of coordinates of $V'$ (with coefficients in $\Oo_{C_{0}}$) with respect to which $\nabla'(D)$ is block-diagonal, then the assertions of Proposition <a href="/papers/rank-two-p-curvature/tag/A7A2.html" class="stacks-ref-link">4.1 <span class="stacks-ref-tag">[A7A2]</span></a> hold.</p>
+</div>
 </div>
 <div class="stacks-env" id="ctwo">
-  <div class="stacks-env-head"><strong>Claim&nbsp;4.6.</strong> <a href="../tag/74E2.html" class="stacks-tag-link">(74E2)</a></div>
-  <div class="stacks-env-body"><p>The $p$-curvatures of $\nabla'$ vanish for almost all primes $p$.</p></div>
+  <div class="stacks-env-head"><strong>Claim&nbsp;4.3.</strong> <a href="../tag/74E2.html" class="stacks-tag-link">(74E2)</a></div>
+  <div class="stacks-env-body"><p>The $p$-curvatures of $\nabla'$ vanish for almost all primes $p$.</p>
 </div>
-<p class="stacks-para">The Proposition follows immediately from these claims. Indeed, if $\nabla \mod q$ had a full set of algebraic solutions, then the connected component of the monodromy representation associated to $\nabla'$ would be solvable. We further know by Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[74E2]</span></a> that the $p$-curvatures of $(V',\nabla')$ vanish. As the $p$-curvature conjecture is known when the connected component of monodromy is solvable, we obtain that $(V',\nabla')$ has a full set of algebraic solutions, and therefore that there exists a block upper-triangular change of coordinates with respect to which $\nabla'(D)$ is block-diagonal. Proposition <a href="/papers/rank-two-p-curvature/tag/A7A2.html" class="stacks-ref-link">4.4 <span class="stacks-ref-tag">[A7A2]</span></a> then follows by applying Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.5 <span class="stacks-ref-tag">[0D70]</span></a>.</p>
-<p class="stacks-para">On the other hand, regardless of the monodromy of the special fiber, Conjecture <a href="/papers/rank-two-p-curvature/tag/D508.html" class="stacks-ref-link">1.8 <span class="stacks-ref-tag">[D508]</span></a> and Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[74E2]</span></a> imply that $(V',\nabla')$ has semisimple monodromy. Thus there exists a block upper-triangular change of coordinates with respect to which $\nabla'(D)$ is block diagonal, and so the proposition would follow from the assertion of Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.5 <span class="stacks-ref-tag">[0D70]</span></a>. Therefore, it suffices to prove the two claims.</p>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.5 <span class="stacks-ref-tag">[0D70]</span></a>.</em> <a href="../tag/F0C8.html" class="stacks-tag-link">(F0C8)</a></div>
+</div>
+<p class="stacks-para">The Proposition follows immediately from these claims. Indeed, if $\nabla \mod q$ had a full set of algebraic solutions, then the connected component of the monodromy representation associated to $\nabla'$ would be solvable. We further know by Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.3 <span class="stacks-ref-tag">[74E2]</span></a> that the $p$-curvatures of $(V',\nabla')$ vanish. As the $p$-curvature conjecture is known when the connected component of monodromy is solvable, we obtain that $(V',\nabla')$ has a full set of algebraic solutions, and therefore that there exists a block upper-triangular change of coordinates with respect to which $\nabla'(D)$ is block-diagonal. Proposition <a href="/papers/rank-two-p-curvature/tag/A7A2.html" class="stacks-ref-link">4.1 <span class="stacks-ref-tag">[A7A2]</span></a> then follows by applying Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.2 <span class="stacks-ref-tag">[0D70]</span></a>.</p>
+<p class="stacks-para">On the other hand, regardless of the monodromy of the special fiber, Conjecture <a href="/papers/rank-two-p-curvature/tag/D508.html" class="stacks-ref-link">1.2 <span class="stacks-ref-tag">[D508]</span></a> and Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.3 <span class="stacks-ref-tag">[74E2]</span></a> imply that $(V',\nabla')$ has semisimple monodromy. Thus there exists a block upper-triangular change of coordinates with respect to which $\nabla'(D)$ is block diagonal, and so the proposition would follow from the assertion of Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.2 <span class="stacks-ref-tag">[0D70]</span></a>. Therefore, it suffices to prove the two claims.</p>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.2 <span class="stacks-ref-tag">[0D70]</span></a>.</em> <a href="../tag/F0C8.html" class="stacks-tag-link">(F0C8)</a></div>
   <div class="stacks-env-body"><p>Suppose that the block upper-triangular matrix is of the form
 $$G =
 \left[
 \begin{array}{c|c}
-X & Y \\
+X &amp; Y \\
 \hline
-0 & X'
+0 &amp; X'
 \end{array}
 \right].$$
 By again changing coordinates by the matrix
 $$\left[
 \begin{array}{c|c}
-X^{-1} & 0 \\
+X^{-1} &amp; 0 \\
 \hline
-0 & X'^{-1}
+0 &amp; X'^{-1}
 \end{array}
 \right],$$
-it follows that we may assume the initial block upper-triangular matrix $G$ has its block-diagonal entries equalling the identity. </p>
-<p>Further, the connection matrix $\nabla' (D)$ undergoes the gauge transformation $G^{-1} M G + G^{-1} D(G)$. A short calculation shows that the top-right block of $\nabla'(D)$ becomes $B + AY - YA + D(Y)$. Therefore, the assumption in Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.5 <span class="stacks-ref-tag">[0D70]</span></a> means that there exist a matrix $Y$ such that $B + AY -YA + D(Y) = 0$. </p>
-<p>We now shift our focus back to $\nabla$. Consider the gauge transformation induced by the change of basis matrix $I + q^{m-1} Y$. A short calculation shows that $\nabla(D)$ in these new coordinates equals $A - q^{m-1}(B + AY - YA + D(Y))$, and this quantity equals $A$ as our previous calculation yielded that $B + AY - YA + D(Y) = 0$. The claim follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+it follows that we may assume the initial block upper-triangular matrix $G$ has its block-diagonal entries equalling the identity.</p>
+<p>Further, the connection matrix $\nabla' (D)$ undergoes the gauge transformation $G^{-1} M G + G^{-1} D(G)$. A short calculation shows that the top-right block of $\nabla'(D)$ becomes $B + AY - YA + D(Y)$. Therefore, the assumption in Claim <a href="/papers/rank-two-p-curvature/tag/0D70.html" class="stacks-ref-link">4.2 <span class="stacks-ref-tag">[0D70]</span></a> means that there exist a matrix $Y$ such that $B + AY -YA + D(Y) = 0$.</p>
+<p>We now shift our focus back to $\nabla$. Consider the gauge transformation induced by the change of basis matrix $I + q^{m-1} Y$. A short calculation shows that $\nabla(D)$ in these new coordinates equals $A - q^{m-1}(B + AY - YA + D(Y))$, and this quantity equals $A$ as our previous calculation yielded that $B + AY - YA + D(Y) = 0$. The claim follows.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[74E2]</span></a>.</em> <a href="../tag/C9C0.html" class="stacks-tag-link">(C9C0)</a></div>
+</div>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.3 <span class="stacks-ref-tag">[74E2]</span></a>.</em> <a href="../tag/C9C0.html" class="stacks-tag-link">(C9C0)</a></div>
   <div class="stacks-env-body"><p>We work modulo $p$ for the entirety of this proof. As $D^p \equiv D \mod p$, it suffices to prove that $\nabla'(D) \equiv \nabla'(D)^p$. Suppose that the matrix $\nabla(D)^j = P_j + q^{m-1}Q_j$, for some positive integer $j$. We will show by induction that that the matrix $\nabla'(D)^j$ equals
 $$\left[
 \begin{array}{c|c}
-P_j & Q_j \\
+P_j &amp; Q_j \\
 \hline
-0 & P_j
+0 &amp; P_j
 \end{array}
 \right].$$
-By induction, we may assume that this holds for $j-1$. Then, $\nabla(D)^j = (A + q^{m-1}B)(P_{j-1} + q^{m-1}Q_{j-1}) + D(P_{j-1} + q^{m-1}Q_{j-1}) = AP_{j-1} + D(P_{j-1}) + q^{m-1}(AQ_{j-1} + BP_{j-1} + D(Q_{j-1}))$. Therefore, $P_j = AP_{j-1} + D(P_{j-1}) $ and $Q_j = AQ_{j-1} + BP_{j-1} + D(Q_{j-1})$. </p>
-<p>On the other hand, a similar calculation shows that </p>
+By induction, we may assume that this holds for $j-1$. Then, $\nabla(D)^j = (A + q^{m-1}B)(P_{j-1} + q^{m-1}Q_{j-1}) + D(P_{j-1} + q^{m-1}Q_{j-1}) = AP_{j-1} + D(P_{j-1}) + q^{m-1}(AQ_{j-1} + BP_{j-1} + D(Q_{j-1}))$. Therefore, $P_j = AP_{j-1} + D(P_{j-1}) $ and $Q_j = AQ_{j-1} + BP_{j-1} + D(Q_{j-1})$.</p>
+<p>On the other hand, a similar calculation shows that</p>
 <p>$$\nabla'(D)^j =
 \left[
 \begin{array}{c|c}
-AP_{j-1} + D(P_{j-1}) & AQ_{j-1} + BP_{j-1} + D(Q_{j-1}) \\
+AP_{j-1} + D(P_{j-1}) &amp; AQ_{j-1} + BP_{j-1} + D(Q_{j-1}) \\
 \hline
-0 & AP_{j-1} + D(P_{j-1})
+0 &amp; AP_{j-1} + D(P_{j-1})
 \end{array}
 \right].$$
-The claim now follows from the vanishing of the $p$-curvatures of $\nabla$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+The claim now follows from the vanishing of the $p$-curvatures of $\nabla$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Now that both the claims have been proved, the Proposition follows.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
@@ -179,21 +186,21 @@ The claim now follows from the vanishing of the $p$-curvatures of $\nabla$.<span
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/32F6.html"
      data-comment-page-url="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/32F6.html"
-     data-comment-page-title="The rank two $p$-curvature conjecture\\on generic curves — Tag 32F6 (Proof)"
+     data-comment-page-title="The rank two $p$-curvature conjecture on generic curves — Tag 32F6 (Proof)"
      data-comment-page-label="Tag 32F6 (Proof)"
-     data-comment-paper-title="The rank two $p$-curvature conjecture\\on generic curves">
+     data-comment-paper-title="The rank two $p$-curvature conjecture on generic curves">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
   <div class="stacks-comment-form">
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture\\on generic curves — Tag 32F6 (Proof)">
+      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture on generic curves — Tag 32F6 (Proof)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/32F6.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/32F6.html">
-      <input type="hidden" name="paper" value="The rank two $p$-curvature conjecture\\on generic curves">
+      <input type="hidden" name="paper" value="The rank two $p$-curvature conjecture on generic curves">
       <input type="hidden" name="location" value="Tag 32F6 (Proof)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>

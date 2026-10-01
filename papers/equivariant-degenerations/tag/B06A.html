@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,23 +91,23 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degeneration II: Acquiring nodes and cusps</a> / <a href="../section/S6.SS2.html">6.2. Degeneration to a node</a> / <span>Proof (B06A)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 5: Degeneration II: Acquiring nodes and cusps</a> / <a href="../section/S6.SS2.html">5.2. Degeneration to a node</a> / <span>Proof (B06A)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="AEE2.html">&laquo; Lemma 6.4</a><span class="stacks-tag-current">Tag B06A</span><a href="C316.html">Remark 6.5 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="AEE2.html">&laquo; Lemma 5.4</a><span class="stacks-tag-current">Tag B06A</span><a href="C316.html">Remark 5.5 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B06A.html" class="stacks-tag-link">(B06A)</a></div>
   <div class="stacks-env-body"><p>It suffices to just do one of the two cases &ndash; we will prove the
   $\gamma_{2}$ case. We know the following:</p>
-<ol><li>The coefficient $a_{ij}$ of each monomial $X^iY^jZ^{d-i-j}$
+<ol><li><p>The coefficient $a_{ij}$ of each monomial $X^iY^jZ^{d-i-j}$
     occurring in $F(X,Y,Z)$ is an element of $R$, and therefore have
-    non-negative integer valuations.</li>
-<li>The assumptions on $C_0$ in the description of
+    non-negative integer valuations.</p></li>
+<li><p>The assumptions on $C_0$ in the description of
     $\alpha_{\on{node}}$ imply:
-    $$v(a_{0,0}),v(a_{1,0}),v(a_{0,1}),v(a_{2,0}),v(a_{0,2})\geq 1.$$</li>
-<li>Since the node singularity of $C_0$ is assumed to be ordinary,
-    $v(a_{3,0})=v(a_{0,3})=0$.</li>
-<li>Since $\mathscr{C}$ is smooth at the node, it follows that
-    $v(a_{0,0})=1$.</li></ol>
+    $$v(a_{0,0}),v(a_{1,0}),v(a_{0,1}),v(a_{2,0}),v(a_{0,2})\geq 1.$$</p></li>
+<li><p>Since the node singularity of $C_0$ is assumed to be ordinary,
+    $v(a_{3,0})=v(a_{0,3})=0$.</p></li>
+<li><p>Since $\mathscr{C}$ is smooth at the node, it follows that
+    $v(a_{0,0})=1$.</p></li></ol>
 <p>Given these constraints, a direct check now shows that
   $\frac{2}{3}i+\frac{1}{3}j-1+v(a_{i,j})$ is zero if and only if
   $(i,j)\in \{(0,3),(1,1),(0,0)\}$ and is strictly positive otherwise.

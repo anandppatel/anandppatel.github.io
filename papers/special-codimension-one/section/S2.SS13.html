@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -171,10 +175,10 @@
 <h3 class="stacks-subsections-heading">Rational partial pencils.</h3>
 <p class="stacks-para">Consider the linear system of $(1,d)$ curves on the surface $\F = \mathbb{P}^1 \times \mathbb{P}^1$, and pick a $d$-tuple of distinct points $Z = \{p_{1}, ... ,p_{d}\}$ lying entirely in a $(1,0)$ ruling curve $F$.  Consider a general linear pencil $\mathbb{P}^1_{t} \subset |(1,d)|$  whose base locus $B$ contains $Z$.</p>
 <p class="stacks-para">The total space $X$ of the pencil $$p \colon X \longrightarrow \mathbb{P}^1_{t}$$ then has the following features:</p>
-<ul><li>The split fiber $t=\infty$ is $F \cup R_{1} \cup ... \cup R_{d}$ where $R_{i}$ are disjoint $(0,1)$ rulings.</li>
-<li>There are $d$ fibers of the form $A_{i} \cup B_{i}$ where $A_{i}$ are $(0,1)$ lines and $B_{i}$ are smooth $(1,d-1)$ curves.</li>
-<li>The section $s_{i}$ of $p$
-    corresponding to the basepoint $p_{i}$ obeys $s_{i}^{2} = -1$.</li></ul>
+<ul><li><p>The split fiber $t=\infty$ is $F \cup R_{1} \cup ... \cup R_{d}$ where $R_{i}$ are disjoint $(0,1)$ rulings.</p></li>
+<li><p>There are $d$ fibers of the form $A_{i} \cup B_{i}$ where $A_{i}$ are $(0,1)$ lines and $B_{i}$ are smooth $(1,d-1)$ curves.</p></li>
+<li><p>The section $s_{i}$ of $p$
+    corresponding to the basepoint $p_{i}$ obeys $s_{i}^{2} = -1$.</p></li></ul>
 <p class="stacks-para">The curves $R_{i}$ can be contracted to create a family $\o{p} \to \o{X} \to \P^{1}_{t}$ &ndash; we continue to use $s_{i}$ to denote the transformed section.  Since the $R_{i}$ did not pass through the points $p_{i}$, we still have $s_{i}^{2} = -1$.</p>
 <p class="stacks-para">We may attach a fixed cover along the sections $s_{i}$ to obtain a partial pencil.    Away from $t= \infty$, we only obtain intersections with enumeratively relevant divisors: triple ramification, $(2,2)$-ramification, and simple nodes will appear.  Since these partial pencils are obtained by varying rational curves, we will call them <em>rational partial pencils</em>.</p>
 <h3 class="stacks-subsections-heading">Hyperelliptic families.</h3>

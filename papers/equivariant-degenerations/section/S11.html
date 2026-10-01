@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 11 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <title>Section C: Cubic plane curves — Equivariant Degenerations of Plane Curve Orbits</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,9 +91,9 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 11: Cubic plane curves</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS5.html" aria-label="Previous: 10.5. Application of Atiyah-Bott" title="Previous: 10.5. Application of Atiyah-Bott">&larr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section C: Cubic plane curves</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS5.html" aria-label="Previous: B.5. Application of Atiyah-Bott" title="Previous: B.5. Application of Atiyah-Bott">&larr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">Section 11. Cubic plane curves</h1>
+<h1 class="stacks-section-title">Section C. Cubic plane curves</h1>
 <p class="stacks-para">The computations of $\p_C$ for cubic plane curves $C$ are elementary,
 but we provide them here for the sake of completeness.</p>
 <p class="stacks-para">The following table provides a complete list of polynomials classes
@@ -100,24 +104,24 @@ automorphism group is finite, the entries are $\p_{C}$.</p>
 <p class="stacks-para">Let us only indicate the methods of calculation, leaving details to
 the reader.  The formulas for a triple line, double line plus line,
 conic plus line, and triangle can all be obtained via presentation and
-integration along the lines of [<a class="stacks-cite" href="../../../bibliography.html#bib-l-m-feh-r-a-n-da5b19b0">FNR06</a>, Theorem 3.1] and
-<a href="/papers/equivariant-degenerations/tag/87CC.html" class="stacks-ref-link">Proposition&nbsp;4.5 <span class="stacks-ref-tag">[87CC]</span></a>. This is the method of resolution and integration
-[<a class="stacks-cite" href="../../../bibliography.html#bib-feh-and-eacute-r-and-rich-c2d3a842">FR06</a>, Section 3].</p>
+integration along the lines of [<a class="stacks-cite" href="../../../bibliography.html#bib-l-m-feh-r-a-n-460602ad">FNR06</a>, Theorem 3.1] and
+<a href="/papers/equivariant-degenerations/tag/87CC.html" class="stacks-ref-link">Proposition&nbsp;3.5 <span class="stacks-ref-tag">[87CC]</span></a>. This is the method of resolution and integration
+[<a class="stacks-cite" href="../../../bibliography.html#bib-l-szl-m-feh-r-and-a4846c2d">FR06</a>, Section 3].</p>
 <p class="stacks-para">The formula for three concurrent lines, conic plus tangent line and
 cuspidal cubic can be gotten by applying Kazarian's formula
-[<a class="stacks-cite" href="../../../bibliography.html#bib-thom-polynomials-for-lagrange-legendre-and-6c9b8f59">Kaz03a</a>, Theorem 1] for counting $D_4$, $A_3$, and $A_2$
+[<a class="stacks-cite" href="../../../bibliography.html#bib-maxim-kazarian-thom-polynomials-for-lagrange-7ed2d1e7">Kaz03a</a>, Theorem 1] for counting $D_4$, $A_3$, and $A_2$
 singularities respectively. This was carried out for the case of
 quartic plane curves for $A_6$, $D_6$, and $E_6$ in the proof of
-<a href="/papers/equivariant-degenerations/tag/98EB.html" class="stacks-ref-link">Corollary&nbsp;4.4 <span class="stacks-ref-tag">[98EB]</span></a>. The formula for smooth and nodal cubics can be
-obtained by their predegree formulas [<a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-smooth-plane-curves-9b0ee9eb">AF93b</a>, Section 3.6] and
+<a href="/papers/equivariant-degenerations/tag/98EB.html" class="stacks-ref-link">Corollary&nbsp;3.4 <span class="stacks-ref-tag">[98EB]</span></a>. The formula for smooth and nodal cubics can be
+obtained by their predegree formulas [<a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-e124fcab">AF93b</a>, Section 3.6] and
 <a href="/papers/equivariant-degenerations/tag/CCE8.html" class="stacks-ref-link">Proposition&nbsp;2.3 <span class="stacks-ref-tag">[CCE8]</span></a>.</p>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/equivariant-degenerations/section/S11.html"
      data-comment-page-url="https://anandpatel.github.io/papers/equivariant-degenerations/section/S11.html"
-     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — Section 11: Cubic plane curves"
-     data-comment-page-label="Section 11: Cubic plane curves"
+     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — Section C: Cubic plane curves"
+     data-comment-page-label="Section C: Cubic plane curves"
      data-comment-paper-title="Equivariant Degenerations of Plane Curve Orbits">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -125,13 +129,13 @@ obtained by their predegree formulas [<a class="stacks-cite" href="../../../bibl
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section 11: Cubic plane curves">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — Section C: Cubic plane curves">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S11.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S11.html">
       <input type="hidden" name="paper" value="Equivariant Degenerations of Plane Curve Orbits">
-      <input type="hidden" name="location" value="Section 11: Cubic plane curves">
+      <input type="hidden" name="location" value="Section C: Cubic plane curves">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,32 +91,33 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS4.html">8.4. When a quartic acquires hyperflexes</a> / <span>Proof (AD73)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 7: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS4.html">7.4. When a quartic acquires hyperflexes</a> / <span>Proof (AD73)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="7A93.html">&laquo; Lemma 8.11</a><span class="stacks-tag-current">Tag AD73</span><a href="A771.html">Remark 8.12 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="7A93.html">&laquo; Lemma 7.9</a><span class="stacks-tag-current">Tag AD73</span><a href="A771.html">Remark 7.10 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/AD73.html" class="stacks-tag-link">(AD73)</a></div>
   <div class="stacks-env-body"><p>We will show $\on{Aut}(C)$ is finite by showing that only a finite
   subgroup of $PGL_3$ preserves the flexes and the unique tangent
   branch at the $E_6$ singularity. Let $G$ be the component of
   $\on{Aut}(C)$ containing the identity.</p>
-<p>  Without loss of generality, we can assume the $E_6$ singularity is
+<p>Without loss of generality, we can assume the $E_6$ singularity is
   at $[0:0:1]$ and the two flex points are at $[0:1:0]$ and
   $[1:0:0]$. The group $G$ fixes these three points, so $G$ is a
   subgroup of the torus
-  $$\begin{pmatrix} a & & \\ & b & \\ & & c\end{pmatrix} \subset
+  $$\begin{pmatrix} a &amp; &amp; \\ &amp; b &amp; \\ &amp; &amp; c\end{pmatrix} \subset
     PGL(V).$$</p>
-<p>  In addition, $G$ fixes the tangent line $L$ to the singularity. $L$
+<p>In addition, $G$ fixes the tangent line $L$ to the singularity. $L$
   meets the curve to order 4 at $[0:0:1]$, so it cannot intersect
   $[0:1:0]$ or $[1:0:0]$. Since $G$ must preserve $L$, it follows that
   $a=b$.</p>
-<p>  Let $L_1$ be the flex line of $C$ at $[0:1:0]$ and $L_2$ be the
+<p>Let $L_1$ be the flex line of $C$ at $[0:1:0]$ and $L_2$ be the
   analogue at $[1:0:0]$. By Bezout's theorem we know neither line
   $L_{i}$ contains $[0:0:1]$, and also $L_1\neq L_2$.  Therefore,
   either $L_1$ does not pass through $[0:1:0]$ or $L_2$ does not pass
   through $[1:0:0]$. In the first case, we find $a=c$ and in the
   second case we find $b=c$. In any case, $G$ is a trivial group and
-  we are done.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  we are done.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

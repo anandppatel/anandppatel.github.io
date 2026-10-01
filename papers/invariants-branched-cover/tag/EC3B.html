@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -165,12 +169,12 @@
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.18.</strong> <a href="../tag/EC3B.html" class="stacks-tag-link">(EC3B)</a></div>
   <div class="stacks-env-body"><p>Let $\alpha:X \to \chain{a} \in \Sigma_{d,a}$ be given. Assume that $d$ is even and $f(\alpha)=R_1 \cup \ldots \cup R_a$ is quadric-generic. For any node $p_{j} \in \chain{a}$, the
 left flag $L^\bullet_j=(L^1_j\subset L^2_j \subset \ldots \subset L^k_j)$ of $F_\alpha$ may be described as follows:</p>
-<ol><li>The total space: $L_j^k$ is the vector space of quadrics in $\P^{d-2}$ containing the $d$ anchor
-	points over the $j$-th node.</li>
-<li>$L_j^{k-l}$ is the vector space of quadrics in $\P^{d-2}$ containing the sub-chain $R_{j-l+1} \cup \ldots \cup R_j$.</li>
-<li>The codimension of $L^{k-l}_j \subset L^k_j$ is $l(d-3)$.</li>
-<li>The length $k$ of the flag $L^\bullet_j$ is equal
-to the minimum of $j+1$ and $\frac{d}{2}$.</li></ol>
+<ol><li><p>The total space: $L_j^k$ is the vector space of quadrics in $\P^{d-2}$ containing the $d$ anchor
+	points over the $j$-th node.</p></li>
+<li><p>$L_j^{k-l}$ is the vector space of quadrics in $\P^{d-2}$ containing the sub-chain $R_{j-l+1} \cup \ldots \cup R_j$.</p></li>
+<li><p>The codimension of $L^{k-l}_j \subset L^k_j$ is $l(d-3)$.</p></li>
+<li><p>The length $k$ of the flag $L^\bullet_j$ is equal
+to the minimum of $j+1$ and $\frac{d}{2}$.</p></li></ol>
 </div>
 </div>
 

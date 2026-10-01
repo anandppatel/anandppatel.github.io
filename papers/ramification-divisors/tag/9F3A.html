@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,13 +134,13 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: The Projection-Ramification enumerative problem</a> / <a href="../section/S6.SS3.html">6.3. The Veronese surface</a> / <span>Proof (9F3A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="4556.html">&laquo; Lemma 6.2</a><span class="stacks-tag-current">Tag 9F3A</span><a href="1922.html">Proof of Proposition 6.1 [D230]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9F3A.html" class="stacks-tag-link">(9F3A)</a></div>
   <div class="stacks-env-body"><p>Let $\ell$ be a general Reye line, and let $d \in D$ be such that $\ell$ is a component of $Q_d$.
   Let $x = \tau(d) \in R$ be the singular point of $Q_d$.
   Note $\ell \cap R$ consists of three points, one of which is $x$.
   It suffices to show that the other two, say $y$ and $z$, differ by $\eta$.</p>
-<p>  The point $y$ defines a line in $\P V^*$.
+<p>The point $y$ defines a line in $\P V^*$.
   This line intersects $E \subset \P V^*$ in three points, one of which is $\ell$, and the other two are the two components of $Q_{\tau^{-1}(y)}$, namely the two pre-images of $y \in R$ under the double covering $E \to R$.
   Call these two points $y_1$ and $y_2$.
   Define $z_1$ and $z_2$ analogously.
@@ -147,12 +151,13 @@
   $$2y \sim 2z.$$
   Therefore, $y - z$ is a (non-trivial) 2-torsion element in $\Pic(R)$.
   However, the pull-back of $y-z$ is trivial on $E$, and hence $y - z = \eta$.</p>
-<p>  Finally, let $m$ be the Reye line conjugate to $\ell$.
+<p>Finally, let $m$ be the Reye line conjugate to $\ell$.
   Then it contains $x$, and two other points of $R$, say $y'$ and $z'$.
   By what we just proved, $y' - z' = \eta$.
   But we also have $y' + z' \sim y + z$.
   Hence $y - y'$ is a 2-torsion element, non-trivial, and distinct from $\eta$.
-  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

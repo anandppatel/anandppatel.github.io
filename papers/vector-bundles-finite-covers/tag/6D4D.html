@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,21 +114,22 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Higher dimensions</a> / <span>Proof (6D4D)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="D704.html">&laquo; Proposition 4.5</a><span class="stacks-tag-current">Tag 6D4D</span><a href="D4FA.html">Question 4.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/6D4D.html" class="stacks-tag-link">(6D4D)</a></div>
   <div class="stacks-env-body"><p>Let $\phi \from X \to Y$ be a Gorenstein finite covering of degree 3 with Tschirnhausen bundle $E$.
-  Then by the structure theorem of triple covers in [<a class="stacks-cite" href="../../../bibliography.html#bib-miranda-1e58bbd4">23</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-and-t-c87b2161">10</a>], we get an embedding $X \subset \P E$ as a divisor of class $\O_{\P E}(3)$.
+  Then by the structure theorem of triple covers in [<a class="stacks-cite" href="../../../bibliography.html#bib-r-miranda-triple-covers-in-algebraic-78e207a4">23</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-and-t-ekedahl-covers-ccccd64a">10</a>], we get an embedding $X \subset \P E$ as a divisor of class $\O_{\P E}(3)$.
   Thus, $X$ is given by a global section on $\P E$ of $\O_{\P E}(3)$, or equivalently a global section on $Y$ of $\Sym^3 E \otimes \det E^\vee$.
   Note that since $X \to Y$ is flat, the global section of $\Sym^3 E \otimes \det E^\vee$ is nowhere vanishing.</p>
-<p>  Suppose we are given an arbitrary rank $2$ vector bundle $E$ on $Y$.
+<p>Suppose we are given an arbitrary rank $2$ vector bundle $E$ on $Y$.
   Set $D = \O_{\P E}(3)$ and $V = \Sym^3 E \otimes \det E^\vee$.
   If we twist $E$ by $L^n$, then  $\P E$ is unchanged but $D$ changes to $D + 3nL$ and $V$ changes to $V \otimes L^n$.
   For sufficiently large $n$, the bundle $V \otimes L^n$ is ample.
-  If $\dim Y < 4$, then a general section of $V \otimes L^n$ is nowhere zero on $Y$.
+  If $\dim Y &lt; 4$, then a general section of $V \otimes L^n$ is nowhere zero on $Y$.
   Furthermore, the divisor $X \subset \P E$ cut out by the corresponding section of $\O(D+3nL)$ is smooth by Bertini's theorem.
   By construction, the resulting $X \to Y$ has Tschirnhausen bundle $E \otimes L^n$.</p>
-<p>  On the other hand, if $\dim Y \geq 4$, then every global section of $V \otimes L^n$ must vanish at some point in $Y$.
-  Thus, $E \otimes L^n$ cannot arise as a Tschirnhausen bundle.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>On the other hand, if $\dim Y \geq 4$, then every global section of $V \otimes L^n$ must vanish at some point in $Y$.
+  Thus, $E \otimes L^n$ cannot arise as a Tschirnhausen bundle.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

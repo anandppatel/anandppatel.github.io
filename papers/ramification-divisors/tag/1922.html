@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,14 +134,12 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: The Projection-Ramification enumerative problem</a> / <a href="../section/S6.SS3.html">6.3. The Veronese surface</a> / <span>Proof of Proposition 6.1 [D230] (1922)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="9F3A.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 1922</span><a href="2C84.html">Lemma 6.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/ramification-divisors/tag/D230.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[D230]</span></a>.</em> <a href="../tag/1922.html" class="stacks-tag-link">(1922)</a></div>
   <div class="stacks-env-body"><p>Let $U \subset \P H^0(\P^2, \O(3))^*$ be the locus of smooth cubic curves, $J \to U$ be the universal Picard scheme, $J[2] \subset J$ the closed subscheme of 2-torsion classes, and $J[2]^* \subset J[2]$ the open and closed subscheme of non-trivial 2-torsion classes.
   The projection-ramification map for the Veronese surface factors as
-  \begin{alignat*}{2}
-    \rho \from \Gr(3, H^0(\P^2, \O(2))) &\dashrightarrow J[2]^* &&\dashrightarrow \P H^0(\P^2, \O(3))^*\\
-    N &\mapsto (R, \eta) &&\mapsto R.
-  \end{alignat*}
+  $$\begin{aligned}\rho \from \Gr(3, H^0(\P^2, \O(2))) &amp;\dashrightarrow J[2]^* &amp;&amp;\dashrightarrow \P H^0(\P^2, \O(3))^*\\
+    N &amp;\mapsto (R, \eta) &amp;&amp;\mapsto R.\end{aligned}$$
   We construct $J[2]^* \to \Gr(3,H^0(\P^2, \O(2)))$ inverse to the first map, which shows that $\deg \rho = 3$, and identifies the fibers of $\rho$ as non-trivial 2-torsion points.
   Given $(R, \eta) \in J[2]^*$, we need to construct a net $N$ of conics with Jacobian $R$.
   We use <a href="/papers/ramification-divisors/tag/4556.html" class="stacks-ref-link">Lemma&nbsp;6.2 <span class="stacks-ref-tag">[4556]</span></a>, which tells us the singular elements of this net in terms of $R$ and $\eta$.
@@ -146,7 +148,8 @@
   $$R \ni a \mapsto \left(\langle {a, a+\eta} \rangle\right) \cdot \left(\langle {a+\eta', a+\eta''} \rangle \right),$$
   where $\langle {p,q} \rangle$ denotes the line joining $p$ and $q$.
   We leave it to the reader to check that the image of $R$ is a plane cubic curve.
-  The span of the image of $R$ is the desired net $N$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The span of the image of $R$ is the desired net $N$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

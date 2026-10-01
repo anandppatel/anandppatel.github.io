@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -115,10 +119,10 @@
   <div class="stacks-env-body"><p>There exists a filtration
   $$E = F_{0} \supset F_{1} \supset \dots \supset F_{r-1} \supset F_{r} = 0,$$
   satisfying the following properties.</p>
-<ol><li>For every $i \in \{0, \dots, r-1\}$, the sub-quotient $F_{i}/F_{i+1}$ is a line bundle.</li>
-<li>Set $L_i = F_{i}/F_{i+1}$ for $i \in \{1, \dots, r-1\}$ and $L_r = F_0/F_1$.
+<ol><li><p>For every $i \in \{0, \dots, r-1\}$, the sub-quotient $F_{i}/F_{i+1}$ is a line bundle.</p></li>
+<li><p>Set $L_i = F_{i}/F_{i+1}$ for $i \in \{1, \dots, r-1\}$ and $L_r = F_0/F_1$.
     For every $i \in \{1, \dots, r-1\}$, we have
-    $$\deg L_i + N \leq \deg L_{i+1}.$$</li></ol>
+    $$\deg L_i + N \leq \deg L_{i+1}.$$</p></li></ol>
 </div>
 </div>
 

@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Theorem 7.12 (76CA) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Theorem 7.5 (76CA) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,23 +120,16 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $\opc{M}$</a> / <a href="../section/S7.SS3.html">7.3. Regular subdivisions arising from unbounded polytope decompositions</a> / <span>Theorem 7.12 (76CA)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $[\mathcal{O}_{M}]$</a> / <a href="../section/S7.SS3.html">7.3. Regular subdivisions arising from unbounded polytope decompositions</a> / <span>Theorem 7.5 (76CA)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="E247.html">&laquo; Definition 7.11</a><span class="stacks-tag-current">Tag 76CA</span><a href="8E66.html">Proof  &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="4730.html">&laquo; Proof of Lemma 7.4 [6FEC] </a><span class="stacks-tag-current">Tag 76CA</span><a href="8E66.html">Proof  &raquo;</a></div>
 <div class="stacks-theorem" id="explsub">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;7.12.</strong> <a href="../tag/76CA.html" class="stacks-tag-link">(76CA)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;7.5.</strong> <a href="../tag/76CA.html" class="stacks-tag-link">(76CA)</a></div>
   <div class="stacks-env-body"><p>Let $(M,C)$ be an admissible pair and let $v = e_i - e_j$ with $i \neq j$. Then there exists a regular map $M_D : \mb{A}^1_t \to \mb{A}^{d \times n}$ with $M_D(0)=M$ such that for general $s \in \mb{A}^1_t$, there exist admissible pairs $(M_1, C_1), \ldots, (M_k, C_k)$, where each $M_i$ is an orb-limit of $M_D$ and</p>
-<ol><li>The pair $(M_D(s), C + \mb{R}_{\geq 0} v)$ is admissible and $P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) + \mb{R}_{\geq 0} v$.</li>
-<li>We have a decomposition $$P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) \cup \bigcup_{i=1}^k (P_{M_i} + C_i)$$ which is the shadow facet subdivision of $(P_{M} + C) + \mb{R}_{\geq 0} v$.</li>
-<li>We have a decomposition $$P_{M_D(s)} = P_{M} \cup \bigcup_{i=1}^k P_{M_i}$$ which becomes the regular subdivision of $P_{M_D(s)}$ with lifting function $h_{M_D}$ associated to the degeneration $M_D$ after removing all terms of positive codimension in $P_{M_D(s)}$.</li>
-<li>We have $$\opc{M_D(s)} = \opc{M} + \sum_{i=1}^k \opc{M_i}.$$</li></ol>
-<p>\begin{comment}
-Let $M\in \mb{A}^{d \times n}$ be a matrix of rank $d$. Let $C$ be a matroidal cone such that $(P_M+C)\cap \Delta= P_M$. Let $v=e_i-e_j$ for fixed $i > j$. Letting $\lambda_{kl}$ be general elements of $K$, if we set $$B_{kl}=\begin{cases}\lambda_{kl} &  \text{if $e_l-e_k \in C+\mb{R}_{\ge 0}v$}\\ 0 & \text{otherwise} \end{cases},$$ then the matroid polytope of $M_D(t)=M(1+tB)$ is $$P=(P_M+C+\mb{R}_{\ge 0}v)\cap \Delta,$$ and the height function associated to the degeneration $M_D$ is given by $$z \mapsto \inf\{\lambda \mid z-\lambda v \in P_M+C\}.$$
-For each shadow facet $F$ of $P_M+C$ with direction vector $v$ (c.f. <a href="/papers/orbits-equivariant-quantum/tag/6FEC.html" class="stacks-ref-link">Lemma&nbsp;7.9 <span class="stacks-ref-tag">[6FEC]</span></a>) with characteristic cone $C_F$, we may find in the subdivision associated to $M_D$ a (not necessarily top-dimensional) face associated to a matrix $M_F$ which $M_D$ orb-limits to such that</p>
-<ul><li>The facets in the expression $P=P_M\cup \bigcup_{\text{F a shadow facet}} P_{M_F}$ yield the subdivision associated to $M_D$.</li>
-<li>$P+C+\mb{R}_{\ge 0}v=(P_M+C) \cup \bigcup_{\text{F a shadow facet}} (P_{M_F}+C_F+\mb{R}_{\ge 0}v)$ is precisely the shadow facet subdivision $P_M+C+\mb{R}_{\ge 0}v=(P_M+C)\cup \bigcup_{\text{F a shadow facet}} (F+\mb{R}_{\ge 0}v)$</li>
-<li>Intersecting the shadow facet subdivision with $\Delta$ gives back the subdivision associated to $M_D$ after discarding non-facets.</li></ul>
-<p>\end{comment}</p>
+<ol><li><p>The pair $(M_D(s), C + \mb{R}_{\geq 0} v)$ is admissible and $P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) + \mb{R}_{\geq 0} v$.</p></li>
+<li><p>We have a decomposition $$P_{M_D(s)} + (C + \mb{R}_{\geq 0} v) = (P_{M} + C) \cup \bigcup_{i=1}^k (P_{M_i} + C_i)$$ which is the shadow facet subdivision of $(P_{M} + C) + \mb{R}_{\geq 0} v$.</p></li>
+<li><p>We have a decomposition $$P_{M_D(s)} = P_{M} \cup \bigcup_{i=1}^k P_{M_i}$$ which becomes the regular subdivision of $P_{M_D(s)}$ with lifting function $h_{M_D}$ associated to the degeneration $M_D$ after removing all terms of positive codimension in $P_{M_D(s)}$.</p></li>
+<li><p>We have $$[\mathcal{O}_{M_D(s)}] = [\mathcal{O}_{M}] + \sum_{i=1}^k [\mathcal{O}_{M_i}].$$</p></li></ol>
 </div>
 </div>
 
@@ -140,8 +137,8 @@ For each shadow facet $F$ of $P_M+C$ with direction vector $v$ (c.f. <a href="/p
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/76CA.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/76CA.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 76CA (Theorem 7.12)"
-     data-comment-page-label="Tag 76CA (Theorem 7.12)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 76CA (Theorem 7.5)"
+     data-comment-page-label="Tag 76CA (Theorem 7.5)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -149,13 +146,13 @@ For each shadow facet $F$ of $P_M+C$ with direction vector $v$ (c.f. <a href="/p
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 76CA (Theorem 7.12)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 76CA (Theorem 7.5)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/76CA.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/76CA.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag 76CA (Theorem 7.12)">
+      <input type="hidden" name="location" value="Tag 76CA (Theorem 7.5)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

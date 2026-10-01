@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -51,7 +50,7 @@
           U: "\\mathcal U",
           M: "\\mathcal M",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           gen: "{\\rm gen}",
           irr: "{\\rm irr}",
@@ -90,7 +89,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,26 +114,26 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">Bibliography</h1>
 <ol class="stacks-bibliography">
-  <li id="bib-bolognesi12:_stack"><span class="stacks-bib-label">[BV12]</span> Michele Bolognesi and Angelo Vistoli, <em>Stacks of trigonal curves</em>, Trans. Amer. Math. Soc. <strong>364</strong> (2012), no.&nbsp;7, 3365&ndash;3393. \MR2901217</li>
+  <li id="bib-bolognesi12:_stack"><span class="stacks-bib-label">[BV12]</span> Michele Bolognesi and Angelo Vistoli, <em>Stacks of trigonal curves</em>, Trans. Amer. Math. Soc. <strong>364</strong> (2012), no.&nbsp;7, 3365&ndash;3393. MR 2901217</li>
   <li id="bib-casnati:five"><span class="stacks-bib-label">[Cas96]</span> Gianfranco Casnati, <em>Covers of algebraic varieties. II. Covers of degree $5$ and construction of surfaces</em>, J. Algebraic Geom. <strong>5</strong> (1996), no.&nbsp;3, 461 &ndash; 477.</li>
   <li id="bib-casnati:trigconst"><span class="stacks-bib-label">[Cas98]</span> &mdash;, <em>Covers of algebraic varieties. III. The discriminant of a cover of degree $4$ and the trigonal construction</em>, Trans. Amer. Math. Soc. <strong>350</strong> (1998), no.&nbsp;4, 1359&ndash;1378.</li>
   <li id="bib-casnati96:_cover_of_algeb_variet_i"><span class="stacks-bib-label">[CE96]</span> Gianfranco Casnati and Torsten Ekedahl, <em>Covers of algebraic varieties. I. A general structure theorem, covers of degree 3, 4 and Enriques' surfaces</em>, J. Algebraic Geom. <strong>5</strong> (1996), 439&ndash;460.</li>
-  <li id="bib-cornalba88:_divis"><span class="stacks-bib-label">[CH88]</span> Maurizio Cornalba and Joe Harris, <em>Divisor classes associated to families of stable varieties, with applications to the moduli space of curves</em>, Ann. Sci. &Eacute;cole Norm. Sup. (4) <strong>21</strong> (1988), no.&nbsp;3, 455&ndash;475. \MR974412 (89j:14019)</li>
-  <li id="bib-coppens_existence"><span class="stacks-bib-label">[Cop99]</span> Marc Coppens, <em>Existence of pencils with prescribed scrollar invariants of some general type</em>, Osaka J. Math. <strong>36</strong> (1999), no.&nbsp;4, 1049&ndash;1057. \MR1745644 (2001g:14006)</li>
-  <li id="bib-cornalba:pic_hyper"><span class="stacks-bib-label">[Cor07]</span> Maurizio Cornalba, <em>The Picard group of the moduli stack of stable hyperelliptic curves</em>, Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl. <strong>18</strong> (2007), no.&nbsp;1, 109&ndash;115. \MR2314467 (2008b:14017)</li>
-  <li id="bib-diaz96:_towar_homol_of_hurwit_spaces"><span class="stacks-bib-label">[DE96]</span> Steven Diaz and Dan Edidin, <em>Towards the homology of Hurwitz spaces</em>, J. Differential Geom. <strong>43</strong> (1996), no.&nbsp;1, 66&ndash;98. \MRMR1424420 (98e:14028)</li>
-  <li id="bib-harrisdiaz:geom_severi"><span class="stacks-bib-label">[DH88a]</span> Steven Diaz and Joe Harris, <em>Geometry of the Severi variety</em>, Trans. Amer. Math. Soc. <strong>309</strong> (1988), no.&nbsp;1, 1&ndash;34. \MR957060 (89i:14018)</li>
+  <li id="bib-cornalba88:_divis"><span class="stacks-bib-label">[CH88]</span> Maurizio Cornalba and Joe Harris, <em>Divisor classes associated to families of stable varieties, with applications to the moduli space of curves</em>, Ann. Sci. &Eacute;cole Norm. Sup. (4) <strong>21</strong> (1988), no.&nbsp;3, 455&ndash;475. MR 974412 (89j:14019)</li>
+  <li id="bib-coppens_existence"><span class="stacks-bib-label">[Cop99]</span> Marc Coppens, <em>Existence of pencils with prescribed scrollar invariants of some general type</em>, Osaka J. Math. <strong>36</strong> (1999), no.&nbsp;4, 1049&ndash;1057. MR 1745644 (2001g:14006)</li>
+  <li id="bib-cornalba:pic_hyper"><span class="stacks-bib-label">[Cor07]</span> Maurizio Cornalba, <em>The Picard group of the moduli stack of stable hyperelliptic curves</em>, Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl. <strong>18</strong> (2007), no.&nbsp;1, 109&ndash;115. MR 2314467 (2008b:14017)</li>
+  <li id="bib-diaz96:_towar_homol_of_hurwit_spaces"><span class="stacks-bib-label">[DE96]</span> Steven Diaz and Dan Edidin, <em>Towards the homology of Hurwitz spaces</em>, J. Differential Geom. <strong>43</strong> (1996), no.&nbsp;1, 66&ndash;98. MR 1424420 (98e:14028)</li>
+  <li id="bib-harrisdiaz:geom_severi"><span class="stacks-bib-label">[DH88a]</span> Steven Diaz and Joe Harris, <em>Geometry of the Severi variety</em>, Trans. Amer. Math. Soc. <strong>309</strong> (1988), no.&nbsp;1, 1&ndash;34. MR 957060 (89i:14018)</li>
   <li id="bib-diaz_harris_ideals"><span class="stacks-bib-label">[DH88b]</span> &mdash;, <em>Ideals associated to deformations of singular plane curves</em>, Trans. Amer. Math. Soc. (1988).</li>
-  <li id="bib-harer:Pic_Mg"><span class="stacks-bib-label">[Har83]</span> John Harer, <em>The second homology group of the mapping class group of an orientable surface</em>, Invent. Math. <strong>72</strong> (1983), no.&nbsp;2, 221&ndash;239. \MR700769 (84g:57006)</li>
-  <li id="bib-joe:severi"><span class="stacks-bib-label">[Har86]</span> Joe Harris, <em>On the Severi problem</em>, Invent. Math. <strong>84</strong> (1986), no.&nbsp;3, 445&ndash;461. \MR837522 (87f:14012)</li>
+  <li id="bib-harer:Pic_Mg"><span class="stacks-bib-label">[Har83]</span> John Harer, <em>The second homology group of the mapping class group of an orientable surface</em>, Invent. Math. <strong>72</strong> (1983), no.&nbsp;2, 221&ndash;239. MR 700769 (84g:57006)</li>
+  <li id="bib-joe:severi"><span class="stacks-bib-label">[Har86]</span> Joe Harris, <em>On the Severi problem</em>, Invent. Math. <strong>84</strong> (1986), no.&nbsp;3, 445&ndash;461. MR 837522 (87f:14012)</li>
   <li id="bib-hanspeter89:_picar_group_of_g_variet"><span class="stacks-bib-label">[KKV89]</span> Friedrich Knop, Hanspeter Kraft, and Thierry Vust, <em>The Picard group of a $G$-variety</em>, Algebraische Transformationsgruppen und Invariantentheorie (1989).</li>
-  <li id="bib-GIT"><span class="stacks-bib-label">[MFK94]</span> David Mumford, John Fogarty, and Frances Kirwan, <em>Geometric invariant theory</em>, third ed., Ergebnisse der Mathematik und ihrer Grenzgebiete (2) [Results in Mathematics and Related Areas (2)], vol.&nbsp;34, Springer-Verlag, Berlin, 1994. \MR1304906 (95m:14012)</li>
-  <li id="bib-mochizuki95:_hurwit"><span class="stacks-bib-label">[Moc95]</span> Shinichi Mochizuki, <em>The geometry of the compactification of the Hurwitz scheme</em>, Publ. Res. Inst. Math. Sci. <strong>31</strong> (1995), no.&nbsp;3, 355&ndash;441. \MR1355945 (96j:14017)</li>
-  <li id="bib-ohbuchi:relations"><span class="stacks-bib-label">[Ohb97]</span> Akira Ohbuchi, <em>On some numerical relations of $d$-gonal linear systems</em>, J. Math. Tokushima Univ. <strong>31</strong> (1997), 7&ndash;10. \MR1618986 (99b:14005)</li>
+  <li id="bib-GIT"><span class="stacks-bib-label">[MFK94]</span> David Mumford, John Fogarty, and Frances Kirwan, <em>Geometric invariant theory</em>, third ed., Ergebnisse der Mathematik und ihrer Grenzgebiete (2) [Results in Mathematics and Related Areas (2)], vol.&nbsp;34, Springer-Verlag, Berlin, 1994. MR 1304906 (95m:14012)</li>
+  <li id="bib-mochizuki95:_hurwit"><span class="stacks-bib-label">[Moc95]</span> Shinichi Mochizuki, <em>The geometry of the compactification of the Hurwitz scheme</em>, Publ. Res. Inst. Math. Sci. <strong>31</strong> (1995), no.&nbsp;3, 355&ndash;441. MR 1355945 (96j:14017)</li>
+  <li id="bib-ohbuchi:relations"><span class="stacks-bib-label">[Ohb97]</span> Akira Ohbuchi, <em>On some numerical relations of $d$-gonal linear systems</em>, J. Math. Tokushima Univ. <strong>31</strong> (1997), 7&ndash;10. MR 1618986 (99b:14005)</li>
   <li id="bib-recillas:73"><span class="stacks-bib-label">[Rec73]</span> Sevin Recillas, <em>Maps between Hurwitz spaces</em>, Bol. Soc. Mat. Mexicana (2) <strong>18</strong> (1973), 59&ndash;63.</li>
-  <li id="bib-Stankova-Frenkel00:_Modul_Of_Trigon_Curves"><span class="stacks-bib-label">[SF00]</span> Zvezdelina&nbsp;E. Stankova-Frenkel, <em>Moduli of trigonal curves</em>, J. Algebraic Geom. <strong>9</strong> (2000), no.&nbsp;4, 607&ndash;662. \MRMr1775309 (2001h:14031)</li>
+  <li id="bib-Stankova-Frenkel00:_Modul_Of_Trigon_Curves"><span class="stacks-bib-label">[SF00]</span> Zvezdelina&nbsp;E. Stankova-Frenkel, <em>Moduli of trigonal curves</em>, J. Algebraic Geom. <strong>9</strong> (2000), no.&nbsp;4, 607&ndash;662. MR 1775309 (2001h:14031)</li>
   <li id="bib-teissier80:_resol_i"><span class="stacks-bib-label">[Tei80]</span> Bernard Teissier, <em>R&eacute;solution simultan&eacute;e, I</em>, S&eacute;minaire sur les Singularit&eacute;s des Surfaces, Lecture Notes in Mathematics, vol. 777, Springer, Berlin, 1980, pp.&nbsp;71&ndash;81.</li>
-  <li id="bib-tyomkin:irred"><span class="stacks-bib-label">[Tyo07]</span> Ilya Tyomkin, <em>On Severi varieties on Hirzebruch surfaces</em>, Int. Math. Res. Not. IMRN (2007), no.&nbsp;23, Art. ID rnm109, 31. \MR2380003 (2008m:14048)</li>
+  <li id="bib-tyomkin:irred"><span class="stacks-bib-label">[Tyo07]</span> Ilya Tyomkin, <em>On Severi varieties on Hirzebruch surfaces</em>, Int. Math. Res. Not. IMRN (2007), no.&nbsp;23, Art. ID rnm109, 31. MR 2380003 (2008m:14048)</li>
 </ol>
 </main>
 <footer class="stacks-footer">

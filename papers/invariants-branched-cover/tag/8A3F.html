@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -164,10 +168,10 @@
 <div class="stacks-lemma" id="lowG">
   <div class="stacks-env-head"><strong>Lemma&nbsp;2.7.</strong> <a href="../tag/8A3F.html" class="stacks-tag-link">(8A3F)</a></div>
   <div class="stacks-env-body"><p>Let $\alpha \colon R \to \P^1$ and $\beta \from X \to \P^1$ be degree $d$ covers where $R$ is a smooth rational curve and $X$ is a smooth elliptic curve. Then:</p>
-<ol><li>$E_{\alpha} = \sh O(1)^{\oplus d-1}$,</li>
-<li>$F_{\alpha} = \sh O(1)^{\oplus d-3} \oplus \sh O(2)^{\oplus \binom{d-2}{2}}$</li>
-<li>$E_{\beta} = \sh O(1)^{\oplus d-2} \oplus \sh O(2)$</li>
-<li>$F_{\beta} =  \sh O(2)^{\oplus \frac{d(d-3)}{2}}$</li></ol>
+<ol><li><p>$E_{\alpha} = \sh O(1)^{\oplus d-1}$,</p></li>
+<li><p>$F_{\alpha} = \sh O(1)^{\oplus d-3} \oplus \sh O(2)^{\oplus \binom{d-2}{2}}$</p></li>
+<li><p>$E_{\beta} = \sh O(1)^{\oplus d-2} \oplus \sh O(2)$</p></li>
+<li><p>$F_{\beta} =  \sh O(2)^{\oplus \frac{d(d-3)}{2}}$</p></li></ol>
 </div>
 </div>
 

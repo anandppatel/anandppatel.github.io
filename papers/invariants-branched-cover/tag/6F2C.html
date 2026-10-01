@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,9 +165,10 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Definition 3.5 (6F2C)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="A69B.html">&laquo; Lemma 3.4</a><span class="stacks-tag-current">Tag 6F2C</span><a href="BB4E.html">Corollary 3.6 &raquo;</a></div>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;3.5.</strong> <a href="../tag/6F2C.html" class="stacks-tag-link">(6F2C)</a></div>
-  <div class="stacks-env-body"><p>Let $F^{\bullet}$ be an increasing filtration of a vector space $A$, and let $B \subset A$ be a subspace.  We say that $F^{\bullet}$ <em>contains</em> $B$ if $B = F^{i}$ for some $i$.</p></div>
+  <div class="stacks-env-body"><p>Let $F^{\bullet}$ be an increasing filtration of a vector space $A$, and let $B \subset A$ be a subspace.  We say that $F^{\bullet}$ <em>contains</em> $B$ if $B = F^{i}$ for some $i$.</p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -163,29 +167,30 @@
 <h1 class="stacks-section-title">2.1. The Casnati-Ekedahl Resolution</h1>
 <p class="stacks-para">Let $X$ and $Y$ be integral schemes and $\alpha \from X \to Y$ a finite flat Gorenstein morphism of degree $d \geq 3$. The map $\alpha$ gives an exact sequence
 $$0 \to \cO_Y \to \alpha_* \cO_X \to {\cE_\alpha}^\vee \to 0,$$
-where $\cE = \cE_\alpha$ is a vector bundle of rank $(d-1)$ on $Y$, called the <em>Tschirnhausen bundle</em> of $\alpha$. Denote by $\omega_\alpha$ the dualizing sheaf of $\alpha$. Applying $\Hom_Y(-,\cO_Y)$ to (2.1), we get
+where $\cE = \cE_\alpha$ is a vector bundle of rank $(d-1)$ on $Y$, called the <em>Tschirnhausen bundle</em> of $\alpha$. Denote by $\omega_\alpha$ the dualizing sheaf of $\alpha$. Applying $\Hom_Y(-,\cO_Y)$ to (1), we get
 $$0 \to \cE \to \alpha_* \omega_\alpha \to \cO_Y \to 0.$$
 The map $\cE \to \alpha_* \omega_\alpha$ induces a map $\alpha^* \cE \to \omega_\alpha$.</p>
 <div class="stacks-theorem" id="thm-CE">
   <div class="stacks-env-head"><strong>Theorem&nbsp;2.1.</strong> <a href="../tag/A279.html" class="stacks-tag-link">(A279)</a></div>
-  <div class="stacks-env-body"><p>[<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-and-t-c87b2161">CE96</a>, Theorem&nbsp;2.1]
+  <div class="stacks-env-body"><p>[<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-and-t-ekedahl-covers-867f7259">CE96</a>, Theorem&nbsp;2.1]
   In the above setup, $\alpha^* \cE \to \omega_\alpha$ gives an embedding $\iota \from X \to \P \cE$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P \cE \to Y$ is the projection. Moreover, the subscheme $X \subset \P \cE$ can be described as follows.</p>
-<ol><li>The resolution of $\cO_X$ as an $\cO_{\P \cE}$-module has the form
+<ol><li><p>The resolution of $\cO_X$ as an $\cO_{\P \cE}$-module has the form
 $$\begin{split}
     0 \to \pi^* \cN_{d-2} (-d) \to \pi^* \cN_{d-3}(-d+2) \to \pi^*\cN_{d-4}(-d+3) \to \dots \\
     \dots \to \pi^*\cN_2(-3) \to \pi^*\cN_1(-2) \to \cO_{\P \cE} \to \cO_X \to 0,
   \end{split}$$
-where the $\cN_i$ are vector bundles on $Y$. Restricted to a point $y \in Y$, this sequence is the minimal free resolution of length $d$ zero dimensional scheme $X_y \subset \P \cE_y\cong \P^{d-2}$.</li>
-<li>The ranks of the $\cN_i$ are given by
-  $$\rk \cN_i = \frac{i(d-2-i)}{d-1} \binom{d}{i+1},$$</li>
-<li>We have $\cN_{d-2} \cong \det \cE$.</li>
-<li>Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying the functor
-$\Hom_{\cO_{\P \cE}}(-, \pi^* \cN_{d-2}(-d))$.</li></ol>
+where the $\cN_i$ are vector bundles on $Y$. Restricted to a point $y \in Y$, this sequence is the minimal free resolution of length $d$ zero dimensional scheme $X_y \subset \P \cE_y\cong \P^{d-2}$.</p></li>
+<li><p>The ranks of the $\cN_i$ are given by
+  $$\rk \cN_i = \frac{i(d-2-i)}{d-1} \binom{d}{i+1},$$</p></li>
+<li><p>We have $\cN_{d-2} \cong \det \cE$.</p></li>
+<li><p>Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying the functor
+$\Hom_{\cO_{\P \cE}}(-, \pi^* \cN_{d-2}(-d))$.</p></li></ol>
 </div>
 </div>
-<div class="stacks-commentary" id="">
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.2.</strong> <a href="../tag/00FE.html" class="stacks-tag-link">(00FE)</a></div>
-  <div class="stacks-env-body"><p>We will only use the case $Y=\P^1$, which was discovered by  Schreyer in [<a class="stacks-cite" href="../../../bibliography.html#bib-1-105-137-f49b6934">Sch86</a>, Corollary 4.4].</p></div>
+  <div class="stacks-env-body"><p>We will only use the case $Y=\P^1$, which was discovered by  Schreyer in [<a class="stacks-cite" href="../../../bibliography.html#bib-frank-olaf-schreyer-syzygies-of-canonical-d459e761">Sch86</a>, Corollary 4.4].</p>
+</div>
 </div>
 <p class="stacks-para">The branch divisor of $\alpha \from X \to Y$ is given by a section of $(\det \cE)^{\otimes 2}$. In particular, if $X$ is a curve of (arithmetic) genus $g$, $\alpha$ has degree $d$, and $Y = \P^1$, then
 $$\rk \cE = d-1 \text{ and } \deg \cE = g+d-1.$$</p>
@@ -194,7 +199,7 @@ $$\rk \cE = d-1 \text{ and } \deg \cE = g+d-1.$$</p>
 $$0 \to F \to \Sym^{2}E \to \alpha_{*}(\omega_{\alpha}^{\otimes 2}) \to 0.$$
 From this sequence, it is easy to see that $\rk F = d(d-3)/2$ and $\deg F = (d-3)(g+d-1)$.</p>
 <p class="stacks-para"><a href="/papers/invariants-branched-cover/tag/A279.html" class="stacks-ref-link">Theorem&nbsp;2.1 <span class="stacks-ref-tag">[A279]</span></a> allows us to associate to every cover $[\alpha \from C \to \P^1] \in \H_{d,g}$ a collection of vector bundles $(E, F, ... , N_{d-2})$ on $\P^1$. <a href="/papers/invariants-branched-cover/tag/2DEA.html" class="stacks-ref-link">Conjecture&nbsp;1.1 <span class="stacks-ref-tag">[2DEA]</span></a> expresses the natural expectation that these vector bundles are all <em>balanced</em> for a general cover $\alpha$ (we say a vector bundle $V$ is balanced if $h^{1}(\End V) = 0$).</p>
-<p class="stacks-para">To fix notation, we let $\zeta$ denote the divisor class associated to the line bundle $\cO_{\P E}(1)$ on a projective bundle $\P E$.  We consider $\P E$ to be the scheme $\Proj (\Sym^{*}E)$, as in [<a class="stacks-cite" href="../../../bibliography.html#bib-robin-hartshorne-algebraic-geometry-springer-verlag-f1a5caef">Har77</a>].  We let $f$ denote the class of a fiber of the projection $\pi \from \P E \to \P^1$.</p>
+<p class="stacks-para">To fix notation, we let $\zeta$ denote the divisor class associated to the line bundle $\cO_{\P E}(1)$ on a projective bundle $\P E$.  We consider $\P E$ to be the scheme $\Proj (\Sym^{*}E)$, as in [<a class="stacks-cite" href="../../../bibliography.html#bib-robin-hartshorne-algebraic-geometry-springer-verlag-204407d9">Har77</a>].  We let $f$ denote the class of a fiber of the projection $\pi \from \P E \to \P^1$.</p>
 
 <hr>
 <div class="stacks-comments"

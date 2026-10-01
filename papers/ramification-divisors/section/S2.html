@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 2 — Ramification divisors of general projections</title>
+  <title>Section 2: The projection-ramification map — Ramification divisors of general projections</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -127,7 +131,7 @@
     <a href="../index.html" class="stacks-paper-link">Ramification divisors of general projections</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 2: The projection-ramification map</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS7.html" aria-label="Previous: 1.7. Acknowledgments" title="Previous: 1.7. Acknowledgments">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.html" aria-label="Next: Section 3: Maximal variation for incompressible and non-defective $X$" title="Next: Section 3: Maximal variation for incompressible and non-defective $X$">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 2: The projection-ramification map</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS7.html" aria-label="Previous: Acknowledgments" title="Previous: Acknowledgments">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S3.html" aria-label="Next: Section 3: Maximal variation for incompressible and non-defective $X$" title="Next: Section 3: Maximal variation for incompressible and non-defective $X$">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 2. The projection-ramification map</h1>
 <p class="stacks-para">In this section, we define a projection-ramification map for a linear series on a proper, normal, variety $X$.
@@ -140,12 +144,13 @@ A <em>projection</em> is a linear series $(L, V)$ with $\dim V = r+1$.
 A <em>projection of $(L, W)$</em> is a projection $(L, V)$ with $V \subset W$.
 As a convention, we use $V$ for projections and $W$ for more general linear series.</p>
 <div class="stacks-definition" id="def-properlyramified">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.1.</strong> <a href="../tag/7FC0.html" class="stacks-tag-link">(7FC0)</a></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.1 (Properly ramified projection).</strong> <a href="../tag/7FC0.html" class="stacks-tag-link">(7FC0)</a></div>
   <div class="stacks-env-body"><p>We say that a projection $(L,V)$ is <em>properly ramified</em> if the evaluation homomorphism
 $$e \from V \otimes \O_{X} \to P(L)$$
 is an isomorphism over a general point in $X$.  If $(L,V)$ is properly ramified, its <em>ramification divisor</em>
 $$R(L,V) \subset X$$
-is the closure of the scheme defined by the determinant of $e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}}$.</p></div>
+is the closure of the scheme defined by the determinant of $e \from V \otimes \O_{X^{\rm sm}} \to P(L)|_{X^{\rm sm}}$.</p>
+</div>
 </div>
 <p class="stacks-para">In most cases, $L$ is clear from context, so we drop it from the notation and denote the ramification divisor simply by $R(V)$.</p>
 <div class="stacks-commentary" id="rem-Jacobian">
@@ -155,7 +160,8 @@ is the closure of the scheme defined by the determinant of $e \from V \otimes \O
   $$d \phi \from T_{X} \to \phi^* T_{\P V}$$
   on tangent spaces.
   The degeneracy locus is the zero locus of $\det \phi$, which in local coordinates, is given by the determinant of the Jacobian matrix $\left( \frac{\partial \phi_i}{\partial x_j} \right)$.
-  Therefore, the ramification divisor $R(L, V)$ is also often called the <em>Jacobian</em> of the linear series $(L, V)$ (see, for example, [<a class="stacks-cite" href="../../../bibliography.html#bib-i-v-dolgachev-classical-algebraic-geometry-61f0d74a">3</a>, 1.1.7]).</p></div>
+  Therefore, the ramification divisor $R(L, V)$ is also often called the <em>Jacobian</em> of the linear series $(L, V)$ (see, for example, [<a class="stacks-cite" href="../../../bibliography.html#bib-i-v-dolgachev-classical-algebraic-geometry-a03bb0fa">3</a>, 1.1.7]).</p>
+</div>
 </div>
 <p class="stacks-para">A projection $(L, V)$ gives the evaluation map
 $$e \from V \otimes \O_X \to L.$$
@@ -164,7 +170,8 @@ The following is an easy observation, whose proof we skip.</p>
 <div class="stacks-lemma" id="prop-proj">
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.3.</strong> <a href="../tag/2E59.html" class="stacks-tag-link">(2E59)</a></div>
   <div class="stacks-env-body"><p>The projection $(L, V)$ is properly ramified if and only if the map on tangent spaces induced by $p_{V,L}$ is generically an isomorphism.
-  In characteristic zero, this is equivalent to the condition that $p_{V,L}$ is dominant.</p></div>
+  In characteristic zero, this is equivalent to the condition that $p_{V,L}$ is dominant.</p>
+</div>
 </div>
 <p class="stacks-para">For a fixed $(L, W)$, the set of all projections of $(L, W)$ are parametrized by the Grassmannian $\Gr(r+1, W)$.
 The property of being properly ramified is a Zariski open condition on the Grassmannian.</p>
@@ -194,11 +201,12 @@ Then the map in (2.2) is non-zero at every point of $U$, and defines a map $U \t
 $$H^0(X, K_X \otimes L^{r+1})^* \otimes \O_{U} \to \det \mathcal V|_U^*.$$
 Note that $U$ is non-empty if and only if $W$ separates tangent vectors at a general point of $X$.</p>
 <div class="stacks-definition" id="def-ProjectionRamification">
-  <div class="stacks-env-head"><strong>Definition&nbsp;2.4.</strong> <a href="../tag/BA97.html" class="stacks-tag-link">(BA97)</a></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;2.4 (Projection-ramification map).</strong> <a href="../tag/BA97.html" class="stacks-tag-link">(BA97)</a></div>
   <div class="stacks-env-body"><p>Let $(L, W)$ be a linear series that separates tangent vectors at a general point of $X$.
   The <em>projection-ramification</em> map for $(L,W)$ is the rational map
   $$\rho_{(X,L,W)} \from \Gr(r+1, W) \dashrightarrow \P H^0(X, K_X \otimes L^{r+1})^*$$
-  defined on the non-empty open subset of properly ramified maps by (2.3).</p></div>
+  defined on the non-empty open subset of properly ramified maps by (2.3).</p>
+</div>
 </div>
 <p class="stacks-para">If any of $X$, $L$, or $W$ are clear from context, we drop them from the notation.
 In particular, for a non-degenerate $X \subset \P^n$, we denote by $\rho_X$ the map $\rho_{X,L,W}$  with $L = \O_X(1)$ and $W$ the image in $H^0(X, L)$ of $H^0(\P^n, \O(1))$.</p>

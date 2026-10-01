@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,17 +123,17 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <a href="../section/S4.SS4.html">4.4. Thirteen point conditions</a> / <span>Proof (5097)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="73C7.html">&laquo; Lemma 4.13</a><span class="stacks-tag-current">Tag 5097</span><a href="228E.html">Lemma 4.14 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5097.html" class="stacks-tag-link">(5097)</a></div>
   <div class="stacks-env-body"><p>This follows from combining a dimension count with the condition
   that $\Gamma_{13}$ is a general set. We only prove the $\Inc$
   statement &ndash; the other case proceeds mutatis mutandis.</p>
-<p>  Without losing generality, we need only prove the statement
+<p>Without losing generality, we need only prove the statement
   $(T,T^{*},\Lambda) \notin \Inc(p_{1})$.  As $\Dom(p_1)$ is
   irreducible and $24$-dimensional,
   $$\dim \Dom(p_1) \cap \Inc(p_1)  \leq 23.$$ And so, the locally closed
   set $U := \Dom(p_1) \cap \Inc(p_1) \cap \Fin$ is at most $23$-dimensional.</p>
-<p>  Every $(T,T^{*},\Lambda) \in U$ determines the $0$-dimensional, length
+<p>Every $(T,T^{*},\Lambda) \in U$ determines the $0$-dimensional, length
   $25$ scheme $\Base(\Lambda) \subset \P^{2}$. Let
   $$U' \subset U \times (\P^{2})^{12}$$ denote the set
   parametrizing quadruples $(T,T^{*},\Lambda,W)$ where
@@ -137,12 +141,13 @@
   $12$-tuple of points in $\P^{2}$ satisfying $w_i \in \Base(\Lambda)$
   for all $i$. Then the forgetful map $U' \to U$ is quasi-finite, and
   hence $$\dim U' \leq 23.$$</p>
-<p>  The map $U' \to (\P^{2})^{12}$ defined by
+<p>The map $U' \to (\P^{2})^{12}$ defined by
   $(T,T^{*}, \Lambda, W) \mapsto W$ therefore cannot dominate
-  $(\P^{2})^{12}$, and hence the set of $13$ \text{general} points
+  $(\P^{2})^{12}$, and hence the set of $13$ <span>general</span> points
   $\{p_1, \dots, p_{13}\}$ cannot be contained in $\Base(\Lambda)$ for
   $(T,T^{*},\Lambda) \in \bigcap_{i=1}^{13}\Dom(p_{i}) \cap
-  \Inc(p_{1}) \cap \Fin$, implying the lemma.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  \Inc(p_{1}) \cap \Fin$, implying the lemma.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

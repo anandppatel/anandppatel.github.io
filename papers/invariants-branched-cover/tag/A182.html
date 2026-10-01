@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,7 +165,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Proof of Lemma 3.14 [044A] (A182)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="59F6.html">&laquo; Proof of Lemma 3.15 [8893] </a><span class="stacks-tag-current">Tag A182</span><a href="2870.html">Definition 3.16 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>.</em> <a href="../tag/A182.html" class="stacks-tag-link">(A182)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">We proceed by induction on the length of the chain $\chain{}$. If there is only one component, the claim states that for
 any endomorphism $\overline{M}:V_1|_\infty \to V_1|_\infty$ which sends the restriction of the directrix $W|_{\infty}$  to itself,
@@ -172,40 +176,43 @@ example, for $a=2, b=3$, we have
 $$\End V_1 =
 \left[
 \begin{array}{cc|ccc}
-\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\
-\sh{O} & \sh{O} & \sh{O}(1) & \sh{O}(1) & \sh{O}(1) \\ \hline
-\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
-\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}  \\
-\sh{O}(-1) & \sh{O}(-1) & \sh{O} & \sh{O} & \sh{O}
+\sh{O} &amp; \sh{O} &amp; \sh{O}(1) &amp; \sh{O}(1) &amp; \sh{O}(1) \\
+\sh{O} &amp; \sh{O} &amp; \sh{O}(1) &amp; \sh{O}(1) &amp; \sh{O}(1) \\ \hline
+\sh{O}(-1) &amp; \sh{O}(-1) &amp; \sh{O} &amp; \sh{O} &amp; \sh{O}  \\
+\sh{O}(-1) &amp; \sh{O}(-1) &amp; \sh{O} &amp; \sh{O} &amp; \sh{O}  \\
+\sh{O}(-1) &amp; \sh{O}(-1) &amp; \sh{O} &amp; \sh{O} &amp; \sh{O}
 \end{array}
 \right]$$
 The global sections of $\End(V_1)$ restrict to an arbitrary block upper triangular matrix at $\infty$. And being
 block upper triangular exactly means that the directrix is preserved. This proves the case for one component.</p>
 <p class="stacks-para">For the induction step, we are given an endomorphism $\overline{M}$ of $V_{j-1}|_{\infty}$ preserving $L^\bullet_j$,
 and we want to find $M \in H^0(\End(V_{j-1})$ such that</p>
-<ul><li>$M|_{\infty}=\overline{M}$, and</li>
-<li>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</li></ul>
-<p class="stacks-para">This is enough for our purposes, because by induction we can choose global sections of $\End(V_i)$ for $i<j-1$ such that
-all differences $D_i$ are zero, for $i<j-1$, and produce $M|_0$ over the $(j-1)$-th node.</p>
+<ul><li><p>$M|_{\infty}=\overline{M}$, and</p></li>
+<li><p>$M|_0$ is an endomorphism of $V_{j-1}|_0$ respecting $L^\bullet_{j-1}$.</p></li></ul>
+<p class="stacks-para">This is enough for our purposes, because by induction we can choose global sections of $\End(V_i)$ for $i&lt;j-1$ such that
+all differences $D_i$ are zero, for $i&lt;j-1$, and produce $M|_0$ over the $(j-1)$-th node.</p>
 <p class="stacks-para">We will choose an appropriate splitting of $V_{j-1}$ so that endomorphisms preserving the flags $L^\bullet_{j-1}$
 and $L^\bullet_j$ become block matrices.</p>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;3.16.</strong> <a href="../tag/2870.html" class="stacks-tag-link">(2870)</a></div>
   <div class="stacks-env-body"><p>An ordered basis $v_1,\ldots, v_n$ <em>generates the flag</em> $F^\bullet$ if each $F^i$ is the span of
-$v_1,v_2,\ldots, v_{n_i}$ for some $n_i$.</p></div>
+$v_1,v_2,\ldots, v_{n_i}$ for some $n_i$.</p>
+</div>
 </div>
 <div class="stacks-env" id="basis">
   <div class="stacks-env-head"><strong>Claim&nbsp;3.17.</strong> <a href="../tag/BD5C.html" class="stacks-tag-link">(BD5C)</a></div>
   <div class="stacks-env-body"><p>We may choose an ordered basis $v_1,\ldots, v_n$ of $V_{j-1}|_0$ generating $L^\bullet_{j-1}$ and
-such that $W_{j-1}|_{0}=\langle v_k,v_{k+1}, \ldots, v_n \rangle$.</p></div>
+such that $W_{j-1}|_{0}=\langle v_k,v_{k+1}, \ldots, v_n \rangle$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/BD5C.html" class="stacks-ref-link">Claim&nbsp;3.17 <span class="stacks-ref-tag">[BD5C]</span></a>.</em> <a href="../tag/2D76.html" class="stacks-tag-link">(2D76)</a></div>
   <div class="stacks-env-body"><p>We use the same idea as in the proof of <a href="/papers/invariants-branched-cover/tag/8893.html" class="stacks-ref-link">Lemma&nbsp;3.15 <span class="stacks-ref-tag">[8893]</span></a>. Complete $L^\bullet_{j-1}$
 and $G^\bullet=(0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ to generic complete flags $\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
 Since $G^\bullet$ is transverse to $L^\bullet_{j-1}$ by assumption, so is
 $\widehat{L}^\bullet_{j-1}$ and $\widehat{G}^\bullet$.
-Choose $v_i$ such that $\langle v_i \rangle = \widehat{L}^i_{j-1} \cap \widehat{G}^{n-i-1}$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+Choose $v_i$ such that $\langle v_i \rangle = \widehat{L}^i_{j-1} \cap \widehat{G}^{n-i-1}$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Note that the modification $L^\bullet_{j-1} \wedge (0 \subset W_{j-1}|_{0} \subset V_{j-1}|_0)$ is generated by the
 ordered basis $(v_k,v_{k+1},\ldots, v_n, v_1, v_2, \ldots, v_{k-1})$.</p>
@@ -214,20 +221,20 @@ For convenience, we will use block notation, separating the vectors generating $
 <p class="stacks-para">$$M =
 \left[
 \begin{array}{c|c}
-M(V/W,V/W) & M(W,V/W) \\ \hline
-M(V/W,W) & M(W,W)
+M(V/W,V/W) &amp; M(W,V/W) \\ \hline
+M(V/W,W) &amp; M(W,W)
 \end{array}
 \right]$$
 We want $M|_0$ to respect the flag $L^\bullet_{j-1}$, and $M|_\infty$ to be the given matrix $\overline{M}$ respecting the $L_j$ flag. In this block notation this
 translates into the following conditions:</p>
-<ol><li>The matrix $M(V/W,V/W)$ is upper block triangular when restricted to both zero and infinity (for the same block shapes). The entries of
-	$M(V/W,V/W)$ are valued in $\sh{O}_{\P^1}$, so we must take the constant matrix specified by $\overline{M}$.</li>
-<li>The same applies for the block $M(W,W)$: we want it to be upper block triangular at zero, with the restriction at infinity specified by $\overline{M}$.  Since the matrix $M(W,W)$ is valued in $\sh{O}_{\P^1}$, we must use a constant matrix.</li>
-<li>The entries of $M(W,V/W)$ are valued in $\sh{O}_{\P^1}(-1)$, so it has to be the zero matrix. This poses no problems, because at infinity the
-	corresponding block of $\overline{M}$ is automatically zero to begin with.</li>
-<li>Finally, the block $M(V/W,W)$ must restrict to a specified matrix  over infinity (given by $\overline{M}$), but has to vanish over zero. This can be
+<ol><li><p>The matrix $M(V/W,V/W)$ is upper block triangular when restricted to both zero and infinity (for the same block shapes). The entries of
+	$M(V/W,V/W)$ are valued in $\sh{O}_{\P^1}$, so we must take the constant matrix specified by $\overline{M}$.</p></li>
+<li><p>The same applies for the block $M(W,W)$: we want it to be upper block triangular at zero, with the restriction at infinity specified by $\overline{M}$.  Since the matrix $M(W,W)$ is valued in $\sh{O}_{\P^1}$, we must use a constant matrix.</p></li>
+<li><p>The entries of $M(W,V/W)$ are valued in $\sh{O}_{\P^1}(-1)$, so it has to be the zero matrix. This poses no problems, because at infinity the
+	corresponding block of $\overline{M}$ is automatically zero to begin with.</p></li>
+<li><p>Finally, the block $M(V/W,W)$ must restrict to a specified matrix  over infinity (given by $\overline{M}$), but has to vanish over zero. This can be
 	achieved, because all the entries are valued in $\sh{O}_{\P^1}(1)$, so we may take linear functions interpolating between arbitrary values
-	at zero and infinity.</li></ol>
+	at zero and infinity.</p></li></ol>
 <p class="stacks-para">This completes the proof <a href="/papers/invariants-branched-cover/tag/044A.html" class="stacks-ref-link">Lemma&nbsp;3.14 <span class="stacks-ref-tag">[044A]</span></a>, and hence by induction the proof of <a href="/papers/invariants-branched-cover/tag/631D.html" class="stacks-ref-link">Theorem&nbsp;3.9 <span class="stacks-ref-tag">[631D]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
 </div>

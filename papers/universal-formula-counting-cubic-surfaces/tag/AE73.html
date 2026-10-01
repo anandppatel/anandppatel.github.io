@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,14 +132,14 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS5.html">2.5. Cubic surfaces as blow-ups</a> / <span>Proof (AE73)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="63B3.html">&laquo; Proposition 2.10</a><span class="stacks-tag-current">Tag AE73</span><a href="E785.html">Definition 2.11 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="63B3.html">&laquo; Proposition 2.5.2</a><span class="stacks-tag-current">Tag AE73</span><a href="E785.html">Definition 2.5.3 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/AE73.html" class="stacks-tag-link">(AE73)</a></div>
   <div class="stacks-env-body"><p>Let $\pi \colon X \to S$ be the blow-up map.
   Since $Z$ is curvilinear, $X$ has at worst $A_n$ singularities.
   Indeed, if $Z$ is isomorphic to $\spec k[t]/t^{n+1}$ at a point $z$ in its support, then $X$ is singular at a unique point of $\pi^{-1}(z)$; this singularity is of type $A_n$.
   Note that $E_z := \pi^{-1}(z)$ (taken with the reduced structure) is isomorphic to $\P^1$.</p>
-<p>  Let $E \subset X$ be the exceptional divisor, namely, the Cartier divisor defined by the ideal $\pi^{-1}\mathcal{I}_Z$.
+<p>Let $E \subset X$ be the exceptional divisor, namely, the Cartier divisor defined by the ideal $\pi^{-1}\mathcal{I}_Z$.
   Over the point $z$ as above, $E$ has multiplicity $n$ along the component $E_z$.
   Furthermore, we have $(nE_z)^2 = -n$, and hence $E^2 = -(d-3)$.
   Also, see that we have
@@ -146,7 +150,7 @@
   $$\pi_* \left( \omega_X^{-1} \right) = \mathcal{I}_Z \otimes \omega_S^{-1}.$$
   By our assumption, $H^0\left(\mathcal{I}_Z \otimes \omega_S^{-1}\right)$ is $4$-dimensional and its base-locus is precisely $Z$.
   Hence $H^0\left( X, \omega_X^{-1} \right)$ is $4$-dimensional and base-point free.</p>
-<p>  For the vanishing of higher cohomology, we induct on $n$.
+<p>For the vanishing of higher cohomology, we induct on $n$.
   Since $X$ is a rational surface with rational singularities, we have $h^1(\O_X) = h^1(\omega_X) = 0$.
   Let $C \subset X$ be the zero locus of a general section of $\omega_X^{-1}$.
   By Bertini's theorem, $C$ is smooth and by the adjunction formula, it has arithmetic genus $1$.
@@ -155,24 +159,25 @@
   shows that $h^0(\O_C) = 1$, and hence $C$ is connected.
   Twisting the above sequence by $\omega_X^{-n}$ gives
   $$0 \to \omega_X^{-n+1} \to \omega_X^{-n} \to \omega_X^{-n}|_C \to 0.$$
-  The restriction $\omega_X^{-n}|_C$ has degree $3n$, which is positive if $n$ is positive, and hence $h^i\left(\omega_X^{-n}|_C\right) = 0$ for $i > 0$.
-  By applying the long exact sequence in cohomology, we see that if $i > 0$, then $h^i(\omega_X^{-n+1}) = 0$ implies $h^i(\omega_X^{-n}) = 0$.
-  By induction on $n$, we conclude $h^i(\omega_X^{-n}) = 0$ for all $n \geq 0$ and $i > 0$.</p>
-<p>  To get the degree of the image of $X \to \P^3$, we compute the self-intersection $c_1(\omega_X)^2$.
+  The restriction $\omega_X^{-n}|_C$ has degree $3n$, which is positive if $n$ is positive, and hence $h^i\left(\omega_X^{-n}|_C\right) = 0$ for $i &gt; 0$.
+  By applying the long exact sequence in cohomology, we see that if $i &gt; 0$, then $h^i(\omega_X^{-n+1}) = 0$ implies $h^i(\omega_X^{-n}) = 0$.
+  By induction on $n$, we conclude $h^i(\omega_X^{-n}) = 0$ for all $n \geq 0$ and $i &gt; 0$.</p>
+<p>To get the degree of the image of $X \to \P^3$, we compute the self-intersection $c_1(\omega_X)^2$.
   Using (2.4) and $E^2 = -(d-3)$, we compute
   $$c_1(\omega_X)^2 = c_1(\omega_{S})^2 - d + 3 = 3.$$
   Thus, either the image is a hyperplane $\Pi$ and the map $X \to \Pi$ has degree 3, or the image is a cubic surface $Y$ and the map $X \to Y$ is birational.
   We rule out the first possibility since the map $X \to \P^3$ is defined by linearly independent sections, and hence does not factor through a hyperplane.</p>
-<p>  By Riemann&ndash;Roch, we get that $\chi(X,\omega_X^{-n}) = \chi(Y, \O(n))$.
-  We also know that for $i > 0$ and $n \geq 0$, both $h^i(X, \omega_X^{-n})$ and $h^i(Y, \O(n))$ vanish.
+<p>By Riemann&ndash;Roch, we get that $\chi(X,\omega_X^{-n}) = \chi(Y, \O(n))$.
+  We also know that for $i &gt; 0$ and $n \geq 0$, both $h^i(X, \omega_X^{-n})$ and $h^i(Y, \O(n))$ vanish.
   Hence, we get $h^0(X, \omega_X^{-n}) = h^0(Y, \O(n))$.
   Recall that, the $n$-th graded component $S_n$ of the homogeneous coordinate ring of $Y$ is precisely $H^0(Y, \O(n))$.
   Since $X \to Y$ is surjective, the natural map $S_n \to H^0(X, \omega_X^{-n})$ is injective.
   Since the dimensions of the source and the target are equal, it must be an isomorphism.</p>
-<p>  From the isomorphism $S \cong \bigoplus_{n \geq 0} H^0(X, \omega_X^{-n})$, we get
+<p>From the isomorphism $S \cong \bigoplus_{n \geq 0} H^0(X, \omega_X^{-n})$, we get
   $$Y = \Proj\left( \bigoplus_{n \geq 0}H^0\left(X, \omega_X^{-1} \right) \right).$$
   Since $X$ is normal, so is $Y$.
-  It is known that an irreducible, normal, rational cubic surface, such as $Y$, only has rational double point (ADE) singularities [<a class="stacks-cite" href="../../../bibliography.html#bib-j-w-bruce-and-c-t-d5f2db25">9</a>].<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  It is known that an irreducible, normal, rational cubic surface, such as $Y$, only has rational double point (ADE) singularities [<a class="stacks-cite" href="../../../bibliography.html#bib-j-w-bruce-and-c-t-42827bb3">9</a>].<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

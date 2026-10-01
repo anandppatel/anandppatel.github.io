@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,17 +165,18 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Balanced $F$-bundles and a maximal rank problem</a> / <span>Proof (46C7)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6DA6.html">&laquo; Lemma 4.8</a><span class="stacks-tag-current">Tag 46C7</span><a href="6759.html">Lemma 4.9 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/46C7.html" class="stacks-tag-link">(46C7)</a></div>
   <div class="stacks-env-body"><p>We use induction on $n$. For $n=1$, we are simply parametrizing rational normal curves in $\P^r$ (possibly nodal), and their
-parameter space is irreducible of dimension $(r-1)(r+3)$, as we wanted to show. </p>
+parameter space is irreducible of dimension $(r-1)(r+3)$, as we wanted to show.</p>
 <p>For the induction
 step, notice that the space $\MC_{r,n}$ admits a dominant forgetful morphism to $\MC_{r,n-1}$ by forgetting the last
 component. It is enough to show that the fibers are irreducible of dimension $2r+1$.
 The fiber over $R_1 \cup \ldots R_{n-1} \in \MC_{r,n-1}$ is an open subset of the scheme of rational normal curves $R_n$ meeting
 $R_{n-1}$ in $r+2$ points. This is irreducible, since upon fixing the $r+2$ points of intersection,
-the space of rational normal curves through them is isomorphic to the moduli space $\overline{\mathcal{M}}_{r+2,0}$, which has dimension $r-1$. (This is the  <em>Kapranov model</em> of $\overline{\mathcal{M}}_{r+2,0}$ as in [<a class="stacks-cite" href="../../../bibliography.html#bib-m-m-kapranov-veronese-curves-and-e74a929d">Kap93</a>].)
-In total, the fiber of the forgetful map has dimension $(r+2)+(r-1)=2r+1$, which allows us to conclude the lemma.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+the space of rational normal curves through them is isomorphic to the moduli space $\overline{\mathcal{M}}_{r+2,0}$, which has dimension $r-1$. (This is the  <em>Kapranov model</em> of $\overline{\mathcal{M}}_{r+2,0}$ as in [<a class="stacks-cite" href="../../../bibliography.html#bib-m-m-kapranov-veronese-curves-and-7810faab">Kap93</a>].)
+In total, the fiber of the forgetful map has dimension $(r+2)+(r-1)=2r+1$, which allows us to conclude the lemma.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

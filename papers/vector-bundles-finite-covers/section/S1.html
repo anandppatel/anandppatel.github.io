@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 1 — Vector bundles and finite covers</title>
+  <title>Section 1: Introduction — Vector bundles and finite covers</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -115,11 +119,12 @@ This is the bundle whose fiber over $y \in Y$ is the vector space of functions o
 In this paper, we address the following basic question: which vector bundles on a given $Y$ arise in this way?
 We are particularly interested in cases where $X$ and $Y$ are smooth projective varieties.</p>
 <p class="stacks-para">Our main result is that, up to a twist, every vector bundle on a smooth projective curve $Y$ arises from a branched cover $X \to Y$ with smooth projective $X$.
-Let $d$ be a positive integer and let $\k$ be an algebraically closed field with $\charac \k = 0$ or $\charac \k > d$.</p>
+Let $d$ be a positive integer and let $\k$ be an algebraically closed field with $\charac \k = 0$ or $\charac \k &gt; d$.</p>
 <div class="stacks-theorem" id="thm-main">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/7AFF.html" class="stacks-tag-link">(7AFF)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1 (Main).</strong> <a href="../tag/7AFF.html" class="stacks-tag-link">(7AFF)</a></div>
   <div class="stacks-env-body"><p>Let $Y$ be a smooth  projective curve over $k$ and let $E$ be a vector bundle of rank $(d-1)$ on $Y$.
-  There exists an integer $n$ (depending on $E$) such that for any line bundle $L$ on $Y$ of degree at least $n$, there exists a smooth curve $X$ and a finite map $\phi \from X \to Y$ of degree $d$ such that $\phi_* \O_X$ is isomorphic to $\O_Y \oplus E^{\vee} \otimes L^{\vee}$.</p></div>
+  There exists an integer $n$ (depending on $E$) such that for any line bundle $L$ on $Y$ of degree at least $n$, there exists a smooth curve $X$ and a finite map $\phi \from X \to Y$ of degree $d$ such that $\phi_* \O_X$ is isomorphic to $\O_Y \oplus E^{\vee} \otimes L^{\vee}$.</p>
+</div>
 </div>
 <p class="stacks-para">The reason for the $\O_Y$ summand is as follows.
 Pull-back of functions gives a map $\O_Y \to \phi_* \O_X$, which admits a splitting by $1/d$ times the trace map.
@@ -127,8 +132,8 @@ Therefore, every bundle of the form $\phi_* \O_X$ contains $\O_Y$ as a direct su
 The dual of the remaining direct summand is called the <em>Tschirnhausen bundle</em> and is denoted by $E = E_\phi$ (the dual is taken as a convention.)
 <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> says that on a smooth projective curve, a sufficiently positive twist of every vector bundle is Tschirnhausen.</p>
 <p class="stacks-para">The reason for needing the twist is a bit more subtle, and arises from some geometric restrictions on Tschirnhausen bundles.
-For $Y = \P^n$ and a smooth $X$, the Tschirnhausen bundle $E$ is ample by a result of Lazarsfeld [<a class="stacks-cite" href="../../../bibliography.html#bib-lazarsfeld-f0940148">22</a>].
-For more general $Y$ and smooth $X$, it enjoys several positivity properties as shown in [<a class="stacks-cite" href="../../../bibliography.html#bib-peternell-and-a-1ddbc543">27</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-peternell-and-a-1ddbc543">28</a>].
+For $Y = \P^n$ and a smooth $X$, the Tschirnhausen bundle $E$ is ample by a result of Lazarsfeld [<a class="stacks-cite" href="../../../bibliography.html#bib-r-lazarsfeld-a-barth-type-theorem-577a9fe4">22</a>].
+For more general $Y$ and smooth $X$, it enjoys several positivity properties as shown in [<a class="stacks-cite" href="../../../bibliography.html#bib-t-peternell-and-a-j-sommese-57f57cf3">27</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-t-peternell-and-a-j-sommese-5498ad25">28</a>].
 The precise necessary and sufficient conditions for being Tschirnhausen (without the twist) are unknown, and seem to be delicate even when $Y = \P^1$.</p>
 <p class="stacks-para">The attempt at extending <a href="/papers/vector-bundles-finite-covers/tag/7AFF.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[7AFF]</span></a> to higher dimensional varieties $Y$ presents interesting new challenges.
 We discuss them through some examples in Section&nbsp;4.

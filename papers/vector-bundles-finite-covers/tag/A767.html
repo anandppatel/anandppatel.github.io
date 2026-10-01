@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,20 +114,21 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Higher dimensions</a> / <span>Proof (A767)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="9111.html">&laquo; Proposition 4.4</a><span class="stacks-tag-current">Tag A767</span><a href="D704.html">Proposition 4.5 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/A767.html" class="stacks-tag-link">(A767)</a></div>
-  <div class="stacks-env-body"><p>The proof relies on [<a class="stacks-cite" href="../../../bibliography.html#bib-lazarsfeld-f0940148">22</a>, Proposition&nbsp;3.1] which states that for a branched cover $\phi \from X \to \P^{r}$ of degree $d \leq r-1$ with $X$ smooth and connected, the pullback map
+  <div class="stacks-env-body"><p>The proof relies on [<a class="stacks-cite" href="../../../bibliography.html#bib-r-lazarsfeld-a-barth-type-theorem-577a9fe4">22</a>, Proposition&nbsp;3.1] which states that for a branched cover $\phi \from X \to \P^{r}$ of degree $d \leq r-1$ with $X$ smooth and connected, the pullback map
   $$\phi^{*} \from \Pic(\P^{r}) \to \Pic X$$
   is an isomorphism.
   In particular, the dualizing sheaf $\omega_\phi$ is isomorphic to $\phi^* \O(l)$ for some $l$.
-  Note that $\omega_\phi$ is represented by an effective divisor (the ramification divisor), so $ l > 0$.
+  Note that $\omega_\phi$ is represented by an effective divisor (the ramification divisor), so $ l &gt; 0$.
   Therefore, we get
   $$\O_{\P^r} \oplus E = \phi_* \omega_\phi = \phi_* \O(l) = \O_{\P^r}(l) \oplus E^\vee(l).$$
   Since $X$ is connected, $E^\vee$ has no global sections.
   Using this, it is easy to conclude from the above sequence that $\O_{\P^r}(l)$ is a summand of $E$.</p>
-<p>  Suppose $E(n)$ is a Tschirnhausen bundle of a smooth connected cover for infinitely many $n$.
+<p>Suppose $E(n)$ is a Tschirnhausen bundle of a smooth connected cover for infinitely many $n$.
   Applying the reasoning above with $E$ replaced by $E(n)$ shows that $E$ must have line bundle summands of infinitely many degrees.
-  Since this is impossible, the proposition follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since this is impossible, the proposition follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,9 +165,10 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Definition 3.8 (B59A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="4A0C.html">&laquo; Definition 3.7</a><span class="stacks-tag-current">Tag B59A</span><a href="631D.html">Theorem 3.9 &raquo;</a></div>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;3.8.</strong> <a href="../tag/B59A.html" class="stacks-tag-link">(B59A)</a></div>
-  <div class="stacks-env-body"><p>We say that a vector bundle $V$ on $\chain{} = P_{1} \cup \ldots \cup P_{k}$ as above <em>has transverse directrices</em> if the filtrations $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ meet transversely for each node $p_{j}$.</p></div>
+  <div class="stacks-env-body"><p>We say that a vector bundle $V$ on $\chain{} = P_{1} \cup \ldots \cup P_{k}$ as above <em>has transverse directrices</em> if the filtrations $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ meet transversely for each node $p_{j}$.</p>
+</div>
 </div>
 
 <hr>

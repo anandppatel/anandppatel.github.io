@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>8.2. Preliminary lemmas — Equivariant Degenerations of Plane Curve Orbits</title>
+  <title>7.2. Preliminary lemmas — Equivariant Degenerations of Plane Curve Orbits</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,19 +91,20 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Degenerations III: Quartic Plane Curves</a> / <span>8.2. Preliminary lemmas</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S8.SS1.html" aria-label="Previous: 8.1. Degeneration to the double conic" title="Previous: 8.1. Degeneration to the double conic">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S8.SS3.html" aria-label="Next: 8.3. How $C_{A_{6}}$ arises" title="Next: 8.3. How $C_{A_{6}}$ arises">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 7: Degenerations III: Quartic Plane Curves</a> / <span>7.2. Preliminary lemmas</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S8.SS1.html" aria-label="Previous: 7.1. Degeneration to the double conic" title="Previous: 7.1. Degeneration to the double conic">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S8.SS3.html" aria-label="Next: 7.3. How $C_{A_{6}}$ arises" title="Next: 7.3. How $C_{A_{6}}$ arises">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">8.2. Preliminary lemmas</h1>
+<h1 class="stacks-section-title">7.2. Preliminary lemmas</h1>
 <div class="stacks-lemma" id="interpolate">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;8.1.</strong> <a href="../tag/0A81.html" class="stacks-tag-link">(0A81)</a></div>
+  <div class="stacks-env-head"><strong>Lemma&nbsp;7.1.</strong> <a href="../tag/0A81.html" class="stacks-tag-link">(0A81)</a></div>
   <div class="stacks-env-body"><p>Let $Q \subset \P V$ be a smooth conic and $p\in Q$ a point. Let $p_1$
 and $p_2$ (respectively $p_1$) be points of $\mb{P} V$ so that $p_1$,
 $p_2$ and $p$ are not collinear (respectively not lying on the tangent
 line to $Q$ at $p$).  Then, there exists a unique smooth conic
 $Q' \subset \P V$ meeting $Q$ at $p$ with multiplicity 3 (respectively
-4) and containing $p_1$ and $p_2$ (respectively $p_1$).</p></div>
+4) and containing $p_1$ and $p_2$ (respectively $p_1$).</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5654.html" class="stacks-tag-link">(5654)</a></div>
   <div class="stacks-env-body"><p>Let $Z \subset Q$ be the scheme of length 3 (respectively 4)
   supported at $p\in Q$.  By counting conditions, for both $n=3,4$ we
@@ -109,24 +114,26 @@ $Q' \subset \P V$ meeting $Q$ at $p$ with multiplicity 3 (respectively
   the union of two distinct lines (since $Z$ is not contained in a
   line, and also $p$, $p_{1}$, $p_{2}$ are not collinear). Therefore
   the conic $Q'$ is smooth. It is unique because of Bezout's theorem.</p>
-<p>  If $n=4$, then $Q'$ cannot be a double line since the underlying
+<p>If $n=4$, then $Q'$ cannot be a double line since the underlying
   line would then have to be tangent to $Q$ at $p$, but the tangent
   line does not pass through $p_1$ by assumption. We also cannot have
   $Q'$ be the union of two distinct lines or else $Q'$ can only meet
   $Q$ at $p$ with maximum multiplicity 3. Therefore $Q'$ is smooth,
-  and again Bezout's theorem provides uniqueness.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  and again Bezout's theorem provides uniqueness.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-lemma" id="coniclemma">
-  <div class="stacks-env-head"><strong>Lemma&nbsp;8.2.</strong> <a href="../tag/8FD0.html" class="stacks-tag-link">(8FD0)</a></div>
+  <div class="stacks-env-head"><strong>Lemma&nbsp;7.2.</strong> <a href="../tag/8FD0.html" class="stacks-tag-link">(8FD0)</a></div>
   <div class="stacks-env-body"><p>Let $n$ be such that $3\leq n\leq 7$ and let $C \subset \P V$ be a
 general quartic curve with an $A_n$ singular point. Then, there exists
 a smooth conic meeting $C$ at $C$'s singular point with multiplicity
-$n+1$ and meeting $C$ transversely at $7-n$ other points.</p></div>
+$n+1$ and meeting $C$ transversely at $7-n$ other points.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/D1B5.html" class="stacks-tag-link">(D1B5)</a></div>
   <div class="stacks-env-body"><p>We will do this case by case. Let $p\in C$ be the singular point.</p>
-<ul><li><strong><strong>Case $n=3$</strong>:</strong> For the case of a tacnode $n=3$, the
+<ul><li><p><strong><strong>Case $n=3$</strong>:</strong> For the case of a tacnode $n=3$, the
     desired conic is required to pass through $p$ with a specified
     tangent direction and otherwise intersect $C$ transversely. There
     is a $3$-dimensional linear system
@@ -137,11 +144,11 @@ $n+1$ and meeting $C$ transversely at $7-n$ other points.</p></div>
   union of the unique line passing through $p$ in the specified
   tangent direction together with a line intersecting $C$ transversely
   provides an example.</p>
-<p>  Since the set of smooth conics in $\Lambda$ is also nonempty, there
+<p>Since the set of smooth conics in $\Lambda$ is also nonempty, there
   exists a smooth conic passing through $p$ in the specified tangent
   direction and intersecting $C$ at four other points transversely,
-  finishing this case..</li>
-<li><strong><strong>Case $n=4$</strong>:</strong> For the case $n=4$, (a <em>ramphoid cusp</em>)
+  finishing this case..</p></li>
+<li><p><strong><strong>Case $n=4$</strong>:</strong> For the case $n=4$, (a <em>ramphoid cusp</em>)
   we need to resort to actual equations. The space of conics meeting
   $C$ at $p$ to order 5 is the same as the space of conics containing
   a particular length 3 curvilinear scheme $Z$, and we can assume
@@ -150,7 +157,7 @@ $n+1$ and meeting $C$ transversely at $7-n$ other points.</p></div>
   open, we can specialize $C$ while preserving $p$ and $Z$, and it
   suffices to prove the result for a specialization of $C$. To this
   end, consider the particular rational quartic curve $C_0$ given by
-$$(X^2+YZ)^2+X^3Y=0,$$ which has a rhamphoid cusp ($A_4$ singularity) at $[0:0:1]$ and an ordinary cusp at $[0:1:0]$.<span class="stacks-qed" aria-hidden="true"></span></p>
+$$(X^2+YZ)^2+X^3Y=0,$$ which has a rhamphoid cusp ($A_4$ singularity) at $[0:0:1]$ and an ordinary cusp at $[0:1:0]$.</p>
 <p>Consider the conic $Q_{a,b}$ given by $$X^2+YZ+aXY+bY^2=0.$$ If we
 reduce the equation of $C_0$ modulo the equation of $Q_{a,b}$, then we
 get the same result as reducing the equation
@@ -162,15 +169,15 @@ check the remaining three lines are distinct for general $a,b$. This
 can be shown by noting that the discriminant of the cubic polynomial
 $X^3+a^2X^2Y+2abXY^2+b^2Y^3$ does not vanish identically (indeed it is
 not even homogenous). Thus, for general $a,b$, $Q_{a,b}$ furnishes the
-conic we want.</li>
-<li><strong><strong>Cases $n=5,6$</strong>:</strong> For the cases $n=5,6$, we use
-  <a href="/papers/equivariant-degenerations/tag/0A81.html" class="stacks-ref-link">Lemma&nbsp;8.1 <span class="stacks-ref-tag">[0A81]</span></a>. In both cases, we have a curvilinear scheme $Z$
+conic we want.</p></li>
+<li><p><strong><strong>Cases $n=5,6$</strong>:</strong> For the cases $n=5,6$, we use
+  <a href="/papers/equivariant-degenerations/tag/0A81.html" class="stacks-ref-link">Lemma&nbsp;7.1 <span class="stacks-ref-tag">[0A81]</span></a>. In both cases, we have a curvilinear scheme $Z$
   of length $n-2$ contained in a conic, and we need to find a smooth
   conic containing $Z$ and passing through $7-n$ distinct other points
   of $C$. If $n=5$, then it suffices to pick the remaining 2 points
   $p_1,p_2$ of $C$ so that $p$, $p_1$, and $p_2$ do not all lie on a
   line. If $n=6$, it suffices to pick the remaining point $p_{1}$ to
-  not be contained in the tangent line to $Z$.</li></ul>
+  not be contained in the tangent line to $Z$.<span class="stacks-qed" aria-hidden="true"></span></p></li></ul>
 </div>
 </div>
 
@@ -178,8 +185,8 @@ conic we want.</li>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/equivariant-degenerations/section/S8.SS2.html"
      data-comment-page-url="https://anandpatel.github.io/papers/equivariant-degenerations/section/S8.SS2.html"
-     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — 8.2. Preliminary lemmas"
-     data-comment-page-label="8.2. Preliminary lemmas"
+     data-comment-page-title="Equivariant Degenerations of Plane Curve Orbits — 7.2. Preliminary lemmas"
+     data-comment-page-label="7.2. Preliminary lemmas"
      data-comment-paper-title="Equivariant Degenerations of Plane Curve Orbits">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -187,13 +194,13 @@ conic we want.</li>
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 8.2. Preliminary lemmas">
+      <input type="hidden" name="_subject" value="Comment on Equivariant Degenerations of Plane Curve Orbits — 7.2. Preliminary lemmas">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S8.SS2.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/equivariant-degenerations/section/S8.SS2.html">
       <input type="hidden" name="paper" value="Equivariant Degenerations of Plane Curve Orbits">
-      <input type="hidden" name="location" value="8.2. Preliminary lemmas">
+      <input type="hidden" name="location" value="7.2. Preliminary lemmas">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

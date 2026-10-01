@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Theorem 3.5 (48CA) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Theorem 4 (48CA) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,19 +120,19 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>Theorem 3.5 (48CA)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>Theorem 4 (48CA)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="F221.html">&laquo; Theorem 3.4</a><span class="stacks-tag-current">Tag 48CA</span><a href="3E13.html">Theorem 3.6 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="F221.html">&laquo; Theorem 3</a><span class="stacks-tag-current">Tag 48CA</span><a href="3E13.html">Theorem 5 &raquo;</a></div>
 <div class="stacks-theorem" id="Mhbarintro">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;3.5.</strong> <a href="../tag/48CA.html" class="stacks-tag-link">(48CA)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;4 (Section&nbsp;10).</strong> <a href="../tag/48CA.html" class="stacks-tag-link">(48CA)</a></div>
   <div class="stacks-env-body"><p>Fix $r \ge 0$. Then the $A^\bullet_{GL_{r+1}}(\pt)$-linear operations $$[M]_{\hbar}:A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n}\to QH^\bullet_{GL_{r+1}}(\mb{P}^r)$$ satisfy
-$$[z^r][F(z)^k][M_{\hbar}]=\opc{\tau^{\le (k+1)}M}^{\dagger}.$$
+$$[z^r][F(z)^k][M_{\hbar}]=[\mathcal{O}_{\tau^{\le (k+1)}M}]^{\dagger}.$$
 The following properties uniquely characterize the $A^\bullet_{GL_{r+1}}(\pt)$-linear operations $[M]_{\hbar}$.</p>
-<ol><li>Let $\ast$ denote the $1 \times 1$ identity matrix. Then $$[\ast]_\hbar(f(H))=\overline{f}(z).$$</li>
-<li>If $M_1$ and $M_2$ are matrices with $n_1$ and $n_2$ columns respectively, then $$[M_1 \oplus M_2]_\hbar = [M_1]_\hbar \star [M_2]_\hbar,$$ where $[M_1]_\hbar$ applies to the first $n_1$ tensor factors and $[M_2]_\hbar$ applies to the last $n_2$ tensor factors.</li>
-<li>If $M$ is a $d \times n$ matrix and $\tau^{\leq k}$ is a general $k \times d$ matrix, then $[\tau^{\leq k} M]_\hbar$ is the reduction of $[M]_\hbar$ modulo $\hbar^k=F(z)^k$.</li>
-<li>The association $M \mapsto [M]_{\hbar}$ is valuative. For fixed $n$ and possibly varying $d$, the operation $[M]_{\hbar}$ depends only on the matroid of $M$.</li>
-<li>The actions of the symmetric group $S_n$ on the columns of $M$ and on $A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n}$ are compatible.</li></ol>
+<ol><li><p>Let $\ast$ denote the $1 \times 1$ identity matrix. Then $$[\ast]_\hbar(f(H))=\overline{f}(z).$$</p></li>
+<li><p>If $M_1$ and $M_2$ are matrices with $n_1$ and $n_2$ columns respectively, then $$[M_1 \oplus M_2]_\hbar = [M_1]_\hbar \star [M_2]_\hbar,$$ where $[M_1]_\hbar$ applies to the first $n_1$ tensor factors and $[M_2]_\hbar$ applies to the last $n_2$ tensor factors.</p></li>
+<li><p>If $M$ is a $d \times n$ matrix and $\tau^{\leq k}$ is a general $k \times d$ matrix, then $[\tau^{\leq k} M]_\hbar$ is the reduction of $[M]_\hbar$ modulo $\hbar^k=F(z)^k$.</p></li>
+<li><p>The association $M \mapsto [M]_{\hbar}$ is valuative. For fixed $n$ and possibly varying $d$, the operation $[M]_{\hbar}$ depends only on the matroid of $M$.</p></li>
+<li><p>The actions of the symmetric group $S_n$ on the columns of $M$ and on $A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n}$ are compatible.</p></li></ol>
 </div>
 </div>
 
@@ -136,8 +140,8 @@ The following properties uniquely characterize the $A^\bullet_{GL_{r+1}}(\pt)$-l
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/48CA.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/48CA.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 48CA (Theorem 3.5)"
-     data-comment-page-label="Tag 48CA (Theorem 3.5)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 48CA (Theorem 4)"
+     data-comment-page-label="Tag 48CA (Theorem 4)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -145,13 +149,13 @@ The following properties uniquely characterize the $A^\bullet_{GL_{r+1}}(\pt)$-l
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 48CA (Theorem 3.5)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 48CA (Theorem 4)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/48CA.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/48CA.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag 48CA (Theorem 3.5)">
+      <input type="hidden" name="location" value="Tag 48CA (Theorem 4)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

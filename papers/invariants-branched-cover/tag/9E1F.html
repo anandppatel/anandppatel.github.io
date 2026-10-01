@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,7 +165,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Proof of Proposition 3.10 [680F] (9E1F)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="680F.html">&laquo; Proposition 3.10</a><span class="stacks-tag-current">Tag 9E1F</span><a href="8D36.html">Definition 3.11 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/680F.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[680F]</span></a>.</em> <a href="../tag/9E1F.html" class="stacks-tag-link">(9E1F)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">We can produce non-trivial deformations of $V$ by modifying the gluing over $p_j$, in a way that the filtrations
 $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$ become transverse. While it is clear that there will be non-trivial deformations over a DVR, we need to check that the restriction to $\D=\spec k[\epsilon]/(\epsilon^2)$ is still
@@ -177,20 +181,23 @@ $M_i=0$ for $i\neq j$, as long as $M_j$ <em>separates</em> the flags $L^{\bullet
 the following sense.</p>
 <div class="stacks-definition" id="definition-separation">
   <div class="stacks-env-head"><strong>Definition&nbsp;3.11.</strong> <a href="../tag/8D36.html" class="stacks-tag-link">(8D36)</a></div>
-  <div class="stacks-env-body"><p>Let $V$ be an $r$-dimensional $k$-vector space, and let $V[\epsilon]$ be the module $V \otimes_{k} k[\epsilon]/(\epsilon^2)$.  Suppose $A$ and $B$ are subspaces of $V$ which fail to meet properly. Let $M$ be an endomorphism of $V$ and consider the invertible module map $$f_{M} := Id + \epsilon M \from V[\epsilon] \to V[\epsilon].$$ </p>
-<p>We say that $M$ <em>separates</em> $A$ and  $B$ if the submodule $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat as a $k[\epsilon]/(\epsilon^2)$-module.</p></div>
+  <div class="stacks-env-body"><p>Let $V$ be an $r$-dimensional $k$-vector space, and let $V[\epsilon]$ be the module $V \otimes_{k} k[\epsilon]/(\epsilon^2)$.  Suppose $A$ and $B$ are subspaces of $V$ which fail to meet properly. Let $M$ be an endomorphism of $V$ and consider the invertible module map $$f_{M} := Id + \epsilon M \from V[\epsilon] \to V[\epsilon].$$</p>
+<p>We say that $M$ <em>separates</em> $A$ and  $B$ if the submodule $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat as a $k[\epsilon]/(\epsilon^2)$-module.</p>
+</div>
 </div>
 <p class="stacks-para">Note that if $M_j$ separates  the flags $L^{\bullet}_{j}$ and $R^{\bullet}_{j}$, then the deformation is not trivial.
 We just have to show that a generic choice of $M_j$ does separate these flags. The following lemma assures that this is the case.</p>
 <div class="stacks-lemma" id="lemma-separate">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.12.</strong> <a href="../tag/66DE.html" class="stacks-tag-link">(66DE)</a></div>
-  <div class="stacks-env-body"><p>Let $V$, $A$, and $B$ be as in <a href="/papers/invariants-branched-cover/tag/8D36.html" class="stacks-ref-link">Definition&nbsp;3.11 <span class="stacks-ref-tag">[8D36]</span></a>. Then there exists $M \in \End V$ which separates $A$ and $B$.  Furthermore, the general choice of $M$ separates $A$ and $B$.</p></div>
+  <div class="stacks-env-body"><p>Let $V$, $A$, and $B$ be as in <a href="/papers/invariants-branched-cover/tag/8D36.html" class="stacks-ref-link">Definition&nbsp;3.11 <span class="stacks-ref-tag">[8D36]</span></a>. Then there exists $M \in \End V$ which separates $A$ and $B$.  Furthermore, the general choice of $M$ separates $A$ and $B$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/66DE.html" class="stacks-ref-link">Lemma&nbsp;3.12 <span class="stacks-ref-tag">[66DE]</span></a>.</em> <a href="../tag/AC4E.html" class="stacks-tag-link">(AC4E)</a></div>
   <div class="stacks-env-body"><p>Note that flat and free are the same notion for the local Artinian ring $k[\epsilon]/(\epsilon^{2})$.  Furthermore, a $k[\epsilon]/(\epsilon^{2})$-module $N$ is flat if and only if the multiplication map
-$\times \epsilon \from \left(N/\epsilon N \right) \to N$ is injective. </p>
-<p>We now choose a basis $\{v_{1}, \ldots , v_{r}\}$ for $V$ such that $A = \langle v_{1}, \ldots ,v_{a}\rangle$ and $B = \langle v_{m+1}, \ldots , v_{m+b}\rangle$, and assume that $m+b < r$ and $m+1 \leq a$, so that $A$ and $B$ do not meet properly.  Now consider the endomorphism $M \in \End V$ which is $0$ on all $v_{i}$ except sends $v_{m+1}$ to $v_{r}$.   Then $f_{M}(B[\epsilon]) = \langle v_{m+1} + \epsilon v_{r}, v_{m+2}, \ldots ,v_{m+b}\rangle \subset V[\epsilon]$.  The element $\epsilon v_{m+1}$ is annihilated by $\epsilon$, but is non-zero in the quotient module $A[\epsilon] \cap f_{M}(B[\epsilon])/\epsilon(A[\epsilon] \cap f_{M}(B[\epsilon]))$. Hence, $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+$\times \epsilon \from \left(N/\epsilon N \right) \to N$ is injective.</p>
+<p>We now choose a basis $\{v_{1}, \ldots , v_{r}\}$ for $V$ such that $A = \langle v_{1}, \ldots ,v_{a}\rangle$ and $B = \langle v_{m+1}, \ldots , v_{m+b}\rangle$, and assume that $m+b &lt; r$ and $m+1 \leq a$, so that $A$ and $B$ do not meet properly.  Now consider the endomorphism $M \in \End V$ which is $0$ on all $v_{i}$ except sends $v_{m+1}$ to $v_{r}$.   Then $f_{M}(B[\epsilon]) = \langle v_{m+1} + \epsilon v_{r}, v_{m+2}, \ldots ,v_{m+b}\rangle \subset V[\epsilon]$.  The element $\epsilon v_{m+1}$ is annihilated by $\epsilon$, but is non-zero in the quotient module $A[\epsilon] \cap f_{M}(B[\epsilon])/\epsilon(A[\epsilon] \cap f_{M}(B[\epsilon]))$. Hence, $A[\epsilon] \cap f_{M}(B[\epsilon])$ is not flat.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para"><a href="/papers/invariants-branched-cover/tag/66DE.html" class="stacks-ref-link">Lemma&nbsp;3.12 <span class="stacks-ref-tag">[66DE]</span></a> now implies <a href="/papers/invariants-branched-cover/tag/680F.html" class="stacks-ref-link">Proposition&nbsp;3.10 <span class="stacks-ref-tag">[680F]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>

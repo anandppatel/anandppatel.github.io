@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "\\fontdimen2\\font=0.4em\\fontdimen3\\font=0.2em\\fontdimen4\\font=0.1em\\fontdimen7\\font=0.1em\\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -115,7 +114,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -142,10 +146,10 @@ scrolls, which we were unable to find a reference for.</p>
   there exists a smooth, irreducible, projective curve $B$, a
   $\P^{n-1}$-bundle $\pi: \Lambda \to B$ and a morphism
   $\varphi: \Lambda \to \P^{N}$ satisfying:</p>
-<ol><li>$\varphi$ restricts to a linear embedding on each fiber of
-    $\pi$, and</li>
-<li>$\varphi(\Lambda) = P$, and $\varphi$ is birational onto its
-    image.</li></ol>
+<ol><li><p>$\varphi$ restricts to a linear embedding on each fiber of
+    $\pi$, and</p></li>
+<li><p>$\varphi(\Lambda) = P$, and $\varphi$ is birational onto its
+    image.</p></li></ol>
 </div>
 </div>
 <p class="stacks-para">If $P$ is a scroll, and if $\pi: \Lambda \to B$ is understood, we call
@@ -158,7 +162,8 @@ arises.</p>
   where $C \subset \P^N$ is a projective variety and $c \in C$
   satisfying: For any $q \in C \setminus \{c \}$, the line joining $q$
   and $c$ is entirely contained in $C$.  If $(C,c)$ is a cone, we say
-  a line $\ell \subset C$ is a <em>cone line</em> if $c \in \ell$.</p></div>
+  a line $\ell \subset C$ is a <em>cone line</em> if $c \in \ell$.</p>
+</div>
 </div>
 <p class="stacks-para">Note that if $(C,c)$ is a cone, and if $H \subset \P^N$ is any
 hyperplane containing $c$, then $(C \cap H, c)$ is again a cone.
@@ -173,39 +178,42 @@ $(C \cap H, c)$ is again irreducible.</p>
   and suppose $(C,p)$ is a $(n-1)$-dimensional irreducible cone
   contained in $P$.  Assume only finitely many of the rulings contain
   $p$.</p>
-<p>  Then $C$ is a linear space.</p></div>
+<p>Then $C$ is a linear space.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4FAE.html" class="stacks-tag-link">(4FAE)</a></div>
-  <div class="stacks-env-body"><p>Assume, for sake of contradiction, that $\deg C >1$.  Then, as
+  <div class="stacks-env-body"><p>Assume, for sake of contradiction, that $\deg C &gt;1$.  Then, as
   $\dim C = n-1$, it follows that $C$ is not contained in any ruling
   $\Lambda_{b}$.  Therefore, a general cone line $\ell \subset C$
   meets a general $\Lambda_{b}$ at a single point. Since this is true
   for a general $\ell$, it follows that <em>every</em> $\ell$ meets a
   general $\Lambda_{b}$ &ndash; furthermore, this meeting is a single
   point, because $p$ is only contained in finitely many rulings.</p>
-<p>  Now pick any hyperplane $H$ avoiding $p$, and consider projection
+<p>Now pick any hyperplane $H$ avoiding $p$, and consider projection
   from $p$
   $$\pi_{p} : P \setminus \{p\} \to H.$$
   The image $W := \pi_{p}(C \setminus \{p\})$ is the $n-2$-dimensional
-  variety $C \cap H$, which has degree $>1$ by
+  variety $C \cap H$, which has degree $&gt;1$ by
   assumption. Furthermore, the image $\pi_{p}(\Lambda_{b})$ for
   $b \in B$ general, is a $(n-1)$-dimensional linear space in $H$,
-  and $$W \subset \pi_{p}(\Lambda_{b}).$$ However, as $\deg W >1$,
+  and $$W \subset \pi_{p}(\Lambda_{b}).$$ However, as $\deg W &gt;1$,
   this implies that $\pi_{p}(\Lambda_{b})$ is independent of $b$.
   Thus, the image of $\pi_{p}:P \setminus \{p\}$ is the
   $(n-1)$-dimensional linear space $\pi_{p}(\Lambda_{b})$, forcing $P$
   itself to be a linear space, contrary to assumption.  The
-  argument by contradiction is complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  argument by contradiction is complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">We can now prove the main theorem of this section.</p>
 <div class="stacks-theorem" id="theorem-generalV5">
   <div class="stacks-env-head"><strong>Theorem&nbsp;3.8.</strong> <a href="../tag/81FA.html" class="stacks-tag-link">(81FA)</a></div>
   <div class="stacks-env-body"><p>If $X \subset \P^{n}$ is a smooth
   hypersurface of degree $d \geq n \geq 4$, then $V_5(X)$ has the expected
-  dimension $2n-6$.</p></div>
+  dimension $2n-6$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F56F.html" class="stacks-tag-link">(F56F)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">We proceed by contradiction, and suppose here onward that
 $$W \subset V_{5}$$ is an irreducible subvariety satisfying
@@ -216,32 +224,36 @@ $$\pi^{-1}(x) \subset W$$ is naturally a subvariety of the $(n-2)$-dimensional p
 parametrizing lines in $\P^{n}$ which are tangent to $X$ at $x$.
 Thus, if we set
 $$Y := \pi(W) \subset X,$$ there are three possibilities:</p>
-<ol><li>$Y = X$, or</li>
-<li>$Y \subset X$ has codimension $2$, or</li>
-<li>$Y \subset X$ has codimension $1$.</li></ol>
+<ol><li><p>$Y = X$, or</p></li>
+<li><p>$Y \subset X$ has codimension $2$, or</p></li>
+<li><p>$Y \subset X$ has codimension $1$.</p></li></ol>
 <p class="stacks-para">The proof proceeds by eliminating each of these possibilities.</p>
 <div class="stacks-lemma" id="lemma-YneqX">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.9.</strong> <a href="../tag/4C26.html" class="stacks-tag-link">(4C26)</a></div>
-  <div class="stacks-env-body"><p>$Y \neq X$.</p></div>
+  <div class="stacks-env-body"><p>$Y \neq X$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F61B.html" class="stacks-tag-link">(F61B)</a></div>
-  <div class="stacks-env-body"><p>Direct application of <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A8C8]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Direct application of <a href="/papers/lines-highly-tangent/tag/A8C8.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[A8C8]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-lemma" id="lemma-Ycodim2">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.10.</strong> <a href="../tag/3BAB.html" class="stacks-tag-link">(3BAB)</a></div>
-  <div class="stacks-env-body"><p>$Y \subset X$ cannot have codimension $2$.</p></div>
+  <div class="stacks-env-body"><p>$Y \subset X$ cannot have codimension $2$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/84D8.html" class="stacks-tag-link">(84D8)</a></div>
   <div class="stacks-env-body"><p>By contradiction. Assume $\codim Y = 2$. In this case, for a general
   (and hence every) point $y \in Y$, the fiber $\pi^{-1}(y) \subset W$
   has dimension $(n-2)$.  Since, for every $(\ell,x) \in W$, the line
-  $\ell$ meets $X$ at $x$ with contact order $>2$, it follows that the
+  $\ell$ meets $X$ at $x$ with contact order $&gt;2$, it follows that the
   second fundamental form $\II_{x}(X)$ vanishes identically (has rank
   $0$) for all points $y \in Y$. This violates
   <a href="/papers/lines-highly-tangent/tag/B72D.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[B72D]</span></a>, providing the desired
-  contradiction.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  contradiction.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Thus, we may and shall assume $Y \subset X$ has codimension $1$ from
 here onward.  First, we determine the dimension of

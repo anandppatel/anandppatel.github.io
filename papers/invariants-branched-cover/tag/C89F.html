@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -165,15 +169,15 @@
   <div class="stacks-env-head"><strong>Definition&nbsp;4.12.</strong> <a href="../tag/C89F.html" class="stacks-tag-link">(C89F)</a></div>
   <div class="stacks-env-body"><p>A maximally connected chain $R_1 \cup \ldots \cup R_n \subset \P^r$ has <em>transverse residues</em>
 if either</p>
-<ul><li>$r$ is even, or</li>
-<li>$r$ is odd and
+<ul><li><p>$r$ is even, or</p></li>
+<li><p>$r$ is odd and
 	for any subchain $Y$ of length $r+2$,
 	there are no quadrics $Q_\text{left}, Q_\text{right}$ satisfying
 	$$Y_\text{left} \subset Q_\text{left}, \, Y_\text{right} \subset Q_\text{right} \text{ and }\operatorname{res}_{R_\text{middle}}(Q_\text{left}) = \operatorname{res}_{R_\text{middle}}(Q_\text{right})$$
-	where
-	<ul><li>$Y_\text{left}$ be the first $\frac{r+1}{2}$ links of $Y$,</li>
-<li>$R_\text{middle}$ the middle rational curve, and</li>
-<li>$Y_\text{right}$ the remaining $\frac{r+1}{2}$ links.</li></ul></li></ul>
+	where</p>
+<ul><li><p>$Y_\text{left}$ be the first $\frac{r+1}{2}$ links of $Y$,</p></li>
+<li><p>$R_\text{middle}$ the middle rational curve, and</p></li>
+<li><p>$Y_\text{right}$ the remaining $\frac{r+1}{2}$ links.</p></li></ul></li></ul>
 </div>
 </div>
 

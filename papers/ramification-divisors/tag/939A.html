@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,11 +134,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <a href="../section/S5.SS1.html">5.1. Maximal variation for some particular cases</a> / <span>Proof (939A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="39EC.html">&laquo; Proposition 5.2</a><span class="stacks-tag-current">Tag 939A</span><a href="B512.html">Definition 5.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/939A.html" class="stacks-tag-link">(939A)</a></div>
   <div class="stacks-env-body"><p>We exhibit a point $\Gr(r+1, H^0(\P^1, E))$ at which $\rho$ is defined, and at which the induced map $d\rho$ on the tangent space is non-singular.
   It follows that $\rho$ is a local isomorphism at this point, and hence dominant overall.</p>
-<p>  Our proof is by direct calculation.
+<p>Our proof is by direct calculation.
   We calculate on $\A^1 = \spec \k[x] \subset \P^1$ and identify $\O(n)$ with $\O(n \cdot \infty)$.
   Then the global sections of $\O(n)$ are identified with polynomials in $x$ of degree at most $n$.
   Denote the generator of the $i$th summand of $E(-2)$ by $X_i$.
@@ -143,14 +147,14 @@
   By (4.10), the ramification divisor associated to $V$ is cut out by the determinant of the matrix
   $$M =
     \begin{pmatrix}
-      (x-a_1)^2 & 0 &  \cdots & 0 & 2(x-a_1)X_1\\
-      0 & (x-a_2)^2 & \cdots & 0 & 2(x-a_2)X_2\\
-      0 & 0 & \ddots & 0 & \vdots\\
-      0 & 0 & \cdots & (x-a_r)^2& 2(x-a_r)X_r\\
-      p_1 & p_2 & \cdots & p_r & \sum p_i' X_i
+      (x-a_1)^2 &amp; 0 &amp;  \cdots &amp; 0 &amp; 2(x-a_1)X_1\\
+      0 &amp; (x-a_2)^2 &amp; \cdots &amp; 0 &amp; 2(x-a_2)X_2\\
+      0 &amp; 0 &amp; \ddots &amp; 0 &amp; \vdots\\
+      0 &amp; 0 &amp; \cdots &amp; (x-a_r)^2&amp; 2(x-a_r)X_r\\
+      p_1 &amp; p_2 &amp; \cdots &amp; p_r &amp; \sum p_i' X_i
     \end{pmatrix}.$$
   We leave it to the reader to check that $R = \det M$ is not identically zero.</p>
-<p>  To do the tangent space computation, we choose elements $w_i \in H^0(\P^1, E)$, and change $v_i$ to $v_i + \epsilon w_i$, where $\epsilon^2 = 0$.
+<p>To do the tangent space computation, we choose elements $w_i \in H^0(\P^1, E)$, and change $v_i$ to $v_i + \epsilon w_i$, where $\epsilon^2 = 0$.
   Let $R_\epsilon$ be the equation of the discriminant of the projection given by $V_\epsilon \subset H^0(\P^1, E) \otimes \k[\epsilon]/\epsilon^2$, where $V_\epsilon$ is spanned by $v_1 + \epsilon w_1, \dots, v_{r+1} + \epsilon w_{r+1}$.
   Concretely, $R_\epsilon$ is the determinant of a matrix $M_\epsilon$ given by (4.10), which reduces to $M$ modulo $\epsilon$.
   Note that $R_\epsilon$ is an element of $H^0(\P^1, E \otimes \O(2r-2)) \otimes \k[\epsilon]/\epsilon^2$, and we have
@@ -169,10 +173,10 @@
   and
   $$S\left(qE_{i,i} \right) = \det M_i,$$
   where $M_i$ is obtained from $M$ by changing the $(i,i)$-th entry from $(x-a_i)^2$ to $q$ and the $(i,r+1)$-th entry from $2(x-a_i)X_i$ to $q'X_i$.</p>
-<p>  Fix an $i$ with $1 \leq i \leq r$, and consider the subspace $W_i \subset H^0(\P^1, E)^{r+1}$ spanned by $q E_{i,j}$ for $j \neq i$.
+<p>Fix an $i$ with $1 \leq i \leq r$, and consider the subspace $W_i \subset H^0(\P^1, E)^{r+1}$ spanned by $q E_{i,j}$ for $j \neq i$.
   By our calculations above, $S$ maps $W_i$ to the subspace of $H^0(\P^1, E \otimes \O(2r-2))$ spanned by $H^0(\P^1, \O(2r)) \otimes X_i$.
   We begin by identifying $S(W_i)$.</p>
-<p>  For $1 \leq j \leq r$ and $j \neq i$, set
+<p>For $1 \leq j \leq r$ and $j \neq i$, set
   $$Q_{i,j} = \frac{(x-a_1)^2 \cdots (x-a_r)^2p_j}{(x-a_i)^2(x-a_j)^2},$$
   and
   $$Q_{i,r+1} = - \frac{(x-a_1)^2 \cdots (x-a_r)^2}{(x-a_i)^2}.$$
@@ -201,7 +205,7 @@
   is $\k \otimes \langle  X_1, \dots, X_r \rangle$, where the map
   $$H^0(\P^1, E \otimes \O(2r-2)) = H^0(\P^1, \O(2r)) \otimes \langle  X_1, \dots, X_r \rangle \to \k \otimes \langle  X_1, \dots, X_r \rangle$$
   on $H^0(\P^1, \O(2r)) \otimes X_i$ is given by evaluation at $a_i$.</p>
-<p>  To show that $S$ is surjective, it is now enough to show that the map
+<p>To show that $S$ is surjective, it is now enough to show that the map
   $$H^0(\P^1, \O(2)) \otimes \langle  qE_{i,i} \mid i \in \{1, \dots, r+1\} \rangle \to \k \otimes \langle  X_1, \dots, X_r \rangle$$
   obtained by composing (5.1) and (5.5) is surjective.
   Recall from (5.2) that we have $S(qE_{i,i}) = \det M_i$, where $M_i$ is obtained from $M$ by changing the $(i,i)$-th entry to $q$ and the $(i, r+1)$-th entry to $q'X_i$.
@@ -209,7 +213,8 @@
   $$S(qE_{i,i}) = \det M_i = \pm \prod_{j \neq i} (a_i-a_j)^2 p_i(a_i) X_i,$$
   which is a non-zero multiple of $X_i$.
   That is, the images of $(x-a_i)E_{i,i}$ under $S$ span $\k \otimes \langle  X_1, \dots, X_r \rangle$, and hence the map in (5.6) is surjective.
-  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

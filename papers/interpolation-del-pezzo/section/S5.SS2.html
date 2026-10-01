@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -231,14 +235,15 @@
 <div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Interlude: Association</a> / <span>5.2. Inducing association from an ambient linear system</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S5.SS1.html" aria-label="Previous: 5.1. Preliminaries" title="Previous: 5.1. Preliminaries">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S5.SS3.html" aria-label="Next: 5.3. Goppa&#x27;s theorem" title="Next: 5.3. Goppa&#x27;s theorem">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">5.2. Inducing association from an ambient linear system</h1>
-<p class="stacks-para">Association is a very algebraic construction. Therefore, it is interesting to find geometric constructions which ``induce'' association for a set $\Gamma \subset \bp^{r}$.  To see many examples of the geometry underlying association, we refer to [<a class="stacks-cite" href="../../../bibliography.html#bib-the-projective-geometry-of-the-gale-ad368300">EP00</a>].</p>
-<p class="stacks-para">In [<a class="stacks-cite" href="../../../bibliography.html#bib-coble-a24ca824">Cob22</a>, p.\ 2], Coble asks, in less modern language, whether there exists a linear system $W^{s+1} \subset H^{0}(\bp^{r}, \so(d))$ whose base locus is disjoint from $\Gamma$, and which restricts on $\Gamma$ to the associated linear system.</p>
+<p class="stacks-para">Association is a very algebraic construction. Therefore, it is interesting to find geometric constructions which ``induce'' association for a set $\Gamma \subset \bp^{r}$.  To see many examples of the geometry underlying association, we refer to [<a class="stacks-cite" href="../../../bibliography.html#bib-david-eisenbud-and-sorin-popescu-the-969139f1">EP00</a>].</p>
+<p class="stacks-para">In [<a class="stacks-cite" href="../../../bibliography.html#bib-arthur-b-coble-associated-sets-of-17c13dae">Cob22</a>, p.\ 2], Coble asks, in less modern language, whether there exists a linear system $W^{s+1} \subset H^{0}(\bp^{r}, \so(d))$ whose base locus is disjoint from $\Gamma$, and which restricts on $\Gamma$ to the associated linear system.</p>
 <p class="stacks-para">A linear system $W^{s+1} \subset H^{0}(\bp^{r}, \so(d))$ yields a rational map $$\phi_{W} \from \bp^{r} \dashrightarrow \bp^{s}.$$</p>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;5.2.</strong> <a href="../tag/21A5.html" class="stacks-tag-link">(21A5)</a></div>
   <div class="stacks-env-body"><p>Let $\Gamma \subset \bp^{r}$ be a Gorenstein scheme of degree $\gamma = r+s+2$.
 An <em>ambient linear system</em> is any vector space $V \subset  H^{0}(\bp^{r}, \so(d))$.
-An ambient linear system $W^{s+1} \subset  H^{0}(\bp^{r}, \so(d))$  <em>induces association for</em> $\Gamma$ if its base locus is disjoint from $\Gamma$ and if the image $\phi_{W}(\Gamma) \subset \bp^{s}$ is the associated set of $\Gamma$.</p></div>
+An ambient linear system $W^{s+1} \subset  H^{0}(\bp^{r}, \so(d))$  <em>induces association for</em> $\Gamma$ if its base locus is disjoint from $\Gamma$ and if the image $\phi_{W}(\Gamma) \subset \bp^{s}$ is the associated set of $\Gamma$.</p>
+</div>
 </div>
 <p class="stacks-para">It is important to note, as Coble does, that an ambient system inducing association won't be unique in general.</p>
 <p class="stacks-para">When association is induced from an ambient system, we automatically get a variety $\phi_{W}(\bp^{r}) \subset \bp^{s}$ containing $\Gamma$. Our task is ultimately to find an ambient linear system $W$ which induces association  for $\Gamma$, and such that the image $\phi_{W}(\bp^{r})$, (by this, we mean the image of the resolution of $\phi_{W}$) is a prescribed type of variety, e.g. Veronese images, del Pezzo surfaces, etc.</p>

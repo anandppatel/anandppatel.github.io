@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -145,18 +149,18 @@
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="7170.html">&laquo; Question 1.1</a><span class="stacks-tag-current">Tag 377B</span><a href="FC7C.html">Proposition 2.1 &raquo;</a></div>
 <div class="stacks-theorem" id="thm-main">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/377B.html" class="stacks-tag-link">(377B)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2 (<a href="/papers/sharp-slope-bounds/tag/25D8.html" class="stacks-ref-link">Corollary&nbsp;5.4 <span class="stacks-ref-tag">[25D8]</span></a>, <a href="/papers/sharp-slope-bounds/tag/D92F.html" class="stacks-ref-link">Corollary&nbsp;5.8 <span class="stacks-ref-tag">[D92F]</span></a> in the main text).</strong> <a href="../tag/377B.html" class="stacks-tag-link">(377B)</a></div>
   <div class="stacks-env-body"><p>Let $g \geq 4$. Denote by $\o T_g$ the closure in $\o M_g$ of
   the locus of smooth trigonal curves. Set
   $$s_g = \begin{cases}
-    7 + 6/g & \text{ if $g$ is even},\\
-    7 + 20/(3g+1) & \text{ if $g$ is odd}.
+    7 + 6/g &amp; \text{ if $g$ is even},\\
+    7 + 20/(3g+1) &amp; \text{ if $g$ is odd}.
   \end{cases}$$
   Then,</p>
-<ol><li>$\o T_g$ is covered by curves of slope $s_g$.</li>
-<li>If $B \subset \o T_g$ is a curve passing through a general
+<ol><li><p>$\o T_g$ is covered by curves of slope $s_g$.</p></li>
+<li><p>If $B \subset \o T_g$ is a curve passing through a general
     point of $\o T_g$, then its slope is at most $s_g$. In
-    particular, $\o T_g$ cannot be covered by curves of higher slope.</li></ol>
+    particular, $\o T_g$ cannot be covered by curves of higher slope.</p></li></ol>
 <p>The word ``general'' in the second statement means away from an
   (explicitly given) effective divisor.</p>
 </div>

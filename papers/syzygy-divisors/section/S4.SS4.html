@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           c: "{\\rm c}",
           orb: "\\mathcal",
@@ -60,7 +59,7 @@
           Bog: "\\operatorname{Bog}",
           Bl: "\\operatorname{Bl}",
           im: "\\operatorname{im}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{{\\mathbb{F}}}",
           AA: "\\mathbb{A}",
           ba: "\\mathbb{A}",
           bbA: "\\mathbb{A}",
@@ -89,7 +88,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -100,7 +104,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
   </div>
@@ -111,9 +115,8 @@
 <p class="stacks-para">Given that the divisor classes $[\mu_{i}]$ are proportional, it is natural to wonder if the divisors $\mu_i$ are supported on the same set.
 It would be surprising if it were true, but we cannot yet preclude this.</p>
 <p class="stacks-para">Some evidence towards this is provided by the work of Christian Bopp.
-Using his Macaulay2 package [<a class="stacks-cite" href="../../../bibliography.html#bib-bopp-and-m-de4a14ee">2</a>], he has found many examples where the jumping loci of syzygy bundles are not supported on the same set.
+Using his Macaulay2 package [<a class="stacks-cite" href="../../../bibliography.html#bib-c-bopp-and-m-hoff-relativecanonicalresolution-457ad8d0">2</a>], he has found many examples where the jumping loci of syzygy bundles are not supported on the same set.
 Although his examples are for higher codimension loci, we expect there to be examples also in the divisorial case.</p>
-<p class="stacks-para">\def\cprime{$'$}</p>
 
 <hr>
 <div class="stacks-comments"

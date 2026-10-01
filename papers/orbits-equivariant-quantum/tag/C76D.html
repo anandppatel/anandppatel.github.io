@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -118,26 +122,27 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Definitions</a> / <a href="../section/S2.SS5.html">2.5. Class of an arbitrary orbit closure</a> / <span>Proof (C76D)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="B259.html">&laquo; Proposition 2.11</a><span class="stacks-tag-current">Tag C76D</span><a href="2A79.html">Theorem 3.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="B259.html">&laquo; Proposition 2.2</a><span class="stacks-tag-current">Tag C76D</span><a href="2A79.html">Theorem 1 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/C76D.html" class="stacks-tag-link">(C76D)</a></div>
   <div class="stacks-env-body"><p>We will first prove the proposition for $k=1$. Viewing $\mb{P}^{d-1}$ as linearly embedded in $\mb{P}^r$, it suffices to show that any element stabilizing $(\wt{x}_1, \ldots, \wt{x}_n)$ stabilizes every point of $\mb{P}^{d-1}$. Indeed, given such a $g$, each $x_i$ is an eigenvector of $g$, so $K^{d} = \operatorname{Span} \{x_1, \ldots, x_n\}$ is a direct sum of eigenspaces of $g$. Since $M$ is connected, each $x_i$ has the same eigenvalue, so $g$ acts by a scalar on $K^d$, as desired.</p>
 <p>For any $k$, let $d_i$ be the number of columns of $M_i$. Then, if $A_i$  is a $(r+1)\times d_i$ matrix for $1 \leq i \leq n$, we have the equality of block matrices
 $$\begin{pmatrix}
-\vert &  & \vert \\
-A_1 & \cdots & A_k \\
-\vert &  & \vert
+\vert &amp;  &amp; \vert \\
+A_1 &amp; \cdots &amp; A_k \\
+\vert &amp;  &amp; \vert
 \end{pmatrix}
-\begin{pmatrix}M_1 & & \\
- & \ddots & \\
-&  &  M_k
+\begin{pmatrix}M_1 &amp; &amp; \\
+ &amp; \ddots &amp; \\
+&amp;  &amp;  M_k
 \end{pmatrix}
 = \begin{pmatrix}
-\vert &  & \vert \\
-A_1 M_1 & \cdots & A_k M_k \\
-\vert &  & \vert
+\vert &amp;  &amp; \vert \\
+A_1 M_1 &amp; \cdots &amp; A_k M_k \\
+\vert &amp;  &amp; \vert
 \end{pmatrix}.$$
-Hence $\ol{\im(\mu_M)} = \ol{\im(\mu_{M_1})} \times \ldots \times \ol{\im(\mu_{M_k})}$ and the result follows from the previous paragraph.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+Hence $\ol{\im(\mu_M)} = \ol{\im(\mu_{M_1})} \times \ldots \times \ol{\im(\mu_{M_k})}$ and the result follows from the previous paragraph.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

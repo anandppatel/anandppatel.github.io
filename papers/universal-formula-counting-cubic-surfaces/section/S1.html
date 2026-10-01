@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 1 — A universal formula for counting cubic surfaces</title>
+  <title>Section 1: Introduction — A universal formula for counting cubic surfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -140,10 +144,10 @@ space. So, we expect that in a 4-dimensional family, a general
 isomorphism class would appear finitely many times. How can we
 determine this number? For example, how many times does a general
 cubic surface appear, up to isomorphism, as</p>
-<ol><li>a member of a 4-dimensional general linear system of cubic surfaces in $\P^3$?</li>
-<li>a hyperplane section of a general cubic threefold in $\P^4$?</li>
-<li>a blow up of 6 points in $\P^2$ varying in a general
-  4-dimensional linear system on a cubic curve?</li></ol>
+<ol><li><p>a member of a 4-dimensional general linear system of cubic surfaces in $\P^3$?</p></li>
+<li><p>a hyperplane section of a general cubic threefold in $\P^4$?</p></li>
+<li><p>a blow up of 6 points in $\P^2$ varying in a general
+  4-dimensional linear system on a cubic curve?</p></li></ol>
 <p class="stacks-para">Our formula answers all questions of this kind.  The answers to these
 specific questions are $96120$, $42120$, and $25920$, respectively.</p>
 <p class="stacks-para">To state our formula, we must fix a precise moduli space of cubics.
@@ -152,22 +156,20 @@ semistable cubic surfaces in $\P^3$ by the action of $\PGL_4$.  By a
 <em>family of cubic surfaces</em>, we mean a flat, proper morphism whose
 geometric fibers are isomorphic to cubic surfaces in $\P^3$.</p>
 <div class="stacks-theorem" id="theorem-main">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/FB17.html" class="stacks-tag-link">(FB17)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.0.1.</strong> <a href="../tag/FB17.html" class="stacks-tag-link">(FB17)</a></div>
   <div class="stacks-env-body"><p>Let $\pi \colon \cX \to B$ be a good family of cubic surfaces over a
   proper base $B$.
   Let $\V$ denote the rank 4 vector bundle
   $ \pi_* \left(\omega_{\pi}^{-1}\right)$, and let
   \(v_i = c_i\left(\V\right)\) be its Chern classes.  Assume that a
   general fiber of $\pi$ is semistable, and let
-  $\mu \colon B \dashrightarrow \mathcal{M}$ be the induced moduli map.  Then,</p>
-<pre class="stacks-latex-fallback" title="Command &#x27;[&#x27;pdflatex&#x27;, &#x27;-interaction=nonstopmode&#x27;, &#x27;-halt-on-error&#x27;, &#x27;diagram.tex&#x27;]&#x27; returned non-zero exit status 1."><pre class="stacks-latex-fallback" title="Command &#x27;[&#x27;pdflatex&#x27;, &#x27;-interaction=nonstopmode&#x27;, &#x27;-halt-on-error&#x27;, &#x27;diagram.tex&#x27;]&#x27; returned non-zero exit status 1.">\[
-\begin{aligned}\deg \mu =</p>
-<p>    1080 \int_{B} \left(v_{1}^{2}v_{2} - v_{1}v_{3}+ 9v_{4}\right).\end{aligned}
-\]</pre>
-<p></pre></p>
+  $\mu \colon B \dashrightarrow \mathcal{M}$ be the induced moduli map.  Then,
+  $$\begin{aligned}\deg \mu =
+
+    1080 \int_{B} \left(v_{1}^{2}v_{2} - v_{1}v_{3}+ 9v_{4}\right).\end{aligned}$$</p>
 </div>
 </div>
-<p class="stacks-para"><a href="/papers/universal-formula-counting-cubic-surfaces/tag/5026.html" class="stacks-ref-link">Definition&nbsp;2.4 <span class="stacks-ref-tag">[5026]</span></a> gives the precise meaning of a good family.  This notion includes any family whose fibers are
+<p class="stacks-para"><a href="/papers/universal-formula-counting-cubic-surfaces/tag/5026.html" class="stacks-ref-link">Definition&nbsp;2.4.1 <span class="stacks-ref-tag">[5026]</span></a> gives the precise meaning of a good family.  This notion includes any family whose fibers are
 GIT-semistable or have a finite automorphism group.</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>

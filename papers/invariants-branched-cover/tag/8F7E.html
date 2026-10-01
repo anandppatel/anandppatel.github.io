@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -164,15 +168,15 @@
 <div class="stacks-env" id="construction-eric">
   <div class="stacks-env-head"><strong>Construction&nbsp;5.3.</strong> <a href="../tag/8F7E.html" class="stacks-tag-link">(8F7E)</a></div>
   <div class="stacks-env-body"><p>$X = C \cup \overline{X} = R_0 \cup R_1 \cup \ldots \cup R_{n-1}$ is a maximally connected chain, constructed as follows.</p>
-<ul><li>Take $R_0 \subset \P^r$ a smooth rational normal curve.</li>
-<li>Choose a general hyperplane $H \subset \P^r$.</li>
-<li>Let $L_1$ be a general 2-secant line to $R_0$.</li>
-<li>Let $\overline{R}_1 \subset H$ be a rational normal curve (of degree $r-1$) containing the $r$ points $R_0 \cap H$ and the point $p : = L_1 \cap H$. Set $R_1=L_1\cup_p \overline{R}_1$.</li>
-<li>Inductively, choose $\overline{R}_{i+1} \subset H$ a general rational normal curve meeting $\overline{R}_i$ in
-	$r+1$ general points. That is, the curve $\overline{X} := \overline{R}_1 \cup \overline{R}_2 \cup \ldots \cup \overline{R}_{n-1}$ is a maximally connected chain of length $n-1$ in $H= \P^{r-1}$.</li>
-<li>Inductively choose $L_i$ to be a general line joining $L_{i-1}$ and $\overline{R}_i$. Set
-	$R_i= L_{i} \cup \overline{R}_i$.</li>
-<li>Let $C = R_0 \cup L_1 \cup L_2 \cup \ldots \cup L_{n-1}$.</li></ul>
+<ul><li><p>Take $R_0 \subset \P^r$ a smooth rational normal curve.</p></li>
+<li><p>Choose a general hyperplane $H \subset \P^r$.</p></li>
+<li><p>Let $L_1$ be a general 2-secant line to $R_0$.</p></li>
+<li><p>Let $\overline{R}_1 \subset H$ be a rational normal curve (of degree $r-1$) containing the $r$ points $R_0 \cap H$ and the point $p : = L_1 \cap H$. Set $R_1=L_1\cup_p \overline{R}_1$.</p></li>
+<li><p>Inductively, choose $\overline{R}_{i+1} \subset H$ a general rational normal curve meeting $\overline{R}_i$ in
+	$r+1$ general points. That is, the curve $\overline{X} := \overline{R}_1 \cup \overline{R}_2 \cup \ldots \cup \overline{R}_{n-1}$ is a maximally connected chain of length $n-1$ in $H= \P^{r-1}$.</p></li>
+<li><p>Inductively choose $L_i$ to be a general line joining $L_{i-1}$ and $\overline{R}_i$. Set
+	$R_i= L_{i} \cup \overline{R}_i$.</p></li>
+<li><p>Let $C = R_0 \cup L_1 \cup L_2 \cup \ldots \cup L_{n-1}$.</p></li></ul>
 <p>See Figure&nbsp;5 for a diagrammatic representation of this construction.</p>
 </div>
 </div>

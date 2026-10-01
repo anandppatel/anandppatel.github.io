@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,13 +114,13 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS2.html">3.2. Smoothing out</a> / <span>Proof (2D63)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="DA66.html">&laquo; Proposition 3.12</a><span class="stacks-tag-current">Tag 2D63</span><a href="6FA2.html">Proof of Proposition 3.3 [51A7]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/2D63.html" class="stacks-tag-link">(2D63)</a></div>
   <div class="stacks-env-body"><p>Since $H^1(N_{Z/\widetilde{P}}) = 0$, we get that the Hilbert scheme of $\widetilde{P}$ is smooth at $[Z]$, proving (1).
   As a result, every first order deformation of $Z \subset \widetilde{P}$ extends to a deformation over the germ of a smooth curve.
   To show that $Z$ is the limit of smooth curves, it suffices to show that for every node $p \in Z$, the natural map $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p$ is surjective on global sections.
   Recall that $Z$ has two kinds of nodes: the nodes $\gamma$, which are the nodes of $X$; and the nodes $\delta_S$, which are the nodes introduced because we attached the rational normal curves.</p>
-<p>  First we deal with the nodes $\gamma$.
+<p>First we deal with the nodes $\gamma$.
   Let $\chi \from Z^\chi \to Z$ be the partial normalization at these nodes.
   Let $I_\gamma \subset \O_Z$ be the ideal sheaf of $\gamma \subset Z$.
   We have
@@ -133,7 +137,7 @@
   By combining with the surjection
   $$N_{Z/\widetilde{P}}\big|_\gamma \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\gamma},$$
   we conclude that $H^0(N_{Z/\widetilde{P}}) \to H^0(\shExt^1_{\O_Z}(\Omega_Z, \O_Z)_p)$ is surjective for all $p \in \gamma$.</p>
-<p>  Next, we consider a node $p \in \delta_S$ lying over $y \in S$.
+<p>Next, we consider a node $p \in \delta_S$ lying over $y \in S$.
   We have the equality
   $$\shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{\delta_y} = N_{\delta_y/R_y}\otimes N_{\delta_y/X}.$$
   Set $S^- = S \setminus \{y\}$.
@@ -149,14 +153,15 @@
   In particular,
   $$\mu^* N_{Z/\widetilde{P}}\big|_{Z^-} \to \shExt^1_{\O_Z}(\Omega_Z, \O_Z)_{p}$$
   is surjective on global sections.</p>
-<p>  By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the map
+<p>By <a href="/papers/vector-bundles-finite-covers/tag/EC54.html" class="stacks-ref-link">Proposition&nbsp;3.4 <span class="stacks-ref-tag">[EC54]</span></a>, the map
   $$\mu^* N_{Z/\widetilde{P}}\big|_{R_y} \to N_{Z/\widetilde{P}}\big|_p$$
   is surjective on global sections.</p>
-<p>  By combining (3.22) and (3.23), we see that $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z,\O_Z)_p$ is surjective on global sections.
+<p>By combining (3.22) and (3.23), we see that $N_{Z/\widetilde{P}} \to \shExt^1_{\O_Z}(\Omega_Z,\O_Z)_p$ is surjective on global sections.
   We have thus taken care of both types of nodes, proving (2).</p>
-<p>  It remains to prove the last statement about $\O_Y(S)$.
+<p>It remains to prove the last statement about $\O_Y(S)$.
   For that, assume that $n$ is large enough so that the conclusions above hold for a generic $S$ of size $n - 2g_Y$.
-  Then we may enlarge $S$ to a set $S^+$ by adding an appropriate set of $2g_Y$ points so that the same conclusions hold and $\O_Y(S^+)$ is isomorphic to a given line bundle of degree $n$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Then we may enlarge $S$ to a set $S^+$ by adding an appropriate set of $2g_Y$ points so that the same conclusions hold and $\O_Y(S^+)$ is isomorphic to a given line bundle of degree $n$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

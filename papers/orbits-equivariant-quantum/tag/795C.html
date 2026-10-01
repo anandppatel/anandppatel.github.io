@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proposition 7.8 (795C) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Proposition 7.3 (795C) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,19 +120,19 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $\opc{M}$</a> / <a href="../section/S7.SS2.html">7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$</a> / <span>Proposition 7.8 (795C)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S7.html">Section 7: Additivity of $[\mathcal{O}_{M}]$</a> / <a href="../section/S7.SS2.html">7.2. Invariance of $[\mathcal{O}_{M}]$ when $P_M=(v+C)\cap \Delta$</a> / <span>Proposition 7.3 (795C)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="5D2B.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 795C</span><a href="4AA8.html">Proof  &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="6299.html">&laquo; Lemma 7.2</a><span class="stacks-tag-current">Tag 795C</span><a href="4AA8.html">Proof  &raquo;</a></div>
 <div class="stacks-lemma" id="addcone">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;7.8.</strong> <a href="../tag/795C.html" class="stacks-tag-link">(795C)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;7.3.</strong> <a href="../tag/795C.html" class="stacks-tag-link">(795C)</a></div>
   <div class="stacks-env-body"><p>Let $M$ be a  $d \times n$ rank $d$ matrix and let $C$ be a matroidal cone. Define the $n \times n$ matrix $B$ by
 $$B_{i,k}= \begin{cases}
-\lambda_{i,k} & \mbox{if $e_k-e_i \in C$ and $k \ne i$}\\
-0 & \mbox{otherwise}
+\lambda_{i,k} &amp; \mbox{if $e_k-e_i \in C$ and $k \ne i$}\\
+0 &amp; \mbox{otherwise}
 \end{cases}$$
 where the $\lambda_{i,k}$ are general elements of $K$. Let $N = M(1+tB)$.</p>
-<ol><li>For any $z \in \Vt(\Delta)$, the order $\ord_t \det(N^z)$ is the minimum value of $|z \setminus w|$ over all pairs $(w, \phi)$ such that $w \in \Vt(P_M)$ and $\phi: z \setminus w \to w \setminus z$ is a bijection with $e_k-e_{\phi(k)} \in C$ for all $k \in z \setminus w$. In particular, it is $\infty$ if and only if no such pair exists.</li>
-<li>For general $t$, the rank polytope of $N$ is $(P_A+C)\cap \Delta$.</li></ol>
+<ol><li><p>For any $z \in \Vt(\Delta)$, the order $\ord_t \det(N^z)$ is the minimum value of $|z \setminus w|$ over all pairs $(w, \phi)$ such that $w \in \Vt(P_M)$ and $\phi: z \setminus w \to w \setminus z$ is a bijection with $e_k-e_{\phi(k)} \in C$ for all $k \in z \setminus w$. In particular, it is $\infty$ if and only if no such pair exists.</p></li>
+<li><p>For general $t$, the rank polytope of $N$ is $(P_A+C)\cap \Delta$.</p></li></ol>
 </div>
 </div>
 
@@ -136,8 +140,8 @@ where the $\lambda_{i,k}$ are general elements of $K$. Let $N = M(1+tB)$.</p>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/795C.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/795C.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 795C (Proposition 7.8)"
-     data-comment-page-label="Tag 795C (Proposition 7.8)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 795C (Proposition 7.3)"
+     data-comment-page-label="Tag 795C (Proposition 7.3)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -145,13 +149,13 @@ where the $\lambda_{i,k}$ are general elements of $K$. Let $N = M(1+tB)$.</p>
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 795C (Proposition 7.8)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 795C (Proposition 7.3)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/795C.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/795C.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag 795C (Proposition 7.8)">
+      <input type="hidden" name="location" value="Tag 795C (Proposition 7.3)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

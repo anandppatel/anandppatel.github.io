@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -233,32 +237,37 @@
 <h1 class="stacks-section-title">6.1. Results</h1>
 <p class="stacks-para">The main result of this section is:</p>
 <div class="stacks-theorem" id="thm-3veroneseexistence">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;6.1.</strong> <a href="../tag/4EC0.html" class="stacks-tag-link">(4EC0)</a></div>
-  <div class="stacks-env-body"><p>Let $\Gamma \subset \bp^{9}$ be thirteen general points. Then there exists a $3$-Veronese surface  containing $\Gamma$.</p></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.1 (Existence).</strong> <a href="../tag/4EC0.html" class="stacks-tag-link">(4EC0)</a></div>
+  <div class="stacks-env-body"><p>Let $\Gamma \subset \bp^{9}$ be thirteen general points. Then there exists a $3$-Veronese surface  containing $\Gamma$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof assuming <a href="/papers/interpolation-del-pezzo/tag/D96B.html" class="stacks-ref-link">Theorem&nbsp;6.8 <span class="stacks-ref-tag">[D96B]</span></a> and <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>.</em> <a href="../tag/69E6.html" class="stacks-tag-link">(69E6)</a></div>
   <div class="stacks-env-body"><p>By <a href="/papers/interpolation-del-pezzo/tag/D96B.html" class="stacks-ref-link">Theorem&nbsp;6.8 <span class="stacks-ref-tag">[D96B]</span></a>, for a general
 	$\Gamma_{13} \in \Hilb_{13} \bp^2$, there is a bijection
 	between singular triads for $\Gamma_{13}$ (defined below in <a href="/papers/interpolation-del-pezzo/tag/C70E.html" class="stacks-ref-link">Definition&nbsp;6.2 <span class="stacks-ref-tag">[C70E]</span></a>)
 	and $3$-Veronese surfaces containing the associated set $A(\Gamma_{13}) \subset \bp^{9}$.
 	By <a href="/papers/interpolation-del-pezzo/tag/395E.html" class="stacks-ref-link">Theorem&nbsp;6.10 <span class="stacks-ref-tag">[395E]</span></a>,
-	every such $\Gamma_{13}$ indeed possesses a singular triad.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+	every such $\Gamma_{13}$ indeed possesses a singular triad.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">The essential tool used in proving <a href="/papers/interpolation-del-pezzo/tag/4EC0.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[4EC0]</span></a> is association.</p>
 <p class="stacks-para">Our next result relates the number of Veronese surfaces through $13$ general points to another, more tractable  enumerative problem.  Before stating it, we must make a definition.</p>
 <div class="stacks-definition" id="def-singulartriad">
   <div class="stacks-env-head"><strong>Definition&nbsp;6.2.</strong> <a href="../tag/C70E.html" class="stacks-tag-link">(C70E)</a></div>
-  <div class="stacks-env-body"><p>Let $\Gamma \subset \bp^2$ be a general set of thirteen points in the plane. A subset $T = \{x,y,z\} \subset \bp^2 \setminus \Gamma$ of three distinct points is a <em>singular triad</em> for $\Gamma$ if $$h^{0}(\bp^{2}, \so_{\bp^{2}}(5)\otimes \sci_{T}^{2}\sci_{\Gamma}) = 2.$$</p></div>
+  <div class="stacks-env-body"><p>Let $\Gamma \subset \bp^2$ be a general set of thirteen points in the plane. A subset $T = \{x,y,z\} \subset \bp^2 \setminus \Gamma$ of three distinct points is a <em>singular triad</em> for $\Gamma$ if $$h^{0}(\bp^{2}, \so_{\bp^{2}}(5)\otimes \sci_{T}^{2}\sci_{\Gamma}) = 2.$$</p>
 </div>
-<div class="stacks-commentary" id="">
+</div>
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;6.3.</strong> <a href="../tag/3A86.html" class="stacks-tag-link">(3A86)</a></div>
-  <div class="stacks-env-body"><p>In other words, $T = \{x,y,z\}$ is a singular triad for $\Gamma$ if there exists a pencil of quintic curves through $\Gamma$ and singular at $x, y,$ and $z$. A dimension count shows that we expect finitely many singular triads for a general set of thirteen points $\Gamma$, as is done in <a href="/papers/interpolation-del-pezzo/tag/1DB6.html" class="stacks-ref-link">Lemma&nbsp;6.13 <span class="stacks-ref-tag">[1DB6]</span></a>.</p></div>
+  <div class="stacks-env-body"><p>In other words, $T = \{x,y,z\}$ is a singular triad for $\Gamma$ if there exists a pencil of quintic curves through $\Gamma$ and singular at $x, y,$ and $z$. A dimension count shows that we expect finitely many singular triads for a general set of thirteen points $\Gamma$, as is done in <a href="/papers/interpolation-del-pezzo/tag/1DB6.html" class="stacks-ref-link">Lemma&nbsp;6.13 <span class="stacks-ref-tag">[1DB6]</span></a>.</p>
+</div>
 </div>
 <p class="stacks-para">Our second result is:</p>
 <div class="stacks-theorem" id="thm-3veronesenumber">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;6.4.</strong> <a href="../tag/E409.html" class="stacks-tag-link">(E409)</a></div>
-  <div class="stacks-env-body"><p>The number of $3$-Veronese surfaces through a general set of thirteen points in $\bp^{9}$ is equal to the number of singular triads for a general set of thirteen points in $\bp^{2}$.</p></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;6.4 (Enumeration).</strong> <a href="../tag/E409.html" class="stacks-tag-link">(E409)</a></div>
+  <div class="stacks-env-body"><p>The number of $3$-Veronese surfaces through a general set of thirteen points in $\bp^{9}$ is equal to the number of singular triads for a general set of thirteen points in $\bp^{2}$.</p>
+</div>
 </div>
 <p class="stacks-para"><a href="/papers/interpolation-del-pezzo/tag/E409.html" class="stacks-ref-link">Theorem&nbsp;6.4 <span class="stacks-ref-tag">[E409]</span></a> points to an interesting enumerative problem on the Hilbert scheme ${\rm Hilb}_{3}(\bp^{2})$ of degree $3$, zero dimensional subschemes of the plane.  We discuss this problem at the end of the section, in
 Section&nbsp;6.7.</p>

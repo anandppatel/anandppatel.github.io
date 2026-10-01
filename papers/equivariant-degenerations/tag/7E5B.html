@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,23 +91,25 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S9.html">Section 9: Points on $\mb{P}^{1}$</a> / <span>Proof by ``slow projection'' (7E5B)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S9.html">Section A: Points on $\mb{P}^{1}$</a> / <span>Proof by ``slow projection'' (7E5B)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="CBED.html">&laquo; Proof using Theorem 9.1 [3F96] </a><span class="stacks-tag-current">Tag 7E5B</span><a href="2BC6.html">Proof of 22  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="CBED.html">&laquo; Proof using Theorem A.1 [3F96] </a><span class="stacks-tag-current">Tag 7E5B</span><a href="1B39.html">Claim A.3 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof by ``slow projection''.</em> <a href="../tag/7E5B.html" class="stacks-tag-link">(7E5B)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">Let $V$ be a $2$-dimensional vector space, $v_1,\ldots,v_n$ pairwise
   linearly independent vectors of $V$, $X\subset\mathbb{P}^1$ the
   corresponding point configuration supported on $p_1,\ldots,p_n$, and
   $Z\subset \mathbb{P}(\on{Sym}^nV)$ the orbit closure. The key fact
-  we will use is
-\begin{clm}</p>
-<p>Every point in the boundary of $Z$ corresponds to a point
+  we will use is</p>
+<div class="stacks-env" id="22">
+  <div class="stacks-env-head"><strong>Claim&nbsp;A.3.</strong> <a href="../tag/1B39.html" class="stacks-tag-link">(1B39)</a></div>
+  <div class="stacks-env-body"><p>Every point in the boundary of $Z$ corresponds to a point
 configuration in $\mathbb{P}^1$ supported on two points with
-multiplicities $n-1$ and 1 or one point with multiplicity $n$.
-\end{clm}</p>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of 22.</em> <a href="../tag/2BC6.html" class="stacks-tag-link">(2BC6)</a></div>
+multiplicities $n-1$ and 1 or one point with multiplicity $n$.</p>
+</div>
+</div>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/equivariant-degenerations/tag/1B39.html" class="stacks-ref-link">Claim&nbsp;A.3 <span class="stacks-ref-tag">[1B39]</span></a>.</em> <a href="../tag/2BC6.html" class="stacks-tag-link">(2BC6)</a></div>
   <div class="stacks-env-body"><p>Let $A(t)$ be a 1-parameter family of matrices, or more precisely a
   map from the spectrum of a discrete valuation ring to $\on{End}(V)$
   where the generic point maps to an element of $GL(V)$. We want to
@@ -118,7 +124,8 @@ multiplicities $n-1$ and 1 or one point with multiplicity $n$.
   $v_i$ is not in the kernel of $A(0)$. Otherwise, there is at most
   one $v_i$ in the kernel of $A(0)$ and
   $\{\lim_{t\to 0}A(t)v_i\mid 1\leq i\leq n\}$ is otherwise
-  unrestricted.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  unrestricted.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Let $x,y$ be a basis for $V$. Then, a basis of $\on{Sym}^nV$ is
 $x^n,x^{n-1}y,\ldots,y^n$. Let $T\subset GL(V)$ be the maximal torus
@@ -128,14 +135,14 @@ A^{\bullet}_T(\mathbb{P}(\on{Sym}^nV))$ is injective, we can use a
 $T$-equivariant degeneration and compute the $T$-equivariant
 class. Our $T$-equivariant degeneration will be to scale the
 coordinates corresponding to $x^{n-2}y^2,\ldots,x^2y^{n-2}$ to zero.</p>
-<p class="stacks-para">By 22, $Z$ is disjoint from the source of this ``slow
+<p class="stacks-para">By <a href="/papers/equivariant-degenerations/tag/1B39.html" class="stacks-ref-link">Claim&nbsp;A.3 <span class="stacks-ref-tag">[1B39]</span></a>, $Z$ is disjoint from the source of this ``slow
 projection,'' so the $T$-equivariant class of $Z$ is a multiple of the
 class of the $3$-plane in $\mathbb{P}(\on{Sym}^nV)$ given by the
 vanishing of the coordinates corresponding to
 $x^{n-2}y^2,\ldots,x^2y^{n-2}$. The class of that $3$-plane is
 $\prod_{i=2}^{n-2}{(iu+(n-i)v)}$. The multiple we need is the degree
 of $Z$ as a projective variety, which is $n(n-1)(n-2)$ by the
-combinatorial argument given in [<a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-d-tuples-of-4da1d222">AF93a</a>, Introduction].<span class="stacks-qed" aria-hidden="true"></span></p>
+combinatorial argument given in [<a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-a77b165d">AF93a</a>, Introduction].<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
 </div>
 

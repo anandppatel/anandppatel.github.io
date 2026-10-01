@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "\\fontdimen2\\font=0.4em\\fontdimen3\\font=0.2em\\fontdimen4\\font=0.1em\\fontdimen7\\font=0.1em\\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -115,7 +114,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -134,28 +138,29 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Fifth order tangent lines</a> / <a href="../section/S3.SS3.html">3.3. Cones in scrolls</a> / <span>Proof (4FAE)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="B044.html">&laquo; Proposition 3.7</a><span class="stacks-tag-current">Tag 4FAE</span><a href="81FA.html">Theorem 3.8 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4FAE.html" class="stacks-tag-link">(4FAE)</a></div>
-  <div class="stacks-env-body"><p>Assume, for sake of contradiction, that $\deg C >1$.  Then, as
+  <div class="stacks-env-body"><p>Assume, for sake of contradiction, that $\deg C &gt;1$.  Then, as
   $\dim C = n-1$, it follows that $C$ is not contained in any ruling
   $\Lambda_{b}$.  Therefore, a general cone line $\ell \subset C$
   meets a general $\Lambda_{b}$ at a single point. Since this is true
   for a general $\ell$, it follows that <em>every</em> $\ell$ meets a
   general $\Lambda_{b}$ &ndash; furthermore, this meeting is a single
   point, because $p$ is only contained in finitely many rulings.</p>
-<p>  Now pick any hyperplane $H$ avoiding $p$, and consider projection
+<p>Now pick any hyperplane $H$ avoiding $p$, and consider projection
   from $p$
   $$\pi_{p} : P \setminus \{p\} \to H.$$
   The image $W := \pi_{p}(C \setminus \{p\})$ is the $n-2$-dimensional
-  variety $C \cap H$, which has degree $>1$ by
+  variety $C \cap H$, which has degree $&gt;1$ by
   assumption. Furthermore, the image $\pi_{p}(\Lambda_{b})$ for
   $b \in B$ general, is a $(n-1)$-dimensional linear space in $H$,
-  and $$W \subset \pi_{p}(\Lambda_{b}).$$ However, as $\deg W >1$,
+  and $$W \subset \pi_{p}(\Lambda_{b}).$$ However, as $\deg W &gt;1$,
   this implies that $\pi_{p}(\Lambda_{b})$ is independent of $b$.
   Thus, the image of $\pi_{p}:P \setminus \{p\}$ is the
   $(n-1)$-dimensional linear space $\pi_{p}(\Lambda_{b})$, forcing $P$
   itself to be a linear space, contrary to assumption.  The
-  argument by contradiction is complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  argument by contradiction is complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

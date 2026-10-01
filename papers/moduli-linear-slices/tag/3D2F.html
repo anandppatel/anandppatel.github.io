@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
@@ -97,7 +96,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,11 +120,12 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Grauert-Mulich</a> / <span>Proof (3D2F)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="FBF7.html">&laquo; Lemma 3.10</a><span class="stacks-tag-current">Tag 3D2F</span><a href="E509.html">Proof of Theorem 3.1 [6C21]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/3D2F.html" class="stacks-tag-link">(3D2F)</a></div>
   <div class="stacks-env-body"><p>Taking Lazarsfeld-Mukai bundles behaves well with respect to direct sum, so it remains to show the result for line bundles $\cO(a)$ with $a \geq 0$. The Lazarsfeld-Mukai bundle $M$ satisfies
 $$0 \to M \to \cO \otimes H^0(\cO(a)) \to \cO(a) \to 0 .$$
-It follows that $M$ has rank $a$, degree $-a$ and no global sections, so that $M= \cO(-1)^a$. The result follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+It follows that $M$ has rank $a$, degree $-a$ and no global sections, so that $M= \cO(-1)^a$. The result follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

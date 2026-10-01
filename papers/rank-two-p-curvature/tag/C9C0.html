@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof of Claim 4.6 [74E2] (C9C0) — The rank two $p$-curvature conjecture\\on generic curves</title>
+  <title>Proof of Claim 4.3 [74E2] (C9C0) — The rank two $p$-curvature conjecture on generic curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,12 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
-          theinnercustomthm: "#1",
           N: "\\mathbb{N}",
           Q: "\\mathbb{Q}",
           Z: "\\mathbb{Z}",
@@ -83,7 +81,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -96,55 +99,56 @@
   <div class="stacks-header-inner">
     <a href="../../../index.html" class="stacks-home-link">Anand Patel, Ananth N. Shankar, and Junho Peter Whang</a>
     <span class="stacks-separator">&rsaquo;</span>
-    <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture\\on generic curves</a>
+    <a href="../index.html" class="stacks-paper-link">The rank two $p$-curvature conjecture on generic curves</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof of Claim 4.6 [74E2] (C9C0)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof of Claim 4.3 [74E2] (C9C0)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="F0C8.html">&laquo; Proof of Claim 4.5 [0D70] </a><span class="stacks-tag-current">Tag C9C0</span><a href="89C5.html">Proposition 4.7 &raquo;</a></div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[74E2]</span></a>.</em> <a href="../tag/C9C0.html" class="stacks-tag-link">(C9C0)</a></div>
+<div class="stacks-tag-nav"><a href="F0C8.html">&laquo; Proof of Claim 4.2 [0D70] </a><span class="stacks-tag-current">Tag C9C0</span><a href="89C5.html">Proposition 4.4 &raquo;</a></div>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of Claim <a href="/papers/rank-two-p-curvature/tag/74E2.html" class="stacks-ref-link">4.3 <span class="stacks-ref-tag">[74E2]</span></a>.</em> <a href="../tag/C9C0.html" class="stacks-tag-link">(C9C0)</a></div>
   <div class="stacks-env-body"><p>We work modulo $p$ for the entirety of this proof. As $D^p \equiv D \mod p$, it suffices to prove that $\nabla'(D) \equiv \nabla'(D)^p$. Suppose that the matrix $\nabla(D)^j = P_j + q^{m-1}Q_j$, for some positive integer $j$. We will show by induction that that the matrix $\nabla'(D)^j$ equals
 $$\left[
 \begin{array}{c|c}
-P_j & Q_j \\
+P_j &amp; Q_j \\
 \hline
-0 & P_j
+0 &amp; P_j
 \end{array}
 \right].$$
-By induction, we may assume that this holds for $j-1$. Then, $\nabla(D)^j = (A + q^{m-1}B)(P_{j-1} + q^{m-1}Q_{j-1}) + D(P_{j-1} + q^{m-1}Q_{j-1}) = AP_{j-1} + D(P_{j-1}) + q^{m-1}(AQ_{j-1} + BP_{j-1} + D(Q_{j-1}))$. Therefore, $P_j = AP_{j-1} + D(P_{j-1}) $ and $Q_j = AQ_{j-1} + BP_{j-1} + D(Q_{j-1})$. </p>
-<p>On the other hand, a similar calculation shows that </p>
+By induction, we may assume that this holds for $j-1$. Then, $\nabla(D)^j = (A + q^{m-1}B)(P_{j-1} + q^{m-1}Q_{j-1}) + D(P_{j-1} + q^{m-1}Q_{j-1}) = AP_{j-1} + D(P_{j-1}) + q^{m-1}(AQ_{j-1} + BP_{j-1} + D(Q_{j-1}))$. Therefore, $P_j = AP_{j-1} + D(P_{j-1}) $ and $Q_j = AQ_{j-1} + BP_{j-1} + D(Q_{j-1})$.</p>
+<p>On the other hand, a similar calculation shows that</p>
 <p>$$\nabla'(D)^j =
 \left[
 \begin{array}{c|c}
-AP_{j-1} + D(P_{j-1}) & AQ_{j-1} + BP_{j-1} + D(Q_{j-1}) \\
+AP_{j-1} + D(P_{j-1}) &amp; AQ_{j-1} + BP_{j-1} + D(Q_{j-1}) \\
 \hline
-0 & AP_{j-1} + D(P_{j-1})
+0 &amp; AP_{j-1} + D(P_{j-1})
 \end{array}
 \right].$$
-The claim now follows from the vanishing of the $p$-curvatures of $\nabla$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+The claim now follows from the vanishing of the $p$-curvatures of $\nabla$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/C9C0.html"
      data-comment-page-url="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/C9C0.html"
-     data-comment-page-title="The rank two $p$-curvature conjecture\\on generic curves — Tag C9C0 (Proof of Claim 4.6 [74E2])"
-     data-comment-page-label="Tag C9C0 (Proof of Claim 4.6 [74E2])"
-     data-comment-paper-title="The rank two $p$-curvature conjecture\\on generic curves">
+     data-comment-page-title="The rank two $p$-curvature conjecture on generic curves — Tag C9C0 (Proof of Claim 4.3 [74E2])"
+     data-comment-page-label="Tag C9C0 (Proof of Claim 4.3 [74E2])"
+     data-comment-paper-title="The rank two $p$-curvature conjecture on generic curves">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
   <div class="stacks-comment-form">
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture\\on generic curves — Tag C9C0 (Proof of Claim 4.6 [74E2])">
+      <input type="hidden" name="_subject" value="Comment on The rank two $p$-curvature conjecture on generic curves — Tag C9C0 (Proof of Claim 4.3 [74E2])">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/C9C0.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/rank-two-p-curvature/tag/C9C0.html">
-      <input type="hidden" name="paper" value="The rank two $p$-curvature conjecture\\on generic curves">
-      <input type="hidden" name="location" value="Tag C9C0 (Proof of Claim 4.6 [74E2])">
+      <input type="hidden" name="paper" value="The rank two $p$-curvature conjecture on generic curves">
+      <input type="hidden" name="location" value="Tag C9C0 (Proof of Claim 4.3 [74E2])">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

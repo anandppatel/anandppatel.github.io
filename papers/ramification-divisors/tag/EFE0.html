@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,49 +134,50 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <a href="../section/S5.SS2.html">5.2. Linked linear series</a> / <span>Proof (EFE0)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="EC6E.html">&laquo; Proposition 5.10</a><span class="stacks-tag-current">Tag EFE0</span><a href="18F8.html">Proposition 5.11 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EFE0.html" class="stacks-tag-link">(EFE0)</a></div>
   <div class="stacks-env-body"><p>Proving that $(W_1, W_2)$ is an EHT limit linear series is straightforward, and left to the reader.
-  It is a special case of [<a class="stacks-cite" href="../../../bibliography.html#bib-osserman-limit-linear-series-moduli-stacks-6c668ae1">15</a>, Theorem&nbsp;4.3.4] and the equivalence of type I and type II series in the two component case ([<a class="stacks-cite" href="../../../bibliography.html#bib-osserman-limit-linear-series-moduli-stacks-6c668ae1">15</a>, Remark&nbsp;3.4.15].</p>
-<p>  The converse also follows from the proof of [<a class="stacks-cite" href="../../../bibliography.html#bib-osserman-limit-linear-series-moduli-stacks-6c668ae1">15</a>, Theorem&nbsp;4.3.4], but it is not explicitly stated there.
+  It is a special case of [<a class="stacks-cite" href="../../../bibliography.html#bib-b-osserman-limit-linear-series-moduli-163e40f1">15</a>, Theorem&nbsp;4.3.4] and the equivalence of type I and type II series in the two component case ([<a class="stacks-cite" href="../../../bibliography.html#bib-b-osserman-limit-linear-series-moduli-163e40f1">15</a>, Remark&nbsp;3.4.15].</p>
+<p>The converse also follows from the proof of [<a class="stacks-cite" href="../../../bibliography.html#bib-b-osserman-limit-linear-series-moduli-163e40f1">15</a>, Theorem&nbsp;4.3.4], but it is not explicitly stated there.
   So we offer a proof.</p>
-<p>  First, suppose that $S$ lies over $\eta \in B$.
+<p>First, suppose that $S$ lies over $\eta \in B$.
   Then $V_n \subset \pi_* (\mathcal E_n)_S$ is determined uniquely as the image of $V_{n_i} = \mathcal W_{n_i} \subset \pi_* (\mathcal E_{n_i})_S$ for either $i = 1$ or $i = 2$.</p>
-<p>  Next, suppose that $S = \spec K$, and it lies over $0 \in B$.
+<p>Next, suppose that $S = \spec K$, and it lies over $0 \in B$.
   Denoting $(\mathcal E_n)_S$ by $E_n$, we must construct $V_n \subset H^0(C, E_n)$.
   By composing $\theta_{n_i-n} \from E_n \to E_{n_i}$ and the restriction $E_{n_i} \to E_{n_i}|_{C_i}$, we get a map
   $$\iota \from H^0(C, E_n) \to H^0(C_1, E_{n_1}|_{C_1}) \oplus H^0(C_2, E_{n_2}|_{C_2}).$$
   The vanishing condition on the twists of $E$ mean that $\iota$ is injective.
   The compatibility condition in <a href="/papers/ramification-divisors/tag/B512.html" class="stacks-ref-link">Definition&nbsp;5.3 <span class="stacks-ref-tag">[B512]</span></a> implies that we must choose $V_n$ so that $\iota (V_n) \subset W_1 \oplus W_2$.
   We claim that $\dim \iota^{-1}(W_1 \oplus W_2) = k$, so that there is a unique choice of $V_n$, namely $V_n = \iota^{-1}(W_1 \oplus W_2)$.</p>
-<p>  Suppose $s \in \iota^{-1}(W_1 \oplus W_2)$.
+<p>Suppose $s \in \iota^{-1}(W_1 \oplus W_2)$.
   Then $\iota(s)$ is a linear combination of $(s^1_1,0), \dots, (s^1_k, 0)$, and $(0, s^2_1), \dots, (0,s^2_k)$.
   Write $\iota(s) = (s_1, s_2)$.
   Since $s_i$ is obtained by applying $\theta_{n-n_i}$, and $\theta$ on $C_i$ at $p$ corresponds to multiplication by the uniformizer, we see that
   $$\ord_p(s_1) \geq n - n_1, \text{ and likewise, } \ord_p(s_2) \geq n_2 - n.$$
-  Let $v_1 \in \{1, \dots, k\}$ be the smallest such that $a^1_{v_1} \geq n-n_1$, and $v_1+c$ the smallest such that $a^1_{v_1+c} > n-n_1$.
-  Since $(W_1, W_2)$ is refined, and $n_2 - n_1 = b$, we see that $v_2 = k+1-v_1$ is the largest such that $a^2_{v_2} \leq n_2 - n$, and $v_2 - c$ the smallest such that $a^2_{v_2 + c} < n_2 - n$.
+  Let $v_1 \in \{1, \dots, k\}$ be the smallest such that $a^1_{v_1} \geq n-n_1$, and $v_1+c$ the smallest such that $a^1_{v_1+c} &gt; n-n_1$.
+  Since $(W_1, W_2)$ is refined, and $n_2 - n_1 = b$, we see that $v_2 = k+1-v_1$ is the largest such that $a^2_{v_2} \leq n_2 - n$, and $v_2 - c$ the smallest such that $a^2_{v_2 + c} &lt; n_2 - n$.
   The vanishing conditions (5.8) imply that $\iota(s)$ must be a linear combination of $(s^1_{v_1},0), \dots, (s^1_k,0)$ and $(0, s^2_{v_2-c}), \dots,  (0,s^2_k)$.
   Suppose
   $$\iota(s) = \sum_{\ell = v_1}^k \alpha_{\ell} \cdot (s^1_\ell,0) + \sum_{\ell = v_2-c}^{k} \beta_\ell \cdot (0,s^2_\ell),$$
   where $\alpha_{\ell}$ and $\beta_{\ell}$ are elements of the field $K$.
   Since $s$ is a section on the entire nodal curve $C$, its two restrictions to $C_1$ and $C_2$ are equal at $p$.
-  In terms of the two components of $\iota(s)$, and in light of the gluing condition (2) in <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>, this equality is equivalent to $\alpha_{\ell} = \beta_{k+1-\ell}$ for $v_1 \leq \ell < v_1+c$.
+  In terms of the two components of $\iota(s)$, and in light of the gluing condition (2) in <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>, this equality is equivalent to $\alpha_{\ell} = \beta_{k+1-\ell}$ for $v_1 \leq \ell &lt; v_1+c$.
   That is, $\iota(s)$ is a linear combination of the $k$ elements
   $$(s^1_{v_1} , s^2_{v_2}), \dots, (s^1_{v_1+c-1} , s^2_{v_2-c+1}), (s^1_{v_1+c},0), \dots, (s^1_k,0), (0,s^2_{v_2+1}), \dots, (s^2_{k},0).$$
   Conversely, it is easy to see that any such linear combination lies in $W_1 \oplus W_2$.
   Hence the claim that $\dim \iota^{-1}(W_1 \oplus W_2) = k$.</p>
-<p>  Set $V_n = \iota^{-1}(W_1 \oplus W_2)$.
+<p>Set $V_n = \iota^{-1}(W_1 \oplus W_2)$.
   To see that $V$ is simple, we must exhibit appropriate $w_i$ and $v_i \in V_{w_i}$ for $i = 1, \dots, k$.
   Take $w_i = n-n_1-a^1_i$, and let $v_i \in V_{w_i} \subset H^0(C, E_{w_i})$ be such that $\iota(v_i) = (s^1_i, s^2_{k+1-i})$.
   Then the images of $v_1, \dots, v_k$ form a basis of $V_n$ for all $n \in \Z$.</p>
-<p>  For more general $S$, consider the map
+<p>For more general $S$, consider the map
   $$\overline \iota \from \pi_* (\mathcal E_n)_S \to \pi_*(\mathcal E_{n_1})_S / \mathcal W_1 \oplus \pi_*(\mathcal E_{n_2})_S / \mathcal W_2,$$
   obtained by composing $\iota = \pi_*(\theta_{n_1-n} \oplus \theta_{n_2-n})$ and the projections $\pi_*(\mathcal E_{n_i})_S \to \pi_*(\mathcal E_{n_i})_S / \mathcal W_i$.
   We proved that, for every $\spec K \to S$, the kernel of $\overline \iota \otimes_{\O_S} K$ is $k$-dimensional.
-  Since $S$ is reduced, it is easy to prove that $V_n = \ker \iota$ is a sub-bundle of $\pi_*(\mathcal E_n)$ (see [<a class="stacks-cite" href="../../../bibliography.html#bib-osserman-limit-linear-series-moduli-stacks-6c668ae1">15</a>, B.3.4 with reduced $B$]).
+  Since $S$ is reduced, it is easy to prove that $V_n = \ker \iota$ is a sub-bundle of $\pi_*(\mathcal E_n)$ (see [<a class="stacks-cite" href="../../../bibliography.html#bib-b-osserman-limit-linear-series-moduli-163e40f1">15</a>, B.3.4 with reduced $B$]).
   It is also easy to check that $V = (V_n \mid n \in \Z)$ is a linked linear series, the only one that satisfies $V_{n_i} = \mathcal W_i$.
-  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

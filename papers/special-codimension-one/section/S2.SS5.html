@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -170,7 +174,8 @@
 <p class="stacks-para">We may arrange the vertices of the graph $\Gamma_C$ of a generic cover $[\alpha \colon C \longrightarrow P]$ parametrized by a boundary divisor $\Delta$ into two columns, the <em>left</em>, and the <em>right</em> side.  In this way, we associate to every boundary divisor $\Delta$ a decorated dual graph, which we call $\Gamma_{\Delta}$. We can now introduce some useful numerical quantities associated to a boundary divisor.</p>
 <div class="stacks-definition" id="ramificationdegree">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.2.</strong> <a href="../tag/FF61.html" class="stacks-tag-link">(FF61)</a></div>
-  <div class="stacks-env-body"><p>Let $\Delta$ be a boundary component.  Then the <em>ramification index</em> of $\Delta$ is the number $$r(\Delta) := \sum_{\text{all edges $e \in \Gamma_{\Delta}$}}(d_{e}-1).$$</p></div>
+  <div class="stacks-env-body"><p>Let $\Delta$ be a boundary component.  Then the <em>ramification index</em> of $\Delta$ is the number $$r(\Delta) := \sum_{\text{all edges $e \in \Gamma_{\Delta}$}}(d_{e}-1).$$</p>
+</div>
 </div>
 <p class="stacks-para">We say that a boundary divisor $\Delta$ is <em>unramified</em> if $r(\Delta)=0$.  This simple means that the generic admissible cover parameterized by $\Delta$ does not have branching at any nodes.</p>
 <div class="stacks-definition" id="excessdefn">

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -106,11 +110,12 @@
 <h1 class="stacks-section-title">1.2. Orbit closures</h1>
 <p class="stacks-para">The method of proof of the main theorem also yields a description of the boundary points of the orbit closure.</p>
 <div class="stacks-theorem" id="thm-closure">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.4.</strong> <a href="../tag/7440.html" class="stacks-tag-link">(7440)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.4 (<a href="/papers/orbits-linear-series/tag/C78D.html" class="stacks-ref-link">Theorem&nbsp;4.5 <span class="stacks-ref-tag">[C78D]</span></a>).</strong> <a href="../tag/7440.html" class="stacks-tag-link">(7440)</a></div>
   <div class="stacks-env-body"><p>The orbit closure \(\Orb(S) \subset \Gr(r+1, \Sym^d\k^2)\) is a union of finitely many orbits.
   In addition to the orbit of \(S\), these are the orbits of subspaces of the form
   $$\langle w_1^{d-a_0}w_2^{a_0}, \dots, w_1^{d-a_r}w_2^{a_r} \rangle,$$
-  where \(a_0 < \dots < a_r\) is the vanishing sequence of \(S\) at some point of \(\P^1\) and \(w_1, w_2\) is a basis of \(\k^2\).</p></div>
+  where \(a_0 &lt; \dots &lt; a_r\) is the vanishing sequence of \(S\) at some point of \(\P^1\) and \(w_1, w_2\) is a basis of \(\k^2\).</p>
+</div>
 </div>
 <p class="stacks-para">At a generic point of \(\P^1\), the vanishing sequence is given by \(a_i = i\).
 The orbit of the corresponding linear series \(\langle  w_1^{d}w_2^0, \dots, w_1^{d-r}w_2^r \rangle\) is \(1\)-dimensional.

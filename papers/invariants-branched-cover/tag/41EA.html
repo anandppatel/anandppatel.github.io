@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,7 +165,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: The maximal rank problem for maximally connected chains</a> / <span>Proof of Lemma 5.5 [C6FD] (41EA)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="41B2.html">&laquo; Proof of Proposition 5.4 [A6E6] assuming Lemma 5.5 [C6FD] </a><span class="stacks-tag-current">Tag 41EA</span><a href="1821.html">Proof of Claim 4.16 [C417]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</em> <a href="../tag/41EA.html" class="stacks-tag-link">(41EA)</a></div>
   <div class="stacks-env-body"><p>For the first part, assume that $L_\text{gen}\subset Q_\text{gen}$. Then $Q_\text{gen}$ contains
 the join $J(L,R)$. But the tangent space to $J(L,R)$ at $p \in L$
@@ -169,19 +173,18 @@ is $r$-dimensional, because the cone $C_{p}R$ with vertex $p$ over $R$ is contai
 $J(L,R)$. Hence, $Q_\text{gen}$ is singular along $L$ as well, but we assumed this was not the case &ndash; contradiction.</p>
 <p>Now let us show that among the quadrics in $V$ containing $L_\text{gen}=\overline{pq}$, a general
 one does not contain $L_\text{gen}$ in its singular locus. Pick $p \in L$ such that
-the general element of $V$ is not singular at $p$ (this can be done by our assumption). Now there are two cases.
-\begin{description}
-\item[Case 1] One possibility is that as we vary $q\in R$, we get a non-trivial family of
+the general element of $V$ is not singular at $p$ (this can be done by our assumption). Now there are two cases.</p>
+<dl><dt>Case 1</dt><dd><p>One possibility is that as we vary $q\in R$, we get a non-trivial family of
 hyperplanes consisting of quadrics in $V$ containing $\overline{pq}$. But then the union of these hyperplanes
 is the whole vector space $V$, and we know that the general quadric in $V$ is smooth at $p$. Hence, it is smooth
-at the general point of the line $\overline{pq}$ as well.</p>
-<p>\item[Case 2] Otherwise, every quadric in $V$ containing $\overline{pq}$ also contains the cone $C_pR$.
+at the general point of the line $\overline{pq}$ as well.</p></dd>
+<dt>Case 2</dt><dd><p>Otherwise, every quadric in $V$ containing $\overline{pq}$ also contains the cone $C_pR$.
 Pick any of these quadrics, $Q$. Then $Q$ cannot be singular all along $R$, because the
 singular locus of $Q$ is a linear space, and $R$ spans the hyperplane $H$. Hence, for some
 $q \in R$, the quadric $Q$ is smooth at $q$. Take the line $\overline{pq}$  which is contained in $C_{p}R$, and hence in $Q$. As $Q$ is smooth at $q$, it is smooth at the general point of
-$\overline{pq}$.
-\end{description}
-In any case, we still conclude <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+$\overline{pq}$.</p></dd></dl>
+<p>In any case, we still conclude <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

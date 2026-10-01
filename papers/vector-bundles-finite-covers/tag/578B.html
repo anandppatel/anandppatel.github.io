@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,15 +114,16 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <a href="../section/S2.SS3.html">2.3. Isotrivial degenerations</a> / <span>Proof of Proposition 2.8 [E16D] (578B)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="D058.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 578B</span><a href="A565.html">Proposition 2.10 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/vector-bundles-finite-covers/tag/E16D.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E16D]</span></a>.</em> <a href="../tag/578B.html" class="stacks-tag-link">(578B)</a></div>
   <div class="stacks-env-body"><p>Let $F_\bullet$ be a filtration of $E$ satisfying the conclusions of <a href="/papers/vector-bundles-finite-covers/tag/01C4.html" class="stacks-ref-link">Lemma&nbsp;2.9 <span class="stacks-ref-tag">[01C4]</span></a>.
   It is standard that a coherent sheaf degenerates isotrivially to the associated graded sheaf of its filtration.
   The construction goes as follows.
   Consider the $\O_Y[t]$-module
   $$\bigoplus_{n \in \Z} t^{-n} F_n,$$
-  where $F_n = 0$ for $n > r$ and $F_n = E$ for $n < 0$.
-  The corresponding sheaf $\mathcal E$ on $Y \times \A^1$ is coherent, $\k[t]$-flat, satisfies $\mathcal E_{Y \times \{t\}} \cong E$ for $t \neq 0$, and $\mathcal E_{Y \times \{0\}} \cong L_1 \oplus \dots \oplus L_r$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  where $F_n = 0$ for $n &gt; r$ and $F_n = E$ for $n &lt; 0$.
+  The corresponding sheaf $\mathcal E$ on $Y \times \A^1$ is coherent, $\k[t]$-flat, satisfies $\mathcal E_{Y \times \{t\}} \cong E$ for $t \neq 0$, and $\mathcal E_{Y \times \{0\}} \cong L_1 \oplus \dots \oplus L_r$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

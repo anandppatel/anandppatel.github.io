@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           MM: "\\mathcal M",
           BM: "\\overline{\\mathcal M}",
           TMM: "\\widetilde{\\mathcal M}",
@@ -106,7 +105,12 @@
           br: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
-          bz: "\\mathbb{Z}"
+          bz: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -125,11 +129,12 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Pulling back the Gieseker-Petri divisor</a> / <span>Proof (0513)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6CFF.html">&laquo; Lemma 5.2</a><span class="stacks-tag-current">Tag 0513</span><a href="930D.html">Lemma 5.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0513.html" class="stacks-tag-link">(0513)</a></div>
   <div class="stacks-env-body"><p>We will prove only those which are not immediately clear.  First, we see that $$\Pi^2 = (f_{1} + 2f_{2})\cdot \Pi$$ which follows from the general fact that $$\zeta^{r} = \sum_{i = 1}^{r} (-1)^{i+1}c_{i}(V) \cdot \zeta^{r-i}$$ for any projective bundle ${\rm Proj\,} V$, where $V$ is a rank $r$ vector bundle and $\zeta$ is the universal line bundle class of ${\rm Proj\,} V$. Here in our case $\Pi$ has class $\zeta$. From this, one easily derives the formulas $\Pi^{3} = \Sigma^{3} = 4,$ and all other formulas involving only $\Pi, \Sigma, f_{1}$ and $f_{2}$.</p>
-<p>We now deal with the intersections involving the exceptional divisors $E_{i}$. If $W\subset G$ is a smooth subscheme of a variety $G$ and if ${\wt G} = \Bl_{W}G$, then the exceptional divisor $E \subset {\wt G}$ is isomorphic to ${\rm Proj \,} (I_{W}/I^{2}_{W})$, and $\OO_{E}(E) = \OO_{E}(-1)$ has class $r-l$.  In our setting, the conormal bundle of $Z_{i}$ in $Y$ is $\OO_{Z_{i}} \oplus \OO_{Z_{i}}(-1)$.  Therefore, $E_{i}$ is abstractly isomorphic to $\bbF_{1}$, and $\OO_{E_{i}}(1)$ is the line bundle associated to the directrix $\sigma \subset \bbF_{1}$. The class of the directrix is also given by $l_{i} - r_{i}$, and therefore $E_{i} \cdot E_{i} = r_{i} - l_{i}$.  Furthermore, since $\Pi \cdot Z_{i} = f_{1} \cdot Z_{i} =  1$ in $Y$, we conclude that $\Pi \cdot E_{i} = f_{1} \cdot E_{i} = r_{i}$.   </p>
-<p>The remaining intersection products follow from those explained above.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>We now deal with the intersections involving the exceptional divisors $E_{i}$. If $W\subset G$ is a smooth subscheme of a variety $G$ and if ${\wt G} = \Bl_{W}G$, then the exceptional divisor $E \subset {\wt G}$ is isomorphic to ${\rm Proj \,} (I_{W}/I^{2}_{W})$, and $\OO_{E}(E) = \OO_{E}(-1)$ has class $r-l$.  In our setting, the conormal bundle of $Z_{i}$ in $Y$ is $\OO_{Z_{i}} \oplus \OO_{Z_{i}}(-1)$.  Therefore, $E_{i}$ is abstractly isomorphic to $\bbF_{1}$, and $\OO_{E_{i}}(1)$ is the line bundle associated to the directrix $\sigma \subset \bbF_{1}$. The class of the directrix is also given by $l_{i} - r_{i}$, and therefore $E_{i} \cdot E_{i} = r_{i} - l_{i}$.  Furthermore, since $\Pi \cdot Z_{i} = f_{1} \cdot Z_{i} =  1$ in $Y$, we conclude that $\Pi \cdot E_{i} = f_{1} \cdot E_{i} = r_{i}$.</p>
+<p>The remaining intersection products follow from those explained above.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

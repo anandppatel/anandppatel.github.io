@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,8 +132,8 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Test families</a> / <a href="../section/S3.SS4.html">3.4. The fourth test family</a> / <span>Proof (BB86)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="9140.html">&laquo; Proposition 3.18</a><span class="stacks-tag-current">Tag BB86</span><a href="C5DB.html">Proposition 3.19 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="9140.html">&laquo; Proposition 3.4.7</a><span class="stacks-tag-current">Tag BB86</span><a href="C5DB.html">Proposition 3.4.8 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BB86.html" class="stacks-tag-link">(BB86)</a></div>
   <div class="stacks-env-body"><p>We compute the class of $\mathcal{W}$ and obtain the class of $\mathcal{V}$ by tensoring by $\O(E)$.
   Recall the family $\widetilde{\pi} \colon \mathcal{Y} \to \widetilde{S^{[2]}}$ and the line bundle $\mathcal{L}$ on it defined in (3.19).
@@ -139,17 +143,17 @@
   By the definition of $\mathcal{W}$, we have the exact sequence
   $$0 \to \mathcal{B} \to \mathcal{A} \to \mathcal{W} \to 0,$$
   and hence $\mathcal{W} = \mathcal{A} - \mathcal{B}$ in the Grothendieck group.</p>
-<p>  We first compute $\mathcal{B}$.
+<p>We first compute $\mathcal{B}$.
   By the push-pull formula and the description (3.20) of $\mathcal{L}$, we get
   $$\mathcal{B} = \mathcal{U} \otimes \O_{\widetilde{S^{[2]}}}(-2E).$$</p>
-<p>  We now compute $\mathcal{A}$.
+<p>We now compute $\mathcal{A}$.
   Recall that $\eta \colon \mathcal{Y} \to \widetilde{S^{[2]}} \times S$ is the blow-up at $F = \bigsqcup_i E_i \times L_i$.
   Using (3.20) again, we get
   $$\eta_* \mathcal{L} = \omega_S^{-1} \otimes \mathcal{I}^2_{F}.$$
   Using the pair of sequences
   $$\begin{split}
-      &0 \to \mathcal{I}^2_{F} \to \O_{\td{S^{[2]}} \times S} \to \O_{2F} \to 0, \text{ and}\\
-      &0 \to \mathcal{I}_{F}/\mathcal{I}_{F}^{2} \to \O_{2F} \to \O_{F} \to 0,
+      &amp;0 \to \mathcal{I}^2_{F} \to \O_{\td{S^{[2]}} \times S} \to \O_{2F} \to 0, \text{ and}\\
+      &amp;0 \to \mathcal{I}_{F}/\mathcal{I}_{F}^{2} \to \O_{2F} \to \O_{F} \to 0,
     \end{split}$$
   and tensoring by $\omega_S^{-1}$ gives (in the Grothendieck group)
   $$\eta_* \mathcal{L} = \omega_S^{-1} \otimes \left(\O_{\widetilde{S^{[2]}} \times S} - \O_F - \mathcal{I}_F / \mathcal{I}^2_F\right).$$
@@ -158,10 +162,11 @@
   where $\pi_i \colon F_i \to E_i \times L_i$ are the two projections.
   After substituting in (3.24) and pushing forward to $\widetilde{S^{[2]}}$, we get
   $$\begin{split}
-      \mathcal{A} &= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
-      &= \O + \O(-E)^3 + \O(-2E)^2.
+      \mathcal{A} &amp;= \O^6- \O_E^{5}- \O_E(-E)^{2}\\
+      &amp;= \O + \O(-E)^3 + \O(-2E)^2.
     \end{split}$$
-  Subtracting $\eqref{eqn:B}$ from $\eqref{eqn:A}$ and tensoring by $\O(E)$ gives the result.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Subtracting $(3.22)$ from $(3.25)$ and tensoring by $\O(E)$ gives the result.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

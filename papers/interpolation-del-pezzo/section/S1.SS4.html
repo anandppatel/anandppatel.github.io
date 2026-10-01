@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -238,15 +242,16 @@ anticanonical bundle. All del Pezzo surfaces have
 degree $d$ in $\bp^d$, and
 all linearly normal smooth surfaces of degree $d$ in $\bp^d$ are del Pezzo
 surfaces by
-[<a class="stacks-cite" href="../../../bibliography.html#bib-the-enumerative-geometry-of-del-pezzo-43329e74">Cos06b</a>, Theorem 2.5].
+[<a class="stacks-cite" href="../../../bibliography.html#bib-izzet-coskun-the-enumerative-geometry-of-2688017e">Cos06b</a>, Theorem 2.5].
 We also know the dimension of the component of the Hilbert
-scheme containing a del Pezzo surface from [<a class="stacks-cite" href="../../../bibliography.html#bib-the-enumerative-geometry-of-del-pezzo-43329e74">Cos06b</a>, Lemma 2.3], as given
+scheme containing a del Pezzo surface from [<a class="stacks-cite" href="../../../bibliography.html#bib-izzet-coskun-the-enumerative-geometry-of-2688017e">Cos06b</a>, Lemma 2.3], as given
 in Table&nbsp;1, and that all del Pezzo
-surfaces have $H^1(X, N_{X/\bp^n}) = 0$, by [<a class="stacks-cite" href="../../../bibliography.html#bib-the-enumerative-geometry-of-del-pezzo-43329e74">Cos06b</a>, Lemma 5.7].</p>
+surfaces have $H^1(X, N_{X/\bp^n}) = 0$, by [<a class="stacks-cite" href="../../../bibliography.html#bib-izzet-coskun-the-enumerative-geometry-of-2688017e">Cos06b</a>, Lemma 5.7].</p>
 <p class="stacks-para">Assuming the remainder of the paper, we now restate and prove
 our main result.</p>
-<p class="stacks-para">\main*</p>
-<div class="stacks-proof" id="">
+<p class="stacks-para"><strong>Theorem&nbsp;<a href="/papers/interpolation-del-pezzo/tag/169A.html" class="stacks-ref-link">1.1 <span class="stacks-ref-tag">[169A]</span></a> (restated).</strong>
+All del Pezzo surfaces satisfy weak interpolation.</p>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/42F6.html" class="stacks-tag-link">(42F6)</a></div>
   <div class="stacks-env-body"><p>Recall that there is a unique component of the Hilbert
 scheme of del Pezzo surfaces in
@@ -256,7 +261,7 @@ has general member abstractly isomorphic to $\mathbb F_0 \cong \bp^1 \times \bp^
 The other component in degree $8$, which we call type $1$,
 has general member abstractly isomorphic to $\mathbb F_1$.
 The cases of degree $3$ and $4$ surfaces hold by
-<a href="/papers/interpolation-del-pezzo/tag/584C.html" class="stacks-ref-link">Lemma&nbsp;8.16 <span class="stacks-ref-tag">[584C]</span></a>.
+<a href="/papers/interpolation-del-pezzo/tag/584C.html" class="stacks-ref-link">Lemma&nbsp;A.16 <span class="stacks-ref-tag">[584C]</span></a>.
 The case of degree $5$ del Pezzo surfaces is
 <a href="/papers/interpolation-del-pezzo/tag/D5A2.html" class="stacks-ref-link">Theorem&nbsp;2.1 <span class="stacks-ref-tag">[D5A2]</span></a>.
 The case of degree $6$ del Pezzo surfaces is
@@ -269,7 +274,8 @@ degrees $7,8,9$ are
 <a href="/papers/interpolation-del-pezzo/tag/1F74.html" class="stacks-ref-link">Corollary&nbsp;6.23 <span class="stacks-ref-tag">[1F74]</span></a>,
 and
 &nbsp;<a href="/papers/interpolation-del-pezzo/tag/4EC0.html" class="stacks-ref-link">Theorem&nbsp;6.1 <span class="stacks-ref-tag">[4EC0]</span></a>,
-respectively.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+respectively.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-table-wrap"><table class="stacks-table"><tbody><tr><td>Degree</td><td>Dimension</td><td>Number of Points</td><td>Additional Linear Space Dimension, If Any</td></tr><tr><td>$3$</td><td>$19$</td><td>$19$</td><td>None</td></tr><tr><td>$4$</td><td>$26$</td><td>$13$</td><td>None</td></tr><tr><td>$5$</td><td>$35$</td><td>$11$</td><td>$1$</td></tr><tr><td>$6$</td><td>$46$</td><td>$11$</td><td>$2$</td></tr><tr><td>$7$</td><td>$59$</td><td>$11$</td><td>$1$</td></tr><tr><td>$8$, type 0</td><td>$74$</td><td>$12$</td><td>$4$</td></tr><tr><td>$8$, type 1</td><td>$74$</td><td>$12$</td><td>$4$</td></tr><tr><td>$9$</td><td>$91$</td><td>$13$</td><td>None</td></tr></tbody></table></div>
 <div class="stacks-caption">Conditions for del Pezzo surfaces to satisfy interpolation.
@@ -278,7 +284,7 @@ general member is a degree $8$ del Pezzo surface, isomorphic to $\mathbb F_0$,
 (this also includes, in its closure, del Pezzo surfaces abstractly
 isomorphic to $\mathbb F_2$,)
 while type $1$ refers to those isomorphic to $\mathbb F_1$.
-The dimension counts are proven in [<a class="stacks-cite" href="../../../bibliography.html#bib-the-enumerative-geometry-of-del-pezzo-43329e74">Cos06b</a>, Lemma 2.3].</div>
+The dimension counts are proven in [<a class="stacks-cite" href="../../../bibliography.html#bib-izzet-coskun-the-enumerative-geometry-of-2688017e">Cos06b</a>, Lemma 2.3].</div>
 
 <hr>
 <div class="stacks-comments"

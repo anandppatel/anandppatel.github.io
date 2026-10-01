@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -144,10 +148,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Effective divisors</a> / <a href="../section/S5.SS1.html">5.1. The even genus case</a> / <span>Proof (C04B)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="25D8.html">&laquo; Corollary 5.4</a><span class="stacks-tag-current">Tag C04B</span><a href="E23A.html">Remark 5.5 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/C04B.html" class="stacks-tag-link">(C04B)</a></div>
   <div class="stacks-env-body"><p>Lift $B \to \o T_g$ to $B \to \o{H}^3_g$. Then a generic point of $B$ lies in $H^3_g \setminus \mu$.  We conclude that $B$ intersects non-negatively with $\mu$ and with all the boundary divisors. From <a href="/papers/sharp-slope-bounds/tag/BAE2.html" class="stacks-ref-link">Proposition&nbsp;5.3 <span class="stacks-ref-tag">[BAE2]</span></a>, we get
-$$(7g+6) (\lambda \cdot B) \geq g (\delta \cdot B).$$<span class="stacks-qed" aria-hidden="true"></span></p></div>
+$$(7g+6) (\lambda \cdot B) \geq g (\delta \cdot B).$$<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -121,7 +125,8 @@
 <div class="stacks-tag-nav"><a href="2BFF.html">&laquo; Proof </a><span class="stacks-tag-current">Tag F855</span><a href="64AA.html">Proof  &raquo;</a></div>
 <div class="stacks-lemma" id="integrateaway">
   <div class="stacks-env-head"><strong>Lemma&nbsp;8.4.</strong> <a href="../tag/F855.html" class="stacks-tag-link">(F855)</a></div>
-  <div class="stacks-env-body"><p>Given a $d \times n$ matrix $M$, if $M'$ is formed from $M$ by deleting the $i$th column, then $$\int_{(\mb{P}^r)^n \xrightarrow{\pi} (\mb{P}^r)^{n-1}} \opc{M}=\opc[r][n-1]{M'},$$ where $\pi:(\mb{P}^r)^n \to (\mb{P}^r)^{n-1}$ is the projection away from the $i$th factor.</p></div>
+  <div class="stacks-env-body"><p>Given a $d \times n$ matrix $M$, if $M'$ is formed from $M$ by deleting the $i$th column, then $$\int_{(\mb{P}^r)^n \xrightarrow{\pi} (\mb{P}^r)^{n-1}} [\mathcal{O}_{M}]=[\mathcal{O}_{M'}],$$ where $\pi:(\mb{P}^r)^n \to (\mb{P}^r)^{n-1}$ is the projection away from the $i$th factor.</p>
+</div>
 </div>
 
 <hr>

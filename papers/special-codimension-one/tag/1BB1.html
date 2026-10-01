@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -164,26 +168,27 @@
     <a href="../index.html" class="stacks-paper-link">Special Codimension One Loci in Hurwitz Spaces</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and rigidityextremality.</a> / <a href="../section/S3.SS2.html">3.2. </a> / <span>Proof (1BB1)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: One parameter families and Theorem B [919E].</a> / <a href="../section/S3.SS2.html">3.2. </a> / <span>Proof (1BB1)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="0CC5.html">&laquo; Proposition 3.1</a><span class="stacks-tag-current">Tag 1BB1</span><a href="DF3E.html">Proposition 3.2 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/1BB1.html" class="stacks-tag-link">(1BB1)</a></div>
   <div class="stacks-env-body"><p>First we recall that the Grothendieck-Riemann-Roch formula yields:
 $$\lambda = \chi (\cO_{\cC}) - \chi(\cO_{S})(1-g).$$
 Since $\chi(\cO_{\cC}) = \chi(\alpha_{*}\cO_{\cC}) = \chi(\cO_{\P}) + \chi(\dual \cE)$ we get:
 $$\lambda = \chi(\cO_{\P}) + \chi(\dual \cE) - (1-g)\chi(\cO_{S}) .$$</p>
 <p>We calculate $\chi(\dual \cE)$ by applying the Hirzebruch-Reimann-Roch formula to the bundle $\dual \cE$. This says that
-$$\chi(\dual \cE) = [ch(\dual \cE) \cdot Td(T_{\P})]_{2} = ch_{2}(\dual \cE) + c_1(\cE)(K_{\P}/2) + (d-1)\chi(\cO_{\P}).$$ </p>
-<p>Let $\sigma \in \Pic_{\Q} \P$ denote the rational section class $[-\omega_{p}/2]$, so that $\sigma^{2} = 0$.  Since the degree of $\cE$ is $g+d-1$ when restricted to any $\P^{1} \times \{s\} \subset \P$, we may write $c_{1}(\cE) = (g+d-1)\sigma + mf$, where $f$ is the class of a fiber of $p$.  </p>
+$$\chi(\dual \cE) = [ch(\dual \cE) \cdot Td(T_{\P})]_{2} = ch_{2}(\dual \cE) + c_1(\cE)(K_{\P}/2) + (d-1)\chi(\cO_{\P}).$$</p>
+<p>Let $\sigma \in \Pic_{\Q} \P$ denote the rational section class $[-\omega_{p}/2]$, so that $\sigma^{2} = 0$.  Since the degree of $\cE$ is $g+d-1$ when restricted to any $\P^{1} \times \{s\} \subset \P$, we may write $c_{1}(\cE) = (g+d-1)\sigma + mf$, where $f$ is the class of a fiber of $p$.</p>
 <p>Squaring gives $$m = \frac{c_{1}^{2}\cE}{b}.$$  The equality $K_{\P}/2 = -\sigma - \chi(\cO_{S})\cdot f$ implies $$c_{1}(\cE) \cdot K_{\P}/2 = -m - (g+d-1) \chi(\cO_{S}).$$</p>
-<p>Altogether, we obtain $$\lambda = ch_{2}(\dual \cE) - m + d\chi(\cO_{\P}) - d\chi(\cO_{S}) = ch_{2}(\dual \cE) - \frac{c_{1}^{2}\cE}{b},$$ since $\chi(\cO_{\P}) = \chi(\cO_{S})$.  This gives (3.3).</p>
+<p>Altogether, we obtain $$\lambda = ch_{2}(\dual \cE) - m + d\chi(\cO_{\P}) - d\chi(\cO_{S}) = ch_{2}(\dual \cE) - \frac{c_{1}^{2}\cE}{b},$$ since $\chi(\cO_{\P}) = \chi(\cO_{S})$.  This gives (3.2).</p>
 <p>Mumford's relation $12 \lambda = \kappa +\delta$ implies we need only compute $\kappa$. The computation of $\kappa$ uses the Grothendieck-Riemann-Roch formula applied to the line bundle $\omega_{\alpha}^{\otimes 2}$ and the map $\alpha$ as in the proof of <a href="/papers/special-codimension-one/tag/2558.html" class="stacks-ref-link">1.14 <span class="stacks-ref-tag">[2558]</span></a>:
 $$ch(\alpha_{*}\omega_{\alpha}^{\otimes 2})Td(T_{\pi}) = \alpha_{*}(ch(\omega_{\alpha}^{\otimes 2})Td(T_{f})).$$</p>
 <p>By using $ch(\alpha_{*}\omega_{\alpha}^{\otimes 2}) = ch(\Sym^{2}\cE) - ch(\cF)$ and taking degree $2$ parts of the above equation, we end up with the equality
 $$ch_{2}(\Sym^2\cE) - ch_{2}(\cE) - ch_{2}(\cF) = c_{1}^{2}(\omega_{\alpha}).$$</p>
 <p>Finally, by using $c_{1}(\omega_{f}) = c_{1}(\omega_{\alpha}) + \alpha_{*}c_{1}(\omega_{\pi})$, one checks that $$\kappa = c_{1}^{2}(\omega_{f}) = c_{1}^{2}(\omega_{\alpha}) - \frac{8}{b}c_{1}^{2}(\cE).$$</p>
-<p>Putting all of the above together yields 3.3.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>Putting all of the above together yields 3.3.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

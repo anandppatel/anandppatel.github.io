@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,12 +165,13 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <a href="../section/S3.SS1.html">3.1. Directrices and Filtrations</a> / <span>Proof of Lemma 3.15 [8893] (59F6)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="8893.html">&laquo; Lemma 3.15</a><span class="stacks-tag-current">Tag 59F6</span><a href="A182.html">Proof of Lemma 3.14 [044A]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/8893.html" class="stacks-ref-link">Lemma&nbsp;3.15 <span class="stacks-ref-tag">[8893]</span></a>.</em> <a href="../tag/59F6.html" class="stacks-tag-link">(59F6)</a></div>
   <div class="stacks-env-body"><p>Without loss of generality, we may assume that $F^\bullet$ and $G^\bullet$ are complete flags. Indeed, if they are not, just choose generic finer complete flags containing them, and the problem only becomes more restrictive.</p>
 <p>Now pick a basis $v_1,\ldots, v_n$ of $V$ such that $\langle v_i \rangle = F^i \cap G^{n-i-1}$. In this basis,
 endomorphisms preserving $F^\bullet$ are upper triangular matrices, and the ones respecting $G^\bullet$ are the lower
-triangular ones. And any matrix can be written as a difference of two such matrices.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+triangular ones. And any matrix can be written as a difference of two such matrices.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

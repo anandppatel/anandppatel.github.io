@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>10.4. Kronecker duals for all $\opc{M}$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>10.4. Kronecker duals for all $[\mathcal{O}_{M}]$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,19 +120,18 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S10.html">Section 10: Kronecker duals of $\opc{M}$ and constructing $[M]_\hbar$</a> / <span>10.4. Kronecker duals for all $\opc{M}$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS3.html" aria-label="Previous: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$" title="Previous: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S10.SS5.html" aria-label="Next: 10.5. Polytope proof of $[M]_\hbar \star [N]_\hbar = [M \oplus N]_\hbar$" title="Next: 10.5. Polytope proof of $[M]_\hbar \star [N]_\hbar = [M \oplus N]_\hbar$">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S10.html">Section 10: Kronecker duals of $[\mathcal{O}_{M}]$ and constructing $[M]_\hbar$</a> / <span>10.4. Kronecker duals for all $[\mathcal{O}_{M}]$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS3.html" aria-label="Previous: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$" title="Previous: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S11.html" aria-label="Next: Section 11: Equivariant Chow class of the graph closure $\ol{\Gamma}_M$ of $\mu_M$" title="Next: Section 11: Equivariant Chow class of the graph closure $\ol{\Gamma}_M$ of $\mu_M$">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">10.4. Kronecker duals for all $\opc{M}$</h1>
-<p class="stacks-para">For an arbitrary matrix $M$, we apply <a href="/papers/orbits-equivariant-quantum/tag/2A68.html" class="stacks-ref-link">Theorem&nbsp;8.8 <span class="stacks-ref-tag">[2A68]</span></a> and <a href="/papers/orbits-equivariant-quantum/tag/25D7.html" class="stacks-ref-link">Theorem&nbsp;10.4 <span class="stacks-ref-tag">[25D7]</span></a>(b) to get $$[M]_\hbar=\sum_{\ell=1}^n\sum_{\emptyset \subsetneq X_1  \subsetneq \ldots \subsetneq X_\ell = \{1,\ldots,n\}}(-1)^{n-\ell}[\operatorname{Sch}(\rk_M(X_1),\ldots,\rk_M(X_\ell),X_1,\ldots,X_\ell)]_\hbar,$$
-This expression in particular implies the uniqueness in <a href="/papers/orbits-equivariant-quantum/tag/48CA.html" class="stacks-ref-link">Theorem&nbsp;3.5 <span class="stacks-ref-tag">[48CA]</span></a> in light of the previous subsection. We have thus expressed $[M]_\hbar(f_1(H_1), \ldots, f_n(H_n))$ in terms of iterated mod $F^k$ over various groupings of the $\bar{f}_i$. By <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.3 <span class="stacks-ref-tag">[F065]</span></a>(d), applying the operator $[z^r][F(z)^{d-1}]$ to this expression yields $\opc{M}^\dagger(f_1(H_1),\ldots,f_n(H_n))$.</p>
-<p class="stacks-para">\begin{comment}</p>
+<h1 class="stacks-section-title">10.4. Kronecker duals for all $[\mathcal{O}_{M}]$</h1>
+<p class="stacks-para">For an arbitrary matrix $M$, we apply <a href="/papers/orbits-equivariant-quantum/tag/2A68.html" class="stacks-ref-link">Theorem&nbsp;8.8 <span class="stacks-ref-tag">[2A68]</span></a> and <a href="/papers/orbits-equivariant-quantum/tag/25D7.html" class="stacks-ref-link">Theorem&nbsp;10.3 <span class="stacks-ref-tag">[25D7]</span></a>(b) to get $$[M]_\hbar=\sum_{\ell=1}^n\sum_{\emptyset \subsetneq X_1  \subsetneq \ldots \subsetneq X_\ell = \{1,\ldots,n\}}(-1)^{n-\ell}[\operatorname{Sch}(\rk_M(X_1),\ldots,\rk_M(X_\ell),X_1,\ldots,X_\ell)]_\hbar,$$
+This expression in particular implies the uniqueness in <a href="/papers/orbits-equivariant-quantum/tag/48CA.html" class="stacks-ref-link">Theorem&nbsp;4 <span class="stacks-ref-tag">[48CA]</span></a> in light of the previous subsection. We have thus expressed $[M]_\hbar(f_1(H_1), \ldots, f_n(H_n))$ in terms of iterated mod $F^k$ over various groupings of the $\bar{f}_i$. By <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.2 <span class="stacks-ref-tag">[F065]</span></a>(d), applying the operator $[z^r][F(z)^{d-1}]$ to this expression yields $[\mathcal{O}_{M}]^\dagger(f_1(H_1),\ldots,f_n(H_n))$.</p>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S10.SS4.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S10.SS4.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 10.4. Kronecker duals for all $\opc{M}$"
-     data-comment-page-label="10.4. Kronecker duals for all $\opc{M}$"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 10.4. Kronecker duals for all $[\mathcal{O}_{M}]$"
+     data-comment-page-label="10.4. Kronecker duals for all $[\mathcal{O}_{M}]$"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -136,13 +139,13 @@ This expression in particular implies the uniqueness in <a href="/papers/orbits-
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 10.4. Kronecker duals for all $\opc{M}$">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 10.4. Kronecker duals for all $[\mathcal{O}_{M}]$">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S10.SS4.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S10.SS4.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="10.4. Kronecker duals for all $\opc{M}$">
+      <input type="hidden" name="location" value="10.4. Kronecker duals for all $[\mathcal{O}_{M}]$">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

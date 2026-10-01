@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,17 +165,18 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS2.html">2.2. Evidence</a> / <span>Remark 2.6 (1F3B)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6A25.html">&laquo; Proof of Proposition 2.4 [A1AC] </a><span class="stacks-tag-current">Tag 1F3B</span><a href="8A3F.html">Lemma 2.7 &raquo;</a></div>
-<div class="stacks-commentary" id="">
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.6.</strong> <a href="../tag/1F3B.html" class="stacks-tag-link">(1F3B)</a></div>
-  <div class="stacks-env-body"><p><a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a> and <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a> indicate a direct relationship between invariants of branched covers and properties of genus $1$ fibrations.  </p>
-<p>Let $f \from S \to \P^{1}$ be a generically smooth family of arithmetic genus $1$ curves, and let $C \subset S$ be a smooth $d$-section of the map $f$, i.e. $C$ is a smooth curve whose intersection number with the fibers of $S$ is $d$. </p>
+  <div class="stacks-env-body"><p><a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a> and <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a> indicate a direct relationship between invariants of branched covers and properties of genus $1$ fibrations.</p>
+<p>Let $f \from S \to \P^{1}$ be a generically smooth family of arithmetic genus $1$ curves, and let $C \subset S$ be a smooth $d$-section of the map $f$, i.e. $C$ is a smooth curve whose intersection number with the fibers of $S$ is $d$.</p>
 <p>Then the pair $(f \from S \to \P^{1}, C)$ gives rise to the natural embedding
 $$S \hookrightarrow \P(f_{*}\cO_{S}(C))$$
-over $\P^{1}$. The projective bundle $\P(f_{*}\cO_{S}(C))$  is a $\P^{d-1}$-bundle, and each fiber of $f$ embeds as a possibly singular degree $d$ elliptic normal curve. Furthermore, there exists a relative hyperplane $\Lambda \subset \P(f_{*}\cO_{S}(C))$ whose intersection with $S$ is precisely the curve $C$.  </p>
-<p>The main observation, following from <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a>, is that the curve $C$, viewed as a branched cover of $\P^{1}$, is embedded via its relative canonical embedding in the $\P^{d-2}$-bundle $\Lambda$. </p>
-<p>As an analogy, the reader should recall the relationship between the syzygies of a canonical curve $C \subset \P^{g-1}$ and a $K3$ surface $S \subset \P^{g}$ containing $C$.  A generic version of Green's conjecture was proved by Voisin in [<a class="stacks-cite" href="../../../bibliography.html#bib-4-363-404-e721b2ef">Voi02</a>] using this relationship.</p>
-<p>A dimension count says that a general branched cover $\alpha \from C \to \P^{1}$ does not occur as a $d$-section in a genus $1$ fibration.  However, the proof of <a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a> shows us that <em>if the syzygy bundles for $S \subset \P(f_{*}\cO_{S}(C))$ are balanced, then the same follows for $C \subset \Lambda$.</em> </p>
-<p>This suggests a more attractive approach for proving <a href="/papers/invariants-branched-cover/tag/2DEA.html" class="stacks-ref-link">Conjecture&nbsp;1.1 <span class="stacks-ref-tag">[2DEA]</span></a>:  Show that the generic pair $(f \from S \to \P^{1}, C)$ has balanced syzygies in its relative embedding (2.9).  This is the subject of future work.</p></div>
+over $\P^{1}$. The projective bundle $\P(f_{*}\cO_{S}(C))$  is a $\P^{d-1}$-bundle, and each fiber of $f$ embeds as a possibly singular degree $d$ elliptic normal curve. Furthermore, there exists a relative hyperplane $\Lambda \subset \P(f_{*}\cO_{S}(C))$ whose intersection with $S$ is precisely the curve $C$.</p>
+<p>The main observation, following from <a href="/papers/invariants-branched-cover/tag/1606.html" class="stacks-ref-link">Lemma&nbsp;2.5 <span class="stacks-ref-tag">[1606]</span></a>, is that the curve $C$, viewed as a branched cover of $\P^{1}$, is embedded via its relative canonical embedding in the $\P^{d-2}$-bundle $\Lambda$.</p>
+<p>As an analogy, the reader should recall the relationship between the syzygies of a canonical curve $C \subset \P^{g-1}$ and a $K3$ surface $S \subset \P^{g}$ containing $C$.  A generic version of Green's conjecture was proved by Voisin in [<a class="stacks-cite" href="../../../bibliography.html#bib-claire-voisin-green-s-generic-syzygy-2b6962a5">Voi02</a>] using this relationship.</p>
+<p>A dimension count says that a general branched cover $\alpha \from C \to \P^{1}$ does not occur as a $d$-section in a genus $1$ fibration.  However, the proof of <a href="/papers/invariants-branched-cover/tag/A1AC.html" class="stacks-ref-link">Proposition&nbsp;2.4 <span class="stacks-ref-tag">[A1AC]</span></a> shows us that <em>if the syzygy bundles for $S \subset \P(f_{*}\cO_{S}(C))$ are balanced, then the same follows for $C \subset \Lambda$.</em></p>
+<p>This suggests a more attractive approach for proving <a href="/papers/invariants-branched-cover/tag/2DEA.html" class="stacks-ref-link">Conjecture&nbsp;1.1 <span class="stacks-ref-tag">[2DEA]</span></a>:  Show that the generic pair $(f \from S \to \P^{1}, C)$ has balanced syzygies in its relative embedding (9).  This is the subject of future work.</p>
+</div>
 </div>
 
 <hr>

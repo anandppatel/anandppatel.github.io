@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           c: "{\\rm c}",
           orb: "\\mathcal",
@@ -60,7 +59,7 @@
           Bog: "\\operatorname{Bog}",
           Bl: "\\operatorname{Bl}",
           im: "\\operatorname{im}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{{\\mathbb{F}}}",
           AA: "\\mathbb{A}",
           ba: "\\mathbb{A}",
           bbA: "\\mathbb{A}",
@@ -89,7 +88,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -100,7 +104,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
   </div>
@@ -109,13 +113,14 @@
 <main class="stacks-main">
 <div class="stacks-tag-nav"><span class="stacks-tag-current">Tag B6A0</span><a href="3E25.html">Conjecture 2.1 &raquo;</a></div>
 <div class="stacks-theorem" id="thm-main">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1.</strong> <a href="../tag/B6A0.html" class="stacks-tag-link">(B6A0)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.1 (Main).</strong> <a href="../tag/B6A0.html" class="stacks-tag-link">(B6A0)</a></div>
   <div class="stacks-env-body"><p>Suppose $d$ divides $g-1$.
   Let $i$ be an integer with $1 \leq i \leq d-3$.
   The locus $\mu_i \subset \widetilde H_{d,g}$ is an effective divisor whose class in $\Pic_\Q\widetilde H_{d,g}$ is given by
   $$[\mu_i] = A_i \left(6(gd-6g+d+6) \cdot \zeta - d(d-12)\cdot \kappa - d^2 \cdot \delta \right),$$
   where
-  $$A_i = {{d-4} \choose {i-1}}^2 \frac{(d-2)(d-3)}{6(i+1)(d-i-1)}.$$</p></div>
+  $$A_i = {{d-4} \choose {i-1}}^2 \frac{(d-2)(d-3)}{6(i+1)(d-i-1)}.$$</p>
+</div>
 </div>
 
 <hr>

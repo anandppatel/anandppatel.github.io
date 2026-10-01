@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,21 +165,21 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof (54ED)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="EC3B.html">&laquo; Lemma 4.18</a><span class="stacks-tag-current">Tag 54ED</span><a href="45C5.html">Lemma 4.19 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/54ED.html" class="stacks-tag-link">(54ED)</a></div>
   <div class="stacks-env-body"><p>The proof is by induction on $j$. For $j=1$, the description above follows directly from the definition of the flag
 and <a href="/papers/invariants-branched-cover/tag/36EF.html" class="stacks-ref-link">Lemma&nbsp;4.17 <span class="stacks-ref-tag">[36EF]</span></a>.
 Supposing the description is valid for $j$, we now prove its validity for $j+1$.</p>
-<p>The right hand modification of the flag $L^\bullet_j$ consists of three types of spaces:<span class="stacks-qed" aria-hidden="true"></span></p>
-<ul><li>Intersections of $L^{k-l}_j :=  \{ \text{quadrics containing $R_{j-l+1},\ldots, R_{j}$}\}$ with the directrix $W_{j+1}: = \{\text{quadrics containing $R_{j+1}$}\}.$ That is, the quadrics containing the range
-	from $R_{j-l+1}$ up to $R_{j+1}$. This has the expected dimension since $f(\alpha)$ is quadric-generic.</li>
-<li>The directrix $W_{j+1}$ itself, that is, quadrics containing $R_{j+1}$.</li>
-<li>The spans $L^i_j+W_{j+1}$. But these will all be equal to the total space
+<p>The right hand modification of the flag $L^\bullet_j$ consists of three types of spaces:</p>
+<ul><li><p>Intersections of $L^{k-l}_j :=  \{ \text{quadrics containing } R_{j-l+1},\ldots, R_{j}\}$ with the directrix $W_{j+1} := \{\text{quadrics containing } R_{j+1}\}$. That is, the quadrics containing the range
+	from $R_{j-l+1}$ up to $R_{j+1}$. This has the expected dimension since $f(\alpha)$ is quadric-generic.</p></li>
+<li><p>The directrix $W_{j+1}$ itself, that is, quadrics containing $R_{j+1}$.</p></li>
+<li><p>The spans $L^i_j+W_{j+1}$. But these will all be equal to the total space
 	of quadrics containing the $d$ anchor points. Indeed, $W_{j+1}$ has codimension $d-3$, and the smallest space $L^1_j$
 	has dimension at least $d-3$, by induction.
 	If the span  $W_{j+1} +L^1_j$ were a proper subspace of $F|_{p_{j+1}}$, then the
 	intersection $L^1_j \cap W_{j+1}$ would have dimension larger than expected, which would violate being
-	quadric-generic.</li></ul>
+	quadric-generic.<span class="stacks-qed" aria-hidden="true"></span></p></li></ul>
 </div>
 </div>
 

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,11 +120,11 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S10.html">Section 10: Kronecker duals of $\opc{M}$ and constructing $[M]_\hbar$</a> / <span>10.2. Kronecker duals for general matrices and mod $F^k$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS1.html" aria-label="Previous: 10.1. Properties of $[M]_\hbar$" title="Previous: 10.1. Properties of $[M]_\hbar$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S10.SS3.html" aria-label="Next: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$" title="Next: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S10.html">Section 10: Kronecker duals of $[\mathcal{O}_{M}]$ and constructing $[M]_\hbar$</a> / <span>10.2. Kronecker duals for general matrices and mod $F^k$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S10.SS1.html" aria-label="Previous: 10.1. Properties of $[M]_\hbar$" title="Previous: 10.1. Properties of $[M]_\hbar$">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S10.SS3.html" aria-label="Next: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$" title="Next: 10.3. Kronecker duals for Schubert matrices and iterated mod $F^k$">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">10.2. Kronecker duals for general matrices and mod $F^k$</h1>
-<p class="stacks-para">We will now investigate the Kronecker dual of $\opc{M}$ for a general $d \times n$ matrix $M$.</p>
-<p class="stacks-para">A general $d \times n$ matrix $M$ is realized as $\tau^{\le d}(\ast \oplus \ldots \oplus \ast)$, so by <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.3 <span class="stacks-ref-tag">[F065]</span></a>(a,b) and <a href="/papers/orbits-equivariant-quantum/tag/25D7.html" class="stacks-ref-link">Theorem&nbsp;10.4 <span class="stacks-ref-tag">[25D7]</span></a>(a) we have $$[M]_\hbar(f_1(H_1),\ldots,f_n(H_n))=\bar{f_1}(z)\ldots\bar{f_n}(z)\text{ mod }F(z)^d$$ whenever $f_1, \ldots, f_n$ are polynomials with coefficients in $A^\bullet_{GL_{r+1}}(\pt)$. Writing $\bar{f_1}(z)\ldots\bar{f_n}(z)=a_0+a_1F(z)+\ldots$, we have $$\opc{M}^\dagger(f_1(H_1),\ldots,f_n(H_n))=\int_{\mb{P}^r} a_{d-1}=[z^r][F(z)^{d-1}](\bar{f_1}(z)\ldots\bar{f_n}(z)\text{ mod }F(z)^d)$$ by <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.3 <span class="stacks-ref-tag">[F065]</span></a>(d).</p>
+<p class="stacks-para">We will now investigate the Kronecker dual of $[\mathcal{O}_{M}]$ for a general $d \times n$ matrix $M$.</p>
+<p class="stacks-para">A general $d \times n$ matrix $M$ is realized as $\tau^{\le d}(\ast \oplus \ldots \oplus \ast)$, so by <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.2 <span class="stacks-ref-tag">[F065]</span></a>(a,b) and <a href="/papers/orbits-equivariant-quantum/tag/25D7.html" class="stacks-ref-link">Theorem&nbsp;10.3 <span class="stacks-ref-tag">[25D7]</span></a>(a) we have $$[M]_\hbar(f_1(H_1),\ldots,f_n(H_n))=\bar{f_1}(z)\ldots\bar{f_n}(z)\text{ mod }F(z)^d$$ whenever $f_1, \ldots, f_n$ are polynomials with coefficients in $A^\bullet_{GL_{r+1}}(\pt)$. Writing $\bar{f_1}(z)\ldots\bar{f_n}(z)=a_0+a_1F(z)+\ldots$, we have $$[\mathcal{O}_{M}]^\dagger(f_1(H_1),\ldots,f_n(H_n))=\int_{\mb{P}^r} a_{d-1}=[z^r][F(z)^{d-1}](\bar{f_1}(z)\ldots\bar{f_n}(z)\text{ mod }F(z)^d)$$ by <a href="/papers/orbits-equivariant-quantum/tag/F065.html" class="stacks-ref-link">Lemma&nbsp;10.2 <span class="stacks-ref-tag">[F065]</span></a>(d).</p>
 
 <hr>
 <div class="stacks-comments"

@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -231,10 +235,10 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Interlude: Association</a> / <a href="../section/S5.SS4.html">5.4. The $2$-Veronese surfaces through $9$ general points in $\bp^{5}$</a> / <span>Proof (205C)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="EC44.html">&laquo; Theorem 5.6</a><span class="stacks-tag-current">Tag 205C</span><a href="AE20.html">Remark 5.7 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/205C.html" class="stacks-tag-link">(205C)</a></div>
   <div class="stacks-env-body"><p>Fix $9$ general points $p_1, \ldots, p_9 \in \bp^5$.
-  First, by [<a class="stacks-cite" href="../../../bibliography.html#bib-dolgachev-4ce67522">Dol04</a>, Theorem 5.2], there is a unique genus 1 curve embedded by
+  First, by [<a class="stacks-cite" href="../../../bibliography.html#bib-igor-v-dolgachev-on-certain-families-6b30eb80">Dol04</a>, Theorem 5.2], there is a unique genus 1 curve embedded by
   a complete linear series through 9 general points in $\bp^5$.
   Call this curve $E$.
   Next, by <a href="/papers/interpolation-del-pezzo/tag/97D7.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[97D7]</span></a>,
@@ -250,7 +254,7 @@
   Choosing an isomorphism $\phi: \bp^2_k \cong X$,
   we have nine points $q_1, \ldots, q_9$ on $\bp^2$
   so that $\phi(q_i) = p_i$.</p>
-<p>  Then, since $p_1, \ldots, p_9$ were general on $\bp^5_k$,
+<p>Then, since $p_1, \ldots, p_9$ were general on $\bp^5_k$,
   we have that $q_1, \ldots, q_9$ are general on $\bp^2_k$,
   and so there is a degree $3$ genus 1 curve $C$ passing through
   $q_1, \ldots, q_9$ on $\bp^2_k$.
@@ -258,7 +262,8 @@
   containing $p_1, \ldots, p_9$.
   Since $E$ is the unique genus $1$ degree $6$ curve $E$ containing
   $p_1, \ldots, p_9$, we must have $\phi(C) \cong E$,
-  and therefore $E \subset X$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  and therefore $E \subset X$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

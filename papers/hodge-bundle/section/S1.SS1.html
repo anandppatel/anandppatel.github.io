@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Z: "\\mathbb{Z}",
           V: "\\mathscr{V}",
@@ -34,7 +33,7 @@
           C: "\\mathbb{C}",
           sHom: "\\underline{Hom}",
           syz: "\\operatorname{syz}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           Flag: "\\operatorname{Flag}",
           id: "\\operatorname{id}",
           Deg: "\\operatorname{Deg}",
@@ -78,7 +77,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -98,10 +102,10 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.1. Acknowledgments and use of AI</h1>
 <p class="stacks-para">The mathematical content in this paper came from
-the output of <em>Aletheia</em>, a custom AI agent (powered by Gemini Deep Think) built by Tony Feng [<a class="stacks-cite" href="../../../bibliography.html#bib-towards-autonomous-mathematics-research-d70f37f6">FTB+26</a>].  The author provided a
+the output of <em>Aletheia</em>, a custom AI agent (powered by Gemini Deep Think) built by Tony Feng [<a class="stacks-cite" href="../../../bibliography.html#bib-tony-feng-trieu-h-trinh-garrett-b84acf8e">FTB+26</a>].  The author provided a
 single prompt in which he asked for a proof of the stated theorem, and gave
-no further hints. We provide the Human-AI interaction card (see [<a class="stacks-cite" href="../../../bibliography.html#bib-towards-autonomous-mathematics-research-d70f37f6">FTB+26</a>]) below. As in
-[<a class="stacks-cite" href="../../../bibliography.html#bib-eigenweights-for-arithmetic-hirzebruch-proportionality-b0778e36">Fen26</a>],  the author made only expository adjustments, made
+no further hints. We provide the Human-AI interaction card (see [<a class="stacks-cite" href="../../../bibliography.html#bib-tony-feng-trieu-h-trinh-garrett-b84acf8e">FTB+26</a>]) below. As in
+[<a class="stacks-cite" href="../../../bibliography.html#bib-tony-feng-eigenweights-for-arithmetic-hirzebruch-c7075612">Fen26</a>],  the author made only expository adjustments, made
 some proofs more readable, split others apart, and added some comments and questions
 for further exploration.  In contrast, our subject matter here feels quite different and the prompt was not divided into multiple parts.  The author thanks Tony Feng for providing access to <em>Aletheia</em>.</p>
 <p class="stacks-para">It was Dawei Chen who first asked the author the

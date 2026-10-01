@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -251,7 +255,7 @@ An instance of specialization, although in a slightly different context, can be 
 Section&nbsp;6.5. Here is
 a simpler example:</p>
 <div class="stacks-env" id="example-degeneration-rnc">
-  <div class="stacks-env-head"><strong>Example&nbsp;1.6.</strong> <a href="../tag/CC8B.html" class="stacks-tag-link">(CC8B)</a></div>
+  <div class="stacks-env-head"><strong>Example&nbsp;1.7.</strong> <a href="../tag/CC8B.html" class="stacks-tag-link">(CC8B)</a></div>
   <div class="stacks-env-body"><p>A simple example of specialization
 and degeneration can be seen in proving
 that there is a twisted cubic curve
@@ -271,7 +275,8 @@ Omitting several technical details, this
 curve ends up being isolated among curves in the irreducible component
 of the Hilbert scheme of twisted cubics through this
 collection of points, and hence twisted cubics
-satisfy interpolation.</p></div>
+satisfy interpolation.</p>
+</div>
 </div>
 <p class="stacks-para">The third approach is via association, see
 &nbsp;Section&nbsp;5 for more details on

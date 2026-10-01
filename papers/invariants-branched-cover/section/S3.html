@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 3 — Invariants of a general branched cover of $\P^1$</title>
+  <title>Section 3: Vector bundles on rational chains — Invariants of a general branched cover of $\P^1$</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -163,23 +167,26 @@
 <h1 class="stacks-section-title">Section 3. Vector bundles on rational chains</h1>
 <p class="stacks-para">In this section we find necessary and sufficient conditions for determining when a vector bundle on a chain of rational curves is balanced.  We will eventually use these criteria to prove <a href="/papers/invariants-branched-cover/tag/C3C0.html" class="stacks-ref-link">Theorem&nbsp;4.1 <span class="stacks-ref-tag">[C3C0]</span></a>.</p>
 <p class="stacks-para">Let $\chain{} = P_{1} \cup P_{2} \cup \ldots \cup P_{k}$ be a chain of $k$ rational curves $P_{i}$, and let $V$ be a vector bundle on $\chain{}$ of rank $r$.  We let $V_{i} = V|_{P_{i}}$ be the restriction to the $i$-th component, and we denote by $p_{i}$ the node $P_{i} \cap P_{i+1}$, for $i=1,\ldots,k-1$.</p>
-<div class="stacks-definition" id="">
+<div class="stacks-definition">
   <div class="stacks-env-head"><strong>Definition&nbsp;3.1.</strong> <a href="../tag/C7DF.html" class="stacks-tag-link">(C7DF)</a></div>
-  <div class="stacks-env-body"><p>A vector bundle $V$ on a reduced curve $C$ is <em>balanced</em> if $$h^{1}(\End V) = 0.$$</p></div>
+  <div class="stacks-env-body"><p>A vector bundle $V$ on a reduced curve $C$ is <em>balanced</em> if $$h^{1}(\End V) = 0.$$</p>
+</div>
 </div>
 <p class="stacks-para">Since the first order deformations of a vector bundle $V$ are parametrized by $\Ext^1(V,V) = H^{1}(\End V)$, we see that a balanced vector bundle does not deform.  Our goal is to determine necessary and sufficient criteria for a vector bundle $V$ on the chain $\chain{}$ to be balanced in terms of the ``relative position'' of the vector bundles $V_{i}$.</p>
 <p class="stacks-para">Our first easy observation is the following.</p>
 <div class="stacks-lemma" id="lemma-balanced-components">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.2.</strong> <a href="../tag/28FF.html" class="stacks-tag-link">(28FF)</a></div>
-  <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{}$ of rank $r$. If $V$ is balanced, then every component $V_{i}$ is a balanced vector bundle on $P_{i}$.</p></div>
+  <div class="stacks-env-body"><p>Let $V$ be a vector bundle on $\chain{}$ of rank $r$. If $V$ is balanced, then every component $V_{i}$ is a balanced vector bundle on $P_{i}$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/421F.html" class="stacks-tag-link">(421F)</a></div>
   <div class="stacks-env-body"><p>Let $\nu \from \coprod_{i} P_{i} \to \chain{}$ be the total normalization map. Consider the exact sequence of $\sh{O}_{\chain{}}$-sheaves
 $$0 \to \End V \to \nu_{*}\nu^{*}(\End V) \to \oplus_{i} \End (k(p_{i})^{r}) \to 0.$$
- The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+ The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
-<p class="stacks-para">We now assume that each component $V_{i}$ is balanced.  Consider the long exact sequence of cohomology groups associated to (3.1):
+</div>
+<p class="stacks-para">We now assume that each component $V_{i}$ is balanced.  Consider the long exact sequence of cohomology groups associated to (11):
 $$\ldots \to \oplus_{i}H^{0}(P_{i}, \End V_{i}) \to \oplus_{i} \End (k(p_{i})^{r}) \to H^{1}(P, \End V) \to 0$$
 This sequence shows that $h^{1}(P, \End V) = 0$ if and only if the map $$D \from \oplus_{i}H^{0}(P_{i}, \End V_{i}) \to \oplus_{i} \End (k(p_{i})^{r})$$ is surjective.  The map $D$ is described as follows.  Let $\infty_i \in P_{i}$, $0_{i+1} \in P_{i+1}$ denote the two pre images of the node $p_{i}$ in the normalization $\coprod P_{i}$. For any $(M_{1}, \ldots ,M_{k}) \in \oplus_{i}H^{0}(P_{i}, \End V_{i})$,
 $$D(M_{1}, \ldots ,M_{k}) = (M_{1}|_{\infty_{1}} - M_{2}|_{0_{2}}, \ldots , M_{k-1}|_{\infty_{k-1}} - M_{k}|_{0_{k}}).$$

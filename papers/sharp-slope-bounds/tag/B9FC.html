@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -144,11 +148,12 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Sweeping curves</a> / <a href="../section/S4.SS1.html">4.1. The even genus case</a> / <span>Proof (B9FC)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="54A9.html">&laquo; Proposition 4.1</a><span class="stacks-tag-current">Tag B9FC</span><a href="BBE2.html">Proposition 4.2 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/B9FC.html" class="stacks-tag-link">(B9FC)</a></div>
   <div class="stacks-env-body"><p>Since a generic trigonal curve of genus $g = 2n-2$ embeds in $\P^1\times\P^1$ as a divisor of class $(3, n)$, we get the first assertion. For the slope, using the formulas of <a href="/papers/sharp-slope-bounds/tag/6CFA.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6CFA]</span></a>, we get
 $$\lambda = g \text{ and } \kappa = 5g-6.$$
-Using $12 \lambda = \kappa + \delta$, we get $\delta = 7g+6$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+Using $12 \lambda = \kappa + \delta$, we get $\delta = 7g+6$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

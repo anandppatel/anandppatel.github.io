@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -147,10 +151,10 @@
 <div class="stacks-commentary" id="rem-even_adjustments">
   <div class="stacks-env-head"><strong>Remark&nbsp;5.1.</strong> <a href="../tag/6BB3.html" class="stacks-tag-link">(6BB3)</a></div>
   <div class="stacks-env-body"><p><a href="/papers/sharp-slope-bounds/tag/6CFA.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[6CFA]</span></a> along with $\delta = 12\lambda - \kappa$ gives $\delta$ for the family $\pi \from C \to B$, where $C$ is the coarse space of $\orb C$. In the following cases, however, the special fiber of $C \to B$ has unstable rational tails, which must be contracted to get a family of Deligne&ndash;Mumford stable curves. We must accordingly adjust the value of $\delta$.</p>
-<ol><li>When the special fiber is in $\Delta_4(g_1, g_2)$, its rational tail must be contracted, which is a $-1$ curve on $C$. Hence we must subtract $1$ from the $\delta$ computed for $\pi \from C \to B$.</li>
-<li>When the special fiber is in $\Delta_5(g_1, g_2)$, its rational tail must be contracted, which removes an $A_1$ singularity from $C$. Hence we must subtract $2$ from the $\delta$ computed for $\pi \from C \to B$.</li>
-<li>When the special fiber is in $\Delta_6(g_1, g_2)$, its two rational tails must be contracted, which are both $-1$ curves on $C$. Hence we must subtract $2$ from the $\delta$ computed for $\pi \from C \to B$.</li>
-<li>To get a central fiber in $H$ (by setting $b = 2n-1$ in the fifth row), we must contract $F_\infty$ and the two rational curves over it. Furthermore, to get a Deligne&ndash;Mumford stable model, we must also contract the rational tail on the remaining curve. Thus, in total, we must subtract 3 from the $\delta$ computed for $\pi \from C \to B$.</li></ol>
+<ol><li><p>When the special fiber is in $\Delta_4(g_1, g_2)$, its rational tail must be contracted, which is a $-1$ curve on $C$. Hence we must subtract $1$ from the $\delta$ computed for $\pi \from C \to B$.</p></li>
+<li><p>When the special fiber is in $\Delta_5(g_1, g_2)$, its rational tail must be contracted, which removes an $A_1$ singularity from $C$. Hence we must subtract $2$ from the $\delta$ computed for $\pi \from C \to B$.</p></li>
+<li><p>When the special fiber is in $\Delta_6(g_1, g_2)$, its two rational tails must be contracted, which are both $-1$ curves on $C$. Hence we must subtract $2$ from the $\delta$ computed for $\pi \from C \to B$.</p></li>
+<li><p>To get a central fiber in $H$ (by setting $b = 2n-1$ in the fifth row), we must contract $F_\infty$ and the two rational curves over it. Furthermore, to get a Deligne&ndash;Mumford stable model, we must also contract the rational tail on the remaining curve. Thus, in total, we must subtract 3 from the $\delta$ computed for $\pi \from C \to B$.</p></li></ol>
 </div>
 </div>
 

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           Q: "\\mathbb{Q}",
@@ -27,7 +26,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathbb{C}",
+          C: "\\mathsf{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -37,7 +36,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -52,12 +51,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
-          N: "\\mathbb{N}",
-          Gr: "\\mathbb{G}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\mathbb{G}",
+          G: "\\operatorname{\\mathbb{G}}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -66,7 +65,7 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -102,7 +101,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -121,13 +125,14 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Evidence for the conjectures</a> / <a href="../section/S3.SS1.html">3.1. The genus 2 situation</a> / <span>Proof (403B)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="597B.html">&laquo; Lemma 3.10</a><span class="stacks-tag-current">Tag 403B</span><a href="8F9E.html">Proposition 3.11 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/403B.html" class="stacks-tag-link">(403B)</a></div>
   <div class="stacks-env-body"><p>The case $d=1$ is immediate, as both sets $A_{1}(x),M_{1}$ are clearly empty. So we assume $d \geq 2$. We will produce a function $\Phi: M_{d} \to A_{d}(x)$ which will explain the remaining statements. First, we identify $\pi_{1}(X,x)$ with $\Z^{2}$.  Next, pick any element $(\Lambda,\eta) \in M_{d}$.</p>
-<p>    By the fundamental Galois correspondence in the theory of covering spaces, the subgroup $\Lambda \subset \Z^{2}$ defines a degree $d$ connected, Galois  covering space $\epsilon: Z \to X$ with group of deck transformations canonically isomorphic to $\Z^{2}/\Lambda$.  $Z$ inherits from $X$ a complex structure, and therefore $Z$ is a genus 1 curve with $\epsilon$ a degree $d$ finite &eacute;tale map.  Pick a point $z \in \epsilon^{-1}(x)$. The chosen element $\eta \in \Z^{2}/\Lambda$ defines a second point $z' = \eta(z)$ on $Z$.  Let $Y_{(\Lambda,\eta)}$ denote the nodal curve obtained by identifying the points $z$ and $z'$ on the curve $Z$ &ndash; $Y_{(\Lambda,\eta)}$ is independent of the choice of $z$ because the cover $Z \to X$ is Galois. The map $\epsilon$ descends to a finite, flat degree $d$ map $$\alpha:Y_{(\Lambda,\eta)} \to X$$ where the node of $Y_{(\Lambda,\eta)}$ maps to $x$.  Since $\eta$ generates $\Z^{2}/\Lambda$, it follows that $\alpha: Y_{(\Lambda,\eta)} \to X$ does not factor through a non-trivial &eacute;tale cover $X' \to X$, again by the Galois correspondence. </p>
-<p>    Thus, $\alpha: Y_{(\Lambda,\eta)} \to X$ is an element of $A_{d}(x)$. The function $\Phi: M_{d} \to A_{d}(x)$ is defined by the rule $$(\Lambda,\eta) \mapsto [\alpha:Y_{(\Lambda,\eta)} \to X].$$ </p>
-<p>    It suffices to show that $\Phi$ is surjective and  $2:1$ when $d \geq 3$, and $1:1$ when $d=2$. To that end, let $\alpha: Y\to X$ be an arbitrary element of $A_{d}(x)$, let $y \in Y$ denote the node of $Y$, and let $Z \to Y$ denote the normalization of $Y$.  $Z$ is a genus $1$ curve, and there are two points $z, z' \in Z$ lying above the node $y \in Y$. Again, since $\alpha: Y \to X$ is primitive, it follows that the induced (Galois) cover $\epsilon: Z \to X$ has a cyclic Galois group $G$. Hence, there is unique element $\eta_{1} \in G$ which satisfies $\eta(z) = z'$. Setting $\Lambda_{1}$ to be the image of the pushforward map $\epsilon_{*}:\pi_{1}(Z,z) \to \pi_{1}(X,x)$, we see that $\alpha = \Phi(\Lambda_{1}, \eta_{1})$.  </p>
-<p>    Now suppose $\alpha = \Phi(\Lambda_{2}, \eta_{2})$. Then $\Lambda_{2} = \Lambda_{1}$ because both are simply the image of $\pi_{1}(Z)$ under push-forward $\epsilon_{*}$ (the normalization is intrinsic to $Y$).  Now suppose $w,w' \in Z$ are two points in $\epsilon^{-1}(x)$ such that $\eta_{2}(w)=w'$. Since $\alpha = \Phi(\Lambda_{2},\eta_{2})$ it follows by construction of $\Phi$ that $\alpha:Y \to X$ can be obtained by identifying the points $w$ and $w'$, creating the node $y$. By uniqueness of normalization, it follows that there is an automorphism  $g: Z \to Z$ (<em>over $X$</em>) which sends the set $\{z,z'\}$ to the set $\{w,w'\}$.  Since the cover $\epsilon: Z \to X$ is Galois, it follows that $\eta_{2}$ either sends $z$ to $z'$ or $z'$ to $z$.  In the former case $\eta_{2}=\eta_{1}$ and in the latter $\eta_{2} = \eta_{1}^{-1}$.  The proof is finished as we have shown that $\Phi$ is surjective and $2:1$ when $d \geq 3$ and $1:1$ when $d=2$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>By the fundamental Galois correspondence in the theory of covering spaces, the subgroup $\Lambda \subset \Z^{2}$ defines a degree $d$ connected, Galois  covering space $\epsilon: Z \to X$ with group of deck transformations canonically isomorphic to $\Z^{2}/\Lambda$.  $Z$ inherits from $X$ a complex structure, and therefore $Z$ is a genus 1 curve with $\epsilon$ a degree $d$ finite &eacute;tale map.  Pick a point $z \in \epsilon^{-1}(x)$. The chosen element $\eta \in \Z^{2}/\Lambda$ defines a second point $z' = \eta(z)$ on $Z$.  Let $Y_{(\Lambda,\eta)}$ denote the nodal curve obtained by identifying the points $z$ and $z'$ on the curve $Z$ &ndash; $Y_{(\Lambda,\eta)}$ is independent of the choice of $z$ because the cover $Z \to X$ is Galois. The map $\epsilon$ descends to a finite, flat degree $d$ map $$\alpha:Y_{(\Lambda,\eta)} \to X$$ where the node of $Y_{(\Lambda,\eta)}$ maps to $x$.  Since $\eta$ generates $\Z^{2}/\Lambda$, it follows that $\alpha: Y_{(\Lambda,\eta)} \to X$ does not factor through a non-trivial &eacute;tale cover $X' \to X$, again by the Galois correspondence.</p>
+<p>Thus, $\alpha: Y_{(\Lambda,\eta)} \to X$ is an element of $A_{d}(x)$. The function $\Phi: M_{d} \to A_{d}(x)$ is defined by the rule $$(\Lambda,\eta) \mapsto [\alpha:Y_{(\Lambda,\eta)} \to X].$$</p>
+<p>It suffices to show that $\Phi$ is surjective and  $2:1$ when $d \geq 3$, and $1:1$ when $d=2$. To that end, let $\alpha: Y\to X$ be an arbitrary element of $A_{d}(x)$, let $y \in Y$ denote the node of $Y$, and let $Z \to Y$ denote the normalization of $Y$.  $Z$ is a genus $1$ curve, and there are two points $z, z' \in Z$ lying above the node $y \in Y$. Again, since $\alpha: Y \to X$ is primitive, it follows that the induced (Galois) cover $\epsilon: Z \to X$ has a cyclic Galois group $G$. Hence, there is unique element $\eta_{1} \in G$ which satisfies $\eta(z) = z'$. Setting $\Lambda_{1}$ to be the image of the pushforward map $\epsilon_{*}:\pi_{1}(Z,z) \to \pi_{1}(X,x)$, we see that $\alpha = \Phi(\Lambda_{1}, \eta_{1})$.</p>
+<p>Now suppose $\alpha = \Phi(\Lambda_{2}, \eta_{2})$. Then $\Lambda_{2} = \Lambda_{1}$ because both are simply the image of $\pi_{1}(Z)$ under push-forward $\epsilon_{*}$ (the normalization is intrinsic to $Y$).  Now suppose $w,w' \in Z$ are two points in $\epsilon^{-1}(x)$ such that $\eta_{2}(w)=w'$. Since $\alpha = \Phi(\Lambda_{2},\eta_{2})$ it follows by construction of $\Phi$ that $\alpha:Y \to X$ can be obtained by identifying the points $w$ and $w'$, creating the node $y$. By uniqueness of normalization, it follows that there is an automorphism  $g: Z \to Z$ (<em>over $X$</em>) which sends the set $\{z,z'\}$ to the set $\{w,w'\}$.  Since the cover $\epsilon: Z \to X$ is Galois, it follows that $\eta_{2}$ either sends $z$ to $z'$ or $z'$ to $z$.  In the former case $\eta_{2}=\eta_{1}$ and in the latter $\eta_{2} = \eta_{1}^{-1}$.  The proof is finished as we have shown that $\Phi$ is surjective and $2:1$ when $d \geq 3$ and $1:1$ when $d=2$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

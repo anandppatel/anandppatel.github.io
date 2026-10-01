@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,11 +165,12 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vector bundles on rational chains</a> / <span>Proof (421F)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="28FF.html">&laquo; Lemma 3.2</a><span class="stacks-tag-current">Tag 421F</span><a href="4C30.html">Definition 3.3 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/421F.html" class="stacks-tag-link">(421F)</a></div>
   <div class="stacks-env-body"><p>Let $\nu \from \coprod_{i} P_{i} \to \chain{}$ be the total normalization map. Consider the exact sequence of $\sh{O}_{\chain{}}$-sheaves
 $$0 \to \End V \to \nu_{*}\nu^{*}(\End V) \to \oplus_{i} \End (k(p_{i})^{r}) \to 0.$$
- The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+ The last part of the long exact sequence of cohomology looks like $$\ldots \to H^{1}(\chain{}, \End V) \to H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)  \to 0.$$  Since $\nu$ is finite, we can identify the vector space $H^{1}(\chain{}, \nu_{*}\nu^{*}\End V)$ with $H^{1}(\coprod P_{i}, \nu^{*}\End V) = \oplus_{i}H^{1}(P_{i}, \End V_{i})$.  Therefore, if $H^{1}(\chain{}, \End V) = 0$, then $\oplus_{i}H^{1}(P_{i}, \End V_{i}) = 0$, which proves the lemma.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

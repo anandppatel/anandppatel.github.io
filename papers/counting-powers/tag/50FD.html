@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Q: "\\mathbb{Q}",
           A: "\\mathbb{A}",
@@ -34,7 +33,7 @@
           PGL: "\\operatorname{PGL}",
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           GL: "\\operatorname{GL}",
           SL: "\\operatorname{SL}",
@@ -98,7 +97,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -120,8 +124,8 @@
 <div class="stacks-lemma" id="lemma-transvectantcoefficients">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.1.</strong> <a href="../tag/50FD.html" class="stacks-tag-link">(50FD)</a></div>
   <div class="stacks-env-body"><p>Let $t = t_{0}x^{m+n-2} +  t_{1}x^{m+n-3}y + t_{2}x^{m+n-4}y^{2} + \dots + t_{m+n-2}y^{m+n-2}$ be the transvectant of $f$ and $g$.</p>
-<ol><li>The coefficient $t_k$ is a homogeneous sum of monomials of the form $f_i g_j$ for $i+j = k+1$. Every monomial $f_i g_j$ satisfying $i+j = k+1$ appears with non-zero coefficient in $t_k$.</li>
-<li>If $f_i, g_j, f_j, g_i$ all exist, then the coefficients of $f_i g_j$ and $f_j g_i$ in $t_{i+j-1}$ sum to zero.</li></ol>
+<ol><li><p>The coefficient $t_k$ is a homogeneous sum of monomials of the form $f_i g_j$ for $i+j = k+1$. Every monomial $f_i g_j$ satisfying $i+j = k+1$ appears with non-zero coefficient in $t_k$.</p></li>
+<li><p>If $f_i, g_j, f_j, g_i$ all exist, then the coefficients of $f_i g_j$ and $f_j g_i$ in $t_{i+j-1}$ sum to zero.</p></li></ol>
 </div>
 </div>
 

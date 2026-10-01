@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,7 +134,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal variation for incompressible and non-defective $X$</a> / <a href="../section/S3.SS1.html">3.1. Non-defective linear series</a> / <span>Proof (45A1)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="6573.html">&laquo; Proposition 3.8</a><span class="stacks-tag-current">Tag 45A1</span><a href="FA5E.html">Proposition 3.9 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/45A1.html" class="stacks-tag-link">(45A1)</a></div>
   <div class="stacks-env-body"><p>By <a href="/papers/ramification-divisors/tag/26B7.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[26B7]</span></a>, the projection $\sigma\from P \to |W|$ is generically finite onto its image.
   Let $(x,s) \in P$ be a general point.
@@ -141,7 +145,8 @@
   After choosing a local trivialization for $L$ around $x$, the section $s$ corresponds to a power series $s(x_1,\dots,x_r)$ contained in $\mathfrak m_x^2 \widehat \O_{X,x}$.
   The germ of $\sing(v(s))$ at $x$ is cut out by the power series $\frac{\partial s}{\partial x_1}, \dots, \frac{\partial s}{\partial x_r}$.
   Since the germ of $\sing(v(s))$ at $x$ is the reduced point $x$, we get that $\frac{\partial s}{\partial x_1}, \dots, \frac{\partial s}{\partial x_r}$ are linearly independent as elements of $\mathfrak m_x / \mathfrak m_x^2$.
-  From this, it is easy to check that the tangent cone of $s(x_1, \dots, x_r)$ at $x$ is a non-degenerate quadric cone.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  From this, it is easy to check that the tangent cone of $s(x_1, \dots, x_r)$ at $x$ is a non-degenerate quadric cone.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

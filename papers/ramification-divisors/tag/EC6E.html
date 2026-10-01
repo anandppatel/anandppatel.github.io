@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,8 @@
   For every $s \in S$ over $0 \in B$, taking $W_i = V_{n_i}|_s$ for $i = 1, 2$ gives an EHT limit linear series.
   Conversely, assume that $S$ reduced, and let $\mathcal W_i \subset \pi_*(\mathcal E_{n_i})_S$ for $i = 1,2$ be sub-bundles whose restrictions to every $s \in S$ over $\eta \in B$ agree under the isomorphism $(\mathcal E_{n_1})_\eta \cong (\mathcal E_{n_2})_\eta$, and to every $s \in S$ over $0 \in B$ define a refined EHT limit linear series.
   Then there exists a unique linked linear series $V = (V_n \mid n \in \Z)$ on $\mathcal E_S$ such that $\mathcal W_i = V_{n_i}$.
-  Furthermore, for every $s \in S$ over $0$, the series $V|_s$ is simple.</p></div>
+  Furthermore, for every $s \in S$ over $0$, the series $V|_s$ is simple.</p>
+</div>
 </div>
 
 <hr>

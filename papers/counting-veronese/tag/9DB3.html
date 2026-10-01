@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,10 +123,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof of 4.7 [D12E] (9DB3)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="D12E.html">&laquo; Lemma 4.7</a><span class="stacks-tag-current">Tag 9DB3</span><a href="0DB3.html">Definition 4.8 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/counting-veronese/tag/D12E.html" class="stacks-ref-link">4.7 <span class="stacks-ref-tag">[D12E]</span></a>.</em> <a href="../tag/9DB3.html" class="stacks-tag-link">(9DB3)</a></div>
-  <div class="stacks-env-body"><p>The claim rests on the observation that $\Supp T = \Supp \Base (\Lambda_{T})$ if and only if $T$ is not contained in a line. Here $\Lambda_{T}$ is the net of conics (<a href="/papers/counting-veronese/tag/021F.html" class="stacks-ref-link">Definition&nbsp;3.1 <span class="stacks-ref-tag">[021F]</span></a>) containing $T$.  If $T \in \Thin$, then the quintic curves in $W$ are those which contain the line spanned by $T$ as a component, and whose residual quartic curve contains $T$.  From this description it is clear that $\Supp\Base(W) = \langle T \rangle$ as claimed.  </p>
-<p>    So we can and will assume $T \notin \Thin$. Then the inclusion $$\Supp \Base (H^{0}(\I_{T}^{2}(4))) \subset \Supp T$$ is seen by considering the pairwise products of  three quadratic polynomials spanning $\Lambda_{T}$.  Therefore, $\Supp \Base (H^{0}(\I_{T}^{2}(5))) \subset \Supp T$ as well. Since $\Base (W) \subset \Base (H^{0}(\I_{T}^{2}(5)))$, we conclude that $\Supp \Base (W) \subset \Supp T$. The opposite inclusion is trivial, concluding the proof.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>The claim rests on the observation that $\Supp T = \Supp \Base (\Lambda_{T})$ if and only if $T$ is not contained in a line. Here $\Lambda_{T}$ is the net of conics (<a href="/papers/counting-veronese/tag/021F.html" class="stacks-ref-link">Definition&nbsp;3.1 <span class="stacks-ref-tag">[021F]</span></a>) containing $T$.  If $T \in \Thin$, then the quintic curves in $W$ are those which contain the line spanned by $T$ as a component, and whose residual quartic curve contains $T$.  From this description it is clear that $\Supp\Base(W) = \langle T \rangle$ as claimed.</p>
+<p>So we can and will assume $T \notin \Thin$. Then the inclusion $$\Supp \Base (H^{0}(\I_{T}^{2}(4))) \subset \Supp T$$ is seen by considering the pairwise products of  three quadratic polynomials spanning $\Lambda_{T}$.  Therefore, $\Supp \Base (H^{0}(\I_{T}^{2}(5))) \subset \Supp T$ as well. Since $\Base (W) \subset \Base (H^{0}(\I_{T}^{2}(5)))$, we conclude that $\Supp \Base (W) \subset \Supp T$. The opposite inclusion is trivial, concluding the proof.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

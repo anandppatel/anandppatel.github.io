@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,13 +165,14 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Balanced $F$-bundles and a maximal rank problem</a> / <span>Proof (11ED)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="AB29.html">&laquo; Lemma 4.5</a><span class="stacks-tag-current">Tag 11ED</span><a href="0F9C.html">Definition 4.6 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/11ED.html" class="stacks-tag-link">(11ED)</a></div>
   <div class="stacks-env-body"><p>Let $\alpha:X \to \chain{a+b}$ be a general cover in $\Sigma(d;0, ...,  0,1 , ...1)$. Split it into the $a$ rational
 components $X_R \to \chain{a}$ and the $b$ genus one components $X_E \to \chain{b}$.</p>
 <p>The forgetful map $\Sigma(d;0, ...,  0,1 , ...1) \to \Sigma(d;0, ..., 0)$ (which sends the cover $X \to \chain{a+b}$ to $X_R \to \chain{a}$) is dominant. Hence, if we assume <a href="/papers/invariants-branched-cover/tag/9AD8.html" class="stacks-ref-link">Proposition&nbsp;4.4 <span class="stacks-ref-tag">[9AD8]</span></a> is true when $b=0$, we may assume the $F$-bundle of $X_R \to \chain{a}$ is balanced.</p>
 <p>Moreover, by Item&nbsp;4 of <a href="/papers/invariants-branched-cover/tag/8A3F.html" class="stacks-ref-link">Lemma&nbsp;2.7 <span class="stacks-ref-tag">[8A3F]</span></a>, the $F$-bundle of $X_E \to \chain{b}$ is not only balanced, it is <em>trivial</em>, up to a twist by a line bundle. Hence, the $F$-bundle of $\alpha: X\to \chain{a+b}$&mdash;which is obtained by gluing the
-(balanced) $F$-bundle of $X_R \to \chain{a}$ with the (trivial, up to twist) $F$-bundle of $X_E \to \chain{b}$&mdash;is balanced as well.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+(balanced) $F$-bundle of $X_R \to \chain{a}$ with the (trivial, up to twist) $F$-bundle of $X_E \to \chain{b}$&mdash;is balanced as well.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

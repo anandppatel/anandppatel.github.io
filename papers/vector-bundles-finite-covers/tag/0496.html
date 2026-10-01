@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -114,13 +118,14 @@
   <div class="stacks-env-head"><strong>Example&nbsp;4.2.</strong> <a href="../tag/0496.html" class="stacks-tag-link">(0496)</a></div>
   <div class="stacks-env-body"><p>Take $Y = \P^{4}$, and $E = \O(a) \oplus \O(b)$.
   Then a sufficiently positive twist $E'$ of $E$ cannot be the Tschirnhausen bundle of a smooth branched cover $X$.</p>
-<p>  To see this, recall that the data of a Gorenstein triple cover $X \to Y$ with Tschirnhausen bundle $E'$ is equivalent to the data of a nowhere vanishing global section of $\Sym^{3}E' \otimes (\det E')^{\vee}$ ([<a class="stacks-cite" href="../../../bibliography.html#bib-miranda-1e58bbd4">23</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-and-t-c87b2161">10</a>]).
+<p>To see this, recall that the data of a Gorenstein triple cover $X \to Y$ with Tschirnhausen bundle $E'$ is equivalent to the data of a nowhere vanishing global section of $\Sym^{3}E' \otimes (\det E')^{\vee}$ ([<a class="stacks-cite" href="../../../bibliography.html#bib-r-miranda-triple-covers-in-algebraic-78e207a4">23</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-and-t-ekedahl-covers-ccccd64a">10</a>]).
   For $E' = E \otimes L^n$ with large $n$, the rank $4$ vector bundle $\Sym^{3}E' \otimes (\det E')^{\vee}$ is very ample.
   Thus, its fourth Chern class is nonzero.
   Therefore, a general global section must vanish at some points.</p>
-<p>  In fact, it is easy to see by direct calculation that the fourth Chern class of $\Sym^{3}E \otimes (\det E)^{\vee}$ can vanish if and only if $E = \O(a) \oplus \O(b)$ where $b = 2a$.
+<p>In fact, it is easy to see by direct calculation that the fourth Chern class of $\Sym^{3}E \otimes (\det E)^{\vee}$ can vanish if and only if $E = \O(a) \oplus \O(b)$ where $b = 2a$.
   Conversely, $E = \O(a) \oplus \O(2a)$ is the Tschirnhausen bundle of a cyclic triple cover of $\P^4$.
-  Thus, $E = \O(a) \oplus \O(b)$ can be a Tschirnhausen bundle of a smooth triple cover of $\P^4$ if and only if $b=2a$.</p></div>
+  Thus, $E = \O(a) \oplus \O(b)$ can be a Tschirnhausen bundle of a smooth triple cover of $\P^4$ if and only if $b=2a$.</p>
+</div>
 </div>
 
 <hr>

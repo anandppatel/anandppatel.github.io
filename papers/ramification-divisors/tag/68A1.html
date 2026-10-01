@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,7 +134,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Maximal variation for generic scrolls</a> / <a href="../section/S5.SS4.html">5.4. Projection-ramification for linked linear series</a> / <span>Proof (68A1)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="F96E.html">&laquo; Lemma 5.14</a><span class="stacks-tag-current">Tag 68A1</span><a href="4A54.html">Corollary 5.15 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/68A1.html" class="stacks-tag-link">(68A1)</a></div>
   <div class="stacks-env-body"><p>Without further comment, we identify $r_{n_1}|_s \in H^0(C, E'_{(r+1)n_1})$ with its image in $H^0(C_1, E'_{(r+1)n_1}|_{C_1})$.
   We have
@@ -142,9 +146,10 @@
   Since
   $$(r+1)a+(r-i+1) + (r+1)(b-a-1) + i = (r+1)b = b',$$
   we see that $r_{n_1}|_s$ and $r_{n_2}|_s$ have complementary orders of vanishing, leading to an equality in condition&nbsp;(1) of <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a>.</p>
-<p>  We must next ensure that condition&nbsp;(2) of <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a> holds, that is, the images of $r_{n_i}|_s$ in the appropriate twists of $E_{n_i}|_p$ are equal, at least up to scaling.
+<p>We must next ensure that condition&nbsp;(2) of <a href="/papers/ramification-divisors/tag/D9C0.html" class="stacks-ref-link">Definition&nbsp;5.9 <span class="stacks-ref-tag">[D9C0]</span></a> holds, that is, the images of $r_{n_i}|_s$ in the appropriate twists of $E_{n_i}|_p$ are equal, at least up to scaling.
   By <a href="/papers/ramification-divisors/tag/18F8.html" class="stacks-ref-link">Proposition&nbsp;5.11 <span class="stacks-ref-tag">[18F8]</span></a>, the image of $r_{n_1}|_s$ in the appropriate twist of $E_{n_1}|_p$ spans the line $(V^0 \cap V^1)$, and the image of $r_{n_2}|_s$ spans the line $\Lambda^0 \cap \Lambda^1$.
-  But by (5.15), we have $V^1 = \Lambda^0$ and $V^0 = \Lambda^1$, so the two lines are equal.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  But by (5.15), we have $V^1 = \Lambda^0$ and $V^0 = \Lambda^1$, so the two lines are equal.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

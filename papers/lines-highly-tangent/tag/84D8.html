@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "\\fontdimen2\\font=0.4em\\fontdimen3\\font=0.2em\\fontdimen4\\font=0.1em\\fontdimen7\\font=0.1em\\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -115,7 +114,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -134,16 +138,17 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof (84D8)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="3BAB.html">&laquo; Lemma 3.10</a><span class="stacks-tag-current">Tag 84D8</span><a href="0122.html">Theorem 4.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/84D8.html" class="stacks-tag-link">(84D8)</a></div>
   <div class="stacks-env-body"><p>By contradiction. Assume $\codim Y = 2$. In this case, for a general
   (and hence every) point $y \in Y$, the fiber $\pi^{-1}(y) \subset W$
   has dimension $(n-2)$.  Since, for every $(\ell,x) \in W$, the line
-  $\ell$ meets $X$ at $x$ with contact order $>2$, it follows that the
+  $\ell$ meets $X$ at $x$ with contact order $&gt;2$, it follows that the
   second fundamental form $\II_{x}(X)$ vanishes identically (has rank
   $0$) for all points $y \in Y$. This violates
   <a href="/papers/lines-highly-tangent/tag/B72D.html" class="stacks-ref-link">Theorem&nbsp;3.1 <span class="stacks-ref-tag">[B72D]</span></a>, providing the desired
-  contradiction.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  contradiction.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

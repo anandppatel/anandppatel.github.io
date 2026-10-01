@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Proof (CC21) — The simplicity of the Hodge bundle</title>
+  <title>Proof of Theorem 1.1 [1DCD] (CC21) — The simplicity of the Hodge bundle</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Z: "\\mathbb{Z}",
           V: "\\mathscr{V}",
@@ -34,7 +33,7 @@
           C: "\\mathbb{C}",
           sHom: "\\underline{Hom}",
           syz: "\\operatorname{syz}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           Flag: "\\operatorname{Flag}",
           id: "\\operatorname{id}",
           Deg: "\\operatorname{Deg}",
@@ -78,7 +77,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -94,39 +98,39 @@
     <a href="../index.html" class="stacks-paper-link">The simplicity of the Hodge bundle</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: The proof</a> / <a href="../section/S2.SS3.html">2.3. Proof</a> / <span>Proof (CC21)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: The proof</a> / <a href="../section/S2.SS3.html">2.3. Proof</a> / <span>Proof of Theorem 1.1 [1DCD] (CC21)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="2ABC.html">&laquo; Proof </a><span class="stacks-tag-current">Tag CC21</span></div>
 <div class="stacks-proof" id="proof-main">
-  <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CC21.html" class="stacks-tag-link">(CC21)</a></div>
-  <div class="stacks-env-body"><p>[Proof of <a href="/papers/hodge-bundle/tag/1DCD.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[1DCD]</span></a>]</p>
-<p>  It suffices to prove that the rank $r$ of the sub-bundle $\V \subset
-  \Hodge_{g}$ satisfies the congruence $r \equiv 0 \pmod g$. </p>
-<p>  Again we let $C$ be a curve with two commuting involutions
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/hodge-bundle/tag/1DCD.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[1DCD]</span></a>.</em> <a href="../tag/CC21.html" class="stacks-tag-link">(CC21)</a></div>
+  <div class="stacks-env-body"><p>It suffices to prove that the rank $r$ of the sub-bundle $\V \subset
+  \Hodge_{g}$ satisfies the congruence $r \equiv 0 \pmod g$.</p>
+<p>Again we let $C$ be a curve with two commuting involutions
   $\tau_1, \tau_2$, with $\tau_3 := \tau_1 \tau_2$ and with $2m_1, 2m_2, 2m_3$ fixed
   points respectively.  Combining both equations of
   <a href="/papers/hodge-bundle/tag/E671.html" class="stacks-ref-link">Lemma&nbsp;2.7 <span class="stacks-ref-tag">[E671]</span></a>, we obtain
   $$\dim V^{+-} = \frac{1}{2}(r + f(m_1))$$ and so $r+f(m_1)$ is an even
   integer for any $m_1 \in S$ which can be completed to a triple in $T$.  By
   <a href="/papers/hodge-bundle/tag/8E73.html" class="stacks-ref-link">Lemma&nbsp;2.8 <span class="stacks-ref-tag">[8E73]</span></a> <em>we conclude that $r + \frac{r(1-m_1)}{g}$ must
-  be an even integer for all such $m_{1} \in S$.</em> </p>
-<p>  <strong>If $g$ is even</strong>: Then both $1$ and $3$ belong to $S$ and can be
+  be an even integer for all such $m_{1} \in S$.</em></p>
+<p><strong>If $g$ is even</strong>: Then both $1$ and $3$ belong to $S$ and can be
   extended to triples $(1,1,g+1)$ and $(3,1,g-1)$ in $T$. Considering these, we
   conclude that $r$ must be even and that $r- \frac{2r}{g}$ must also be even.
-  Subtracting gives the conclusion that $r \equiv 0 \pmod g$. </p>
-<p>  <strong>If $g$ is odd.</strong> Then both $0$ and $2$ belong in $S$ and extend to
+  Subtracting gives the conclusion that $r \equiv 0 \pmod g$.</p>
+<p><strong>If $g$ is odd.</strong> Then both $0$ and $2$ belong in $S$ and extend to
   triples $(0,2,g+1)$ and $(2,2,g-1)$ in $T$. Therefore, the italicized
   observation above yields that both $r + \frac{r}{g}$ and $r -\frac{r}{g}$ are
   even integers.  As before, subtracting implies $r \equiv 0 \pmod g$, concluding
-  the proof of <a href="/papers/hodge-bundle/tag/1DCD.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[1DCD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  the proof of <a href="/papers/hodge-bundle/tag/1DCD.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[1DCD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/hodge-bundle/tag/CC21.html"
      data-comment-page-url="https://anandpatel.github.io/papers/hodge-bundle/tag/CC21.html"
-     data-comment-page-title="The simplicity of the Hodge bundle — Tag CC21 (Proof)"
-     data-comment-page-label="Tag CC21 (Proof)"
+     data-comment-page-title="The simplicity of the Hodge bundle — Tag CC21 (Proof of Theorem 1.1 [1DCD])"
+     data-comment-page-label="Tag CC21 (Proof of Theorem 1.1 [1DCD])"
      data-comment-paper-title="The simplicity of the Hodge bundle">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -134,13 +138,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on The simplicity of the Hodge bundle — Tag CC21 (Proof)">
+      <input type="hidden" name="_subject" value="Comment on The simplicity of the Hodge bundle — Tag CC21 (Proof of Theorem 1.1 [1DCD])">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/hodge-bundle/tag/CC21.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/hodge-bundle/tag/CC21.html">
       <input type="hidden" name="paper" value="The simplicity of the Hodge bundle">
-      <input type="hidden" name="location" value="Tag CC21 (Proof)">
+      <input type="hidden" name="location" value="Tag CC21 (Proof of Theorem 1.1 [1DCD])">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

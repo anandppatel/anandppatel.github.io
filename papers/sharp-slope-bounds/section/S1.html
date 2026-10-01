@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 1 — Sharp slope bounds for sweeping families of trigonal curves</title>
+  <title>Section 1: Introduction — Sharp slope bounds for sweeping families of trigonal curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -145,9 +149,9 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">Section 1. Introduction</h1>
 <p class="stacks-para">The seminal papers of
-[<a class="stacks-cite" href="../../../bibliography.html#bib-harris-and-d-4875a490">Harris and
+[<a class="stacks-cite" href="../../../bibliography.html#bib-j-harris-and-d-mumford-on-9af7cfca">Harris and
   Mumford (1982)</a>], and
-[<a class="stacks-cite" href="../../../bibliography.html#bib-eisenbud-and-j-e0205437">Eisenbud and Harris (1987)</a>] prove that the moduli space $\o M_g$ of
+[<a class="stacks-cite" href="../../../bibliography.html#bib-d-eisenbud-and-j-harris-the-548d6124">Eisenbud and Harris (1987)</a>] prove that the moduli space $\o M_g$ of
 Deligne&ndash;Mumford stable curves of genus $g$ is of general type for $g
 \geq 23$. This result marks the beginning of the quest for describing
 the log-canonical models of $\o M_g$, namely the spaces
@@ -156,7 +160,7 @@ $$\o M_g(\alpha) = \proj \bigoplus_{n \geq 0} H^0\left(\o {\orb M}_g,
 spaces and the maps between them is an active area of
 research with important contributions by Hassett, Hyeon, Keel,
 Morrison and several others
-[<a class="stacks-cite" href="../../../bibliography.html#bib-fedorchuk-and-d-f6906ace">Fedorchuk and
+[<a class="stacks-cite" href="../../../bibliography.html#bib-m-fedorchuk-and-d-i-smyth-276c4884">Fedorchuk and
   Smyth (2012)</a>].</p>
 <p class="stacks-para">As a step towards this goal, it is important to understand the stable
 base loci of the linear systems $|K_{\o {\orb M}_g} + \alpha \delta|$,
@@ -165,29 +169,30 @@ $\lambda$ is the Hodge class, $\delta$ the total boundary class and
 $s = 13/(2-\alpha)$. To test whether a given $X \subset \o M_g$ lies
 in such a base locus, we may cover it by curves of high slope
 ($\delta/\lambda$); if $X$ can be covered by curves of slope $s_0$
-then it must be in the base locus of $|s\lambda-\delta|$ for $s <
+then it must be in the base locus of $|s\lambda-\delta|$ for $s &lt;
 s_0$. We are thus led to the following question.</p>
 <div class="stacks-env" id="q-slope">
   <div class="stacks-env-head"><strong>Question&nbsp;1.1.</strong> <a href="../tag/7170.html" class="stacks-tag-link">(7170)</a></div>
   <div class="stacks-env-body"><p>For a subvariety $X \subset \o M_g$, what is the highest $s$ such
-  that $X$ is covered by curves of slope $s$?</p></div>
+  that $X$ is covered by curves of slope $s$?</p>
 </div>
-<p class="stacks-para">The first result in this direction came from the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-cornalba-and-j-372c0e82">Cornalba and Harris (1988)</a>]. They answered it for the locus of hyperelliptic curves, getting the slope bound $8+4/g$. Next, the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-z-e-stankova-frenkel-moduli-of-97b81ee9">Stankova-Frenkel (2000)</a>] suggested that the answer for the locus of trigonal curves is $7+6/g$, at least if $g$ is even. This is now known to be correct, thanks to the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-m-a-barja-and-l-stoppino-3029340d">Barja and Stoppino (2009)</a>, Theorem&nbsp;1.6] and the more recent work of [<a class="stacks-cite" href="../../../bibliography.html#bib-fedorchuk-and-d-f6906ace">Fedorchuk and
+</div>
+<p class="stacks-para">The first result in this direction came from the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-m-cornalba-and-j-harris-divisor-f7d3e7d6">Cornalba and Harris (1988)</a>]. They answered it for the locus of hyperelliptic curves, getting the slope bound $8+4/g$. Next, the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-z-e-stankova-frenkel-moduli-of-91d97595">Stankova-Frenkel (2000)</a>] suggested that the answer for the locus of trigonal curves is $7+6/g$, at least if $g$ is even. This is now known to be correct, thanks to the work of [<a class="stacks-cite" href="../../../bibliography.html#bib-m-a-barja-and-l-stoppino-603d1064">Barja and Stoppino (2009)</a>, Theorem&nbsp;1.6] and the more recent work of [<a class="stacks-cite" href="../../../bibliography.html#bib-m-fedorchuk-and-d-jensen-stability-10fcfd82">Fedorchuk and
   Jensen (2012)</a>, Theorem&nbsp;1.2, Corollary&nbsp;3.2]. Since the loci of Brill&ndash;Noether special curves are expected to make up the base loci of the log-canonical linear systems, <a href="/papers/sharp-slope-bounds/tag/7170.html" class="stacks-ref-link">Question&nbsp;1.1 <span class="stacks-ref-tag">[7170]</span></a> is particularly interesting for such loci in $\o M_g$.</p>
 <p class="stacks-para">In this article, we settle the question for the locus of trigonal curves of any genus. We reprove the $7+6/g$ bound for even $g$ and obtain the bound $7+20/(3g+1)$ for odd $g$.</p>
 <div class="stacks-theorem" id="thm-main">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2.</strong> <a href="../tag/377B.html" class="stacks-tag-link">(377B)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.2 (<a href="/papers/sharp-slope-bounds/tag/25D8.html" class="stacks-ref-link">Corollary&nbsp;5.4 <span class="stacks-ref-tag">[25D8]</span></a>, <a href="/papers/sharp-slope-bounds/tag/D92F.html" class="stacks-ref-link">Corollary&nbsp;5.8 <span class="stacks-ref-tag">[D92F]</span></a> in the main text).</strong> <a href="../tag/377B.html" class="stacks-tag-link">(377B)</a></div>
   <div class="stacks-env-body"><p>Let $g \geq 4$. Denote by $\o T_g$ the closure in $\o M_g$ of
   the locus of smooth trigonal curves. Set
   $$s_g = \begin{cases}
-    7 + 6/g & \text{ if $g$ is even},\\
-    7 + 20/(3g+1) & \text{ if $g$ is odd}.
+    7 + 6/g &amp; \text{ if $g$ is even},\\
+    7 + 20/(3g+1) &amp; \text{ if $g$ is odd}.
   \end{cases}$$
   Then,</p>
-<ol><li>$\o T_g$ is covered by curves of slope $s_g$.</li>
-<li>If $B \subset \o T_g$ is a curve passing through a general
+<ol><li><p>$\o T_g$ is covered by curves of slope $s_g$.</p></li>
+<li><p>If $B \subset \o T_g$ is a curve passing through a general
     point of $\o T_g$, then its slope is at most $s_g$. In
-    particular, $\o T_g$ cannot be covered by curves of higher slope.</li></ol>
+    particular, $\o T_g$ cannot be covered by curves of higher slope.</p></li></ol>
 <p>The word ``general'' in the second statement means away from an
   (explicitly given) effective divisor.</p>
 </div>
@@ -227,9 +232,9 @@ however, is challenging. The basis of our trigonal constructions&mdash;the
 linear algebraic description&mdash;fails for admissible covers, which are
 not necessarily flat. The idea that rescues us is the formulation of
 admissible covers as flat covers of orbi-nodal curves due to
-[<a class="stacks-cite" href="../../../bibliography.html#bib-abramovich-a-a3e55ef4">Abramovich et al. (2003)</a>]. Another piece of modern technology, namely the
+[<a class="stacks-cite" href="../../../bibliography.html#bib-d-abramovich-a-corti-and-a-7f55d776">Abramovich et al. (2003)</a>]. Another piece of modern technology, namely the
 Grothendieck&ndash;Riemann&ndash;Roch theorem for Deligne&ndash;Mumford stacks
-[<a class="stacks-cite" href="../../../bibliography.html#bib-edidin-53cfc3d0">Edidin (2012)</a>] makes this computationally
+[<a class="stacks-cite" href="../../../bibliography.html#bib-d-edidin-riemann-roch-for-deligne-b5846c5b">Edidin (2012)</a>] makes this computationally
 feasible.</p>
 <p class="stacks-para">We work over an algebraically closed field $k$ of characteristic
 zero. <em>Genus</em> always means <em>arithmetic genus</em>. By the genus
@@ -244,7 +249,7 @@ $\zeta$ denotes a primitive $n$th root of unity.</p>
 <p class="stacks-para">The work in this paper began after conversations with Maksym Fedorchuk
 when the authors were graduate students of Joe Harris. We thank both
 of them for their kindness and appreciation. During the preparation of
-the article, we learned about the results of [<a class="stacks-cite" href="../../../bibliography.html#bib-beorchia-and-f-27d0819c">Beorchia and Zucconi (2012)</a>]
+the article, we learned about the results of [<a class="stacks-cite" href="../../../bibliography.html#bib-v-beorchia-and-f-zucconi-on-3e39846e">Beorchia and Zucconi (2012)</a>]
 about similar questions. We thank them for sharing their manuscripts
 and thoughts.</p>
 

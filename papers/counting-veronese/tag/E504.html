@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,15 +123,15 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <a href="../section/S4.SS4.html">4.4. Thirteen point conditions</a> / <span>Proof (E504)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="228E.html">&laquo; Lemma 4.14</a><span class="stacks-tag-current">Tag E504</span><a href="21E9.html">Definition 4.15 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E504.html" class="stacks-tag-link">(E504)</a></div>
   <div class="stacks-env-body"><p>The statement ``$T \cap \Gamma_{13} = \varnothing$" follows
   immediately from <a href="/papers/counting-veronese/tag/73C7.html" class="stacks-ref-link">Lemma&nbsp;4.13 <span class="stacks-ref-tag">[73C7]</span></a>, so we will assume it and
   show that $T$ is an honest triangle.</p>
-<p>  Pick $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. As $\Base(\Lambda)$ is
+<p>Pick $(T,T^{*},\Lambda) \in \Theta \cap \Fin$. As $\Base(\Lambda)$ is
   finite, it follows that $T \notin \Thin$ (as otherwise $\Base(\Lambda)$
   contains the line spanned by $T$). Therefore, we need only show that $T$ is reduced.</p>
-<p>  As in the proof of <a href="/papers/counting-veronese/tag/73C7.html" class="stacks-ref-link">Lemma&nbsp;4.13 <span class="stacks-ref-tag">[73C7]</span></a>, we perform a
+<p>As in the proof of <a href="/papers/counting-veronese/tag/73C7.html" class="stacks-ref-link">Lemma&nbsp;4.13 <span class="stacks-ref-tag">[73C7]</span></a>, we perform a
   dimension count.  The locus $V \subset \Fin$ consisting of triples
   $(T,T^{*},\Lambda)$ where $T$ is non-reduced is a Cartier
   divisor. And so, $\dim V = 25$. Let
@@ -138,7 +142,8 @@
   $i$. Since the forgetful map $V' \to V$ is quasi-finite, it follows
   that $\dim V' = 25$. Therefore the second projection
   $V' \to (\P^{2})^{13}$ cannot be dominant, and in particular cannot
-  contain the general tuple $(p_1,\dots, p_{13})$ in its image, implying the lemma.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  contain the general tuple $(p_1,\dots, p_{13})$ in its image, implying the lemma.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

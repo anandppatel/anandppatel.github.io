@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Remark 4.6 (A41B) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Remark 4.4 (A41B) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,20 +120,52 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Motivating example and the connection of $\mu_M$ with $QH_{GL_{r+1}}^\bullet(\mb{P}^r)$</a> / <a href="../section/S4.SS5.html">4.5. Expanding out a small quantum product</a> / <span>Remark 4.6 (A41B)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Motivating example and the connection of $\mu_M$ with $QH_{GL_{r+1}}^\bullet(\mb{P}^r)$</a> / <a href="../section/S4.SS5.html">4.5. Expanding out a small quantum product</a> / <span>Remark 4.4 (A41B)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="89B4.html">&laquo; Definition 4.5</a><span class="stacks-tag-current">Tag A41B</span><a href="B1EB.html">Theorem 4.7 &raquo;</a></div>
-<div class="stacks-commentary" id="">
-  <div class="stacks-env-head"><strong>Remark&nbsp;4.6.</strong> <a href="../tag/A41B.html" class="stacks-tag-link">(A41B)</a></div>
-  <div class="stacks-env-body"><p>Naively, if $f$ and $g$ are effective cycles, then $\tikz[baseline=15pt]{\draw(1,0)&ndash;(0,1);\filldraw[black] (1/4,3/4) circle (1pt) node[anchor=south]{$f$}; \filldraw[black] (1/2,1/2) circle (1pt) node[anchor=south]{$g$} node[anchor=north east]{\boxed i};\filldraw[black] (3/4,1/4) circle (1pt) node[anchor=south]{$$}}$ is the locus in $\mb{P}^r$ swept out by all degree $i$ curves passing through the two cycles. This expression vanishes for $i>1$ for dimension reasons.</p></div>
+<div class="stacks-tag-nav"><a href="89B4.html">&laquo; Definition 4.1</a><span class="stacks-tag-current">Tag A41B</span><a href="B1EB.html">Theorem 4.5 &raquo;</a></div>
+<div class="stacks-commentary">
+  <div class="stacks-env-head"><strong>Remark&nbsp;4.4.</strong> <a href="../tag/A41B.html" class="stacks-tag-link">(A41B)</a></div>
+  <div class="stacks-env-body"><p>Naively, if $f$ and $g$ are effective cycles, then <span class="stacks-rendered-latex stacks-inline-tikz" role="img" aria-label="Diagrammatic operation"><svg class="stacks-inline-tikz-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30pt" height="37pt" viewBox="0 0 30 37">
+<defs>
+<g>
+<g id="latex-696f6110dc74037f-12-glyph-0-0">
+<path d="M 3.65625 -3.984375 L 4.515625 -3.984375 C 4.71875 -3.984375 4.8125 -3.984375 4.8125 -4.1875 C 4.8125 -4.296875 4.71875 -4.296875 4.546875 -4.296875 L 3.71875 -4.296875 L 3.921875 -5.4375 C 3.96875 -5.640625 4.109375 -6.34375 4.171875 -6.46875 C 4.25 -6.65625 4.421875 -6.8125 4.640625 -6.8125 C 4.671875 -6.8125 4.9375 -6.8125 5.125 -6.625 C 4.6875 -6.59375 4.578125 -6.234375 4.578125 -6.09375 C 4.578125 -5.859375 4.765625 -5.734375 4.953125 -5.734375 C 5.21875 -5.734375 5.5 -5.96875 5.5 -6.34375 C 5.5 -6.796875 5.046875 -7.03125 4.640625 -7.03125 C 4.296875 -7.03125 3.671875 -6.84375 3.375 -5.859375 C 3.3125 -5.65625 3.28125 -5.546875 3.046875 -4.296875 L 2.359375 -4.296875 C 2.15625 -4.296875 2.046875 -4.296875 2.046875 -4.109375 C 2.046875 -3.984375 2.140625 -3.984375 2.328125 -3.984375 L 2.984375 -3.984375 L 2.25 -0.046875 C 2.0625 0.921875 1.890625 1.828125 1.375 1.828125 C 1.328125 1.828125 1.09375 1.828125 0.890625 1.640625 C 1.359375 1.609375 1.453125 1.25 1.453125 1.109375 C 1.453125 0.875 1.265625 0.75 1.078125 0.75 C 0.8125 0.75 0.53125 0.984375 0.53125 1.359375 C 0.53125 1.796875 0.96875 2.046875 1.375 2.046875 C 1.921875 2.046875 2.328125 1.453125 2.5 1.078125 C 2.828125 0.453125 3.046875 -0.75 3.0625 -0.828125 Z M 3.65625 -3.984375 "/>
+</g>
+<g id="latex-696f6110dc74037f-12-glyph-0-1">
+<path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
+</g>
+<g id="latex-696f6110dc74037f-12-glyph-0-2">
+<path d="M 2.828125 -6.234375 C 2.828125 -6.4375 2.6875 -6.59375 2.46875 -6.59375 C 2.1875 -6.59375 1.921875 -6.328125 1.921875 -6.0625 C 1.921875 -5.875 2.0625 -5.703125 2.296875 -5.703125 C 2.53125 -5.703125 2.828125 -5.9375 2.828125 -6.234375 Z M 2.078125 -2.484375 C 2.1875 -2.765625 2.1875 -2.796875 2.296875 -3.0625 C 2.375 -3.265625 2.421875 -3.40625 2.421875 -3.59375 C 2.421875 -4.03125 2.109375 -4.40625 1.609375 -4.40625 C 0.671875 -4.40625 0.296875 -2.953125 0.296875 -2.875 C 0.296875 -2.765625 0.390625 -2.765625 0.40625 -2.765625 C 0.515625 -2.765625 0.515625 -2.796875 0.5625 -2.953125 C 0.84375 -3.890625 1.234375 -4.1875 1.578125 -4.1875 C 1.65625 -4.1875 1.828125 -4.1875 1.828125 -3.875 C 1.828125 -3.65625 1.75 -3.453125 1.71875 -3.34375 C 1.640625 -3.09375 1.1875 -1.9375 1.03125 -1.5 C 0.921875 -1.25 0.796875 -0.921875 0.796875 -0.703125 C 0.796875 -0.234375 1.140625 0.109375 1.609375 0.109375 C 2.546875 0.109375 2.921875 -1.328125 2.921875 -1.421875 C 2.921875 -1.53125 2.828125 -1.53125 2.796875 -1.53125 C 2.703125 -1.53125 2.703125 -1.5 2.65625 -1.34375 C 2.46875 -0.71875 2.140625 -0.109375 1.640625 -0.109375 C 1.46875 -0.109375 1.390625 -0.203125 1.390625 -0.4375 C 1.390625 -0.6875 1.453125 -0.828125 1.6875 -1.4375 Z M 2.078125 -2.484375 "/>
+</g>
+</g>
+</defs>
+<path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 28.347938 -0.001 L 0.00028125 28.346656 " transform="matrix(1, 0, 0, -1, 0.863, 33.999)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 8.082313 21.260719 C 8.082313 21.8115 7.637 22.256813 7.086219 22.256813 C 6.535438 22.256813 6.090125 21.8115 6.090125 21.260719 C 6.090125 20.709938 6.535438 20.264625 7.086219 20.264625 C 7.637 20.264625 8.082313 20.709938 8.082313 21.260719 Z M 8.082313 21.260719 " transform="matrix(1, 0, 0, -1, 0.863, 33.999)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#latex-696f6110dc74037f-12-glyph-0-0" x="4.974" y="7.282"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 15.16825 14.174781 C 15.16825 14.725563 14.722938 15.170875 14.172156 15.170875 C 13.621375 15.170875 13.176063 14.725563 13.176063 14.174781 C 13.176063 13.624 13.621375 13.178688 14.172156 13.178688 C 14.722938 13.178688 15.16825 13.624 15.16825 14.174781 Z M 15.16825 14.174781 " transform="matrix(1, 0, 0, -1, 0.863, 33.999)"/>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#latex-696f6110dc74037f-12-glyph-0-1" x="12.481" y="14.369"/>
+</g>
+<g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
+<use xlink:href="#latex-696f6110dc74037f-12-glyph-0-2" x="4.697" y="33.303"/>
+</g>
+<path fill="none" stroke-width="0.398" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00040625 -0.001875 L 10.206625 -0.001875 " transform="matrix(1, 0, 0, -1, 1.309, 23.545)"/>
+<path fill="none" stroke-width="0.398" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.0011875 -0.0011875 L -0.0011875 12.948031 " transform="matrix(1, 0, 0, -1, 1.509, 36.491)"/>
+<path fill="none" stroke-width="0.398" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00059375 -0.0011875 L -0.00059375 12.948031 " transform="matrix(1, 0, 0, -1, 11.317, 36.491)"/>
+<path fill="none" stroke-width="0.398" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00040625 -0.0011875 L 10.206625 -0.0011875 " transform="matrix(1, 0, 0, -1, 1.309, 36.491)"/>
+<path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 22.258094 7.084938 C 22.258094 7.635719 21.808875 8.081031 21.262 8.081031 C 20.711219 8.081031 20.262 7.635719 20.262 7.084938 C 20.262 6.538063 20.711219 6.088844 21.262 6.088844 C 21.808875 6.088844 22.258094 6.538063 22.258094 7.084938 Z M 22.258094 7.084938 " transform="matrix(1, 0, 0, -1, 0.863, 33.999)"/>
+</svg></span> is the locus in $\mb{P}^r$ swept out by all degree $i$ curves passing through the two cycles. This expression vanishes for $i&gt;1$ for dimension reasons.</p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/A41B.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/A41B.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag A41B (Remark 4.6)"
-     data-comment-page-label="Tag A41B (Remark 4.6)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag A41B (Remark 4.4)"
+     data-comment-page-label="Tag A41B (Remark 4.4)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -137,13 +173,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag A41B (Remark 4.6)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag A41B (Remark 4.4)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/A41B.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/A41B.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag A41B (Remark 4.6)">
+      <input type="hidden" name="location" value="Tag A41B (Remark 4.4)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

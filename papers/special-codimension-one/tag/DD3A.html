@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -167,27 +171,28 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Compactifications.</a> / <a href="../section/S2.SS14.html">2.14. Independence of the boundary.</a> / <span>Proof (DD3A)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="9930.html">&laquo; Proposition 2.14</a><span class="stacks-tag-current">Tag DD3A</span><a href="5940.html">Lemma 2.15 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DD3A.html" class="stacks-tag-link">(DD3A)</a></div>
   <div class="stacks-env-body"><p class="stacks-para">Let $\delta_{i,j}$ be the boundary divisor in $\widetilde{\H}_{d,g}$ generically parametrizing covers $$\alpha \from C_{1} \cup C_{2} \to \P^1$$ where $g(C_{1}) = i$ and $\deg \alpha|_{C_{1}} = j$. (Note: $\delta_{i, j} = \delta_{g-i, d-j}$.) Furthermore, let $\delta_{\rm irr}$ denote the boundary divisor generically parameterizing covers $\alpha \from C \to \P^{1}$ where $C$ is irreducible and nodal.</p>
 <p class="stacks-para">Begin with any relation:
     $$0 = a\cdot \sfT + b\cdot \sfD  + c \cdot \delta_{\rm irr} + \sum c_{i,j} \cdot \delta_{i,j}$$</p>
-<p class="stacks-para">We use test families to express the coefficients $c_{i,j}$ as linear combinations of $a,b$, and $c$.  The divisor classes $\sfT$, $\sfD$, and $\delta_{\rm irr}$ are known to be independent [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-de565de0">DP15</a>][Proposition 2.15].</p>
+<p class="stacks-para">We use test families to express the coefficients $c_{i,j}$ as linear combinations of $a,b$, and $c$.  The divisor classes $\sfT$, $\sfD$, and $\delta_{\rm irr}$ are known to be independent [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-b8b8cdd2">DP15</a>][Proposition 2.15].</p>
 <div class="stacks-lemma" id="coeffcij">
   <div class="stacks-env-head"><strong>Lemma&nbsp;2.15.</strong> <a href="../tag/5940.html" class="stacks-tag-link">(5940)</a></div>
-  <div class="stacks-env-body"><p>The coefficients $c_{i,j}$ are linear combinations of $a,b$, and $c$.</p></div>
+  <div class="stacks-env-body"><p>The coefficients $c_{i,j}$ are linear combinations of $a,b$, and $c$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/1423.html" class="stacks-tag-link">(1423)</a></div>
-  <div class="stacks-env-body"><p>Let $\Gamma_{k}$ be the family of covers obtained by varying a $(1,k)$ curve in a pencil on $\P^1 \times \P^1$ and attaching a fixed general genus $g$, degree $d-k$ cover $D$ of $\P^1$ at a base point of the pencil.  </p>
-<p>    Then the family $\Gamma_{k}$ interacts nontrivially with the divisors $\delta_{0,k}$, $\delta_{0,k-1}$, $\delta_{0,1}$, $\sfT$ and $\sfD$.  </p>
-<p>    In addition to the families $\Gamma_{k}$ consider the following families:</p>
-<ol><li>Begin with a general pencil $p$ of hyperelliptic  genus $g$ curves on $\F_{g}$ and attach a fixed general degree $d-2$ genus $0$ cover $R \to \P^{1}$ at a base point of the pencil.  $B_{1}$ has nontrivial intersection with $\delta_{0,d-2}$, $\sfT$, $\delta_{\rm irr}$, and $\sfD$.</li>
-<li><strong>$B_{2}$:</strong> Begin with a pencil $p$ of trigonal genus $g$ covers on a Hirzebruch surface, and attach an unchanging degree $d-3$ rational cover $R \to \P^{1}$ at a base point.  $B_{2}$ has nontrivial intersection with $\delta_{0,d-3}$, $\sfT$, $\delta_{\rm irr}$, and $\sfD$.</li></ol>
-<p>The families $\Gamma_{k}$, $B_{1}$, and $B_{2}$ provide enough relations to conclude <a href="/papers/special-codimension-one/tag/5940.html" class="stacks-ref-link">Lemma&nbsp;2.15 <span class="stacks-ref-tag">[5940]</span></a> for  coefficients of the form $c_{0,k}$.  </p>
-<p>    Now we argue that knowing  <a href="/papers/special-codimension-one/tag/5940.html" class="stacks-ref-link">Lemma&nbsp;2.15 <span class="stacks-ref-tag">[5940]</span></a> for the coefficients $c_{0,k}$ allows one to deduce it for all coefficients $c_{i,j}$.  Indeed, suppose $i >0$.  Then it must follow that $j > 1$.  (The genus $i$ component must map with degree $j > 1$.)  </p>
-<p>    Consider the following family:</p>
-<ol><li>Begin with a general pencil $p$ of hyperelliptic curves of genus $i$ on the Hirzebruch surface $\F_{i}$.  At one base point, attach an unchanging genus $g-i$ cover $C_{1} \to \P^{1}$ of degree $d-j$.  Choose a second base point (which is not the hyperelliptic conjugate to the first),  and attach a second unchanging genus $0$ cover $R_{2} \to \P^{1}$ of degree $j-2$.  (If $j = 2$, simply omit $R_{2}$.)</li></ol>
+  <div class="stacks-env-body"><p>Let $\Gamma_{k}$ be the family of covers obtained by varying a $(1,k)$ curve in a pencil on $\P^1 \times \P^1$ and attaching a fixed general genus $g$, degree $d-k$ cover $D$ of $\P^1$ at a base point of the pencil.</p>
+<p>Then the family $\Gamma_{k}$ interacts nontrivially with the divisors $\delta_{0,k}$, $\delta_{0,k-1}$, $\delta_{0,1}$, $\sfT$ and $\sfD$.</p>
+<p>In addition to the families $\Gamma_{k}$ consider the following families:</p>
+<ol><li><p>Begin with a general pencil $p$ of hyperelliptic  genus $g$ curves on $\F_{g}$ and attach a fixed general degree $d-2$ genus $0$ cover $R \to \P^{1}$ at a base point of the pencil.  $B_{1}$ has nontrivial intersection with $\delta_{0,d-2}$, $\sfT$, $\delta_{\rm irr}$, and $\sfD$.</p></li>
+<li><p><strong>$B_{2}$:</strong> Begin with a pencil $p$ of trigonal genus $g$ covers on a Hirzebruch surface, and attach an unchanging degree $d-3$ rational cover $R \to \P^{1}$ at a base point.  $B_{2}$ has nontrivial intersection with $\delta_{0,d-3}$, $\sfT$, $\delta_{\rm irr}$, and $\sfD$.</p></li></ol>
+<p>The families $\Gamma_{k}$, $B_{1}$, and $B_{2}$ provide enough relations to conclude <a href="/papers/special-codimension-one/tag/5940.html" class="stacks-ref-link">Lemma&nbsp;2.15 <span class="stacks-ref-tag">[5940]</span></a> for  coefficients of the form $c_{0,k}$.</p>
+<p>Now we argue that knowing  <a href="/papers/special-codimension-one/tag/5940.html" class="stacks-ref-link">Lemma&nbsp;2.15 <span class="stacks-ref-tag">[5940]</span></a> for the coefficients $c_{0,k}$ allows one to deduce it for all coefficients $c_{i,j}$.  Indeed, suppose $i &gt;0$.  Then it must follow that $j &gt; 1$.  (The genus $i$ component must map with degree $j &gt; 1$.)</p>
+<p>Consider the following family:</p>
+<ol><li><p>Begin with a general pencil $p$ of hyperelliptic curves of genus $i$ on the Hirzebruch surface $\F_{i}$.  At one base point, attach an unchanging genus $g-i$ cover $C_{1} \to \P^{1}$ of degree $d-j$.  Choose a second base point (which is not the hyperelliptic conjugate to the first),  and attach a second unchanging genus $0$ cover $R_{2} \to \P^{1}$ of degree $j-2$.  (If $j = 2$, simply omit $R_{2}$.)</p></li></ol>
 <p>The family $B_{3}$ only interacts nontrivially with $\sfT$, $\delta_{\rm irr}$, $\sfD$, $\delta_{i,j}$ and $\delta_{0,j-2}$.  The relations obtained from the test families of type $B_{3}$ allow us to finally conclude  <a href="/papers/special-codimension-one/tag/5940.html" class="stacks-ref-link">Lemma&nbsp;2.15 <span class="stacks-ref-tag">[5940]</span></a>.<span class="stacks-qed" aria-hidden="true"></span><span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
 </div>

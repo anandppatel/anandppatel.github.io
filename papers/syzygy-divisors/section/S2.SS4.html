@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           c: "{\\rm c}",
           orb: "\\mathcal",
@@ -60,7 +59,7 @@
           Bog: "\\operatorname{Bog}",
           Bl: "\\operatorname{Bl}",
           im: "\\operatorname{im}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{{\\mathbb{F}}}",
           AA: "\\mathbb{A}",
           ba: "\\mathbb{A}",
           bbA: "\\mathbb{A}",
@@ -89,7 +88,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -100,7 +104,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
   </div>
@@ -121,23 +125,23 @@ This is the degree of the branch divisor of the covers in $\widetilde H_{d,g}$.<
 <div class="stacks-lemma" id="prop-relations">
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.8.</strong> <a href="../tag/9D29.html" class="stacks-tag-link">(9D29)</a></div>
   <div class="stacks-env-body"><p>The following identities hold in $\Pic_\Q(\widetilde H_{d,g})$:</p>
-<ol><li>$12 \lambda = \kappa + \delta$</li>
-<li>$p_*\c_1(E)^2 = \frac{b}{2} \cdot \zeta$</li>
-<li>$p_*\ch_2(E) = \frac{1}{12} \cdot \kappa + \frac{1}{2} \cdot \zeta + \frac{1}{12} \cdot \delta$</li>
-<li>$\pi_* \c_1(\omega_\alpha)^2 = \kappa + 4\cdot \zeta$</li>
-<li>$T = 2\cdot\kappa + 6\cdot\zeta - \delta$</li>
-<li>$D = -3\cdot\kappa +(b-10)\zeta + \delta$</li>
-<li>$\mu = -\frac{d}{6}\cdot\kappa + \frac{b-2d}{2}\cdot \zeta + \frac{d}{6}\cdot\delta$</li>
-<li>$K = \kappa + \zeta - \delta$</li></ol>
+<ol><li><p>$12 \lambda = \kappa + \delta$</p></li>
+<li><p>$p_*\c_1(E)^2 = \frac{b}{2} \cdot \zeta$</p></li>
+<li><p>$p_*\ch_2(E) = \frac{1}{12} \cdot \kappa + \frac{1}{2} \cdot \zeta + \frac{1}{12} \cdot \delta$</p></li>
+<li><p>$\pi_* \c_1(\omega_\alpha)^2 = \kappa + 4\cdot \zeta$</p></li>
+<li><p>$T = 2\cdot\kappa + 6\cdot\zeta - \delta$</p></li>
+<li><p>$D = -3\cdot\kappa +(b-10)\zeta + \delta$</p></li>
+<li><p>$\mu = -\frac{d}{6}\cdot\kappa + \frac{b-2d}{2}\cdot \zeta + \frac{d}{6}\cdot\delta$</p></li>
+<li><p>$K = \kappa + \zeta - \delta$</p></li></ol>
 </div>
 </div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/EC3F.html" class="stacks-tag-link">(EC3F)</a></div>
   <div class="stacks-env-body"><p>We compute all the divisor classes on a generic one parameter family $B \to \widetilde {\orb H}_{d,g}$.
   Let $\alpha \from C \to P$ be the pull-back of the universal family to $B$ with the two projections $\pi \from C \to B$ and $p \from P \to B$.
   Set $\sigma = -c_1(\omega_p)/2$.</p>
-<ol><li><strong>(1)</strong> This is the well-known Mumford relation.</li>
-<li><strong>(2)</strong> Let $\beta \subset P$ be the branch divisor of $\alpha$.
+<ol><li><p><strong>(1)</strong> This is the well-known Mumford relation.</p></li>
+<li><p><strong>(2)</strong> Let $\beta \subset P$ be the branch divisor of $\alpha$.
     Since $\beta$ is cut out by a section of $(\det E)^{\otimes 2}$, we have
     $$[\beta] = 2\c_1(E).$$
     Since $p \from P \to B$ is a $\P^1$ bundle, we have a relation
@@ -148,12 +152,12 @@ This is the degree of the branch divisor of the covers in $\widetilde H_{d,g}$.<
     $$\c_1(E)^2 = b \c_1(E) \cdot \sigma.$$
     Since $\beta$ is the push-forward of the ramification divisor of $\alpha$, which has class $c_1(\omega_\alpha)$, we have
     $$\alpha_* \left(c_1(\omega_\alpha) \right) = 2\c_1(E).$$
-    Multiplying the above by $\sigma$, noting that $\omega_\alpha \cdot \sigma = \omega_\pi \cdot \sigma$, and using (2.4) yields the second relation.</li>
-<li><strong>(3)</strong> Applying $Rpi_*$ to both sides of the equation
+    Multiplying the above by $\sigma$, noting that $\omega_\alpha \cdot \sigma = \omega_\pi \cdot \sigma$, and using (2.4) yields the second relation.</p></li>
+<li><p><strong>(3)</strong> Applying $Rpi_*$ to both sides of the equation
     $$\alpha_* \O_C = \O_P \oplus E^\vee$$
-    and using Grothendieck&ndash;Riemann&ndash;Roch for the right hand side yields the third relation.</li>
-<li><strong>(4)</strong> Using $\c_1(\omega_\alpha) = c_1(\omega_\pi) + 2\sigma$ and (2.4) yields the fourth relation.</li>
-<li><strong>(5, 6)</strong> To get $T$ and $D$, we sketch the argument from [<a class="stacks-cite" href="../../../bibliography.html#bib-patel-special-codimension-one-loci-in-60988ee5">17</a>, Proposition&nbsp;3.2].
+    and using Grothendieck&ndash;Riemann&ndash;Roch for the right hand side yields the third relation.</p></li>
+<li><p><strong>(4)</strong> Using $\c_1(\omega_\alpha) = c_1(\omega_\pi) + 2\sigma$ and (2.4) yields the fourth relation.</p></li>
+<li><p><strong>(5, 6)</strong> To get $T$ and $D$, we sketch the argument from [<a class="stacks-cite" href="../../../bibliography.html#bib-a-patel-special-codimension-one-loci-287efd31">17</a>, Proposition&nbsp;3.2].
     Assuming $B$ is sufficiently generic, the only singularities of $\beta$ will be nodes and cusps, and the map from the ramification divisor $\rho$ to the branch divisor $\beta$ will be the normalization.
     A simple local computation of the branch divisor of a cover specializing to a point of $D$ or $T$ shows that the nodes correspond to intersections of $B$ with $D$, and the cusps with the intersections of $B$ with $T$.
     Therefore, we get
@@ -163,12 +167,12 @@ This is the degree of the branch divisor of the covers in $\widetilde H_{d,g}$.<
     The branch points of $\rho \to B$ correspond to the intersections of $B$ with $\delta$ or with $T$.
     From adjunction on $C$  and Riemann&ndash;Hurwitz, we get
     $$2\rho^2 + \beta \cdot c_1(\omega_\pi) = T+\delta.$$
-    Solving for $T$ and $D$, and using the previous relations yields the fifth and the sixth relations.</li>
-<li><strong>(7)</strong> The class of $\mu$ is given by the Bogomolov expression $\c_1(E)^2-2d\ch_2(E)$, which yields the seventh relation (See Section&nbsp;4.1 for the Bogomolov expression).</li>
-<li><strong>(8)</strong> We sketch two ways to compute the canonical divisor.
+    Solving for $T$ and $D$, and using the previous relations yields the fifth and the sixth relations.</p></li>
+<li><p><strong>(7)</strong> The class of $\mu$ is given by the Bogomolov expression $\c_1(E)^2-2d\ch_2(E)$, which yields the seventh relation (See Section&nbsp;4.1 for the Bogomolov expression).</p></li>
+<li><p><strong>(8)</strong> We sketch two ways to compute the canonical divisor.
     Note that the map $\widetilde{\orb H}_{d,g} \to \widetilde H_{d,g}$ is unramified in codimension 1,
     so the canonical class of the stack is the same as that of the coarse space.</p>
-<p>    First, consider the morphism $\br \from U \to V$, where $V \subset \P(\Sym^b\P^1) \sslash \SL(2)$ is the open locus where at most two of the $b$ marked points coincide, $U \subset \widetilde H_{d,g}$ is the locus of covers where at most two branch points coincide, and $\br$ is the morphism that assigns to a cover its branch divisor.
+<p>First, consider the morphism $\br \from U \to V$, where $V \subset \P(\Sym^b\P^1) \sslash \SL(2)$ is the open locus where at most two of the $b$ marked points coincide, $U \subset \widetilde H_{d,g}$ is the locus of covers where at most two branch points coincide, and $\br$ is the morphism that assigns to a cover its branch divisor.
     It is easy to check that the complements of $V$ and $U$ have codimension 2, and hence it suffices to work on $V$ and $U$ for divisor calculations.
     Let $\Delta \subset U$ be the complement of the locus of $b$ distinct points.
     A simple local calculation shows that
@@ -177,11 +181,11 @@ This is the degree of the branch divisor of the covers in $\widetilde H_{d,g}$.<
     $$K_U = -\frac{(b+1)}{2b-2} \cdot \Delta.$$
     By Riemann&ndash;Hurwitz, we get
     $$K_W = \br^* K_U + 2T + D,$$
-    which combined with the previous relations yield the eighth relation.<span class="stacks-qed" aria-hidden="true"></span></p>
-<p>    Another way is to use the deformation theory of maps developed in [<a class="stacks-cite" href="../../../bibliography.html#bib-ran-deformations-of-maps-in-algebraic-68c94349">18</a>].
+    which combined with the previous relations yield the eighth relation.</p>
+<p>Another way is to use the deformation theory of maps developed in [<a class="stacks-cite" href="../../../bibliography.html#bib-z-ran-deformations-of-maps-in-50cb5f0e">18</a>].
     We can identify the tangent space to $\widetilde {\orb H}_{d,g}$ at $\alpha \from C \to \P^1$ as the the kernel of the induced map
     $$\Ext^1(\Omega_C, \O_C) \to \Ext^1(\Omega_{\P^1}, \alpha_* \O_C).$$
-    We can compute the Chern classes of the bundles on $\widetilde{\orb H}_{d,g}$ defined by both terms, and their difference yields the Chern class of the tangent bundle of $\widetilde {\orb H}_{d,g}$.</li></ol>
+    We can compute the Chern classes of the bundles on $\widetilde{\orb H}_{d,g}$ defined by both terms, and their difference yields the Chern class of the tangent bundle of $\widetilde {\orb H}_{d,g}$.<span class="stacks-qed" aria-hidden="true"></span></p></li></ol>
 </div>
 </div>
 

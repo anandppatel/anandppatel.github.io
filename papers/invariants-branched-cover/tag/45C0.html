@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,13 +165,13 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Balanced $F$-bundles and a maximal rank problem</a> / <span>Remark 4.13 (45C0)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="C89F.html">&laquo; Definition 4.12</a><span class="stacks-tag-current">Tag 45C0</span><a href="4E11.html">Lemma 4.14 &raquo;</a></div>
-<div class="stacks-commentary" id="">
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;4.13.</strong> <a href="../tag/45C0.html" class="stacks-tag-link">(45C0)</a></div>
   <div class="stacks-env-body"><p>While contrived at first sight, having transverse residues simply reflects the expectation
 that the naive dimension count goes through. Indeed, the pair of quadrics $Q_\text{left}$ and $Q_\text{right}$ has to satisfy</p>
-<ul><li>$(r+2) + (r-1)\frac{r+1}{2}$ conditions for $Y_\text{left}\subset Q_\text{left}$, plus</li>
-<li>$(r+2) + (r-1)\frac{r+1}{2}$ conditions for $Y_\text{right}\subset Q_\text{right}$, plus</li>
-<li>$r-2$ conditions for $\operatorname{res}_{R_\text{middle}}(Q_\text{left}) = \operatorname{res}_{R_\text{middle}}(Q_\text{right})$.</li></ul>
+<ul><li><p>$(r+2) + (r-1)\frac{r+1}{2}$ conditions for $Y_\text{left}\subset Q_\text{left}$, plus</p></li>
+<li><p>$(r+2) + (r-1)\frac{r+1}{2}$ conditions for $Y_\text{right}\subset Q_\text{right}$, plus</p></li>
+<li><p>$r-2$ conditions for $\operatorname{res}_{R_\text{middle}}(Q_\text{left}) = \operatorname{res}_{R_\text{middle}}(Q_\text{right})$.</p></li></ul>
 <p>We get a total of
 $$2\times \left( r+2 + (r-1)\frac{r+1}{2} \right) + r-2 =r^2 +3r+1 = 2 \times \left( \binom{r+2}{2} -1 \right) +1$$
 conditions, which exceeds by one the dimensions available for choosing a pair of quadrics $(Q_\text{left},Q_\text{right})$.</p>

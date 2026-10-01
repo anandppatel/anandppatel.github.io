@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -122,7 +126,8 @@
 <div class="stacks-commentary" id="remark-delta1transversality">
   <div class="stacks-env-head"><strong>Remark&nbsp;3.16.</strong> <a href="../tag/23EB.html" class="stacks-tag-link">(23EB)</a></div>
   <div class="stacks-env-body"><p>In the setting of the proof of <a href="/papers/counting-veronese/tag/AD31.html" class="stacks-ref-link">Proposition&nbsp;3.15 <span class="stacks-ref-tag">[AD31]</span></a>, we note that the extra single condition $\delta_{1} = 0$ is equivalent to the condition that the $1$'st order deformation of the ideal $J_{\varepsilon}$ continues to contain a linear element.  But then the allowable parameters $\alpha_{1}, \beta_{1}, \alpha_{2}, \beta_{2}, \alpha_{3}, \beta_{3}$ determine a deformation of the ideal $I$ of the form $((x-\varepsilon \alpha)^{2}, (x - \varepsilon \alpha)(y - \varepsilon \beta), (y - \varepsilon \beta)^{2})$.  This is evidently the tangent space to $\Fat$ at the point $T$.</p>
-<p>Furthermore, a deformation of $J$ with $\delta_{1} \neq 0$ induces a non-zero tangent vector of $T$ which is a nonzero normal vector to $\Fat$ at $T$.</p></div>
+<p>Furthermore, a deformation of $J$ with $\delta_{1} \neq 0$ induces a non-zero tangent vector of $T$ which is a nonzero normal vector to $\Fat$ at $T$.</p>
+</div>
 </div>
 
 <hr>

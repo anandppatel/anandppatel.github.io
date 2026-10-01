@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -121,13 +125,15 @@
 <h1 class="stacks-section-title">4.2. First definitions</h1>
 <div class="stacks-definition" id="definition-base">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.3.</strong> <a href="../tag/789D.html" class="stacks-tag-link">(789D)</a></div>
-  <div class="stacks-env-body"><p>Let $W \subset H^{0}(\P^{2},\O(n))$ be a subspace. The <strong>base-scheme</strong> of $W$, denoted $\Base(W)$ is the subscheme of $\P^{2}$ which is the common vanishing scheme of all elements of $W$.</p></div>
+  <div class="stacks-env-body"><p>Let $W \subset H^{0}(\P^{2},\O(n))$ be a subspace. The <strong>base-scheme</strong> of $W$, denoted $\Base(W)$ is the subscheme of $\P^{2}$ which is the common vanishing scheme of all elements of $W$.</p>
+</div>
 </div>
 <div class="stacks-definition" id="definition-finite">
   <div class="stacks-env-head"><strong>Definition&nbsp;4.4.</strong> <a href="../tag/1BD9.html" class="stacks-tag-link">(1BD9)</a></div>
   <div class="stacks-env-body"><p>We let $$\Inf \subset \SQP$$ denote the
   closed subset consisting of triples $(T,T^{*},\Lambda)$ such that $\Base(\Lambda)$ is infinite. We let
-  $$\Fin \subset \SQP$$ denote the open complement of $\Inf$.</p></div>
+  $$\Fin \subset \SQP$$ denote the open complement of $\Inf$.</p>
+</div>
 </div>
 
 <hr>

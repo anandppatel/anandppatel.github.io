@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -110,20 +114,21 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Vector bundles,  their inflations, and degenerations</a> / <a href="../section/S2.SS4.html">2.4. The canonical affine embedding</a> / <span>Proof (BECB)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="A565.html">&laquo; Proposition 2.10</a><span class="stacks-tag-current">Tag BECB</span><a href="FFB0.html">Proposition 3.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BECB.html" class="stacks-tag-link">(BECB)</a></div>
   <div class="stacks-env-body"><p>The restriction map $\Sym^* F^\vee \to \phi_*\O_X = \O_Y \oplus E^\vee$ induces a map
   $$\lambda \from F^\vee \to E^\vee.$$
   Since a general fiber $X_y \subset F_y$ is in affine general position, the map $\lambda$ is an injective map of sheaves.
   But the source and the target are locally free of the same degree and rank.
   Therefore, $\lambda$ is an isomorphism.</p>
-<p>  Recall that the affine canonical embedding is induced by the map
+<p>Recall that the affine canonical embedding is induced by the map
   $$(0, \id) \from E^\vee \to \O_Y \oplus E^\vee = \phi_* \O_X.$$
   Suppose $\iota$ induces the map
   $$(\alpha, \lambda) \from F^\vee \to \O_Y \oplus E^\vee.$$
   Compose $\iota$ with the affine linear isomorphism of $T_\alpha \from \Tot(F) \to \Tot(F)$ over $Y$ defined by the map $\Sym^*F^\vee \to \Sym^*F^\vee$ induced by
   $$(-\alpha, \id) \from F^\vee \to \O_Y \oplus F^\vee.$$
-  Then $T_\alpha \circ \iota \from X \to F$ is the affine canonical embedding, as desired.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Then $T_\alpha \circ \iota \from X \to F$ is the affine canonical embedding, as desired.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

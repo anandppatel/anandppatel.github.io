@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -118,12 +122,13 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: One-parameter degenerations of generalized matrix orbits</a> / <a href="../section/S6.SS2.html">6.2. Regular subdivisions arising from degenerations</a> / <span>Proof (7646)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="552F.html">&laquo; Lemma 6.15</a><span class="stacks-tag-current">Tag 7646</span><a href="453E.html">Lemma 6.16 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="552F.html">&laquo; Lemma 6.10</a><span class="stacks-tag-current">Tag 7646</span><a href="2472.html">Proof of Theorem 6.2 [F6CF]  &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7646.html" class="stacks-tag-link">(7646)</a></div>
-  <div class="stacks-env-body"><p>Without loss of generality, we can restrict $S$ so the fibers of $X\to S$ are equidimensional [<a class="stacks-cite" href="../../../bibliography.html#bib-stacks-project-f3d1fe74">Sta18</a>, Tag 05F7]. The scheme-theoretic image of $\phi$ is $\overline{\phi(X)}$ with the induced reduced subscheme structure [<a class="stacks-cite" href="../../../bibliography.html#bib-stacks-project-f3d1fe74">Sta18</a>, Tag 056B]. It is clear that the scheme-theoretic image of $\phi|_{s}$ is contained in the fiber of $\overline{\phi(X)}$  over $s$. To show the other inclusion, we claim the geometric generic fiber of $\overline{\phi(X)}$ over $S$ is integral [<a class="stacks-cite" href="../../../bibliography.html#bib-and-eacute-l-and-eacute-ments-b7e00887">DG67</a>, IV 12.1.1 (x)]. </p>
-<p>Let $\Spec(\overline{L})\to S$ be the geometric generic point. Scheme-theoretic image of a quasicompact morphism commutes with flat base change [<a class="stacks-cite" href="../../../bibliography.html#bib-stacks-project-f3d1fe74">Sta18</a>, Tag 081I], so the scheme-theoretic image of $\phi$ pulled back to $Y\times_S \Spec(\overline{L})$ agrees with the scheme-theoretic image of the induced map $X\times_S\Spec(\overline{L})\to Y\times_S \Spec(\overline{L})$, which is integral.  </p>
-<p>Therefore, the general fiber of $\overline{\phi(X)}$ over $S$ is integral [<a class="stacks-cite" href="../../../bibliography.html#bib-stacks-project-f3d1fe74">Sta18</a>, Tag 0551]. Therefore, we can restrict $S$ so that every fiber of $\overline{\phi(X)}$ over $S$ is integral. Then, by dimension reasons, this shows that the scheme-theoretic image of $\phi|_{s}$ is equal to the fiber of $\overline{\phi(X)}$  over $s$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Without loss of generality, we can restrict $S$ so the fibers of $X\to S$ are equidimensional [<a class="stacks-cite" href="../../../bibliography.html#bib-the-stacks-project-authors-stacks-project-eb08c5ae">Sta18</a>, Tag 05F7]. The scheme-theoretic image of $\phi$ is $\overline{\phi(X)}$ with the induced reduced subscheme structure [<a class="stacks-cite" href="../../../bibliography.html#bib-the-stacks-project-authors-stacks-project-eb08c5ae">Sta18</a>, Tag 056B]. It is clear that the scheme-theoretic image of $\phi|_{s}$ is contained in the fiber of $\overline{\phi(X)}$  over $s$. To show the other inclusion, we claim the geometric generic fiber of $\overline{\phi(X)}$ over $S$ is integral [<a class="stacks-cite" href="../../../bibliography.html#bib-jean-dieudonn-and-alexander-grothendieck-l-4e058d83">DG67</a>, IV 12.1.1 (x)].</p>
+<p>Let $\Spec(\overline{L})\to S$ be the geometric generic point. Scheme-theoretic image of a quasicompact morphism commutes with flat base change [<a class="stacks-cite" href="../../../bibliography.html#bib-the-stacks-project-authors-stacks-project-eb08c5ae">Sta18</a>, Tag 081I], so the scheme-theoretic image of $\phi$ pulled back to $Y\times_S \Spec(\overline{L})$ agrees with the scheme-theoretic image of the induced map $X\times_S\Spec(\overline{L})\to Y\times_S \Spec(\overline{L})$, which is integral.</p>
+<p>Therefore, the general fiber of $\overline{\phi(X)}$ over $S$ is integral [<a class="stacks-cite" href="../../../bibliography.html#bib-the-stacks-project-authors-stacks-project-eb08c5ae">Sta18</a>, Tag 0551]. Therefore, we can restrict $S$ so that every fiber of $\overline{\phi(X)}$ over $S$ is integral. Then, by dimension reasons, this shows that the scheme-theoretic image of $\phi|_{s}$ is equal to the fiber of $\overline{\phi(X)}$  over $s$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

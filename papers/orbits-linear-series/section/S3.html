@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 3 — Orbits of linear series on the projective line</title>
+  <title>Section 3: Vanishing sequences and the Wronskian — Orbits of linear series on the projective line</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -106,7 +110,7 @@
 <h1 class="stacks-section-title">Section 3. Vanishing sequences and the Wronskian</h1>
 <p class="stacks-para">Let \(C\) be a smooth curve, \(L\) a line bundle of degree \(d\) on \(C\), and \(S \subset H^0(C,L)\) a subspace of dimension \(r+1\).
 The pair \((S,L)\) is called a <em>linear series of rank \(r\) and degree \(d\)</em> or a \(g^r_d\) on \(C\).
-Given a point \(p \in C\), there exists a unique sequence of integers \(a_0(p) < \dots < a_r(p)\) in \(\{0,\dots,d\}\) such that \(S\) contains a section \(s_i\) that vanishes to order exactly \(a_i(p)\) at \(p\).
+Given a point \(p \in C\), there exists a unique sequence of integers \(a_0(p) &lt; \dots &lt; a_r(p)\) in \(\{0,\dots,d\}\) such that \(S\) contains a section \(s_i\) that vanishes to order exactly \(a_i(p)\) at \(p\).
 The sequence \(a_i(p)\) is called the <em>vanishing sequence</em> of \(S\) at \(p\).
 The sections \(s_0, \dots, s_r\) form a basis of \(S\).</p>
 <p class="stacks-para">Denote by \(j_{r+1}L\) the bundle of jets of order \(r+1\) of \(L\);
@@ -117,16 +121,17 @@ The linear series \(S \subset H^0(C, L)\) induces an evaluation map
 $$\underline S \to L,$$
 and also a map
 $$\underline S \to j_{r+1} L.$$
-The <em>Wronskian</em> of \(S\) is the determinant of (3.1).</p>
+The <em>Wronskian</em> of \(S\) is the determinant of (10).</p>
 <div class="stacks-lemma" id="prop-wronskian">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.1.</strong> <a href="../tag/8691.html" class="stacks-tag-link">(8691)</a></div>
-  <div class="stacks-env-body"><p>The Wronskian is non-zero and vanishes to order \(\sum a_i(p)-i\) at \(p\).</p></div>
+  <div class="stacks-env-body"><p>The Wronskian is non-zero and vanishes to order \(\sum a_i(p)-i\) at \(p\).</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DF3D.html" class="stacks-tag-link">(DF3D)</a></div>
-  <div class="stacks-env-body"><p>The proof is a part of [<a class="stacks-cite" href="../../../bibliography.html#bib-eisenbud-and-j-e0205437">9</a>, Proposition&nbsp;1.1].
+  <div class="stacks-env-body"><p>The proof is a part of [<a class="stacks-cite" href="../../../bibliography.html#bib-d-eisenbud-and-j-harris-divisors-d66fff6d">9</a>, Proposition&nbsp;1.1].
   We give it for completeness.</p>
-<p>  Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
+<p>Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
   Denote by \(\widehat M\) the completion of an \(O_C\)-module \(M\) at \(p\).
   Choose an isomorphism of \(\k\llbracket t \rrbracket\)-modules \(\widehat L \cong \k\llbracket t \rrbracket\).
   Then we have an isomorphism
@@ -134,29 +139,32 @@ The <em>Wronskian</em> of \(S\) is the determinant of (3.1).</p>
   If the section \(s \in \widehat L \cong \k\llbracket t\rrbracket\) is given by the power series \(s(t)\), then the induced section \(j_{r+1}(s)\) of \(\widehat{j_{r+1} L}\) is given by
   $$j_{r+1}(s) = s(t) + s'(t)(u-t) + \dots + s^{(r)}(t)\frac{1}{r!} (u-t)^r.$$
   Let \(s_i\) correspond to the power series \(s_i(t) = t^{a_i}z_i \in \k\llbracket t \rrbracket\), where \(z_i \in \k\llbracket t \rrbracket\) is a unit.
-  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (3.1) is given by
+  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (10) is given by
   $$\begin{pmatrix}
-      t^{a_0} z_0 & t^{a_1}z_1 & \dots & t^{a_r}z_r \\
-      (t^{a_0} z_0)' & (t^{a_1}z_1)' & \dots & (t^{a_r}z_r)' \\
-      \vdots & \vdots & \ddots & \vdots \\
-      (t^{a_0} z_0)^{(r)} & (t^{a_1}z_1)^{(r)} & \dots & (t^{a_r}z_r)^{(r)}.
+      t^{a_0} z_0 &amp; t^{a_1}z_1 &amp; \dots &amp; t^{a_r}z_r \\
+      (t^{a_0} z_0)' &amp; (t^{a_1}z_1)' &amp; \dots &amp; (t^{a_r}z_r)' \\
+      \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+      (t^{a_0} z_0)^{(r)} &amp; (t^{a_1}z_1)^{(r)} &amp; \dots &amp; (t^{a_r}z_r)^{(r)}.
     \end{pmatrix}$$
   The lowest degree term in its determinant is \(t^{\sum a_i - i}\) and its coefficient is the determinant of the \((r+1) \times (r+1)\) matrix \(C\) with \(C_{ij} = a_i(a_i-1)\cdots(a_i-j+1)\).
   It remains to show that the coefficient is non-zero.
   By a sequence of invertible row transformations, the matrix \(C\) reduces to the Vandermonde matrix \(V\) with \(V_{ij} = a_i^j\).
-  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(> d\).
-  Hence the determinant of \(V\), and hence of \(C\), is non-zero.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(&gt; d\).
+  Hence the determinant of \(V\), and hence of \(C\), is non-zero.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Let \(\rho(S) \subset C\) be the vanishing locus of the Wronskian of \(S\).
 We call \(\rho(S)\) the <em>ramification divisor</em> of \(S\) and its points the <em>ramification points</em>.</p>
-<div class="stacks-lemma" id="">
+<div class="stacks-lemma">
   <div class="stacks-env-head"><strong>Corollary&nbsp;3.2.</strong> <a href="../tag/05E3.html" class="stacks-tag-link">(05E3)</a></div>
   <div class="stacks-env-body"><p>For all \(p \in C - \rho(S)\), we have \(a_i(p) = i\).
-  In particular, for all but finitely many \(p\), we have \(a_i(p) = i\).</p></div>
+  In particular, for all but finitely many \(p\), we have \(a_i(p) = i\).</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/CF59.html" class="stacks-tag-link">(CF59)</a></div>
-  <div class="stacks-env-body"><p>Follows immediately from <a href="/papers/orbits-linear-series/tag/8691.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[8691]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Follows immediately from <a href="/papers/orbits-linear-series/tag/8691.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[8691]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <p class="stacks-para">Note that \(\rho(S)\) is the zero-locus of a section of \(\det j_{r+1} L\).
 Recall that we have a sequence of surjective maps
@@ -177,17 +185,19 @@ By <a href="/papers/orbits-linear-series/tag/8691.html" class="stacks-ref-link">
 $$\rho \colon \Gr(r+1, H^0(C, L)) \to \P H^0(C, \det j_{r+1}L).$$</p>
 <div class="stacks-lemma" id="prop-wronskimap">
   <div class="stacks-env-head"><strong>Proposition&nbsp;3.3.</strong> <a href="../tag/C47C.html" class="stacks-tag-link">(C47C)</a></div>
-  <div class="stacks-env-body"><p>The map \(\rho\) in (3.3) is finite.
-  For \(C = \P^1\), it is also surjective.</p></div>
+  <div class="stacks-env-body"><p>The map \(\rho\) in (12) is finite.
+  For \(C = \P^1\), it is also surjective.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4E94.html" class="stacks-tag-link">(4E94)</a></div>
-  <div class="stacks-env-body"><p>Assume that \(\dim H^0(C, L) > r+1\); otherwise, the statement is vacuous.</p>
-<p>  Since the Grassmannian has Picard rank one, any morphism from it is either finite or constant.
+  <div class="stacks-env-body"><p>Assume that \(\dim H^0(C, L) &gt; r+1\); otherwise, the statement is vacuous.</p>
+<p>Since the Grassmannian has Picard rank one, any morphism from it is either finite or constant.
   It is easy to see that \(\rho\) is not constant; so it must be finite.</p>
-<p>  For \(C = \P^1\) and \(L = O(d)\), we have by (3.2)
+<p>For \(C = \P^1\) and \(L = O(d)\), we have by (11)
   $$\det j_{r+1} L \cong O((r+1)d) \otimes O(-r(r+1)) = O((r+1)(d-r)).$$
-  Hence, both the source and target of \(\rho\) have the same dimension, namely \((r+1)(d-r)\).<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Hence, both the source and target of \(\rho\) have the same dimension, namely \((r+1)(d-r)\).<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

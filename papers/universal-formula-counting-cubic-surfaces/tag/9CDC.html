@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -128,12 +132,12 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS5.html">2.5. Cubic surfaces as blow-ups</a> / <span>Proof (9CDC)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="96E0.html">&laquo; Proposition 2.13</a><span class="stacks-tag-current">Tag 9CDC</span><a href="B6DB.html">Proposition 3.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="96E0.html">&laquo; Proposition 2.5.5</a><span class="stacks-tag-current">Tag 9CDC</span><a href="B6DB.html">Proposition 3.1.1 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9CDC.html" class="stacks-tag-link">(9CDC)</a></div>
   <div class="stacks-env-body"><p>Since we have a birational isomorphism $\P^2 \dashrightarrow X_Z$, a non-trivial automorphism of $\P^2$ cannot induce a trivial automorphism of $X_Z$.
   Hence the map of automorphism groups is injective.</p>
-<p>  To show that the image has finite index, let $\tau \colon \widetilde Y \to \Bl_Z\P^2$ be the minimal desingularization and set $Y = X_Z$.
+<p>To show that the image has finite index, let $\tau \colon \widetilde Y \to \Bl_Z\P^2$ be the minimal desingularization and set $Y = X_Z$.
   Since $\Bl_Z\P^2$ has only $A_n$ singularities and such singularities are canonical, we conclude that
   $$\tau^* \omega_{\Bl_Z\P^2} = \omega_{\widetilde Y}.$$
   Consider the composite $\mu$ of
@@ -151,11 +155,11 @@
   which contradicts the adjunction formula
   $$\left(\omega_{\widetilde Y}+ E\right) \cdot E = -2.$$
   Thus, we deduce that $\alpha$ is an isomorphism, and hence $\widetilde Y \to Y$ is the minimal desingularization of $Y$.</p>
-<p>  Since every automorphism of a surface lifts uniquely to its minimal
+<p>Since every automorphism of a surface lifts uniquely to its minimal
   desingularization, we have an injective map
   $$\Aut(\P^3, X_Z) \to \Aut(\widetilde Y).$$
   It suffices to show that the image of $\Aut(\P^2, Z)$ has finite index in $\Aut(\widetilde Y)$.</p>
-<p>  Let $H \in \Pic(\widetilde Y)$ be the pullback of $\O(1)$ under the map $\widetilde Y \to \P^2$.
+<p>Let $H \in \Pic(\widetilde Y)$ be the pullback of $\O(1)$ under the map $\widetilde Y \to \P^2$.
   We claim that the orbit of $H$ under $\Aut(\widetilde Y)$ is finite.
   To see this, note that we have
   $$\omega_{\widetilde Y}^2 = 3 \text{ and } \omega_{\widetilde Y} \cdot H = -3,$$
@@ -164,7 +168,7 @@
   Thus, it has only finitely many elements of a given self-intersection.
   Any automorphism of $\widetilde Y$ preserves $\omega_{\widetilde Y}$ and the self-intersection number.
   Therefore, under $\Aut(\widetilde Y)$, the orbit of $\omega_{\widetilde Y} + H$ and hence the orbit of $H$, must be finite.</p>
-<p>  Since the orbit of $H$ is finite, its stabilizer is a finite index subgroup.
+<p>Since the orbit of $H$ is finite, its stabilizer is a finite index subgroup.
   We claim that this subgroup is precisely the image of $\Aut(\P^2, Z)$.
   Let $\tau \colon \widetilde Y \to \widetilde Y$ be an automorphism fixing $H$.
   The map $\beta \colon \widetilde Y \to \P^2$ is given by the complete linear system $|H|$.
@@ -174,7 +178,8 @@
   $$\beta_* \left(\omega_{\widetilde Y}^{-1}\right) = \O(3) \otimes \mathcal{I}_Z,$$
   and hence
   $$\beta_* \left( \omega_{\widetilde Y}^{-1} (-3H) \right) = \mathcal{I}_Z.$$
-  Therefore, the induced map $\tau'$ preserves $\mathcal{I}_Z$, and hence $Z$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Therefore, the induced map $\tau'$ preserves $\mathcal{I}_Z$, and hence $Z$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

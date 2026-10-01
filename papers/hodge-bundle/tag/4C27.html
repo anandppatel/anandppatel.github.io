@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Z: "\\mathbb{Z}",
           V: "\\mathscr{V}",
@@ -34,7 +33,7 @@
           C: "\\mathbb{C}",
           sHom: "\\underline{Hom}",
           syz: "\\operatorname{syz}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           Flag: "\\operatorname{Flag}",
           id: "\\operatorname{id}",
           Deg: "\\operatorname{Deg}",
@@ -78,7 +77,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -103,7 +107,8 @@
   finite-dimensional vector space $V$, and let $\chi$ denote a character of $G$.
   Let $V^{\chi}$ denote the sub-representation of $V$ on which $G$ acts via
  scaling by $\chi$.  Then
- $$\dim V^{\chi} = \frac{1}{|G|}\sum_{g}\chi(g)^{-1}\tr(g).$$</p></div>
+ $$\dim V^{\chi} = \frac{1}{|G|}\sum_{g}\chi(g)^{-1}\tr(g).$$</p>
+</div>
 </div>
 
 <hr>

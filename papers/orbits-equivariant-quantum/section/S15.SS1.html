@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>15.1. Arrangement of subvarieties — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>B.1. Arrangement of subvarieties — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,26 +120,27 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S15.html">Section 15: Resolution via wonderful compactification</a> / <span>15.1. Arrangement of subvarieties</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S15.html" aria-label="Previous: Section 15: Resolution via wonderful compactification" title="Previous: Section 15: Resolution via wonderful compactification">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S15.SS2.html" aria-label="Next: 15.2. Wonderful compactification" title="Next: 15.2. Wonderful compactification">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S15.html">Section B: Resolution via wonderful compactification</a> / <span>B.1. Arrangement of subvarieties</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S15.html" aria-label="Previous: Section B: Resolution via wonderful compactification" title="Previous: Section B: Resolution via wonderful compactification">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S15.SS2.html" aria-label="Next: B.2. Wonderful compactification" title="Next: B.2. Wonderful compactification">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">15.1. Arrangement of subvarieties</h1>
-<div class="stacks-definition" id="">
-  <div class="stacks-env-head"><strong>Definition&nbsp;15.1.</strong> <a href="../tag/0169.html" class="stacks-tag-link">(0169)</a></div>
-  <div class="stacks-env-body"><p>[{[<a class="stacks-cite" href="../../../bibliography.html#bib-wonderful-compactification-of-an-arrangement-of-6a4ff791">Li09</a>, Definition&nbsp;2.1, Lemma&nbsp;5.1]}] Let $X$ be a smooth variety and let $\mc{S}=\{S_i\}$ be a finite set of smooth nonempty proper subvarieties of $X$. We say that $\mc{S}$ is a <em>simple arrangment of subvarieties</em> of $X$ if $\mc{S} \cup \{\emptyset\}$ is closed under scheme-theoretic intersection.</p></div>
+<h1 class="stacks-section-title">B.1. Arrangement of subvarieties</h1>
+<div class="stacks-definition">
+  <div class="stacks-env-head"><strong>Definition&nbsp;B.1 ([<a class="stacks-cite" href="../../../bibliography.html#bib-li-li-wonderful-compactification-of-an-5b036085">Li09</a>, Definition&nbsp;2.1, Lemma&nbsp;5.1]).</strong> <a href="../tag/0169.html" class="stacks-tag-link">(0169)</a></div>
+  <div class="stacks-env-body"><p>Let $X$ be a smooth variety and let $\mc{S}=\{S_i\}$ be a finite set of smooth nonempty proper subvarieties of $X$. We say that $\mc{S}$ is a <em>simple arrangment of subvarieties</em> of $X$ if $\mc{S} \cup \{\emptyset\}$ is closed under scheme-theoretic intersection.</p>
+</div>
 </div>
 <div class="stacks-definition" id="BSD">
-  <div class="stacks-env-head"><strong>Definition&nbsp;15.2.</strong> <a href="../tag/EFE4.html" class="stacks-tag-link">(EFE4)</a></div>
-  <div class="stacks-env-body"><p>[{[<a class="stacks-cite" href="../../../bibliography.html#bib-wonderful-compactification-of-an-arrangement-of-6a4ff791">Li09</a>, Definition 2.2]}]</p>
-<p>Let $\mc{S}$ be a simple arrangement of subvarieties of $X$. A subset $\mc{G}\subset \mc{S}$ is called a <em>building set</em> of $\mc{S}$ if for all $S\in \mc{S}$, the minimal elements of $\mc{G}$ containing $S$ intersect transversely and their intersection is $S$. </p>
-<p>We say that a set $\mc{G}$ of subvarieties of $X$ is a <em>building set</em> if it is a building set of some simple arrangement $\mc{S}$ of subvarieties of $X$. In this case $\mc{S}$ is the set of all proper nonempty intersections of elements of $\mc{G}$.</p></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;B.2 ([<a class="stacks-cite" href="../../../bibliography.html#bib-li-li-wonderful-compactification-of-an-5b036085">Li09</a>, Definition 2.2]).</strong> <a href="../tag/EFE4.html" class="stacks-tag-link">(EFE4)</a></div>
+  <div class="stacks-env-body"><p>Let $\mc{S}$ be a simple arrangement of subvarieties of $X$. A subset $\mc{G}\subset \mc{S}$ is called a <em>building set</em> of $\mc{S}$ if for all $S\in \mc{S}$, the minimal elements of $\mc{G}$ containing $S$ intersect transversely and their intersection is $S$.</p>
+<p>We say that a set $\mc{G}$ of subvarieties of $X$ is a <em>building set</em> if it is a building set of some simple arrangement $\mc{S}$ of subvarieties of $X$. In this case $\mc{S}$ is the set of all proper nonempty intersections of elements of $\mc{G}$.</p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.SS1.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.SS1.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 15.1. Arrangement of subvarieties"
-     data-comment-page-label="15.1. Arrangement of subvarieties"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — B.1. Arrangement of subvarieties"
+     data-comment-page-label="B.1. Arrangement of subvarieties"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -143,13 +148,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — 15.1. Arrangement of subvarieties">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — B.1. Arrangement of subvarieties">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.SS1.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S15.SS1.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="15.1. Arrangement of subvarieties">
+      <input type="hidden" name="location" value="B.1. Arrangement of subvarieties">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

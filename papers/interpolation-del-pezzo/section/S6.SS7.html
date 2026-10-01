@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -237,9 +241,9 @@
 has two obvious projections   $\pi_{1} \from \scz \to \Hilb_{3}S$ and $\pi_{2} \from \scz \to S$.  Next, we consider the sheaf $$\scf = \pi_{1*}(\pi_{2}^{*}\scl/(\sci^{2}_{\scz} \otimes \pi_{2}^{*}\scl)).$$</p>
 <p class="stacks-para">Unfortunately, the sheaf $\scf$, which has generic rank $9$, fails to be locally free precisely along the locus $F \subset \Hilb_{3}S$ parameterizing degree $3$ schemes of the form $\Spec k[x,y]/(x^{2},xy,y^{2})$, also known as the ``fat points''.</p>
 <p class="stacks-para">There is a natural restriction map $$\rho \from \so_{\Hilb_{3}S}^{\oplus 8} \to \scf.$$  If $\scf$ were locally free of rank $9$, we could attempt to use Porteous' formula to find the locus where the rank of $\rho$ drops to $6$. Since $\scf$ is not locally free, this approach fails from the outset.</p>
-<p class="stacks-para">One fix would be to work on a blow up of $\Hilb_{3}S$ along the locus $F$, but then it's unclear what should replace the sheaf $\scf$.  What's more, we would need to identify the Chern classes of the replacement sheaf in the Chow ring of $\Bl_{F}(\Hilb_{3}S)$, which is challenging in its own right. See [<a class="stacks-cite" href="../../../bibliography.html#bib-elencwajg-and-p-5d6a280c">ELB89</a>].</p>
+<p class="stacks-para">One fix would be to work on a blow up of $\Hilb_{3}S$ along the locus $F$, but then it's unclear what should replace the sheaf $\scf$.  What's more, we would need to identify the Chern classes of the replacement sheaf in the Chow ring of $\Bl_{F}(\Hilb_{3}S)$, which is challenging in its own right. See [<a class="stacks-cite" href="../../../bibliography.html#bib-g-elencwajg-and-p-le-barz-c8816a2c">ELB89</a>].</p>
 <p class="stacks-para">Another potential fix would be to work in the <em>nested</em> Hilbert scheme $\Hilb_{2,3}S$ parameterizing, $X_{2} \subset X_{3} \subset S$, pairs of length $2$ subschemes contained in length $3$ subschemes. It is known that $\Hilb_{2,3}S$ is smooth, and it has a generically finite, degree $3$ map to $\Hilb_{3}S$ given by forgetting $X_{2}$, which has one dimensional fibers (isomorphic to $\bp^{1}$) precisely over $F \subset \Hilb_{3}S$. This space $\Hilb_{2,3}S$ might be better suited for replacing the problematic sheaf $\scf$ above.  Finding a solution to these issues is the subject of ongoing work.
-As further references for enumerative geometry in the Hilbert scheme of three points, see [<a class="stacks-cite" href="../../../bibliography.html#bib-counting-singular-plane-curves-via-hilbert-0d72d066">Rus03</a>], [<a class="stacks-cite" href="../../../bibliography.html#bib-degenerations-of-monomial-ideals-bb535f17">Rus04</a>], and [<a class="stacks-cite" href="../../../bibliography.html#bib-severi-degrees-in-cogenus-3-f04bcd05">HP95</a>].</p>
+As further references for enumerative geometry in the Hilbert scheme of three points, see [<a class="stacks-cite" href="../../../bibliography.html#bib-heather-russell-counting-singular-plane-curves-c027f8c8">Rus03</a>], [<a class="stacks-cite" href="../../../bibliography.html#bib-heather-russell-degenerations-of-monomial-ideals-f2b8c237">Rus04</a>], and [<a class="stacks-cite" href="../../../bibliography.html#bib-joseph-harris-and-rahul-pandharipande-severi-cc3e0011">HP95</a>].</p>
 
 <hr>
 <div class="stacks-comments"

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
@@ -97,7 +96,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,7 +123,8 @@
 <div class="stacks-lemma" id="lem-LazMuk">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.8.</strong> <a href="../tag/4668.html" class="stacks-tag-link">(4668)</a></div>
   <div class="stacks-env-body"><p>Let $Z$ be a smooth projective variety and $\cM$ be a smooth open subset of a component of the Hilbert scheme of varieties on $Z$. Let $\cU$ be the universal family, and suppose that the natural map $\pi: \cU \to Z$ is smooth. Let $\cU_{p}$ be a general fiber of $\cU \to \cM$. Then $T_{\cU/Z}|_{\cU_{p}}$ is the Lazarsfeld-Mukai bundle for the normal bundle $N_{\cU_{p}/Z}$, defined by the short exact sequence
-$$0 \to T_{\cU / Z}|_{\cU_{p}} \to H^0(N_{\cU_{p}/Z}) \otimes \cO_{\cU_{p}} \to N_{\cU_{p}/Z} \to 0.$$</p></div>
+$$0 \to T_{\cU / Z}|_{\cU_{p}} \to H^0(N_{\cU_{p}/Z}) \otimes \cO_{\cU_{p}} \to N_{\cU_{p}/Z} \to 0.$$</p>
+</div>
 </div>
 
 <hr>

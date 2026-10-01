@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,15 +123,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: What is known non-equivariantly</a> / <span>Theorem 5.1 (1CA9)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="2025.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 1CA9</span><a href="48AB.html">Theorem 5.2 &raquo;</a></div>
-<div class="stacks-theorem" id="">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;5.1.</strong> <a href="../tag/1CA9.html" class="stacks-tag-link">(1CA9)</a></div>
-  <div class="stacks-env-body"><p>{Binglin}}]
-Let $\phi_i:W \to W_i$ be nonzero linear maps, and let $U_i = \phi^*(W_i^\vee)\subseteq W_i^\vee $. Consider the rational map $$\mu:\mb{P}(W) \dashrightarrow \prod \mb{P}(W_i).$$ Then we have $$\mu_*(H^j)=\sum \prod_{i=1}^n H_i^{\dim(W_i)-1-e_i}$$ where the sum is over all tuples $(e_1,\ldots,e_n) \in \mb{Z}^n$ such that</p>
-<pre class="stacks-latex-fallback" title="Command &#x27;[&#x27;pdflatex&#x27;, &#x27;-interaction=nonstopmode&#x27;, &#x27;-halt-on-error&#x27;, &#x27;diagram.tex&#x27;]&#x27; returned non-zero exit status 1."><pre class="stacks-latex-fallback" title="Command &#x27;[&#x27;pdflatex&#x27;, &#x27;-interaction=nonstopmode&#x27;, &#x27;-halt-on-error&#x27;, &#x27;diagram.tex&#x27;]&#x27; returned non-zero exit status 1.">\[
-\begin{aligned}&amp;amp;\sum_{i \in A}e_i &amp;lt; \dim \sum_{i \in A} U_i\qquad\text{for all nonempty $A\subseteq [n]$ and}\\
-&amp;amp;\sum_{i=1}^n e_i=\dim(W)-1-j.\end{aligned}
-\]</pre>
-<p></pre></p>
+<div class="stacks-theorem" id="section5binglin">
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.1 ([<a class="stacks-cite" href="../../../bibliography.html#bib-binglin-li-images-of-rational-maps-063c6f87">Li17</a>, Theorem 1.1]).</strong> <a href="../tag/1CA9.html" class="stacks-tag-link">(1CA9)</a></div>
+  <div class="stacks-env-body"><p>Let $\phi_i:W \to W_i$ be nonzero linear maps, and let $U_i = \phi^*(W_i^\vee)\subseteq W_i^\vee $. Consider the rational map $$\mu:\mb{P}(W) \dashrightarrow \prod \mb{P}(W_i).$$ Then we have $$\mu_*(H^j)=\sum \prod_{i=1}^n H_i^{\dim(W_i)-1-e_i}$$ where the sum is over all tuples $(e_1,\ldots,e_n) \in \mb{Z}^n$ such that
+$$\begin{aligned}&amp;\sum_{i \in A}e_i &lt; \dim \sum_{i \in A} U_i\qquad\text{for all nonempty $A\subseteq [n]$ and}\\
+&amp;\sum_{i=1}^n e_i=\dim(W)-1-j.\end{aligned}$$</p>
 </div>
 </div>
 

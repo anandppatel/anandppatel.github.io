@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -51,7 +50,7 @@
           U: "\\mathcal U",
           M: "\\mathcal M",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           gen: "{\\rm gen}",
           irr: "{\\rm irr}",
@@ -90,7 +89,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -106,33 +110,34 @@
     <a href="../index.html" class="stacks-paper-link">The Picard rank conjecture for the Hurwitz spaces of degree up to five</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Degree four</a> / <span>Proof (9580)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 4: Degree four</a> / <span>Proof (9580)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="72FD.html">&laquo; Proposition 5.7</a><span class="stacks-tag-current">Tag 9580</span><a href="06F5.html">Example 5.8 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="72FD.html">&laquo; Proposition 4.7</a><span class="stacks-tag-current">Tag 9580</span><a href="06F5.html">Example 4.8 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/9580.html" class="stacks-tag-link">(9580)</a></div>
   <div class="stacks-env-body"><p>The image $R(U_{F^\gen}) \subset \H_{3,g+1}$ is the open locus of
   trigonal covers having $F^\gen$ as their Tschirnhausen bundle. The
   complement $Z := \H_{3,g+1} \setminus R(U_{F^\gen})$ has codimension
   at least two if $g+1$ is odd and it is the Maroni divisor if $g+1$
-  is even (<a href="/papers/picard-rank-conjecture/tag/DA22.html" class="stacks-ref-link">Proposition&nbsp;4.1 <span class="stacks-ref-tag">[DA22]</span></a>). The complement $\H_{4,g} \setminus
+  is even (<a href="/papers/picard-rank-conjecture/tag/DA22.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[DA22]</span></a>). The complement $\H_{4,g} \setminus
   U_{F^\gen}$ is the preimage $R^{-1}(Z)$. Therefore, the statements
   about the codimension follow from the finiteness of $R$.</p>
-<p>  For the question of reducibility, let $F = O(k-1) \oplus O(k+1)$
+<p>For the question of reducibility, let $F = O(k-1) \oplus O(k+1)$
   with $k = (g+3)/2 \geq 3$. The claim is that $C(F)$ is irreducible
-  when $g > 3$, and has two components when $g=3$. We have
+  when $g &gt; 3$, and has two components when $g=3$. We have
   $$C(F) = \bigcup_{E} M(E,F).$$
-  By <a href="/papers/picard-rank-conjecture/tag/67CA.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[67CA]</span></a>, the varieties $M(E,F)$ are
+  By <a href="/papers/picard-rank-conjecture/tag/67CA.html" class="stacks-ref-link">Proposition&nbsp;4.1 <span class="stacks-ref-tag">[67CA]</span></a>, the varieties $M(E,F)$ are
   irreducible. Therefore, every component of $C(F)$ must be of
   the form $M(E,F)$ for some $E$.</p>
-<p>  Let $g > 3$ and suppose $E \neq E^\gen$. The inclusion $M(E, F)
-  \subset M(E)$ and <a href="/papers/picard-rank-conjecture/tag/6E8B.html" class="stacks-ref-link">Proposition&nbsp;3.13 <span class="stacks-ref-tag">[6E8B]</span></a> imply that $ M(E,
+<p>Let $g &gt; 3$ and suppose $E \neq E^\gen$. The inclusion $M(E, F)
+  \subset M(E)$ and <a href="/papers/picard-rank-conjecture/tag/6E8B.html" class="stacks-ref-link">Proposition&nbsp;2.13 <span class="stacks-ref-tag">[6E8B]</span></a> imply that $ M(E,
   F)$ is a divisor if and only if $M(E, F) =  M(E)$ and $E =
   O(m-1) \oplus O(m) \oplus O(m+1)$. By choosing two generic quadrics
-  as in (5.1) and (5.2), we can
+  as in (4.1) and (4.2), we can
   explicitly construct a curve in $ M(E, F^\gen)$, showing that
   $ M(E, F) \neq M(E)$. Thus, it follows that the only
-  component of $C(F)$ is $M(E^\gen, F)$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  component of $C(F)$ is $M(E^\gen, F)$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

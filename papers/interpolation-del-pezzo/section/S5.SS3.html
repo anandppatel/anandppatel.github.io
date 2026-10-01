@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -233,8 +237,9 @@
 <h1 class="stacks-section-title">5.3. Goppa's theorem</h1>
 <p class="stacks-para">Goppa's theorem is frequently useful when looking for ambient systems inducing association.</p>
 <div class="stacks-theorem" id="thm-goppa">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;5.3.</strong> <a href="../tag/4F62.html" class="stacks-tag-link">(4F62)</a></div>
-  <div class="stacks-env-body"><p>Let $f \from B \to \bp^{r}$ be a map from a smooth curve given by a nonspecial, complete linear system $|H|$. Let $\Gamma \subset B$ be a scheme of length $\gamma = r+s+2$.  Then association for $\Gamma$ is induced by the restriction of the linear system $|K_{B}+\Gamma-H|$ to $\Gamma$.</p></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;5.3 (Goppa's Theorem).</strong> <a href="../tag/4F62.html" class="stacks-tag-link">(4F62)</a></div>
+  <div class="stacks-env-body"><p>Let $f \from B \to \bp^{r}$ be a map from a smooth curve given by a nonspecial, complete linear system $|H|$. Let $\Gamma \subset B$ be a scheme of length $\gamma = r+s+2$.  Then association for $\Gamma$ is induced by the restriction of the linear system $|K_{B}+\Gamma-H|$ to $\Gamma$.</p>
+</div>
 </div>
 <p class="stacks-para">In practice, we will typically find a curve $B \subset \bp^{r}$ passing through $\Gamma$, and will try to induce association by realizing the linear system $|K_{B} + \Gamma - H|$ on $B$ via an ambient system on $\bp^{r}$.</p>
 

@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -167,24 +171,27 @@
 <div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Invariants of a branched cover.</a> / <span>1.7. Relating $c_{1}(\cE)$ and $c_{1}(\cF)$.</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS6.html" aria-label="Previous: 1.6. The Casnati-Ekedahl loci $\sfC(\cF)$." title="Previous: 1.6. The Casnati-Ekedahl loci $\sfC(\cF)$.">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S2.html" aria-label="Next: Section 2: Compactifications." title="Next: Section 2: Compactifications.">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.7. Relating $c_{1}(\cE)$ and $c_{1}(\cF)$.</h1>
-<p class="stacks-para">We record the following fact conjectured by Casnati in [<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-the-cover-associated-to-a-37a49e05">Cas99</a>].</p>
+<p class="stacks-para">We record the following fact conjectured by Casnati in [<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-the-cover-associated-to-e76e7ce4">Cas99</a>].</p>
 <div class="stacks-lemma" id="relatecFcE">
-  <div class="stacks-env-head"><strong>Proposition&nbsp;1.14.</strong> <a href="../tag/2558.html" class="stacks-tag-link">(2558)</a></div>
+  <div class="stacks-env-head"><strong>Proposition&nbsp;1.14 (Conjecture $2.5$ in [<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-the-cover-associated-to-e76e7ce4">Cas99</a>]).</strong> <a href="../tag/2558.html" class="stacks-tag-link">(2558)</a></div>
   <div class="stacks-env-body"><p>For any finite, flat map between smooth varieties $\alpha \from X \to Y$, we have
-$$c_1(\cF) = (d-3)c_1(\cE).$$</p></div>
+$$c_1(\cF) = (d-3)c_1(\cE).$$</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/0A09.html" class="stacks-tag-link">(0A09)</a></div>
   <div class="stacks-env-body"><p>We establish the slightly stronger identity
 $$c_{1}(\alpha_{*}(\omega_{\alpha}^{\otimes N})) = (2N-1)c_{1}(\cE).$$ from which the proposition will follow when $N = 2$.</p>
 <p>The identity 1.10 is proved by a straightforward application of the Grothendieck-Riemann-Roch formula to the map $\alpha \from X \to Y$ and the sheaf $\omega^{\otimes N}_{\alpha}.$  Indeed, if we consider the degree one part of the equality
 $$ch[\alpha_{*}(\omega_{\alpha}^{\otimes N})]\cdot Td(T_{Y}) = \alpha_{*}[ch(\omega_{\alpha}^{\otimes N})\cdot Td(T_X)]$$ and use the fact that $2c_{1}(\cE)$ is the class of the branch divisor of $\alpha$, we arrive at the equality
 $$c_1(\alpha_{*}(\omega_{\alpha}^{\otimes N})) - \frac{d}{2}K_{Y} = \alpha_{*}[Nc_{1}(\omega_{\alpha}) - \frac{K_{X}}{2}],$$ which, when rearranged, gives (1.10) because $\alpha_{*}(\frac{K_{X}}{2}) - \frac{d}{2}K_{Y} = c_{1}(\cE)$.</p>
-<p><a href="/papers/special-codimension-one/tag/2558.html" class="stacks-ref-link">Proposition&nbsp;1.14 <span class="stacks-ref-tag">[2558]</span></a> follows by using (1.10) when $N = 2$, and by considering using the exact sequence $$0 \to \cF_{\alpha} \to \Sym^{2} \cE_{\alpha} \to \alpha_{*}(\omega_{\alpha}^{\otimes 2}) \to 0.$$<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p><a href="/papers/special-codimension-one/tag/2558.html" class="stacks-ref-link">Proposition&nbsp;1.14 <span class="stacks-ref-tag">[2558]</span></a> follows by using (1.10) when $N = 2$, and by considering using the exact sequence $$0 \to \cF_{\alpha} \to \Sym^{2} \cE_{\alpha} \to \alpha_{*}(\omega_{\alpha}^{\otimes 2}) \to 0.$$<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
-<div class="stacks-commentary" id="">
-  <div class="stacks-env-head"><strong>Remark&nbsp;1.15.</strong> <a href="../tag/5625.html" class="stacks-tag-link">(5625)</a></div>
-  <div class="stacks-env-body"><p>With more care, the argument above can be made to show that the first Chern classes of all syzygy bundles $\cN_{i}$ occuring in the Casnati-Ekedahl resolution 1 are multiples of $c_{1}(\cE)$. With even more care, one can deduce many relationships among the total Chern characters of the bundles $\cN_{i}$.</p></div>
+</div>
+<div class="stacks-commentary">
+  <div class="stacks-env-head"><strong>Remark&nbsp;15.</strong> <a href="../tag/5625.html" class="stacks-tag-link">(5625)</a></div>
+  <div class="stacks-env-body"><p>With more care, the argument above can be made to show that the first Chern classes of all syzygy bundles $\cN_{i}$ occuring in the Casnati-Ekedahl resolution 1 are multiples of $c_{1}(\cE)$. With even more care, one can deduce many relationships among the total Chern characters of the bundles $\cN_{i}$.</p>
+</div>
 </div>
 
 <hr>

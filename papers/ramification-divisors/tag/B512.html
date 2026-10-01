@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -131,11 +135,12 @@
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="939A.html">&laquo; Proof </a><span class="stacks-tag-current">Tag B512</span><a href="9838.html">Remark 5.4 &raquo;</a></div>
 <div class="stacks-definition" id="def-lls">
-  <div class="stacks-env-head"><strong>Definition&nbsp;5.3.</strong> <a href="../tag/B512.html" class="stacks-tag-link">(B512)</a></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;5.3 (linked linear series).</strong> <a href="../tag/B512.html" class="stacks-tag-link">(B512)</a></div>
   <div class="stacks-env-body"><p>Let $S$ be a $B$-scheme.
   A <em>$k$-dimensional linked linear series</em> on $\mathcal E_S$ consists of sub-bundles $V_n \to \pi_* (\mathcal E_n)_S$ of rank $k$ for every $n \in \Z$ satisfying the following compatibility condition.
   For every $m, n \in \Z$, the map
-  $$\pi_* \theta_n \from \pi_* (\mathcal E_m)_S \to \pi_* (\mathcal E_{m+n})_S \text{ maps } V_m \to V_{m+n}.$$</p></div>
+  $$\pi_* \theta_n \from \pi_* (\mathcal E_m)_S \to \pi_* (\mathcal E_{m+n})_S \text{ maps } V_m \to V_{m+n}.$$</p>
+</div>
 </div>
 
 <hr>

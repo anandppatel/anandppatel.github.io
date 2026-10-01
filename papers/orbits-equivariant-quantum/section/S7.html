@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 7 — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Section 7: Additivity of $[\mathcal{O}_{M}]$ — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,20 +120,21 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 7: Additivity of $\opc{M}$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S6.SS2.html" aria-label="Previous: 6.2. Regular subdivisions arising from degenerations" title="Previous: 6.2. Regular subdivisions arising from degenerations">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S7.SS1.html" aria-label="Next: 7.1. Outline of the proof of Theorem 7.1 [4218]" title="Next: 7.1. Outline of the proof of Theorem 7.1 [4218]">&rarr;</a></nav></div>
+<div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <span>Section 7: Additivity of $[\mathcal{O}_{M}]$</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S6.SS2.html" aria-label="Previous: 6.2. Regular subdivisions arising from degenerations" title="Previous: 6.2. Regular subdivisions arising from degenerations">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S7.SS1.html" aria-label="Next: 7.1. Outline of the proof of Theorem 7.1 [4218]" title="Next: 7.1. Outline of the proof of Theorem 7.1 [4218]">&rarr;</a></nav></div>
 <main class="stacks-main">
-<h1 class="stacks-section-title">Section 7. Additivity of $\opc{M}$</h1>
-<p class="stacks-para">In this section, we prove part of <a href="/papers/orbits-equivariant-quantum/tag/F804.html" class="stacks-ref-link">Theorem&nbsp;3.2 <span class="stacks-ref-tag">[F804]</span></a>, by showing that the association $M \mapsto \opc{M}$ is additive (see Section&nbsp;2.1 and <a href="/papers/orbits-equivariant-quantum/tag/03F4.html" class="stacks-ref-link">Definition&nbsp;6.8 <span class="stacks-ref-tag">[03F4]</span></a>) using the algorithm implicit in [<a class="stacks-cite" href="../../../bibliography.html#bib-valuative-invariants-for-polymatroids-0c560654">DF10</a>, Appendix A] and results from Section&nbsp;6 and Section&nbsp;14. This will be used to reduce the computation of $\opc{M}$ to simpler generalized matrix orbit classes in later sections.</p>
+<h1 class="stacks-section-title">Section 7. Additivity of $[\mathcal{O}_{M}]$</h1>
+<p class="stacks-para">In this section, we prove part of <a href="/papers/orbits-equivariant-quantum/tag/F804.html" class="stacks-ref-link">Theorem&nbsp;2 <span class="stacks-ref-tag">[F804]</span></a>, by showing that the association $M \mapsto [\mathcal{O}_{M}]$ is additive (see Section&nbsp;2.1 and <a href="/papers/orbits-equivariant-quantum/tag/03F4.html" class="stacks-ref-link">Definition&nbsp;6.5 <span class="stacks-ref-tag">[03F4]</span></a>) using the algorithm implicit in [<a class="stacks-cite" href="../../../bibliography.html#bib-harm-derksen-and-alex-fink-valuative-1c40e9f8">DF10</a>, Appendix A] and results from Section&nbsp;6 and Section&nbsp;A. This will be used to reduce the computation of $[\mathcal{O}_{M}]$ to simpler generalized matrix orbit classes in later sections.</p>
 <div class="stacks-theorem" id="realval">
   <div class="stacks-env-head"><strong>Theorem&nbsp;7.1.</strong> <a href="../tag/4218.html" class="stacks-tag-link">(4218)</a></div>
-  <div class="stacks-env-body"><p>For each $r$, the association $M \mapsto \opc{M}$ of $d \times n$ matrices to equivariant Chow classes is additive.</p></div>
+  <div class="stacks-env-body"><p>For each $r$, the association $M \mapsto [\mathcal{O}_{M}]$ of $d \times n$ matrices to equivariant Chow classes is additive.</p>
 </div>
-<p class="stacks-para">Additivity of equivariant Chow classes of torus orbits in the Grassmannian is known using [<a class="stacks-cite" href="../../../bibliography.html#bib-four-positive-formulae-for-type-a-2cada8a4">KMS06</a>, Proposition 1.9] to specialize the result in equivariant K-theory [<a class="stacks-cite" href="../../../bibliography.html#bib-speyer-830547de">FS12</a>, Example 3.5] to equivariant Chow classes [<a class="stacks-cite" href="../../../bibliography.html#bib-equivariant-chow-classes-of-matrix-orbit-a5f72646">BF17</a>, Section 2.2]. However, this is insufficient for our purposes.</p>
-<p class="stacks-para">Even the fact that $\opc{M}$ depends only on the matroid of $M$ is far from obvious. The realization spaces of matroids should be expected to be poorly behaved in general by Mnev universality [<a class="stacks-cite" href="../../../bibliography.html#bib-millson-e37a75d5">KM98</a>, Theorem 1.3] [<a class="stacks-cite" href="../../../bibliography.html#bib-mn-and-euml-v-sturmfels-universality-a698b637">LV13</a>], and there are explicit examples of disconnected realization spaces of line arrangements [<a class="stacks-cite" href="../../../bibliography.html#bib-combinatorial-symmetry-of-line-arrangements-and-4a7347a0">ACS+15</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-moduli-spaces-of-arrangements-of-10-bb4a847c">ATY13</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-an-arithmetic-zariski-4-tuple-of-833f3efc">GB16</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-on-the-connectivity-of-the-realization-5f736166">NY12</a>].</p>
+</div>
+<p class="stacks-para">Additivity of equivariant Chow classes of torus orbits in the Grassmannian is known using [<a class="stacks-cite" href="../../../bibliography.html#bib-allen-knutson-ezra-miller-and-mark-fd7fe86a">KMS06</a>, Proposition 1.9] to specialize the result in equivariant K-theory [<a class="stacks-cite" href="../../../bibliography.html#bib-alex-fink-and-david-e-speyer-2b17fc1f">FS12</a>, Example 3.5] to equivariant Chow classes [<a class="stacks-cite" href="../../../bibliography.html#bib-andrew-berget-and-alex-fink-equivariant-669650ea">BF17</a>, Section 2.2]. However, this is insufficient for our purposes.</p>
+<p class="stacks-para">Even the fact that $[\mathcal{O}_{M}]$ depends only on the matroid of $M$ is far from obvious. The realization spaces of matroids should be expected to be poorly behaved in general by Mnev universality [<a class="stacks-cite" href="../../../bibliography.html#bib-michael-kapovich-and-john-j-millson-3b3496ec">KM98</a>, Theorem 1.3] [<a class="stacks-cite" href="../../../bibliography.html#bib-seok-hyeong-lee-and-ravi-vakil-27e84c8e">LV13</a>], and there are explicit examples of disconnected realization spaces of line arrangements [<a class="stacks-cite" href="../../../bibliography.html#bib-meirav-amram-moshe-cohen-hao-sun-2406f5c3">ACS+15</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-meirav-amram-mina-teicher-and-fei-fa8c16c9">ATY13</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-beno-t-guerville-ball-an-arithmetic-5eb0336a">GB16</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-shaheen-nazir-and-masahiko-yoshinaga-on-037c408d">NY12</a>].</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
   <li><a href="S7.SS1.html">7.1. Outline of the proof of Theorem 7.1 [4218]</a></li>
-  <li><a href="S7.SS2.html">7.2. Invariance of $\opc{M}$ when $P_M=(v+C)\cap \Delta$</a></li>
+  <li><a href="S7.SS2.html">7.2. Invariance of $[\mathcal{O}_{M}]$ when $P_M=(v+C)\cap \Delta$</a></li>
   <li><a href="S7.SS3.html">7.3. Regular subdivisions arising from unbounded polytope decompositions</a></li>
   <li><a href="S7.SS4.html">7.4. The proof of Theorem 7.1 [4218]</a></li>
 </ul>
@@ -138,8 +143,8 @@
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 7: Additivity of $\opc{M}$"
-     data-comment-page-label="Section 7: Additivity of $\opc{M}$"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 7: Additivity of $[\mathcal{O}_{M}]$"
+     data-comment-page-label="Section 7: Additivity of $[\mathcal{O}_{M}]$"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -147,13 +152,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 7: Additivity of $\opc{M}$">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Section 7: Additivity of $[\mathcal{O}_{M}]$">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/section/S7.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Section 7: Additivity of $\opc{M}$">
+      <input type="hidden" name="location" value="Section 7: Additivity of $[\mathcal{O}_{M}]$">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

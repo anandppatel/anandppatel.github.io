@@ -15,16 +15,15 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           O: "\\mathcal{O}",
           from: "\\colon",
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -40,9 +39,9 @@
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
+          Z: "\\operatorname{\\mathbb{Z}}",
           SQP: "\\operatorname{\\mathsf{SQP}}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           s: "\\operatorname{\\mathsf{sq}}",
           BP: "\\operatorname{\\mathsf{Bpt}}",
@@ -57,7 +56,7 @@
           hess: "\\operatorname{\\mathsf{H}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Sing: "\\operatorname{Sing}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -100,7 +99,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -119,29 +123,29 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S4.html">Section 4: Circumventing excess</a> / <a href="../section/S4.SS4.html">4.4. Thirteen point conditions</a> / <span>Proof (FF6F)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="E8B4.html">&laquo; Proposition 4.17</a><span class="stacks-tag-current">Tag FF6F</span><a href="1347.html">Proposition 4.18 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/FF6F.html" class="stacks-tag-link">(FF6F)</a></div>
   <div class="stacks-env-body"><p>We proceed by considering one by one the possible degrees of the
   fixed curve $C \subset \Base(\Lambda)$. Each case is resolved by the tension between
   generality of $\Gamma_{13} = \{p_1, \dots, p_{13}\}$ (which by assumption is contained in $\Base(\Lambda)$) on the one hand, and the number of points in the intersection $\Gamma_{13} \cap C$ on the other. For ease of reading, let $\Gamma_{C} := \Gamma_{13} \cap C$.</p>
-<ol><li>\text{Assuming $\deg (C) = 4$},  the moving part of $\Lambda$ is a pencil of
+<ol><li><p><span>Assuming $\deg (C) = 4$</span>,  the moving part of $\Lambda$ is a pencil of
   lines. Furthermore, $C$ must be reduced, as at most $5$ of the
   points of $\Gamma_{13}$ can lie on a conic. There are
   two possibilities for the number $\# \Gamma_{C}$: either $12$ or $13$, depending on whether the basepoint of $\Lambda'$ is in $\Gamma_{13}$ or not. Suppose first that $\# \Gamma_{C} = 13$. The unique, general, pencil of quartics
   determined by $\Gamma_{C}$ has finitely many singular members, each
   with a <em>single</em> node located away from
   $\Gamma_{C} = \Gamma_{13}$. However, this prevents any length $9$
-  scheme of the form $\s(T,T^{*})$ from being contained in $\Base(\Lambda)$, by parts (a), (c) and (d) of <a href="/papers/counting-veronese/tag/3211.html" class="stacks-ref-link">Lemma&nbsp;4.16 <span class="stacks-ref-tag">[3211]</span></a>.  </p>
-<p>  If
+  scheme of the form $\s(T,T^{*})$ from being contained in $\Base(\Lambda)$, by parts (a), (c) and (d) of <a href="/papers/counting-veronese/tag/3211.html" class="stacks-ref-link">Lemma&nbsp;4.16 <span class="stacks-ref-tag">[3211]</span></a>.</p>
+<p>If
   $\# \Gamma_{C} = 12$, the argument is similar: the net of quartics
   determined by $\Gamma_{C}$ has singular members of only three types:
   (1) a nodal curve with a unique node, (2) a curve with exactly two
-  nodes for singularities, and (3) a curve with a unique ordinary cusp.  Accordingly, $C$ is either smooth or has qualities (1), (2), or (3) just listed.  </p>
-<p>  The thirteenth point not contained in $C$ must be the unique
+  nodes for singularities, and (3) a curve with a unique ordinary cusp.  Accordingly, $C$ is either smooth or has qualities (1), (2), or (3) just listed.</p>
+<p>The thirteenth point not contained in $C$ must be the unique
   basepoint of the moving part of $\Lambda$. So, by virtue of tangent space considerations, the only way
   for the length $9$ scheme $\s(T,T^{*})$ to be contained in
-  $\Base(\Lambda)$ is if $\s(T,T^{*}) \subset C$. However, this is precluded by parts (a) and (b) of <a href="/papers/counting-veronese/tag/3211.html" class="stacks-ref-link">Lemma&nbsp;4.16 <span class="stacks-ref-tag">[3211]</span></a>.</li>
-<li>\text{Assuming $\deg (C) = 3$}, the moving part $\Lambda'$ of $\Lambda$ is a pencil of
+  $\Base(\Lambda)$ is if $\s(T,T^{*}) \subset C$. However, this is precluded by parts (a) and (b) of <a href="/papers/counting-veronese/tag/3211.html" class="stacks-ref-link">Lemma&nbsp;4.16 <span class="stacks-ref-tag">[3211]</span></a>.</p></li>
+<li><p><span>Assuming $\deg (C) = 3$</span>, the moving part $\Lambda'$ of $\Lambda$ is a pencil of
   conics. As before, $C$ must be reduced, as $\Lambda'$ has at
   most $4$ of the points of $\Gamma_{13}$ in its base scheme, and so  the remaining points of $\Gamma_{13}$ cannot be contained in a line.
   In fact, this type of reasoning shows there is only one <em>a priori</em>
@@ -150,8 +154,8 @@
   pencil of conics with base-scheme consisting of the four points
   $\Gamma_{13} \setminus \Gamma_{C}$. The pencil $\Lambda$
   does not contain a subscheme of the form $\s(T,T^{*})$ in its base
-  scheme $\Base(\Lambda)$ again by tangent space considerations, because $\Base(\Lambda)$ is the union of the smooth curve $C$ and the four reduced points $\Gamma_{13} \setminus \Gamma_{C}$.</li>
-<li>\text{Assuming $\deg (C) = 2$}, then once again $C$ must be reduced as is seen by
+  scheme $\Base(\Lambda)$ again by tangent space considerations, because $\Base(\Lambda)$ is the union of the smooth curve $C$ and the four reduced points $\Gamma_{13} \setminus \Gamma_{C}$.</p></li>
+<li><p><span>Assuming $\deg (C) = 2$</span>, then once again $C$ must be reduced as is seen by
   an argument similar to that found in the previous paragraph.  There
   are only two <em>a priori</em> possibilities for $\# \Gamma_{C}$:
   $\# \Gamma_{C} = 4$ or $5$. Now, $\# \Gamma_{C}$ cannot be $4$,
@@ -166,7 +170,7 @@
   general). Thus $\Base(\Lambda)$ is the smooth scheme consisting of
   the smooth conic $C$ and $9$ reduced points not contained in $C$. This base
   scheme evidently does not contain any subscheme of the form
-  $\s(T,T^{*})$, again by tangent space considerations.</li></ol>
+  $\s(T,T^{*})$, again by tangent space considerations.</p></li></ol>
 <p>We've finished the analysis of all cases, and the proposition
   follows.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 1 — Equivariant Degenerations of Plane Curve Orbits</title>
+  <title>Section 1: Introduction — Equivariant Degenerations of Plane Curve Orbits</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -103,7 +107,7 @@ defined by $\{F=0\}$ remains mostly mysterious.</p>
 of $\P \Orb(F)$. The analysis of the degree of $\P \Orb(F)$ was
 carried out for the first two cases $r=1,2$ in a series of remarkable
 papers of Aluffi and Faber
-[<a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-d-tuples-of-4da1d222">AF93a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-smooth-plane-curves-9b0ee9eb">AF93b</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-aluffi-and-c-2be2bcff">AF00a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-plane-curves-with-small-linear-orbits-7aed5aa2">AF00c</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-arbitrary-plane-curves-cf005939">AF00b</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-limits-of-pgl-3-translates-of-2b892908">AF10a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-limits-of-pgl-3-translates-of-2b892908">AF10b</a>].  Aluffi and
+[<a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-a77b165d">AF93a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-e124fcab">AF93b</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-p-aluffi-and-c-faber-plane-5561862f">AF00a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-plane-698cd053">AF00c</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-24090129">AF00b</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-limits-eb0e1067">AF10a</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-limits-286a9931">AF10b</a>].  Aluffi and
 Faber's computation in the special case $r=2, d=4$ of quartic plane
 curves yields the highly non-trivial enumerative consequence: <em>In
   a general $6$-dimensional linear system of quartic curves, a general
@@ -132,11 +136,11 @@ curves yields the enumerative consequence: <em>A general genus $3$
 determined. For quadric hypersurfaces ($d=2$), the class
 $[\P \Orb(F)]_{GL(V)}$ is determined by the rank of the quadric
 hypersurface $F=0$ and its computation amounts to the Porteous formula
-for symmetric maps [<a class="stacks-cite" href="../../../bibliography.html#bib-joe-harris-and-loring-w-tu-0e5c88d5">HT84</a>]. For another class of examples, the
-authors' work with H. Spink in [<a class="stacks-cite" href="../../../bibliography.html#bib-orbits-in-p-r-n-and-a84456e2">LPST20</a>] provides access to
+for symmetric maps [<a class="stacks-cite" href="../../../bibliography.html#bib-joe-harris-and-loring-w-tu-a7bc3948">HT84</a>]. For another class of examples, the
+authors' work with H. Spink in [<a class="stacks-cite" href="../../../bibliography.html#bib-mitchell-lee-anand-patel-hunter-spink-fc83051a">LPST20</a>] provides access to
 $[\P \Orb(F)]_{GL(V)}$ when $F=0$ defines a hyperplane arrangement. In
 this paper, we study the frontier case $r=2$ of plane curves. As in
-[<a class="stacks-cite" href="../../../bibliography.html#bib-orbits-in-p-r-n-and-a84456e2">LPST20</a>], our strategy will be to <em>specialize</em> the orbit
+[<a class="stacks-cite" href="../../../bibliography.html#bib-mitchell-lee-anand-patel-hunter-spink-fc83051a">LPST20</a>], our strategy will be to <em>specialize</em> the orbit
 $\P \Orb(F)$ until it breaks into a union of other orbits
 $\P \Orb(F_i)$ whose classes are more directly computable. To execute
 this strategy, we initiate a detailed study of how orbits of plane
@@ -153,9 +157,9 @@ have a strong presence in the literature, we have written an appendix
 containing the $r=1$ case (points on a line) and the $r=2, d=3$ case
 of cubic plane curves. As a refreshing demonstration of alternate
 techniques, the case of points on a line is done in two independent
-ways: one by specializing the results in [<a class="stacks-cite" href="../../../bibliography.html#bib-orbits-in-p-r-n-and-a84456e2">LPST20</a>] and the other by
+ways: one by specializing the results in [<a class="stacks-cite" href="../../../bibliography.html#bib-mitchell-lee-anand-patel-hunter-spink-fc83051a">LPST20</a>] and the other by
 applying the Atiyah-Bott formula to the resolution of the orbit given
-in [<a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-d-tuples-of-4da1d222">AF93a</a>].</p>
+in [<a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-a77b165d">AF93a</a>].</p>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>
   <li><a href="S1.SS1.html">1.1. Summary of Degenerations</a></li>

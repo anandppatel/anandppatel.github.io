@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -166,11 +170,12 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Invariants of a branched cover.</a> / <a href="../section/S1.SS6.html">1.6. The Casnati-Ekedahl loci $\sfC(\cF)$.</a> / <span>Proof of Proposition 1.11 [4B74]: (6A93)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="A526.html">&laquo; Proof of Lemma 1.12 [B34B]: </a><span class="stacks-tag-current">Tag 6A93</span><a href="615B.html">Remark 1.13 &raquo;</a></div>
-<div class="stacks-proof" id="">
-  <div class="stacks-env-head"><em>Proof of <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a>:.</em> <a href="../tag/6A93.html" class="stacks-tag-link">(6A93)</a></div>
-  <div class="stacks-env-body"><p><a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> follows from <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a>, by a degeneration argument.  Indeed, suppose we begin with a general cover $\alpha_{1} \from C \to \P^1$ in $\H_{d,g}$ where $d \leq 5$, and suppose we know <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> holds for $\H_{d,g}$. We will show then, that <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> holds for $\H_{d,g+d}$ as well. Pick a general fiber $Z \subset C$ of $\alpha$ and attach an elliptic cover $\beta \from X \to \P^1$ to $C$ along $Z$.  The resulting admissible cover $\alpha \from C \to P$ is such that $h^1(\End \cF_{\alpha}) = 0$ - this follows from the fact that $\cF_{\beta}$ is perfectly balanced, as shown in <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a>. Therefore, by smoothing $\alpha \from C \to P$ and appealing to upper semi-continuity, we obtain covers in $\H_{d,g+d}$ which have balanced bundles of quadrics.  </p>
-<p>The second part of <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a> then  provides the base cases of the induction.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<div class="stacks-tag-nav"><a href="A526.html">&laquo; Proof of Lemma 1.12 [B34B]: </a><span class="stacks-tag-current">Tag 6A93</span><a href="615B.html">Remark 13 &raquo;</a></div>
+<div class="stacks-proof">
+  <div class="stacks-env-head"><em>Proof of <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a>:</em> <a href="../tag/6A93.html" class="stacks-tag-link">(6A93)</a></div>
+  <div class="stacks-env-body"><p><a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> follows from <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a>, by a degeneration argument.  Indeed, suppose we begin with a general cover $\alpha_{1} \from C \to \P^1$ in $\H_{d,g}$ where $d \leq 5$, and suppose we know <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> holds for $\H_{d,g}$. We will show then, that <a href="/papers/special-codimension-one/tag/4B74.html" class="stacks-ref-link">Proposition&nbsp;1.11 <span class="stacks-ref-tag">[4B74]</span></a> holds for $\H_{d,g+d}$ as well. Pick a general fiber $Z \subset C$ of $\alpha$ and attach an elliptic cover $\beta \from X \to \P^1$ to $C$ along $Z$.  The resulting admissible cover $\alpha \from C \to P$ is such that $h^1(\End \cF_{\alpha}) = 0$ - this follows from the fact that $\cF_{\beta}$ is perfectly balanced, as shown in <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a>. Therefore, by smoothing $\alpha \from C \to P$ and appealing to upper semi-continuity, we obtain covers in $\H_{d,g+d}$ which have balanced bundles of quadrics.</p>
+<p>The second part of <a href="/papers/special-codimension-one/tag/B34B.html" class="stacks-ref-link">Lemma&nbsp;1.12 <span class="stacks-ref-tag">[B34B]</span></a> then  provides the base cases of the induction.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

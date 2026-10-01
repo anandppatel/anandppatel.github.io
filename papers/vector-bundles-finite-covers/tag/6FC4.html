@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -109,13 +113,13 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Proof of the main theorem</a> / <a href="../section/S3.SS4.html">3.4. Hurwitz spaces and Maroni loci</a> / <span>Remark 3.16 (6FC4)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="3498.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 6FC4</span><a href="58FD.html">Theorem 3.17 &raquo;</a></div>
-<div class="stacks-commentary" id="">
+<div class="stacks-tag-nav"><a href="4989.html">&laquo; Proof </a><span class="stacks-tag-current">Tag 6FC4</span><a href="58FD.html">Theorem 3.17 &raquo;</a></div>
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;3.16.</strong> <a href="../tag/6FC4.html" class="stacks-tag-link">(6FC4)</a></div>
   <div class="stacks-env-body"><p>It is natural to ask for an effective lower bound on $g$ in <a href="/papers/vector-bundles-finite-covers/tag/F4CC.html" class="stacks-ref-link">Theorem&nbsp;3.15 <span class="stacks-ref-tag">[F4CC]</span></a>.
   The best result is obtained by taking $X_0$ to be the disjoint union of $d$ copies of $Y$; then $g_0 = dg_Y - d + 1$.
   That $X_0$ is not connected does not pose any obstacle&mdash;the curve $X$ obtained by attaching vertical rational curves and smoothing out is connected and gives a primitive covering of $Y$.</p>
-<p>  How many rational curves do we need to attach?
+<p>How many rational curves do we need to attach?
   The crucial requirement is the vanishing of $H^1(K)$, where $K$ is defined in (3.10).
   Note that, in this case, we have $M = \O_{X_0}^{d-1}$.
   The proof of <a href="/papers/vector-bundles-finite-covers/tag/3FA3.html" class="stacks-ref-link">Proposition&nbsp;3.6 <span class="stacks-ref-tag">[3FA3]</span></a> and <a href="/papers/vector-bundles-finite-covers/tag/DA66.html" class="stacks-ref-link">Proposition&nbsp;3.12 <span class="stacks-ref-tag">[DA66]</span></a> show that $h^1(M)+1$ many rational curves suffice.
@@ -124,7 +128,8 @@
   $$g \geq dg_Y + d(d-1)^2g_Y,$$
   and $g - g_Y \equiv 0 \pmod {d-1}$.
   By slightly changing the initial curve $X_0$, we get similar bounds of order $d^3g_Y$ for other congruence classes of $g \pmod {d-1}$.
-  By studying the extension (3.12) more closely, it may be possible to sharpen these bounds, but we do not pursue this further.</p></div>
+  By studying the extension (3.12) more closely, it may be possible to sharpen these bounds, but we do not pursue this further.</p>
+</div>
 </div>
 
 <hr>

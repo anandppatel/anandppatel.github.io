@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -104,11 +108,11 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vanishing sequences and the Wronskian</a> / <span>Proof (DF3D)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="8691.html">&laquo; Proposition 3.1</a><span class="stacks-tag-current">Tag DF3D</span><a href="05E3.html">Corollary 3.2 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/DF3D.html" class="stacks-tag-link">(DF3D)</a></div>
-  <div class="stacks-env-body"><p>The proof is a part of [<a class="stacks-cite" href="../../../bibliography.html#bib-eisenbud-and-j-e0205437">9</a>, Proposition&nbsp;1.1].
+  <div class="stacks-env-body"><p>The proof is a part of [<a class="stacks-cite" href="../../../bibliography.html#bib-d-eisenbud-and-j-harris-divisors-d66fff6d">9</a>, Proposition&nbsp;1.1].
   We give it for completeness.</p>
-<p>  Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
+<p>Let \(s_i \in S\) vanish to order \(a_i = a_i(p)\) at \(p\).
   Denote by \(\widehat M\) the completion of an \(O_C\)-module \(M\) at \(p\).
   Choose an isomorphism of \(\k\llbracket t \rrbracket\)-modules \(\widehat L \cong \k\llbracket t \rrbracket\).
   Then we have an isomorphism
@@ -116,18 +120,19 @@
   If the section \(s \in \widehat L \cong \k\llbracket t\rrbracket\) is given by the power series \(s(t)\), then the induced section \(j_{r+1}(s)\) of \(\widehat{j_{r+1} L}\) is given by
   $$j_{r+1}(s) = s(t) + s'(t)(u-t) + \dots + s^{(r)}(t)\frac{1}{r!} (u-t)^r.$$
   Let \(s_i\) correspond to the power series \(s_i(t) = t^{a_i}z_i \in \k\llbracket t \rrbracket\), where \(z_i \in \k\llbracket t \rrbracket\) is a unit.
-  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (3.1) is given by
+  With respect to the bases \(s_0, \dots, s_{r+1}\) of \(S\) and \(1, (u-t), \dots, (u-t)^{r}/r!\) of \(\widehat{j_{r+1}L}\), the matrix of the map (10) is given by
   $$\begin{pmatrix}
-      t^{a_0} z_0 & t^{a_1}z_1 & \dots & t^{a_r}z_r \\
-      (t^{a_0} z_0)' & (t^{a_1}z_1)' & \dots & (t^{a_r}z_r)' \\
-      \vdots & \vdots & \ddots & \vdots \\
-      (t^{a_0} z_0)^{(r)} & (t^{a_1}z_1)^{(r)} & \dots & (t^{a_r}z_r)^{(r)}.
+      t^{a_0} z_0 &amp; t^{a_1}z_1 &amp; \dots &amp; t^{a_r}z_r \\
+      (t^{a_0} z_0)' &amp; (t^{a_1}z_1)' &amp; \dots &amp; (t^{a_r}z_r)' \\
+      \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+      (t^{a_0} z_0)^{(r)} &amp; (t^{a_1}z_1)^{(r)} &amp; \dots &amp; (t^{a_r}z_r)^{(r)}.
     \end{pmatrix}$$
   The lowest degree term in its determinant is \(t^{\sum a_i - i}\) and its coefficient is the determinant of the \((r+1) \times (r+1)\) matrix \(C\) with \(C_{ij} = a_i(a_i-1)\cdots(a_i-j+1)\).
   It remains to show that the coefficient is non-zero.
   By a sequence of invertible row transformations, the matrix \(C\) reduces to the Vandermonde matrix \(V\) with \(V_{ij} = a_i^j\).
-  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(> d\).
-  Hence the determinant of \(V\), and hence of \(C\), is non-zero.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Since the \(a_i\)'s are distinct integers in \(\{0,\dots, d\}\), their images are distinct in \(\k\), which has characteristic 0 or characteristic \(&gt; d\).
+  Hence the determinant of \(V\), and hence of \(C\), is non-zero.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

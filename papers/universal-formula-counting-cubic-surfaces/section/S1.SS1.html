@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "k",
           to: "{\\longrightarrow}",
@@ -110,7 +109,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -137,18 +141,18 @@ $[F]$ under the action of $\GL(V)$, and let $\Orb([F])$ be its
 closure.  What is the degree of $\Orb([F])$?  To our knowledge,
 Enriques and Fano in 1897 were the first to address this question.
 They computed the degree for simple binary forms of all degrees
-[<a class="stacks-cite" href="../../../bibliography.html#bib-sui-gruppi-di-trasformazioni-cremoniane-dello-33ea09ed">16</a>].  In a series of seminal papers [<a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-d-tuples-of-c6bc8515">5</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-smooth-plane-curves-9b0ee9eb">3</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-linear-orbits-of-arbitrary-plane-curves-cf005939">4</a>], Aluffi and Faber computed the degree of the
+[<a class="stacks-cite" href="../../../bibliography.html#bib-f-enriques-and-g-fano-sui-46dbe20f">16</a>].  In a series of seminal papers [<a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carol-faber-linear-5091255b">5</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-e124fcab">3</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-paolo-aluffi-and-carel-faber-linear-24003407">4</a>], Aluffi and Faber computed the degree of the
 orbit closure for <em>all</em> binary and ternary forms, finishing off
 the cases of points in $\P^1$ and curves in $\P^2$.  The next case is
-that of cubic surfaces in $\P^3$.  <a href="/papers/universal-formula-counting-cubic-surfaces/tag/FB17.html" class="stacks-ref-link">Theorem&nbsp;1.1 <span class="stacks-ref-tag">[FB17]</span></a> applied to
+that of cubic surfaces in $\P^3$.  <a href="/papers/universal-formula-counting-cubic-surfaces/tag/FB17.html" class="stacks-ref-link">Theorem&nbsp;1.0.1 <span class="stacks-ref-tag">[FB17]</span></a> applied to
 Question&nbsp;1 settles it for general cubic surfaces&mdash;the
 degree of the orbit closure of a general cubic surface is $96120$.</p>
 <p class="stacks-para">Question&nbsp;1 appears as one of the ``twenty-seven questions
-about the cubic surface'' by Ranestad and Sturmfels [<a class="stacks-cite" href="../../../bibliography.html#bib-twenty-seven-questions-about-the-cubic-01f84dcd">24</a>].
+about the cubic surface'' by Ranestad and Sturmfels [<a class="stacks-cite" href="../../../bibliography.html#bib-kristian-ranestad-and-bernd-sturmfels-twenty-8eaddc22">24</a>].
 In 2019, Brustenga i Moncus&iacute;, Timme, and Weinstein gave a
 ``numerical proof'' for the number 96120. In 2020, Cazzador and
 Skauli outlined an approach towards a proof by following the
-techniques of Aluffi and Faber [<a class="stacks-cite" href="../../../bibliography.html#bib-96120-the-degree-of-the-linear-837a5241">10</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-towards-the-degree-of-the-pgl-5fca43e1">12</a>].
+techniques of Aluffi and Faber [<a class="stacks-cite" href="../../../bibliography.html#bib-laura-brustenga-i-moncus-sascha-timme-23b71cb0">10</a>, <a class="stacks-cite" href="../../../bibliography.html#bib-elisa-cazzador-and-bj-rn-skauli-0fb6ba8c">12</a>].
 Our approach is different.</p>
 
 <hr>

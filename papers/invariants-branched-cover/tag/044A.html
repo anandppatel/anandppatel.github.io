@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -163,9 +167,10 @@
 <div class="stacks-tag-nav"><a href="EE33.html">&laquo; Definition 3.13</a><span class="stacks-tag-current">Tag 044A</span><a href="8893.html">Lemma 3.15 &raquo;</a></div>
 <div class="stacks-lemma" id="lemma-leftside">
   <div class="stacks-env-head"><strong>Lemma&nbsp;3.14.</strong> <a href="../tag/044A.html" class="stacks-tag-link">(044A)</a></div>
-  <div class="stacks-env-body"><p>We can choose $M_i \in H^{0}(P_{i}, \End V_{i})$ for $i< j$ such that $D_i(M)=0$ for $i<j$,
+  <div class="stacks-env-body"><p>We can choose $M_i \in H^{0}(P_{i}, \End V_{i})$ for $i&lt; j$ such that $D_i(M)=0$ for $i&lt;j$,
 and $M_{j-1}|_{\infty}\in \End (k(p_j)^r)$ is an arbitrary endomorphism that preserves the left flag
-$L^\bullet_j$.</p></div>
+$L^\bullet_j$.</p>
+</div>
 </div>
 
 <hr>

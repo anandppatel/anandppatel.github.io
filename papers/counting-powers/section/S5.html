@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 5 — Counting sums of two powers</title>
+  <title>Section 5: Questions and Code — Counting sums of two powers</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           Q: "\\mathbb{Q}",
           A: "\\mathbb{A}",
@@ -34,7 +33,7 @@
           PGL: "\\operatorname{PGL}",
           Bl: "\\operatorname{Bl}",
           Sym: "\\operatorname{Sym}",
-          Gr: "\\mathbb{G}",
+          Gr: "\\operatorname{Gr}",
           CH: "\\operatorname{CH}",
           GL: "\\operatorname{GL}",
           SL: "\\operatorname{SL}",
@@ -98,7 +97,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -120,7 +124,8 @@
 <p class="stacks-para">By combining Theorem&nbsp;<a href="/papers/counting-powers/tag/0E20.html" class="stacks-ref-link">4.7 <span class="stacks-ref-tag">[0E20]</span></a> with Corollary&nbsp;<a href="/papers/counting-powers/tag/2BB0.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[2BB0]</span></a> in the case $(m,n,a,b) = (2,3,3,2)$ and $(4,6,3,2)$, we recover Clebsch's $40$ and Zariski-Vakil's $3762$.  Applying the same formulas with $(m,n,a,b) = (3,5,5,3)$ and $(4,10,5,2)$ we get $29822$ and $626327$ as promised in the introduction.  We have not attempted to give a closed form for counting sums of two powers in the two $\gcd(m,n)$ cases we've considered, but we do provide at the end of this paper a Python script which computes the degree of the $f^{a} + g^{b}$ locus in these two cases.</p>
 <div class="stacks-commentary" id="remark-entirecycle">
   <div class="stacks-env-head"><strong>Remark&nbsp;5.1.</strong> <a href="../tag/13FA.html" class="stacks-tag-link">(13FA)</a></div>
-  <div class="stacks-env-body"><p>The patient reader will observe that Theorem&nbsp;<a href="/papers/counting-powers/tag/0E20.html" class="stacks-ref-link">4.7 <span class="stacks-ref-tag">[0E20]</span></a> combined with Corollary&nbsp;<a href="/papers/counting-powers/tag/2BB0.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[2BB0]</span></a> actually provide access to the entire cycle $\widetilde{\varphi}_{a,b *}[\transvectant_{m,n}] \in \CH_{m+n}(\Gr(2,S_{d}))$.  The count of sums of two powers is only one coefficient of this cycle when it is expanded with respect to the basis consisting of fundamental classes of Schubert varieties.  For simplicity of exposition, we chose not to include calculations of other coefficients in this note.</p></div>
+  <div class="stacks-env-body"><p>The patient reader will observe that Theorem&nbsp;<a href="/papers/counting-powers/tag/0E20.html" class="stacks-ref-link">4.7 <span class="stacks-ref-tag">[0E20]</span></a> combined with Corollary&nbsp;<a href="/papers/counting-powers/tag/2BB0.html" class="stacks-ref-link">4.6 <span class="stacks-ref-tag">[2BB0]</span></a> actually provide access to the entire cycle $\widetilde{\varphi}_{a,b *}[\transvectant_{m,n}] \in \CH_{m+n}(\Gr(2,S_{d}))$.  The count of sums of two powers is only one coefficient of this cycle when it is expanded with respect to the basis consisting of fundamental classes of Schubert varieties.  For simplicity of exposition, we chose not to include calculations of other coefficients in this note.</p>
+</div>
 </div>
 <h2 class="stacks-subsections-heading">Subsections</h2>
 <ul>

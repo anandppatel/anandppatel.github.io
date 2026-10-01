@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,7 +134,7 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Maximal variation for incompressible and non-defective $X$</a> / <a href="../section/S3.SS1.html">3.1. Non-defective linear series</a> / <span>Proof (BE6D)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="5840.html">&laquo; Proposition 3.11</a><span class="stacks-tag-current">Tag BE6D</span><a href="D7AA.html">Theorem 3.12 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BE6D.html" class="stacks-tag-link">(BE6D)</a></div>
   <div class="stacks-env-body"><p>Let $y$ be a general point of $\widetilde X$.
   We have the equality
@@ -146,7 +150,8 @@
   Moreover, since $\dim (W \otimes \mathfrak m_y^2) \geq 2$, for every $x \in X$, there exists $s \in V$ such that $v(s)$ passes through $x$.
   Hence, as $x \in X$ is general, there exists $s \in W \otimes \mathfrak m_y^2$ such that $v(s)$ has an isolated singularity at $y$ and passes through $x$.
   That is, there exists $s \in \widetilde W \otimes \mathfrak m_y^2 $ that has an isolated singularity at $y$.
-  We conclude that $(\widetilde L, \widetilde W)$ is non-defective.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  We conclude that $(\widetilde L, \widetilde W)$ is non-defective.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

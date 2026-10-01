@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           Q: "\\mathbb{Q}",
@@ -27,7 +26,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathbb{C}",
+          C: "\\mathsf{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -37,7 +36,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -52,12 +51,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
-          N: "\\mathbb{N}",
-          Gr: "\\mathbb{G}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\mathbb{G}",
+          G: "\\operatorname{\\mathbb{G}}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -66,7 +65,7 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -102,7 +101,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -123,9 +127,9 @@
 <div class="stacks-tag-nav"><a href="089F.html">&laquo; Definition 2.6</a><span class="stacks-tag-current">Tag E34D</span><a href="9D30.html">Proposition 2.8 &raquo;</a></div>
 <div class="stacks-commentary" id="remark-linearlyindependent">
   <div class="stacks-env-head"><strong>Remark&nbsp;2.7.</strong> <a href="../tag/E34D.html" class="stacks-tag-link">(E34D)</a></div>
-  <div class="stacks-env-body"><ol><li>The classes $c_{1}(\mathcal{E}_{\univ})$ and $c_{1}(\mathcal{F}_{\univ})$ are proportional, satisfying $$(d-3)c_{1}(\mathcal{E}_{\univ}) = c_{1}(\mathcal{F}_{\univ}),$$ and therefore so are $\epsilon_{1,1}$ and $\varphi_{1,1}$.</li>
-<li>It is possible to prove (using ideas similar to those in [<a class="stacks-cite" href="../../../bibliography.html#bib-the-picard-rank-conjecture-for-the-38818b5e">DP15</a>, Section 2.2]) that the three classes $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$ are linearly independent.</li>
-<li>The vector bundles $\mathcal{N}_{i}$ arising in the Casnati-Ekedahl-Schreyer resolution of $\alpha_{\univ}$ produce divisor classes which are already in the span of $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$, by the results in [<a class="stacks-cite" href="../../../bibliography.html#bib-syzygy-divisors-on-hurwitz-spaces-d123146b">DP+18</a>].</li></ol>
+  <div class="stacks-env-body"><ol><li><p>The classes $c_{1}(\mathcal{E}_{\univ})$ and $c_{1}(\mathcal{F}_{\univ})$ are proportional, satisfying $$(d-3)c_{1}(\mathcal{E}_{\univ}) = c_{1}(\mathcal{F}_{\univ}),$$ and therefore so are $\epsilon_{1,1}$ and $\varphi_{1,1}$.</p></li>
+<li><p>It is possible to prove (using ideas similar to those in [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-cca953ad">DP15</a>, Section 2.2]) that the three classes $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$ are linearly independent.</p></li>
+<li><p>The vector bundles $\mathcal{N}_{i}$ arising in the Casnati-Ekedahl-Schreyer resolution of $\alpha_{\univ}$ produce divisor classes which are already in the span of $\epsilon_{1,1}, \epsilon_{2}, \varphi_{2}$, by the results in [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-anand-patel-et-al-8a008368">DP+18</a>].</p></li></ol>
 </div>
 </div>
 

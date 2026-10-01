@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Definition 15.3 (4504) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Definition B.3 (4504) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,22 +120,22 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S15.html">Section 15: Resolution via wonderful compactification</a> / <a href="../section/S15.SS2.html">15.2. Wonderful compactification</a> / <span>Definition 15.3 (4504)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S15.html">Section B: Resolution via wonderful compactification</a> / <a href="../section/S15.SS2.html">B.2. Wonderful compactification</a> / <span>Definition B.3 (4504)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="EFE4.html">&laquo; Definition 15.2</a><span class="stacks-tag-current">Tag 4504</span><a href="CB0B.html">Remark 15.4 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="EFE4.html">&laquo; Definition B.2</a><span class="stacks-tag-current">Tag 4504</span><a href="CB0B.html">Remark B.1 &raquo;</a></div>
 <div class="stacks-definition" id="iterBU">
-  <div class="stacks-env-head"><strong>Definition&nbsp;15.3.</strong> <a href="../tag/4504.html" class="stacks-tag-link">(4504)</a></div>
-  <div class="stacks-env-body"><p>[{[<a class="stacks-cite" href="../../../bibliography.html#bib-wonderful-compactification-of-an-arrangement-of-6a4ff791">Li09</a>, Definition 2.12]}]</p>
-<p>Let $X$ be a smooth variety and let $\mc{G}$ be a building set of subvarieties of $X$. Order $\mc{G}=\{G_1,\ldots,G_n\}$ so that $G_i\subset G_j$ implies $i < j$, i.e. $G_i$ is a minimal element of $\{G_i,\ldots,G_n\}$ for all $i$. Let $X_0 = X$ and for each $k$ with $0 < k \leq n$, let $X_{k}$ be the blowup of $X_{k-1}$ along $\wt{G_k}$ (the iterated strict transform of $G_k$ in $X_{k-1}$). Define the <em>wonderful compactification</em> $X_{\mc{G}}$ to be $X_n$, which by <a href="/papers/orbits-equivariant-quantum/tag/F68F.html" class="stacks-ref-link">Proposition&nbsp;15.5 <span class="stacks-ref-tag">[F68F]</span></a> below is independent of the ordering of $\mc{G}$.</p>
-<p>By [<a class="stacks-cite" href="../../../bibliography.html#bib-wonderful-compactification-of-an-arrangement-of-6a4ff791">Li09</a>, Proposition 2.8], all the blowups carried out in <a href="/papers/orbits-equivariant-quantum/tag/4504.html" class="stacks-ref-link">Definition&nbsp;15.3 <span class="stacks-ref-tag">[4504]</span></a> have smooth centers, so $X_{\mc{G}}$ is smooth.</p></div>
+  <div class="stacks-env-head"><strong>Definition&nbsp;B.3 ([<a class="stacks-cite" href="../../../bibliography.html#bib-li-li-wonderful-compactification-of-an-5b036085">Li09</a>, Definition 2.12]).</strong> <a href="../tag/4504.html" class="stacks-tag-link">(4504)</a></div>
+  <div class="stacks-env-body"><p>Let $X$ be a smooth variety and let $\mc{G}$ be a building set of subvarieties of $X$. Order $\mc{G}=\{G_1,\ldots,G_n\}$ so that $G_i\subset G_j$ implies $i &lt; j$, i.e. $G_i$ is a minimal element of $\{G_i,\ldots,G_n\}$ for all $i$. Let $X_0 = X$ and for each $k$ with $0 &lt; k \leq n$, let $X_{k}$ be the blowup of $X_{k-1}$ along $\wt{G_k}$ (the iterated strict transform of $G_k$ in $X_{k-1}$). Define the <em>wonderful compactification</em> $X_{\mc{G}}$ to be $X_n$, which by <a href="/papers/orbits-equivariant-quantum/tag/F68F.html" class="stacks-ref-link">Proposition&nbsp;B.2 <span class="stacks-ref-tag">[F68F]</span></a> below is independent of the ordering of $\mc{G}$.</p>
+<p>By [<a class="stacks-cite" href="../../../bibliography.html#bib-li-li-wonderful-compactification-of-an-5b036085">Li09</a>, Proposition 2.8], all the blowups carried out in <a href="/papers/orbits-equivariant-quantum/tag/4504.html" class="stacks-ref-link">Definition&nbsp;B.3 <span class="stacks-ref-tag">[4504]</span></a> have smooth centers, so $X_{\mc{G}}$ is smooth.</p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/4504.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/4504.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 4504 (Definition 15.3)"
-     data-comment-page-label="Tag 4504 (Definition 15.3)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 4504 (Definition B.3)"
+     data-comment-page-label="Tag 4504 (Definition B.3)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -139,13 +143,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 4504 (Definition 15.3)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag 4504 (Definition B.3)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/4504.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/4504.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag 4504 (Definition 15.3)">
+      <input type="hidden" name="location" value="Tag 4504 (Definition B.3)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

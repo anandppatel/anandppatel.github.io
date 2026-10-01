@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,9 +165,9 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: The maximal rank problem for maximally connected chains</a> / <span>Proof of Proposition 5.4 [A6E6] assuming Lemma 5.5 [C6FD] (41B2)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="C6FD.html">&laquo; Lemma 5.5</a><span class="stacks-tag-current">Tag 41B2</span><a href="41EA.html">Proof of Lemma 5.5 [C6FD]  &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> assuming <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.</em> <a href="../tag/41B2.html" class="stacks-tag-link">(41B2)</a></div>
-  <div class="stacks-env-body"><p>We want to show that each inclusion in (5.5) is strict.
+  <div class="stacks-env-body"><p>We want to show that each inclusion in (18) is strict.
 Let us start with the last one. We set $V= H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1}(2))$, $L=L_1$, and
 $R=\overline{R}_2$. None of the elements of $V$ are reducible quadrics, because they contain the non-degenerate curve $R_0$. Thus, condition 1 is met.</p>
 <p>Let us check that the general quadric in $V$ is not singular all along
@@ -174,9 +178,10 @@ $H^0(\sh{I}_{\overline{X} \subset H}(2))$, which only depends on $\overline{X}$.
 $\overline{R}_1$ is a non-degenerate curve in $H$, and the singular locus of a quadric is always a linear space. Hence, as long as we pick $L_1 \cap H$ to be a general point in $\overline{R}_1$, we will be fine. We can do this, as a matter of fact in <a href="/papers/invariants-branched-cover/tag/8F7E.html" class="stacks-ref-link">Construction&nbsp;5.3 <span class="stacks-ref-tag">[8F7E]</span></a> we may first choose $\overline{X}$ and any $r+1$ distinct points in $\overline{R}_1$, and then we can find an $L_1 \cup R_0 \subset \P^r$
 meeting $H$ exactly at these points.</p>
 <p>The hypotheses of <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a> are satisfied, so its conclusion says that
-for a general choice of $L_2$, the inclusion (5.5) will be strict.</p>
+for a general choice of $L_2$, the inclusion (18) will be strict.</p>
 <p>Moreover, <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a> also says that a general quadric in
-$H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1 \cup L_2}(2))$ is not singular all along $L_2$. Thus we conclude <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> by iteratively applying <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+$H^0(\sh{I}_{\overline{X}\cup R_0 \cup L_1 \cup L_2}(2))$ is not singular all along $L_2$. Thus we conclude <a href="/papers/invariants-branched-cover/tag/A6E6.html" class="stacks-ref-link">Proposition&nbsp;5.4 <span class="stacks-ref-tag">[A6E6]</span></a> by iteratively applying <a href="/papers/invariants-branched-cover/tag/C6FD.html" class="stacks-ref-link">Lemma&nbsp;5.5 <span class="stacks-ref-tag">[C6FD]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

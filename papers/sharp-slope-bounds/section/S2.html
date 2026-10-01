@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 2 — Sharp slope bounds for sweeping families of trigonal curves</title>
+  <title>Section 2: A compactification of $T_g$ and its boundary — Sharp slope bounds for sweeping families of trigonal curves</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
@@ -72,8 +71,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -81,7 +80,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -125,7 +124,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -136,7 +140,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Sharp slope bounds for sweeping families of trigonal curves</a>
   </div>
@@ -147,39 +151,39 @@
 <p class="stacks-para">Let $\o{\orb M}_g$ be the moduli stack of Deligne&ndash;Mumford stable curves of genus $g$.  Let $\o {\orb H}^3_g$ be the moduli stack of twisted admissible covers of genus $g$ and degree three with unordered branch points where at most two branch points are allowed to coincide. In symbols
 $$\o{\orb H}^3_g = \{(\phi \from \orb C \to \orb P, \orb P \to P)\},$$
 where</p>
-<ul><li>$P$ is a connected nodal curve of genus zero,</li>
-<li>$\orb P$ is a balanced orbi-nodal curve as in [<a class="stacks-cite" href="../../../bibliography.html#bib-abramovich-a-a3e55ef4">Abramovich et al. (2003)</a>] with coarse space $\orb P \to P$,</li>
-<li>$\orb C$ is a connected orbi-nodal curve of genus $g$,</li>
-<li>$\phi \from \orb C \to \orb P$ is a twisted admissible cover of degree $3$ in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-abramovich-a-a3e55ef4">Abramovich et al. (2003)</a>],</li>
-<li>$(P, \br\phi)$ is a $w$-stable pointed curve in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-hassett-63b42b87">Hassett (2003)</a>] with $w = (\frac12, \dots, \frac12)$.</li></ul>
+<ul><li><p>$P$ is a connected nodal curve of genus zero,</p></li>
+<li><p>$\orb P$ is a balanced orbi-nodal curve as in [<a class="stacks-cite" href="../../../bibliography.html#bib-d-abramovich-a-corti-and-a-7f55d776">Abramovich et al. (2003)</a>] with coarse space $\orb P \to P$,</p></li>
+<li><p>$\orb C$ is a connected orbi-nodal curve of genus $g$,</p></li>
+<li><p>$\phi \from \orb C \to \orb P$ is a twisted admissible cover of degree $3$ in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-d-abramovich-a-corti-and-a-7f55d776">Abramovich et al. (2003)</a>],</p></li>
+<li><p>$(P, \br\phi)$ is a $w$-stable pointed curve in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-b-hassett-moduli-spaces-of-weighted-fc6cb9e2">Hassett (2003)</a>] with $w = (\frac12, \dots, \frac12)$.</p></li></ul>
 <p class="stacks-para">For the convenience of the reader, we briefly recall the meanings of some of the terms. A <em>balanced orbi-nodal curve</em> $\orb P \to P$ is a  modification of $P$ at the nodes; &eacute;tale locally around the nodes, $\orb P \to P$ has the form
 $$[(\spec k[u,v]/uv)/\mu_n] \to \spec k[x,y]/xy,$$
-where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto \zeta^{-1}v$. A <em>twisted admissible cover</em> $\phi \from \orb C \to \orb P$ is a representable, flat, finite morphism of degree $d$, &eacute;tale over the nodes and the generic points of the components of $\orb P$ such that the associated map $\orb P \setminus \br\phi \to B\s_d$ is representable. The last condition is simply to ensure that the stack structure on $\orb P$ is the minimal required. Note that the induced map on the coarse spaces $\phi \from C \to P$ is an admissible cover in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-harris-and-d-4875a490">Harris and
+where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto \zeta^{-1}v$. A <em>twisted admissible cover</em> $\phi \from \orb C \to \orb P$ is a representable, flat, finite morphism of degree $d$, &eacute;tale over the nodes and the generic points of the components of $\orb P$ such that the associated map $\orb P \setminus \br\phi \to B\s_d$ is representable. The last condition is simply to ensure that the stack structure on $\orb P$ is the minimal required. Note that the induced map on the coarse spaces $\phi \from C \to P$ is an admissible cover in the sense of [<a class="stacks-cite" href="../../../bibliography.html#bib-j-harris-and-d-mumford-on-9af7cfca">Harris and
   Mumford (1982)</a>]. Finally, the  $w$-stability condition means that $\mult_p \br\phi \leq 2$ for all $p \in P$, and $\omega_P\left( \frac{\br\phi}{2}\right)$ is ample.</p>
-<p class="stacks-para">By standard methods, one can prove that $\o {\orb H}^3_g$ is a connected, smooth, proper, Deligne&ndash;Mumford stack with a projective coarse space. We refer the reader to [<a class="stacks-cite" href="../../../bibliography.html#bib-deopurkar-7c75d2fc">Deopurkar (2012)</a>] for the technical details. The compactification $\o {\orb H}^3_g$ and the more customary compactification by twisted admissible covers (where the branch points are distinct) are isomorphic on the level of coarse spaces. The functorial description that allows two branch points to collide, however, is quite convenient.</p>
+<p class="stacks-para">By standard methods, one can prove that $\o {\orb H}^3_g$ is a connected, smooth, proper, Deligne&ndash;Mumford stack with a projective coarse space. We refer the reader to [<a class="stacks-cite" href="../../../bibliography.html#bib-a-deopurkar-compactifications-of-hurwitz-spaces-6c43ef7f">Deopurkar (2012)</a>] for the technical details. The compactification $\o {\orb H}^3_g$ and the more customary compactification by twisted admissible covers (where the branch points are distinct) are isomorphic on the level of coarse spaces. The functorial description that allows two branch points to collide, however, is quite convenient.</p>
 <p class="stacks-para">The open locus $\orb H^3_g$ where $P$ is smooth and $\br\phi$ reduced is the locus of simply branched trigonal curves. When two branch points coincide, $\orb C$ may develop either a node or a triple ramification point. In any case, the coarse space of $\orb C$ is at worst a nodal curve of genus $g$. By contracting unstable rational tails, we get a morphism $\o{\orb H}^3_g \to \o{\orb M}_g$. We denote by $\lambda$ the Hodge line bundle and by $\delta$ the total boundary divisor of $\o {\orb M}_g$. Abusing notation, we denote their pullbacks to $\o {\orb H}^3_g$ by the same letters.</p>
 <p class="stacks-para">The boundary $\o {\orb H}^3_g \setminus \orb H^3_g$ is a union of several divisors which we pictorially list in Figure&nbsp;1. For clarity, we draw the admissible cover $C \to P$ instead of the twisted admissible cover $\orb C \to \orb P$.</p>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58pt" height="47pt" viewBox="0 0 58 47">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58pt" height="47pt" viewBox="0 0 58 47">
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 28.348031 7.08625 C 28.348031 7.08625 15.10975 11.019844 5.668344 7.08625 C -3.769156 3.152656 3.769906 -3.152031 -5.667594 -7.085625 C -15.109 -11.019219 -28.347281 -7.085625 -28.347281 -7.085625 " transform="matrix(1, 0, 0, -1, 28.734, 10.18)"/>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -28.347281 -35.433281 L 28.348031 -35.433281 " transform="matrix(1, 0, 0, -1, 28.734, 10.18)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.000375 -19.1325 L 0.000375 -29.366875 " transform="matrix(1, 0, 0, -1, 28.734, 10.18)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.072995 2.391 C -1.694089 0.957406 -0.850339 0.277719 0.00122375 0.000375 C -0.850339 -0.280875 -1.694089 -0.956656 -2.072995 -2.39025 " transform="matrix(0, 1, 1, 0, 28.734, 39.74487)"/>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$A$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71pt" height="45pt" viewBox="0 0 71 45">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71pt" height="45pt" viewBox="0 0 71 45">
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 28.345312 7.08625 C 28.345312 7.08625 -20.478906 -7.085625 -28.346094 -7.085625 C -36.213281 -7.085625 -36.213281 7.08625 -28.346094 7.08625 C -20.478906 7.08625 20.482031 -4.136406 28.345312 -7.085625 C 36.2125 -10.034844 36.2125 -13.191094 28.345312 -14.171563 C 20.482031 -15.155938 -28.346094 -14.171563 -28.346094 -14.171563 " transform="matrix(1, 0, 0, -1, 35.6, 8.18)"/>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -28.346094 -35.433281 L 28.345312 -35.433281 " transform="matrix(1, 0, 0, -1, 35.6, 8.18)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.0015625 -19.1325 L 0.0015625 -29.366875 " transform="matrix(1, 0, 0, -1, 35.6, 8.18)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.072995 2.392187 C -1.694089 0.954687 -0.850339 0.278906 0.00122375 0.0015625 C -0.850339 -0.279688 -1.694089 -0.955469 -2.072995 -2.392969 " transform="matrix(0, 1, 1, 0, 35.6, 37.74487)"/>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66pt" height="46pt" viewBox="0 0 66 46">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66pt" height="46pt" viewBox="0 0 66 46">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-7c252686b9337846-3-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-7c252686b9337846-3-glyph-1-0">
 <path d="M 4.578125 -3.1875 C 4.578125 -3.984375 4.53125 -4.78125 4.1875 -5.515625 C 3.734375 -6.484375 2.90625 -6.640625 2.5 -6.640625 C 1.890625 -6.640625 1.171875 -6.375 0.75 -5.453125 C 0.4375 -4.765625 0.390625 -3.984375 0.390625 -3.1875 C 0.390625 -2.4375 0.421875 -1.546875 0.84375 -0.78125 C 1.265625 0.015625 2 0.21875 2.484375 0.21875 C 3.015625 0.21875 3.78125 0.015625 4.21875 -0.9375 C 4.53125 -1.625 4.578125 -2.40625 4.578125 -3.1875 Z M 2.484375 0 C 2.09375 0 1.5 -0.25 1.328125 -1.203125 C 1.21875 -1.796875 1.21875 -2.71875 1.21875 -3.3125 C 1.21875 -3.953125 1.21875 -4.609375 1.296875 -5.140625 C 1.484375 -6.328125 2.234375 -6.421875 2.484375 -6.421875 C 2.8125 -6.421875 3.46875 -6.234375 3.65625 -5.25 C 3.765625 -4.6875 3.765625 -3.9375 3.765625 -3.3125 C 3.765625 -2.5625 3.765625 -1.890625 3.65625 -1.25 C 3.5 -0.296875 2.9375 0 2.484375 0 Z M 2.484375 0 "/>
 </g>
 </g>
@@ -189,23 +193,23 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.000375 -19.1325 L 0.000375 -29.366875 " transform="matrix(1, 0, 0, -1, 28.734, 9.18)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.072995 2.391 C -1.694089 0.957406 -0.850339 0.277719 0.00122375 0.000375 C -0.850339 -0.280875 -1.694089 -0.956656 -2.072995 -2.39025 " transform="matrix(0, 1, 1, 0, 28.734, 38.74487)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="60.799" y="6.813"/>
+<use xlink:href="#latex-7c252686b9337846-3-glyph-0-0" x="60.799" y="6.813"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="60.799" y="26.563"/>
+<use xlink:href="#latex-7c252686b9337846-3-glyph-1-0" x="60.799" y="26.563"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$H$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="58pt" viewBox="0 0 113 58">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="58pt" viewBox="0 0 113 58">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-0292861e0ad3981c-4-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-0292861e0ad3981c-4-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-0292861e0ad3981c-4-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -219,29 +223,29 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.337906 -19.133636 L -11.338322 -29.367801 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 74.08536, 16.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.070576 2.390844 C -1.694561 0.957026 -0.848093 0.278965 -0.00183726 0.0000451581 C -0.85093 -0.277028 -1.692468 -0.955915 -2.072685 -2.388837 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 74.62832, 47.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="17.494"/>
+<use xlink:href="#latex-0292861e0ad3981c-4-glyph-0-0" x="0.309" y="17.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="18.989"/>
+<use xlink:href="#latex-0292861e0ad3981c-4-glyph-1-0" x="5.061" y="18.989"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="104.625" y="17.494"/>
+<use xlink:href="#latex-0292861e0ad3981c-4-glyph-0-0" x="104.625" y="17.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="109.377" y="18.989"/>
+<use xlink:href="#latex-0292861e0ad3981c-4-glyph-1-1" x="109.377" y="18.989"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_1(g_1,g_2)$ <br> with $g_1+g_2 = g-2$ and $g_i \geq 0.$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="59pt" viewBox="0 0 113 59">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="59pt" viewBox="0 0 113 59">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-754da3bbe8b1de6f-5-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-754da3bbe8b1de6f-5-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-754da3bbe8b1de6f-5-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -255,29 +259,29 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.337906 -19.133636 L -11.338322 -29.367801 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 74.08536, 17.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.070576 2.390844 C -1.694561 0.957026 -0.848093 0.278965 -0.00183726 0.0000451581 C -0.85093 -0.277028 -1.692468 -0.955915 -2.072685 -2.388837 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 74.62832, 48.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="25.581"/>
+<use xlink:href="#latex-754da3bbe8b1de6f-5-glyph-0-0" x="0.309" y="25.581"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="27.075"/>
+<use xlink:href="#latex-754da3bbe8b1de6f-5-glyph-1-0" x="5.061" y="27.075"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="104.625" y="18.494"/>
+<use xlink:href="#latex-754da3bbe8b1de6f-5-glyph-0-0" x="104.625" y="18.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="109.377" y="19.989"/>
+<use xlink:href="#latex-754da3bbe8b1de6f-5-glyph-1-1" x="109.377" y="19.989"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_2(g_1,g_2)$ <br> with $g_1+g_2 = g-1$ and $g_i \geq 0$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="54pt" viewBox="0 0 113 54">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113pt" height="54pt" viewBox="0 0 113 54">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-96d87a90bdc938ef-6-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-96d87a90bdc938ef-6-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-96d87a90bdc938ef-6-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -291,29 +295,29 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.338918 -19.133267 L -11.339335 -29.367432 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 76.92022, 12.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.070945 2.389831 C -1.69493 0.956013 -0.848461 0.277952 -0.00220579 -0.000967348 C -0.851299 -0.278041 -1.692837 -0.956928 -2.073054 -2.38985 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 77.46318, 43.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="13.494"/>
+<use xlink:href="#latex-96d87a90bdc938ef-6-glyph-0-0" x="0.309" y="13.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="14.989"/>
+<use xlink:href="#latex-96d87a90bdc938ef-6-glyph-1-0" x="5.061" y="14.989"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="104.625" y="13.494"/>
+<use xlink:href="#latex-96d87a90bdc938ef-6-glyph-0-0" x="104.625" y="13.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="109.377" y="14.989"/>
+<use xlink:href="#latex-96d87a90bdc938ef-6-glyph-1-1" x="109.377" y="14.989"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_3(g_1,g_2)$ <br> with $g_1+g_2 = g$ and $g_i \geq 1$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111pt" height="58pt" viewBox="0 0 111 58">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111pt" height="58pt" viewBox="0 0 111 58">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-80ee545c1b80fef5-7-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-80ee545c1b80fef5-7-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-80ee545c1b80fef5-7-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -327,29 +331,29 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.337906 -19.133636 L -11.338322 -29.367801 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 74.08536, 16.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.070576 2.390844 C -1.694561 0.957026 -0.848093 0.278965 -0.00183726 0.0000451581 C -0.85093 -0.277028 -1.692468 -0.955915 -2.072685 -2.388837 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 74.62832, 47.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="17.494"/>
+<use xlink:href="#latex-80ee545c1b80fef5-7-glyph-0-0" x="0.309" y="17.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="18.989"/>
+<use xlink:href="#latex-80ee545c1b80fef5-7-glyph-1-0" x="5.061" y="18.989"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="102.357" y="17.494"/>
+<use xlink:href="#latex-80ee545c1b80fef5-7-glyph-0-0" x="102.357" y="17.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="107.109" y="18.989"/>
+<use xlink:href="#latex-80ee545c1b80fef5-7-glyph-1-1" x="107.109" y="18.989"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_4(g_1,g_2)$ <br> with $g_1+g_2 = g-1$ and $g_2\geq 1$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="104pt" height="59pt" viewBox="0 0 104 59">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="104pt" height="59pt" viewBox="0 0 104 59">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-a637c0e9599f229c-8-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-a637c0e9599f229c-8-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-a637c0e9599f229c-8-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -363,29 +367,29 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.339198 -19.133165 L -11.339614 -29.367331 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 71.81836, 17.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.071046 2.389552 C -1.695031 0.955734 -0.848563 0.277673 -0.000971518 0.00242372 C -0.8514 -0.27832 -1.692938 -0.957207 -2.073155 -2.390129 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 72.36132, 48.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="32.668"/>
+<use xlink:href="#latex-a637c0e9599f229c-8-glyph-0-0" x="0.309" y="32.668"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="34.162"/>
+<use xlink:href="#latex-a637c0e9599f229c-8-glyph-1-0" x="5.061" y="34.162"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="95.554" y="32.668"/>
+<use xlink:href="#latex-a637c0e9599f229c-8-glyph-0-0" x="95.554" y="32.668"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="100.306" y="34.162"/>
+<use xlink:href="#latex-a637c0e9599f229c-8-glyph-1-1" x="100.306" y="34.162"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_5(g_1,g_2)$ <br> with $g_1+g_2 = g$ and $g_2 \geq 1$</div>
-<div class="stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111pt" height="58pt" viewBox="0 0 111 58">
+<div class="stacks-rendered-latex stacks-tikzcd" role="img" aria-label="TikZ diagram"><svg class="stacks-tikzcd-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111pt" height="58pt" viewBox="0 0 111 58">
 <defs>
 <g>
-<g id="glyph-0-0">
+<g id="latex-09bdcc13549e45ed-9-glyph-0-0">
 <path d="M 4.6875 -3.765625 C 4.703125 -3.8125 4.71875 -3.875 4.71875 -3.9375 C 4.71875 -4.109375 4.609375 -4.203125 4.4375 -4.203125 C 4.34375 -4.203125 4.0625 -4.140625 4.03125 -3.78125 C 3.84375 -4.140625 3.5 -4.40625 3.09375 -4.40625 C 1.96875 -4.40625 0.734375 -3.015625 0.734375 -1.578125 C 0.734375 -0.59375 1.328125 0 2.046875 0 C 2.640625 0 3.109375 -0.46875 3.203125 -0.578125 L 3.21875 -0.5625 C 3.015625 0.3125 2.890625 0.734375 2.890625 0.75 C 2.84375 0.84375 2.515625 1.828125 1.453125 1.828125 C 1.265625 1.828125 0.9375 1.8125 0.65625 1.71875 C 0.953125 1.640625 1.0625 1.375 1.0625 1.203125 C 1.0625 1.046875 0.953125 0.859375 0.6875 0.859375 C 0.46875 0.859375 0.15625 1.03125 0.15625 1.4375 C 0.15625 1.84375 0.515625 2.046875 1.46875 2.046875 C 2.71875 2.046875 3.4375 1.265625 3.59375 0.671875 Z M 3.40625 -1.28125 C 3.34375 -1.015625 3.109375 -0.765625 2.890625 -0.578125 C 2.6875 -0.40625 2.375 -0.21875 2.078125 -0.21875 C 1.578125 -0.21875 1.4375 -0.734375 1.4375 -1.140625 C 1.4375 -1.609375 1.71875 -2.796875 2 -3.296875 C 2.265625 -3.78125 2.6875 -4.1875 3.109375 -4.1875 C 3.765625 -4.1875 3.90625 -3.375 3.90625 -3.328125 C 3.90625 -3.28125 3.890625 -3.21875 3.875 -3.1875 Z M 3.40625 -1.28125 "/>
 </g>
-<g id="glyph-1-0">
+<g id="latex-09bdcc13549e45ed-9-glyph-1-0">
 <path d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "/>
 </g>
-<g id="glyph-1-1">
+<g id="latex-09bdcc13549e45ed-9-glyph-1-1">
 <path d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "/>
 </g>
 </g>
@@ -399,29 +403,31 @@ where $\mu_n$ acts by $\zeta \from u \mapsto \zeta u$ and $\zeta \from v \mapsto
 <path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -11.337906 -19.133636 L -11.338322 -29.367801 " transform="matrix(-0.9397, -0.34203, 0.34203, -0.9397, 74.08536, 16.318)"/>
 <path fill="none" stroke-width="0.3985" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -2.070576 2.390844 C -1.694561 0.957026 -0.848093 0.278965 -0.00183726 0.0000451581 C -0.85093 -0.277028 -1.692468 -0.955915 -2.072685 -2.388837 " transform="matrix(-0.34203, 0.9397, -0.9397, -0.34203, 74.62832, 47.978304)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="0.309" y="31.668"/>
+<use xlink:href="#latex-09bdcc13549e45ed-9-glyph-0-0" x="0.309" y="31.668"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-0" x="5.061" y="33.162"/>
+<use xlink:href="#latex-09bdcc13549e45ed-9-glyph-1-0" x="5.061" y="33.162"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="102.357" y="17.494"/>
+<use xlink:href="#latex-09bdcc13549e45ed-9-glyph-0-0" x="102.357" y="17.494"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="107.109" y="18.989"/>
+<use xlink:href="#latex-09bdcc13549e45ed-9-glyph-1-1" x="107.109" y="18.989"/>
 </g>
 </svg></div>
 <div class="stacks-caption stacks-subcaption">$\Delta_6(g_1,g_2)$ <br> with $g_1+g_2 = g$ and $g_i \geq 1$</div>
 <div class="stacks-caption">Boundary divisors of $\o{\orb H}_g^3$</div>
-<p>The pictures are, of course, symbolic and only show the generic points. They are to be read as follows. A generic point of $A$ represents a trigonal curve with a triple ramification point. A generic point of $\Delta$ represents an irreducible trigonal curve with a node. A generic point of $H$ represents a hyperelliptic curve of genus $g$ with a rational tail attached at a non-ramification point. In the rest of the boundary divisors, the base is reducible. A generic point of $\Delta_3(g_1, g_2)$ represents two irreducible trigonal curves of genus $g_1$ and $g_2$ glued at a triple ramification point; this union maps to a union of two $\P^1$s glued at a point. Likewise, a generic point of $\Delta_5(g_1, g_2)$ represents an irreducible trigonal curve of genus $g_1$ attached to a $\P^1$ at a non-ramification point and to a hyperelliptic curve of genus $g_2$ at a simple ramification point; this apparatus maps to a union of two $\P^1$s glued at a point as shown in the diagram. We leave the interpretations of the other pictures to the reader. The order of $g_1$ and $g_2$ is important only in $\Delta_4(g_1,g_2)$ and $\Delta_5(g_1,g_2)$.</p>
+<p class="stacks-para">The pictures are, of course, symbolic and only show the generic points. They are to be read as follows. A generic point of $A$ represents a trigonal curve with a triple ramification point. A generic point of $\Delta$ represents an irreducible trigonal curve with a node. A generic point of $H$ represents a hyperelliptic curve of genus $g$ with a rational tail attached at a non-ramification point. In the rest of the boundary divisors, the base is reducible. A generic point of $\Delta_3(g_1, g_2)$ represents two irreducible trigonal curves of genus $g_1$ and $g_2$ glued at a triple ramification point; this union maps to a union of two $\P^1$s glued at a point. Likewise, a generic point of $\Delta_5(g_1, g_2)$ represents an irreducible trigonal curve of genus $g_1$ attached to a $\P^1$ at a non-ramification point and to a hyperelliptic curve of genus $g_2$ at a simple ramification point; this apparatus maps to a union of two $\P^1$s glued at a point as shown in the diagram. We leave the interpretations of the other pictures to the reader. The order of $g_1$ and $g_2$ is important only in $\Delta_4(g_1,g_2)$ and $\Delta_5(g_1,g_2)$.</p>
 <p class="stacks-para">We often call the divisors $\Delta_i(g_1,g_2)$ (for $1 \leq i \leq 6$) and $H$ <em>higher boundary divisors</em>.</p>
-<div class="stacks-lemma" id="">
+<div class="stacks-lemma">
   <div class="stacks-env-head"><strong>Proposition&nbsp;2.1.</strong> <a href="../tag/FC7C.html" class="stacks-tag-link">(FC7C)</a></div>
-  <div class="stacks-env-body"><p>The classes $\lambda$, $\delta$, and the higher boundary divisors $H$, $\Delta_i(g_1, g_2)$ for $1 \leq i \leq 6$ as shown in Figure&nbsp;1 form a basis of $\Pic_\Q(\o{\orb H}_g^3)$.</p></div>
+  <div class="stacks-env-body"><p>The classes $\lambda$, $\delta$, and the higher boundary divisors $H$, $\Delta_i(g_1, g_2)$ for $1 \leq i \leq 6$ as shown in Figure&nbsp;1 form a basis of $\Pic_\Q(\o{\orb H}_g^3)$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/F3DA.html" class="stacks-tag-link">(F3DA)</a></div>
-  <div class="stacks-env-body"><p>We know that $\Pic_\Q({\orb H}^3_g)$ is trivial (see [<a class="stacks-cite" href="../../../bibliography.html#bib-bolognesi-and-a-88b2774d">Bolognesi and Vistoli (2012)</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-z-e-stankova-frenkel-moduli-of-97b81ee9">Stankova-Frenkel (2000)</a>]). It follows that $\Pic_\Q(\o{\orb H}_g^3)$ is generated by $A$, $\delta$ and the higher boundary divisors. By test-curve calculations (for example, those in Section&nbsp;5), one can verify that these are independent and that one can use $\lambda$ instead of $A$.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>We know that $\Pic_\Q({\orb H}^3_g)$ is trivial (see [<a class="stacks-cite" href="../../../bibliography.html#bib-m-bolognesi-and-a-vistoli-stacks-4aa6f039">Bolognesi and Vistoli (2012)</a>] or [<a class="stacks-cite" href="../../../bibliography.html#bib-z-e-stankova-frenkel-moduli-of-91d97595">Stankova-Frenkel (2000)</a>]). It follows that $\Pic_\Q(\o{\orb H}_g^3)$ is generated by $A$, $\delta$ and the higher boundary divisors. By test-curve calculations (for example, those in Section&nbsp;5), one can verify that these are independent and that one can use $\lambda$ instead of $A$.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

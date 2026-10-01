@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -89,19 +93,19 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminary Definitions, Conventions, and Notation</a> / <a href="../section/S2.SS5.html">2.5. Families of orbits</a> / <span>Proof (17AF)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="CA2E.html">&laquo; Remark 2.13</a><span class="stacks-tag-current">Tag 17AF</span><a href="A3F9.html">Definition 2.14 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="226C.html">&laquo; Principle 2.13</a><span class="stacks-tag-current">Tag 17AF</span><a href="A3F9.html">Definition 2.14 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/17AF.html" class="stacks-tag-link">(17AF)</a></div>
   <div class="stacks-env-body"><p>Recall the variety $\mathcal{Y}$ from <a href="/papers/equivariant-degenerations/tag/3959.html" class="stacks-ref-link">Definition&nbsp;2.8 <span class="stacks-ref-tag">[3959]</span></a>, and
   $\overline{\mathcal{Y}} \subset U \times \P \on{Sym}^{d}V^{\vee}$
   its image under projection onto first and third factors
-  $(\pi_{1},\pi_{3})$. In light of the hypotheses in <a href="/papers/equivariant-degenerations/tag/4DEC.html" class="stacks-ref-link">Lemma&nbsp;2.12 <span class="stacks-ref-tag">[4DEC]</span></a>,
+  $(\pi_{1},\pi_{3})$. In light of the hypotheses in <a href="/papers/equivariant-degenerations/tag/4DEC.html" class="stacks-ref-link">Lemma&nbsp;2.11 <span class="stacks-ref-tag">[4DEC]</span></a>,
   we obtain pairwise distinct irreducible components
   $\mathcal{A}_{i} \subset \mathcal{Y}_{0}$ of $\mathcal{Y}_{0}$,
   $i=1, \dots, n$. By their constructions, the composite
   $$\pi_{3}\circ \iota^{\gamma}_{0}: PGL(V) \to \P \on{Sym}^{d}V^{\vee}$$ the action map
   corresponding to each hypersurface $\mathcal{X}^{\gamma_{i}}_{0}$.</p>
-<p>  Therefore, in the cycle $\pi_{3*}[\mathcal{Y}_{0}]$, the coefficient
+<p>Therefore, in the cycle $\pi_{3*}[\mathcal{Y}_{0}]$, the coefficient
   of $[\P \Orb(\mathcal{X}^{\gamma_{i}}_{0})]$ is
   $\deg(PGL(V) \to\P \Orb(\mathcal{X}^{\gamma_{i}}_{0}))$, i.e.
   $\# \on{Aut}(\mathcal{X}_{0}^{\gamma_{i}})$.  Since
@@ -116,7 +120,7 @@
   effectivity statement of
   $$\p_{\mathcal{X}_{u}}-\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$$
   now follows.</p>
-<p>  Finally, assume that the predegrees of
+<p>Finally, assume that the predegrees of
   $\mathcal{X}^{\gamma_{i}}_{0}$ add to the predegree of
   $\mathcal{X}_{u}$. Let $\Lambda \subset \P \on{Sym}^{d}V^{\vee}$ be
   a general linear space of codimension $\dim PGL(V)$ intersecting
@@ -135,7 +139,8 @@
     \sum_{i}\# \on{Aut}(\mathcal{X}^{\gamma_{i}}_{0})[\P
     \Orb(\mathcal{X}^{\gamma_{i}}_{0})],$$ and the equality
   $$\p_{\mathcal{X}_u}=\sum_{i=1}^{n}\p_{\mathcal{X}^{\gamma_{i}}_{0}}$$
-  follows.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  follows.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

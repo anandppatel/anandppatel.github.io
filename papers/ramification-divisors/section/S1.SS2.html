@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           justify: "  \\fontdimen2\\font=0.4em  \\fontdimen3\\font=0.2em  \\fontdimen4\\font=0.1em  \\fontdimen7\\font=0.1em  \\hyphenchar\\font=`\\-",
           todo: ["\\fbox{ToDo: #1}", 1],
           k: "\\mathbb{K}",
@@ -80,7 +79,7 @@
           Hilb: "\\operatorname{Hilb}",
           sing: "\\operatorname{Sing}",
           dm: "\\operatorname{dim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Ram: "\\operatorname{Ram}",
           ord: "\\operatorname{ord}",
           AA: "\\mathbb{A}",
@@ -111,7 +110,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -130,7 +134,7 @@
 <div class="stacks-breadcrumb stacks-breadcrumb-with-nav"><div class="stacks-breadcrumb-path"><a href="../index.html">Table of contents</a> / <a href="../section/S1.html">Section 1: Introduction</a> / <span>1.2. Enumerative problems</span></div><nav class="stacks-page-nav" aria-label="Page navigation"><a class="stacks-page-arrow stacks-page-arrow-prev" href="../section/S1.SS1.html" aria-label="Previous: 1.1. Maximal variation" title="Previous: 1.1. Maximal variation">&larr;</a><a class="stacks-page-arrow stacks-page-arrow-next" href="../section/S1.SS3.html" aria-label="Next: 1.3. Further remarks" title="Next: 1.3. Further remarks">&rarr;</a></nav></div>
 <main class="stacks-main">
 <h1 class="stacks-section-title">1.2. Enumerative problems</h1>
-<p class="stacks-para"><a href="/papers/ramification-divisors/tag/7F28.html" class="stacks-ref-link">Theorem&nbsp;1.3 <span class="stacks-ref-tag">[7F28]</span></a> and <a href="/papers/ramification-divisors/tag/DA58.html" class="stacks-ref-link">Theorem&nbsp;1.4 <span class="stacks-ref-tag">[DA58]</span></a> motivate a natural set of enumerative questions: for $X \subset \P^n$ of minimal degree, what is the degree of the projection-ramification map $\rho$?
+<p class="stacks-para"><a href="/papers/ramification-divisors/tag/7F28.html" class="stacks-ref-link">Theorem&nbsp;C <span class="stacks-ref-tag">[7F28]</span></a> and <a href="/papers/ramification-divisors/tag/DA58.html" class="stacks-ref-link">Theorem&nbsp;D <span class="stacks-ref-tag">[DA58]</span></a> motivate a natural set of enumerative questions: for $X \subset \P^n$ of minimal degree, what is the degree of the projection-ramification map $\rho$?
 We make the convention that if a map is not dominant, then its degree is $0$.</p>
 <p class="stacks-para">For $X$ of dimension 1, namely a rational normal curve, the answer is easy to find&mdash;the degree of $\rho$ is the Catalan number $\frac{(2n-2)!}{n!(n-1)!}$.
 Indeed, in this case, the projection-ramification map
@@ -152,23 +156,23 @@ The points of the fiber of $\rho$ over $(R, \eta)$ correspond naturally to the t
 In particular, the degree of $\rho$ is $2$.
 In this case, the source of $\rho$ (the Grassmannian $\Gr(3, H^0(X, \O(1)))$ modulo the action of $\Aut X$) has several known moduli interpretations.
 It is birational to the moduli of unordered triplets of unordered pairs of points on $\P^1$, namely $M_{0,6}/(S_2 \times S_2 \times S_2 \rtimes S_3)$.
-This space, in turn, is isomorphic to the moduli of hyperelliptic curves with a maximal isotropic subspace of the $\F_2$-vector space of $2$-torsion points, or equivalently, to the moduli of principally polarized abelian surfaces with a maximal isotropic subspace of the $\F_2$-vector space of $2$-torsion points [<a class="stacks-cite" href="../../../bibliography.html#bib-dolgachev-and-b-17507fde">2</a>, Example&nbsp;4.2].
-The involution on this space induced by the $2$-to-$1$ map $\rho$ coincides with the classical Richelot or Fricke involution [<a class="stacks-cite" href="../../../bibliography.html#bib-dolgachev-and-b-17507fde">2</a>, Remark&nbsp;4.3].
+This space, in turn, is isomorphic to the moduli of hyperelliptic curves with a maximal isotropic subspace of the $\F_2$-vector space of $2$-torsion points, or equivalently, to the moduli of principally polarized abelian surfaces with a maximal isotropic subspace of the $\F_2$-vector space of $2$-torsion points [<a class="stacks-cite" href="../../../bibliography.html#bib-i-dolgachev-and-b-howard-configuration-1cdea2fc">2</a>, Example&nbsp;4.2].
+The involution on this space induced by the $2$-to-$1$ map $\rho$ coincides with the classical Richelot or Fricke involution [<a class="stacks-cite" href="../../../bibliography.html#bib-i-dolgachev-and-b-howard-configuration-1cdea2fc">2</a>, Remark&nbsp;4.3].
 See <a href="/papers/ramification-divisors/tag/D8C2.html" class="stacks-ref-link">Remark&nbsp;6.6 <span class="stacks-ref-tag">[D8C2]</span></a> for more details.</p>
 <p class="stacks-para">The following result summarizes our knowledge of the degree of $\rho$.</p>
 <div class="stacks-theorem" id="thm-examples">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.5.</strong> <a href="../tag/589F.html" class="stacks-tag-link">(589F)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;E.</strong> <a href="../tag/589F.html" class="stacks-tag-link">(589F)</a></div>
   <div class="stacks-env-body"><p>Let $\rho$ be the projection-ramification map for $X \subset \P^n$ of minimal degree.</p>
-<ol><li>If $X \subset \P^{n}$ is a rational normal curve, then $\rho$ is regular and $\deg \rho = \frac{(2n-2)!}{n!(n-1)!}$.</li>
-<li>If $X \subset \P^{n}$ is a quadric hypersurface, then $\rho$ is an isomorphism; in particular, $\deg \rho = 1$.</li>
-<li>If  $X = \P^{r-1} \times \P^{1} \hookrightarrow \P^{2r-1}$ is the Segre embedding, then $\deg \rho = 1$.</li>
-<li>If $X \subset \P^{5}$ is the Veronese surface, then $ \deg \rho = 3$.</li>
-<li>If $X \subset \P^{5}$ is a general quartic surface scroll, then $\deg \rho = 2$.</li>
-<li>If $X = \P(\O_{\P^{1}}(1) \oplus \O_{\P^{1}}(k+1)) \subset \P^{k+3}$ is the surface scroll with the most imbalanced splitting type, then $\deg \rho = 1$.</li>
-<li>If $X = \P(\O_{\P^{1}}(1) \oplus \O_{\P^{1}}(1) \oplus \O_{\P^{1}}(k+1)) \subset \P^{k+5}$ is the threefold scroll with the most imbalanced splitting type, then $\deg \rho = 1$.</li></ol>
+<ol><li><p>If $X \subset \P^{n}$ is a rational normal curve, then $\rho$ is regular and $\deg \rho = \frac{(2n-2)!}{n!(n-1)!}$.</p></li>
+<li><p>If $X \subset \P^{n}$ is a quadric hypersurface, then $\rho$ is an isomorphism; in particular, $\deg \rho = 1$.</p></li>
+<li><p>If  $X = \P^{r-1} \times \P^{1} \hookrightarrow \P^{2r-1}$ is the Segre embedding, then $\deg \rho = 1$.</p></li>
+<li><p>If $X \subset \P^{5}$ is the Veronese surface, then $ \deg \rho = 3$.</p></li>
+<li><p>If $X \subset \P^{5}$ is a general quartic surface scroll, then $\deg \rho = 2$.</p></li>
+<li><p>If $X = \P(\O_{\P^{1}}(1) \oplus \O_{\P^{1}}(k+1)) \subset \P^{k+3}$ is the surface scroll with the most imbalanced splitting type, then $\deg \rho = 1$.</p></li>
+<li><p>If $X = \P(\O_{\P^{1}}(1) \oplus \O_{\P^{1}}(1) \oplus \O_{\P^{1}}(k+1)) \subset \P^{k+5}$ is the threefold scroll with the most imbalanced splitting type, then $\deg \rho = 1$.</p></li></ol>
 </div>
 </div>
-<p class="stacks-para">In the main text, the items in <a href="/papers/ramification-divisors/tag/589F.html" class="stacks-ref-link">Theorem&nbsp;1.5 <span class="stacks-ref-tag">[589F]</span></a> are treated in Section&nbsp;6.1, Section&nbsp;6.2, <a href="/papers/ramification-divisors/tag/C5C8.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[C5C8]</span></a>, <a href="/papers/ramification-divisors/tag/D230.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[D230]</span></a>, <a href="/papers/ramification-divisors/tag/BA85.html" class="stacks-ref-link">Proposition&nbsp;6.7 <span class="stacks-ref-tag">[BA85]</span></a>, <a href="/papers/ramification-divisors/tag/48C0.html" class="stacks-ref-link">Proposition&nbsp;4.11 <span class="stacks-ref-tag">[48C0]</span></a>, and <a href="/papers/ramification-divisors/tag/ACF3.html" class="stacks-ref-link">Proposition&nbsp;4.9 <span class="stacks-ref-tag">[ACF3]</span></a>, respectively.</p>
+<p class="stacks-para">In the main text, the items in <a href="/papers/ramification-divisors/tag/589F.html" class="stacks-ref-link">Theorem&nbsp;E <span class="stacks-ref-tag">[589F]</span></a> are treated in Section&nbsp;6.1, Section&nbsp;6.2, <a href="/papers/ramification-divisors/tag/C5C8.html" class="stacks-ref-link">Proposition&nbsp;5.1 <span class="stacks-ref-tag">[C5C8]</span></a>, <a href="/papers/ramification-divisors/tag/D230.html" class="stacks-ref-link">Proposition&nbsp;6.1 <span class="stacks-ref-tag">[D230]</span></a>, <a href="/papers/ramification-divisors/tag/BA85.html" class="stacks-ref-link">Proposition&nbsp;6.7 <span class="stacks-ref-tag">[BA85]</span></a>, <a href="/papers/ramification-divisors/tag/48C0.html" class="stacks-ref-link">Proposition&nbsp;4.11 <span class="stacks-ref-tag">[48C0]</span></a>, and <a href="/papers/ramification-divisors/tag/ACF3.html" class="stacks-ref-link">Proposition&nbsp;4.9 <span class="stacks-ref-tag">[ACF3]</span></a>, respectively.</p>
 
 <hr>
 <div class="stacks-comments"

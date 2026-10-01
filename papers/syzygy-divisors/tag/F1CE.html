@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: ["\\fbox{ToDo: #1}", 1],
           c: "{\\rm c}",
           orb: "\\mathcal",
@@ -60,7 +59,7 @@
           Bog: "\\operatorname{Bog}",
           Bl: "\\operatorname{Bl}",
           im: "\\operatorname{im}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{{\\mathbb{F}}}",
           AA: "\\mathbb{A}",
           ba: "\\mathbb{A}",
           bbA: "\\mathbb{A}",
@@ -89,7 +88,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -100,7 +104,7 @@
 <body>
 <header class="stacks-header">
   <div class="stacks-header-inner">
-    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar,  Anand Patel</a>
+    <a href="../../../index.html" class="stacks-home-link">Anand Deopurkar, Anand Patel</a>
     <span class="stacks-separator">&rsaquo;</span>
     <a href="../index.html" class="stacks-paper-link">Syzygy divisors on Hurwitz spaces</a>
   </div>
@@ -109,21 +113,20 @@
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="9145.html">&laquo; Remark 2.2</a><span class="stacks-tag-current">Tag F1CE</span><a href="AB0E.html">Proposition 2.4 &raquo;</a></div>
 <div class="stacks-theorem" id="thm-CE">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;2.3.</strong> <a href="../tag/F1CE.html" class="stacks-tag-link">(F1CE)</a></div>
-  <div class="stacks-env-body"><p>[See {[<a class="stacks-cite" href="../../../bibliography.html#bib-casnati-and-t-c87b2161">4</a>, Theorem&nbsp;2.1]}]</p>
-<p>  In the above setup, $\alpha^* E \to \omega_\alpha$ gives an embedding $\iota \from X \to \P E$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P E \to Y$ is the projection.
+  <div class="stacks-env-head"><strong>Theorem&nbsp;2.3 (See {[<a class="stacks-cite" href="../../../bibliography.html#bib-g-casnati-and-t-ekedahl-covers-6e6c153d">4</a>, Theorem&nbsp;2.1]}).</strong> <a href="../tag/F1CE.html" class="stacks-tag-link">(F1CE)</a></div>
+  <div class="stacks-env-body"><p>In the above setup, $\alpha^* E \to \omega_\alpha$ gives an embedding $\iota \from X \to \P E$ with $\alpha  = \pi \circ \iota$, where $\pi \from \P E \to Y$ is the projection.
   Moreover, the following hold.</p>
-<ol><li>The resolution of $\O_X$ as an $\O_{\P E}$ module has the form
+<ol><li><p>The resolution of $\O_X$ as an $\O_{\P E}$ module has the form
     $$\begin{split}
         0 \to \pi^* N_{d-2} (-d) \to \pi^* N_{d-3}(-d+2) \to \pi^*N_{d-4}(-d+3) \to \dots \\
         \dots \to \pi^*N_2(-3) \to \pi^*N_1(-2) \to \O_{\P E} \to \O_X \to 0,
       \end{split}$$
     where the $N_i$ are vector bundles on $Y$.
-    Restricted to a point $y \in Y$, this sequence is the minimal free resolution of $X_y \subset \P E_y$.</li>
-<li>The ranks of the $N_i$ are given by
-    $$\rk N_i = \frac{i(d-2-i)}{d-1} {d \choose {i+1}},$$</li>
-<li>We have $N_{d-2} \cong \pi^* \det E$.
-    Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying $\Hom_{\O_{\P E}}(-, N_{d-2}(-d))$.</li></ol>
+    Restricted to a point $y \in Y$, this sequence is the minimal free resolution of $X_y \subset \P E_y$.</p></li>
+<li><p>The ranks of the $N_i$ are given by
+    $$\rk N_i = \frac{i(d-2-i)}{d-1} {d \choose {i+1}},$$</p></li>
+<li><p>We have $N_{d-2} \cong \pi^* \det E$.
+    Furthermore, the resolution is symmetric, that is, isomorphic to the resolution obtained by applying $\Hom_{\O_{\P E}}(-, N_{d-2}(-d))$.</p></li></ol>
 </div>
 </div>
 

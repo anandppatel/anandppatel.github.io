@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           P: "\\mathbb{P}",
           k: "\\mathscr{k}",
           Q: "\\mathbb{Q}",
@@ -27,7 +26,7 @@
           HdgX: "\\mathsf{Hur}_{d,g}(X)",
           HdtwoX: "\\mathsf{Hur}_{d,2}(X)",
           from: "\\colon",
-          C: "\\mathbb{C}",
+          C: "\\mathsf{C}",
           Mgbar: "\\overline{\\mathcal{M}}_{g}",
           Hurfixedtwo: "\\underline{\\mathsf{Hur}}_{d,2}(X)",
           Stfixed: "\\underline{\\mathsf{Hur}}_{d,g}^{\\Diamond}(X)",
@@ -37,7 +36,7 @@
           Hurstable: ["\\mathsf{Hur}_{#1,#2}^{\\diamond}", 2],
           Hurfixed: ["\\underline{\\mathsf{Hur}}_{#1,#2}", 2],
           Hurfixedstable: ["\\underline{\\mathsf{Hur}}_{#1,#2}^{\\diamond}", 2],
-          A: "\\mathbb{A}",
+          A: "\\operatorname{\\mathbb{A}}",
           Spec: "\\operatorname{Spec}",
           Hom: "\\operatorname{Hom}",
           PGL: "\\operatorname{PGL}",
@@ -52,12 +51,12 @@
           ch: "\\operatorname{ch}",
           Sym: "\\operatorname{Sym}",
           Gm: "\\operatorname{\\mathbb{G}_{m}}",
-          Z: "\\mathbb{Z}",
-          N: "\\mathbb{N}",
-          Gr: "\\mathbb{G}",
+          Z: "\\operatorname{\\mathbb{Z}}",
+          N: "\\operatorname{\\mathbb{N}}",
+          Gr: "\\operatorname{Gr}",
           s: "\\operatorname{\\mathsf{sq}}",
           Proj: "\\operatorname{Proj}",
-          G: "\\mathbb{G}",
+          G: "\\operatorname{\\mathbb{G}}",
           Fin: "\\operatorname{\\mathsf{Fin}}",
           Lin: "\\operatorname{\\mathsf{Lin}}",
           Inc: "\\operatorname{\\mathsf{Inc}}",
@@ -66,7 +65,7 @@
           V: "\\operatorname{\\mathsf{Vect}}",
           codim: "\\operatorname{codim}",
           Supp: "\\operatorname{Supp}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Bog: "\\operatorname{Bog}",
           m: "\\operatorname{\\mathfrak{m}}",
           ord: "\\operatorname{ord}",
@@ -102,7 +101,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -123,7 +127,8 @@
 <div class="stacks-tag-nav"><a href="07D9.html">&laquo; Proof </a><span class="stacks-tag-current">Tag C3F1</span><a href="2541.html">Conjecture 2.10 &raquo;</a></div>
 <div class="stacks-definition" id="definition-completecurve">
   <div class="stacks-env-head"><strong>Definition&nbsp;2.9.</strong> <a href="../tag/C3F1.html" class="stacks-tag-link">(C3F1)</a></div>
-  <div class="stacks-env-body"><p>Let $Y$ be a stack.  We say <strong>there exist plenty of complete curves in $Y$</strong> if for all $n \in \N$ there exists a complete curve $B_{i}$ and non-constant morphism $\beta_{i}:B_{i} \to Y$ such that the morphism $\coprod \beta_{n}: \coprod_{n}B_{n} \to Y$  does not factor through a non-trivial closed substack.</p></div>
+  <div class="stacks-env-body"><p>Let $Y$ be a stack.  We say <strong>there exist plenty of complete curves in $Y$</strong> if for all $n \in \N$ there exists a complete curve $B_{i}$ and non-constant morphism $\beta_{i}:B_{i} \to Y$ such that the morphism $\coprod \beta_{n}: \coprod_{n}B_{n} \to Y$  does not factor through a non-trivial closed substack.</p>
+</div>
 </div>
 
 <hr>

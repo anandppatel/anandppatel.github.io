@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           k: "k",
           Vec: "\\operatorname{Vec}",
           O: "{\\mathcal O}",
@@ -91,7 +90,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -111,14 +115,15 @@
 <main class="stacks-main">
 <h1 class="stacks-section-title">3.3. The general case</h1>
 <p class="stacks-para">We now use the results of Section&nbsp;3.1 and Section&nbsp;3.2 to deduce the main theorem.
-Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algebraically closed field with $\charac \k = 0$ or $\charac \k > d$.</p>
+Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algebraically closed field with $\charac \k = 0$ or $\charac \k &gt; d$.</p>
 <div class="stacks-theorem" id="thm-E">
   <div class="stacks-env-head"><strong>Theorem&nbsp;3.13.</strong> <a href="../tag/47FD.html" class="stacks-tag-link">(47FD)</a></div>
   <div class="stacks-env-body"><p>Let $E$ be a vector bundle on $Y$ of rank $(d-1)$.
   There exists an $n$ (depending on $E$) such that for any line bundle $L$ of degree at least $n$, there exists a smooth curve $X$ and a finite flat morphism $\phi \from X \to Y$ of degree $d$ such that $E_\phi \cong E \otimes L$.
-  Furthermore, we have $H^1(X, N_{X/ E \otimes L}) = 0$, where $X \subset E \otimes L$ is the canonical affine embedding.</p></div>
+  Furthermore, we have $H^1(X, N_{X/ E \otimes L}) = 0$, where $X \subset E \otimes L$ is the canonical affine embedding.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/06E1.html" class="stacks-tag-link">(06E1)</a></div>
   <div class="stacks-env-body"><p>Choose an isotrivial degeneration $E_0$ of $E$ of the form
   $$E_0 = L_1 \oplus \dots \oplus L_{d-1},$$
@@ -126,18 +131,19 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
   That is, let $(\Delta, 0)$ be a pointed curve and $\mathcal E$ a vector bundle on $Y \times \Delta$ such that $\mathcal E|_0 = E_0$ and $\mathcal E|_t \cong E$ for all $t \in \Delta \setminus \{0\}$.
   Such a degeneration exists by <a href="/papers/vector-bundles-finite-covers/tag/E16D.html" class="stacks-ref-link">Proposition&nbsp;2.8 <span class="stacks-ref-tag">[E16D]</span></a>.
   After replacing $\mathcal E$ by $\mathcal E \otimes \lambda$ for a line bundle $\lambda$ on $Y$ of large degree, we may also assume that $\deg L_1 \geq 2g_Y-1$.</p>
-<p>  By <a href="/papers/vector-bundles-finite-covers/tag/FFB0.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[FFB0]</span></a>, there exists a nodal curve $W$ and a finite flat morphism $W \to Y$ with Tschirnhausen bundle $E_0$.
+<p>By <a href="/papers/vector-bundles-finite-covers/tag/FFB0.html" class="stacks-ref-link">Proposition&nbsp;3.1 <span class="stacks-ref-tag">[FFB0]</span></a>, there exists a nodal curve $W$ and a finite flat morphism $W \to Y$ with Tschirnhausen bundle $E_0$.
   By the key proposition (<a href="/papers/vector-bundles-finite-covers/tag/51A7.html" class="stacks-ref-link">Proposition&nbsp;3.3 <span class="stacks-ref-tag">[51A7]</span></a>), there exists an $n$ such that for any line bundle $L$ of degree at least $n$, we can find a smooth curve $X_0$ and a finite map $X_0 \to Y$ with Tschirnhausen bundle $E_0' = E_0 \otimes L$ satisfying $H^1(N_{X_0/E_0'}) = 0$.
   Set $\mathcal E' = \mathcal E \otimes L$.
   Let $\mathcal H$ be the component of the relative Hilbert scheme of $\Tot(\mathcal E') / \Delta$ containing the point $[X_0 \subset E_0']$.
-  Since $H^1(N_{X_0 / E'_0}) = 0$, the map $\mathcal H \to \Delta$ is smooth at $[X_0 \subset E'_0]$ by [<a class="stacks-cite" href="../../../bibliography.html#bib-sernesi-5d1872fe">31</a>, Theorem&nbsp;3.2.12].
+  Since $H^1(N_{X_0 / E'_0}) = 0$, the map $\mathcal H \to \Delta$ is smooth at $[X_0 \subset E'_0]$ by [<a class="stacks-cite" href="../../../bibliography.html#bib-e-sernesi-deformations-of-algebraic-schemes-616c5bda">31</a>, Theorem&nbsp;3.2.12].
   In particular, $\mathcal H \to \Delta$ is dominant.
   As a result, there exists a point $[X \subset \mathcal E'_t] \in \mathcal H$, where $X$ is smooth and $t \in \Delta$ is generic.
   By the choice of $\mathcal E$, we have $\mathcal E'_t = E \otimes L$.
   Since $H^1(N_{X_0/E_0 \otimes L}) = 0$, we can also ensure that $H^1(N_{X/E \otimes L}) = 0$ by semi-continuity.
   Let $\phi \from X \to Y$ be the projection.
   By <a href="/papers/vector-bundles-finite-covers/tag/A565.html" class="stacks-ref-link">Proposition&nbsp;2.10 <span class="stacks-ref-tag">[A565]</span></a>, we get that $E_\phi \cong E \otimes L$ and $X \subset E \otimes L$ is the canonical affine embedding of $\phi$.
-  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  The proof is now complete.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-commentary" id="rem-stack">
   <div class="stacks-env-head"><strong>Remark&nbsp;3.14.</strong> <a href="../tag/0507.html" class="stacks-tag-link">(0507)</a></div>
@@ -148,7 +154,8 @@ Recall that $Y$ is a connected, projective, and smooth curve over $\k$, an algeb
   The rule
   $$\tau \from \phi \mapsto E_\phi$$
   defines a morphism $\tau \from \mathcal H_d(Y) \to \Vec_{d-1}(Y)$.
-  Then <a href="/papers/vector-bundles-finite-covers/tag/47FD.html" class="stacks-ref-link">Theorem&nbsp;3.13 <span class="stacks-ref-tag">[47FD]</span></a> says that given $E \in \Vec_{d-1}(Y)$ and given any line bundle $L$ on $Y$ of large enough degree, there exists a point $[\phi \from X \to Y]$ of $\mathcal H_d(Y)$ such that $\tau(\phi) = E \otimes L$, and furthermore, such that the map $\tau$ is smooth at $[\phi]$.</p></div>
+  Then <a href="/papers/vector-bundles-finite-covers/tag/47FD.html" class="stacks-ref-link">Theorem&nbsp;3.13 <span class="stacks-ref-tag">[47FD]</span></a> says that given $E \in \Vec_{d-1}(Y)$ and given any line bundle $L$ on $Y$ of large enough degree, there exists a point $[\phi \from X \to Y]$ of $\mathcal H_d(Y)$ such that $\tau(\phi) = E \otimes L$, and furthermore, such that the map $\tau$ is smooth at $[\phi]$.</p>
+</div>
 </div>
 
 <hr>

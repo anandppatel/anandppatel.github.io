@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -51,7 +50,7 @@
           U: "\\mathcal U",
           M: "\\mathcal M",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           gen: "{\\rm gen}",
           irr: "{\\rm irr}",
@@ -90,7 +89,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -108,17 +112,17 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <span>Proof of the claim (EA91)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="0257.html">&laquo; Claim 3.16</a><span class="stacks-tag-current">Tag EA91</span><a href="DA22.html">Proposition 4.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="0257.html">&laquo; Claim </a><span class="stacks-tag-current">Tag EA91</span><a href="DA22.html">Proposition 3.1 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof of the claim.</em> <a href="../tag/EA91.html" class="stacks-tag-link">(EA91)</a></div>
   <div class="stacks-env-body"><p>The pullback of the line bundle $O(\Delta)$ from $\td \H_{d,g}^{ns}$ to $B$ is given by
     $$(N_{p/X} \otimes N_{p'/E}) \otimes (N_{q/E} \otimes N_{q'/E}) \otimes O_B(\Delta_\alpha),$$
     where $N_{p/X}$ denotes the normal bundle of $p$ in $X$, and so on. The third equation follows.</p>
-<p>    For a generic $b \in B$, the point of $\td \H_{d,g}^{ns}$ given by $\gamma_b \from C_b \to \P^1$ does not lie in $T$ or $D$. We have the following specializations:</p>
-<ol><li>$\alpha_b \from X_b \to \P^1$ has a fiber of the form $3p_1 + p_2 + \dots$. Such $b$'s are precisely the points of $T_\alpha$, each contributing $1$ to $\deg T_\gamma$.</li>
-<li>$\alpha_b \from X_b \to \P^1$ has a fiber of the form $2p_1 + 2p_2 + p_3 + \dots$. Such $b$'s are precisely the points of $D_\alpha$, each contributing $1$ to $\deg D_\gamma$</li>
-<li>A branch point of $\alpha_b \from X_b \to \P^1$ coincides with a branch point of $\beta \from E \to \P^1$. There are $(2g_2+2d_2-2)e$ such $b$'s, each contributing $1$ to $\deg D_\gamma$.</li>
-<li>$p_b$ (resp. $q_b$) is a ramification point of $\alpha_b$. We compute the intersection multiplicity of $B$ with $T$ and $D$ at such a point by looking at a versal deformation space of $\gamma_b$. We may restrict $\gamma_b$ over an analytic neighborhood $U$ of $0$ (resp. $\infty$). Let $x$ be a coordinate on $U$. Then $\gamma_b^{-1}(U) \to U$ has the form
+<p>For a generic $b \in B$, the point of $\td \H_{d,g}^{ns}$ given by $\gamma_b \from C_b \to \P^1$ does not lie in $T$ or $D$. We have the following specializations:</p>
+<ol><li><p>$\alpha_b \from X_b \to \P^1$ has a fiber of the form $3p_1 + p_2 + \dots$. Such $b$'s are precisely the points of $T_\alpha$, each contributing $1$ to $\deg T_\gamma$.</p></li>
+<li><p>$\alpha_b \from X_b \to \P^1$ has a fiber of the form $2p_1 + 2p_2 + p_3 + \dots$. Such $b$'s are precisely the points of $D_\alpha$, each contributing $1$ to $\deg D_\gamma$</p></li>
+<li><p>A branch point of $\alpha_b \from X_b \to \P^1$ coincides with a branch point of $\beta \from E \to \P^1$. There are $(2g_2+2d_2-2)e$ such $b$'s, each contributing $1$ to $\deg D_\gamma$.</p></li>
+<li><p>$p_b$ (resp. $q_b$) is a ramification point of $\alpha_b$. We compute the intersection multiplicity of $B$ with $T$ and $D$ at such a point by looking at a versal deformation space of $\gamma_b$. We may restrict $\gamma_b$ over an analytic neighborhood $U$ of $0$ (resp. $\infty$). Let $x$ be a coordinate on $U$. Then $\gamma_b^{-1}(U) \to U$ has the form
       $$U[y]/(y^3-xy) \sqcup U \sqcup \dots \sqcup U \to U.$$
       A versal deformation of this cover is given over $\spec \C[s,t]$ by
       $$U[y]/(y^3-xy-sx-t) \sqcup U \sqcup \dots \sqcup U \to U.$$ In
@@ -130,8 +134,8 @@
       deduce that the intersection number of $B$ with $T$ at $b$ is
       $3$. There are $[p] \cdot \Ram(\alpha)$ (resp. $[q] \cdot
       \Ram(\alpha)$) such $b$'s, each contributing 3 to $\deg
-      T_\gamma$.</li>
-<li>$p_b$ (resp. $q_b$) is not a ramification point of
+      T_\gamma$.</p></li>
+<li><p>$p_b$ (resp. $q_b$) is not a ramification point of
       $\alpha_b$, but lies over a branch point. Again, we look at a
       versal deformation of $\gamma_b$. In this case,
       $\gamma_b^{-1}(U) \to U$ has the form
@@ -155,7 +159,7 @@
       contributes $2$ to the intersection number $e = \Br(\alpha)
       \cdot \{0\} \times B$. The remaining count, which we want, is
       therefore $e - 2[p]\cdot \Ram(\alpha)$. Similarly, the count for
-      $q_b$ is $e - 2[q] \cdot \Ram(\alpha)$.</li></ol>
+      $q_b$ is $e - 2[q] \cdot \Ram(\alpha)$.</p></li></ol>
 <p>The expressions for $T_\gamma$ and $D_\gamma$ follow from combining the above contributions.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
 </div>

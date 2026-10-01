@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Section 4 — Interpolation Problems: Del Pezzo Surfaces</title>
+  <title>Section 4: The degree $8$, type 0 del Pezzos — Interpolation Problems: Del Pezzo Surfaces</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -234,40 +238,49 @@
 <p class="stacks-para">Next we consider $\bp^{1} \times \bp^{1} \subset \bp^{8}$ embedded by the linear system of $(2,2)$-curves. To prove weak interpolation, by Table&nbsp;1, we want to show there is such a surface passing through $12$ general points $\Gamma_{12} \subset \bp^{8}$.  As in the sextic del Pezzo case, we will again ``build'' a surface starting from a curve.</p>
 <div class="stacks-lemma" id="lem-genus2degree10">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.1.</strong> <a href="../tag/4060.html" class="stacks-tag-link">(4060)</a></div>
-  <div class="stacks-env-body"><p>Through $12$ general points $\Gamma_{12} \subset \bp^{8}$ there passes a smooth genus $2$ curve of degree $10$.</p></div>
+  <div class="stacks-env-body"><p>Through $12$ general points $\Gamma_{12} \subset \bp^{8}$ there passes a smooth genus $2$ curve of degree $10$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/BCA0.html" class="stacks-tag-link">(BCA0)</a></div>
-  <div class="stacks-env-body"><p>This is a special case of <a href="/papers/interpolation-del-pezzo/tag/9DC8.html" class="stacks-ref-link">Theorem&nbsp;1.2 <span class="stacks-ref-tag">[9DC8]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>This is a special case of <a href="/papers/interpolation-del-pezzo/tag/9DC8.html" class="stacks-ref-link">Theorem&nbsp;1.3 <span class="stacks-ref-tag">[9DC8]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-lemma" id="lem-degree10divisors">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.2.</strong> <a href="../tag/ABA6.html" class="stacks-tag-link">(ABA6)</a></div>
-  <div class="stacks-env-body"><p>A general degree $5$ divisor class $D$ on a smooth genus $2$ curve may be written uniquely as $K_{C} + A$, where $A$ is a basepoint free degree $3$ divisor class.  A general degree $10$ divisor class $E$ can be expressed as $2D$ for $2^{4}$ distinct degree $5$ divisor classes $D$.</p></div>
+  <div class="stacks-env-body"><p>A general degree $5$ divisor class $D$ on a smooth genus $2$ curve may be written uniquely as $K_{C} + A$, where $A$ is a basepoint free degree $3$ divisor class.  A general degree $10$ divisor class $E$ can be expressed as $2D$ for $2^{4}$ distinct degree $5$ divisor classes $D$.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/C494.html" class="stacks-tag-link">(C494)</a></div>
-  <div class="stacks-env-body"><p>Similar to <a href="/papers/interpolation-del-pezzo/tag/BF4A.html" class="stacks-ref-link">Lemma&nbsp;3.2 <span class="stacks-ref-tag">[BF4A]</span></a>. We leave the details to the reader.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>Similar to <a href="/papers/interpolation-del-pezzo/tag/BF4A.html" class="stacks-ref-link">Lemma&nbsp;3.2 <span class="stacks-ref-tag">[BF4A]</span></a>. We leave the details to the reader.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-lemma" id="lem-buildP1P1">
   <div class="stacks-env-head"><strong>Lemma&nbsp;4.3.</strong> <a href="../tag/447C.html" class="stacks-tag-link">(447C)</a></div>
-  <div class="stacks-env-body"><p>The general genus $2$, degree $10$ curve $C \subset \bp^{8}$ is contained in a $\bp^{1} \times \bp^{1}$ embedded via the linear system of $(2,2)$ curves.</p></div>
+  <div class="stacks-env-body"><p>The general genus $2$, degree $10$ curve $C \subset \bp^{8}$ is contained in a $\bp^{1} \times \bp^{1}$ embedded via the linear system of $(2,2)$ curves.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/E7F6.html" class="stacks-tag-link">(E7F6)</a></div>
   <div class="stacks-env-body"><p>Let $H$ denote the degree $10$ hyperplane divisor class on $C \subset \bp^{8}$. Write $H = 2D$ for some degree five divisor class $D$, and write $D \sim K_{C} + A$ for a unique degree $3$ divisor class $A$. By generality assumptions, $A$ is basepoint free, and we obtain a map $$f \from C \to \bp^{1} \times \bp^{1}$$ given by the pair of series $(|K_{C}|, |A|)$. This map embeds $C$ as a $(2,3)$ curve.</p>
-<p>The linear system $|(2,2)|$ on this $\bp^{1} \times \bp^{1}$ restricts to the complete linear system $2D$ on $C$, and therefore induces the original embedding $C \subset \bp^{8}$.  The image of $\bp^{1} \times \bp^{1}$ under the system $|(2,2)|$ is therefore the surface we desire.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+<p>The linear system $|(2,2)|$ on this $\bp^{1} \times \bp^{1}$ restricts to the complete linear system $2D$ on $C$, and therefore induces the original embedding $C \subset \bp^{8}$.  The image of $\bp^{1} \times \bp^{1}$ under the system $|(2,2)|$ is therefore the surface we desire.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 <div class="stacks-theorem" id="thm-weakinterpolationP1xP1">
   <div class="stacks-env-head"><strong>Theorem&nbsp;4.4.</strong> <a href="../tag/E8C9.html" class="stacks-tag-link">(E8C9)</a></div>
-  <div class="stacks-env-body"><p>$\bp^{1} \times \bp^{1} \subset \bp^{8}$ embedded via the linear system of $(2,2)$ curves satisfies weak interpolation.</p></div>
+  <div class="stacks-env-body"><p>$\bp^{1} \times \bp^{1} \subset \bp^{8}$ embedded via the linear system of $(2,2)$ curves satisfies weak interpolation.</p>
 </div>
-<div class="stacks-proof" id="">
+</div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/8B00.html" class="stacks-tag-link">(8B00)</a></div>
-  <div class="stacks-env-body"><p>This follows by combining <a href="/papers/interpolation-del-pezzo/tag/4060.html" class="stacks-ref-link">Lemma&nbsp;4.1 <span class="stacks-ref-tag">[4060]</span></a> and <a href="/papers/interpolation-del-pezzo/tag/447C.html" class="stacks-ref-link">Lemma&nbsp;4.3 <span class="stacks-ref-tag">[447C]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  <div class="stacks-env-body"><p>This follows by combining <a href="/papers/interpolation-del-pezzo/tag/4060.html" class="stacks-ref-link">Lemma&nbsp;4.1 <span class="stacks-ref-tag">[4060]</span></a> and <a href="/papers/interpolation-del-pezzo/tag/447C.html" class="stacks-ref-link">Lemma&nbsp;4.3 <span class="stacks-ref-tag">[447C]</span></a>.<span class="stacks-qed" aria-hidden="true"></span></p>
 </div>
-<div class="stacks-commentary" id="">
+</div>
+<div class="stacks-commentary">
   <div class="stacks-env-head"><strong>Remark&nbsp;4.5.</strong> <a href="../tag/67D4.html" class="stacks-tag-link">(67D4)</a></div>
-  <div class="stacks-env-body"><p>An interesting feature of this solution to our interpolation problem is that the surfaces we've constructed through the $12$ general points $\Gamma_{12}$ are in fact <em>special</em> among the two dimensional family of surfaces passing through these points.  Indeed, the set $\Gamma_{12}$ is contained in a $(2,3)$ curve on the surfaces we've constructed, but a general set of twelve points on $\bp^{1}\times \bp^{1}$ does not lie on any $(2,3)$ curve!</p></div>
+  <div class="stacks-env-body"><p>An interesting feature of this solution to our interpolation problem is that the surfaces we've constructed through the $12$ general points $\Gamma_{12}$ are in fact <em>special</em> among the two dimensional family of surfaces passing through these points.  Indeed, the set $\Gamma_{12}$ is contained in a $(2,3)$ curve on the surfaces we've constructed, but a general set of twelve points on $\bp^{1}\times \bp^{1}$ does not lie on any $(2,3)$ curve!</p>
+</div>
 </div>
 
 <hr>

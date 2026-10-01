@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Theorem 3.4 (F221) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
+  <title>Theorem 3 (F221) — Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</title>
   <link rel="stylesheet" href="../../../style.css?v=stacks-20260517">
   <link rel="stylesheet" href="../stacks.css?v=stacks-20260519-qed">
   <script src="../../../comments-config.js?v=comments-20260519" defer></script>
@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -116,20 +120,21 @@
     <a href="../index.html" class="stacks-paper-link">Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>Theorem 3.4 (F221)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Statement of Results, extended example, and high level outline</a> / <span>Theorem 3 (F221)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="99A8.html">&laquo; Theorem 3.3</a><span class="stacks-tag-current">Tag F221</span><a href="48CA.html">Theorem 3.5 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="F804.html">&laquo; Theorem 2</a><span class="stacks-tag-current">Tag F221</span><a href="48CA.html">Theorem 4 &raquo;</a></div>
 <div class="stacks-theorem" id="serparintro">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;3.4.</strong> <a href="../tag/F221.html" class="stacks-tag-link">(F221)</a></div>
-  <div class="stacks-env-body"><p>For $i \in \{1,2\}$ let $M_i$ be a $d_i \times n_i$ matrix. Taking series and parallel connections along the last column of $M_1$ and the first column of $M_2$, we have in $A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_1-1}\otimes QH^\bullet_{GL_{r+1}}(\mb{P}^r)\otimes A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_2-1}\cong A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_1+n_2-1}[\hbar]$ the equality $$\opc[r][n_1]{M_1} \star \opc[r][n_2]{M_2}=\opc[r][n_1+n_2-1]{P(M_1,M_2)}+\hbar\opc[r][n_1+n_2-1]{S(M_1,M_2)}$$ where the quantum product $\star$ is taken along the last factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1}) = A^\bullet_{GL_{r+1}} (\mb{P}^r)^{\otimes n_1}$ and the first factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2}) = A^\bullet_{GL_{r+1}} (\mb{P}^r)^{\otimes n_2}$.</p></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;3 (<a href="/papers/orbits-equivariant-quantum/tag/0065.html" class="stacks-ref-link">Theorem&nbsp;8.1 <span class="stacks-ref-tag">[0065]</span></a>).</strong> <a href="../tag/F221.html" class="stacks-tag-link">(F221)</a></div>
+  <div class="stacks-env-body"><p>For $i \in \{1,2\}$ let $M_i$ be a $d_i \times n_i$ matrix. Taking series and parallel connections along the last column of $M_1$ and the first column of $M_2$, we have in $A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_1-1}\otimes QH^\bullet_{GL_{r+1}}(\mb{P}^r)\otimes A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_2-1}\cong A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n_1+n_2-1}[\hbar]$ the equality $$[\mathcal{O}_{M_1}] \star [\mathcal{O}_{M_2}]=[\mathcal{O}_{P(M_1,M_2)}]+\hbar[\mathcal{O}_{S(M_1,M_2)}]$$ where the quantum product $\star$ is taken along the last factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_1}) = A^\bullet_{GL_{r+1}} (\mb{P}^r)^{\otimes n_1}$ and the first factor of $A^\bullet_{GL_{r+1}} ((\mb{P}^r)^{n_2}) = A^\bullet_{GL_{r+1}} (\mb{P}^r)^{\otimes n_2}$.</p>
+</div>
 </div>
 
 <hr>
 <div class="stacks-comments"
      data-comment-page-id="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F221.html"
      data-comment-page-url="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F221.html"
-     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F221 (Theorem 3.4)"
-     data-comment-page-label="Tag F221 (Theorem 3.4)"
+     data-comment-page-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F221 (Theorem 3)"
+     data-comment-page-label="Tag F221 (Theorem 3)"
      data-comment-paper-title="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
   <h3>Comments</h3>
   <p class="stacks-comments-empty">No comments yet.</p>
@@ -137,13 +142,13 @@
     <h4>Leave a comment</h4>
     <p>Comments are reviewed before appearing.</p>
     <form action="https://formsubmit.co/anand.patel@okstate.edu" method="POST">
-      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F221 (Theorem 3.4)">
+      <input type="hidden" name="_subject" value="Comment on Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology — Tag F221 (Theorem 3)">
       <input type="hidden" name="_next" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F221.html">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="page" value="https://anandpatel.github.io/papers/orbits-equivariant-quantum/tag/F221.html">
       <input type="hidden" name="paper" value="Orbits in $(\mathbb{P}^r)^n$ and equivariant quantum cohomology">
-      <input type="hidden" name="location" value="Tag F221 (Theorem 3.4)">
+      <input type="hidden" name="location" value="Tag F221 (Theorem 3)">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email:</label>

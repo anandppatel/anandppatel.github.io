@@ -15,15 +15,14 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           M: "\\overline{\\mathcal M}",
           H: "{\\mathcal{H}}",
           td: "\\widetilde",
-          F: "\\mathbb{F}",
+          F: "{\\mathbb{F}}",
           sub: "{\\rm sub}",
           Hdg: "\\overline{\\H}_{d,g}",
           Hdgn: "\\overline{\\H}_{d,g}",
@@ -212,7 +211,12 @@
           RR: "\\mathbb{R}",
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -231,17 +235,18 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S6.html">Section 6: Degrees $9,8$ and $7$</a> / <a href="../section/S6.SS5.html">6.5. Existence of singular triads</a> / <span>Proof (4E8E)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="22DE.html">&laquo; Lemma 6.16</a><span class="stacks-tag-current">Tag 4E8E</span><a href="7977.html">Lemma 6.17 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4E8E.html" class="stacks-tag-link">(4E8E)</a></div>
   <div class="stacks-env-body"><p>$\scf$ is a torsion free sheaf, hence $H^{0}(\scx, \scf)$ is a torsion free $k[[t]]$-module, i.e. it is free. <a href="/papers/interpolation-del-pezzo/tag/0F93.html" class="stacks-ref-link">Lemma&nbsp;6.12 <span class="stacks-ref-tag">[0F93]</span></a> tells us that the rank must be $2$.</p>
-<p>By Grauert's theorem, it suffices to show $$h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2.$$  </p>
-<p>A section $s$ of $\scf|_{\scx_{0}}$ is a section of $\scl ' |_{\scx_{0}}$ vanishing at the ten points $p'_{i}(0)$. We will now analyze what the zero locus of $s$ must be on each of the four components of $\scx_{0}$, beginning with $X$. </p>
-<p>The restriction $s|_{X}$ vanishes on a conic containing $p'_{7}(0), p'_{8}(0), p'_{9}(0),$ and $p'_{10}(0)$. Since the latter three points are collinear lying on the line $M$, such a conic is degenerate, of the form $M \cup N$, where $N$ is any line containing $p'_{7}(0)$. </p>
-<p>The restriction $s|_{F_{0,1}}$ vanishes on a divisor of class $|S_{0,1} + R_{0,1}|$ containing the pair of points $p'_{1}(0), p'_{2}(0)$.  Similar descriptions hold for the remaining two components. </p>
+<p>By Grauert's theorem, it suffices to show $$h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2.$$</p>
+<p>A section $s$ of $\scf|_{\scx_{0}}$ is a section of $\scl ' |_{\scx_{0}}$ vanishing at the ten points $p'_{i}(0)$. We will now analyze what the zero locus of $s$ must be on each of the four components of $\scx_{0}$, beginning with $X$.</p>
+<p>The restriction $s|_{X}$ vanishes on a conic containing $p'_{7}(0), p'_{8}(0), p'_{9}(0),$ and $p'_{10}(0)$. Since the latter three points are collinear lying on the line $M$, such a conic is degenerate, of the form $M \cup N$, where $N$ is any line containing $p'_{7}(0)$.</p>
+<p>The restriction $s|_{F_{0,1}}$ vanishes on a divisor of class $|S_{0,1} + R_{0,1}|$ containing the pair of points $p'_{1}(0), p'_{2}(0)$.  Similar descriptions hold for the remaining two components.</p>
 <p>A section $s$ of $\scf |_{\scx_{0}}$ consists of sections on each component which agree on the intersection curves $L_{i,j}$.
-We claim that such a global section is determined, up to scaling, by its restriction to the component $X$.  Indeed, by choosing a conic of the form $M \cup N$, we determine two points $m_{i,j}, n_{i,j}$ on each line $L_{i,j}$, namely the intersections $M \cap L_{i,j}$, $N \cap L_{i,j}$.  </p>
+We claim that such a global section is determined, up to scaling, by its restriction to the component $X$.  Indeed, by choosing a conic of the form $M \cup N$, we determine two points $m_{i,j}, n_{i,j}$ on each line $L_{i,j}$, namely the intersections $M \cap L_{i,j}$, $N \cap L_{i,j}$.</p>
 <p>From the generality assumptions we have imposed, we get that there is a unique curve in the class $|S_{0,1} + R_{0,1}|$ containing the four points  $p'_{1}(0), p'_{2}(0), m_{0,1},$ and $n_{0,1}$.  Similarly for the other components $F_{i,j}$.
-It follows that any global section of $\scf$ is determined, up to scaling, by its restriction to $X$. But the restriction to $X$ is a degenerate conic of the form $M \cup N$ as described above, and therefore $h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2$, as we claimed.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+It follows that any global section of $\scf$ is determined, up to scaling, by its restriction to $X$. But the restriction to $X$ is a degenerate conic of the form $M \cup N$ as described above, and therefore $h^{0}(\scx_{0}, \scf|_{\scx_{0}}) = 2$, as we claimed.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

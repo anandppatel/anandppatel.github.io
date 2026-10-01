@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           N: "\\mathbb{N}",
           Z: "\\mathbb{Z}",
           Q: "\\mathbb{Q}",
@@ -85,7 +84,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -104,14 +108,15 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S3.html">Section 3: Vanishing sequences and the Wronskian</a> / <span>Proof (4E94)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="C47C.html">&laquo; Proposition 3.3</a><span class="stacks-tag-current">Tag 4E94</span><a href="E5FB.html">Theorem 4.1 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/4E94.html" class="stacks-tag-link">(4E94)</a></div>
-  <div class="stacks-env-body"><p>Assume that \(\dim H^0(C, L) > r+1\); otherwise, the statement is vacuous.</p>
-<p>  Since the Grassmannian has Picard rank one, any morphism from it is either finite or constant.
+  <div class="stacks-env-body"><p>Assume that \(\dim H^0(C, L) &gt; r+1\); otherwise, the statement is vacuous.</p>
+<p>Since the Grassmannian has Picard rank one, any morphism from it is either finite or constant.
   It is easy to see that \(\rho\) is not constant; so it must be finite.</p>
-<p>  For \(C = \P^1\) and \(L = O(d)\), we have by (3.2)
+<p>For \(C = \P^1\) and \(L = O(d)\), we have by (11)
   $$\det j_{r+1} L \cong O((r+1)d) \otimes O(-r(r+1)) = O((r+1)(d-r)).$$
-  Hence, both the source and target of \(\rho\) have the same dimension, namely \((r+1)(d-r)\).<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  Hence, both the source and target of \(\rho\) have the same dimension, namely \((r+1)(d-r)\).<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

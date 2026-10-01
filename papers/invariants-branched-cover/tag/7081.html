@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           todo: [" {\\color{red} TODO #1}", 1],
           comment: ["", 1],
           N: "\\mathbb{N}",
@@ -87,8 +86,8 @@
           id: "\\operatorname{id}",
           tr: "\\operatorname{tr}",
           length: "\\operatorname{length}",
-          G: "\\mathbb{G}",
-          A: "\\mathbb{A}",
+          G: "\\operatorname{{\\mathbb{G}}}",
+          A: "\\operatorname{{\\mathbb{A}}}",
           Bl: "\\operatorname{Bl}",
           Ext: "\\operatorname{Ext}",
           Tor: "\\operatorname{Tor}",
@@ -96,7 +95,7 @@
           Isom: "\\operatorname{Isom}",
           Aut: "\\operatorname{Aut}",
           codim: "\\operatorname{codim}",
-          F: "\\mathbb{F}",
+          F: "\\operatorname{\\mathbb{F}}",
           Exc: "\\operatorname{Exc}",
           rk: "\\operatorname{rk}",
           Pic: "\\operatorname{Pic}",
@@ -142,7 +141,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -161,15 +165,16 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S2.html">Section 2: Preliminaries</a> / <a href="../section/S2.SS2.html">2.2. Evidence</a> / <span>Example 2.3 (7081)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="00FE.html">&laquo; Remark 2.2</a><span class="stacks-tag-current">Tag 7081</span><a href="A1AC.html">Proposition 2.4 &raquo;</a></div>
-<div class="stacks-env" id="6,4">
+<div class="stacks-env" id="6-4">
   <div class="stacks-env-head"><strong>Example&nbsp;2.3.</strong> <a href="../tag/7081.html" class="stacks-tag-link">(7081)</a></div>
   <div class="stacks-env-body"><p>Let $\alpha \from C \to \P^1$ be a general degree $6$ cover, with $C$ a genus $4$,
-non-hyperelliptic curve.  Then $E =   \cO(1) \oplus \cO(2)^{\oplus 4}$. Since $F$ is a sub vector bundle of $\Sym^{2}E$, we conclude that the degree of any summand of $F$ cannot exceed $4$.  </p>
+non-hyperelliptic curve.  Then $E =   \cO(1) \oplus \cO(2)^{\oplus 4}$. Since $F$ is a sub vector bundle of $\Sym^{2}E$, we conclude that the degree of any summand of $F$ cannot exceed $4$.</p>
 <p>On the other hand, since $\deg F = 27$ and $\rk F = 9$,  the bundle $F$ is imbalanced if and only if $\cO(4)$ is a summand of $F$.</p>
-<p>We show that $H^0(F(-4))\neq 0$ by considering the sequence (2.4). We want
+<p>We show that $H^0(F(-4))\neq 0$ by considering the sequence (4). We want
 to show that the map $H^0(\P^1, \Sym^2E(-4))  \to H^0( \P^1, \alpha_*(\omega_\alpha) (-4))$ is not injective. But we can identify this map with:
 $$H^0(\P E, 2\zeta-4f) \to H^0(C, (2\zeta-4f)|_C)$$</p>
-<p>The linear system $|\zeta-2f|$ on $\P E$ restricts to the full canonical series on $C$.  Furthermore, the sections of $2\zeta- 4f$ are obtained by taking sums of products of sections of $|\zeta - 2f|$.  Since the canonical model of $C$ lies on a unique quadric in $\P^3$, we see that there is a unique element of $|2\zeta- 4f|$ containing $C$.  This means that the map (2.5) is not injective, which implies that $F$ contains an $\cO(4)$ summand. Therefore $F$ is not balanced.</p></div>
+<p>The linear system $|\zeta-2f|$ on $\P E$ restricts to the full canonical series on $C$.  Furthermore, the sections of $2\zeta- 4f$ are obtained by taking sums of products of sections of $|\zeta - 2f|$.  Since the canonical model of $C$ lies on a unique quadric in $\P^3$, we see that there is a unique element of $|2\zeta- 4f|$ containing $C$.  This means that the map (5) is not injective, which implies that $F$ contains an $\cO(4)$ summand. Therefore $F$ is not balanced.</p>
+</div>
 </div>
 
 <hr>

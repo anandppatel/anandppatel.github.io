@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           themaintheorem: "\\Alph{maintheorem}",
           M: "\\mathcal M",
           H: "{\\mathcal{H}}",
@@ -148,7 +147,12 @@
           bbR: "\\mathbb{R}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -171,22 +175,24 @@
 <div class="stacks-definition" id="def-maroni">
   <div class="stacks-env-head"><strong>Definition&nbsp;1.7.</strong> <a href="../tag/8499.html" class="stacks-tag-link">(8499)</a></div>
   <div class="stacks-env-body"><p>Let $\cE$ be a rank $d-1$, degree $g+d-1$ vector bundle on $\P^1$.  Then the <em>Maroni locus</em> $\sfM(\cE)$ is defined as
-$$\sfM(\cE) := \overline {\{[\alpha \from C \to \P^1] \in \H_{d,g} \mid \cE_{\alpha} = \cE\}}.$$</p></div>
+$$\sfM(\cE) := \overline {\{[\alpha \from C \to \P^1] \in \H_{d,g} \mid \cE_{\alpha} = \cE\}}.$$</p>
 </div>
-<p class="stacks-para">Clearly if $\sfM(\cE)$ is nonempty then  $\deg \cE = g+d-1$ and $\rk \cE = d-1$.  However, more can be said about $\cE$ in this situation.  For instance, $\cE$ cannot have any nonpositive summands, since this would force $C$ to be disconnected.  Write $$\mathcal{E} = \cO(a_{1}) \oplus \cO(a_{2}) ... \oplus \cO(a_{d-1})$$ with $0 < a_{1} \leq a_{2} \leq ... \leq a_{d-1}$.   and set $\lfloor \cE \rfloor : = a_{1}$.</p>
+</div>
+<p class="stacks-para">Clearly if $\sfM(\cE)$ is nonempty then  $\deg \cE = g+d-1$ and $\rk \cE = d-1$.  However, more can be said about $\cE$ in this situation.  For instance, $\cE$ cannot have any nonpositive summands, since this would force $C$ to be disconnected.  Write $$\mathcal{E} = \cO(a_{1}) \oplus \cO(a_{2}) ... \oplus \cO(a_{d-1})$$ with $0 &lt; a_{1} \leq a_{2} \leq ... \leq a_{d-1}$.   and set $\lfloor \cE \rfloor : = a_{1}$.</p>
 <div class="stacks-definition" id="tame">
   <div class="stacks-env-head"><strong>Definition&nbsp;1.8.</strong> <a href="../tag/D3D7.html" class="stacks-tag-link">(D3D7)</a></div>
-  <div class="stacks-env-body"><p>We maintain the notation above. A vector bundle $\cE$ of rank $d-1$ and degree $g+d-1$  on $\P^1$ is <em>tame</em> if $a_{i} - a_{i-1} \leq \lfloor \cE \rfloor$ for all $i = 2, ... ,d-1$.</p></div>
+  <div class="stacks-env-body"><p>We maintain the notation above. A vector bundle $\cE$ of rank $d-1$ and degree $g+d-1$  on $\P^1$ is <em>tame</em> if $a_{i} - a_{i-1} \leq \lfloor \cE \rfloor$ for all $i = 2, ... ,d-1$.</p>
+</div>
 </div>
 <p class="stacks-para">Among all tame bundles $\cE$ with fixed $\lfloor \cE \rfloor = m$, there is a most generic one, which we call $\cE[m]$.  It is the unique tame bundle which maximizes the sum $(d-1)a_{1} + (d-2)a_{2} + ... + a_{d-1}$.</p>
-<p class="stacks-para">The most comprehensive theorem on the geometry of the Maroni loci to date is found in [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-de565de0">DP15</a>], which relies heavily on the work of Ohbuchi [<a class="stacks-cite" href="../../../bibliography.html#bib-math-e2a01f10">Ohb97</a>] and Coppens [<a class="stacks-cite" href="../../../bibliography.html#bib-math-e2a01f10">Cop99</a>]:</p>
+<p class="stacks-para">The most comprehensive theorem on the geometry of the Maroni loci to date is found in [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-b8b8cdd2">DP15</a>], which relies heavily on the work of Ohbuchi [<a class="stacks-cite" href="../../../bibliography.html#bib-akira-ohbuchi-on-some-numerical-relations-591ed43c">Ohb97</a>] and Coppens [<a class="stacks-cite" href="../../../bibliography.html#bib-marc-coppens-existence-of-pencils-with-8edd66cb">Cop99</a>]:</p>
 <div class="stacks-theorem" id="thm-maroniloci">
-  <div class="stacks-env-head"><strong>Theorem&nbsp;1.9.</strong> <a href="../tag/C76B.html" class="stacks-tag-link">(C76B)</a></div>
+  <div class="stacks-env-head"><strong>Theorem&nbsp;1.9 (Deopurkar, P- [<a class="stacks-cite" href="../../../bibliography.html#bib-anand-deopurkar-and-anand-patel-the-b8b8cdd2">DP15</a>]).</strong> <a href="../tag/C76B.html" class="stacks-tag-link">(C76B)</a></div>
   <div class="stacks-env-body"><p>Let $m$ be an integer satisfying $\frac{g+d-1}{{d \choose 2}} \leq m \leq  \frac{g+d-1}{d-1} $.</p>
-<ol><li>If $\sfM(\cE)$ is nonempty, then $\cE$ is a tame bundle.</li>
-<li>If $\lfloor \cE \rfloor \leq m$ then $\sfM(\cE) \subset \sfM(\cE[m])$.</li>
-<li>$\sfM(\cE[m]) \subset \sfM(\cE[m+1])$ for all $m$.</li>
-<li>$\sfM(\cE[m])$ is an irreducible subvariety of $\H_{d,g}$ of codimension $g-(d-1)m + 1$ unless $m = \lfloor \frac{g+d-1}{d-1} \rfloor$, in which case $\sfM(\cE[m]) =  \H_{d,g}$.</li></ol>
+<ol><li><p>If $\sfM(\cE)$ is nonempty, then $\cE$ is a tame bundle.</p></li>
+<li><p>If $\lfloor \cE \rfloor \leq m$ then $\sfM(\cE) \subset \sfM(\cE[m])$.</p></li>
+<li><p>$\sfM(\cE[m]) \subset \sfM(\cE[m+1])$ for all $m$.</p></li>
+<li><p>$\sfM(\cE[m])$ is an irreducible subvariety of $\H_{d,g}$ of codimension $g-(d-1)m + 1$ unless $m = \lfloor \frac{g+d-1}{d-1} \rfloor$, in which case $\sfM(\cE[m]) =  \H_{d,g}$.</p></li></ol>
 </div>
 </div>
 <p class="stacks-para">In particular, point $(4)$ says that a general cover $\alpha \from C \to \P^1$ has a balanced Tschirnhausen bundle $\cE_{\alpha}$.</p>

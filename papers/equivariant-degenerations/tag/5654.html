@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           rood: ["\\ignorespaces", 1],
           on: "\\operatorname",
           mb: "\\mathbb",
@@ -29,7 +28,7 @@
           Spec: "\\on{Spec}",
           rank: "\\on{rank}",
           wt: "\\widetilde",
-          P: "\\mathbb{P}",
+          P: "\\mb{P}",
           Orb: "\\mathsf{Orb}",
           k: "\\mathbb{C}",
           p: "\\mathsf{p}",
@@ -71,7 +70,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -87,10 +91,10 @@
     <a href="../index.html" class="stacks-paper-link">Equivariant Degenerations of Plane Curve Orbits</a>
   </div>
 </header>
-<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 8: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS2.html">8.2. Preliminary lemmas</a> / <span>Proof (5654)</span></div>
+<div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S8.html">Section 7: Degenerations III: Quartic Plane Curves</a> / <a href="../section/S8.SS2.html">7.2. Preliminary lemmas</a> / <span>Proof (5654)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="0A81.html">&laquo; Lemma 8.1</a><span class="stacks-tag-current">Tag 5654</span><a href="8FD0.html">Lemma 8.2 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-tag-nav"><a href="0A81.html">&laquo; Lemma 7.1</a><span class="stacks-tag-current">Tag 5654</span><a href="8FD0.html">Lemma 7.2 &raquo;</a></div>
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/5654.html" class="stacks-tag-link">(5654)</a></div>
   <div class="stacks-env-body"><p>Let $Z \subset Q$ be the scheme of length 3 (respectively 4)
   supported at $p\in Q$.  By counting conditions, for both $n=3,4$ we
@@ -100,12 +104,13 @@
   the union of two distinct lines (since $Z$ is not contained in a
   line, and also $p$, $p_{1}$, $p_{2}$ are not collinear). Therefore
   the conic $Q'$ is smooth. It is unique because of Bezout's theorem.</p>
-<p>  If $n=4$, then $Q'$ cannot be a double line since the underlying
+<p>If $n=4$, then $Q'$ cannot be a double line since the underlying
   line would then have to be tangent to $Q$ at $p$, but the tangent
   line does not pass through $p_1$ by assumption. We also cannot have
   $Q'$ be the union of two distinct lines or else $Q'$ can only meet
   $Q$ at $p$ with maximum multiplicity 3. Therefore $Q'$ is smooth,
-  and again Bezout's theorem provides uniqueness.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+  and again Bezout's theorem provides uniqueness.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>

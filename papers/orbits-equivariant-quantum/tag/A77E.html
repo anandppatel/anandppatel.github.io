@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           mb: "\\mathbb",
           mf: "\\mathfrak",
           mc: "\\mathcal",
@@ -32,7 +31,7 @@
           Chow: "{\\rm Chow}",
           Spec: "{\\rm Spec}",
           Prob: "{\\rm Prob}",
-          F: "\\mathbb{F}",
+          F: "F_{1}",
           Fo: "F_{0,1}",
           Co: "{\\rm Contain}",
           Span: "{\\rm Span}",
@@ -57,7 +56,7 @@
           NN: "{\\mathcal N}",
           pr: "{\\rm pr}",
           Vt: "{\\operatorname{Vert}}",
-          Gr: "\\mathbb{G}",
+          Gr: "{\\operatorname{Gr}}",
           ord: "{\\operatorname{ord}}",
           conv: "{\\operatorname{conv}}",
           headrulewidth: "0.4pt",
@@ -100,7 +99,12 @@
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
           bz: "\\mathbb{Z}",
-          bbZ: "\\mathbb{Z}"
+          bbZ: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -118,18 +122,14 @@
 </header>
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S11.html">Section 11: Equivariant Chow class of the graph closure $\ol{\Gamma}_M$ of $\mu_M$</a> / <span>Theorem 11.1 (A77E)</span></div>
 <main class="stacks-main">
-<div class="stacks-tag-nav"><a href="5C7F.html">&laquo; Proof </a><span class="stacks-tag-current">Tag A77E</span><a href="85F8.html">Corollary 11.2 &raquo;</a></div>
+<div class="stacks-tag-nav"><a href="47FF.html">&laquo; Proof of Theorem 10.3 [25D7] </a><span class="stacks-tag-current">Tag A77E</span><a href="85F8.html">Corollary 11.2 &raquo;</a></div>
 <div class="stacks-theorem" id="PFA">
   <div class="stacks-env-head"><strong>Theorem&nbsp;11.1.</strong> <a href="../tag/A77E.html" class="stacks-tag-link">(A77E)</a></div>
   <div class="stacks-env-body"><p>Let $M$ be a $d \times n$ matrix, and let $$q : QH^\bullet_{GL_{r+1}}(\mb{P}^r) \to A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1})\cong A^\bullet_{GL_{r+1}}(\pt)[H]/(F(H)^d)$$ be the quotient map, with $q(z) = H$ and $q(\hbar) = F(H)$. Then the equivariant Chow class $$[\ol{\Gamma}_M] \in A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1}\times(\mb{P}^r)^n) = A^\bullet_{GL_{r+1}}(\mb{P}^r)^{\otimes n}\otimes A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1})$$ is equal to $(1 \otimes q)([M]_\hbar^\dagger)$.</p>
-<p>Equivalently, let $a_k \in  A^\bullet_{GL_{r+1}} ((\mb{P}^r)^n)\otimes A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1})$ be the result of replacing $H_{n+1}$ with $H$ in any expression for $\opc{\tau^{\le k+1}(M \oplus \ast)}$ with degree at most $r$ in $H_{n+1}$. (For example, we can use the formula given in <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.2 <span class="stacks-ref-tag">[C75C]</span></a>.)
+<p>Equivalently, let $a_k \in  A^\bullet_{GL_{r+1}} ((\mb{P}^r)^n)\otimes A^\bullet_{GL_{r+1}}(\mb{P}^{(r+1)\times d-1})$ be the result of replacing $H_{n+1}$ with $H$ in any expression for $[\mathcal{O}_{\tau^{\le k+1}(M \oplus \ast)}]$ with degree at most $r$ in $H_{n+1}$. (For example, we can use the formula given in <a href="/papers/orbits-equivariant-quantum/tag/C75C.html" class="stacks-ref-link">Theorem&nbsp;9.1 <span class="stacks-ref-tag">[C75C]</span></a>.)
 Then
 $$[\ol{\Gamma_M}]=\sum_{k=0}^{d-1} a_k F(H)^k.$$</p>
-<p>\begin{comment}
-Equivalently, given a class $\beta\in A^\bullet((\mb{P}^r)^n)$ and $0\leq i\leq d$ and $0\leq j\leq r$, we have
-$$\int_{(\mb{P}^r)^n}{(\mu_M)_*(F(H)^i H^j)\cap \beta}=\int_{(\mb{P}^r)^{n+1}}{\opc[r][n+1]{\tau^{\le d-i}(M \cup \ast)}\cap H_{n+1}^j \cap p^* \beta},$$
-where $p : (\mb{P}^r)^{n+1}\to (\mb{P}^r)^{n}$ is the projection to the first $n$ factors.
-\end{comment}</p></div>
+</div>
 </div>
 
 <hr>

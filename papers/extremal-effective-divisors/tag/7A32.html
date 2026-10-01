@@ -15,11 +15,10 @@
     window.MathJax = {
       loader: { load: ['[tex]/bboldx'] },
       tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: { '[+]': ['bboldx'] },
         macros: {
-          operatorname: ['\\mathrm{#1}', 1],
           MM: "\\mathcal M",
           BM: "\\overline{\\mathcal M}",
           TMM: "\\widetilde{\\mathcal M}",
@@ -106,7 +105,12 @@
           br: "\\mathbb{R}",
           Z: "\\mathbb{Z}",
           ZZ: "\\mathbb{Z}",
-          bz: "\\mathbb{Z}"
+          bz: "\\mathbb{Z}",
+          llbracket: "\\mathopen{[\\![}",
+          rrbracket: "\\mathclose{]\\!]}",
+          sslash: "\\mathbin{/\\!/}",
+          dasharrow: "\\dashrightarrow",
+          hdots: "\\cdots"
         }
       },
       svg: { fontCache: 'global' }
@@ -125,19 +129,20 @@
 <div class="stacks-breadcrumb"><a href="../index.html">Table of contents</a> / <a href="../section/S5.html">Section 5: Pulling back the Gieseker-Petri divisor</a> / <span>Proof (7A32)</span></div>
 <main class="stacks-main">
 <div class="stacks-tag-nav"><a href="A701.html">&laquo; Lemma 5.1</a><span class="stacks-tag-current">Tag 7A32</span><a href="6CFF.html">Lemma 5.2 &raquo;</a></div>
-<div class="stacks-proof" id="">
+<div class="stacks-proof">
   <div class="stacks-env-head"><em>Proof.</em> <a href="../tag/7A32.html" class="stacks-tag-link">(7A32)</a></div>
-  <div class="stacks-env-body"><p>Let $S$ be a fiber of $\varphi: X \to \bbP^1$.  So $S = \Bl_{3}\bbF_{2}$.  We first show that the restriction map $$r : H^{0}(X, \OO_{X}(D)) \to H^{0}(S, \OO_{S}(D))$$ is surjective.  By the long exact sequence, it is enough to show that $$h^{1}(X, \OO_{X}(D-S) = 0.$$  </p>
+  <div class="stacks-env-body"><p>Let $S$ be a fiber of $\varphi: X \to \bbP^1$.  So $S = \Bl_{3}\bbF_{2}$.  We first show that the restriction map $$r : H^{0}(X, \OO_{X}(D)) \to H^{0}(S, \OO_{S}(D))$$ is surjective.  By the long exact sequence, it is enough to show that $$h^{1}(X, \OO_{X}(D-S) = 0.$$</p>
 <p>By the Leray spectral sequence for $\varphi$, $h^{1}(X, \OO_{X}(D-S)) = 0$ if
 $$h^{0}(R^{1}\varphi_{*}(\OO_{X}(D-S)) = h^{1}(\varphi_{*}\OO_{X}(D-S))=0. $$
 The sheaf $R^{1}\varphi_{*}\OO_{X}(D-S)$ vanishes, because the line bundle class $3\tau - 2e$ on $S = \Bl_{3}\bbF_{2}$ has no higher cohomology.  Furthermore, by push-pull, we have
 $$\varphi_{*}\OO_{X}(D-S)\cong \varphi_{*}(\OO_{X}(3\zeta - 2e))\otimes \OO_{\bbP^{1}}(a-3),$$
 which has vanishing higher cohomology for $a \gg 0$.
-Therefore, $r$ is surjective. The divisor class $3\tau - 2e$ on $\Bl_{3}\bbF_{2}$ is base point free. By adjunction, curves parameterized by the linear system $|3\tau - 2e|$ have genus one. Furthermore, the locus of curves with worse than nodal singularities is of codimension $2$ in $|3\tau - 2e|$.  Therefore, (i) follows from Bertini's theorem.  </p>
+Therefore, $r$ is surjective. The divisor class $3\tau - 2e$ on $\Bl_{3}\bbF_{2}$ is base point free. By adjunction, curves parameterized by the linear system $|3\tau - 2e|$ have genus one. Furthermore, the locus of curves with worse than nodal singularities is of codimension $2$ in $|3\tau - 2e|$.  Therefore, (i) follows from Bertini's theorem.</p>
 <p>In exactly the same way, one can show that the restriction map $H^{0}(\OO_{X}(D)) \to H^{0}(\OO_{E_{i}}(D))$ is surjective when $a\gg 0$. The adjunction formula applied to the curve class $2l + (a-1)r$ implies that $C_i$
 has genus $a-1$, thus proving (ii).</p>
 <p>The proper transform $\Pi'$ of $\Pi$ in $X$ is isomorphic to $\Pi$ under the blow down map $\beta: X\to Y$.  The intersection $D \cdot \Pi'$ has divisor class $(a+1)\wt{f}_{1}$ in $\Pi'$, where $\wt{f}_{1}$ is the ruling class
-corresponding to $f_1$ under the isomorphism $\Pi' \cong \Pi$. It gives rise to $(a+1)$ disjoint curves that are precisely the rational tails in the family $\varphi: D \to \bbP^1$. Hence (iii) follows right away.<span class="stacks-qed" aria-hidden="true"></span></p></div>
+corresponding to $f_1$ under the isomorphism $\Pi' \cong \Pi$. It gives rise to $(a+1)$ disjoint curves that are precisely the rational tails in the family $\varphi: D \to \bbP^1$. Hence (iii) follows right away.<span class="stacks-qed" aria-hidden="true"></span></p>
+</div>
 </div>
 
 <hr>
