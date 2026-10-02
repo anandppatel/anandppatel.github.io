@@ -31,7 +31,8 @@ def figures(items):
         view_box = ET.parse(path).getroot().attrib["viewBox"].split()
         width, height = (float(n) for n in view_box[2:])
         anchor = f' id="{html.escape(f["id"])}"' if f.get("id") else ""
-        out.append(f'<figure{anchor}><img src="figures/{html.escape(f["file"])}" alt="{html.escape(f["alt"], quote=True)}" width="{width:g}" height="{height:g}" loading="lazy" decoding="async"><figcaption>{inline(f["caption"])}</figcaption></figure>')
+        revision = "?v=20261002-facts" if f["file"] in {"c3.svg", "t5.svg"} else ""
+        out.append(f'<figure{anchor}><img src="figures/{html.escape(f["file"])}{revision}" alt="{html.escape(f["alt"], quote=True)}" width="{width:g}" height="{height:g}" loading="lazy" decoding="async"><figcaption>{inline(f["caption"])}</figcaption></figure>')
     return '<div class="illustrations">' + "\n".join(out) + "</div>"
 
 tool_ids = [t["id"] for t in data["tools"]]
