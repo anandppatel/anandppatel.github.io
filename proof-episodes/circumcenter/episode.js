@@ -11,12 +11,20 @@ let active=false, step=0, current=null;
 const padding=38, clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const set=(el,attrs)=>Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
 const scaled=p=>({x:padding+p.x*(size.width-2*padding),y:padding+p.y*(size.height-2*padding)});
+// Arrays are separate facts, not factors in a product.
+function renderEquation(element, value) {
+ if (!Array.isArray(value)) { element.textContent=value; return; }
+ const list=document.createElement('ul');
+ list.className='proof-facts';
+ value.forEach(fact=>{const item=document.createElement('li');item.textContent=fact;list.appendChild(item);});
+ element.replaceChildren(list);
+}
 const steps=[
- {stage:'The triangle',sentence:'Let ABC be a noncollinear triangle, with D, E, and F the midpoints of BC, CA, and AB.',equation:'BD = DC · CE = EA · AF = FB',key:'Matching marks identify the two equal halves of each side.'},
+ {stage:'The triangle',sentence:'Let ABC be a noncollinear triangle, with D, E, and F the midpoints of BC, CA, and AB.',equation:['BD = DC','CE = EA','AF = FB'],key:'Matching marks identify the two equal halves of each side.'},
  {stage:'A perpendicular bisector',sentence:'The perpendicular bisector of AB is the line through its midpoint F perpendicular to AB.',equation:'AF = FB, with a right angle at F',key:'Blue: the side AB and its perpendicular bisector; the square marks a right angle.'},
- {stage:'Equal distances · forward',sentence:'If P ≠ F lies on this line, triangles PFA and PFB are congruent by side–angle–side.',equation:'AF = BF · PF is shared · ∠PFA = ∠PFB = 90°',key:'Blue and teal: the two congruent triangles; P is a point on the bisector.'},
+ {stage:'Equal distances · forward',sentence:'If P ≠ F lies on this line, triangles PFA and PFB are congruent by side–angle–side.',equation:['AF = BF','PF is shared','∠PFA = ∠PFB = 90°'],key:'Blue and teal: the two congruent triangles; P is a point on the bisector.'},
  {stage:'Equal distances · forward',sentence:'Therefore PA = PB, and this equality also holds when P = F.',equation:'PA = PB',key:'Gold: corresponding sides of the congruent triangles; at F, use AF = BF.'},
- {stage:'Equal distances · converse',sentence:'Conversely, if PA = PB and P is off the line AB, triangles PFA and PFB are congruent by side–side–side.',equation:'PA = PB · AF = BF · PF is shared',key:'The equal-distance assumption and the midpoint give three equal pairs of sides.'},
+ {stage:'Equal distances · converse',sentence:'Conversely, if PA = PB and P is off the line AB, triangles PFA and PFB are congruent by side–side–side.',equation:['PA = PB','AF = BF','PF is shared'],key:'The equal-distance assumption and the midpoint give three equal pairs of sides.'},
  {stage:'Equal distances · converse',sentence:'Their angles at F are equal and sum to 180°, so PF is perpendicular to AB; if P lies on line AB, equal distances force P = F.',equation:'∠PFA = ∠PFB = 90°',key:'The adjacent right angles place P on the perpendicular bisector; the midpoint case follows directly.'},
  {stage:'The equal-distance fact',sentence:'Thus a point is equally far from A and B exactly when it lies on their perpendicular bisector.',equation:'PA = PB ⇔ P lies on the perpendicular bisector of AB',key:'Gold: equal distances; blue: the line they characterize; the same fact applies to any segment.'},
  {stage:'Construct O',sentence:'Since AB and AC are nonparallel, their perpendicular bisectors meet at a unique point O.',equation:'Two nonparallel lines determine O',key:'Blue and violet: the first two perpendicular bisectors; gold: their intersection O.'},
@@ -142,7 +150,7 @@ function draw(){
  $('proof-next').disabled=g.degenerate;
  return g;
 }
-function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;$('proof-equation').textContent=s.equation;$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
+function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;renderEquation($('proof-equation'),s.equation);$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
 function announce(){ $('announcement').textContent=current.degenerate?'No unique circumcenter at drawing precision.':`Triangle updated. ${$('location').textContent}`; }
 function move(index,x,y){points[index]={x:clamp((x-padding)/(size.width-2*padding),0,1),y:clamp((y-padding)/(size.height-2*padding),0,1)};draw();}
 buttons.forEach((button,index)=>{

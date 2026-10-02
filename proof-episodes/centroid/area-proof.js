@@ -2,8 +2,16 @@
 'use strict';
 const byId=id=>document.getElementById(id);
 const set=(el,attrs)=>Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
+// Arrays are separate facts, not factors in a product.
+function renderEquation(element, value) {
+ if (!Array.isArray(value)) { element.textContent=value; return; }
+ const list=document.createElement('ul');
+ list.className='proof-facts';
+ value.forEach(fact=>{const item=document.createElement('li');item.textContent=fact;list.appendChild(item);});
+ element.replaceChildren(list);
+}
 const steps=[
- {title:'Begin with two medians',sentence:'For a noncollinear triangle, let D and E be the midpoints of BC and CA, and let the medians AD and BE meet inside the triangle at G.',equation:'BD = DC   ·   AE = EC',regions:[],medians:['a','b'],segments:['BD','DC','AE','EC']},
+ {title:'Begin with two medians',sentence:'For a noncollinear triangle, let D and E be the midpoints of BC and CA, and let the medians AD and BE meet inside the triangle at G.',equation:['BD = DC','AE = EC'],regions:[],medians:['a','b'],segments:['BD','DC','AE','EC']},
  {title:'Equal halves',sentence:'Triangles ABD and ACD have equal bases BD and DC and the same height from A, so they have equal areas.',equation:'[ABD] = [ACD]',regions:['ABD','ACD'],medians:['a'],segments:['BD','DC']},
  {title:'Equal smaller pieces',sentence:'Triangles BGD and CGD also have equal bases BD and DC and a common height from G, so their areas are equal.',equation:'[BGD] = [CGD]',regions:['BGD','CGD'],medians:['a'],segments:['BD','DC']},
  {title:'Subtract equal areas',sentence:'Subtracting BGD and CGD from the equal halves ABD and ACD leaves triangles ABG and ACG with equal areas.',equation:'[ABG] = [ACG]',regions:['ABG','ACG'],removed:['BGD','CGD'],medians:['a']},
@@ -45,7 +53,7 @@ function render(){
  byId('proof-stage').textContent=step.title;
  byId('proof-progress').textContent=`Sentence ${index+1} of ${steps.length}`;
  // Leave the live reading region untouched during ordinary drag updates.
- if(byId('proof-sentence').textContent!==step.sentence){byId('proof-sentence').textContent=step.sentence;byId('proof-equation').textContent=step.equation;}
+ if(byId('proof-sentence').textContent!==step.sentence){byId('proof-sentence').textContent=step.sentence;renderEquation(byId('proof-equation'),step.equation);}
  byId('proof-reading').hidden=!valid;byId('proof-pause').hidden=valid;
  byId('proof-prev').disabled=index===0;byId('proof-next').disabled=!valid;
  byId('proof-next').textContent=index===steps.length-1?'Replay proof':'Next sentence';

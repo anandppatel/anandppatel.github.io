@@ -10,17 +10,25 @@ let drag=null,lastPicked=-1,active=false,step=0,current=null;
 const padding=38,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const set=(el,attrs)=>Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
 const scaled=p=>({x:padding+(.5+(p.x-camera.x)*camera.zoom)*(size.width-2*padding),y:padding+(.5+(p.y-camera.y)*camera.zoom)*(size.height-2*padding)});
+// Arrays are separate facts, not factors in a product.
+function renderEquation(element, value) {
+ if (!Array.isArray(value)) { element.textContent=value; return; }
+ const list=document.createElement('ul');
+ list.className='proof-facts';
+ value.forEach(fact=>{const item=document.createElement('li');item.textContent=fact;list.appendChild(item);});
+ element.replaceChildren(list);
+}
 const steps=[
  {stage:'The triangle',sentence:'Let ABC be a noncollinear triangle.',equation:'A, B, and C do not lie on one line',key:'The original triangle is outlined in blue.'},
  {stage:'An altitude line',sentence:'An altitude line passes through a vertex and is perpendicular to the line containing the opposite side.',equation:'The altitude from A is perpendicular to BC',key:'Blue: the altitude from A; the square marks its right angle with BC or its extension.'},
- {stage:'A larger triangle',sentence:'The lines through A, B, and C parallel to BC, CA, and AB are pairwise nonparallel, so they have unique pairwise intersections P, Q, and R as shown.',equation:'QR ∥ BC · RP ∥ CA · PQ ∥ AB',key:'The view widens to show the construction; each colored pair of lines is parallel.'},
+ {stage:'A larger triangle',sentence:'The lines through A, B, and C parallel to BC, CA, and AB are pairwise nonparallel, so they have unique pairwise intersections P, Q, and R as shown.',equation:['QR ∥ BC','RP ∥ CA','PQ ∥ AB'],key:'The view widens to show the construction; each colored pair of lines is parallel.'},
  {stage:'The first parallelogram',sentence:'ABCQ is a parallelogram, so its opposite sides AQ and BC have equal length.',equation:'AQ = BC',key:'Blue: parallelogram ABCQ; gold: its equal opposite sides AQ and BC.'},
  {stage:'The second parallelogram',sentence:'ACBR is also a parallelogram, so AR has the same length as BC.',equation:'AR = BC',key:'Teal: parallelogram ACBR; gold: its equal opposite sides AR and BC.'},
  {stage:'A is a midpoint',sentence:'The two parallelograms place Q and R on opposite rays from A, with AQ = AR, so A is the midpoint of QR.',equation:'Q — A — R, with AQ = AR',key:'Gold: the equal halves of QR; A lies between Q and R.'},
- {stage:'All three midpoints',sentence:'The same argument at B and C makes B the midpoint of RP and C the midpoint of PQ.',equation:'RB = BP · PC = CQ',key:'Matching marks show that A, B, and C are the three side midpoints of PQR.'},
+ {stage:'All three midpoints',sentence:'The same argument at B and C makes B the midpoint of RP and C the midpoint of PQ.',equation:['RB = BP','PC = CQ'],key:'Matching marks show that A, B, and C are the three side midpoints of PQR.'},
  {stage:'A genuine triangle',sentence:'PQR is noncollinear, since otherwise its midpoints A, B, and C would lie on one line.',equation:'Noncollinear ABC ⇒ noncollinear PQR',key:'The larger triangle is illuminated together with its three side midpoints.'},
- {stage:'The first bisector',sentence:'Because QR is parallel to BC and A is its midpoint, the altitude from A is the perpendicular bisector of QR.',equation:'AQ = AR · altitude ⟂ QR',key:'Blue: the same line is an altitude of ABC and a perpendicular bisector of PQR.'},
- {stage:'The other two bisectors',sentence:'Likewise, the altitudes from B and C are the perpendicular bisectors of RP and PQ.',equation:'Through B ⟂ RP · through C ⟂ PQ',key:'Teal and violet: the other two altitude lines; all three now bisect sides of PQR.'},
+ {stage:'The first bisector',sentence:'Because QR is parallel to BC and A is its midpoint, the altitude from A is the perpendicular bisector of QR.',equation:['AQ = AR','The altitude from A is perpendicular to QR'],key:'Blue: the same line is an altitude of ABC and a perpendicular bisector of PQR.'},
+ {stage:'The other two bisectors',sentence:'Likewise, the altitudes from B and C are the perpendicular bisectors of RP and PQ.',equation:['The altitude from B is perpendicular to RP','The altitude from C is perpendicular to PQ'],key:'Teal and violet: the other two altitude lines; all three now bisect sides of PQR.'},
  {stage:'Use the circumcenter',sentence:'The circumcenter theorem gives a unique common point H of the three perpendicular bisectors of PQR.',equation:'H is the circumcenter of PQR',key:'Gold: H and its equal distances to P, Q, and R; the earlier episode proves this theorem.'},
  {stage:'The orthocenter',sentence:'These are exactly the altitude lines of ABC, so their unique intersection H is its orthocenter.',equation:'H is the orthocenter of ABC',key:'The original triangle returns to the foreground; its three altitude lines meet at H.'}
 ];
@@ -146,7 +154,7 @@ function draw(){
  $('proof-pause').hidden=!active||!g.degenerate;$('proof-equation').hidden=g.degenerate;$('proof-next').disabled=g.degenerate;$('fit').hidden=!aux;
  return g;
 }
-function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;$('proof-equation').textContent=s.equation;$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
+function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;renderEquation($('proof-equation'),s.equation);$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
 function announce(){$('announcement').textContent=current.degenerate?'No unique orthocenter at drawing precision.':`Triangle updated. ${$('location').textContent}`;}
 function move(index,x,y){
  points[index]={x:camera.x+((clamp(x,padding,size.width-padding)-padding)/(size.width-2*padding)-.5)/camera.zoom,y:camera.y+((clamp(y,padding,size.height-padding)-padding)/(size.height-2*padding)-.5)/camera.zoom};draw();

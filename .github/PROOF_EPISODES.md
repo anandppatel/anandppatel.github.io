@@ -10,6 +10,8 @@ The unlisted collection is served at `/proof-episodes/`.
 4. Keep the collection out of the homepage, primary navigation, and any future sitemap. Search-engine tags are advisory; these are public pages, not access-controlled material.
 5. Verify entry links, local assets, narrow-screen layout, proof steps, and movable diagrams. Keep proof statements, highlighted regions, and any nondegeneracy assumptions aligned.
 
+Proof summaries with several independent facts use an `equation` array, rendered as a semantic list with one fact per line. A single formula uses a string. Do not use a centered dot as a separator between facts: reserve it for multiplication.
+
 No build step or new dependency is required. GitHub Pages publishes from the root of `main`.
 
 ## First episode

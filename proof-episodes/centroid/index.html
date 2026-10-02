@@ -23,6 +23,11 @@
 .proving .board{height:clamp(270px,44svh,430px)}.proving .legend,.proving .keyboard-hint{display:none}.proving .discovery{opacity:.6}.proof .area-note{font-size:.875rem}
 @media(max-width:760px){.proving .sidebar{display:none}.proving .board{height:clamp(220px,37svh,350px)}.proof-panel{padding:16px}.proof-sentence{font-size:1rem;min-height:4.8em}.proof-equation{font-size:1.16rem}.proof-controls{gap:8px}.proof-top{gap:6px}.proof-key{font-size:.8125rem}}
 .collection-link{color:inherit;text-underline-offset:4px}.collection-link:hover{color:#fff}.collection-link:focus-visible{outline:2px solid #bdc9e0;outline-offset:5px}
+
+/* Independent facts use real list items; centered dots remain mathematical operators. */
+.proof-equation .proof-facts{margin:0;padding-left:1.15em;display:grid;gap:.08em}
+.proof-equation .proof-facts li{padding-left:.15em;line-height:1.45}
+.proof-equation .proof-facts li::marker{font-size:.65em;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -51,7 +56,7 @@
 <div class="legend" aria-label="Diagram key"><span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Medians</span><span class="legend-item"><span class="legend-mid" aria-hidden="true"></span>Midpoints D, E, F</span><span class="legend-item"><span class="legend-g" aria-hidden="true"></span>Centroid G</span></div>
 <section class="proof-panel" id="proof-panel" aria-label="Guided area proof" hidden>
 <div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button type="button" class="proof-close" id="proof-close">Close proof</button></div>
-<div id="proof-reading" aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><p class="proof-equation" id="proof-equation"></p></div>
+<div id="proof-reading" aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><div class="proof-equation" id="proof-equation"></div></div>
 <p id="proof-pause" class="proof-pause" role="status" hidden>The area proof requires a noncollinear triangle; move a vertex off the line to continue from this sentence.</p>
 <div class="proof-key" id="proof-key"></div>
 <p class="proof-notation">[ABC] means the area of triangle ABC.</p>
