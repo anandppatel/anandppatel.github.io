@@ -42,3 +42,34 @@ The construction view widens once at sentence 3. Dragging keeps the scale fixed;
 - Run `python3 .github/build-basics.py` after editing the data. The generated `index.html` is checked in and works without JavaScript; GitHub Pages requires no build dependency. Commit the data, figures, and regenerated page together.
 - Verify every label and figure, direct links, keyboard access, and desktop/mobile layout. A drawing illustrates a fact; it never authorizes an additional fact based on its appearance.
 - This is a maintained import, not an automatic live sync with Google Drive. Reconcile later additions to the class source deliberately.
+
+## Shared-engine episodes (04–10)
+
+The incenter, Euler line, angle-bisector, Thales, two nine-point-circle parts, and
+Ceva episodes use `proof-episodes/shared/geometry.js`, `episode.js`, and
+`episode.css`. Each sibling's `episode.js` supplies the theorem, prerequisites,
+proof sentences, drawing instructions, and any explicitly stated proof-mode
+constraints. The initial three episodes keep their existing implementations.
+
+After editing lesson metadata, regenerate the static HTML with:
+
+```sh
+node .github/build-proof-episodes.cjs
+```
+
+The checked-in HTML is what GitHub Pages serves; there is no runtime build step.
+Update the revision string in that generator whenever shared assets change, then
+regenerate, so a returning visitor does not mix cached scripts with new pages.
+
+Run the numerical geometry and diagram regressions with:
+
+```sh
+node .github/check-proof-episodes.cjs
+```
+
+These tests check the implementation, including right/obtuse triangles and
+coincident named points; they do not replace the synthetic proofs. Browser QA
+should additionally cover every sentence, genuine pointer dragging, keyboard
+movement, collinear pause/recovery, explicit proof constraints and their release,
+phone-width fact lists, and links to prerequisite episodes. Preserve the distinction
+between an exact hypothesis and a drawing-precision approximation in dynamic text.
