@@ -28,32 +28,47 @@
 .proof-equation .proof-facts{margin:0;padding-left:1.15em;display:grid;gap:.08em}
 .proof-equation .proof-facts li{padding-left:.15em;line-height:1.45}
 .proof-equation .proof-facts li::marker{font-size:.65em;color:var(--muted)}
+
+.constructing .board{height:clamp(260px,35svh,350px)}.build-panel{padding:20px 22px;background:#f6f8fd;border-top:1px solid var(--line)}.build-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.build-top h2{font:400 1.35rem Georgia,"Times New Roman",serif;margin:0}.build-progress{font-size:.875rem;color:var(--muted);white-space:nowrap}.build-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:15px 0}.build-steps button{min-height:44px;white-space:normal;text-align:left;line-height:1.4}.build-steps button[aria-current="step"]{border-color:var(--blue);background:#e6edff;box-shadow:inset 3px 0 var(--blue)}.build-steps button[data-complete="true"]{color:var(--blue)}.build-steps button:disabled,.build-controls button:disabled,.proof-start:disabled{opacity:.45;cursor:default}.build-caption{font-size:.9375rem;line-height:1.5;margin:0 0 14px;min-height:3em;color:var(--muted)}.build-controls{display:flex;gap:8px;flex-wrap:wrap}.build-controls button{min-height:44px}.build-new.median{stroke-width:5}.build-new.midpoint{stroke-width:3.5}.build-new.g-label,.build-new.labels{font-weight:bold}.build-new#g-point{r:7}.build-new#g-halo{r:18;fill-opacity:.3}@media(max-width:530px){.build-panel{padding:18px 16px}.build-caption{min-height:0}}
 </style>
 </head>
 <body>
 <header><div><p class="eyebrow"><a class="collection-link" href="../">Proof episodes</a> / Geometry</p><h1>The centroid</h1></div><p class="header-note">Three medians.<br>One point, for every triangle.</p></header>
 <main>
-<div class="workspace" id="workspace">
+<div class="workspace constructing" id="workspace">
 <section aria-label="Interactive triangle">
 <div class="drawing">
 <div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag any vertex to explore.</p><button class="reset" id="reset" type="button">Reset triangle</button></div>
 <div class="board" id="board">
 <svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc">
-<title id="diagram-title">Three medians meeting at the centroid</title><desc id="diagram-desc">Triangle ABC, with D, E, and F the midpoints of BC, CA, and AB. The segments AD, BE, and CF meet at G.</desc>
+<title id="diagram-title">Construct the medians of triangle ABC</title><desc id="diagram-desc">Only triangle ABC is shown. Use the construction buttons below it to add one operation at a time.</desc>
 <path class="triangle" id="triangle"/>
 <g id="area-highlights" aria-hidden="true"></g><g id="area-cutouts" aria-hidden="true"></g>
-<line class="median median-a" id="median-a"/><line class="median median-b" id="median-b"/><line class="median median-c" id="median-c"/>
-<rect class="midpoint median-a" id="mid-a" width="8" height="8"/><rect class="midpoint median-b" id="mid-b" width="8" height="8"/><rect class="midpoint median-c" id="mid-c" width="8" height="8"/>
-<text class="labels" id="label-d">D</text><text class="labels" id="label-e">E</text><text class="labels" id="label-f">F</text>
+<line class="median median-a" id="median-a" visibility="hidden"/><line class="median median-b" id="median-b" visibility="hidden"/><line class="median median-c" id="median-c" visibility="hidden"/>
+<rect class="midpoint median-a" id="mid-a" visibility="hidden" width="8" height="8"/><rect class="midpoint median-b" id="mid-b" visibility="hidden" width="8" height="8"/><rect class="midpoint median-c" id="mid-c" visibility="hidden" width="8" height="8"/>
+<text class="labels" id="label-d" visibility="hidden">D</text><text class="labels" id="label-e" visibility="hidden">E</text><text class="labels" id="label-f" visibility="hidden">F</text>
 <line id="proof-ray" class="median median-c" visibility="hidden"/><g id="proof-segments" aria-hidden="true"></g><g id="area-labels" aria-hidden="true"></g><circle id="x-point" r="4" fill="#8551bd" visibility="hidden"/><text id="label-x" class="labels" visibility="hidden">X</text>
-<circle id="g-halo" r="13" fill="#efb057" fill-opacity=".22"/><circle id="g-point" r="5.5" fill="#bd6d13" stroke="white" stroke-width="2"/><text class="labels g-label" id="label-g">G</text>
+<circle id="g-halo" visibility="hidden" r="13" fill="#efb057" fill-opacity=".22"/><circle id="g-point" visibility="hidden" r="5.5" fill="#bd6d13" stroke="white" stroke-width="2"/><text class="labels g-label" id="label-g" visibility="hidden">G</text>
 </svg>
 <button type="button" class="vertex" data-vertex="0" style="--vertex:var(--blue)" aria-label="Vertex A. Use arrow keys to move." aria-describedby="keyboard-help"><span>A</span></button>
 <button type="button" class="vertex" data-vertex="1" style="--vertex:var(--green)" aria-label="Vertex B. Use arrow keys to move." aria-describedby="keyboard-help"><span>B</span></button>
 <button type="button" class="vertex" data-vertex="2" style="--vertex:var(--purple)" aria-label="Vertex C. Use arrow keys to move." aria-describedby="keyboard-help"><span>C</span></button>
 </div>
 <p class="notice" id="notice" hidden></p>
-<div class="legend" aria-label="Diagram key"><span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Medians</span><span class="legend-item"><span class="legend-mid" aria-hidden="true"></span>Midpoints D, E, F</span><span class="legend-item"><span class="legend-g" aria-hidden="true"></span>Centroid G</span></div>
+<div class="legend" id="diagram-legend" aria-label="Diagram key" hidden><span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Medians</span><span class="legend-item"><span class="legend-mid" aria-hidden="true"></span>Midpoints D, E, F</span><span class="legend-item"><span class="legend-g" aria-hidden="true"></span>Centroid G</span></div>
+<section class="build-panel" id="build-panel" aria-label="Construct the figure">
+<div class="build-top"><h2>Construct the figure</h2><span class="build-progress" id="build-progress">0 / 5</span></div>
+<div class="build-steps" id="build-steps">
+<button type="button" class="reset" data-build-step="1">1. Mark the side midpoints D, E, F</button>
+<button type="button" class="reset" data-build-step="2" disabled>2. Draw median AD</button>
+<button type="button" class="reset" data-build-step="3" disabled>3. Draw median BE</button>
+<button type="button" class="reset" data-build-step="4" disabled>4. Mark the intersection G</button>
+<button type="button" class="reset" data-build-step="5" disabled>5. Draw median CF</button>
+</div>
+<p class="build-caption" id="build-caption" aria-live="polite" aria-atomic="true">Begin with triangle ABC, then mark the midpoints of its three sides.</p>
+<div class="build-controls"><button type="button" class="reset" id="build-prev" disabled>Undo last step</button><button type="button" class="reset" id="build-reset" disabled>Start over</button></div>
+<button type="button" class="proof-start" id="proof-start" aria-controls="proof-panel" aria-expanded="false" hidden disabled>See the area proof</button>
+</section>
 <section class="proof-panel" id="proof-panel" aria-label="Guided area proof" hidden>
 <div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button type="button" class="proof-close" id="proof-close">Close proof</button></div>
 <div id="proof-reading" aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><div class="proof-equation" id="proof-equation"></div></div>
@@ -67,8 +82,8 @@
 <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 </section>
 <aside class="sidebar" aria-label="Centroid explanation">
-<section class="discovery"><p class="kicker">The observation</p><h2 id="observation-title">They always meet.</h2><p id="observation">For every triangle, the three medians meet at a single point <em>G</em>, called the centroid.</p><div class="ratio-title">Distance from vertex : distance to midpoint</div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#8caeff" aria-hidden="true"></span>AG : GD</span><span class="ratio-value" id="ratio-a">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#63c8bb" aria-hidden="true"></span>BG : GE</span><span class="ratio-value" id="ratio-b">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#c3a0ea" aria-hidden="true"></span>CG : GF</span><span class="ratio-value" id="ratio-c">2 : 1</span></div></section>
-<section class="proof"><h2>Why they always meet</h2><p>A <strong>median</strong> joins a vertex to the midpoint of the opposite side.</p><p>Equal bases and a shared height give equal areas; watch this simple fact force the three medians to meet.</p><button type="button" class="proof-start" id="proof-start" aria-controls="proof-panel" aria-expanded="false">See the area proof</button><p class="area-note">One sentence at a time, with the relevant pieces illuminated; you can still drag the vertices.</p><p class="area-note">In the proof, [ABC] means the area of triangle ABC.</p><p class="area-note">Allowed tools: <a href="../basics/#c4">C4 · Triangle area, equal-height comparison, and additivity</a>. <a href="../basics/">Browse The Basics</a>.</p></section>
+<section class="discovery" id="observation-panel" hidden><p class="kicker">The observation</p><h2 id="observation-title">They always meet.</h2><p id="observation">For every triangle, the three medians meet at a single point <em>G</em>, called the centroid.</p><div class="ratio-title">Distance from vertex : distance to midpoint</div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#8caeff" aria-hidden="true"></span>AG : GD</span><span class="ratio-value" id="ratio-a">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#63c8bb" aria-hidden="true"></span>BG : GE</span><span class="ratio-value" id="ratio-b">2 : 1</span></div><div class="ratio-row"><span class="ratio-name"><span class="ratio-swatch" style="background:#c3a0ea" aria-hidden="true"></span>CG : GF</span><span class="ratio-value" id="ratio-c">2 : 1</span></div></section>
+<section class="proof"><h2>Why they always meet</h2><p>A <strong>median</strong> joins a vertex to the midpoint of the opposite side.</p><p>Equal bases and a shared height give equal areas; watch this simple fact force the three medians to meet.</p><p class="area-note">One sentence at a time, with the relevant pieces illuminated; you can still drag the vertices.</p><p class="area-note">In the proof, [ABC] means the area of triangle ABC.</p><p class="area-note">Allowed tools: <a href="../basics/#c4">C4 · Triangle area, equal-height comparison, and additivity</a>. <a href="../basics/">Browse The Basics</a>.</p></section>
 </aside>
 </div>
 </main>
@@ -136,7 +151,7 @@ function draw(){
   set(byId('label-g'),{x:best.x,y:best.y+5,'text-anchor':'middle'});
   const notice=byId('notice');
   notice.hidden=!g.near;
-  notice.textContent=g.degenerate?'At drawing precision, these vertices are collinear or coincident. G is still their average and lies on every median segment. The usual unique-intersection theorem assumes a noncollinear triangle. A zero-length median has no defined ratio.':'This triangle is nearly flat. The medians still meet at G, but they may be difficult to distinguish.';
+  notice.textContent=g.degenerate?'At drawing precision, these vertices are collinear or coincident. Move a vertex off the line to continue.':'This triangle is nearly flat; its constructed pieces may be difficult to distinguish.';
   byId('observation-title').textContent=g.degenerate?'The average remains.':'They always meet.';
   byId('observation').innerHTML=g.degenerate?'Even here, <em>G</em> is the average of the three vertices. Move a vertex to make the triangle easier to see.':'For every triangle, the three medians meet at a single point <em>G</em>, called the centroid.';
   window.dispatchEvent(new CustomEvent('triangle-changed',{detail:g}));
@@ -144,7 +159,7 @@ function draw(){
 }
 function announce(){
   const g=geometry();
-  byId('announcement').textContent=g.degenerate?'At drawing precision, the vertices are collinear or coincident. G is still their average.':'Triangle updated. All three medians meet at G, two-thirds of the way from each vertex to its opposite midpoint.';
+  byId('announcement').textContent=g.degenerate?'At drawing precision, the vertices are collinear or coincident. Move a vertex off the line to continue.':'Triangle updated. '+(byId('proof-panel').hidden?byId('build-caption').textContent:byId('proof-sentence').textContent);
 }
 function move(index,x,y){
   points[index]={x:clamp((x-padding)/(size.width-2*padding),0,1),y:clamp((y-padding)/(size.height-2*padding),0,1)};
@@ -184,7 +199,7 @@ buttons.forEach((button,index)=>{
     const [dx,dy]=directions[event.key];move(index,scaled(points[index]).x+dx*step,scaled(points[index]).y+dy*step);announce();
   });
 });
-byId('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));draw();announce();});
+byId('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));window.dispatchEvent(new CustomEvent('triangle-reset'));draw();announce();});
 window.addEventListener('triangle-request',()=>{if(size.width>1)draw();});
 new ResizeObserver(entries=>{
   const {width,height}=entries[0].contentRect;
@@ -205,6 +220,6 @@ if(document.modelContext?.registerTool){
 }
 })();
 </script>
-<script src="area-proof.js?v=20261002-facts"></script>
+<script src="area-proof.js?v=20261002-build-v1"></script>
 </body>
 </html>

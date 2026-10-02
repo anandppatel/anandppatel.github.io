@@ -28,7 +28,16 @@ const steps=[
  {title:'The centroid divides each median',sentence:'Triangles ABG and BGD share a height from B to AD, so AG = 2GD; the same argument with the vertices relabelled gives the 2 : 1 ratio on the other two medians.',equation:'AG : GD = BG : GE = CG : GF = 2 : 1',regions:['ABG','BGD'],medians:['a','b','c'],segments:['AG','GD'],proved:true}
 ];
 const palette=['#3977d5','#cf8a22','#139581'];
-let index=-1,geometry=null;
+const buildSteps=[
+ {caption:'D, E, and F are the midpoints of BC, CA, and AB. Each divides its side into two equal segments.',pieces:['mid-a','mid-b','mid-c','label-d','label-e','label-f']},
+ {caption:'AD joins vertex A to the midpoint D of the opposite side: it is the first median.',pieces:['median-a']},
+ {caption:'BE joins vertex B to the midpoint E of the opposite side: it is the second median.',pieces:['median-b']},
+ {caption:'G marks the intersection of the first two medians AD and BE inside the triangle.',pieces:['g-point','g-halo','label-g']},
+ {caption:'CF is the third median. It appears to pass through G; the area proof will establish this and the 2 : 1 ratios.',pieces:['median-c']}
+];
+const buildButtons=Array.from(byId('build-steps').querySelectorAll('[data-build-step]'));
+const constructionIds=['median-a','median-b','median-c','mid-a','mid-b','mid-c','label-d','label-e','label-f','g-point','g-halo','label-g'];
+let index=-1,built=0,geometry=null;
 function construction(g){
  const [A,B,C]=g.vertices,[D,E,F]=g.midpoints,G=g.centroid;
  // Construct X by intersecting CG with AB, independently of F.
@@ -40,16 +49,39 @@ function render(){
  if(!geometry)return;
  const g=geometry,active=index>=0,step=steps[index],valid=!g.degenerate;
  byId('workspace').classList.toggle('proving',active);
+ byId('workspace').classList.toggle('constructing',!active);
+ byId('build-panel').hidden=active;
  byId('proof-panel').hidden=!active;
  set(byId('proof-start'),{'aria-expanded':String(active)});
  byId('proof-start').textContent=active?'Restart the area proof':'See the area proof';
- const showThird=!active||step.proved;
- ['median-c','mid-c','label-f'].forEach(id=>set(byId(id),{visibility:showThird?'visible':'hidden'}));
+ byId('proof-start').hidden=built!==buildSteps.length;
+ byId('proof-start').disabled=built!==buildSteps.length||!valid;
+ byId('build-progress').textContent=`${built} / ${buildSteps.length}`;
+ const caption=!valid?'Construction paused: move a vertex off the line before adding the next piece. You can still undo completed steps.':built?buildSteps[built-1].caption:'Begin with triangle ABC, then mark the midpoints of its three sides.';
+ if(byId('build-caption').textContent!==caption)byId('build-caption').textContent=caption;
+ byId('build-prev').disabled=built===0;byId('build-reset').disabled=built===0;
+ buildButtons.forEach((button,i)=>{
+  button.disabled=i>built||(i===built&&!valid);
+  button.dataset.complete=String(i<built);
+  if(i===built-1)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');
+ });
+ const visible=active?['median-a','median-b','mid-a','mid-b','label-d','label-e','g-point','g-halo','label-g',...(step.proved?['median-c','mid-c','label-f']:[])]:[
+  ...(built>=1?['mid-a','mid-b','mid-c','label-d','label-e','label-f']:[]),
+  ...(built>=2?['median-a']:[]),...(built>=3?['median-b']:[]),
+  ...(built>=4?['g-point','g-halo','label-g']:[]),...(built>=5?['median-c']:[])
+ ];
+ constructionIds.forEach(id=>{
+  const show=visible.includes(id)&&(valid||!['g-point','g-halo','label-g'].includes(id));
+  set(byId(id),{visibility:show?'visible':'hidden'});
+  byId(id).classList.toggle('build-new',!active&&built>0&&buildSteps[built-1].pieces.includes(id));
+ });
+ byId('diagram-legend').hidden=active||built!==buildSteps.length||!valid;
+ byId('observation-panel').hidden=built!==buildSteps.length||!valid;
  ['a','b','c'].forEach(key=>{byId('median-'+key).style.opacity=!active||!valid?1:step.medians?.includes(key)?1:.15;});
  ['area-highlights','area-cutouts','area-labels','proof-segments'].forEach(id=>{byId(id).innerHTML='';});
  ['proof-ray','x-point','label-x'].forEach(id=>set(byId(id),{visibility:'hidden'}));
- byId('diagram-title').textContent=active?'Area proof: '+step.title:'Three medians meeting at the centroid';
- if(!active){byId('diagram-desc').textContent='Triangle ABC with D, E, F the side midpoints; its three medians meet at G.';return;}
+ byId('diagram-title').textContent=active?'Area proof: '+step.title:`Triangle construction: ${built} of ${buildSteps.length} operations`;
+ if(!active){byId('diagram-desc').textContent=caption;return;}
  byId('proof-stage').textContent=step.title;
  byId('proof-progress').textContent=`Sentence ${index+1} of ${steps.length}`;
  // Leave the live reading region untouched during ordinary drag updates.
@@ -81,8 +113,17 @@ function render(){
  byId('diagram-desc').textContent=step.sentence+' Highlighted: '+(step.regions.length?step.regions.join(', '):(step.segments||[]).join(', '))+'.';
 }
 function show(next){index=next;render();}
+function showBuild(next){index=-1;built=next;render();}
 window.addEventListener('triangle-changed',event=>{geometry=event.detail;render();});
-byId('proof-start').addEventListener('click',()=>{show(0);byId('board').scrollIntoView({block:'start',behavior:'auto'});byId('proof-next').focus({preventScroll:true});});
+window.addEventListener('triangle-reset',()=>showBuild(0));
+buildButtons.forEach((button,i)=>button.addEventListener('click',()=>{
+ if(i>built||!geometry||(i===built&&geometry.degenerate))return;
+ showBuild(i+1);
+ byId('board').scrollIntoView({block:'start',behavior:'auto'});
+}));
+byId('build-prev').addEventListener('click',()=>{if(built>0)showBuild(built-1);});
+byId('build-reset').addEventListener('click',()=>showBuild(0));
+byId('proof-start').addEventListener('click',()=>{if(built!==buildSteps.length||!geometry||geometry.degenerate)return;show(0);byId('board').scrollIntoView({block:'start',behavior:'auto'});byId('proof-next').focus({preventScroll:true});});
 byId('proof-next').addEventListener('click',()=>{if(geometry&&!geometry.degenerate)show((index+1)%steps.length);});
 byId('proof-prev').addEventListener('click',()=>show(Math.max(0,index-1)));
 byId('proof-close').addEventListener('click',()=>{show(-1);byId('proof-start').focus({preventScroll:true});});

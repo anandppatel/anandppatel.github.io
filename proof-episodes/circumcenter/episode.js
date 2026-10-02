@@ -7,7 +7,7 @@ const colors=['#087c70','#8551bd','#315dcc'], gold='#ad660d';
 const names=['A','B','C'], midNames=['D','E','F'];
 const initial=[{x:.42,y:.15},{x:.16,y:.78},{x:.84,y:.72}];
 let points=initial.map(p=>({...p})), size={width:1,height:1}, drag=null, lastPicked=-1;
-let active=false, step=0, current=null;
+let active=false, step=0, current=null, buildCount=0;
 const padding=38, clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const set=(el,attrs)=>Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
 const scaled=p=>({x:padding+p.x*(size.width-2*padding),y:padding+p.y*(size.height-2*padding)});
@@ -19,6 +19,8 @@ function renderEquation(element, value) {
  value.forEach(fact=>{const item=document.createElement('li');item.textContent=fact;list.appendChild(item);});
  element.replaceChildren(list);
 }
+const buildStages=[{"label":"Mark midpoint D","caption":"D is the midpoint of BC; the matching marks show BD = DC."},{"label":"Bisect BC perpendicularly","caption":"Draw the line through D perpendicular to BC."},{"label":"Bisect CA perpendicularly","caption":"Mark E, the midpoint of CA, and draw its perpendicular bisector."},{"label":"Mark intersection O","caption":"Name the intersection of these two perpendicular bisectors O."},{"label":"Check the third bisector","caption":"Mark F, the midpoint of AB, and draw its perpendicular bisector; it also passes through O."},{"label":"Draw the circumcircle","caption":"Draw the circle centered at O through A; it passes through B and C too. The proof explains why."}];
+const buildButtons=[];
 const steps=[
  {stage:'The triangle',sentence:'Let ABC be a noncollinear triangle, with D, E, and F the midpoints of BC, CA, and AB.',equation:['BD = DC','CE = EA','AF = FB'],key:'Matching marks identify the two equal halves of each side.'},
  {stage:'A perpendicular bisector',sentence:'The perpendicular bisector of AB is the line through its midpoint F perpendicular to AB.',equation:'AF = FB, with a right angle at F',key:'Blue: the side AB and its perpendicular bisector; the square marks a right angle.'},
@@ -51,37 +53,37 @@ function paint(group,g,project,w,h,mini=false){
  const line=(p,q,color,width=2,extra={})=>add('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:color,'stroke-width':width,'stroke-linecap':'round',...extra});
  const path=(v,attrs)=>add('path',{d:v.map((p,i)=>`${i?'L':'M'}${p.x} ${p.y}`).join(' ')+' Z',...attrs});
  const label=(p,text,color='#59647a',dx=10,dy=-10)=>add('text',{x:p.x+dx,y:p.y+dy,class:'svg-label',fill:color,'font-size':mini?14:19},text);
- const dot=(p,color,r=4)=>add('circle',{cx:p.x,cy:p.y,r,fill:color,stroke:'white','stroke-width':1.5});
+ const dot=(p,color,r=4,attrs={})=>add('circle',{cx:p.x,cy:p.y,r,fill:color,stroke:'white','stroke-width':1.5,...attrs});
  const tick=(p,q,color,count=1)=>{const m=midpoint(p,q),len=distance(p,q);if(len<8)return;const u={x:(q.x-p.x)/len,y:(q.y-p.y)/len};for(let j=0;j<count;j++){const shift=(j-(count-1)/2)*4;line({x:m.x+u.x*shift-u.y*4,y:m.y+u.y*shift+u.x*4},{x:m.x+u.x*shift+u.y*4,y:m.y+u.y*shift-u.x*4},color,1.7);}};
  const v=g.vertices.map(project), m=g.midpoints.map(project),o=g.center?project(g.center):null;
  const stage=active?step:-1, lemma=stage>=2&&stage<=6;
- const knownO=stage===-1||stage>=7;
+ const knownO=active?stage>=7:buildCount>=4;
  const valid=!g.degenerate;
- const circleVisible=valid&&(stage===-1||stage===11);
+ const circleVisible=valid&&(active?stage===11:buildCount>=6);
  if(circleVisible){
    const r=distance(o,v[0]);
    // Very large SVG circles lose precision in browsers; the whole-circle view remains exact at its own scale.
-   if(r<1e5*Math.max(w,h))add('circle',{cx:o.x,cy:o.y,r,fill:'none',stroke:'#315dcc','stroke-width':stage===11?3:1.8,opacity:stage===11?.85:.35});
+   if(r<1e5*Math.max(w,h))add('circle',{cx:o.x,cy:o.y,r,fill:'none',stroke:'#315dcc','stroke-width':stage===11?3:1.8,opacity:stage===11?.85:.35,'data-part':'circumcircle'});
  }
- path(v,{fill:'#315dcc06',stroke:'#8691a5','stroke-width':1.7,opacity:active?.5:1});
+ path(v,{fill:'#315dcc06',stroke:'#8691a5','stroke-width':1.7,opacity:active?.5:1,'data-part':'triangle'});
  if(!valid)return;
  const p=lemma?project(lemmaPoint(g)):null;
  if(lemma&&[2,4,5].includes(stage)){
    path([p,m[2],v[0]],{fill:'#315dcc28',stroke:'#315dcc','stroke-width':2});
    path([p,m[2],v[1]],{fill:'#087c7028',stroke:'#087c70','stroke-width':2});
  }
- let shown=stage===-1||stage>=10?[0,1,2]:stage===0?[]:stage<=6?[2]:stage===7||stage===8?[1,2]:[0,1,2];
+ let shown=!active?(buildCount>=5?[0,1,2]:buildCount>=3?[0,1]:buildCount>=2?[0]:[]):stage>=10?[0,1,2]:stage===0?[]:stage<=6?[2]:stage===7||stage===8?[1,2]:[0,1,2];
  if(stage===4)shown=[]; // The converse has not established a right angle yet.
  const lit=stage===-1?shown:stage===9?[0]:stage===11?[]:shown;
  shown.forEach(i=>{
    const a=v[(i+1)%3],b=v[(i+2)%3],dir={x:-(b.y-a.y),y:b.x-a.x};
    const segment=clipLine(m[i],dir,w,h);
-   if(segment)line(...segment,colors[i],lit.includes(i)?2.7:1.5,{'stroke-dasharray':'7 6',opacity:lit.includes(i)?.9:.26});
+   if(segment)line(...segment,colors[i],lit.includes(i)?2.7:1.5,{'stroke-dasharray':'7 6',opacity:lit.includes(i)?.9:.26,'data-part':`bisector-${i}`});
  });
- const midShown=stage===0||stage===-1||stage>=9?[0,1,2]:stage<=6?[2]:[1,2];
+ const midShown=!active?(buildCount>=5?[0,1,2]:buildCount>=3?[0,1]:buildCount>=1?[0]:[]):stage===0||stage>=9?[0,1,2]:stage<=6?[2]:[1,2];
  midShown.forEach(i=>{
    const a=v[(i+1)%3],b=v[(i+2)%3],color=colors[i];
-   if(stage===0||stage<=2&&stage>=1){line(a,b,color,2.8);tick(a,m[i],color,i+1);tick(m[i],b,color,i+1);}
+   if(!active||stage===0||stage<=2&&stage>=1){line(a,b,color,2.8);tick(a,m[i],color,i+1);tick(m[i],b,color,i+1);}
    if(lemma){tick(v[0],m[2],colors[2],3);tick(m[2],v[1],colors[2],3);}
    if(shown.includes(i)&&!mini){
      const len=distance(a,b),u={x:(b.x-a.x)/len,y:(b.y-a.y)/len},n={x:-u.y,y:u.x};
@@ -89,10 +91,10 @@ function paint(group,g,project,w,h,mini=false){
      if(toward&&(toward.x-m[i].x)*n.x+(toward.y-m[i].y)*n.y<0){n.x*=-1;n.y*=-1;}
      const s=8;
      const q1={x:m[i].x+s*u.x,y:m[i].y+s*u.y},q2={x:q1.x+s*n.x,y:q1.y+s*n.y},q3={x:m[i].x+s*n.x,y:m[i].y+s*n.y};
-     add('path',{d:`M${q1.x} ${q1.y}L${q2.x} ${q2.y}L${q3.x} ${q3.y}`,fill:'none',stroke:color,'stroke-width':1.4,opacity:.85});
+     add('path',{d:`M${q1.x} ${q1.y}L${q2.x} ${q2.y}L${q3.x} ${q3.y}`,fill:'none',stroke:color,'stroke-width':1.4,opacity:.85,'data-part':`bisector-angle-${i}`});
      if(stage===5){const z1={x:m[i].x-s*u.x,y:m[i].y-s*u.y},z2={x:z1.x+s*n.x,y:z1.y+s*n.y};add('path',{d:`M${z1.x} ${z1.y}L${z2.x} ${z2.y}L${q3.x} ${q3.y}`,fill:'none',stroke:color,'stroke-width':1.4});}
    }
-   dot(m[i],color,mini?2.2:3);
+   dot(m[i],color,mini?2.2:3,{'data-part':`midpoint-${i}`});
    const merged=knownO&&distance(m[i],o)<.01;
    if(!mini&&!merged){const center={x:(v[0].x+v[1].x+v[2].x)/3,y:(v[0].y+v[1].y+v[2].y)/3};const pos=labelPosition(m[i],center,20);label(pos,midNames[i],color,0,0);}
  });
@@ -102,10 +104,10 @@ function paint(group,g,project,w,h,mini=false){
    dot(p,gold,4.5);label(p,'P',gold,10,-10);
  }
  if(knownO){
-   const radii=stage===-1||stage===8||stage===11?[0,1,2]:stage===9?[1,2]:[];
+   const radii=!active?(buildCount>=5?[0,1,2]:[]):stage===8||stage===11?[0,1,2]:stage===9?[1,2]:[];
    radii.forEach(i=>{line(o,v[i],gold,stage===-1?1.3:3,stage===-1?{opacity:.4,'stroke-dasharray':'3 5'}:{opacity:.85});tick(o,v[i],gold);});
    if(!outside(o,w,h)){
-     add('circle',{cx:o.x,cy:o.y,r:mini?7:13,fill:'#efb057',opacity:.22});dot(o,gold,mini?3.5:5.5);
+     add('circle',{cx:o.x,cy:o.y,r:mini?7:13,fill:'#efb057',opacity:.22});dot(o,gold,mini?3.5:5.5,{'data-part':'circumcenter'});
      const equalMid=m.findIndex((q,i)=>midShown.includes(i)&&distance(q,o)<.01);
      const coincident=equalMid>=0&&distance(g.midpoints[equalMid],g.center)<=1e-10*g.scale;
      const text=equalMid<0?'O':'O'+(coincident?' = ':' ≈ ')+midNames[equalMid];
@@ -129,13 +131,14 @@ function draw(){
  const avg={x:g.vertices.reduce((s,p)=>s+p.x,0)/3,y:g.vertices.reduce((s,p)=>s+p.y,0)/3};
  g.vertices.forEach((p,i)=>{const pos=labelPosition(p,avg,29);buttons[i].style.left=p.x+'px';buttons[i].style.top=p.y+'px';buttons[i].style.setProperty('--label-x',pos.x-p.x+14+'px');buttons[i].style.setProperty('--label-y',pos.y-p.y+2+'px');});
  const off=g.center&&outside(g.center);
- $('overview').hidden=!off||(active&&step<7);
- const circleShown=!active||step===11;
+ const knownO=active?step>=7:buildCount>=4;
+ $('overview').hidden=!off||!knownO;
+ const circleShown=active?step===11:buildCount>=6;
  $('overview-caption').textContent=circleShown?'This smaller view shows the whole circle and the same triangle; keep moving the vertices above.':'This smaller view shows O and the same triangle; keep moving the vertices above.';
  $('overview-diagram').setAttribute('aria-label',circleShown?'Whole-circle view of the same triangle':'Smaller view of O and the same triangle');
  if(!$('overview').hidden){const zoom=78/g.radius;paint($('overview-scene'),g,p=>({x:110+(p.x-g.center.x)*zoom,y:100+(p.y-g.center.y)*zoom}),220,200,true);}
  $('notice').hidden=!g.near;
- $('notice').textContent=g.degenerate?'These vertices are collinear, coincident, or too close to collinear at drawing precision. A noncollinear triangle is required to define a unique circumcenter.':g.radius>1e5*Math.max(size.width,size.height)?'This triangle is almost flat; its circle is too large to draw accurately here. The smaller view shows the whole circle.':'This triangle is nearly flat; O may lie very far away, and the circle may extend beyond the drawing.';
+ $('notice').textContent=g.degenerate?'These vertices are collinear, coincident, or too close to collinear at drawing precision. Move a vertex off the line to continue.':!knownO?'This triangle is nearly flat; keep its vertices noncollinear as you build.':circleShown&&g.radius>1e5*Math.max(size.width,size.height)?'This triangle is almost flat; its circle is too large to draw accurately here. The smaller view shows the whole circle.':'This triangle is nearly flat; O may lie very far away.';
  let location='';
  if(g.degenerate)location='Move a vertex off the line to recover a unique circumcenter.';
  else{
@@ -143,15 +146,30 @@ function draw(){
    const minimum=Math.min(...dots),right=g.midpoints.some(m=>distance(m,g.center)<=1e-10*g.scale);
    location=right?'Right triangle: O is the midpoint of the hypotenuse.':minimum<0?'Obtuse triangle: O lies outside the triangle.':'Acute triangle: O lies inside the triangle.';
  }
- $('location').textContent=location;
- $('diagram-desc').textContent=g.degenerate?'Triangle ABC is degenerate at drawing precision; no unique circumcenter is drawn.':(active?steps[step].sentence+' ':'')+location+(off&&(!active||step>=7)?' O lies beyond the main drawing; a smaller view shows its true location.':'');
+ $('location').textContent=location;$('location').hidden=!knownO;$('legend').hidden=active||!knownO;
+ $('diagram-desc').textContent=g.degenerate?'Triangle ABC is degenerate at drawing precision; move a vertex off the line to continue.':(active?steps[step].sentence:buildCount?buildStages[buildCount-1].caption:'Triangle ABC with no construction yet.')+(knownO?' '+location:'')+(off&&knownO?' O lies beyond the main drawing; a smaller view shows its true location.':'');
  $('proof-pause').hidden=!active||!g.degenerate;
  $('proof-equation').hidden=g.degenerate;
  $('proof-next').disabled=g.degenerate;
+ renderBuild();
  return g;
 }
+function renderBuild(){
+ const complete=buildCount===buildStages.length,blocked=!!current?.degenerate;
+ $('build-panel').hidden=active;if(active)$('workspace').classList.remove('building');else $('workspace').classList.add('building');
+ $('build-progress').textContent=`${buildCount} / ${buildStages.length}`;
+ const caption=blocked?'Move a vertex off the line to continue the construction.':buildCount?buildStages[buildCount-1].caption:'Start with triangle ABC. Use the buttons in order to add one piece at a time.';if($('build-caption').textContent!==caption)$('build-caption').textContent=caption;
+ buildButtons.forEach((button,i)=>{const n=i+1;button.disabled=n>buildCount+1||(blocked&&n>buildCount);button.setAttribute('aria-pressed',String(n<=buildCount));for(const [name,on] of [['is-done',n<=buildCount],['is-current',n===buildCount],['is-next',n===buildCount+1]]){if(on)button.classList.add(name);else button.classList.remove(name);}});
+ $('build-prev').disabled=buildCount===0;$('build-reset').disabled=buildCount===0;
+ $('proof-explanation').hidden=!complete;$('proof-start').hidden=!complete;$('proof-start').disabled=!complete||blocked;
+}
+function exitProof(){active=false;$('workspace').classList.remove('proving');$('proof-panel').hidden=true;$('proof-start').setAttribute('aria-expanded','false');}
+function clearBuild(){exitProof();buildCount=0;draw();}
+buildStages.forEach((stage,i)=>{const button=document.createElement('button');button.type='button';button.textContent=`${i+1}. ${stage.label}`;button.setAttribute('data-build-step',String(i+1));button.addEventListener('click',()=>{const n=i+1;if(active||n>buildCount+1||(current?.degenerate&&n>buildCount))return;buildCount=n;draw();board.scrollIntoView({block:'start',behavior:'instant'});});$('build-steps').appendChild(button);buildButtons.push(button);});
+$('build-prev').addEventListener('click',()=>{if(active||buildCount===0)return;buildCount--;draw();});
+$('build-reset').addEventListener('click',()=>{clearBuild();});
 function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;renderEquation($('proof-equation'),s.equation);$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
-function announce(){ $('announcement').textContent=current.degenerate?'No unique circumcenter at drawing precision.':`Triangle updated. ${$('location').textContent}`; }
+function announce(){ $('announcement').textContent=current.degenerate?'Move a vertex off the line to continue.':`Triangle updated. ${active||buildCount>=4?$('location').textContent:$('build-caption').textContent}`; }
 function move(index,x,y){points[index]={x:clamp((x-padding)/(size.width-2*padding),0,1),y:clamp((y-padding)/(size.height-2*padding),0,1)};draw();}
 buttons.forEach((button,index)=>{
  button.addEventListener('pointerdown',event=>{
@@ -166,8 +184,8 @@ buttons.forEach((button,index)=>{
  ['pointerup','pointercancel','lostpointercapture'].forEach(name=>button.addEventListener(name,end));
  button.addEventListener('keydown',event=>{const d={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];if(!d)return;event.preventDefault();const p=scaled(points[index]),n=event.shiftKey?20:4;move(index,p.x+d[0]*n,p.y+d[1]*n);announce();});
 });
-$('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));draw();announce();});
-$('proof-start').addEventListener('click',()=>{active=true;step=0;$('workspace').classList.add('proving');$('proof-panel').hidden=false;$('proof-start').setAttribute('aria-expanded','true');renderProof();board.scrollIntoView({block:'start',behavior:'instant'});$('proof-next').focus({preventScroll:true});});
+$('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));clearBuild();announce();});
+$('proof-start').addEventListener('click',()=>{if(buildCount!==buildStages.length||current?.degenerate)return;active=true;step=0;$('workspace').classList.add('proving');$('proof-panel').hidden=false;$('proof-start').setAttribute('aria-expanded','true');renderProof();board.scrollIntoView({block:'start',behavior:'instant'});$('proof-next').focus({preventScroll:true});});
 $('proof-close').addEventListener('click',()=>{active=false;$('workspace').classList.remove('proving');$('proof-panel').hidden=true;$('proof-start').setAttribute('aria-expanded','false');draw();$('proof-start').focus({preventScroll:true});});
 $('proof-prev').addEventListener('click',()=>{if(step>0){step--;renderProof();}});
 $('proof-next').addEventListener('click',()=>{if(current?.degenerate)return;step=(step+1)%steps.length;renderProof();});

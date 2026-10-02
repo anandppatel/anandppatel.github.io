@@ -8,7 +8,8 @@ The unlisted collection is served at `/proof-episodes/`.
 2. Add one entry to the ordered list in `proof-episodes/index.html`, with the episode number, topic, title, short description, and a slash-terminated link such as `centroid/`.
 3. Add a visible link back to `../` in the episode, and include `<meta name="robots" content="noindex, nofollow">` in every episode HTML page.
 4. Keep the collection out of the homepage, primary navigation, and any future sitemap. Search-engine tags are advisory; these are public pages, not access-controlled material.
-5. Verify entry links, local assets, narrow-screen layout, proof steps, and movable diagrams. Keep proof statements, highlighted regions, and any nondegeneracy assumptions aligned.
+5. Register any new center or reusable auxiliary construction in `shared/geometry-catalog.js` so it is available in All Centers; see the maintenance steps below.
+6. Verify entry links, local assets, narrow-screen layout, construction and proof steps, All Centers toggles, and movable diagrams. Keep proof statements, highlighted regions, and any nondegeneracy assumptions aligned.
 
 Proof summaries with several independent facts use an `equation` array, rendered as a semantic list with one fact per line. A single formula uses a string. Do not use a centered dot as a separator between facts: reserve it for multiplication.
 
@@ -73,3 +74,49 @@ should additionally cover every sentence, genuine pointer dragging, keyboard
 movement, collinear pause/recovery, explicit proof constraints and their release,
 phone-width fact lists, and links to prerequisite episodes. Preserve the distinction
 between an exact hypothesis and a drawing-precision approximation in dynamic text.
+
+## Build first, then prove
+
+All ten numbered episodes open with ABC alone. The numbered construction buttons
+reveal cumulative stages; only the next stage and completed stages are available.
+Undo removes one stage, Start over clears the construction without moving ABC,
+and Reset restores the original triangle and blank stage. The proof becomes
+available after the last construction stage. Closing it returns to the completed
+construction. Vertex dragging and arrow-key movement remain available throughout.
+
+For shared-engine episodes, edit `shared/constructions.js`. Each entry has
+`steps` (button labels, captions, and optional one-time placement), `draw`,
+`extent`, and optional handle and constraint functions. Level zero must draw
+nothing beyond ABC; bounds and side handles must include only revealed objects.
+Any constraint must be stated on screen. Thales places C on the diameter circle;
+undoing that placement restores free movement. The angle-bisector and Ceva
+placements happen once and leave their side points free afterward. The original
+three episodes implement the same controls in their own scripts.
+
+## All Centers: the growing comparison playground
+
+`proof-episodes/all-centers/` is an unnumbered collection entry. It uses the shared
+engine in studio mode and starts with every switch off. Its independent switches
+come from `shared/geometry-catalog.js`; circles and lines never implicitly enable
+center labels. The catalog currently includes G, O, H, I, N and fourteen auxiliary
+objects. Show all centers enables just the centers; Clear all returns to ABC.
+
+Whenever an episode introduces a center or reusable auxiliary construction:
+
+1. Add the reusable calculation to `shared/geometry.js` if needed, and add a
+   catalog entry with a stable ID, group, label, explanation, and related-episode
+   link. Center entries provide `point`; other entries provide `draw` and `extent`.
+2. The playground generates its switch from that entry automatically. Include
+   complete circle bounds and only the selected geometry in its extent. Keep
+   labels distinct from existing points, and handle right, obtuse, nearly flat,
+   and coincident-center configurations honestly.
+3. Add or extend the construction and catalog regressions, regenerate HTML, and
+   update the asset revision. Check the new object both alone and in combination
+   in the playground before publishing it with the episode.
+
+`check-proof-episodes.cjs` includes the construction-stage and catalog checks.
+They verify reveal order, independent switches, finite geometry, perpendicular
+marks, and full circle bounds. Also check the real UI at desktop and phone widths:
+blank entry, stage buttons, undo/reset, proof entry/exit, pointer and keyboard
+movement, and independent toggle changes. Keep the collection unlisted from the
+public homepage and retain its noindex metadata.

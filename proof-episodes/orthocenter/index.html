@@ -6,14 +6,14 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Drag a triangle and discover its orthocenter H, with an illuminated proof one sentence at a time.">
 <title>The orthocenter — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="episode.css?v=20261002-facts">
+<link rel="stylesheet" href="episode.css?v=20261002-build-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Geometry</p><h1>The orthocenter</h1></div><p class="header-note">Three altitude lines.<br>One meeting point, for every triangle.</p></header>
-<main><div class="workspace" id="workspace">
+<main><div class="workspace building" id="workspace">
 <section aria-label="Interactive triangle">
 <div class="drawing">
-<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag any vertex to explore.</p><button id="reset" type="button">Reset triangle</button></div>
+<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag the vertices; build below.</p><button id="reset" type="button">Reset triangle</button></div>
 <div class="board" id="board">
 <svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">The orthocenter of triangle ABC</title><desc id="diagram-desc"></desc><g id="scene"></g></svg>
 <button type="button" class="vertex" data-vertex="0" aria-label="Vertex A. Use arrow keys to move." aria-describedby="keyboard-help"><span>A</span></button>
@@ -22,7 +22,13 @@
 </div>
 <p class="notice" id="notice" role="status" hidden></p>
 <div class="overview" id="overview" hidden><div><strong id="overview-title">H is beyond the main drawing.</strong><p id="overview-caption">This smaller view shows H and the same triangle; keep moving the vertices above.</p></div><svg id="overview-diagram" viewBox="0 0 220 200" role="img" aria-label="Overview of the same triangle"><g id="overview-scene"></g></svg></div>
-<div class="legend"><span><i class="line"></i>Altitude lines</span><span><i class="dot"></i>Orthocenter H</span></div>
+<div class="legend" id="legend" hidden><span><i class="line"></i>Altitude lines</span><span><i class="dot"></i>Orthocenter H</span></div>
+<section id="build-panel" class="build-panel" aria-label="Build the construction">
+<div class="build-top"><h2>Build the picture</h2><span id="build-progress">0 / 4</span></div>
+<p id="build-caption" class="build-caption" aria-live="polite">Start with triangle ABC. Use the buttons in order to add one piece at a time.</p>
+<div id="build-steps" class="build-steps" aria-label="Construction steps"></div>
+<div class="build-controls"><button id="build-prev" type="button" disabled>Undo</button><button id="build-reset" type="button" disabled>Start over</button><button class="primary" id="proof-start" type="button" hidden disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button></div>
+</section>
 <section id="proof-panel" class="proof-panel" aria-label="Guided orthocenter proof" hidden>
 <div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button class="text-button" id="proof-close" type="button">Close proof</button></div>
 <div aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><div class="proof-equation" id="proof-equation"></div></div>
@@ -35,11 +41,11 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section class="discovery"><p class="kicker">The observation</p><h2>Three altitudes, one point.</h2><p>For every noncollinear triangle, the three altitude lines meet at a unique point <em>H</em>, called the <em>orthocenter</em>.</p><p class="location" id="location"></p></section>
-<section class="explanation"><h2>Why H exists</h2><p>Draw a parallel through each vertex to make a larger triangle; its perpendicular bisectors turn out to be our original altitudes.</p><p>This proof uses the result from <a href="../circumcenter/">the circumcenter episode</a>: the perpendicular bisectors of a noncollinear triangle meet at a unique point.</p><button class="primary" id="proof-start" type="button" aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small">One sentence at a time, with matching highlights; you can keep moving the vertices.</p>
+<section class="discovery"><p class="kicker">The observation</p><h2>Three altitudes, one point.</h2><p>For every noncollinear triangle, the three altitude lines meet at a unique point <em>H</em>, called the <em>orthocenter</em>.</p><p class="location" id="location" hidden></p></section>
+<section class="explanation" id="proof-explanation" hidden><h2>Why H exists</h2><p>Draw a parallel through each vertex to make a larger triangle; its perpendicular bisectors turn out to be our original altitudes.</p><p>This proof uses the result from <a href="../circumcenter/">the circumcenter episode</a>: the perpendicular bisectors of a noncollinear triangle meet at a unique point.</p><p class="small">One sentence at a time, with matching highlights; you can keep moving the vertices.</p>
 <details><summary>Why A lies between Q and R</summary><p>In parallelogram ABCQ, AQ points in the direction from B to C. In parallelogram ACBR, AR points from C to B. These directions are opposite, and both lengths equal BC &gt; 0, so Q, A, and R occur in that order.</p></details>
 <details><summary>Why we use altitude lines</summary><p>For an obtuse triangle, some altitudes meet the extensions of the opposite sides, and H lies outside the triangle. The complete lines always meet, even when the altitude segments do not.</p><p>For a right triangle, H is the right-angle vertex: the two legs already lie on altitude lines. The line through each vertex perpendicular to its opposite side remains well defined even when H is that vertex.</p></details>
 </section></aside>
 </div></main>
-<script src="geometry.js"></script><script src="episode.js?v=20261002-facts"></script>
+<script src="geometry.js"></script><script src="episode.js?v=20261002-build-v1"></script>
 </body></html>

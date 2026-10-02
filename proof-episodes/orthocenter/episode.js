@@ -6,7 +6,7 @@ const board=$('board'),svg=$('diagram'),buttons=[...document.querySelectorAll('.
 const colors=['#315dcc','#087c70','#8551bd'],gold='#ad660d',names=['A','B','C'],outerNames=['P','Q','R'];
 const initial=[{x:.42,y:.15},{x:.16,y:.78},{x:.84,y:.72}];
 let points=initial.map(p=>({...p})),size={width:1,height:1},camera={x:.5,y:.5,zoom:1};
-let drag=null,lastPicked=-1,active=false,step=0,current=null;
+let drag=null,lastPicked=-1,active=false,step=0,current=null,buildCount=0;
 const padding=38,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const set=(el,attrs)=>Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
 const scaled=p=>({x:padding+(.5+(p.x-camera.x)*camera.zoom)*(size.width-2*padding),y:padding+(.5+(p.y-camera.y)*camera.zoom)*(size.height-2*padding)});
@@ -18,6 +18,8 @@ function renderEquation(element, value) {
  value.forEach(fact=>{const item=document.createElement('li');item.textContent=fact;list.appendChild(item);});
  element.replaceChildren(list);
 }
+const buildStages=[{"label":"Draw the altitude from A","caption":"Mark the perpendicular foot A₁ on line BC and draw the altitude line through A."},{"label":"Draw the altitude from B","caption":"Mark the perpendicular foot B₁ on line CA and draw the altitude line through B."},{"label":"Mark intersection H","caption":"Name the intersection of the first two altitude lines H."},{"label":"Check the altitude from C","caption":"Mark the foot C₁ and draw the third altitude line; it also passes through H. The proof explains why."}];
+const buildButtons=[];
 const steps=[
  {stage:'The triangle',sentence:'Let ABC be a noncollinear triangle.',equation:'A, B, and C do not lie on one line',key:'The original triangle is outlined in blue.'},
  {stage:'An altitude line',sentence:'An altitude line passes through a vertex and is perpendicular to the line containing the opposite side.',equation:'The altitude from A is perpendicular to BC',key:'Blue: the altitude from A; the square marks its right angle with BC or its extension.'},
@@ -64,7 +66,7 @@ function paint(group,g,project,w,h,mini=false){
    add('path',{d:`M${q1.x} ${q1.y}L${q2.x} ${q2.y}L${q3.x} ${q3.y}`,fill:'none',stroke:color,'stroke-width':1.5,'data-part':part});
  };
  const v=g.vertices.map(project),outer=g.outer.map(project),center=g.center?project(g.center):null,feet=g.feet.map(project);
- const stage=active?step:-1,aux=stage>=2,knownH=stage===-1||stage>=10;
+ const stage=active?step:-1,aux=active&&stage>=2,knownH=active?stage>=10:buildCount>=3;
  const [a,b,c]=v,[p,q,r]=outer;
  if(aux&&!g.degenerate){
    path(outer,{fill:stage===7?'#315dcc10':'none',stroke:'#b4bed0','stroke-width':1.8,opacity:stage===11?.25:1,'data-part':'outer-triangle'});
@@ -82,7 +84,7 @@ function paint(group,g,project,w,h,mini=false){
  if(stage===3){path([a,b,c,q],{fill:'#315dcc25',stroke:'#315dcc','stroke-width':2,'data-part':'parallelogram-ABCQ'});line(a,q,gold,4);line(b,c,gold,4);tick(a,q,gold);tick(b,c,gold);}
  if(stage===4){path([a,c,b,r],{fill:'#087c7025',stroke:'#087c70','stroke-width':2,'data-part':'parallelogram-ACBR'});line(a,r,gold,4);line(b,c,gold,4);tick(a,r,gold);tick(b,c,gold);}
  if(stage===5){line(q,r,gold,4,{'data-part':'midpoint-A'});tick(q,a,gold);tick(a,r,gold);}
- const altitudeIndices=stage===-1||stage>=9?[0,1,2]:stage===1||stage===8?[0]:[];
+ const altitudeIndices=!active?(buildCount>=4?[0,1,2]:buildCount>=2?[0,1]:buildCount>=1?[0]:[]):stage>=9?[0,1,2]:stage===1||stage===8?[0]:[];
  altitudeIndices.forEach(i=>{
    const j=(i+1)%3,k=(i+2)%3,dir={x:-(v[k].y-v[j].y),y:v[k].x-v[j].x};
    const emphasized=stage!==9||i!==0;
@@ -94,6 +96,11 @@ function paint(group,g,project,w,h,mini=false){
    }
    if(stage>=8&&stage<=10){rightAngle(v[i],outer[j],outer[k],center,colors[i],`bisector-angle-${i}`);}
  });
+ if(!active){
+   const groups=[];
+   altitudeIndices.forEach(i=>{const f=feet[i],existing=groups.find(q=>distance(q.point,f)<.01);if(existing)existing.names.push(['A₁','B₁','C₁'][i]);else groups.push({point:f,names:[['A₁','B₁','C₁'][i]],index:i});});
+   groups.forEach(item=>{dot(item.point,colors[item.index],mini?2.5:3.5,{'data-part':`altitude-foot-point-${item.index}`});if(knownH&&distance(item.point,center)<.01)return;const atVertex=v.findIndex(q=>distance(q,item.point)<.01),text=item.names.join(' ≈ ')+(atVertex<0?'':' ≈ '+names[atVertex]);label(item.point,text,colors[item.index],mini?5:12,mini?-8:-18,{'data-part':'altitude-foot-label'});});
+ }
  if(aux){
    const outerCenter={x:(p.x+q.x+r.x)/3,y:(p.y+q.y+r.y)/3};
    outer.forEach((point,i)=>{
@@ -130,32 +137,49 @@ function draw(){
  paint($('scene'),g,p=>p,size.width,size.height);
  const avg={x:g.vertices.reduce((s,p)=>s+p.x,0)/3,y:g.vertices.reduce((s,p)=>s+p.y,0)/3};
  g.vertices.forEach((p,i)=>{const dx=p.x-avg.x,dy=p.y-avg.y,len=Math.hypot(dx,dy)||1;const x=clamp(p.x+29*dx/len,17,size.width-17),y=clamp(p.y+29*dy/len+6,23,size.height-10);buttons[i].style.left=p.x+'px';buttons[i].style.top=p.y+'px';buttons[i].style.setProperty('--label-x',x-p.x+14+'px');buttons[i].style.setProperty('--label-y',y-p.y+2+'px');});
- const aux=active&&step>=2,knownH=!active||step>=10;
+ const aux=active&&step>=2,knownH=active?step>=10:buildCount>=3;
+ const revealedFeet=!active?g.feet.slice(0,buildCount>=4?3:buildCount>=2?2:buildCount>=1?1:0):[];
+ const offFeet=revealedFeet.some(p=>outside(p));
  const offH=knownH&&g.center&&outside(g.center),offAux=aux&&g.outer.some(p=>outside(p));
- $('overview').hidden=g.degenerate||(!offH&&!offAux);
+ $('overview').hidden=g.degenerate||(!offH&&!offAux&&!offFeet);
  if(!$('overview').hidden){
-   const all=[...g.vertices,...(aux?g.outer:[]),...(knownH?[g.center]:[])];
+   const all=[...g.vertices,...revealedFeet,...(aux?g.outer:[]),...(knownH?[g.center]:[])];
    const minX=Math.min(...all.map(p=>p.x)),maxX=Math.max(...all.map(p=>p.x)),minY=Math.min(...all.map(p=>p.y)),maxY=Math.max(...all.map(p=>p.y));
    const zoom=Math.min(168/Math.max(maxX-minX,1),148/Math.max(maxY-minY,1)),cx=(minX+maxX)/2,cy=(minY+maxY)/2;
    paint($('overview-scene'),g,p=>({x:110+(p.x-cx)*zoom,y:100+(p.y-cy)*zoom}),220,200,true);
-   $('overview-title').textContent=offH?'H is beyond the main drawing.':'Part of the construction is beyond the drawing.';
-   $('overview-caption').textContent=knownH?'This smaller view shows H and the same construction; keep moving the vertices above.':'This smaller view shows all of PQR; use “Fit construction” to bring it into the main drawing.';
+   $('overview-title').textContent=offH?'H is beyond the main drawing.':offFeet?'An altitude foot is beyond the drawing.':'Part of the construction is beyond the drawing.';
+   $('overview-caption').textContent=knownH?'This smaller view shows H and the revealed construction; keep moving the vertices above.':offFeet?'This smaller view shows the altitude feet constructed so far; keep moving the vertices above.':'This smaller view shows all of PQR; use “Fit construction” to bring it into the main drawing.';
  }
  $('notice').hidden=!g.near;
- $('notice').textContent=g.degenerate?'These vertices are collinear, coincident, or too close to collinear at drawing precision. A noncollinear triangle is required to define a unique orthocenter.':'This triangle is nearly flat; H may lie very far away, and the altitude lines may be hard to distinguish.';
+ $('notice').textContent=g.degenerate?'These vertices are collinear, coincident, or too close to collinear at drawing precision. Move a vertex off the line to continue.':knownH?'This triangle is nearly flat; H may lie very far away, and the altitude lines may be hard to distinguish.':'This triangle is nearly flat; keep its vertices noncollinear as you build.';
  let location='Move a vertex off the line to recover a unique orthocenter.';
  if(!g.degenerate){
    const right=g.vertices.findIndex(p=>distance(p,g.center)<=1e-10*g.scale);
    const minimum=Math.min(...g.vertices.map((p,i)=>{const q=g.vertices[(i+1)%3],r=g.vertices[(i+2)%3];return (q.x-p.x)*(r.x-p.x)+(q.y-p.y)*(r.y-p.y);}));
    location=right>=0?`Right triangle: H is the right-angle vertex ${names[right]}.`:minimum<0?'Obtuse triangle: H lies outside the triangle.':'Acute triangle: H lies inside the triangle.';
  }
- $('location').textContent=location;
- $('diagram-desc').textContent=g.degenerate?'Triangle ABC is degenerate at drawing precision; no unique orthocenter is drawn.':(active?steps[step].sentence+' ':'')+(knownH?location:'')+(offH?' H lies beyond the main drawing; a smaller view shows its true location.':'');
+ $('location').textContent=location;$('location').hidden=!knownH;$('legend').hidden=active||!knownH;
+ $('diagram-desc').textContent=g.degenerate?'Triangle ABC is degenerate at drawing precision; move a vertex off the line to continue.':(active?steps[step].sentence:buildCount?buildStages[buildCount-1].caption:'Triangle ABC with no construction yet.')+(knownH?' '+location:'')+(offH?' H lies beyond the main drawing; a smaller view shows its true location.':'');
  $('proof-pause').hidden=!active||!g.degenerate;$('proof-equation').hidden=g.degenerate;$('proof-next').disabled=g.degenerate;$('fit').hidden=!aux;
+ renderBuild();
  return g;
 }
+function renderBuild(){
+ const complete=buildCount===buildStages.length,blocked=!!current?.degenerate;
+ $('build-panel').hidden=active;if(active)$('workspace').classList.remove('building');else $('workspace').classList.add('building');
+ $('build-progress').textContent=`${buildCount} / ${buildStages.length}`;
+ const caption=blocked?'Move a vertex off the line to continue the construction.':buildCount?buildStages[buildCount-1].caption:'Start with triangle ABC. Use the buttons in order to add one piece at a time.';if($('build-caption').textContent!==caption)$('build-caption').textContent=caption;
+ buildButtons.forEach((button,i)=>{const n=i+1;button.disabled=n>buildCount+1||(blocked&&n>buildCount);button.setAttribute('aria-pressed',String(n<=buildCount));for(const [name,on] of [['is-done',n<=buildCount],['is-current',n===buildCount],['is-next',n===buildCount+1]]){if(on)button.classList.add(name);else button.classList.remove(name);}});
+ $('build-prev').disabled=buildCount===0;$('build-reset').disabled=buildCount===0;
+ $('proof-explanation').hidden=!complete;$('proof-start').hidden=!complete;$('proof-start').disabled=!complete||blocked;
+}
+function exitProof(){active=false;$('workspace').classList.remove('proving');$('proof-panel').hidden=true;$('proof-start').setAttribute('aria-expanded','false');}
+function clearBuild(){exitProof();buildCount=0;draw();}
+buildStages.forEach((stage,i)=>{const button=document.createElement('button');button.type='button';button.textContent=`${i+1}. ${stage.label}`;button.setAttribute('data-build-step',String(i+1));button.addEventListener('click',()=>{const n=i+1;if(active||n>buildCount+1||(current?.degenerate&&n>buildCount))return;buildCount=n;draw();board.scrollIntoView({block:'start',behavior:'instant'});});$('build-steps').appendChild(button);buildButtons.push(button);});
+$('build-prev').addEventListener('click',()=>{if(active||buildCount===0)return;buildCount--;draw();});
+$('build-reset').addEventListener('click',()=>{clearBuild();});
 function renderProof(){const s=steps[step];$('proof-stage').textContent=s.stage;$('proof-progress').textContent=`${step+1} / ${steps.length}`;$('proof-sentence').textContent=s.sentence;renderEquation($('proof-equation'),s.equation);$('proof-key').textContent=s.key;$('proof-prev').disabled=step===0;$('proof-next').textContent=step===steps.length-1?'Replay proof':'Next sentence';draw();}
-function announce(){$('announcement').textContent=current.degenerate?'No unique orthocenter at drawing precision.':`Triangle updated. ${$('location').textContent}`;}
+function announce(){$('announcement').textContent=current.degenerate?'Move a vertex off the line to continue.':`Triangle updated. ${active||buildCount>=3?$('location').textContent:$('build-caption').textContent}`;}
 function move(index,x,y){
  points[index]={x:camera.x+((clamp(x,padding,size.width-padding)-padding)/(size.width-2*padding)-.5)/camera.zoom,y:camera.y+((clamp(y,padding,size.height-padding)-padding)/(size.height-2*padding)-.5)/camera.zoom};draw();
 }
@@ -172,9 +196,9 @@ buttons.forEach((button,index)=>{
  ['pointerup','pointercancel','lostpointercapture'].forEach(name=>button.addEventListener(name,end));
  button.addEventListener('keydown',event=>{const d={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];if(!d)return;event.preventDefault();const p=scaled(points[index]),n=event.shiftKey?20:4;move(index,p.x+d[0]*n,p.y+d[1]*n);announce();});
 });
-$('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));camera={x:.5,y:.5,zoom:1};if(active&&step>=2)fitConstruction();draw();announce();});
+$('reset').addEventListener('click',()=>{points=initial.map(p=>({...p}));camera={x:.5,y:.5,zoom:1};clearBuild();announce();});
 $('fit').addEventListener('click',()=>{fitConstruction();draw();});
-$('proof-start').addEventListener('click',()=>{active=true;step=0;$('workspace').classList.add('proving');$('proof-panel').hidden=false;$('proof-start').setAttribute('aria-expanded','true');renderProof();board.scrollIntoView({block:'start',behavior:'instant'});$('proof-next').focus({preventScroll:true});});
+$('proof-start').addEventListener('click',()=>{if(buildCount!==buildStages.length||current?.degenerate)return;active=true;step=0;$('workspace').classList.add('proving');$('proof-panel').hidden=false;$('proof-start').setAttribute('aria-expanded','true');renderProof();board.scrollIntoView({block:'start',behavior:'instant'});$('proof-next').focus({preventScroll:true});});
 $('proof-close').addEventListener('click',()=>{active=false;fitTriangle();$('workspace').classList.remove('proving');$('proof-panel').hidden=true;$('proof-start').setAttribute('aria-expanded','false');draw();$('proof-start').focus({preventScroll:true});});
 $('proof-prev').addEventListener('click',()=>{if(step>0){step--;renderProof();}});
 $('proof-next').addEventListener('click',()=>{if(current?.degenerate)return;step=(step+1)%steps.length;if(step===2)fitConstruction();if(step===0)fitTriangle();renderProof();});
