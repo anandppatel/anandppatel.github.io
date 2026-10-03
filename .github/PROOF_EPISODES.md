@@ -120,3 +120,29 @@ marks, and full circle bounds. Also check the real UI at desktop and phone width
 blank entry, stage buttons, undo/reset, proof entry/exit, pointer and keyboard
 movement, and independent toggle changes. Keep the collection unlisted from the
 public homepage and retain its noindex metadata.
+
+## Homework
+
+The collection's Homework section links to `proof-episodes/homework/`. Keep
+assignments separate from the numbered interactive episodes. Each assignment has
+a readable web page and a direct same-origin Markdown download; keep the problems,
+subparts, hypotheses, hints, and source-episode links identical in both versions.
+Student pages contain no solutions. Retain noindex metadata and the collection's
+unlisted placement.
+
+For the first set, edit `homework/triangle-geometry/triangle-geometry.md`. Its
+absolute episode URLs also work when the Markdown is downloaded. Generate the
+web page from that source using the pinned development dependencies:
+
+```sh
+pnpm --dir .github/homework-build install --frozen-lockfile --ignore-scripts
+node .github/build-homework.mjs
+```
+
+The generator converts LaTeX delimiters into native MathML at build time. Commit
+the Markdown and generated HTML together; visitors need no math-rendering script.
+The stylesheet is `homework/homework.css`, including phone and print layouts.
+When shared styling changes, update its version query in the generator. Check
+formula rendering, problem and subpart counts, source links, navigation anchors,
+and the actual Markdown download before publication. Add future assignments to
+the Homework listing with both read and download links.
