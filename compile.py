@@ -34,6 +34,8 @@ with .json extension). The .json should contain:
     "citations": {"key": "Label", ...}
   }
 If no .json exists, defaults are derived from the directory name.
+Optional artwork_width and artwork_height specify positive intrinsic image
+dimensions so browsers can reserve space before the artwork loads.
 """
 
 import os
@@ -59,6 +61,14 @@ PROJECT_STYLESHEET_SOURCE = os.path.join(
 FORMSUBMIT_EMAIL = "anand.patel@okstate.edu"
 COMMENTS_ASSET_VERSION = "comments-20260519"
 LATEX_RENDERER_VERSION = "20260930-2"
+# These public bibliography anchors predate corrections to obsolete URLs.
+# Keep their identity stable when the entry's visible URL changes.
+CANONICAL_BIBLIOGRAPHY_IDS = {
+    ("invariants-branched-cover", "bopp_macaulay2_2015"):
+        "christian-bopp-and-michael-hahn-relativecanonicalresolut-3d1258d9",
+    ("rank-two-p-curvature", "whang"):
+        "whang-junho-peter-nonlinear-descent-on-88d3b8be",
+}
 TEX_RENDER_CONTEXT = {
     "preamble": "",
     "tikzset": "",
@@ -1078,7 +1088,8 @@ def collect_global_bibliography(tex_paths):
             if not dedupe_key:
                 dedupe_key = "entry:" + entry.get("key", "")
             if dedupe_key not in entries_by_key:
-                global_id = bibliography_global_id(dedupe_key)
+                global_id = CANONICAL_BIBLIOGRAPHY_IDS.get(
+                    (slug, entry["key"]), bibliography_global_id(dedupe_key))
                 entries_by_key[dedupe_key] = {
                     "id": global_id,
                     "label": entry["label"],
@@ -5222,6 +5233,17 @@ def compile_paper(tex_path, global_bibliography=None):
     journal = meta.get("journal", "")
     artwork = meta.get("artwork", "")
     artwork_alt_meta = meta.get("artwork_alt", "")
+    artwork_dimensions = ""
+    artwork_width = meta.get("artwork_width")
+    artwork_height = meta.get("artwork_height")
+    if artwork_width is not None or artwork_height is not None:
+        if not all(type(value) is int and value > 0
+                   for value in (artwork_width, artwork_height)):
+            raise ValueError(
+                f"{meta_path}: artwork_width and artwork_height must both "
+                "be positive integers")
+        artwork_dimensions = (
+            f' width="{artwork_width}" height="{artwork_height}"')
     base_url = f"https://anandpatel.github.io/papers/{slug}"
 
     # Read .tex source
@@ -5335,7 +5357,7 @@ def compile_paper(tex_path, global_bibliography=None):
         toc += (
             '<img class="stacks-paper-artwork" '
             f'src="{html_mod.escape(artwork, quote=True)}" '
-            f'alt="{html_attr(artwork_alt)}" loading="lazy">\n'
+            f'alt="{html_attr(artwork_alt)}"{artwork_dimensions} loading="lazy">\n'
         )
         toc += '</div>\n'
     toc += '<hr>\n<h2 class="stacks-toc-heading">Table of Contents</h2>\n'
