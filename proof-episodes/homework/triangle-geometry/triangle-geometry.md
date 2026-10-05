@@ -73,7 +73,7 @@ s=\frac{a+b+c}{2}.
 
 Suppose \(ABC\) is not equilateral, and let \(N\) be the midpoint of \(OH\).
 
-**(a)** The episode sends \(O\) to \(H\) by a half-turn about \(G\), followed by a dilation of factor \(2\) about \(G\). Explain why \(G\) lies between \(O\) and \(H\), with \(GH=2GO\).
+**(a)** The episode constructs \(X\) on the ray opposite \(\overrightarrow{GO}\), with \(GX=2GO\), and uses similar triangles to prove \(X=H\). Explain why \(G\) lies between \(O\) and \(H\), with \(GH=2GO\).
 
 **(b)** Determine the order of \(O,G,N,H\) along their common line. Prove
 \[
@@ -119,7 +119,7 @@ Draw the circles with diameters \(AB\) and \(AC\). Let \(D\) be the perpendicula
 Conclude that the circles meet at exactly \(A\) and \(D\), including when the altitude foot lies outside segment \(BC\).
 
 ## 8. A second construction of the midpoint circle
-*Inspired by the transformations in the [Euler-line](https://anandppatel.github.io/proof-episodes/euler-line/) and [nine-point-circle](https://anandppatel.github.io/proof-episodes/nine-point-circle/) proofs.*
+*Inspired by the [Euler-line relation](https://anandppatel.github.io/proof-episodes/euler-line/) and the dilation in the [nine-point-circle proof](https://anandppatel.github.io/proof-episodes/nine-point-circle/).*
 
 Let \(D,E,F\) be the side midpoints, \(R\) the circumradius, and \(N\) the midpoint of \(OH\). Consider the transformation \(T\) consisting of a half-turn about \(G\), followed by a dilation of factor \(1/2\) about \(G\).
 

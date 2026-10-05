@@ -112,10 +112,11 @@
       steps:[
         {label:'Draw two medians',text:'Mark D and E as the midpoints of BC and CA, then draw the medians AD and BE.'},
         {label:'Mark the centroid G',text:'Name the intersection of the two medians G, as in the centroid episode.'},
-        {label:'Construct the circumcenter O',text:'Intersect the perpendicular bisectors of BC and CA to construct the circumcenter O.'},
-        {label:'Construct the orthocenter H',text:'Intersect the altitude lines from A and B to construct the orthocenter H.'},
-        {label:'Draw the line through O and G',text:'When O and G are distinct, draw their line and inspect the position of H; merged points do not determine a unique line.'},
-        {label:'Compare OG and GH',text:'Highlight OG and GH to investigate their length ratio; the proof explains the collinearity and the equilateral exception.'}
+        {label:'Construct the circumcenter O',text:'Intersect the perpendicular bisectors of BC and CA to construct O; the proof begins with O ≠ G, or equivalently a non-equilateral triangle.'},
+        {label:'Draw the line through O and G',text:'When O and G are distinct, draw their unique line; coincident centers do not determine a unique line.'},
+        {label:'Place X with GX = 2GO',text:'Place X on the opposite side of G from O, twice as far from G; this construction does not yet identify X as the orthocenter.'},
+        {label:'Compare triangles DGO and AGX',text:'Join D to O and A to X to compare the two triangles; when they collapse onto AD, the proof treats that case separately.'},
+        {label:'Draw the three altitudes',text:'Draw the altitude from each vertex and inspect X; the similarity proof will explain why the same X lies on every altitude.'}
       ],
       handleIds:none,
       draw(d,g,l,p,M) {
@@ -126,18 +127,33 @@
           d.tick(a,mid,c.teal,i+1);d.tick(mid,b,c.teal,i+1);
           entries.push([mid,['D','E'][i],c.teal]);
         }
-        if(l>=2)entries.push([g.G,'G',c.gold,{dx:12,dy:22}]);
+        if(l>=2)entries.push([g.G,'G',c.purple,{dx:12,dy:22}]);
         if(l>=3){centerConstruction(d,g,'O',l,3,M);entries.push([g.O,'O',c.blue,{dx:-22,dy:-16}]);}
-        if(l>=4){centerConstruction(d,g,'H',l,4,M,true);entries.push([g.H,'H',c.purple,{dx:14,dy:-16}]);}
-        const separate=M.dist(g.O,g.G)>1e-10*g.scale;
-        if(l>=5&&separate)d.line(g.O,g.G,c.gold,width(l,5),part('euler-line'));
-        if(l>=6&&separate){d.segment(g.O,g.G,c.blue,4,part('OG'));d.segment(g.G,g.H,c.teal,4,part('GH'));}
+        if(l>=4&&!g.coincident)d.line(g.O,g.G,c.gold,width(l,4),part('euler-line'));
+        if(l>=5){
+          if(!g.coincident){
+            d.segment(g.O,g.G,c.blue,3.5,part('OG'));d.segment(g.G,g.X,c.gold,3.5,part('GX'));
+            const half=M.mid(g.G,g.X);d.tick(g.O,g.G,c.blue);d.tick(g.G,half,c.gold);d.tick(half,g.X,c.gold);
+          }
+          entries.push([g.X,'X',c.gold,{dx:14,dy:-18}]);
+        }
+        if(l>=6&&!g.comparisonFlat){
+          d.poly([g.mids[0],g.G,g.O],c.blue,.13,part('triangle-DGO'));d.poly([g.A,g.G,g.X],c.teal,.14,part('triangle-AGX'));
+          d.segment(g.mids[0],g.O,c.blue,width(l,6),part('DO'));d.segment(g.A,g.X,c.teal,width(l,6),part('AX'));
+        }
+        if(l>=7)for(let i=0;i<3;i++){
+          const a=g.vertices[(i+1)%3],b=g.vertices[(i+2)%3],color=[c.teal,c.purple,c.blue][i];
+          d.line(g.vertices[i],M.add(g.vertices[i],M.perp(M.sub(b,a))),color,width(l,7),part('altitude-'+i));
+          d.line(a,b,c.muted,1,{...part('altitude-side-'+i),'stroke-dasharray':'4 5'});
+          const f=g.feet[i];d.right(f,M.add(f,M.perp(M.sub(b,a))),M.add(f,M.sub(b,a)),color);
+        }
         labels(d,g,entries,M);
       },
-      extent(g,p,l) {const out=baseExtent(g);if(l>=1)out.push(g.mids[0],g.mids[1]);if(l>=2)out.push(g.G);if(l>=3)out.push(g.O);if(l>=4)out.push(g.H,g.feet[0],g.feet[1]);return out;},
+      extent(g,p,l) {const out=baseExtent(g);if(l>=1)out.push(g.mids[0],g.mids[1]);if(l>=2)out.push(g.G);if(l>=3)out.push(g.O);if(l>=5)out.push(g.X);if(l>=7)out.push(...g.feet);return out;},
       status(g,p,l,M) {
-        if(l>=5&&M.dist(g.O,g.G)<=1e-10*g.scale)return 'O, G, and H are indistinguishable at drawing precision; no unique line is drawn, and ≈ does not assert exact equality.';
-        return l>=6?`GH/OG ≈ ${M.fmt(M.dist(g.G,g.H)/M.dist(g.O,g.G),3)}; the separate proof establishes the exact ratio.`:free;
+        if(l>=4&&g.coincident)return 'O and G are indistinguishable at drawing precision; no unique joining line is drawn, and ≈ does not assert exact equality.';
+        if(l>=6&&g.comparisonFlat)return 'The comparison triangles are flat at drawing precision; the proof explains the exact collinear cases separately.';
+        return l>=5?`GX/GO ≈ ${M.fmt(M.dist(g.G,g.X)/M.dist(g.O,g.G),3)} by construction. The proof will identify X as H.`:free;
       }
     },
 

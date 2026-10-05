@@ -75,6 +75,19 @@ movement, collinear pause/recovery, explicit proof constraints and their release
 phone-width fact lists, and links to prerequisite episodes. Preserve the distinction
 between an exact hypothesis and a drawing-precision approximation in dynamic text.
 
+## Euler line: a candidate identified by similarity
+
+The Euler-line episode begins with O ≠ G, draws OG, and constructs X on the
+opposite ray from O through G with GX = 2GO. It compares triangles AGX and DGO,
+where D is the midpoint of BC, then repeats cyclically to identify X as H.
+SAS similarity is justified from C3 (dilation) and T1 (SAS congruence); do not
+silently add it to the allowed AA/AAA tool. Handle both collapsed cases:
+O on AD with O ≠ D, and O = D (then X = A). Keep X as the candidate's label until
+the proof establishes all three altitude memberships. The construction stages
+must not compute H from an altitude intersection before constructing X. No new
+catalog object is needed: X is the existing orthocenter, once proved. Keep the
+homework's references to this argument in sync with later proof revisions.
+
 ## Build first, then prove
 
 All ten numbered episodes open with ABC alone. The numbered construction buttons
