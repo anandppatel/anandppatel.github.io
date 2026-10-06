@@ -159,3 +159,31 @@ When shared styling changes, update its version query in the generator. Check
 formula rendering, problem and subpart counts, source links, navigation anchors,
 and the actual Markdown download before publication. Add future assignments to
 the Homework listing with both read and download links.
+
+## Student reading references
+
+`episode-references.json` in `.github/` records precise theorem-statement locations
+in Gerard A. Venema, *Exploring Advanced Euclidean Geometry with GeoGebra* (2013).
+These references guide students to the results, not to the source of an episode's
+proof. Do not cite proof exercises or imply that the episode follows the book's
+argument. Named theorems are unnumbered; retain their names and section numbers.
+The circumcenter entries identify a prose statement and an unnumbered theorem
+without inventing a theorem title. No standalone angle-bisector ratio theorem was
+located in this edition, so that episode currently has no book reference.
+
+Use printed page numbers, with one-based PDF viewer pages in parentheses. Verify
+both against the source edition before editing citations. The verified 146-page
+PDF has seventeen pages before printed page 1. Do not publish the source PDF.
+
+After changing reference data, run both generators:
+
+```sh
+node .github/build-proof-episodes.cjs
+node .github/build-episode-references.cjs
+```
+
+The generated reading sections work without JavaScript and remain visible below
+the diagram during a proof, including on phones. Their shared stylesheet is
+`proof-episodes/shared/book-references.css`; update its revision in
+`.github/episode-references.cjs` if it changes. Keep the proof scripts unchanged
+when only adding or revising reading references.

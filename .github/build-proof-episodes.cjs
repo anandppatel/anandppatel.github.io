@@ -5,6 +5,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','all-centers'];
 const rev='20261005-euler-similarity-v1';
+const {renderReference,referenceStyle}=require('./episode-references.cjs');
 const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lessons=slugs.map(slug=>{const window={};if(slug==='all-centers')vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes/shared/geometry-catalog.js'),'utf8'),{window});vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes',slug,'episode.js'),'utf8'),{window});return window.ProofEpisode;});
 for(let i=0;i<lessons.length;i++){
@@ -22,7 +23,7 @@ for(let i=0;i<lessons.length;i++){
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="${escape(c.observation)}">
 <title>${escape(c.title)} — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=${rev}">
+<link rel="stylesheet" href="../shared/episode.css?v=${rev}">${referenceStyle(slug)?"\n"+referenceStyle(slug):""}
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / ${c.studio?'Geometry playground':'Episode '+String(i+4).padStart(2,'0')}</p><h1>${escape(c.title)}</h1></div><p class="header-note">${escape(c.subtitle)}</p></header>
@@ -50,7 +51,7 @@ ${c.studio?'':`<section class="build-panel" id="build-panel" aria-label="Step-by
 <p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. Focus a labeled point and use the arrow keys; hold Shift for larger steps. Measurements illustrate the construction; the argument proves it.</p>
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
-${sidebar}</div>
+${sidebar}</div>${renderReference(slug)?"\n"+renderReference(slug):""}
 <nav class="episode-nav" aria-label="Episode order"><a href="../${escape(prev.slug)}/">← ${escape(prev.title)}</a>${next?`<a href="../${escape(next.slug)}/">${escape(next.title)} →</a>`:'<a href="../">All proof episodes →</a>'}</nav>
 </main>
 <script src="../shared/geometry.js?v=${rev}"></script>${c.studio?`<script src="../shared/geometry-catalog.js?v=${rev}"></script>`:`<script src="../shared/constructions.js?v=${rev}"></script>`}<script src="episode.js?v=${rev}"></script><script src="../shared/episode.js?v=${rev}"></script>
