@@ -160,6 +160,17 @@ formula rendering, problem and subpart counts, source links, navigation anchors,
 and the actual Markdown download before publication. Add future assignments to
 the Homework listing with both read and download links.
 
+Each problem ends with a `### Hints` subsection in the canonical Markdown. The
+generator displays it as a closed native details panel; printing opens all hints
+temporarily and restores the reader's choices afterward. Keep hints as prompts
+for a next step, without complete proofs or numerical answers. Diagram Markdown
+uses an absolute image URL, descriptive alt text, and a quoted caption. The
+generator verifies the local SVG and renders it as a responsive, linked figure;
+the downloaded source retains working image URLs. Store diagrams in the
+assignment's `figures/` directory, with title and description elements, readable
+labels, and checked geometric relations. Figures illustrate the configurations;
+they do not establish the conclusions students are asked to prove.
+
 ## Student reading references
 
 `episode-references.json` in `.github/` records precise theorem-statement locations
