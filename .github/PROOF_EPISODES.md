@@ -171,6 +171,25 @@ assignment's `figures/` directory, with title and description elements, readable
 labels, and checked geometric relations. Figures illustrate the configurations;
 they do not establish the conclusions students are asked to prove.
 
+## Historical notes
+
+The unnumbered `history/` section has early-source notes for every current
+episode. Edit `.github/episode-history.json`, then run
+`python3 .github/build-episode-history.py` and commit the generated HTML. The
+collection links both to the section and to each topic's stable anchor. Keep
+the main homepage unchanged and retain noindex metadata.
+
+Distinguish an early surviving text, a translated primary text, a later report
+of attribution, and modern historical research. Give exact propositions or
+printed pages and identify PDF-page offsets. Do not turn a verified early
+account into an unsupported first-discovery claim, or assume that an old work
+uses the episode's notation or proof. Verify new claims against the source;
+the Euler original-page locator is corroborated by the cited historical study,
+while automated access to its original scan was restricted. Keep dates of
+composition, nominal journal years, actual publication, manuscripts, and
+translations separate. Add relevant history when the collection gains a new
+episode, preserving the distinction between the theorem's history and its name.
+
 ## Student reading references
 
 `episode-references.json` in `.github/` records precise theorem-statement locations
