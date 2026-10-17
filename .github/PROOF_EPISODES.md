@@ -204,10 +204,16 @@ Never publish the textbook PDF. Checks for the new episodes are in
 identities validate implementation, not the synthetic arguments.
 
 Homework set 02 is `homework/cevians-and-area/cevians-and-area.md`: ten problems,
-40 lettered parts, and a hint for every part, ordered as two problems per new
-topic. Its five SVG figures are regenerated with
+40 lettered parts, and a hint for every part. The problems apply the techniques
+of Episodes 11–15 in new configurations; they do not ask students to reproduce
+the episode proofs. The episode theorems are available tools. The set includes
+counterexamples, constructions, inverse problems, a three-center line, and area
+bounds. Its six current SVG figures are regenerated with
 `node .github/build-cevians-figures.cjs`. The common homework generator now builds
 both assignments and verifies their part/hint/figure counts. Preserve set 01.
+When revising set 02, update its separate local instructor key and the symmedian
+connections section’s homework references. Earlier figures remain available for
+students who downloaded an older Markdown version.
 
 The symmedian configuration also supplies a static `connections` section after
 the interactive workspace. It explains isogonal conjugation, compares the

@@ -4,7 +4,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','trig-ceva','symmedian','nagel','gergonne','heron','all-centers'];
-const rev='20261016-symmedian-connections-v2';
+const rev='20261017-complementary-homework';
 const {renderReference,referenceStyle}=require('./episode-references.cjs');
 const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lessons=slugs.map(slug=>{const window={};if(slug==='all-centers')vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes/shared/geometry-catalog.js'),'utf8'),{window});vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes',slug,'episode.js'),'utf8'),{window});return window.ProofEpisode;});
