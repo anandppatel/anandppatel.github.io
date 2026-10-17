@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const C=window.ProofEpisode,M=window.EpisodeMath,$=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
-const studio=!!C.studio,B=window.EpisodeConstructions?.[C.slug];
+const studio=!!C.studio,B=C.construction||window.EpisodeConstructions?.[C.slug];
 const colors={blue:'#315dcc',teal:'#087c70',purple:'#8551bd',gold:'#ad660d',ink:'#26364b',muted:'#9aa5b8',red:'#b54152'};
 const initial=C.initial||[{x:-.25,y:-.7},{x:-.9,y:.55},{x:.85,y:.55}];
 let vertices=initial.map(p=>({...p})),params={...C.params},active=false,step=0,buildLevel=0,current=null,drag=null,lastPicked=null;

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.">
+<title>The Nagel point — Proof episodes — Anand Patel</title>
+<link rel="stylesheet" href="../shared/episode.css?v=20261016-cevians-tangency-area-v1">
+<link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+</head>
+<body>
+<header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 13</p><h1>The Nagel point</h1></div><p class="header-note">Three excircles, three contact cevians, one interior point.</p></header>
+<main><div class="workspace" id="workspace">
+<section aria-label="Interactive triangle">
+<div class="drawing">
+<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag a vertex to explore.</p><div class="toolbar-buttons"><button id="fit" type="button">Fit construction</button><button id="fit-triangle" type="button">Fit triangle</button><button id="reset" type="button">Reset</button><div class="extra-controls" id="extra-controls"></div></div></div>
+<div class="board" id="board"><svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">The Nagel point: an interactive construction in triangle ABC</title><desc id="diagram-desc">The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.</desc><g id="scene"></g></svg></div>
+<p class="notice" id="notice" role="status" hidden></p><p class="status" id="status" role="status"></p>
+<div class="overview" id="overview" hidden><div><strong>The construction extends beyond this view.</strong><p>This overview shows the same figure. Use Fit construction to bring it into the main drawing.</p></div><svg viewBox="0 0 220 165" role="img" aria-label="Overview of the full construction"><g id="overview-scene"></g></svg></div>
+<section class="build-panel" id="build-panel" aria-label="Step-by-step construction">
+<div class="build-top"><h2>Build the diagram</h2><span id="build-progress">0 / 0</span></div>
+<p id="build-caption" class="build-caption" aria-live="polite">Start with triangle ABC.</p>
+<div class="build-steps" id="build-steps"></div>
+<p class="proof-pause" id="build-pause" hidden>Move a vertex off the line to continue the construction.</p>
+<div class="build-controls"><button id="build-prev" type="button">Undo a step</button><button id="build-reset" type="button">Start over</button><button id="build-proof" type="button" class="primary" hidden>See why it works</button></div>
+</section>
+<section id="proof-panel" class="proof-panel" aria-label="Guided proof" hidden>
+<div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button id="proof-close" type="button">Close proof</button></div>
+<div aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><div class="proof-equation" id="proof-equation"></div></div>
+<p class="proof-pause" id="proof-pause" role="status" hidden></p><p class="proof-key" id="proof-key"></p>
+<div class="proof-controls"><button id="proof-prev" type="button">Previous</button><button id="proof-next" class="primary" type="button">Next sentence</button></div>
+<p class="after-question" id="after-question" hidden></p>
+</section></div>
+<p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. Focus a labeled point and use the arrow keys; hold Shift for larger steps. Measurements illustrate the construction; the argument proves it.</p>
+<p id="announcement" class="sr-only" aria-live="polite"></p>
+</section>
+<aside class="sidebar">
+<section><p class="kicker">The theorem</p><h2>The Nagel point</h2><p>The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.</p></section>
+<section><p class="kicker">Before the proof</p><p>Which side segments are exchanged when you replace an incircle contact by an excircle contact?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
+<section><h2>What we use</h2><ul><li><a href="../incenter/">04 · Angle bisectors and equal distances</a></li><li><a href="../ceva/">10 · Ceva for interior side points</a></li><li><a href="../basics/#t2">T2 · Angle sum</a></li><li><a href="../basics/#t4">T4 · Strict triangle inequality</a></li><li><a href="../basics/#p2">P2 · Same-side angles and parallels</a></li><li><a href="../basics/#o1">O1 · Tangents and radii</a></li><li><a href="../basics/#o2">O2 · Equal tangents</a></li></ul><details><summary>Why the excenter exists in the required region</summary><p>Let L be the internal A-bisector’s intersection with BC, and put α = ∠A, β = ∠B, γ = ∠C. Choose the exterior B-bisector ray inside the angle between BC and the ray opposite BA. This ray and the ray AL continued past L lie on the far side of BC. Their angles with BL and LB are (180° − β)/2 and α/2 + β, whose sum is 180° − γ/2 &lt; 180°. By P2 their supporting lines cannot be parallel, so they intersect. An intersection on the A-side of BC would give a triangle whose base angles are the supplements of these two angles and sum to more than 180°, contradicting T2. Thus the intersection is on the two chosen rays beyond BC; call it I_a. The two distinct lines give a unique intersection. This constructs the excenter from two bisectors; no circle has been assumed.</p></details><details><summary>Why the contacts are on the stated rays</summary><p>The equal-distance fact from the incenter episode applies to every angle smaller than 180°, including the exterior angles here. I_a lies inside angle A and beyond BC, so it lies inside the exterior angle at C between CB and the ray opposite CA. Equal distances to CA and CB put it on that angle’s internal bisector. The perpendicular feet from a point on an internal bisector lie on both forward boundary rays. Applying this at B and C places D on both rays BC and CB, hence strictly inside BC; it places V beyond B on AB and U beyond C on AC. None of these contacts can be a vertex.</p></details><details><summary>Why this is the A-excircle</summary><p>The common perpendicular distance from I_a to the three side lines is positive. The circle with this radius is tangent at D, U, and V by O1. Its disk lies on the far side of BC and in the inward half-planes of AB and AC, since each line is exactly one radius from the center. Thus it lies outside ABC, opposite A. Any circle in that region tangent to all three lines has its center on the same two angle-bisector rays, so this excircle is unique. Repeat cyclically for the other two excircles.</p></details><details><summary>Names and ordinary lengths</summary><p>Write a = BC, b = CA, c = AB and s = (a + b + c)/2. D, E, F are the contacts on BC, CA, AB of the A-, B-, C-excircles respectively. Na names the Nagel point; N remains the nine-point center. Every ratio in Ceva uses positive segment lengths, because D, E, F are interior side points.</p></details><details><summary>Drawing precision</summary><p>Nearly flat triangles may have very distant excenters and very large excircles. Fit construction includes each displayed circle in full; Fit triangle returns attention to ABC. Close point labels use ≈, which makes no claim of exact equality.</p></details></section>
+</aside></div>
+<!-- BEGIN BOOK REFERENCE -->
+<section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
+<h2 id="venema-title">Read in Venema</h2>
+<p class="book-citation">Gerard A. Venema, <cite><a href="https://doi.org/10.5948/9781614441113">Exploring Advanced Euclidean Geometry with GeoGebra</a></cite> (2013).</p>
+<ul><li><span class="book-location">§4.4 · The Gergonne point and the Nagel point</span><span class="book-statement">The concurrence statement defining the Nagel point, <strong>p. 44</strong> <span class="book-pdf-page">(PDF page 61)</span>.</span></li></ul>
+<p class="book-reference-note">Page numbers refer to the printed pages of the 2013 edition; PDF page numbers count from the beginning of the file.</p>
+</section>
+<!-- END BOOK REFERENCE -->
+<nav class="episode-nav" aria-label="Episode order"><a href="../symmedian/">← The symmedian point K</a><a href="../gergonne/">The Gergonne point →</a></nav>
+</main>
+<script src="../shared/geometry.js?v=20261016-cevians-tangency-area-v1"></script><script src="../shared/constructions.js?v=20261016-cevians-tangency-area-v1"></script><script src="episode.js?v=20261016-cevians-tangency-area-v1"></script><script src="../shared/episode.js?v=20261016-cevians-tangency-area-v1"></script>
+</body></html>

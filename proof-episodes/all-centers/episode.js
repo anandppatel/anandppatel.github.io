@@ -15,9 +15,10 @@ window.ProofEpisode={
  prerequisites:[],
  notes:[
   {title:'Start with your own comparison',body:'The diagram begins with ABC alone. Switch on any combination; a line or circle does not automatically reveal its center. The links beside the switches lead to the corresponding proofs.'},
-  {title:'Reading close labels',body:'Selected centers that are indistinguishable at drawing precision share a label joined by ≈. This numerical grouping does not assert an exact equality. In an equilateral triangle, G, O, H, I, and N really do coincide.'},
+  {title:'Reading close labels',body:'Selected centers that are indistinguishable at drawing precision share a label joined by ≈. This numerical grouping does not assert an exact equality. In an equilateral triangle, G, O, H, I, N, K, Na, and Ge really do coincide. N names the nine-point center; Na names the Nagel point.'},
   {title:'The Euler-line exception',body:'A non-equilateral triangle has a unique Euler line through O, G, and H. An equilateral triangle has O = G = H, so these centers do not determine a unique line. When O and H are too close to distinguish numerically, the line is omitted and the status explains why.'},
   {title:'The free side points',body:'X, Y, and Z lie strictly inside BC, CA, and AB. Drag them or use their arrow keys to change AX, BY, and CZ independently; no concurrence is imposed. These names are distinct from the side midpoints D, E, and F.'},
+  {title:'Two different contact families',body:'T_a, T_b, and T_c are incircle contacts; T′_a, T′_b, and T′_c are the contacts of the three opposite excircles. The Gergonne and Nagel cevians use these different families. A circle, a contact family, and its concurrent cevians each have their own switch.'},
   {title:'Fit only what you selected',body:'Fit construction includes the selected circles in full and all selected finite points. Infinite lines remain clipped to the drawing window. Fit triangle returns attention to ABC.'}
  ],
  params:initialParams,controlsTarget:'studio-controls',

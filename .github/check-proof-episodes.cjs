@@ -6,3 +6,6 @@ require('./checks/center-circle-config-check.cjs');
 require('./checks/incenter-angle-bisector-check.cjs');
 require('./checks/constructions-check.cjs');
 require('./checks/all-centers-check.cjs');
+require('./checks/trig-symmedian-check.cjs');
+require('./checks/heron-check.cjs');
+require('./checks/new-centers-check.cjs');

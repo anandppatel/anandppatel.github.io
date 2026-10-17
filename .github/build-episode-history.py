@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the student history page from verified source notes; no browser scripts."""
 import json
+import re
 from html import escape
 from pathlib import Path
 
@@ -10,7 +11,8 @@ entries = DATA['entries']
 ids = [entry['id'] for entry in entries]
 assert len(ids) == len(set(ids)), 'History anchors must be unique'
 covered = {episode['slug'] for entry in entries for episode in entry['episodes']}
-assert len(covered) == 10, 'History should cover all ten current episodes'
+listed = set(re.findall(r'<article aria-labelledby="([a-z0-9-]+)-title">', (ROOT / 'proof-episodes/index.html').read_text()))
+assert covered == listed, 'Reading and history notes should cover every listed episode'
 
 sections = []
 for entry in entries:
@@ -50,7 +52,7 @@ html = f'''<!doctype html>
 <header><div class="header-inner"><p class="site-wordmark"><a href="../../">Anand Patel</a></p><nav aria-label="Breadcrumb"><a href="../">Proof episodes</a><span aria-hidden="true"> / </span>History</nav></div></header>
 <main>
 <div class="history-heading"><p class="eyebrow">Texts · People · Transmission</p><h1>Historical notes</h1>
-<p class="lead">Early surviving accounts of the triangle centers and the results in our proof episodes.</p></div>
+<p class="lead">Early surviving accounts and modern reading references for the triangle centers and results in our proof episodes.</p></div>
 <aside class="reading-note" aria-label="How to read these references">
 <p>A theorem’s name need not identify its first discoverer. These notes distinguish an early text we can locate from a later attribution. They do not claim to settle priority in every case.</p>
 <p>Ancient dates refer approximately to the works, not to the surviving manuscripts or modern translations. Each source gives a book, proposition, section, or printed page to help you find the result. The episodes use modern notation and may give a different proof.</p>

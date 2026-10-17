@@ -44,10 +44,11 @@ The construction view widens once at sentence 3. Dragging keeps the scale fixed;
 - Verify every label and figure, direct links, keyboard access, and desktop/mobile layout. A drawing illustrates a fact; it never authorizes an additional fact based on its appearance.
 - This is a maintained import, not an automatic live sync with Google Drive. Reconcile later additions to the class source deliberately.
 
-## Shared-engine episodes (04–10)
+## Shared-engine episodes (04–15)
 
 The incenter, Euler line, angle-bisector, Thales, two nine-point-circle parts, and
-Ceva episodes use `proof-episodes/shared/geometry.js`, `episode.js`, and
+Ceva, trigonometric Ceva, symmedian, Nagel, Gergonne, and Heron episodes use
+`proof-episodes/shared/geometry.js`, `episode.js`, and
 `episode.css`. Each sibling's `episode.js` supplies the theorem, prerequisites,
 proof sentences, drawing instructions, and any explicitly stated proof-mode
 constraints. The initial three episodes keep their existing implementations.
@@ -90,14 +91,16 @@ homework's references to this argument in sync with later proof revisions.
 
 ## Build first, then prove
 
-All ten numbered episodes open with ABC alone. The numbered construction buttons
+All fifteen numbered episodes open with ABC alone. The numbered construction buttons
 reveal cumulative stages; only the next stage and completed stages are available.
 Undo removes one stage, Start over clears the construction without moving ABC,
 and Reset restores the original triangle and blank stage. The proof becomes
 available after the last construction stage. Closing it returns to the completed
 construction. Vertex dragging and arrow-key movement remain available throughout.
 
-For shared-engine episodes, edit `shared/constructions.js`. Each entry has
+For episodes 04–10, edit `shared/constructions.js`; episodes 11–15 keep a
+`construction` object in their own `episode.js`. The shared engine uses this
+episode-local object first. Each construction has
 `steps` (button labels, captions, and optional one-time placement), `draw`,
 `extent`, and optional handle and constraint functions. Level zero must draw
 nothing beyond ABC; bounds and side handles must include only revealed objects.
@@ -111,8 +114,9 @@ three episodes implement the same controls in their own scripts.
 `proof-episodes/all-centers/` is an unnumbered collection entry. It uses the shared
 engine in studio mode and starts with every switch off. Its independent switches
 come from `shared/geometry-catalog.js`; circles and lines never implicitly enable
-center labels. The catalog currently includes G, O, H, I, N and fourteen auxiliary
-objects. Show all centers enables just the centers; Clear all returns to ABC.
+center labels. The catalog currently includes G, O, H, I, N, K, Na, Ge and twenty-three
+auxiliary objects. Na and Ge distinguish the Nagel and Gergonne points from
+the nine-point center N and centroid G. Show all centers enables just the centers; Clear all returns to ABC.
 
 Whenever an episode introduces a center or reusable auxiliary construction:
 
@@ -140,7 +144,7 @@ The collection's Homework section links to `proof-episodes/homework/`. Keep
 assignments separate from the numbered interactive episodes. Each assignment has
 a readable web page and a direct same-origin Markdown download; keep the problems,
 subparts, hypotheses, hints, and source-episode links identical in both versions.
-Student pages contain no solutions. Retain noindex metadata and the collection's
+Student pages contain hints rather than completed solutions. Retain noindex metadata and the collection's
 unlisted placement.
 
 For the first set, edit `homework/triangle-geometry/triangle-geometry.md`. Its
@@ -170,6 +174,37 @@ the downloaded source retains working image URLs. Store diagrams in the
 assignment's `figures/` directory, with title and description elements, readable
 labels, and checked geometric relations. Figures illustrate the configurations;
 they do not establish the conclusions students are asked to prove.
+
+## Episodes 11–15: cevians, tangency, and area
+
+The order is `trig-ceva`, `symmedian`, `nagel`, `gergonne`, `heron`. Trigonometric
+Ceva uses strictly interior side points and ordinary positive sine ratios, with
+both directions inherited from ordinary Ceva after the side factors cancel.
+Symmedians are reflections of medians in internal angle bisectors; the diagrams
+compute these reflections independently of the squared-side characterization.
+
+The Nagel episode constructs an excenter from internal/exterior bisector rays,
+establishes the contact order, and then uses equal tangents and interior Ceva.
+The Gergonne construction uses the three contacts of one incircle. Shared
+geometry provides stable tangent lengths, K, Na, Ge, all three excenters and
+exradii, and the incircle/excircle contacts. All Centers has independent switches
+for the new points, cevians, contact sets, and each excircle.
+
+Heron follows the user's requested Venema §4.5 proof: Figure 4.4 on printed p.44
+and Exercises 4.5.1–4.5.7 on p.45 (PDF61–62). The two similarities are
+AZI ~ AVE and ZBI ~ VEB. This explicit request permits a separate proof-source
+note for Heron in addition to the theorem-statement reading reference; the
+other episodes' citations continue to identify statements, not proof sources.
+Never publish the textbook PDF. Checks for the new episodes are in
+`trig-symmedian-check.cjs`, `new-centers-check.cjs`, and `heron-check.cjs` under
+`.github/checks/`; run them through the main check runner. Their numerical
+identities validate implementation, not the synthetic arguments.
+
+Homework set 02 is `homework/cevians-and-area/cevians-and-area.md`: ten problems,
+40 lettered parts, and a hint for every part, ordered as two problems per new
+topic. Its five SVG figures are regenerated with
+`node .github/build-cevians-figures.cjs`. The common homework generator now builds
+both assignments and verifies their part/hint/figure counts. Preserve set 01.
 
 ## Historical notes
 
