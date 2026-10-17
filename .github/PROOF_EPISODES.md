@@ -147,6 +147,9 @@ subparts, hypotheses, hints, and source-episode links identical in both versions
 Student pages contain hints rather than completed solutions. Retain noindex metadata and the collection's
 unlisted placement.
 
+Keep instructor solution keys outside this public repository. They are separate
+local teaching documents, not hidden public pages or student download links.
+
 For the first set, edit `homework/triangle-geometry/triangle-geometry.md`. Its
 absolute episode URLs also work when the Markdown is downloaded. Generate the
 web page from that source using the pinned development dependencies:
@@ -205,6 +208,13 @@ Homework set 02 is `homework/cevians-and-area/cevians-and-area.md`: ten problems
 topic. Its five SVG figures are regenerated with
 `node .github/build-cevians-figures.cjs`. The common homework generator now builds
 both assignments and verifies their part/hint/figure counts. Preserve set 01.
+
+The symmedian configuration also supplies a static `connections` section after
+the interactive workspace. It explains isogonal conjugation, compares the
+median/bisector/symmedian side ratios, and relates K to areas, distances, and
+the minimum of squared distances to the full side lines among interior points.
+Keep that domain explicit. The section offers statements and directions for
+exploration; full homework solutions remain in the separate instructor key.
 
 ## Historical notes
 

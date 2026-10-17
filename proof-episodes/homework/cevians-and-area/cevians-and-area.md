@@ -1,4 +1,4 @@
-# Triangle Geometry II: Cevians, Tangency, and Area
+# Trigonometric Ceva ... Heron's formula homwork
 
 Throughout, \(ABC\) is a noncollinear triangle. Write \(a=BC\), \(b=CA\), \(c=AB\), \(s=(a+b+c)/2\), and \(\Delta=[ABC]\). All side points in the Ceva problems lie strictly inside their sides. Angles are ordinary interior angles, and all lengths and areas are positive.
 
