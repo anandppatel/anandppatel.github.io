@@ -101,7 +101,7 @@
       items: [
         {title: 'The isogonal conjugate of the centroid', body: 'Start with any interior point P and reflect AP, BP, and CP in the three internal angle bisectors. Trigonometric Ceva shows that the reflected rays meet again. Their common point is called the isogonal conjugate of P; reflecting twice returns P. The centroid G lies on the medians, so its isogonal conjugate is K. The incenter I stays fixed because its three rays are already angle bisectors. These are three different reflections, not one reflection of the whole triangle.'},
         {title: 'A squared ratio identifies the symmedian', body: 'For a cevian AD with D inside BC, compare the three rules below. The squared ratio gives a practical way to recognize a symmedian from lengths, even when its defining reflection is not visible.'},
-        {title: 'Angles lead to areas and distances', body: 'Write a = BC, b = CA, c = AB. The triangles KBC, KCA, KAB have areas in the ratio a² : b² : c². Consequently, the perpendicular distances from K to the lines BC, CA, AB have ratio a : b : c. The incenter has equal distances to the sides; K has distances proportional to their lengths. The homework uses these tools in new configurations: Problem 3 locates K in a right triangle, and Problem 4 constructs a symmedian with tangents to the circumcircle.'},
+        {title: 'Angles lead to areas and distances', body: 'Write a = BC, b = CA, c = AB. The triangles KBC, KCA, KAB have areas in the ratio a² : b² : c². Consequently, the perpendicular distances from K to the lines BC, CA, AB have ratio a : b : c. The incenter has equal distances to the sides; K has distances proportional to their lengths. Homework Problem 5 uses the squared-side criterion and area comparisons to locate K in a right triangle.'},
         {title: 'A point selected by a minimum', body: 'There is also an optimization interpretation: among points strictly inside the triangle, K uniquely minimizes the sum of the squares of the three perpendicular distances to the full side lines. This claim concerns squared distances, not their ordinary sum. To investigate it, first add the areas of PBC, PCA, and PAB for an arbitrary interior point P; then compare its distances with the proportional distances at K. The area identity and a sum of nonnegative squares supply the proof.'}
       ],
       comparison: [
@@ -109,8 +109,8 @@
         {name: 'Internal angle bisector', ratio: 'BD/DC = AB/AC', meaning: 'Pieces proportional to the adjacent sides'},
         {name: 'Symmedian', ratio: 'BD/DC = (AB/AC)²', meaning: 'Pieces proportional to the squares of the adjacent sides'}
       ],
-      exploration: 'In All Centers, switch on G, I, and K. Move one vertex to compare a scalene, an isosceles, and an equilateral triangle. Which coincidences can you justify? Problem 2 places G, I, and K in a family defined by powers of side ratios. Problems 3–4 explore the right-triangle and tangent constructions.',
-      links: [{label: 'Compare G, I, and K in All Centers', href: '../all-centers/'}, {label: 'Homework Problems 2–4', href: '../homework/cevians-and-area/#problem-2'}]
+      exploration: 'In All Centers, switch on G, I, and K. Move one vertex to compare a scalene, an isosceles, and an equilateral triangle. Which coincidences can you justify? Homework Problem 2 develops interior isogonal conjugation and its fixed point; Problem 3 identifies O and H as isogonal conjugates in acute triangles. Problem 5 locates K in a right triangle.',
+      links: [{label: 'Compare G, I, and K in All Centers', href: '../all-centers/'}, {label: 'Isogonal conjugation: Homework 2–3', href: '../homework/cevians-and-area/#problem-2'}, {label: 'A right-triangle symmedian: Homework 5', href: '../homework/cevians-and-area/#problem-5'}]
     },
     after: 'Prove that AD is both a median and a symmedian exactly when AB = AC; what does this imply when all three symmedians are medians?',
     prerequisites: [

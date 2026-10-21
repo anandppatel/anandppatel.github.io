@@ -12,7 +12,7 @@ const {Marked}=await import(require.resolve('marked'));
 const root=path.resolve(here,'..');
 const assignments=[
  {slug:'triangle-geometry',number:'01',figures:6,parts:[3,3,3,3,4,3,3,3,3,3]},
- {slug:'cevians-and-area',number:'02',figures:6,parts:[4,4,4,4,4,4,4,4,4,4]}
+ {slug:'cevians-and-area',number:'02',figures:7,parts:[4,4,4,4,4,4,4,4,4,4]}
 ];
 for(const assignment of assignments){
 const marked=new Marked();

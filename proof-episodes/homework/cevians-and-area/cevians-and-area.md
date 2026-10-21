@@ -1,23 +1,99 @@
 # Trigonometric Ceva ... Heron's formula homwork
 
-These problems use the proof episodes to investigate new configurations. The episode results are available tools: explain how they apply to the problem at hand. The questions include testing a proposed rule, finding a new construction, recovering a triangle from geometric data, and proving an area bound.
+These ten problems connect triangle centers through reflections, apply Ceva and symmedian techniques in new configurations, and derive Heron’s formula from the incircle and an excircle. Problems 1–3 adapt selected exercises from Venema; Problems 7–8 follow his step-by-step derivation of Heron’s formula. The other problems apply ideas from the proof episodes.
 
-Throughout, \(ABC\) is noncollinear. Write \(a=BC\), \(b=CA\), \(c=AB\), \(s=(a+b+c)/2\), and \(\Delta=[ABC]\). All side points used in Ceva's theorem lie strictly inside their sides, and its ratios use ordinary positive lengths and sines. Write \(G,I,K,N_a,G_e\) for the centroid, incenter, symmedian point, Nagel point, and Gergonne point. The symbol \(N_a\) denotes the Nagel point, not the nine-point center.
+Throughout, \(ABC\) is noncollinear. Write \(a=BC\), \(b=CA\), \(c=AB\), \(s=(a+b+c)/2\), and \(\Delta=[ABC]\). Write \(G,O,H,I,K,N_a,G_e\) for the centroid, circumcenter, orthocenter, incenter, symmedian point, Nagel point, and Gergonne point. The symbol \(N_a\) denotes the Nagel point, not the nine-point center. All applications of Ceva concern strictly interior side points, with ordinary positive lengths and sines. In Problems 1–3, conjugation is defined only for interior points; Problem 3 assumes that the triangle is acute.
 
-You may use [The Basics](https://anandppatel.github.io/proof-episodes/basics/), [ordinary Ceva](https://anandppatel.github.io/proof-episodes/ceva/), the linked episodes, and earlier problems in this set. For reconstruction, you may also use the elementary construction fact that three positive numbers are the sides of a noncollinear triangle exactly when each is smaller than the sum of the other two. SSS gives uniqueness up to congruence once the corresponding side lengths are fixed.
+**These are the facts you may assume.**
 
-In Problems 9–10, \(r\) is the inradius and \(r_A,r_B,r_C\) are the labeled exradii opposite \(A,B,C\). The [Heron episode](https://anandppatel.github.io/proof-episodes/heron/) supplies
+- [The Basics](https://anandppatel.github.io/proof-episodes/basics/), [ordinary Ceva](https://anandppatel.github.io/proof-episodes/ceva/), and [trigonometric Ceva](https://anandppatel.github.io/proof-episodes/trig-ceva/), with both concurrence criteria restricted to interior cevians.
+- The constructions of the familiar centers, the [squared-side criterion for a symmedian](https://anandppatel.github.io/proof-episodes/symmedian/), and the incircle and excircle contact facts in the [Gergonne](https://anandppatel.github.io/proof-episodes/gergonne/) and [Nagel](https://anandppatel.github.io/proof-episodes/nagel/) episodes. A statement that a problem asks you to establish still requires a proof.
+- In Problems 7–8, use the incircle and excircle constructions, equal tangents, area additivity, and similarity. Derive the requested area–radius identities and Heron’s formula; do not assume those conclusions from the Heron episode. Their derivations follow Venema’s Exercises 4.5.1–4.5.7.
+- In Problems 9–10, you may use Heron’s formula and all the area–radius identities proved in Problems 7–8. Here \(r\) is the inradius and \(r_A,r_B,r_C\) are the exradii opposite the indicated vertices.
+- For reconstruction, three positive numbers are side lengths of a noncollinear triangle exactly when each is smaller than the sum of the other two. SSS gives uniqueness up to congruence once corresponding side lengths are fixed. Earlier results in this set may be used in later problems.
+
+**Book references.** Gerard A. Venema, *Exploring Advanced Euclidean Geometry with GeoGebra* (2013). Each adapted problem gives its exercise numbers and printed page; the parenthetical PDF page is the one-based viewer page in the course copy. Our added steps and interior-point restrictions are stated explicitly. The source’s starred exercises are investigations, so an added proof requirement is an adaptation.
+
+Try each part before opening its hints. The Markdown download and printed set include all hints and figures. Drawings illustrate sample configurations; proofs must cover every triangle allowed by the stated hypotheses.
+
+## 1. Side reflections connect the Gergonne and Nagel points
+*Adapted from Venema, Exercises 8.6.1 and 8.6.6, printed p. 74 (PDF p. 91). We restrict the construction to interior points and add the four-part scaffold below. Use [ordinary Ceva](https://anandppatel.github.io/proof-episodes/ceva/) and the [Gergonne](https://anandppatel.github.io/proof-episodes/gergonne/) and [Nagel](https://anandppatel.github.io/proof-episodes/nagel/) episodes.*
+
+Let \(P\) lie strictly inside \(ABC\). The rays \(AP,BP,CP\) meet the opposite sides at \(D,E,F\), respectively. Reflect \(D\) across the perpendicular bisector of \(BC\), obtaining \(D'\); define \(E'\) and \(F'\) by the corresponding reflections on \(CA\) and \(AB\).
+
+**(a)** Explain why \(D,E,F,D',E',F'\) all lie strictly inside their respective sides. Express \(BD'/D'C\) in terms of \(BD/DC\), and write the two cyclic identities.
+
+**(b)** Use ordinary Ceva to prove that \(AD',BE',CF'\) meet at a unique interior point \(Q\). This point is called the **isotomic conjugate** of \(P\) with respect to \(ABC\).
+
+**(c)** Apply the same construction to \(Q\). Prove that it returns \(P\). Such an operation is called an **involution**: applying it twice gives the original point.
+
+**(d)** Now take \(P=G_e\), so \(D,E,F\) are the incircle contact points. Let \(T_A,T_B,T_C\) be the contacts of the opposite excircles with \(BC,CA,AB\). Use the contact lengths established in the episodes to prove \(D'=T_A\), \(E'=T_B\), and \(F'=T_C\). Conclude that the Gergonne and Nagel points are isotomic conjugates of one another.
+
+![Gergonne and Nagel cevians in two colors, with their opposite-side contact points paired by midpoint reflection.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/isotomic-pair.svg "The two sets of side points are reflected across the side midpoints. Relate their cevians in Problem 1.")
+
+### Hints
+
+- **(a)** A ray from a vertex through an interior point crosses the opposite side once. The reflection used on \(BC\) exchanges its endpoints; compare the distance from \(B\) to the reflected point with the distance from \(C\) to the original point.
+- **(b)** Start with the Ceva product for the three cevians through \(P\). Replace its factors using part (a). After applying the converse, explain why two distinct interior cevians can have only one common point.
+- **(c)** Identify the opposite-side intersections of the three cevians through \(Q\). What does reflecting each of these side points a second time do?
+- **(d)** On \(BC\), compare the ordered pairs of lengths \((BD,DC)\) and \((BT_A,T_AC)\). A point on a fixed segment is determined by its distance from one endpoint. Use part (c) for the reverse correspondence.
+
+## 2. Angle reflections and the incenter
+*Adapted from Venema, Exercises 8.6.2 and 8.6.8 and the interior-point investigation in starred Exercise 8.6.7, printed p. 74 (PDF p. 91). The investigation is made into a proof problem here, and all points remain interior. Use [trigonometric Ceva](https://anandppatel.github.io/proof-episodes/trig-ceva/) and the [symmedian episode](https://anandppatel.github.io/proof-episodes/symmedian/).*
+
+Let \(P\) lie strictly inside \(ABC\), and let \(D,E,F\) be the opposite-side intersections of \(AP,BP,CP\). Reflect the ray \(AP\) across the internal angle bisector at \(A\); reflect \(BP\) and \(CP\) across the corresponding bisectors at \(B\) and \(C\).
+
+**(a)** Prove that each reflected ray is still strictly inside its vertex angle and meets the opposite side at a unique interior point. Call the resulting points \(D',E',F'\). Identify the two angles at \(A\) that reflection exchanges.
+
+**(b)** Use trigonometric Ceva to prove that \(AD',BE',CF'\) meet at a unique interior point \(Q\). This point is called the **isogonal conjugate** of \(P\) with respect to \(ABC\). Explain why all sine ratios used in the argument are positive and defined.
+
+**(c)** Prove that isogonal conjugation is an involution on the interior of the triangle. Identify the isogonal conjugate of the centroid \(G\), and use the involution to identify the isogonal conjugate of \(K\).
+
+**(d)** Prove that \(Q=P\) if and only if \(P=I\). Thus the incenter is the unique interior point fixed by isogonal conjugation. Your argument must also cover isosceles and equilateral triangles.
+
+![Two interior points joined to the vertices, with a pair of rays from A reflected across its internal angle bisector.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/isogonal-pair.svg "Reflection exchanges the two parts of each vertex angle. Problem 2 proves that the reflected cevians concur.")
+
+### Hints
+
+- **(a)** Reflection in the internal bisector interchanges the two boundary rays of the angle. If an interior ray cuts the angle into two positive parts, describe the parts cut out by its reflection.
+- **(b)** Write the sine ratio at \(A\) before and after reflection, and then repeat at the other vertices. Multiply before applying trigonometric Ceva. Use the interior positions of the side points when discussing the point of concurrence.
+- **(c)** Reflect each of the three rays a second time. For the center identification, recall which cevians pass through \(G\) and how a symmedian is defined.
+- **(d)** If \(Q=P\), the reflected ray from each vertex must be the original ray. Compare the two positive angles it cuts out. For the converse, start with the rays from the vertices through \(I\).
+
+## 3. The circumcenter and orthocenter are isogonal conjugates
+*Adapted from Venema, Exercise 8.6.9, printed p. 75 (PDF p. 92). The acute-triangle restriction and the intermediate steps below are added here. Use the [circumcenter](https://anandppatel.github.io/proof-episodes/circumcenter/) and [orthocenter](https://anandppatel.github.io/proof-episodes/orthocenter/) episodes and Problem 2.*
+
+Assume that \(ABC\) is **strictly acute**, meaning that all three vertex angles are less than \(90^\circ\). Let \(O\) and \(H\) be its circumcenter and orthocenter. In this problem you may use the following circle-angle fact from Venema, §0.10, printed p. 10 (PDF p. 27): if distinct points \(X,Y,Z\) lie on a circle with center \(O\) and \(\angle XZY<90^\circ\), then the ordinary angle \(\angle XOY\) is twice \(\angle XZY\). No directed angles are needed.
+
+**(a)** Let \(D\) be the altitude foot from \(A\) on \(BC\). Explain why all three altitude feet are interior to their sides and why \(H\) lies inside \(ABC\). Show that
 \[
-\Delta^2=s(s-a)(s-b)(s-c),
+\angle BAH=90^\circ-\angle B,
 \qquad
-\Delta=sr,
-\qquad
-\Delta=(s-a)r_A=(s-b)r_B=(s-c)r_C.
+\angle HAC=90^\circ-\angle C.
 \]
 
-Try each part before opening its hints. The Markdown download and printed set include all hints and figures. Drawings illustrate sample configurations; a proof must cover every triangle allowed by the stated hypotheses.
+**(b)** Apply the supplied circle-angle fact to \(\angle AOB\) and \(\angle AOC\). Use the two isosceles radius triangles to prove
+\[
+\angle BAO=90^\circ-\angle C,
+\qquad
+\angle OAC=90^\circ-\angle B.
+\]
+Explain why these equalities put the ray \(AO\) strictly inside \(\angle BAC\). Repeat the position argument at another vertex to justify that \(O\) lies inside \(ABC\).
 
-## 1. When angle ratios give the wrong prediction
+**(c)** Compare parts (a) and (b). Prove that reflection across the internal bisector at \(A\) exchanges the rays \(AO\) and \(AH\). Repeat at \(B\) and \(C\), and conclude that \(O\) and \(H\) are isogonal conjugates of one another.
+
+**(d)** Prove that \(O=H\) if and only if \(ABC\) is equilateral. In the forward direction, compare an altitude through a vertex with the perpendicular bisector of the opposite side; in the reverse direction, explain why these lines coincide in an equilateral triangle.
+
+![An acute triangle with circumcenter O, orthocenter H, its circumcircle, and the rays AO and AH.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/acute-isogonal.svg "Compare the angles made by AO and AH. The acute hypothesis keeps both centers and their cevians interior.")
+
+### Hints
+
+- **(a)** A perpendicular foot outside the opposite side would force one of the two angles at that side's endpoints to be nonacute. Two cevians joining vertices to interior points of their opposite sides meet inside the triangle. Then use the angle sums in \(ABD\) and \(ACD\).
+- **(b)** The base angles of an isosceles triangle are half the difference between \(180^\circ\) and its vertex angle. Check that the two angles you obtain at \(A\) are positive and add to \(\angle A\). For an angle less than \(180^\circ\), this equality places the intervening ray inside the angle; repeating at \(B\) determines the required side of each sideline.
+- **(c)** Record the two angles on each side of \(AO\), then do the same for \(AH\). Compare their order, rather than merely their sum. Problem 2 turns the three reflected rays into a statement about conjugate points.
+- **(d)** If \(O=H\), both the altitude from \(A\) and the perpendicular bisector of \(BC\) pass through this point and are perpendicular to \(BC\). Use uniqueness of that perpendicular and the perpendicular-bisector property. Repeat at one other vertex.
+
+## 4. When angle ratios give the wrong prediction
 *An application of [trigonometric Ceva](https://anandppatel.github.io/proof-episodes/trig-ceva/).*
 
 Let \(ABC\) be a right isosceles triangle with \(\angle A=90^\circ\) and \(AB=AC=1\). Choose interior side points \(D\in BC\), \(E\in CA\), and \(F\in AB\) so that
@@ -25,7 +101,7 @@ Let \(ABC\) be a right isosceles triangle with \(\angle A=90^\circ\) and \(AB=AC
 \angle BAD=60^\circ,\quad \angle DAC=30^\circ,\qquad
 \angle CBE=15^\circ,\quad \angle EBA=30^\circ,
 \]
-and \(CF\) is the internal angle bisector at \(C\). You may use the exact value \(\sin15^\circ=(\sqrt6-\sqrt2)/4\).
+and \(CF\) is the internal angle bisector at \(C\). You may use \(\sin30^\circ=1/2\), \(\sin60^\circ=\sqrt3/2\), and \(\sin15^\circ=(\sqrt6-\sqrt2)/4\).
 
 **(a)** Find the two angles at \(C\) cut out by \(CF\), and compute the product
 \[
@@ -48,35 +124,7 @@ where all six angles are measured in degrees. What would this product suggest if
 - **(c)** Use the side–sine identity from Episode 11 at \(A\) and then at \(B\); the side-length factor at \(B\) is not \(1\). Once two side ratios are known, ordinary Ceva determines the third.
 - **(d)** A positive ratio \(AF_*/F_*B=k\), together with \(AF_*+F_*B=AB\), determines one point of the segment. Find the corresponding ratio for the original angle-bisector foot \(F\), and compare the two positions using exact inequalities between positive numbers.
 
-## 2. A family of concurrent cevians
-*An application of [trigonometric Ceva](https://anandppatel.github.io/proof-episodes/trig-ceva/) and the [symmedian episode](https://anandppatel.github.io/proof-episodes/symmedian/).*
-
-For each integer \(n\geq0\), choose interior side points \(D_n\in BC\), \(E_n\in CA\), and \(F_n\in AB\) with
-\[
-\frac{BD_n}{D_nC}=\left(\frac cb\right)^n,
-\qquad
-\frac{CE_n}{E_nA}=\left(\frac ac\right)^n,
-\qquad
-\frac{AF_n}{F_nB}=\left(\frac ba\right)^n.
-\]
-Here \(a=BC\), \(b=CA\), and \(c=AB\).
-
-**(a)** Explain why each of these three points exists and is unique. Express \(BD_n/BC\) in terms of \(b,c,n\), and write the two cyclic formulas.
-
-**(b)** Use the side–sine identity from Episode 11 to compute the three sine ratios for \(AD_n,BE_n,CF_n\). Apply trigonometric Ceva to prove that they meet at a unique interior point \(P_n\).
-
-**(c)** Identify \(P_0,P_1,P_2\) among the familiar triangle centers. For a triangle with \(a=5,b=6,c=7\), find the exact fraction \(BD_3/BC\).
-
-**(d)** Suppose \(P_m=P_n\) for two distinct nonnegative integers \(m,n\). Prove that the triangle must be equilateral. Deduce that every nonequilateral triangle has infinitely many distinct points in this family, and describe what happens for an equilateral triangle.
-
-### Hints
-
-- **(a)** For a segment of length \(L\) and a prescribed ratio \(x/(L-x)=k>0\), solve for \(x\). Check that the result is strictly between \(0\) and \(L\).
-- **(b)** The side–sine identity has one extra side-length factor. Divide by it before multiplying the three sine ratios. The case \(n=0\) involves reciprocals, which are defined because all side lengths are positive.
-- **(c)** Compare the ratios obtained at \(n=0,1,2\) with the characterizations of a median, an internal angle bisector, and a symmedian. For \(n=3\), convert the ratio of two lengths into a fraction of their sum.
-- **(d)** An interior point fixes a single ray from \(A\), hence a single intersection with \(BC\). If two members of the family coincide, compare their two ratios on \(BC\), and then do the same at another vertex. Separate positive numbers less than \(1\), equal to \(1\), and greater than \(1\) when comparing unequal integer powers.
-
-## 3. The symmedian point of a right triangle
+## 5. The symmedian point of a right triangle
 *A geometric application of the [symmedian episode](https://anandppatel.github.io/proof-episodes/symmedian/).*
 
 Suppose \(\angle A=90^\circ\). Let \(D\) be the foot of the perpendicular from \(A\) to \(BC\), and let \(L\) be the midpoint of \(AD\).
@@ -95,7 +143,7 @@ BD=\frac{AB^2}{BC},\qquad DC=\frac{AC^2}{BC}.
 
 **(d)** Now allow \(ABC\) to be any noncollinear triangle whose altitude foot \(D\) lies strictly inside \(BC\). Prove that \(AD\) is a symmedian if and only if either \(AB=AC\) or \(\angle A=90^\circ\).
 
-![A triangle right angled at A, its altitude AD, and two further symmedians meeting at the midpoint L of AD.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/right-symmedian.svg "Can the midpoint of an altitude locate the symmedian point? Problem 3 uses the right angle.")
+![A triangle right angled at A, its altitude AD, and two further symmedians meeting at the midpoint L of AD.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/right-symmedian.svg "Can the midpoint of an altitude locate the symmedian point? Problem 5 uses the right angle.")
 
 ### Hints
 
@@ -104,33 +152,7 @@ BD=\frac{AB^2}{BC},\qquad DC=\frac{AC^2}{BC}.
 - **(c)** Compare \([LBC]\) with \([EBC]\) using bases on \(BE\), and make the same comparison with \([LAB]\) and \([EAB]\). The common factor cancels. Then compare the latter two triangles using bases on \(AC\). For the numerical value, compute the same total area using the legs and using the altitude to the hypotenuse.
 - **(d)** Write \(x=BD\), \(y=DC\), and \(h=AD\). Express \(AB^2\) and \(AC^2\) by Pythagoras, substitute into the symmedian criterion, and factor the resulting equality. Interpret each factor geometrically; use the converse of Pythagoras when needed.
 
-## 4. Constructing a symmedian with tangents
-*An application of the [circumcenter](https://anandppatel.github.io/proof-episodes/circumcenter/) and [symmedian](https://anandppatel.github.io/proof-episodes/symmedian/) episodes.*
-
-Let \(ABC\) have circumcircle \(\Gamma\), center \(O\), and radius \(R\). Assume the tangents to \(\Gamma\) at \(B\) and \(C\) meet at a finite point \(T\), and that the segment \(AT\) crosses the interior of \(BC\) at \(D\). These position assumptions are part of the configuration.
-
-**(a)** Prove the following elementary fact. If \(X,Y\) are distinct points on a circle of radius \(R\), and \(\theta\) is the angle between the chord ray \(YX\) and either tangent ray at \(Y\), then
-\[
-\sin\theta=\frac{XY}{2R}.
-\]
-Use the midpoint of \(XY\) and the radii to prove the formula. Address both tangent directions and the case in which \(XY\) is a diameter; do not quote the tangent–chord angle theorem.
-
-**(b)** Use part (a), equal tangent lengths from \(T\), and the sine-area formula to compute \([ABT]/[ACT]\) in terms of \(AB\) and \(AC\).
-
-**(c)** Compare these same areas with \([BDT]\) and \([CDT]\). Prove that \(AD\) is the symmedian from \(A\).
-
-**(d)** Suppose \(AB=5\), \(AC=7\), and \(BC=8\), with the tangent configuration just described. Find \(BD\) and \(DC\) exactly, without computing the position of \(T\). Explain why these lengths determine the crossing point uniquely.
-
-![The circumcircle of ABC and its two tangents at B and C, meeting at T across BC from A. Segment AT meets BC at D.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/tangent-symmedian.svg "A construction that starts with two tangents. The crossing condition in Problem 4 fixes the position of T and D.")
-
-### Hints
-
-- **(a)** If the chord is not a diameter, its midpoint \(M\) gives a right triangle with hypotenuse \(R\) and one leg \(XY/2\). The tangent is perpendicular to the radius at \(Y\). Reversing its direction replaces the angle by its supplement. If the chord is a diameter, read the tangent angle directly.
-- **(b)** Use \(AB,BT\) for one sine-area formula and \(AC,CT\) for the other. The angles at the contact points are exactly the angles treated in part (a).
-- **(c)** The bases \(AT\) and \(DT\) lie on one line. Compare triangles with common third vertex \(B\), then with common third vertex \(C\), and cancel the common factor. A final common-height comparison uses bases on \(BC\).
-- **(d)** The two pieces have known sum \(BC\) and a ratio supplied by part (c). Solve these two relations using exact fractions; neither tangent length is needed.
-
-## 5. The cevian that balances the perimeter
+## 6. The cevian that balances the perimeter
 *An application of the [Nagel point](https://anandppatel.github.io/proof-episodes/nagel/).*
 
 Let \(T_A\) be the contact of the \(A\)-excircle with \(BC\). You may use \(BT_A=s-c\) and \(T_AC=s-b\). A **boundary path** from \(A\) to a point of \(BC\) follows the sides through either \(B\) or \(C\); its length does not include the cevian joining its endpoints.
@@ -152,108 +174,91 @@ Let \(T_A\) be the contact of the \(A\)-excircle with \(BC\). You may use \(BT_A
 - **(c)** Keep the boundary path separate from the closed perimeter: the latter also includes \(AT_A\). For the area ratio, use the common height from \(A\) to \(BC\).
 - **(d)** Apply part (b) at each vertex. Identify the three resulting side points before invoking the known Nagel concurrence theorem.
 
-## 6. A line through three centers
-*An application of the [Nagel point](https://anandppatel.github.io/proof-episodes/nagel/), [incenter](https://anandppatel.github.io/proof-episodes/incenter/), and [centroid](https://anandppatel.github.io/proof-episodes/centroid/).*
+## 7. The first half of Heron's proof
 
-Work in any Cartesian coordinates. In expressions such as \(uA+vB\), multiply and add the two coordinates separately. You may use the segment-division identity \(P=(1-t)A+tD\) when \(P\in AD\) and \(t=AP/AD\); no general theorem about area coordinates is assumed.
+*Source: Venema, §4.5, Exercises 4.5.1–4.5.4, printed p. 45 (PDF p. 62); contact labels follow Figure 4.4 on printed p. 44 (PDF p. 61). The exercises are grouped into four parts below.*
 
-**(a)** Put \(U=[N_aBC]\), \(V=[N_aCA]\), and \(W=[N_aAB]\). Compare areas with common heights and use the known excircle contact ratios to prove
-\[
-U:V:W=(s-a):(s-b):(s-c).
-\]
-Determine \(U,V,W\) individually in terms of \(\Delta\) and \(s\).
+Let \(ABC\) be a noncollinear triangle with side lengths \(a=BC\), \(b=CA\), \(c=AB\), semiperimeter \(s=(a+b+c)/2\), and area \(\Delta\). Its incircle has center \(I\), radius \(r\), and contact points \(X\in BC\), \(Y\in CA\), and \(Z\in AB\). The \(A\)-excircle has center \(E\), radius \(r_A\), and contact points \(T\) on \(BC\), \(U\) on the extension of \(AC\) beyond \(C\), and \(V\) on the extension of \(AB\) beyond \(B\).
 
-**(b)** Let \(P\) be any interior point, and put \(U_P=[PBC]\), \(V_P=[PCA]\), and \(W_P=[PAB]\). If the ray \(AP\) meets \(BC\) at \(D\), first establish
+You may use the geometric facts established in the incenter and Nagel episodes: \(I\) is interior and \(AI,BI,CI\) are the internal angle bisectors; the incircle contacts lie strictly inside their sides; the excircle contacts satisfy \(B\! -\! T\! -\! C\), \(A\! -\! C\! -\! U\), and \(A\! -\! B\! -\! V\); the ray \(AE\) follows the same internal angle bisector as \(AI\); and \(BE\) bisects the exterior angle between \(BC\) and \(BV\). Both radii are positive, and each radius to a contact point is perpendicular to its sideline. Do not use Heron's formula in Problems 7–8: these problems will prove it.
+
+**(a)** Divide \(ABC\) into the three triangles with vertex \(I\), and prove
 \[
-\frac{BD}{DC}=\frac{W_P}{V_P},
-\qquad
-\frac{AP}{AD}=\frac{V_P+W_P}{\Delta}.
-\]
-Use segment division to deduce the coordinate identity
-\[
-P=\frac{U_PA+V_PB+W_PC}{\Delta}.
+\Delta=sr.
 \]
 
-**(c)** Apply part (b) to \(I\), using its equal perpendicular distances from the sides, and to \(N_a\), using part (a). Use the centroid's \(2:1\) median ratio to write coordinates for \(G\). Combine these expressions to prove
+**(b)** Set
 \[
-N_a=3G-2I.
+z=AZ,\qquad x=BX,\qquad y=CY,\qquad u=CU,\qquad v=BV.
+\]
+Use equal tangent lengths and the stated contact order to prove
+\[
+a=x+y,\quad b=y+z,\quad c=x+z,\quad s=x+y+z,
+\]
+and hence \(x=s-b\), \(y=s-c\), and \(z=s-a\). Next establish
+\[
+u+v=x+y,\qquad x+z+v=y+z+u,
+\]
+and deduce \(u=x\) and \(v=y\). Explain why all five tangent lengths are positive.
+
+**(c)** Show that the full tangent segment from \(A\) to the excircle satisfies \(AV=s\).
+
+**(d)** Prove \(\triangle AZI\sim\triangle AVE\), stating the vertex correspondence, and deduce
+\[
+\frac{r_A}{s}=\frac{r}{s-a}.
 \]
 
-**(d)** When \(I\ne G\), interpret this identity geometrically: determine the order of \(I,G,N_a\) on their line and the ratio \(GN_a:GI\). Prove that \(I=G\) occurs exactly for an equilateral triangle, and explain what the identity says in that case.
-
-![The incenter I, centroid G, and Nagel point N_a in a scalene triangle, with the Nagel cevians shown faintly.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/nagel-line.svg "Area comparisons lead to a line through three familiar centers. Determine their order and the division ratio.")
+![Triangle ABC with incircle center I, A-excenter E, incircle contacts X Y Z, and excircle contacts T U V on BC and the extensions beyond C and B.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/heron-derivation.svg "The configuration for Problems 7–8: compare AZI with AVE, then ZBI with VEB. The labels follow Venema’s Figure 4.4.")
 
 ### Hints
 
-- **(a)** If \(AN_a\) meets \(BC\) at \(T_A\), compare \([N_aAB]/[N_aCA]\) with \(BT_A/T_AC\). Repeat cyclically and then use \(U+V+W=\Delta\).
-- **(b)** Compare the areas with bases \(AP,PD\) using heights from \(B\) and \(C\). Also compare \([PBD]\) with \([ABD]\) and \([PCD]\) with \([ACD]\), then add. Finally express \(D\) as a weighted point of \(BC\) and substitute into \(P=(1-t)A+tD\).
-- **(c)** The three triangles with vertex \(I\) have the same height, so their areas are proportional to \(a,b,c\). For \(N_a\), expand each coefficient \(s-a,s-b,s-c\) and collect the terms involving \(A+B+C\).
-- **(d)** Subtract \(G\) from the identity before interpreting the direction and length. To analyze \(I=G\), compare the three subtriangle areas at \(I\) with those at the centroid; in the converse direction use SSS to compare an equilateral triangle's medians and angle bisectors.
+- **(a)** Use \(AB\), \(BC\), and \(CA\) as bases. What is the corresponding height from \(I\) in each triangle?
+- **(b)** Pair the tangents from each of \(A,B,C\). Along \(BC\), add \(BT+TC\); along the two rays from \(A\), compare \(AB+BV\) with \(AC+CU\). Add and subtract the resulting equations for \(u,v\).
+- **(c)** Write \(AV=AB+BV\), and use the expressions from part (b).
+- **(d)** Locate the two right angles and the common half-angle at \(A\). Match the side opposite that half-angle with the adjacent tangent segment in each triangle.
 
-## 7. Recover a triangle from two contact ratios
-*An inverse problem using the [Gergonne construction](https://anandppatel.github.io/proof-episodes/gergonne/).*
+## 8. Finish the proof of Heron's formula
 
-The incircle touches \(BC,CA,AB\) at \(D,E,F\). Suppose only the two positive numbers
+*Source: Venema, §4.5, Exercises 4.5.5–4.5.7, printed p. 45 (PDF p. 62), form parts (a)–(c). Part (d) is an added consequence of the identities proved in Problems 7–8.*
+
+Keep all the notation and geometric facts from Problem 7, and put \(\beta=\angle ABC\). You may use every identity proved in Problem 7, but not Heron's formula before you derive it in part (c).
+
+**(a)** Use the internal bisector \(BI\) and exterior bisector \(BE\) to prove
 \[
-u=\frac{BD}{DC},\qquad v=\frac{CE}{EA}
+\angle ZBI=\frac{\beta}{2},\qquad
+\angle EBV=\frac{180^\circ-\beta}{2}.
 \]
-are specified. Write \(x=AE=AF\), \(y=BD=BF\), and \(z=CD=CE\). The episode gives the side equations \(a=y+z\), \(b=z+x\), \(c=x+y\).
+Explain why \(BI\perp BE\). Then use the angle sum in the right triangle \(VEB\) to prove \(\triangle ZBI\sim\triangle VEB\), with correspondence \(Z\leftrightarrow V\), \(B\leftrightarrow E\), \(I\leftrightarrow B\).
 
-**(a)** Determine \(x:y:z\) from \(u,v\). Hence express \(a:b:c\) in terms of \(u,v\), keeping the labels of the three sides fixed.
-
-**(b)** Prove that every pair \(u,v>0\) is realized by a noncollinear triangle and that the triangle is unique up to similarity. Check all three strict triangle inequalities, and verify that the incircle of the constructed triangle has the prescribed ratios; merely producing three positive side lengths is not enough.
-
-**(c)** Recover the side lengths when
+**(b)** Read the corresponding sides in this similarity to prove
 \[
-u=\frac32,\qquad v=\frac43,
-\qquad\text{and the perimeter is }52.
+\frac{s-b}{r}=\frac{r_A}{s-c},
+\qquad\text{and hence}\qquad
+rr_A=(s-b)(s-c).
 \]
-Also find the remaining contact ratio \(AF/FB\).
 
-**(d)** Describe exactly which pairs \((u,v)\) produce \(AB=AC\), which produce \(BA=BC\), and which produce \(CA=CB\). Which pair gives an equilateral triangle?
+**(c)** Combine part (b) with the radius relation from Problem 7(d) to obtain
+\[
+r^2=\frac{(s-a)(s-b)(s-c)}{s}.
+\]
+Use Problem 7(a) to deduce Heron's formula
+\[
+\Delta=\sqrt{s(s-a)(s-b)(s-c)}.
+\]
+Explain why every division is legitimate and why the positive square root is required.
+
+**(d)** Let \(r_B,r_C\) denote the radii of the excircles opposite \(B,C\). Derive, without any further construction,
+\[
+\Delta=sr=(s-a)r_A=(s-b)r_B=(s-c)r_C.
+\]
+Explain why the proofs of the last two equalities follow by cyclically relabeling the triangle.
 
 ### Hints
 
-- **(a)** Choose a positive value for \(x\), use \(v=z/x\) to find \(z\), and then use \(u=y/z\) to find \(y\). Form the three side sums only afterward.
-- **(b)** If \(a=y+z\), \(b=z+x\), \(c=x+y\), simplify \(b+c-a\), \(c+a-b\), and \(a+b-c\). In the resulting triangle, recover its actual tangent lengths from its semiperimeter. For uniqueness, first match scales by a dilation and then apply SSS.
-- **(c)** Find a simple integer triple proportional to \(x,y,z\). Its three side sums have a definite perimeter, which determines the remaining scale factor.
-- **(d)** Express each equality of two side sums as an equality of two of \(x,y,z\), then translate it into the parameters \(u,v\).
-
-## 8. How large is the contact triangle?
-*An area application of the [Gergonne construction](https://anandppatel.github.io/proof-episodes/gergonne/).*
-
-Let \(D,E,F\) be the incircle contacts on \(BC,CA,AB\), and put \(x=AE=AF\), \(y=BD=BF\), \(z=CD=CE\). Thus \(a=y+z\), \(b=z+x\), \(c=x+y\), with \(x,y,z>0\). The triangle \(DEF\) is the **contact triangle**. You may use the sine-area formula from [trigonometric Ceva](https://anandppatel.github.io/proof-episodes/trig-ceva/).
-
-**(a)** Compare each corner triangle with \(ABC\) using their shared vertex angle. Prove
-\[
-\frac{[AEF]}{\Delta}=\frac{x^2}{bc},\qquad
-\frac{[BFD]}{\Delta}=\frac{y^2}{ca},\qquad
-\frac{[CDE]}{\Delta}=\frac{z^2}{ab}.
-\]
-Explain why the argument covers an obtuse triangle.
-
-**(b)** Subtract the three corner areas from \(\Delta\) and prove
-\[
-\frac{[DEF]}{\Delta}=\frac{2xyz}{abc}.
-\]
-For the algebra, multiply by \(abc\), replace \(a,b,c\) by their contact-length sums, and collect terms.
-
-**(c)** Starting only with \((p-q)^2\ge0\) for positive numbers \(p,q\), prove
-\[
-(x+y)(y+z)(z+x)\ge8xyz.
-\]
-Determine precisely when equality holds; do not cite an inequality without proving its needed case.
-
-**(d)** Deduce the sharp bound \([DEF]\le\Delta/4\), and characterize all triangles attaining it. Describe the contact points in the equality case and give a geometric explanation of the area fraction.
-
-![Incircle contacts D, E, F and the four triangles into which their joins divide ABC.](https://anandppatel.github.io/proof-episodes/homework/cevians-and-area/figures/contact-triangle.svg "The contact triangle and the three corner triangles partition the area of ABC.")
-
-### Hints
-
-- **(a)** At \(A\), the numerator uses the two lengths \(x,x\), while the denominator uses \(b,c\); both use \(\sin\angle A\). Treat \(B\) and \(C\) in the same cyclic order.
-- **(b)** The numerator after taking a common denominator is \(abc-ax^2-by^2-cz^2\). Expand the side sums and look for cancellation of the terms containing a square.
-- **(c)** Rewrite the squared-difference inequality as a comparison between \((p+q)^2\) and \(4pq\). Apply it to all three pairs, multiply, and use positivity when taking a square root.
-- **(d)** Combine parts (b) and (c), and track the equality conditions through both. If the three tangent lengths are equal, locate each contact on its side and reconsider the three corner triangles from part (a).
+- **(a)** The angles \(ABC\) and \(CBV\) are supplementary. Their half-angles add to \(90^\circ\). In \(VEB\), the angles at \(B\) and \(E\) are complementary.
+- **(b)** In the stated correspondence, \(BZ\) matches \(EV\), and \(ZI\) matches \(VB\). Substitute the lengths established in Problem 7.
+- **(c)** First express \(r_A\) in terms of \(r,s,s-a\). Substitute into part (b), then square the already-proved identity \(\Delta=sr\).
+- **(d)** Cross-multiply Problem 7(d) and compare with \(\Delta=sr\). Replace \((A,B,C)\) by \((B,C,A)\), and then by \((C,A,B)\).
 
 ## 9. The largest area with a fixed base and perimeter
 *An application of [Heron’s formula](https://anandppatel.github.io/proof-episodes/heron/).*
@@ -291,7 +296,7 @@ Use a difference of squares and Heron’s formula to deduce
 
 Four positive numbers are proposed as the inradius \(r\) and the labeled exradii \(r_A,r_B,r_C\) of a triangle. We will determine exactly when this proposal is possible and whether it determines the triangle.
 
-**(a)** For any triangle, use the area-radius identities in the setup to prove
+**(a)** For any triangle, use the area-radius identities proved in Problems 7–8 to prove
 \[
 \frac1r=\frac1{r_A}+\frac1{r_B}+\frac1{r_C}.
 \]
@@ -303,7 +308,7 @@ Apply this necessary test to the proposed quadruples
 \]
 Which is ruled out, and which remains possible? Explain why passing a necessary test alone has not yet proved existence.
 
-**(b)** Now suppose the four positive numbers satisfy the identity in part (a). Define
+**(b)** Now suppose the four positive numbers satisfy the identity in part (a). The letters \(x,y,z\) below are redefined for this problem. Define
 \[
 Q=\sqrt{r\,r_A r_B r_C},
 \qquad
@@ -321,7 +326,7 @@ Prove that these lengths form a noncollinear triangle. If \(S\) is its semiperim
 
 ### Hints
 
-- **(a)** Divide each of \(s,s-a,s-b,s-c\) by the area using the given identities. Add the three expressions involving exradii and use \(a+b+c=2s\); keep the candidate tests as exact fractions.
+- **(a)** Divide each of \(s,s-a,s-b,s-c\) by the area using the identities from Problems 7–8. Add the three expressions involving exradii and use \(a+b+c=2s\); keep the candidate tests as exact fractions.
 - **(b)** Positivity of \(x,y,z\) should make each difference “sum of two sides minus the third” visibly positive. Add the three proposed sides to find \(S\), and multiply the reciprocal identity by \(Q\); compare \(S-a,S-b,S-c\) with the vertex tangent lengths.
 - **(c)** Heron’s product for the constructed triangle is \(Sxyz\). Substitute the definitions of \(S,x,y,z\), then simplify using \(Q^2=r\,r_A r_B r_C\); both the area and \(Q\) are positive.
 - **(d)** For any triangle with those radii and area \(D\), express \(s,s-a,s-b,s-c\) as \(D\) divided by the appropriate radius. Substitute into Heron’s formula to determine \(D^2\), then recover the tangent lengths and sides; use SSS for uniqueness and the converse of Pythagoras to identify the concrete triangle.

@@ -204,11 +204,15 @@ Never publish the textbook PDF. Checks for the new episodes are in
 identities validate implementation, not the synthetic arguments.
 
 Homework set 02 is `homework/cevians-and-area/cevians-and-area.md`: ten problems,
-40 lettered parts, and a hint for every part. The problems apply the techniques
-of Episodes 11–15 in new configurations; they do not ask students to reproduce
-the episode proofs. The episode theorems are available tools. The set includes
-counterexamples, constructions, inverse problems, a three-center line, and area
-bounds. Its six current SVG figures are regenerated with
+40 lettered parts, and a hint for every part. Problems 1–3 adapt Venema on the
+interior isotomic pairing of Gergonne and Nagel, interior isogonal conjugation
+and its unique fixed point, and the isogonal relationship between O and H in
+acute triangles. Problems 7–8 deliberately derive Heron's formula step by step
+from Exercises 4.5.1–4.5.7, as requested; they must not assume the formula or
+the area–radius identities being proved. Problems 4–6 and 9–10 apply the
+episode techniques to a counterexample, symmedians, perimeter, area bounds,
+and reconstruction. The allowed facts and source/adaptation boundaries are
+explicit in the student introduction. Its seven current SVG figures are regenerated with
 `node .github/build-cevians-figures.cjs`. The common homework generator now builds
 both assignments and verifies their part/hint/figure counts. Preserve set 01.
 When revising set 02, update its separate local instructor key and the symmedian
