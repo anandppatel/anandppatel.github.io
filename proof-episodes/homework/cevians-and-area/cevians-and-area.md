@@ -1,4 +1,4 @@
-# Trigonometric Ceva ... Heron's formula homwork
+# Trigonometric Ceva ... Heron's formula homework
 
 These ten problems connect triangle centers through reflections, apply Ceva and symmedian techniques in new configurations, and derive Heron’s formula from the incircle and an excircle. Problems 1–3 adapt selected exercises from Venema; Problems 7–8 follow his step-by-step derivation of Heron’s formula. The other problems apply ideas from the proof episodes.
 
