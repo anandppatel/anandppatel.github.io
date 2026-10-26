@@ -6,8 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Let N be the midpoint of OH and R the circumradius; the circle with center N and radius R/2 contains the three side midpoints and the three midpoints of HA, HB, and HC.">
 <title>The nine-point circle · Part I — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=20261017-complementary-homework">
+<link rel="stylesheet" href="../shared/episode.css?v=20261026-physical-interpretations-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 08</p><h1>The nine-point circle · Part I</h1></div><p class="header-note">One dilation puts six familiar midpoints on a circle.</p></header>
@@ -36,10 +37,50 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>The nine-point circle · Part I</h2><p>Let N be the midpoint of OH and R the circumradius; the circle with center N and radius R/2 contains the three side midpoints and the three midpoints of HA, HB, and HC.</p></section>
+<section><p class="kicker">The theorem</p><h2>The nine-point circle · Part I</h2><p>Let N be the midpoint of OH and R the circumradius; the circle with center N and radius R/2 contains the three side midpoints and the three midpoints of HA, HB, and HC.</p><p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p></section>
 <section><p class="kicker">Before the proof</p><p>The midpoints of HA, HB, and HC lie on a circle; will the three side midpoints join them?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul><li><a href="../circumcenter/">The circumcenter O</a></li><li><a href="../orthocenter/">The orthocenter H</a></li><li><a href="../basics/#c2">C2 · Rigid motions and half-turns</a></li><li><a href="../basics/#c3">C3 · Dilations</a></li><li><a href="../thales/">Thales’ theorem</a></li></ul><details><summary>Why the parallelogram has a common diagonal midpoint</summary><p>Let D be the midpoint of BC in a genuine parallelogram BHCX. The half-turn about D swaps B and C; because opposite sides are parallel, it sends line BH to CX and line CH to BX. Their intersection H therefore goes to X, proving that D is the midpoint of HX.</p></details><details><summary>Names in this episode</summary><p>D, E, and F are the midpoints of BC, CA, and AB; U, V, and W are the midpoints of HA, HB, and HC. N is the midpoint of OH. X is the point of the circumcircle opposite A across its center O.</p></details><details><summary>A collapsed parallelogram causes no gap</summary><p>If the right angle is at B, then H = B and X = C, so the midpoint of HX is the midpoint D of BC directly. If the right angle is at C, then H = C and X = B. In all other cases BHCX is a genuine parallelogram, including a right triangle whose right angle is at A.</p></details><details><summary>The circle is unique</summary><p>The dilation of factor 1/2 sends the noncollinear triangle ABC to the noncollinear triangle UVW, so its three image points determine a unique circumcircle. Its radius R/2 is positive. Some of the other named points may coincide with U, V, or W.</p></details></section>
-</aside></div>
+</aside></div><!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The nine-point center as the balance point of four equal masses</h2>
+<p>Place equal point masses at A, B, C, and the orthocenter H. Join them with a massless rigid framework. Its center of mass is the nine-point center N. Supporting the framework directly below N balances it in a uniform gravitational field.</p>
+<p>This works for acute, right, and obtuse triangles. If H coincides with a vertex, place two masses at that position: coincident labels do not remove a mass.</p>
+<details class="physical-experiment">
+<summary>Explore the four equal masses</summary>
+<p>Move ABC and follow the fourth mass at H. Compare the center of mass of A, B, C, H with the midpoint of OH. They locate the same point N, even when H lies outside ABC.</p>
+<div class="physical-demo" data-physical-model="nine-point"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why four equal masses balance at N</summary>
+<p>The center of mass of the four equal masses is (A + B + C + H)/4. The centroid satisfies A + B + C = 3G, and the Euler-line identity is 3G = 2O + H. Therefore</p>
+<p class="physical-equation">(A + B + C + H)/4 = (2O + 2H)/4 = (O + H)/2 = N.</p>
+<p>The nine-point-circle argument identifies its center as the midpoint of OH. The vector calculation proves that this circle center is also the physical balance point. No assumption about the acuteness of ABC enters the calculation.</p>
+</details>
+<div class="physical-connection">
+<h3>One rotating experiment joins G, N, and H</h3>
+<p>Fix three identical springs at A, B, and C on a horizontal table, and join their other ends to one bead. Each spring has stiffness <var>k</var> and zero natural length. Rotate the table about the circumcenter O at angular speed <var>ω</var>. View the bead from the rotating table. As the speed increases, its equilibrium travels along the Euler line: from the centroid G, through the nine-point center N, to the orthocenter H.</p>
+<p>Let <var>m</var> be the bead’s mass and put <var>λ</var> = <var>mω</var><sup>2</sup>/<var>k</var>. The three settings are <var>λ</var> = 0 at G, <var>λ</var> = 1 at N, and <var>λ</var> = 2 at H. The table is stationary at the first setting. If O = H, all these positions coincide.</p>
+<details class="physical-experiment">
+<summary>Explore the rotating springs</summary>
+<p>Change the speed parameter and move the triangle. The drawing uses the rotating view, in which the three anchors stay fixed. Follow the equilibrium point and the balance of spring and centrifugal forces.</p>
+<div class="physical-demo" data-physical-model="rotating" data-initial-lambda="1"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why the equilibrium follows the Euler line</summary>
+<p>In the following equations, letters denote position vectors. The three spring forces add to 3<var>k</var>(G − P), while the centrifugal force is <var>mω</var><sup>2</sup>(P − O). A bead at rest relative to the table therefore satisfies</p>
+<p class="physical-equation">3(G − P) + λ(P − O) = 0.</p>
+<p>The Euler-line identity 3G = 2O + H gives</p>
+<p class="physical-equation">P = O + (H − O)/(3 − λ).</p>
+<p>This proves all three stated settings. It also proves stability throughout the displayed interval 0 ≤ λ ≤ 2. Indeed, the effective potential in the rotating frame is</p>
+<p class="physical-equation">U(P) = ½k(PA<sup>2</sup> + PB<sup>2</sup> + PC<sup>2</sup>) − ½mω<sup>2</sup>PO<sup>2</sup>.</p>
+<p>If P<sub>λ</sub> denotes the equilibrium, completing the square gives U(P) − U(P<sub>λ</sub>) = ½k(3 − λ)|P − P<sub>λ</sub>|<sup>2</sup>. This is positive away from P<sub>λ</sub>. Coriolis force does no work; gentle damping relative to the table makes a displaced bead settle. Without damping, stability does not mean that motion stops.</p>
+<p>This apparatus is a direct consequence of the <a href="../euler-line/">Euler-line identity</a> and the stated force laws. The calculation establishes the interpretation; the animation illustrates it.</p>
+</details>
+</div>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
 <!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
@@ -51,5 +92,6 @@
 <!-- END BOOK REFERENCE -->
 <nav class="episode-nav" aria-label="Episode order"><a href="../thales/">← Thales’ theorem</a><a href="../nine-point-circle-altitudes/">The nine-point circle · Part II →</a></nav>
 </main>
-<script src="../shared/geometry.js?v=20261017-complementary-homework"></script><script src="../shared/constructions.js?v=20261017-complementary-homework"></script><script src="episode.js?v=20261017-complementary-homework"></script><script src="../shared/episode.js?v=20261017-complementary-homework"></script>
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/constructions.js?v=20261026-physical-interpretations-v1"></script><script src="episode.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/episode.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
 </body></html>

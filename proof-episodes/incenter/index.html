@@ -6,8 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="The internal angle bisectors of every noncollinear triangle meet at a unique interior point I; the circle centered at I and tangent to its three sides is the unique incircle.">
 <title>The incenter — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=20261017-complementary-homework">
+<link rel="stylesheet" href="../shared/episode.css?v=20261026-physical-interpretations-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 04</p><h1>The incenter</h1></div><p class="header-note">Three internal angle bisectors, one inscribed circle.</p></header>
@@ -36,10 +37,30 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>The incenter</h2><p>The internal angle bisectors of every noncollinear triangle meet at a unique interior point I; the circle centered at I and tangent to its three sides is the unique incircle.</p></section>
+<section><p class="kicker">The theorem</p><h2>The incenter</h2><p>The internal angle bisectors of every noncollinear triangle meet at a unique interior point I; the circle centered at I and tangent to its three sides is the unique incircle.</p><p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p></section>
 <section><p class="kicker">Before the proof</p><p>When you make the triangle obtuse, can I move outside it, or can the circle touch a side only on its extension?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul><li><a href="../basics/#c1">C1 · Perpendiculars and distance</a></li><li><a href="../basics/#t1">T1 · Congruence, including HL</a></li><li><a href="../basics/#t2">T2 · Angle sum</a></li><li><a href="../basics/#t6">T6 · Pythagoras</a></li><li><a href="../basics/#o1">O1 · Tangents and radii</a></li></ul><details><summary>Why the converse uses an interior point</summary><p>For two intersecting lines, equal distances describe both angle-bisector lines. For a point P strictly inside an angle smaller than 180°, only its internal bisector is possible. To justify the HL proof, first check that the feet X and Y lie on the forward boundary rays. At least one of the two angles made by AP and those rays is acute. If the other foot lay behind A, HL would force the two interior angles to sum to 180°, a contradiction. If a foot were A, equality of distances and Pythagoras would force both feet to be A, making the two boundary lines the same perpendicular to AP. Thus both feet are on the forward rays, and HL gives the two equal interior angles.</p></details><details><summary>Why the first two bisectors meet inside</summary><p>An internal bisector can be constructed by choosing two points equally far from the vertex on the boundary rays and joining the vertex to the midpoint of their joining segment; SSS gives the equal half-angles. Each internal angle-bisector ray enters the triangle and meets the interior of the opposite side. Write U for the point on BC and V for the point on AC. The points B and V lie on opposite sides of AU, so the segment BV crosses AU. Their intersection is inside both segments, and two distinct lines have at most one intersection. This defines I using only the first two bisectors.</p></details><details><summary>Why contact occurs on the segments</summary><p>At each vertex, its internal bisector makes an angle smaller than 90° with either adjacent side ray. Its perpendicular feet therefore lie on those forward rays. Applying this from both endpoints of a side places that side’s foot strictly between its endpoints.</p></details><details><summary>Why the circle stays inside</summary><p>The interior point I lies in the inward half-plane of each side line, at distance r from that line. A point beyond the line is more than r from I, so it cannot lie in the closed disk of radius r. The disk lies in all three inward half-planes and hence inside the triangle. Any other incircle has a center inside the triangle at equal distances from the side lines; the equal-distance fact puts it on the same first two internal bisectors, fixing both its center I and its radius r.</p></details></section>
-</aside></div>
+</aside></div><!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The incenter as the last point reached by moving walls</h2>
+<p>Move all three side lines inward, perpendicular to themselves, at the same speed. Keep the part of the triangle still inside all three moving walls. The remaining triangle shrinks to a single point: the incenter I.</p>
+<p>Equivalently, start three straight fronts along the boundary and let each advance inward at speed <var>v</var>. I is the last point they reach, at time <var>r</var>/<var>v</var>. Here <var>r</var> is the inradius. It is also the center of the largest disk that fits inside the triangle.</p>
+<details class="physical-experiment">
+<summary>Explore the inward-moving fronts</summary>
+<p>Advance all three fronts by the same perpendicular distance. Move the vertices and watch the remaining region shrink to I. The walls move at equal normal speed; their intersection corners need not move at equal speed.</p>
+<div class="physical-demo" data-physical-model="incenter"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why I is the unique last point</summary>
+<p>Write a = BC, b = CA, c = AB, and let Δ be the area of ABC. For an interior point P, let d<sub>a</sub>, d<sub>b</sub>, and d<sub>c</sub> be its perpendicular distances to the three side lines. Splitting ABC into three triangles gives</p>
+<p class="physical-equation">a d<sub>a</sub> + b d<sub>b</sub> + c d<sub>c</sub> = 2Δ = (a + b + c)r.</p>
+<p>The last equality comes from making the same split at I, whose three distances equal r. Thus the smallest of P’s three distances is at most r. Equality can hold only when all three distances are r, which identifies I. So every point is reached by time r/<var>v</var>, and I is the only point still present at that time.</p>
+<p>More explicitly, when the walls have moved a distance <var>q</var> with 0 ≤ <var>q</var> ≤ r, their inward half-planes intersect in the image of ABC under the dilation centered at I with scale 1 − <var>q</var>/r. At <var>q</var> = r that image is {I}. The argument proves the collapse independently of the illustration.</p>
+</details>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
 <!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
@@ -50,5 +71,6 @@
 <!-- END BOOK REFERENCE -->
 <nav class="episode-nav" aria-label="Episode order"><a href="../orthocenter/">← The orthocenter</a><a href="../euler-line/">The Euler line →</a></nav>
 </main>
-<script src="../shared/geometry.js?v=20261017-complementary-homework"></script><script src="../shared/constructions.js?v=20261017-complementary-homework"></script><script src="episode.js?v=20261017-complementary-homework"></script><script src="../shared/episode.js?v=20261017-complementary-homework"></script>
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/constructions.js?v=20261026-physical-interpretations-v1"></script><script src="episode.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/episode.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
 </body></html>

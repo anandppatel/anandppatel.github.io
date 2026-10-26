@@ -8,10 +8,17 @@
 <title>The circumcenter — Proof episodes — Anand Patel</title>
 <link rel="stylesheet" href="episode.css?v=20261002-build-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<!-- BEGIN PHYSICAL STYLE -->
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
+<!-- END PHYSICAL STYLE -->
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Geometry</p><h1>The circumcenter</h1></div><p class="header-note">Three perpendicular bisectors.<br>One center, equally far from every vertex.</p></header>
-<main><div class="workspace building" id="workspace">
+<main>
+<!-- BEGIN PHYSICAL JUMP -->
+<p class="physical-jump"><a href="#alternate-interpretation">Explore an alternate interpretation</a></p>
+<!-- END PHYSICAL JUMP -->
+<div class="workspace building" id="workspace">
 <section aria-label="Interactive triangle">
 <div class="drawing">
 <div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag the vertices; build below.</p><button id="reset" type="button">Reset triangle</button></div>
@@ -46,7 +53,28 @@
 <section class="explanation" id="proof-explanation" hidden><h2>Why O exists</h2><p class="small">From The Basics: <a href="../basics/#c1">C1 · Perpendiculars</a>, <a href="../basics/#t1">T1 · Triangle congruence</a>, and <a href="../basics/#c5">C5 · Straight angles</a>.</p><p>A <strong>perpendicular bisector</strong> crosses a segment at its midpoint at a right angle.</p><p>We will use one fact: it is exactly the set of points equally far from the segment’s two endpoints.</p><p class="small">One sentence at a time, with the relevant pieces illuminated; the vertices stay movable.</p>
 <details><summary>Why the equal-distance fact holds</summary><p>Let U and V be distinct points, and let M be the midpoint of UV.</p><p>If P lies on its perpendicular bisector and P ≠ M, the right triangles PMU and PMV are congruent: they share PM and have MU = MV. Thus PU = PV. If P = M, the equality follows directly from the midpoint definition.</p><p>Conversely, suppose PU = PV. If P is on line UV, it must be M. Otherwise, triangles PMU and PMV are congruent by three equal sides. Their angles at M are equal and add to 180°, so each is 90°. In either case P lies on the perpendicular bisector.</p></details>
 </section></aside>
-</div><!-- BEGIN BOOK REFERENCE -->
+</div><!-- BEGIN ORIGINAL EPISODE PHYSICAL SECTION -->
+<!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The circumcenter as an equal-arrival point</h2>
+<p>At the same instant, place a signal source at each vertex. Let all three signals travel through the plane at the same constant speed <var>v</var>. The circumcenter O is the unique place where the three signals arrive together. Their common arrival time is <var>R</var>/<var>v</var>, where <var>R</var> is the circumradius.</p>
+<p>Imagine three circular wavefronts spreading through a uniform medium. At one instant all three pass through O. The observation point may lie outside the triangle: an obtuse triangle puts O outside, while a right triangle puts it at the midpoint of the hypotenuse.</p>
+<details class="physical-experiment">
+<summary>Explore three expanding signals</summary>
+<p>Start the signals together, change their common travel distance, and move the vertices. Look for the instant when all three wavefronts pass through O. The construction includes O even when it lies outside the triangle.</p>
+<div class="physical-demo" data-physical-model="circumcenter"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why equal arrival identifies O</summary>
+<p>The travel times to a point P are PA/<var>v</var>, PB/<var>v</var>, and PC/<var>v</var>. They are equal exactly when PA = PB = PC. The first equality puts P on the perpendicular bisector of AB; the second independent equality puts it on that of AC. Since ABC is noncollinear, those bisectors have the unique intersection O. Conversely, OA = OB = OC = R, so all three signals reach O at time R/<var>v</var>.</p>
+<p>The experiment assumes simultaneous emission, equal constant speeds, and unobstructed straight-line travel. The theorem concerns equal arrival times throughout the plane; it does not require O to lie in the triangular region.</p>
+</details>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
+<!-- END ORIGINAL EPISODE PHYSICAL SECTION -->
+<!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
 <p class="book-citation">Gerard A. Venema, <cite><a href="https://doi.org/10.5948/9781614441113">Exploring Advanced Euclidean Geometry with GeoGebra</a></cite> (2013).</p>
@@ -57,4 +85,8 @@
 <!-- END BOOK REFERENCE -->
 </main>
 <script src="geometry.js"></script><script src="episode.js?v=20261002-build-v1"></script>
+<!-- BEGIN PHYSICAL SCRIPTS -->
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
+<!-- END PHYSICAL SCRIPTS -->
 </body></html>

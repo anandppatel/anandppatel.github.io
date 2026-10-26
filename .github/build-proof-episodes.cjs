@@ -4,15 +4,17 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','trig-ceva','symmedian','nagel','gergonne','heron','all-centers'];
-const rev='20261017-complementary-homework';
+const rev='20261026-physical-interpretations-v1';
 const {renderReference,referenceStyle}=require('./episode-references.cjs');
+const {hasInterpretation,renderInterpretation,interpretationAssets}=require('./episode-interpretations.cjs');
 const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lessons=slugs.map(slug=>{const window={};if(slug==='all-centers')vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes/shared/geometry-catalog.js'),'utf8'),{window});vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes',slug,'episode.js'),'utf8'),{window});return window.ProofEpisode;});
 for(let i=0;i<lessons.length;i++){
  const c=lessons[i],slug=slugs[i],prev=i?lessons[i-1]:{slug:'orthocenter',title:'The orthocenter'},next=lessons[i+1];
+ const physical=interpretationAssets(slug,rev);
  const connections=c.connections?`<section class="connections" id="connections" aria-labelledby="connections-title"><p class="kicker">Connections to explore</p><h2 id="connections-title">${escape(c.connections.title)}</h2><p class="connections-intro">${escape(c.connections.introduction)}</p>${c.connections.items.map((item,j)=>`<section><h3>${escape(item.title)}</h3><p>${escape(item.body)}</p>${j===1?`<div class="comparison-wrap" tabindex="0" role="region" aria-label="Comparison of three cevians"><table><caption>Three cevians from A, meeting BC at D</caption><thead><tr><th scope="col">Cevian</th><th scope="col">Side ratio</th><th scope="col">What the ratio says</th></tr></thead><tbody>${c.connections.comparison.map(row=>`<tr><th scope="row">${escape(row.name)}</th><td>${escape(row.ratio)}</td><td>${escape(row.meaning)}</td></tr>`).join('')}</tbody></table></div>`:''}</section>`).join('')}<p class="connection-exploration">${escape(c.connections.exploration)}</p><p class="connection-links">${c.connections.links.map(link=>`<a href="${escape(link.href)}">${escape(link.label)}</a>`).join(' ')}</p></section>`:'';
  const sidebar=c.studio?`<aside class="sidebar studio-sidebar"><section><p class="kicker">Choose what to show</p><h2>Centers &amp; constructions</h2><p class="small">Each switch adds or removes just that object. Drag A, B, or C to change the triangle.</p><div id="studio-controls"></div>${(c.notes||[]).map(n=>`<details><summary>${escape(n.title)}</summary><p>${escape(n.body)}</p></details>`).join('')}</section></aside>`:`<aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>${escape(c.title)}</h2><p>${escape(c.observation)}</p>${c.connections?'<p><a href="#connections">Why the symmedian matters</a></p>':''}</section>
+<section><p class="kicker">The theorem</p><h2>${escape(c.title)}</h2><p>${escape(c.observation)}</p>${c.connections?'<p><a href="#connections">Why the symmedian matters</a></p>':''}${hasInterpretation(slug)?'<p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p>':''}</section>
 <section><p class="kicker">Before the proof</p><p>${escape(c.prediction)}</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul>${(c.prerequisites||[]).map(p=>`<li><a href="${escape(p.href)}">${escape(p.label)}</a></li>`).join('')}</ul>${(c.notes||[]).map(n=>`<details><summary>${escape(n.title)}</summary><p>${escape(n.body)}</p></details>`).join('')}</section>
 </aside>`;
@@ -25,6 +27,7 @@ for(let i=0;i<lessons.length;i++){
 <meta name="description" content="${escape(c.observation)}">
 <title>${escape(c.title)} — Proof episodes — Anand Patel</title>
 <link rel="stylesheet" href="../shared/episode.css?v=${rev}">${referenceStyle(slug)?"\n"+referenceStyle(slug):""}
+${physical.style}
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / ${c.studio?'Geometry playground':'Episode '+String(i+4).padStart(2,'0')}</p><h1>${escape(c.title)}</h1></div><p class="header-note">${escape(c.subtitle)}</p></header>
@@ -52,12 +55,14 @@ ${c.studio?'':`<section class="build-panel" id="build-panel" aria-label="Step-by
 <p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. Focus a labeled point and use the arrow keys; hold Shift for larger steps. Measurements illustrate the construction; the argument proves it.</p>
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
-${sidebar}</div>${connections}${renderReference(slug)?"\n"+renderReference(slug):""}
+${sidebar}</div>${renderInterpretation(slug)}${connections}${renderReference(slug)?"\n"+renderReference(slug):""}
 <nav class="episode-nav" aria-label="Episode order"><a href="../${escape(prev.slug)}/">← ${escape(prev.title)}</a>${next?`<a href="../${escape(next.slug)}/">${escape(next.title)} →</a>`:'<a href="../">All proof episodes →</a>'}</nav>
 </main>
 <script src="../shared/geometry.js?v=${rev}"></script>${c.studio?`<script src="../shared/geometry-catalog.js?v=${rev}"></script>`:`<script src="../shared/constructions.js?v=${rev}"></script>`}<script src="episode.js?v=${rev}"></script><script src="../shared/episode.js?v=${rev}"></script>
+${physical.scripts}
 </body></html>
 `;
  fs.writeFileSync(path.join(root,'proof-episodes',slug,'index.html'),html);
 }
 console.log(`Built ${lessons.length} episode and playground pages.`);
+require('./build-episode-interpretations.cjs');

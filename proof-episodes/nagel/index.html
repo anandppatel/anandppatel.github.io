@@ -6,8 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.">
 <title>The Nagel point — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=20261017-complementary-homework">
+<link rel="stylesheet" href="../shared/episode.css?v=20261026-physical-interpretations-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 13</p><h1>The Nagel point</h1></div><p class="header-note">Three excircles, three contact cevians, one interior point.</p></header>
@@ -36,10 +37,32 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>The Nagel point</h2><p>The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.</p></section>
+<section><p class="kicker">The theorem</p><h2>The Nagel point</h2><p>The cevians from the vertices to the opposite-side excircle contacts concur at a unique interior point Na, the Nagel point.</p><p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p></section>
 <section><p class="kicker">Before the proof</p><p>Which side segments are exchanged when you replace an incircle contact by an excircle contact?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul><li><a href="../incenter/">04 · Angle bisectors and equal distances</a></li><li><a href="../ceva/">10 · Ceva for interior side points</a></li><li><a href="../basics/#t2">T2 · Angle sum</a></li><li><a href="../basics/#t4">T4 · Strict triangle inequality</a></li><li><a href="../basics/#p2">P2 · Same-side angles and parallels</a></li><li><a href="../basics/#o1">O1 · Tangents and radii</a></li><li><a href="../basics/#o2">O2 · Equal tangents</a></li></ul><details><summary>Why the excenter exists in the required region</summary><p>Let L be the internal A-bisector’s intersection with BC, and put α = ∠A, β = ∠B, γ = ∠C. Choose the exterior B-bisector ray inside the angle between BC and the ray opposite BA. This ray and the ray AL continued past L lie on the far side of BC. Their angles with BL and LB are (180° − β)/2 and α/2 + β, whose sum is 180° − γ/2 &lt; 180°. By P2 their supporting lines cannot be parallel, so they intersect. An intersection on the A-side of BC would give a triangle whose base angles are the supplements of these two angles and sum to more than 180°, contradicting T2. Thus the intersection is on the two chosen rays beyond BC; call it I_a. The two distinct lines give a unique intersection. This constructs the excenter from two bisectors; no circle has been assumed.</p></details><details><summary>Why the contacts are on the stated rays</summary><p>The equal-distance fact from the incenter episode applies to every angle smaller than 180°, including the exterior angles here. I_a lies inside angle A and beyond BC, so it lies inside the exterior angle at C between CB and the ray opposite CA. Equal distances to CA and CB put it on that angle’s internal bisector. The perpendicular feet from a point on an internal bisector lie on both forward boundary rays. Applying this at B and C places D on both rays BC and CB, hence strictly inside BC; it places V beyond B on AB and U beyond C on AC. None of these contacts can be a vertex.</p></details><details><summary>Why this is the A-excircle</summary><p>The common perpendicular distance from I_a to the three side lines is positive. The circle with this radius is tangent at D, U, and V by O1. Its disk lies on the far side of BC and in the inward half-planes of AB and AC, since each line is exactly one radius from the center. Thus it lies outside ABC, opposite A. Any circle in that region tangent to all three lines has its center on the same two angle-bisector rays, so this excircle is unique. Repeat cyclically for the other two excircles.</p></details><details><summary>Names and ordinary lengths</summary><p>Write a = BC, b = CA, c = AB and s = (a + b + c)/2. D, E, F are the contacts on BC, CA, AB of the A-, B-, C-excircles respectively. Na names the Nagel point; N remains the nine-point center. Every ratio in Ceva uses positive segment lengths, because D, E, F are interior side points.</p></details><details><summary>Drawing precision</summary><p>Nearly flat triangles may have very distant excenters and very large excircles. Fit construction includes each displayed circle in full; Fit triangle returns attention to ABC. Close point labels use ≈, which makes no claim of exact equality.</p></details></section>
-</aside></div>
+</aside></div><!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The Nagel point as the meeting point of three perimeter-balancing cuts</h2>
+<p>Start two walkers at A. Let them follow the boundary at equal speed in opposite directions, without stopping at corners. They meet halfway around the perimeter, at a point D on BC. Draw AD. Repeat the experiment from B and C. The three segments meet at the Nagel point Na.</p>
+<p>Each segment is a cut that divides the triangular sheet into two triangles with equal perimeters. For example, ABD and ACD have equal boundary lengths because the two routes from A to D have equal lengths and the new edge AD belongs to both pieces.</p>
+<details class="physical-experiment">
+<summary>Explore the equal-speed perimeter walkers</summary>
+<p>Choose a starting vertex and start the two walkers together. Follow them to their meeting point on the opposite side, then compare the three resulting cuts. The walkers meet on the boundary; Na is the intersection of the cuts.</p>
+<div class="physical-demo" data-physical-model="nagel"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why the three cuts meet at Na</summary>
+<p>Write a = BC, b = CA, c = AB and s = (a + b + c)/2. Strict triangle inequalities give b &lt; s and c &lt; s, so the two walkers from A reach BC before meeting. Each has traveled s at their first meeting; hence</p>
+<p class="physical-equation">BD = s − c, &nbsp; DC = s − b.</p>
+<p>Put x = s − a, y = s − b, z = s − c. The cyclic experiments give BD/DC = z/y, CE/EA = x/z, and AF/FB = y/x. All six lengths are positive, and</p>
+<p class="physical-equation">(BD/DC)(CE/EA)(AF/FB) = (z/y)(x/z)(y/x) = 1.</p>
+<p>Ceva’s theorem proves concurrency. The excircle contact calculations in this episode give the same side lengths, so D, E, and F are precisely the opposite-side excircle contacts. Their cevians meet at Na.</p>
+<p>This is the classical half-perimeter characterization, also called the splitter construction; see <a href="https://faculty.evansville.edu/ck6/tcenters/class/nagel.html">Clark Kimberling’s account of the Nagel point</a>. The walkers make the equal-length condition visible; Ceva establishes the concurrency.</p>
+</details>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
 <!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
@@ -50,5 +73,6 @@
 <!-- END BOOK REFERENCE -->
 <nav class="episode-nav" aria-label="Episode order"><a href="../symmedian/">← The symmedian point K</a><a href="../gergonne/">The Gergonne point →</a></nav>
 </main>
-<script src="../shared/geometry.js?v=20261017-complementary-homework"></script><script src="../shared/constructions.js?v=20261017-complementary-homework"></script><script src="episode.js?v=20261017-complementary-homework"></script><script src="../shared/episode.js?v=20261017-complementary-homework"></script>
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/constructions.js?v=20261026-physical-interpretations-v1"></script><script src="episode.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/episode.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
 </body></html>

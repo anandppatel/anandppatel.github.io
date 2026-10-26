@@ -72,9 +72,7 @@
 
   function excircle(d,g,M,lineWidth=1.6,feet=true,footWidth=lineWidth) {
     const c=d.colors;
-    d.segment(g.B,g.V,c.muted,1.2,{'stroke-dasharray':'4 4',...part('extension-BV')});
-    d.segment(g.C,g.U,c.muted,1.2,{'stroke-dasharray':'4 4',...part('extension-CU')});
-    d.circle(g.E,g.ra,c.teal,lineWidth,part('A-excircle'));
+    d.circle(g.E,g.ra,c.teal,lineWidth,{'data-excircle':true,...part('A-excircle')});
     if(feet)for(const [foot,a,b,name] of [[g.T,g.B,g.C,'ET'],[g.U,g.A,g.C,'EU'],[g.V,g.A,g.B,'EV']])
       radius(d,g,g.E,foot,a,b,c.teal,footWidth,M,'radius-'+name);
   }

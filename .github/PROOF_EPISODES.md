@@ -63,6 +63,38 @@ The checked-in HTML is what GitHub Pages serves; there is no runtime build step.
 Update the revision string in that generator whenever shared assets change, then
 regenerate, so a returning visitor does not mix cached scripts with new pages.
 
+## Alternate interpretations and physical experiments
+
+The eight center episodes include a static `#alternate-interpretation` section
+and expandable experiments. The Euler-line episode also includes the rotating
+spring family; the second nine-point episode links back to the mass experiment.
+Edit `.github/episode-interpretations.cjs` for the mathematical explanations,
+assumptions, experiment instructions, and source references. The shared page
+generator also runs `build-episode-interpretations.cjs`, which maintains marked
+sections in the first three handwritten pages without replacing their proofs.
+
+`shared/physical-models.js` contains the calculations; `physical-demos.js` and
+`physical.css` provide the independent experiment boards. Keep experiments
+closed initially so the main construction still starts with ABC alone. Explain
+that each experiment has its own movable triangle. Keep pointer, touch, keyboard,
+degenerate pause/recovery, and shape presets working. Show precise model limits:
+springs have zero natural length; the orthocenter string experiment minimizes
+a PA + b PB + c PC and selects the obtuse vertex for an obtuse triangle; signal
+and boundary-front speeds are uniform. The Gergonne springs act on the contact
+triangle's sides, with identical stiffnesses. The rotating board turns about O,
+uses lambda = m omega squared / k, and shows equilibria in the rotating frame.
+
+Keep the proofs readable without JavaScript. Numerical measurements illustrate
+the statements; they do not establish them. Distinguish classical geometric
+characterizations from mechanical realizations derived here, without claims of
+historical originality. The experiments are additional explanations, not new
+permissions to use results earlier in a synthetic proof.
+
+Whenever an excircle is visible, show all three supporting lines of ABC across
+the viewport, behind the visibly stronger finite triangle edges. Apply this to
+construction stages, proof steps, All Centers, overview diagrams, and local
+static illustrations. Keep those lines absent at the initial ABC-only stage.
+
 Run the numerical geometry and diagram regressions with:
 
 ```sh
@@ -114,7 +146,7 @@ three episodes implement the same controls in their own scripts.
 `proof-episodes/all-centers/` is an unnumbered collection entry. It uses the shared
 engine in studio mode and starts with every switch off. Its independent switches
 come from `shared/geometry-catalog.js`; circles and lines never implicitly enable
-center labels. The catalog currently includes G, O, H, I, N, K, Na, Ge and twenty-three
+center labels. The catalog currently includes G, O, H, I, N, K, Na, Ge and twenty-four
 auxiliary objects. Na and Ge distinguish the Nagel and Gergonne points from
 the nine-point center N and centroid G. Show all centers enables just the centers; Clear all returns to ABC.
 

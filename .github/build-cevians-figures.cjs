@@ -16,10 +16,27 @@ function figure(file,title,desc,extent,draw,height=400){
  const project=p=>({x:width/2+(p.x-cx)*scale,y:height/2+(p.y-cy)*scale});
  const pt=p=>{p=project(p);return `${p.x.toFixed(3)},${p.y.toFixed(3)}`;};
  const pieces=[`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-labelledby="title desc"><title id="title">${esc(title)}</title><desc id="desc">${esc(desc)}</desc><rect width="${width}" height="${height}" fill="#fdfcf9"/><g stroke-linecap="round" stroke-linejoin="round" font-family="Georgia, 'Times New Roman', serif">`];
+ let supportingSidesShown=false;
  const d={
   line(a,b,color=ink,w=2,dash=''){pieces.push(`<polyline points="${pt(a)} ${pt(b)}" fill="none" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`);},
   poly(points,color,opacity=.08){pieces.push(`<polygon points="${points.map(pt).join(' ')}" fill="${color}" fill-opacity="${opacity}"/>`);},
   circle(o,r,color,w=2,dash=''){const p=project(o);pieces.push(`<circle cx="${p.x}" cy="${p.y}" r="${r*scale}" fill="none" stroke="${color}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`);},
+  excircle(t,index=0,color=teal,w=2){
+   if(!supportingSidesShown){
+    supportingSidesShown=true;
+    t.vertices.forEach((v,i)=>{
+     const a=project(v),b=project(t.vertices[(i+1)%3]),u=M.sub(b,a);let lo=-Infinity,hi=Infinity;
+     for(const [p,delta,max]of [[a.x,u.x,width],[a.y,u.y,height]]){
+      if(Math.abs(delta)<1e-12){if(p<0||p>max)return;}
+      else{let first=-p/delta,last=(max-p)/delta;if(first>last)[first,last]=[last,first];lo=Math.max(lo,first);hi=Math.min(hi,last);}
+     }
+     if(lo>hi||!Number.isFinite(lo)||!Number.isFinite(hi))return;
+     const p=M.add(a,M.mul(u,lo)),q=M.add(a,M.mul(u,hi));
+     pieces.splice(1,0,`<line x1="${p.x.toFixed(3)}" y1="${p.y.toFixed(3)}" x2="${q.x.toFixed(3)}" y2="${q.y.toFixed(3)}" stroke="${muted}" stroke-width="1.2" stroke-dasharray="5 5" data-part="excircle-support-${['AB','BC','CA'][i]}"/>`);
+    });
+   }
+   d.circle(t.excenters[index],t.exradii[index],color,w);
+  },
   label(p,name,color=ink,dx=12,dy=-12){p=project(p);const [base,sub]=name.split('_');const text=esc(base)+(sub?`<tspan baseline-shift="sub" font-size="14">${esc(sub)}</tspan>`:'');pieces.push(`<text x="${p.x+dx}" y="${p.y+dy}" font-size="21" fill="${color}" text-anchor="middle">${text}</text>`);},
   point(p,name,color=ink,dx=12,dy=-12){const q=project(p);pieces.push(`<circle cx="${q.x}" cy="${q.y}" r="3.2" fill="${color}"/>`);d.label(p,name,color,dx,dy);},
   mark(p,name,color=ink,dx=12,dy=-12){const q=project(p),[base,sub]=name.split('_');pieces.push(`<circle cx="${q.x}" cy="${q.y}" r="3.2" fill="${color}"/><text x="${q.x+dx}" y="${q.y+dy}" font-size="21" fill="${color}" stroke="#fdfcf9" stroke-width="4" paint-order="stroke" text-anchor="middle">${esc(base)}${sub?`<tspan baseline-shift="sub" font-size="14">${esc(sub)}</tspan>`:''}</text>`);},
@@ -35,6 +52,24 @@ const T=g.exTouches[0];
 figure('perimeter.svg','A cevian that divides the perimeter in half','The excircle contact T_A lies on BC. The blue path goes from A through B to T_A; the teal path goes from A through C to T_A. The lengths of these boundary paths are compared in Problem 6.',[A,B,C],d=>{
  d.triangle();d.line(A,B,blue,3);d.line(B,T,blue,3);d.line(A,C,teal,3);d.line(C,T,teal,3);d.line(A,T,gold,2,'5 5');d.point(T,'T_A',gold,0,25);
 });
+// Keep the two original excircle illustrations reproducible for older downloads.
+const legacyExcenter=g.excenters[0],legacyU=M.foot(legacyExcenter,A,C),legacyV=M.foot(legacyExcenter,A,B),legacyZ=g.incTouches[2];
+const legacyExtent=[...g.vertices,legacyU,legacyV,...bounds(legacyExcenter,g.exradii[0])];
+figure('excircle.svg','Contacts of the excircle opposite A','The excircle has center I_A and touches BC at its interior point T, ray AB beyond B at V, and ray AC beyond C at U. Radii to the contacts are perpendicular to the tangent lines. All three supporting side lines extend across the picture.',legacyExtent,d=>{
+ d.excircle(g);d.triangle();
+ [[T,C,'T',0,-12],[legacyU,M.add(legacyU,M.sub(legacyU,C)),'U',17,12],[legacyV,M.add(legacyV,M.sub(legacyV,B)),'V',-17,12]].forEach(([q,toward,name,dx,dy])=>{
+  d.line(legacyExcenter,q,gold,1.5,'4 4');d.right(q,legacyExcenter,toward);d.point(q,name,teal,dx,dy);
+ });
+ d.point(legacyExcenter,'I_A',gold,19,16);
+},560);
+figure('heron.svg','The two similarity comparisons in Heron’s proof','I is the incenter and E is the A-excenter. Z and V are their perpendicular feet on the full line AB, with Z between A and B and V beyond B. Triangles AZI and AVE share the bisected angle at A; triangles ZBI and VEB use the internal and external angle bisectors at B. All three supporting side lines extend across the picture.',legacyExtent,d=>{
+ d.poly([A,legacyV,legacyExcenter],teal,.06);d.poly([A,legacyZ,g.I],blue,.16);d.poly([B,legacyZ,g.I],purple,.13);
+ d.excircle(g);d.circle(g.I,g.r,blue);d.triangle();
+ d.line(A,legacyExcenter,teal,1.5);d.line(B,legacyExcenter,gold,1.8);d.line(B,g.I,purple,1.8);
+ d.line(g.I,legacyZ,blue,2.1);d.line(legacyExcenter,legacyV,teal,2.1);
+ d.right(legacyZ,g.I,A);d.right(legacyV,legacyExcenter,A);
+ d.point(legacyZ,'Z',blue,-17,0);d.point(legacyV,'V',teal,-17,12);d.point(g.I,'I',blue,15,-3);d.point(legacyExcenter,'E',teal,16,16);
+},560);
 const n=M.triangle([{x:.45,y:0},{x:0,y:3},{x:6,y:3}]);
 figure('nagel-line.svg','Comparing the incenter, centroid, and Nagel point','I, G, and N_a lie on one line in the illustrated scalene triangle. The Nagel cevians are drawn faintly; the problem asks students to prove the line relation and determine the order and ratio.',n.vertices,d=>{
  d.poly([n.Na,n.B,n.C],blue,.07);d.poly([n.Na,n.C,n.A],teal,.08);d.poly([n.Na,n.A,n.B],purple,.08);
@@ -116,8 +151,8 @@ const [hz,hx,hy]=heron.tangentLengths,hU=M.add(heron.C,M.mul(M.unit(M.sub(heron.
 figure('heron-derivation.svg','The two pairs of similar right triangles in Heron’s proof','Problems 7–8 use Venema’s Figure 4.4 notation. The incircle has center I and contacts X on BC, Y on CA, Z on AB. The A-excircle has center E and contacts T strictly inside BC, U beyond C on AC, V beyond B on AB. The shaded right triangles are AZI and AVE, and ZBI and VEB. The contact radii IZ and EV meet AB at right angles. Segment AE follows the internal bisector at A, and BI and BE are perpendicular internal and exterior bisectors at B. X is labeled above BC and T below it. Both circles and all contacts are constructed from the triangle.',[...heron.vertices,hU,hV,...bounds(hI,heron.r),...bounds(hE,heron.exradii[0])],d=>{
  d.poly([heron.A,hV,hE],gold,.055);d.poly([hV,hE,heron.B],purple,.08);
  d.poly([heron.A,hZ,hI],blue,.14);d.poly([hZ,heron.B,hI],teal,.2);
- d.circle(hI,heron.r,blue,1.6);d.circle(hE,heron.exradii[0],gold,1.6);
- d.line(heron.A,hU,muted,1.5);d.line(heron.A,hV,muted,1.5);d.line(heron.A,hE,gold,2);
+ d.circle(hI,heron.r,blue,1.6);d.excircle(heron,0,gold,1.6);
+ d.line(heron.A,hE,gold,2);
  d.line(heron.B,hI,teal,2);d.line(heron.B,hE,purple,2);
  [hX,hY].forEach(p=>d.line(hI,p,blue,1.1,'3 5'));[hT,hU].forEach(p=>d.line(hE,p,gold,1.1,'3 5'));
  d.line(hI,hZ,blue,2.4);d.line(hE,hV,gold,2.4);d.triangle(heron);
@@ -170,4 +205,4 @@ close(M.dot(M.sub(hI,heron.B),M.sub(hE,heron.B)),0);
 close(M.dist(hZ,hI)/M.dist(heron.A,hZ),M.dist(hV,hE)/M.dist(heron.A,hV));
 close(M.dist(heron.B,hZ)/M.dist(hZ,hI),M.dist(hE,hV)/M.dist(hV,heron.B));
 [[heron.A,hZ,hI],[heron.A,hV,hE],[hZ,heron.B,hI],[hV,hE,heron.B]].forEach(t=>check(M.area(...t)>1e-9,'Heron similarity triangle must not collapse'));
-console.log('Built ten homework illustrations; all contact, reflection, concurrency, angle, radius, order, and similarity checks passed.');
+console.log('Built twelve homework illustrations; all contact, reflection, concurrency, angle, radius, order, and similarity checks passed.');

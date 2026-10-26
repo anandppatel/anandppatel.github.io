@@ -6,8 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="The cevians from the vertices to the opposite incircle contacts concur at a unique interior point Ge, the Gergonne point.">
 <title>The Gergonne point — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=20261017-complementary-homework">
+<link rel="stylesheet" href="../shared/episode.css?v=20261026-physical-interpretations-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 14</p><h1>The Gergonne point</h1></div><p class="header-note">The incircle contacts determine three concurrent cevians.</p></header>
@@ -36,10 +37,32 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>The Gergonne point</h2><p>The cevians from the vertices to the opposite incircle contacts concur at a unique interior point Ge, the Gergonne point.</p></section>
+<section><p class="kicker">The theorem</p><h2>The Gergonne point</h2><p>The cevians from the vertices to the opposite incircle contacts concur at a unique interior point Ge, the Gergonne point.</p><p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p></section>
 <section><p class="kicker">Before the proof</p><p>How do the incircle contact ratios compare with the excircle ratios from the Nagel episode?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul><li><a href="../incenter/">04 · The incenter and incircle</a></li><li><a href="../ceva/">10 · Ceva for interior side points</a></li><li><a href="../basics/#o1">O1 · Tangents and radii</a></li><li><a href="../basics/#o2">O2 · Equal tangents</a></li></ul><details><summary>Constructing the circle before using it</summary><p>The incenter episode proves that the first two internal bisectors meet uniquely inside ABC and that their intersection I has equal positive perpendicular distances to all three side lines. The equal-distance converse puts I on the third internal bisector. Each perpendicular foot lies on the forward rays from both endpoints of its side, hence strictly inside the side segment. The circle with this common distance as radius is tangent to all three side lines by O1, and its disk lies in their inward half-planes. Thus the incircle and the locations of its contacts are established, rather than assumed from the drawing.</p></details><details><summary>The contact lengths</summary><p>Write D, E, F for the incircle contacts on BC, CA, AB. The tangent pairs give x = AF = AE, y = BF = BD, z = CD = CE. With a = BC, b = CA, c = AB and s = (a + b + c)/2, the side equations a = y + z, b = z + x, c = x + y give x = s − a, y = s − b, z = s − c. All three are positive.</p></details><details><summary>A different contact construction</summary><p>The Nagel episode uses contacts of three different excircles; this episode uses the three contacts of a single incircle. Its point is called Ge, leaving G for the centroid. Close labels use ≈ to indicate drawing precision, not a proved equality.</p></details></section>
-</aside></div>
+</aside></div><!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The Gergonne point as an equilibrium inside the contact triangle</h2>
+<p>Let D, E, and F be the incircle’s contact points on BC, CA, and AB. Make the three sides of the smaller triangle DEF into rails. Join a free bead to three freely sliding, massless collars, one on each rail, by identical springs of zero natural length. Their unique equilibrium is the Gergonne point Ge of ABC.</p>
+<p>This uses the same apparatus as the <a href="../symmedian/#alternate-interpretation">symmedian experiment</a>, now placed in the contact triangle. All three springs have the same stiffness; no special adjustment of their strengths is needed.</p>
+<details class="physical-experiment">
+<summary>Explore springs in the contact triangle</summary>
+<p>Move ABC and watch its incircle contact triangle change. Displace the bead inside the contact triangle. Its three equal springs balance at Ge; the original Gergonne cevians locate the same point.</p>
+<div class="physical-demo" data-physical-model="gergonne"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why these springs select Ge</summary>
+<p>For any triangle, the symmedian argument proves that the sum of squared distances to its side lines has a unique minimum at its symmedian point. Apply that result to DEF. It remains to identify its symmedian point with Ge.</p>
+<p>The lines AE and AF are tangents to the incircle, so AE = AF. If the incircle has radius r, a chord and its tangent satisfy d(D, AE) = DE<sup>2</sup>/(2r) and d(D, AF) = DF<sup>2</sup>/(2r). To see the first identity, put θ = ∠EID: the two sides are respectively r(1 − cos θ) and 2r<sup>2</sup>(1 − cos θ)/(2r). Consequently,</p>
+<p class="physical-equation">[ADE]/[ADF] = DE<sup>2</sup>/DF<sup>2</sup>.</p>
+<p>Here brackets denote triangle areas. If M = AD ∩ EF, the area ratio on the left also equals EM/MF. Thus AD has the squared-side ratio that characterizes the D-symmedian of DEF. The same argument at E and F proves that AD, BE, and CF meet at the symmedian point of DEF. Their intersection is Ge.</p>
+<p>The angles of DEF are 90° − A/2, 90° − B/2, and 90° − C/2, so DEF is acute. Its symmedian point is interior, and its perpendicular feet lie on the actual side segments. The collars therefore need no rail extensions at equilibrium.</p>
+<p>The identity “Gergonne point of ABC = symmedian point of DEF” is classical; see <a href="https://arxiv.org/pdf/2201.11159">Rabinowitz and Suppa, Property 2.1.7</a>. The spring interpretation follows from this identity. The proof does not depend on the measured positions in the diagram.</p>
+</details>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
 <!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
@@ -50,5 +73,6 @@
 <!-- END BOOK REFERENCE -->
 <nav class="episode-nav" aria-label="Episode order"><a href="../nagel/">← The Nagel point</a><a href="../heron/">Heron’s formula →</a></nav>
 </main>
-<script src="../shared/geometry.js?v=20261017-complementary-homework"></script><script src="../shared/constructions.js?v=20261017-complementary-homework"></script><script src="episode.js?v=20261017-complementary-homework"></script><script src="../shared/episode.js?v=20261017-complementary-homework"></script>
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/constructions.js?v=20261026-physical-interpretations-v1"></script><script src="episode.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/episode.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
 </body></html>

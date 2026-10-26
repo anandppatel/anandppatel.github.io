@@ -6,8 +6,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="In every non-equilateral triangle, O, G, and H lie on one line, with G between O and H and GH = 2GO; in an equilateral triangle all three points coincide.">
 <title>The Euler line — Proof episodes — Anand Patel</title>
-<link rel="stylesheet" href="../shared/episode.css?v=20261017-complementary-homework">
+<link rel="stylesheet" href="../shared/episode.css?v=20261026-physical-interpretations-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Episode 05</p><h1>The Euler line</h1></div><p class="header-note">Construct a candidate X, then recognize the orthocenter by similarity.</p></header>
@@ -36,10 +37,38 @@
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
 <aside class="sidebar">
-<section><p class="kicker">The theorem</p><h2>The Euler line</h2><p>In every non-equilateral triangle, O, G, and H lie on one line, with G between O and H and GH = 2GO; in an equilateral triangle all three points coincide.</p></section>
+<section><p class="kicker">The theorem</p><h2>The Euler line</h2><p>In every non-equilateral triangle, O, G, and H lie on one line, with G between O and H and GH = 2GO; in an equilateral triangle all three points coincide.</p><p><a href="#alternate-interpretation">Explore an alternate interpretation</a></p></section>
 <section><p class="kicker">Before the proof</p><p>Place X opposite O across G, with GX = 2GO. Why should X lie on every altitude?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
 <section><h2>What we use</h2><ul><li><a href="../centroid/">The centroid and its 2 : 1 ratio</a></li><li><a href="../circumcenter/">The circumcenter and perpendicular bisectors</a></li><li><a href="../orthocenter/">The orthocenter: the common point of the altitudes</a></li><li><a href="../basics/#c3">C3 · Dilations and similarity</a></li><li><a href="../basics/#t1">T1 · SAS congruence</a></li><li><a href="../basics/#p1">P1 · Alternate interior angles and converse</a></li></ul><details><summary>Why O ≠ G means non-equilateral</summary><p>If O = G, then O lies on every median. It differs from each side midpoint, since G is strictly inside the triangle. Thus each median is the perpendicular bisector of its opposite side. Each vertex is equidistant from the other two, so all three sides are equal. Conversely, SAS congruence shows that every median of an equilateral triangle is a perpendicular bisector and an altitude; hence O = G = H.</p></details><details><summary>The SAS similarity used here</summary><p>Dilate triangle DGO by factor 2. Its two sides at the image of G then have lengths 2GD = GA and 2GO = GX, and its included angle equals ∠AGX. By T1 (SAS), the dilated triangle is congruent to triangle AGX, with D corresponding to A, G to G, and O to X. Composing the dilation with that congruence proves the claimed similarity using C3 and T1.</p></details><details><summary>If the comparison triangles collapse</summary><p>Similarity requires genuine triangles. If O lies on median AD and O ≠ D, the perpendicular bisector OD is the line AD itself. Since X lies on OG = AD, it lies on the altitude from A. If O = D, the centroid ratio gives GA = 2GD = 2GO; both A and X lie on the ray from G opposite O, so X = A. A belongs to its own altitude. Apply these same cases at B and C when necessary.</p></details><details><summary>Exact hypotheses and the drawing</summary><p>Dragging may make points or lines too close to distinguish. The ≈ labels and drawing notices report numerical proximity, not exact equality. The proof uses explicit hypotheses: O ≠ G, O off AD for similarity, and the separately proved collinear cases.</p></details></section>
-</aside></div>
+</aside></div><!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The Euler line as a path of mechanical equilibria</h2>
+<p>The identity 3G = 2O + H makes the Euler line visible in a physical experiment. The following ideal apparatus uses three identical springs and one adjustable rotation speed. Its equilibrium passes through three familiar centers.</p>
+<div class="physical-connection">
+<h3>One rotating experiment joins G, N, and H</h3>
+<p>Fix three identical springs at A, B, and C on a horizontal table, and join their other ends to one bead. Each spring has stiffness <var>k</var> and zero natural length. Rotate the table about the circumcenter O at angular speed <var>ω</var>. View the bead from the rotating table. As the speed increases, its equilibrium travels along the Euler line: from the centroid G, through the nine-point center N, to the orthocenter H.</p>
+<p>Let <var>m</var> be the bead’s mass and put <var>λ</var> = <var>mω</var><sup>2</sup>/<var>k</var>. The three settings are <var>λ</var> = 0 at G, <var>λ</var> = 1 at N, and <var>λ</var> = 2 at H. The table is stationary at the first setting. If O = H, all these positions coincide.</p>
+<details class="physical-experiment">
+<summary>Explore the rotating springs</summary>
+<p>Change the speed parameter and move the triangle. The drawing uses the rotating view, in which the three anchors stay fixed. Follow the equilibrium point and the balance of spring and centrifugal forces.</p>
+<div class="physical-demo" data-physical-model="rotating" data-initial-lambda="0"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why the equilibrium follows the Euler line</summary>
+<p>In the following equations, letters denote position vectors. The three spring forces add to 3<var>k</var>(G − P), while the centrifugal force is <var>mω</var><sup>2</sup>(P − O). A bead at rest relative to the table therefore satisfies</p>
+<p class="physical-equation">3(G − P) + λ(P − O) = 0.</p>
+<p>The Euler-line identity 3G = 2O + H gives</p>
+<p class="physical-equation">P = O + (H − O)/(3 − λ).</p>
+<p>This proves all three stated settings. It also proves stability throughout the displayed interval 0 ≤ λ ≤ 2. Indeed, the effective potential in the rotating frame is</p>
+<p class="physical-equation">U(P) = ½k(PA<sup>2</sup> + PB<sup>2</sup> + PC<sup>2</sup>) − ½mω<sup>2</sup>PO<sup>2</sup>.</p>
+<p>If P<sub>λ</sub> denotes the equilibrium, completing the square gives U(P) − U(P<sub>λ</sub>) = ½k(3 − λ)|P − P<sub>λ</sub>|<sup>2</sup>. This is positive away from P<sub>λ</sub>. Coriolis force does no work; gentle damping relative to the table makes a displaced bead settle. Without damping, stability does not mean that motion stops.</p>
+<p>This apparatus is a direct consequence of the <a href="../euler-line/">Euler-line identity</a> and the stated force laws. The calculation establishes the interpretation; the animation illustrates it.</p>
+</details>
+</div>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
 <!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
@@ -50,5 +79,6 @@
 <!-- END BOOK REFERENCE -->
 <nav class="episode-nav" aria-label="Episode order"><a href="../incenter/">← The incenter</a><a href="../angle-bisector/">The angle-bisector theorem →</a></nav>
 </main>
-<script src="../shared/geometry.js?v=20261017-complementary-homework"></script><script src="../shared/constructions.js?v=20261017-complementary-homework"></script><script src="episode.js?v=20261017-complementary-homework"></script><script src="../shared/episode.js?v=20261017-complementary-homework"></script>
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/constructions.js?v=20261026-physical-interpretations-v1"></script><script src="episode.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/episode.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
 </body></html>

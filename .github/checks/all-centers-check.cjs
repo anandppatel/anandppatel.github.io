@@ -58,6 +58,13 @@ for(const vertices of fixtures){
    for(const axis of ['x','y'])for(const sign of [-1,1])assert(ext.some(q=>Math.abs(q[axis]-(o[axis]+sign*radius))<tol),'selected circle is fitted in full');
   }
   if(['medians','altitudes','perpendicular-bisectors','internal-bisectors','euler-line'].includes(entry.id))assert(r.calls.every(call=>call.name!=='point'),'line toggles do not force point markers');
+  if(entry.id==='contact-triangle'){
+   assert.equal(r.calls.length,3,'the contact triangle has exactly three independent edges');
+   r.calls.forEach((call,i)=>{
+    assert.equal(call.name,'segment','the contact triangle does not reveal circles or labels');
+    assert.equal(call.args[0],g.incTouches[i]);assert.equal(call.args[1],g.incTouches[(i+1)%3]);
+   });
+  }
   assert.equal(C.handles(g,params,M).length,entry.id==='cevians'?3:0,'cevian handles follow their toggle');
  }
  params={...C.params};C.actions.find(action=>action.label==='Show all centers').run(vertices,params);

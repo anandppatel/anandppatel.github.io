@@ -16,13 +16,28 @@ function extent(){let raw=vertices;if(!current?.degenerate){if(active||studio)ra
 function clip(a,b,w,h){const v=M.sub(b,a);let lo=-Infinity,hi=Infinity;for(const [p,d,max]of [[a.x,v.x,w],[a.y,v.y,h]]){if(Math.abs(d)<1e-12){if(p<0||p>max)return null;}else{let u=-p/d,t=(max-p)/d;if(u>t)[u,t]=[t,u];lo=Math.max(lo,u);hi=Math.min(hi,t);}}return lo<=hi&&Number.isFinite(lo)&&Number.isFinite(hi)?[M.add(a,M.mul(v,lo)),M.add(a,M.mul(v,hi))]:null;}
 function painter(group,w,h,cam,mini=false){
  const {scale,project}=projection(w,h,cam),labels=[];
+ let excircleSidesShown=false;
  const add=(tag,attrs,text)=>{const e=element(tag,attrs,text);group.append(e);return e;};
  const pixelLine=(a,b,color,lineWidth,opts={})=>add('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:color,'stroke-width':lineWidth,'stroke-linecap':'round',...opts});
  const d={colors};
  d.segment=(a,b,color=colors.blue,lineWidth=3,opts={})=>{if(finite(a)&&finite(b))pixelLine(project(a),project(b),color,mini?Math.min(lineWidth,1.7):lineWidth,{'data-part':'segment',...opts});};
  d.line=(a,b,color=colors.blue,lineWidth=2,opts={})=>{if(!finite(a)||!finite(b))return;const ends=clip(project(a),project(b),w,h);if(ends)pixelLine(...ends,color,mini?1.2:lineWidth,{'data-part':'line',...opts});};
  d.poly=(points,color=colors.blue,opacity=.15,opts={})=>{if(!points.every(finite))return;add('polygon',{points:points.map(project).map(p=>`${p.x},${p.y}`).join(' '),fill:color,'fill-opacity':opacity,stroke:color,'stroke-width':mini?1:1.7,'data-part':'area',...opts});};
- d.circle=(center,r,color=colors.gold,lineWidth=2,opts={})=>{if(!finite(center)||!Number.isFinite(r)||r<=0)return;const p=project(center);add('circle',{cx:p.x,cy:p.y,r:r*scale,fill:'none',stroke:color,'stroke-width':mini?1.2:lineWidth,'data-part':'circle',...opts});};
+ d.circle=(center,r,color=colors.gold,lineWidth=2,opts={})=>{
+   if(!finite(center)||!Number.isFinite(r)||r<=0)return;
+   // Every excircle is tangent to all three full side lines. Keep these
+   // lines behind the solid triangle, and clip them separately in each view.
+   if(opts['data-excircle']&&!excircleSidesShown){
+     excircleSidesShown=true;
+     vertices.forEach((a,i)=>{
+       const ends=clip(project(a),project(vertices[(i+1)%3]),w,h);
+       if(!ends)return;
+       const line=pixelLine(...ends,colors.muted,mini?1:1.2,{'stroke-dasharray':mini?'3 3':'5 5','data-part':'excircle-support-'+['AB','BC','CA'][i]});
+       group.insertBefore(line,group.firstChild);
+     });
+   }
+   const p=project(center);add('circle',{cx:p.x,cy:p.y,r:r*scale,fill:'none',stroke:color,'stroke-width':mini?1.2:lineWidth,'data-part':'circle',...opts});
+ };
  d.label=(point,text,color=colors.ink,opts={})=>{
    if(!finite(point))return;const p=project(point);if(p.x<-25||p.x>w+25||p.y<-25||p.y>h+25)return;
    const {dx=12,dy=-10,...attrs}=opts;let x=p.x+(mini?dx*.6:dx),y=p.y+(mini?dy*.6:dy);

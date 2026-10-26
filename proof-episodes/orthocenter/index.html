@@ -8,10 +8,17 @@
 <title>The orthocenter — Proof episodes — Anand Patel</title>
 <link rel="stylesheet" href="episode.css?v=20261002-build-v1">
 <link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+<!-- BEGIN PHYSICAL STYLE -->
+<link rel="stylesheet" href="../shared/physical.css?v=20261026-physical-interpretations-v1">
+<!-- END PHYSICAL STYLE -->
 </head>
 <body>
 <header><div><p class="eyebrow"><a href="../">Proof episodes</a> / Geometry</p><h1>The orthocenter</h1></div><p class="header-note">Three altitude lines.<br>One meeting point, for every triangle.</p></header>
-<main><div class="workspace building" id="workspace">
+<main>
+<!-- BEGIN PHYSICAL JUMP -->
+<p class="physical-jump"><a href="#alternate-interpretation">Explore an alternate interpretation</a></p>
+<!-- END PHYSICAL JUMP -->
+<div class="workspace building" id="workspace">
 <section aria-label="Interactive triangle">
 <div class="drawing">
 <div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag the vertices; build below.</p><button id="reset" type="button">Reset triangle</button></div>
@@ -47,7 +54,55 @@
 <details><summary>Why A lies between Q and R</summary><p>In parallelogram ABCQ, AQ points in the direction from B to C. In parallelogram ACBR, AR points from C to B. These directions are opposite, and both lengths equal BC &gt; 0, so Q, A, and R occur in that order.</p></details>
 <details><summary>Why we use altitude lines</summary><p>For an obtuse triangle, some altitudes meet the extensions of the opposite sides, and H lies outside the triangle. The complete lines always meet, even when the altitude segments do not.</p><p>For a right triangle, H is the right-angle vertex: the two legs already lie on altitude lines. The line through each vertex perpendicular to its opposite side remains well defined even when H is that vertex.</p></details>
 </section></aside>
-</div><!-- BEGIN BOOK REFERENCE -->
+</div><!-- BEGIN ORIGINAL EPISODE PHYSICAL SECTION -->
+<!-- BEGIN ALTERNATE INTERPRETATION -->
+<section class="physical-interpretation" id="alternate-interpretation" aria-labelledby="alternate-interpretation-title">
+<p class="kicker">Another way to see the center</p>
+<h2 id="alternate-interpretation-title">The orthocenter as a weighted-string equilibrium</h2>
+<p>For an <strong>acute triangle</strong>, put a frictionless pulley at each vertex. Tie three light, inextensible strings to a freely moving ring and pass one string over each pulley. Hang counterweights with masses proportional to the opposite side lengths: a = BC at A, b = CA at B, and c = AB at C. The ring’s unique equilibrium is the orthocenter H.</p>
+<p>The acute hypothesis matters. For a right or obtuse triangle, this same apparatus minimizes its energy at the right or obtuse vertex. In the right case that vertex is H; in the obtuse case H is outside the triangle and is not the string equilibrium. A real apparatus needs a stop at the pulley to realize the limiting vertex position.</p>
+<details class="physical-experiment">
+<summary>Explore the weighted strings</summary>
+<p>Move the triangle through acute, right, and obtuse shapes. Compare H with the energy-minimizing position of the ring. The model uses constant ideal tensions proportional to the opposite sides; hanging counterweights supply those tensions at rest. The conclusion changes when an angle reaches 90°.</p>
+<div class="physical-demo" data-physical-model="orthocenter"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why H minimizes the weighted distances only in the stated cases</summary>
+<p>As the ring moves, each hanging weight rises by the change in its string’s horizontal length. Apart from a positive common factor and a constant, the gravitational potential energy is</p>
+<p class="physical-equation">F(P) = a · PA + b · PB + c · PC.</p>
+<p>This function is strictly convex: equality in the convexity inequality for a distance to a fixed vertex would force that vertex and both proposed ring positions onto one line; equality for all three terms would force A, B, and C to be collinear. Thus an equilibrium, if found, is the unique global minimum.</p>
+<p>When ABC is acute, H lies inside. Rotate the three directed side vectors BC, CA, AB by the same 90° toward the interior. The rotated vectors point along HA, HB, HC and have lengths a, b, c. Since the original three vectors add to zero, their rotations add to zero too. These are exactly the three tension vectors at H. Their sum vanishes, proving the minimum there.</p>
+<p>Suppose instead that A ≥ 90°. At A, the combined pull of the B- and C-strings has squared magnitude</p>
+<p class="physical-equation">b<sup>2</sup> + c<sup>2</sup> + 2bc cos A ≤ b<sup>2</sup> + c<sup>2</sup> − 2bc cos A = a<sup>2</sup>.</p>
+<p>It can therefore be balanced by a tension of magnitude at most a at A. More formally, let <var>w</var> be that combined pull and let <var>u</var> = P − A. The supporting-line inequality for each distance gives F(P) − F(A) ≥ a|<var>u</var>| − <var>w</var> · <var>u</var> ≥ 0. Strict convexity gives the unique minimum at A. The cases at B and C are identical.</p>
+<p>The weighted-distance characterization for acute triangles appears in <a href="https://www.tandfonline.com/doi/full/10.1080/00029890.2002.11919871">Gueron and Tessler, Proposition 1, p. 450</a>. The force balance and convexity argument here establish the precise domain used by the experiment.</p>
+</details>
+<div class="physical-connection">
+<h3>One rotating experiment joins G, N, and H</h3>
+<p>Fix three identical springs at A, B, and C on a horizontal table, and join their other ends to one bead. Each spring has stiffness <var>k</var> and zero natural length. Rotate the table about the circumcenter O at angular speed <var>ω</var>. View the bead from the rotating table. As the speed increases, its equilibrium travels along the Euler line: from the centroid G, through the nine-point center N, to the orthocenter H.</p>
+<p>Let <var>m</var> be the bead’s mass and put <var>λ</var> = <var>mω</var><sup>2</sup>/<var>k</var>. The three settings are <var>λ</var> = 0 at G, <var>λ</var> = 1 at N, and <var>λ</var> = 2 at H. The table is stationary at the first setting. If O = H, all these positions coincide.</p>
+<details class="physical-experiment">
+<summary>Explore the rotating springs</summary>
+<p>Change the speed parameter and move the triangle. The drawing uses the rotating view, in which the three anchors stay fixed. Follow the equilibrium point and the balance of spring and centrifugal forces.</p>
+<div class="physical-demo" data-physical-model="rotating" data-initial-lambda="2"></div>
+<noscript><p>The interactive experiment needs JavaScript. The description and argument on this page give the complete mathematical interpretation.</p></noscript>
+</details>
+<details class="physical-proof"><summary>Why the equilibrium follows the Euler line</summary>
+<p>In the following equations, letters denote position vectors. The three spring forces add to 3<var>k</var>(G − P), while the centrifugal force is <var>mω</var><sup>2</sup>(P − O). A bead at rest relative to the table therefore satisfies</p>
+<p class="physical-equation">3(G − P) + λ(P − O) = 0.</p>
+<p>The Euler-line identity 3G = 2O + H gives</p>
+<p class="physical-equation">P = O + (H − O)/(3 − λ).</p>
+<p>This proves all three stated settings. It also proves stability throughout the displayed interval 0 ≤ λ ≤ 2. Indeed, the effective potential in the rotating frame is</p>
+<p class="physical-equation">U(P) = ½k(PA<sup>2</sup> + PB<sup>2</sup> + PC<sup>2</sup>) − ½mω<sup>2</sup>PO<sup>2</sup>.</p>
+<p>If P<sub>λ</sub> denotes the equilibrium, completing the square gives U(P) − U(P<sub>λ</sub>) = ½k(3 − λ)|P − P<sub>λ</sub>|<sup>2</sup>. This is positive away from P<sub>λ</sub>. Coriolis force does no work; gentle damping relative to the table makes a displaced bead settle. Without damping, stability does not mean that motion stops.</p>
+<p>This apparatus is a direct consequence of the <a href="../euler-line/">Euler-line identity</a> and the stated force laws. The calculation establishes the interpretation; the animation illustrates it.</p>
+</details>
+</div>
+<p class="physical-note">These are additional interpretations of the center proved above. The experiments use ideal physical laws; their numerical motion illustrates the arguments and does not replace them. Collinear vertices do not define the triangle centers used here.</p>
+</section>
+<!-- END ALTERNATE INTERPRETATION -->
+<!-- END ORIGINAL EPISODE PHYSICAL SECTION -->
+<!-- BEGIN BOOK REFERENCE -->
 <section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
 <h2 id="venema-title">Read in Venema</h2>
 <p class="book-citation">Gerard A. Venema, <cite><a href="https://doi.org/10.5948/9781614441113">Exploring Advanced Euclidean Geometry with GeoGebra</a></cite> (2013).</p>
@@ -57,4 +112,8 @@
 <!-- END BOOK REFERENCE -->
 </main>
 <script src="geometry.js"></script><script src="episode.js?v=20261002-build-v1"></script>
+<!-- BEGIN PHYSICAL SCRIPTS -->
+<script src="../shared/geometry.js?v=20261026-physical-interpretations-v1"></script>
+<script src="../shared/physical-models.js?v=20261026-physical-interpretations-v1"></script><script src="../shared/physical-demos.js?v=20261026-physical-interpretations-v1"></script>
+<!-- END PHYSICAL SCRIPTS -->
 </body></html>

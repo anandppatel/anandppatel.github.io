@@ -20,11 +20,13 @@ function radius(d,g,o,q,a,b,color,M,name){
  // center is extremely far away and the circle is nearly flat on screen.
  d.right(q,M.add(q,M.perp(M.sub(b,a))),M.add(q,M.sub(b,a)),color,part(name+'-right'));
 }
-function bisectors(d,g,M,prefix=''){
+function bisectors(d,g,M,prefix='',supports=true){
  d.segment(g.A,g.excenters[0],d.colors.blue,2.1,part(prefix+'internal-bisector-A'));
  d.segment(g.B,g.excenters[0],d.colors.teal,2.1,part(prefix+'external-bisector-B'));
- d.line(g.A,g.B,d.colors.muted,1,{'stroke-dasharray':'4 5',...part(prefix+'support-AB')});
- d.line(g.A,g.C,d.colors.muted,1,{'stroke-dasharray':'4 5',...part(prefix+'support-AC')});
+ if(supports){
+  d.line(g.A,g.B,d.colors.muted,1,{'stroke-dasharray':'4 5',...part(prefix+'support-AB')});
+  d.line(g.A,g.C,d.colors.muted,1,{'stroke-dasharray':'4 5',...part(prefix+'support-AC')});
+ }
 }
 function contacts(d,g,M,prefix='',radii=true,includeL=false){
  const I=g.excenters[0],D=g.exTouches[0],U=g.exU,V=g.exV;
@@ -50,12 +52,12 @@ const construction={
  ],
  handleIds:()=>[],
  draw(d,g,l,p,M){
-  if(!l)return;bisectors(d,g,M,'construction-');
+  if(!l)return;bisectors(d,g,M,'construction-',l<4);
   if(l>=2)labels(d,g,[[g.excenters[0],'I_a',d.colors.gold]],M,'construction-');
   if(l>=3)contacts(d,g,M,'construction-');
-  if(l>=4)d.circle(g.excenters[0],g.exradii[0],d.colors.blue,2.4,part('construction-excircle-0'));
+  if(l>=4)d.circle(g.excenters[0],g.exradii[0],d.colors.blue,2.4,{'data-excircle':true,...part('construction-excircle-0')});
   if(l>=5){
-   for(let i=1;i<3;i++)d.circle(g.excenters[i],g.exradii[i],colors(d)[i],2.1,part('construction-excircle-'+i));
+   for(let i=1;i<3;i++)d.circle(g.excenters[i],g.exradii[i],colors(d)[i],2.1,{'data-excircle':true,...part('construction-excircle-'+i)});
    labels(d,g,g.exTouches.slice(1).map((q,i)=>[q,'EF'[i],colors(d)[i+1]]),M,'construction-');
   }
   if(l>=6)cevians(d,g,M,'construction-',l>=7,false);
@@ -105,9 +107,9 @@ window.ProofEpisode={
  status:()=> 'A, B, and C remain freely draggable; each contact stays strictly inside its opposite side in every noncollinear triangle.',
  draw(d,g,s,p,M){
   const {blue,teal,purple,gold,muted}=d.colors,I=g.excenters[0],D=g.exTouches[0],U=g.exU,V=g.exV;
-  if(s===-1){g.excenters.forEach((q,i)=>d.circle(q,g.exradii[i],colors(d)[i],1.8,part('excircle-'+i)));cevians(d,g,M,'',true);return;}
+  if(s===-1){g.excenters.forEach((q,i)=>d.circle(q,g.exradii[i],colors(d)[i],1.8,{'data-excircle':true,...part('excircle-'+i)}));cevians(d,g,M,'',true);return;}
   if(s<=9){
-   bisectors(d,g,M);if(s<2)labels(d,g,[[g.exL,'L',muted]],M);
+   bisectors(d,g,M,'',s<5);if(s<2)labels(d,g,[[g.exL,'L',muted]],M);
    if(s>=1)labels(d,g,[[I,'I_a',gold]],M);
    if(s===0){d.angle(g.B,g.A,I,blue,{radius:27,...part('angle-A-half-1')});d.angle(I,g.A,g.C,blue,{radius:27,...part('angle-A-half-2')});d.angle(g.C,g.B,I,teal,{radius:24,...part('angle-B-exterior-1')});d.angle(I,g.B,V,teal,{radius:24,...part('angle-B-exterior-2')});}
    if(s===1){d.poly([g.B,g.exL,I],gold,.14,part('triangle-BLIa'));d.angle(g.exL,g.B,I,teal,{radius:27,label:'90° − β/2',...part('angle-LBIa')});d.angle(g.B,g.exL,I,blue,{radius:32,label:'α/2 + β',...part('angle-BLIa')});}
@@ -115,14 +117,14 @@ window.ProofEpisode={
    if(s===2){d.poly([g.A,V,I],blue,.12,part('triangle-AVIa'));d.poly([g.A,U,I],teal,.12,part('triangle-AUIa'));d.tick(I,V,gold);d.tick(I,U,gold);}
    if(s===3){d.poly([g.B,V,I],teal,.13,part('triangle-BVIa'));d.poly([g.B,D,I],purple,.13,part('triangle-BDIa'));d.tick(I,V,gold);d.tick(I,D,gold);}
    if(s===4){d.segment(g.C,I,purple,3,part('external-bisector-C'));d.angle(g.B,g.C,I,purple,{radius:26,...part('angle-C-exterior-1')});d.angle(I,g.C,U,purple,{radius:26,...part('angle-C-exterior-2')});d.segment(g.B,D,gold,4,part('contact-interior-BD'));d.segment(D,g.C,gold,4,part('contact-interior-DC'));}
-   if(s>=5)d.circle(I,g.exradii[0],blue,2.5,part('excircle-0'));
+   if(s>=5)d.circle(I,g.exradii[0],blue,2.5,{'data-excircle':true,...part('excircle-0')});
    if(s===6||s===8){d.segment(g.A,V,blue,4,part('tangent-AV'));d.segment(g.A,U,teal,4,part('tangent-AU'));d.tick(g.A,V,gold);d.tick(g.A,U,gold);}
    if(s===7||s===8){[[g.B,V,'BV'],[g.B,D,'BD'],[g.C,U,'CU'],[g.C,D,'CD']].forEach(([a,b,name],i)=>{d.segment(a,b,i<2?teal:purple,4,part('tangent-'+name));d.tick(a,b,i<2?teal:purple,i<2?1:2);});}
    if(s===9){d.segment(g.B,D,teal,5,part('length-BD'));d.segment(D,g.C,purple,5,part('length-DC'));d.label(M.mid(g.B,D),'s − c',teal,{dy:20});d.label(M.mid(D,g.C),'s − b',purple,{dy:20});}
    return;
   }
   if(s===10||s===11){
-   g.excenters.forEach((q,i)=>d.circle(q,g.exradii[i],colors(d)[i],i===s-9?3:1.2,part('excircle-'+i)));
+   g.excenters.forEach((q,i)=>d.circle(q,g.exradii[i],colors(d)[i],i===s-9?3:1.2,{'data-excircle':true,...part('excircle-'+i)}));
    labels(d,g,g.exTouches.map((q,i)=>[q,'DEF'[i],colors(d)[i]]),M);
    const i=s===10?1:2,q=g.exTouches[i],a=g.vertices[(i+1)%3],b=g.vertices[(i+2)%3];
    d.segment(a,q,teal,5,part('cyclic-first-segment'));d.segment(q,b,purple,5,part('cyclic-second-segment'));return;
