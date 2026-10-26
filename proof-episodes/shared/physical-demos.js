@@ -189,12 +189,12 @@ function initialize(slot){
   });
   const outside=extent(g).some(p=>{const q=screen(p);return q.x<8||q.y<8||q.x>tr.width-8||q.y>tr.height-8;});
   const warnings=[];
-  if(g.degenerate)warnings.push('The vertices are collinear or coincide. The physical model is paused; drag a vertex off the line or choose another shape to recover.');
+  if(g.degenerate)warnings.push('The triangle is collinear or too flat to resolve at drawing precision. The physical model is paused; drag a vertex away from the line or choose another shape to recover.');
   else if(g.near)warnings.push('The triangle is nearly flat. Values are sensitive to small movements; measurements are numerical, not a proof.');
   if(modelNotice)warnings.push(modelNotice);
   if(outside&&!g.degenerate)warnings.push('Some construction lies outside this fixed view. Use Fit experiment to include it.');
   notice.hidden=warnings.length===0;notice.textContent=warnings.join(' ');
-  readout.textContent=g.degenerate?'Model quantities are undefined in this configuration.':text;
+  readout.textContent=g.degenerate?'Model quantities are not evaluated in this configuration.':text;
   actionButtons.forEach(b=>b.disabled=g.degenerate);if(slider){slider.disabled=g.degenerate;value.textContent=fmt(parameter,2);}
   if(startSelect)startSelect.disabled=g.degenerate;
   slot.dataset.degenerate=String(g.degenerate);slot.dataset.parameter=String(parameter);slot.dataset.lambda=model==='rotating'?String(parameter):'';slot.dataset.model=model;slot.dataset.shape=shape.value;

@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {renderInterpretation, interpretationAssets} = require('./episode-interpretations.cjs');
 const root = path.resolve(__dirname, '../proof-episodes');
-const rev = '20261026-physical-interpretations-v1';
+const rev = '20261026-physical-interpretations-v2';
 const slots = {
   content: ['<!-- BEGIN ORIGINAL EPISODE PHYSICAL SECTION -->', '<!-- END ORIGINAL EPISODE PHYSICAL SECTION -->'],
   style: ['<!-- BEGIN PHYSICAL STYLE -->', '<!-- END PHYSICAL STYLE -->'],

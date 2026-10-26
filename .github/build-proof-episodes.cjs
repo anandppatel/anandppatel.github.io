@@ -4,7 +4,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','trig-ceva','symmedian','nagel','gergonne','heron','all-centers'];
-const rev='20261026-physical-interpretations-v1';
+const rev='20261026-physical-interpretations-v2';
 const {renderReference,referenceStyle}=require('./episode-references.cjs');
 const {hasInterpretation,renderInterpretation,interpretationAssets}=require('./episode-interpretations.cjs');
 const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
