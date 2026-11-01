@@ -5,7 +5,7 @@ The unlisted collection is served at `/proof-episodes/`.
 ## Adding an episode
 
 1. Add a directory at `proof-episodes/<episode-slug>/` with an `index.html` and any local assets. Use relative asset URLs so the episode works under its subdirectory.
-2. Add one entry to the ordered list in `proof-episodes/index.html`, with the episode number, topic, title, short description, and a slash-terminated link such as `centroid/`.
+2. Add the episode to its homework-unit page under `proof-episodes/units/`, with its number, topic, short description, and a slash-terminated link. The collection landing page lists homework units, not all individual episodes. Preserve existing episode URLs.
 3. Add a visible link back to `../` in the episode, and include `<meta name="robots" content="noindex, nofollow">` in every episode HTML page.
 4. Keep the collection out of the homepage, primary navigation, and any future sitemap. Search-engine tags are advisory; these are public pages, not access-controlled material.
 5. Register any new center or reusable auxiliary construction in `shared/geometry-catalog.js` so it is available in All Centers; see the maintenance steps below.
@@ -44,10 +44,10 @@ The construction view widens once at sentence 3. Dragging keeps the scale fixed;
 - Verify every label and figure, direct links, keyboard access, and desktop/mobile layout. A drawing illustrates a fact; it never authorizes an additional fact based on its appearance.
 - This is a maintained import, not an automatic live sync with Google Drive. Reconcile later additions to the class source deliberately.
 
-## Shared-engine episodes (04–15)
+## Shared-engine episodes (04–20)
 
 The incenter, Euler line, angle-bisector, Thales, two nine-point-circle parts, and
-Ceva, trigonometric Ceva, symmedian, Nagel, Gergonne, and Heron episodes use
+Ceva, trigonometric Ceva, symmedian, Nagel, Gergonne, Heron, and the five Circle Geometry episodes use
 `proof-episodes/shared/geometry.js`, `episode.js`, and
 `episode.css`. Each sibling's `episode.js` supplies the theorem, prerequisites,
 proof sentences, drawing instructions, and any explicitly stated proof-mode
@@ -123,14 +123,14 @@ homework's references to this argument in sync with later proof revisions.
 
 ## Build first, then prove
 
-All fifteen numbered episodes open with ABC alone. The numbered construction buttons
+All twenty numbered episodes open with ABC alone. The numbered construction buttons
 reveal cumulative stages; only the next stage and completed stages are available.
 Undo removes one stage, Start over clears the construction without moving ABC,
 and Reset restores the original triangle and blank stage. The proof becomes
 available after the last construction stage. Closing it returns to the completed
 construction. Vertex dragging and arrow-key movement remain available throughout.
 
-For episodes 04–10, edit `shared/constructions.js`; episodes 11–15 keep a
+For episodes 04–10, edit `shared/constructions.js`; episodes 11–20 keep a
 `construction` object in their own `episode.js`. The shared engine uses this
 episode-local object first. Each construction has
 `steps` (button labels, captions, and optional one-time placement), `draw`,
@@ -146,7 +146,7 @@ three episodes implement the same controls in their own scripts.
 `proof-episodes/all-centers/` is an unnumbered collection entry. It uses the shared
 engine in studio mode and starts with every switch off. Its independent switches
 come from `shared/geometry-catalog.js`; circles and lines never implicitly enable
-center labels. The catalog currently includes G, O, H, I, N, K, Na, Ge and twenty-four
+center labels. The catalog currently includes G, O, H, I, N, K, Na, Ge and twenty-seven
 auxiliary objects. Na and Ge distinguish the Nagel and Gergonne points from
 the nine-point center N and centroid G. Show all centers enables just the centers; Clear all returns to ABC.
 
@@ -304,3 +304,39 @@ the diagram during a proof, including on phones. Their shared stylesheet is
 `proof-episodes/shared/book-references.css`; update its revision in
 `.github/episode-references.cjs` if it changes. Keep the proof scripts unchanged
 when only adding or revising reading references.
+
+
+## Homework units and Circle Geometry (16–20)
+
+The landing page links three unit pages: `units/triangle-geometry/` (01–10),
+`units/cevians-and-area/` (11–15), and `units/circle-geometry/` (16–20).
+Each unit links its assignment, direct Markdown download, and associated episodes.
+The circle page includes a four-lecture sequence. Old episode URLs remain valid.
+
+The five circle episodes are `inscribed-angles`, `cyclic-quadrilaterals`,
+`power-of-a-point`, `ptolemy`, and `brahmagupta`. Their configurations own their
+construction stages. `shared/circle-geometry.js` positions a fourth point on
+arc CA opposite B without imposing any metric identity. The signed-sweep arc
+painter distinguishes a reflex intercepted arc from a minor arc. Each new page
+also includes a complete written proof generated from its proof sentences;
+provide `staticText` whenever a sentence has dynamic text.
+
+The inscribed-angle proof handles diameter-inside, diameter-outside, and endpoint
+cases. The cyclicity criterion proves both directions. Power uses the signed
+quantity OP² − R²; internal ordinary chord products have its negative sign.
+Ptolemy constructs its auxiliary ray by angle copying, not by solving the target
+length identity. Brahmagupta derives the needed cosine law locally from signed
+projections and Pythagoras, then eliminates the supplementary angle. It assumes
+neither Heron nor Ptolemy. Restrict quadrilaterals to distinct, convex, boundary-
+ordered vertices throughout.
+
+Homework 03 is `homework/circle-geometry/circle-geometry.md`: six problems with
+short subparts and closed hints. Maintain its instructor key outside the public
+repository, in the course vault. Keep both older assignments unchanged. The
+shared homework generator checks assignment-specific counts.
+
+The All Centers catalog adds the diameter through B, a cyclic completion D₄,
+and Ptolemy's auxiliary split X₄. Their switches do not reveal a center label or
+circumcircle. Circle checks run through the common check runner and cover both
+orientations, obtuse and right triangles, all proof sentences, construction
+reveal stages, and independently computed metric identities.

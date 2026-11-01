@@ -38,6 +38,15 @@ function painter(group,w,h,cam,mini=false){
    }
    const p=project(center);add('circle',{cx:p.x,cy:p.y,r:r*scale,fill:'none',stroke:color,'stroke-width':mini?1.2:lineWidth,'data-part':'circle',...opts});
  };
+ // Signed angular sweeps distinguish a minor arc from a reflex intercepted arc.
+ d.arc=(center,r,start,end,color=colors.gold,lineWidth=3,opts={})=>{
+   if(!finite(center)||![r,start,end].every(Number.isFinite)||r<=0)return;
+   const sweep=end-start,n=Math.max(1,Math.ceil(Math.abs(sweep)/Math.PI));
+   const at=t=>project({x:center.x+r*Math.cos(t),y:center.y+r*Math.sin(t)});
+   const a=at(start);let path=`M${a.x},${a.y}`;
+   for(let i=1;i<=n;i++){const b=at(start+sweep*i/n);path+=` A${r*scale},${r*scale} 0 0 ${sweep>=0?1:0} ${b.x},${b.y}`;}
+   add('path',{d:path,fill:'none',stroke:color,'stroke-width':mini?1.5:lineWidth,'data-part':'arc',...opts});
+ };
  d.label=(point,text,color=colors.ink,opts={})=>{
    if(!finite(point))return;const p=project(point);if(p.x<-25||p.x>w+25||p.y<-25||p.y>h+25)return;
    const {dx=12,dy=-10,...attrs}=opts;let x=p.x+(mini?dx*.6:dx),y=p.y+(mini?dy*.6:dy);
@@ -169,5 +178,6 @@ $('proof-start')?.addEventListener('click',startProof);
 $('proof-close')?.addEventListener('click',()=>{active=false;$('workspace').classList.remove('proving');$('proof-panel').hidden=true;$('proof-start').setAttribute('aria-expanded','false');render();$('proof-start').focus({preventScroll:true});});
 $('proof-prev')?.addEventListener('click',()=>{if(step>0){step--;updateGeometry();fit(extent());render();board.scrollIntoView({block:'start',behavior:'instant'});}});
 $('proof-next')?.addEventListener('click',()=>{if($('proof-next').disabled)return;step=(step+1)%C.steps.length;updateGeometry();fit(extent());render();board.scrollIntoView({block:'start',behavior:'instant'});});
+fit(vertices);
 new ResizeObserver(entries=>{width=entries[0].contentRect.width;height=entries[0].contentRect.height;render();}).observe(board);
 })();

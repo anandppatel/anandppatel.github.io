@@ -3,14 +3,19 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
-const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','trig-ceva','symmedian','nagel','gergonne','heron','all-centers'];
-const rev='20261026-physical-interpretations-v2';
+const slugs=['incenter','euler-line','angle-bisector','thales','nine-point-circle','nine-point-circle-altitudes','ceva','trig-ceva','symmedian','nagel','gergonne','heron','inscribed-angles','cyclic-quadrilaterals','power-of-a-point','ptolemy','brahmagupta','all-centers'];
+const rev='20261101-circle-geometry-v1';
+const circleSlugs=new Set(['inscribed-angles','cyclic-quadrilaterals','power-of-a-point','ptolemy','brahmagupta']);
+const units=slug=>circleSlugs.has(slug)?{slug:'circle-geometry',label:'Homework 03 · Circle geometry'}:['trig-ceva','symmedian','nagel','gergonne','heron'].includes(slug)?{slug:'cevians-and-area',label:'Homework 02 · Cevians, tangency, and area'}:{slug:'triangle-geometry',label:'Homework 01 · Triangle geometry'};
 const {renderReference,referenceStyle}=require('./episode-references.cjs');
 const {hasInterpretation,renderInterpretation,interpretationAssets}=require('./episode-interpretations.cjs');
 const escape=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lessons=slugs.map(slug=>{const window={};if(slug==='all-centers')vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes/shared/geometry-catalog.js'),'utf8'),{window});vm.runInNewContext(fs.readFileSync(path.join(root,'proof-episodes',slug,'episode.js'),'utf8'),{window});return window.ProofEpisode;});
 for(let i=0;i<lessons.length;i++){
  const c=lessons[i],slug=slugs[i],prev=i?lessons[i-1]:{slug:'orthocenter',title:'The orthocenter'},next=lessons[i+1];
+ const unit=units(slug);
+ if(circleSlugs.has(slug))for(const step of c.steps){if(typeof(step.staticText||step.text)!=='string')throw new Error(slug+': provide staticText for dynamic proof text');}
+ const staticProof=circleSlugs.has(slug)?`<details class="written-proof" id="written-proof"><summary>Read the complete proof</summary><p>This written argument is also available without the interactive diagram. The diagram illustrates the proof; measurements do not establish the result.</p><ol>${c.steps.map(s=>`<li><h3>${escape(s.title)}</h3><p>${escape(s.staticText||s.text)}</p>${Array.isArray(s.facts)?`<ul>${s.facts.filter(f=>typeof f==='string').map(f=>`<li>${escape(f)}</li>`).join('')}</ul>`:typeof s.facts==='string'?`<p class="written-equation">${escape(s.facts)}</p>`:''}</li>`).join('')}</ol></details>`:'';
  const physical=interpretationAssets(slug,rev);
  const connections=c.connections?`<section class="connections" id="connections" aria-labelledby="connections-title"><p class="kicker">Connections to explore</p><h2 id="connections-title">${escape(c.connections.title)}</h2><p class="connections-intro">${escape(c.connections.introduction)}</p>${c.connections.items.map((item,j)=>`<section><h3>${escape(item.title)}</h3><p>${escape(item.body)}</p>${j===1?`<div class="comparison-wrap" tabindex="0" role="region" aria-label="Comparison of three cevians"><table><caption>Three cevians from A, meeting BC at D</caption><thead><tr><th scope="col">Cevian</th><th scope="col">Side ratio</th><th scope="col">What the ratio says</th></tr></thead><tbody>${c.connections.comparison.map(row=>`<tr><th scope="row">${escape(row.name)}</th><td>${escape(row.ratio)}</td><td>${escape(row.meaning)}</td></tr>`).join('')}</tbody></table></div>`:''}</section>`).join('')}<p class="connection-exploration">${escape(c.connections.exploration)}</p><p class="connection-links">${c.connections.links.map(link=>`<a href="${escape(link.href)}">${escape(link.label)}</a>`).join(' ')}</p></section>`:'';
  const sidebar=c.studio?`<aside class="sidebar studio-sidebar"><section><p class="kicker">Choose what to show</p><h2>Centers &amp; constructions</h2><p class="small">Each switch adds or removes just that object. Drag A, B, or C to change the triangle.</p><div id="studio-controls"></div>${(c.notes||[]).map(n=>`<details><summary>${escape(n.title)}</summary><p>${escape(n.body)}</p></details>`).join('')}</section></aside>`:`<aside class="sidebar">
@@ -29,8 +34,8 @@ for(let i=0;i<lessons.length;i++){
 <link rel="stylesheet" href="../shared/episode.css?v=${rev}">${referenceStyle(slug)?"\n"+referenceStyle(slug):""}
 ${physical.style}
 </head>
-<body>
-<header><div><p class="eyebrow"><a href="../">Proof episodes</a> / ${c.studio?'Geometry playground':'Episode '+String(i+4).padStart(2,'0')}</p><h1>${escape(c.title)}</h1></div><p class="header-note">${escape(c.subtitle)}</p></header>
+<body${circleSlugs.has(slug)?' class="circle-episode"':''}>
+<header><div><p class="eyebrow"><a href="../">Proof episodes</a>${c.studio?'':` / <a href="../units/${unit.slug}/">${unit.label}</a>`} / ${c.studio?'Geometry playground':'Episode '+(c.number||String(i+4).padStart(2,'0'))}</p><h1>${escape(c.title)}</h1></div><p class="header-note">${escape(c.subtitle)}</p></header>
 <main><div class="workspace${c.studio?' studio':''}" id="workspace">
 <section aria-label="Interactive triangle">
 <div class="drawing">
@@ -55,10 +60,10 @@ ${c.studio?'':`<section class="build-panel" id="build-panel" aria-label="Step-by
 <p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. Focus a labeled point and use the arrow keys; hold Shift for larger steps. Measurements illustrate the construction; the argument proves it.</p>
 <p id="announcement" class="sr-only" aria-live="polite"></p>
 </section>
-${sidebar}</div>${renderInterpretation(slug)}${connections}${renderReference(slug)?"\n"+renderReference(slug):""}
+${sidebar}</div>${staticProof}${renderInterpretation(slug)}${connections}${renderReference(slug)?"\n"+renderReference(slug):""}
 <nav class="episode-nav" aria-label="Episode order"><a href="../${escape(prev.slug)}/">← ${escape(prev.title)}</a>${next?`<a href="../${escape(next.slug)}/">${escape(next.title)} →</a>`:'<a href="../">All proof episodes →</a>'}</nav>
 </main>
-<script src="../shared/geometry.js?v=${rev}"></script>${c.studio?`<script src="../shared/geometry-catalog.js?v=${rev}"></script>`:`<script src="../shared/constructions.js?v=${rev}"></script>`}<script src="episode.js?v=${rev}"></script><script src="../shared/episode.js?v=${rev}"></script>
+<script src="../shared/geometry.js?v=${rev}"></script>${circleSlugs.has(slug)?`<script src="../shared/circle-geometry.js?v=${rev}"></script>`:''}${c.studio?`<script src="../shared/geometry-catalog.js?v=${rev}"></script>`:`<script src="../shared/constructions.js?v=${rev}"></script>`}<script src="episode.js?v=${rev}"></script><script src="../shared/episode.js?v=${rev}"></script>
 ${physical.scripts}
 </body></html>
 `;

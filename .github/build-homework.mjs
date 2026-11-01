@@ -11,8 +11,9 @@ const katex=require('katex');
 const {Marked}=await import(require.resolve('marked'));
 const root=path.resolve(here,'..');
 const assignments=[
- {slug:'triangle-geometry',number:'01',figures:6,parts:[3,3,3,3,4,3,3,3,3,3]},
- {slug:'cevians-and-area',number:'02',figures:7,parts:[4,4,4,4,4,4,4,4,4,4]}
+ {slug:'triangle-geometry',number:'01',unitTitle:'Triangle geometry',figures:6,parts:[3,3,3,3,4,3,3,3,3,3]},
+ {slug:'cevians-and-area',number:'02',unitTitle:'Cevians and area',figures:7,parts:[4,4,4,4,4,4,4,4,4,4]},
+ {slug:'circle-geometry',number:'03',unitTitle:'Circle geometry',figures:3,parts:[2,2,2,2,2,2]}
 ];
 for(const assignment of assignments){
 const marked=new Marked();
@@ -57,10 +58,10 @@ function render(markdown){
 const sections=source.split(/(?=^## \d+\.)/m);
 const intro=sections.shift();
 const title=intro.match(/^# (.+)$/m)?.[1];
-if(!title||sections.length!==10)throw new Error('Expected a title and ten problems');
+if(!title||sections.length!==assignment.parts.length)throw new Error(`Expected a title and ${assignment.parts.length} problems for ${assignment.slug}`);
 const problems=sections.map((section,i)=>{
  const match=section.match(/^## (\d+)\. (.+)\n/);
- if(!match||Number(match[1])!==i+1)throw new Error('Problems must remain numbered 1 through 10');
+ if(!match||Number(match[1])!==i+1)throw new Error(`Problems must remain numbered 1 through ${assignment.parts.length}`);
  const titleHtml=render(match[2]).replace(/^<p>/,'').replace(/<\/p>\n$/,'');
  const parts=section.slice(match[0].length).split(/^### Hints\s*$/m);
  if(parts.length!==2||!parts[1].trim())throw new Error(`Problem ${i+1} needs one Hints section`);
@@ -77,7 +78,7 @@ const html=`<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Ten triangle geometry homework problems from Proof episodes, with optional hints, ${figureCount} diagrams, and a Markdown download.">
+<meta name="description" content="${problems.length} ${escape(assignment.unitTitle.toLowerCase())} homework problems from Proof episodes, with optional hints, ${figureCount} diagrams, and a Markdown download.">
 <title>${escape(title)} — Anand Patel</title>
 <link rel="stylesheet" href="../../../style.css">
 <link rel="stylesheet" href="../homework.css?v=20261016-homework-two-sets">
@@ -86,12 +87,12 @@ const html=`<!doctype html>
 <a class="skip-link" href="#problem-1">Skip to the problems</a>
 <header><div class="header-inner"><p class="site-wordmark"><a href="../../../">Anand Patel</a></p><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Proof episodes</a><span aria-hidden="true"> / </span><a href="../">Homework</a></nav></div></header>
 <main class="homework-main">
-<div class="homework-heading"><p class="eyebrow">Problem set ${assignment.number} · 10 problems</p><h1>${escape(title)}</h1>
+<div class="homework-heading"><p class="eyebrow">Problem set ${assignment.number} · ${problems.length} problems</p><h1>${escape(title)}</h1>
 <div class="actions"><a class="download" href="${filename}" download="${filename}">Download Markdown (.md)</a><button type="button" id="print-homework" hidden>Print problem set</button></div></div>
 <section class="instructions" aria-label="Instructions">${introduction}</section>
 <nav class="problem-nav" aria-label="Jump to a problem"><details><summary>Jump to a problem</summary><ol>${problems.map(p=>`<li><a href="#problem-${p.number}">${p.titleHtml}</a></li>`).join('')}</ol></details></nav>
 <div class="problems">${problems.map(p=>`<section class="problem" id="problem-${p.number}" aria-labelledby="problem-${p.number}-title"><h2 id="problem-${p.number}-title"><a href="#problem-${p.number}">${p.number}. ${p.titleHtml}</a></h2>${p.body}<details class="homework-hints" id="hints-${p.number}"><summary>Hints for Problem ${p.number}</summary><div class="hint-content">${p.hints}</div></details></section>`).join('\n')}</div>
-<nav class="homework-footer" aria-label="Homework navigation"><a href="../">← All homework</a><a href="${filename}" download="${filename}">Download this set as Markdown</a></nav>
+<nav class="homework-footer" aria-label="Homework navigation"><a href="../../units/${assignment.slug}/">← ${escape(assignment.unitTitle)} episodes</a><a href="../">All homework</a><a href="${filename}" download="${filename}">Download this set as Markdown</a></nav>
 </main>
 <footer><div class="footer-inner">Anand Patel · Proof episodes · Homework</div></footer>
 <script>

@@ -11,7 +11,10 @@ entries = DATA['entries']
 ids = [entry['id'] for entry in entries]
 assert len(ids) == len(set(ids)), 'History anchors must be unique'
 covered = {episode['slug'] for entry in entries for episode in entry['episodes']}
-listed = set(re.findall(r'<article aria-labelledby="([a-z0-9-]+)-title">', (ROOT / 'proof-episodes/index.html').read_text()))
+listed = {folder.name for folder in (ROOT / 'proof-episodes').iterdir()
+          if folder.is_dir() and folder.name not in {'all-centers'}
+          and (folder / 'index.html').exists()
+          and ((folder / 'episode.js').exists() or folder.name == 'centroid')}
 assert covered == listed, 'Reading and history notes should cover every listed episode'
 
 sections = []

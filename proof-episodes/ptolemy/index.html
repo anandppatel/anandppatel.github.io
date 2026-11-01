@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="If A, B, C, and D are distinct vertices of a convex cyclic quadrilateral in that order, then AC · BD = AB · CD + AD · BC.">
+<title>Ptolemy’s theorem — Proof episodes — Anand Patel</title>
+<link rel="stylesheet" href="../shared/episode.css?v=20261101-circle-geometry-v1">
+<link rel="stylesheet" href="../shared/book-references.css?v=20261006-venema-v1">
+
+</head>
+<body class="circle-episode">
+<header><div><p class="eyebrow"><a href="../">Proof episodes</a> / <a href="../units/circle-geometry/">Homework 03 · Circle geometry</a> / Episode 19</p><h1>Ptolemy’s theorem</h1></div><p class="header-note">Two similar-triangle pairs split one diagonal product.</p></header>
+<main><div class="workspace" id="workspace">
+<section aria-label="Interactive triangle">
+<div class="drawing">
+<div class="toolbar"><p><strong>Move the triangle.</strong><br>Drag a vertex to explore.</p><div class="toolbar-buttons"><button id="fit" type="button">Fit construction</button><button id="fit-triangle" type="button">Fit triangle</button><button id="reset" type="button">Reset</button><div class="extra-controls" id="extra-controls"></div></div></div>
+<div class="board" id="board"><svg id="diagram" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">Ptolemy’s theorem: an interactive construction in triangle ABC</title><desc id="diagram-desc">If A, B, C, and D are distinct vertices of a convex cyclic quadrilateral in that order, then AC · BD = AB · CD + AD · BC.</desc><g id="scene"></g></svg></div>
+<p class="notice" id="notice" role="status" hidden></p><p class="status" id="status" role="status"></p>
+<div class="overview" id="overview" hidden><div><strong>The construction extends beyond this view.</strong><p>This overview shows the same figure. Use Fit construction to bring it into the main drawing.</p></div><svg viewBox="0 0 220 165" role="img" aria-label="Overview of the full construction"><g id="overview-scene"></g></svg></div>
+<section class="build-panel" id="build-panel" aria-label="Step-by-step construction">
+<div class="build-top"><h2>Build the diagram</h2><span id="build-progress">0 / 0</span></div>
+<p id="build-caption" class="build-caption" aria-live="polite">Start with triangle ABC.</p>
+<div class="build-steps" id="build-steps"></div>
+<p class="proof-pause" id="build-pause" hidden>Move a vertex off the line to continue the construction.</p>
+<div class="build-controls"><button id="build-prev" type="button">Undo a step</button><button id="build-reset" type="button">Start over</button><button id="build-proof" type="button" class="primary" hidden>See why it works</button></div>
+</section>
+<section id="proof-panel" class="proof-panel" aria-label="Guided proof" hidden>
+<div class="proof-top"><strong id="proof-stage"></strong><span id="proof-progress"></span><button id="proof-close" type="button">Close proof</button></div>
+<div aria-live="polite" aria-atomic="true"><p class="proof-sentence" id="proof-sentence"></p><div class="proof-equation" id="proof-equation"></div></div>
+<p class="proof-pause" id="proof-pause" role="status" hidden></p><p class="proof-key" id="proof-key"></p>
+<div class="proof-controls"><button id="proof-prev" type="button">Previous</button><button id="proof-next" class="primary" type="button">Next sentence</button></div>
+<p class="after-question" id="after-question" hidden></p>
+</section></div>
+<p class="keyboard-hint" id="keyboard-help">Use a mouse or touch. Focus a labeled point and use the arrow keys; hold Shift for larger steps. Measurements illustrate the construction; the argument proves it.</p>
+<p id="announcement" class="sr-only" aria-live="polite"></p>
+</section>
+<aside class="sidebar">
+<section><p class="kicker">The theorem</p><h2>Ptolemy’s theorem</h2><p>If A, B, C, and D are distinct vertices of a convex cyclic quadrilateral in that order, then AC · BD = AB · CD + AD · BC.</p></section>
+<section><p class="kicker">Before the proof</p><p>Can one point X on AC split AC · BD into the two products of opposite sides?</p><button class="primary" id="proof-start" type="button" disabled aria-controls="proof-panel" aria-expanded="false">See the proof</button><p class="small" id="proof-gate">Build the diagram first, then follow the proof one sentence at a time.</p></section>
+<section><h2>What we use</h2><ul><li><a href="../inscribed-angles/">16 · Inscribed angles</a></li><li><a href="../cyclic-quadrilaterals/">17 · Cyclic quadrilaterals</a></li><li><a href="../basics/#t5">T5 · AA similarity</a></li><li><a href="../basics/#t2">T2 · Triangle angle sum</a></li></ul><details><summary>Convexity is a hypothesis</summary><p>The vertices are distinct and occur in boundary order A, B, C, D. The two diagonals lie inside the quadrilateral. The drawing places D on the open arc CA that does not contain B; it does not impose Ptolemy’s metric identity.</p></details><details><summary>Why the auxiliary ray meets AC</summary><p>The diagonal BD lies strictly inside angle ABC. Hence 0 &lt; angle DBC &lt; angle ABC. Copying that angle from BA toward BC gives a ray strictly inside angle ABC, which crosses the opposite side AC at a unique interior point X.</p></details><details><summary>A constructed point, not a solved formula</summary><p>The diagram obtains X by rotating the direction BA through angle DBC and intersecting the resulting ray with AC. It does not position X by assuming either product identity. Decimal measurements illustrate the proof.</p></details></section>
+</aside></div><details class="written-proof" id="written-proof"><summary>Read the complete proof</summary><p>This written argument is also available without the interactive diagram. The diagram illustrates the proof; measurements do not establish the result.</p><ol><li><h3>Four vertices on one circle</h3><p>Let ABCD be a convex cyclic quadrilateral, with four distinct vertices in boundary order.</p><ul><li>ABCD is convex and cyclic.</li></ul></li><li><h3>An angle inside an angle</h3><p>Since BD is an interior diagonal, angle DBC is strictly smaller than angle ABC.</p><ul><li>0° &lt; ∠DBC &lt; ∠ABC</li></ul></li><li><h3>Construct X</h3><p>Inside angle ABC, copy angle DBC from BA toward BC. The resulting ray meets AC at an interior point X, and angle ABX equals angle DBC.</p><ul><li>∠ABX = ∠DBC</li><li>A, X, C occur in that order.</li></ul></li><li><h3>The first similarity</h3><p>Angles BAX and BDC subtend the same chord BC, so they are equal. Together with the copied angles this gives triangle ABX similar to triangle DBC.</p><ul><li>∠BAX = ∠BDC</li><li>△ABX ∼ △DBC</li></ul></li><li><h3>The first side product</h3><p>Corresponding sides give AX/CD = AB/BD. Multiplying by CD · BD identifies the first part of the diagonal product.</p><ul><li>AX · BD = AB · CD</li></ul></li><li><h3>The second similarity</h3><p>Subtracting the copied angles from angle ABC gives angle XBC = angle ABD. Also angle XCB = angle ADB, since both subtend chord AB. Hence triangle XBC is similar to triangle ABD.</p><ul><li>∠XBC = ∠ABD</li><li>∠XCB = ∠ADB</li><li>△XBC ∼ △ABD</li></ul></li><li><h3>The second side product</h3><p>This similarity gives XC/AD = BC/BD, and therefore the second part of the diagonal product is AD · BC.</p><ul><li>XC · BD = AD · BC</li></ul></li><li><h3>Add the two identities</h3><p>Because X lies inside AC, we have AX + XC = AC. Add the two identities and factor out BD.</p><ul><li>(AX + XC) · BD = AB · CD + AD · BC</li></ul></li><li><h3>Ptolemy’s theorem</h3><p>Thus the product of the diagonals equals the sum of the products of opposite sides.</p><ul><li>AC · BD = AB · CD + AD · BC</li></ul></li></ol></details>
+<!-- BEGIN BOOK REFERENCE -->
+<section class="book-reference" id="venema-reference" aria-labelledby="venema-title">
+<h2 id="venema-title">Read in Venema</h2>
+<p class="book-citation">Gerard A. Venema, <cite><a href="https://doi.org/10.5948/9781614441113">Exploring Advanced Euclidean Geometry with GeoGebra</a></cite> (2013).</p>
+<ul><li><span class="book-location">§11.7 · Ptolemy’s theorem</span><span class="book-statement">Ptolemy’s Theorem, <strong>p. 96</strong> <span class="book-pdf-page">(PDF page 113)</span>.</span></li></ul>
+<p class="book-reference-note">Page numbers refer to the printed pages of the 2013 edition; PDF page numbers count from the beginning of the file.</p>
+</section>
+<!-- END BOOK REFERENCE -->
+<nav class="episode-nav" aria-label="Episode order"><a href="../power-of-a-point/">← Power of a point</a><a href="../brahmagupta/">Brahmagupta’s formula →</a></nav>
+</main>
+<script src="../shared/geometry.js?v=20261101-circle-geometry-v1"></script><script src="../shared/circle-geometry.js?v=20261101-circle-geometry-v1"></script><script src="../shared/constructions.js?v=20261101-circle-geometry-v1"></script><script src="episode.js?v=20261101-circle-geometry-v1"></script><script src="../shared/episode.js?v=20261101-circle-geometry-v1"></script>
+
+</body></html>

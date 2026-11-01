@@ -2,6 +2,20 @@
 'use strict';
 const circleBounds=(o,r)=>[{x:o.x-r,y:o.y-r},{x:o.x+r,y:o.y+r}];
 const familyColors=d=>[d.colors.blue,d.colors.teal,d.colors.purple];
+// Complete ABC cyclically on the open arc CA opposite B; keep the studio
+// construction independent of the metric identity proved by Ptolemy.
+function cyclicCompletion(g,M){
+ const sign=Math.sign(M.cross(M.sub(g.B,g.A),M.sub(g.C,g.A)))||1;
+ const start=Math.atan2(g.C.y-g.O.y,g.C.x-g.O.x),end=Math.atan2(g.A.y-g.O.y,g.A.x-g.O.x);
+ const sweep=sign*(((sign*(end-start))%(2*Math.PI)+2*Math.PI)%(2*Math.PI));
+ return {x:g.O.x+g.R*Math.cos(start+sweep/2),y:g.O.y+g.R*Math.sin(start+sweep/2)};
+}
+function ptolemySplit(g,M){
+ const D=cyclicCompletion(g,M),ba=M.sub(g.A,g.B),bc=M.sub(g.C,g.B);
+ const angle=Math.sign(M.cross(ba,bc))*M.angle(D,g.B,g.C)*Math.PI/180,u=M.unit(ba);
+ const ray={x:u.x*Math.cos(angle)-u.y*Math.sin(angle),y:u.x*Math.sin(angle)+u.y*Math.cos(angle)};
+ return {D,X:M.intersect(g.B,M.add(g.B,ray),g.A,g.C)};
+}
 // Add future constructions here: the studio builds its controls from this list.
 // A center needs point(g) and a label beginning with its displayed name, then " · ".
 // Other entries supply draw(d,g,p,M), and extent(g,p,M) when they extend beyond ABC.
@@ -47,6 +61,12 @@ window.TriangleCatalog=[
   draw:(d,g)=>d.circle(g.N,g.R/2,d.colors.purple,2.3,{'data-part':'studio-nine-point-circle'}),extent:g=>circleBounds(g.N,g.R/2)},
  {id:'diameter-circle',label:'Circle with diameter AB',group:'Circles',description:'For noncollinear ABC, C lies on this circle exactly when angle ACB is right.',episode:'../thales/',
   draw:(d,g)=>d.circle(g.studioDiameterCenter,g.studioDiameterRadius,d.colors.gold,2,{'stroke-dasharray':'6 4','data-part':'studio-diameter-circle'}),extent:g=>circleBounds(g.studioDiameterCenter,g.studioDiameterRadius)},
+ {id:'diameter-through-b',label:'Diameter through B',group:'Lines',description:'Join B to its antipode B′ on the circumcircle. This is the auxiliary diameter in the inscribed-angle proof.',episode:'../inscribed-angles/',
+  draw:(d,g,p,M)=>{const q=M.sub(M.mul(g.O,2),g.B);d.segment(g.B,q,d.colors.gold,2.6);d.point(q,'B′',d.colors.gold);},extent:(g,p,M)=>[M.sub(M.mul(g.O,2),g.B)]},
+ {id:'cyclic-completion',label:'Cyclic quadrilateral ABCD₄',group:'Lines',description:'D₄ is the midpoint of the arc CA avoiding B. Join the four vertices in boundary order. The circumcircle has its own switch.',episode:'../cyclic-quadrilaterals/',
+  draw:(d,g,p,M)=>{const q=cyclicCompletion(g,M);[g.A,g.B,g.C,q].forEach((v,i,points)=>d.segment(v,points[(i+1)%4],d.colors.teal,2.6));d.point(q,'D₄',d.colors.teal);},extent:(g,p,M)=>[cyclicCompletion(g,M)]},
+ {id:'ptolemy-split',label:'Ptolemy auxiliary ray BX₄',group:'Lines',description:'For the cyclic completion D₄, copy angle D₄BC from BA into angle ABC. The ray meets AC at X₄. The quadrilateral and circle have separate switches.',episode:'../ptolemy/',
+  draw:(d,g,p,M)=>{const q=ptolemySplit(g,M);if(q.X){d.segment(g.B,q.X,d.colors.gold,3);d.point(q.X,'X₄',d.colors.gold);}},extent:(g,p,M)=>{const q=ptolemySplit(g,M);return q.X?[q.X]:[];}},
  {id:'side-midpoints',label:'Side midpoints D, E, F',group:'Points',description:'The midpoints of BC, CA, and AB, respectively.',episode:'../centroid/',
   draw:(d,g)=>g.mids.forEach((v,i)=>d.point(v,['D','E','F'][i],d.colors.gold,{'data-part':'studio-side-midpoint-'+i})),extent:g=>g.mids},
  {id:'altitude-feet',label:'Altitude feet A₁, B₁, C₁',group:'Points',description:'Perpendicular feet on the full opposite-side lines; some can lie outside the side segments.',episode:'../nine-point-circle-altitudes/',

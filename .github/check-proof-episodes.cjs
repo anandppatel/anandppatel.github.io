@@ -11,3 +11,7 @@ require('./checks/heron-check.cjs');
 require('./checks/new-centers-check.cjs');
 require('./checks/excircle-lines-check.cjs');
 require('./checks/physical-models-check.cjs');
+
+require('./checks/circle-angles-check.cjs');
+require('./checks/circle-metric-check.cjs');
+require('./checks/homework-units-check.cjs');
