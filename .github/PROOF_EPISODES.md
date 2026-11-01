@@ -311,7 +311,9 @@ when only adding or revising reading references.
 The landing page links three unit pages: `units/triangle-geometry/` (01–10),
 `units/cevians-and-area/` (11–15), and `units/circle-geometry/` (16–20).
 Each unit links its assignment, direct Markdown download, and associated episodes.
-The circle page includes a four-lecture sequence. Old episode URLs remain valid.
+The circle page links the relevant historical notes alongside its episodes and
+homework with hints. Keep teaching schedules off the student unit pages. Old
+episode URLs remain valid.
 
 The five circle episodes are `inscribed-angles`, `cyclic-quadrilaterals`,
 `power-of-a-point`, `ptolemy`, and `brahmagupta`. Their configurations own their
